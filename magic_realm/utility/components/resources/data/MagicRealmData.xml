@@ -61850,15 +61850,15 @@
       <contains id="2362" />
       <contains id="2363" />
       <contains id="2364" />
+      <contains id="2365" />
+      <contains id="2366" />
+      <contains id="2367" />
       <contains id="2368" />
       <contains id="2369" />
+      <contains id="2370" />
       <contains id="2371" />
       <contains id="2372" />
       <contains id="2373" />
-      <contains id="2374" />
-      <contains id="2375" />
-      <contains id="2376" />
-      <contains id="2377" />
     </GameObject>
     <GameObject id="2362" name="Barbarian Fight H5*">
       <AttributeBlock blockName="this">
@@ -61904,7 +61904,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2368" name="Barbarian Fight H6">
+    <GameObject id="2365" name="Barbarian Fight H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -61918,7 +61918,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2369" name="Barbarian Fight H4**">
+    <GameObject id="2366" name="Barbarian Fight H4**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -61933,7 +61933,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2371" name="Barbarian Move T6*">
+    <GameObject id="2367" name="Barbarian Move T6*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -61948,7 +61948,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2372" name="Barbarian Fight H5*">
+    <GameObject id="2368" name="Barbarian Fight H5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -61963,7 +61963,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2373" name="Barbarian Fight T5*">
+    <GameObject id="2369" name="Barbarian Fight T5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -61978,7 +61978,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2374" name="Barbarian Move T5**">
+    <GameObject id="2370" name="Barbarian Move T5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -61993,7 +61993,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2375" name="Barbarian Fight T5**">
+    <GameObject id="2371" name="Barbarian Fight T5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62008,7 +62008,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2376" name="Barbarian Fight T5**">
+    <GameObject id="2372" name="Barbarian Fight T5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62023,7 +62023,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2377" name="Barbarian Move H5**">
+    <GameObject id="2373" name="Barbarian Move H5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62038,7 +62038,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2378" name="Bard">
+    <GameObject id="2374" name="Bard">
       <AttributeBlock blockName="this">
         <attribute icon_type="bard" />
         <attribute character="" />
@@ -62108,6 +62108,10 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
+      <contains id="2375" />
+      <contains id="2376" />
+      <contains id="2377" />
+      <contains id="2378" />
       <contains id="2379" />
       <contains id="2380" />
       <contains id="2381" />
@@ -62116,12 +62120,8 @@
       <contains id="2384" />
       <contains id="2385" />
       <contains id="2386" />
-      <contains id="2387" />
-      <contains id="2388" />
-      <contains id="2389" />
-      <contains id="2390" />
     </GameObject>
-    <GameObject id="2379" name="Bard Fight L4">
+    <GameObject id="2375" name="Bard Fight L4">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62135,7 +62135,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2380" name="Bard Move L3*">
+    <GameObject id="2376" name="Bard Move L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62150,7 +62150,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2381" name="Bard Move L3">
+    <GameObject id="2377" name="Bard Move L3">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62164,7 +62164,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2382" name="Bard Magic VII3*">
+    <GameObject id="2378" name="Bard Magic VII3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62179,7 +62179,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2383" name="Bard Move L2**">
+    <GameObject id="2379" name="Bard Move L2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62194,7 +62194,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2384" name="Bard Fight L3*">
+    <GameObject id="2380" name="Bard Fight L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62209,7 +62209,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2385" name="Bard Magic III3*">
+    <GameObject id="2381" name="Bard Magic III3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62224,7 +62224,7 @@
         <attribute magic="III" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2386" name="Bard Magic II4*">
+    <GameObject id="2382" name="Bard Magic II4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62239,7 +62239,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2387" name="Bard Fight L3*">
+    <GameObject id="2383" name="Bard Fight L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62254,7 +62254,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2388" name="Bard Magic III2*">
+    <GameObject id="2384" name="Bard Magic III2*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62269,7 +62269,7 @@
         <attribute magic="III" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2389" name="Bard Magic II3*">
+    <GameObject id="2385" name="Bard Magic II3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62284,7 +62284,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2390" name="Bard Magic VIII2**">
+    <GameObject id="2386" name="Bard Magic VIII2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62299,7 +62299,7 @@
         <attribute magic="VIII" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2391" name="Gladiator">
+    <GameObject id="2387" name="Gladiator">
       <AttributeBlock blockName="this">
         <attribute icon_type="gladiator" />
         <attribute character="" />
@@ -62357,6 +62357,10 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
+      <contains id="2388" />
+      <contains id="2389" />
+      <contains id="2390" />
+      <contains id="2391" />
       <contains id="2392" />
       <contains id="2393" />
       <contains id="2394" />
@@ -62365,12 +62369,8 @@
       <contains id="2397" />
       <contains id="2398" />
       <contains id="2399" />
-      <contains id="2400" />
-      <contains id="2401" />
-      <contains id="2402" />
-      <contains id="2403" />
     </GameObject>
-    <GameObject id="2392" name="Gladiator Move H6">
+    <GameObject id="2388" name="Gladiator Move H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62384,7 +62384,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2393" name="Gladiator Move H4*">
+    <GameObject id="2389" name="Gladiator Move H4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62399,7 +62399,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2394" name="Gladiator Fight H5*">
+    <GameObject id="2390" name="Gladiator Fight H5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62414,7 +62414,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2395" name="Gladiator Move T5*">
+    <GameObject id="2391" name="Gladiator Move T5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62429,7 +62429,7 @@
         <attribute strength="T" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2396" name="Gladiator Reflex H3**">
+    <GameObject id="2392" name="Gladiator Reflex H3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="reflex" />
@@ -62444,7 +62444,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2397" name="Gladiator Fight H6">
+    <GameObject id="2393" name="Gladiator Fight H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62458,7 +62458,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2398" name="Gladiator Fight H4*">
+    <GameObject id="2394" name="Gladiator Fight H4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62473,7 +62473,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2399" name="Gladiator Fight H5*">
+    <GameObject id="2395" name="Gladiator Fight H5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62488,7 +62488,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2400" name="Gladiator Move T4**">
+    <GameObject id="2396" name="Gladiator Move T4**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62503,7 +62503,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2401" name="Gladiator Move T4**">
+    <GameObject id="2397" name="Gladiator Move T4**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62518,7 +62518,7 @@
         <attribute strength="T" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2402" name="Gladiator Fight H4**">
+    <GameObject id="2398" name="Gladiator Fight H4**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62533,7 +62533,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2403" name="Gladiator Fight H5**">
+    <GameObject id="2399" name="Gladiator Fight H5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62548,7 +62548,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2404" name="Necromancer">
+    <GameObject id="2400" name="Necromancer">
       <AttributeBlock blockName="this">
         <attribute icon_type="necromancer" />
         <attribute character="" />
@@ -62624,6 +62624,10 @@
         <attribute dwarves="-2" />
         <attribute elves="-2" />
       </AttributeBlock>
+      <contains id="2401" />
+      <contains id="2402" />
+      <contains id="2403" />
+      <contains id="2404" />
       <contains id="2405" />
       <contains id="2406" />
       <contains id="2407" />
@@ -62632,12 +62636,8 @@
       <contains id="2410" />
       <contains id="2411" />
       <contains id="2412" />
-      <contains id="2413" />
-      <contains id="2414" />
-      <contains id="2415" />
-      <contains id="2416" />
     </GameObject>
-    <GameObject id="2405" name="Necromancer Magic V4*">
+    <GameObject id="2401" name="Necromancer Magic V4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62652,7 +62652,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2406" name="Necromancer Move M5">
+    <GameObject id="2402" name="Necromancer Move M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62666,7 +62666,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2407" name="Necromancer Fight M4*">
+    <GameObject id="2403" name="Necromancer Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62681,7 +62681,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2408" name="Necromancer Magic V3*">
+    <GameObject id="2404" name="Necromancer Magic V3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62696,7 +62696,7 @@
         <attribute magic="V" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2409" name="Necromancer Magic V2**">
+    <GameObject id="2405" name="Necromancer Magic V2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62711,7 +62711,7 @@
         <attribute magic="V" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2410" name="Necromancer Magic VIII3**">
+    <GameObject id="2406" name="Necromancer Magic VIII3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62726,7 +62726,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2411" name="Necromancer Magic VI5**">
+    <GameObject id="2407" name="Necromancer Magic VI5**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62741,7 +62741,7 @@
         <attribute magic="VI" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2412" name="Necromancer Black">
+    <GameObject id="2408" name="Necromancer Black">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="color" />
@@ -62755,7 +62755,7 @@
         <attribute chit_state="CB" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2413" name="Necromancer Purple">
+    <GameObject id="2409" name="Necromancer Purple">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="color" />
@@ -62769,7 +62769,7 @@
         <attribute chit_state="CP" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2414" name="Necromancer Magic VI6*">
+    <GameObject id="2410" name="Necromancer Magic VI6*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62784,7 +62784,7 @@
         <attribute magic="VI" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2415" name="Necromancer Magic VI6*">
+    <GameObject id="2411" name="Necromancer Magic VI6*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62799,7 +62799,7 @@
         <attribute magic="VI" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2416" name="Necromancer Grey">
+    <GameObject id="2412" name="Necromancer Grey">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="color" />
@@ -62813,7 +62813,7 @@
         <attribute chit_state="CY" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2417" name="Paladin">
+    <GameObject id="2413" name="Paladin">
       <AttributeBlock blockName="this">
         <attribute icon_type="paladin" />
         <attribute character="" />
@@ -62900,6 +62900,10 @@
           <attributeVal N1="comrade" />
         </attributeList>
       </AttributeBlock>
+      <contains id="2414" />
+      <contains id="2415" />
+      <contains id="2416" />
+      <contains id="2417" />
       <contains id="2418" />
       <contains id="2419" />
       <contains id="2420" />
@@ -62908,12 +62912,8 @@
       <contains id="2423" />
       <contains id="2424" />
       <contains id="2425" />
-      <contains id="2426" />
-      <contains id="2427" />
-      <contains id="2428" />
-      <contains id="2429" />
     </GameObject>
-    <GameObject id="2418" name="Paladin Move M5">
+    <GameObject id="2414" name="Paladin Move M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62927,7 +62927,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2419" name="Paladin Move M4*">
+    <GameObject id="2415" name="Paladin Move M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -62942,7 +62942,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2420" name="Paladin Fight M4*">
+    <GameObject id="2416" name="Paladin Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62957,7 +62957,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2421" name="Paladin Magic I4*">
+    <GameObject id="2417" name="Paladin Magic I4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -62972,7 +62972,7 @@
         <attribute magic="I" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2422" name="Paladin Fight M5">
+    <GameObject id="2418" name="Paladin Fight M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -62986,7 +62986,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2423" name="Paladin Fight M3**">
+    <GameObject id="2419" name="Paladin Fight M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63001,7 +63001,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2424" name="Paladin Magic VII6*">
+    <GameObject id="2420" name="Paladin Magic VII6*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63016,7 +63016,7 @@
         <attribute magic="VII" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2425" name="Paladin Move M3**">
+    <GameObject id="2421" name="Paladin Move M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63031,7 +63031,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2426" name="Paladin Move H6">
+    <GameObject id="2422" name="Paladin Move H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63045,7 +63045,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2427" name="Paladin Magic I2**">
+    <GameObject id="2423" name="Paladin Magic I2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63060,7 +63060,7 @@
         <attribute magic="I" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2428" name="Paladin Magic IV4*">
+    <GameObject id="2424" name="Paladin Magic IV4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63075,7 +63075,7 @@
         <attribute magic="IV" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2429" name="Paladin Fight H6">
+    <GameObject id="2425" name="Paladin Fight H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63089,7 +63089,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2430" name="Psychic">
+    <GameObject id="2426" name="Psychic">
       <AttributeBlock blockName="this">
         <attribute icon_type="psychic" />
         <attribute character="" />
@@ -63162,6 +63162,10 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
+      <contains id="2427" />
+      <contains id="2428" />
+      <contains id="2429" />
+      <contains id="2430" />
       <contains id="2431" />
       <contains id="2432" />
       <contains id="2433" />
@@ -63170,12 +63174,8 @@
       <contains id="2436" />
       <contains id="2437" />
       <contains id="2438" />
-      <contains id="2439" />
-      <contains id="2440" />
-      <contains id="2441" />
-      <contains id="2442" />
     </GameObject>
-    <GameObject id="2431" name="Psychic Move M5">
+    <GameObject id="2427" name="Psychic Move M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63189,7 +63189,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2432" name="Psychic Move M4*">
+    <GameObject id="2428" name="Psychic Move M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63204,7 +63204,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2433" name="Psychic Fight L4">
+    <GameObject id="2429" name="Psychic Fight L4">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63218,7 +63218,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2434" name="Psychic Figth M5">
+    <GameObject id="2430" name="Psychic Figth M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63232,7 +63232,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2435" name="Psychic Magic IV4**">
+    <GameObject id="2431" name="Psychic Magic IV4**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63247,7 +63247,7 @@
         <attribute magic="IV" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2436" name="Psychic Magic II4*">
+    <GameObject id="2432" name="Psychic Magic II4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63262,7 +63262,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2437" name="Psychic Magic VII4*">
+    <GameObject id="2433" name="Psychic Magic VII4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63277,7 +63277,7 @@
         <attribute magic="VII" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2438" name="Psychic Magic II3*">
+    <GameObject id="2434" name="Psychic Magic II3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63292,7 +63292,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2439" name="Psychic Move M5">
+    <GameObject id="2435" name="Psychic Move M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63306,7 +63306,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2440" name="Psychic Fight M4*">
+    <GameObject id="2436" name="Psychic Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63321,7 +63321,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2441" name="Psychic Magic VII2*">
+    <GameObject id="2437" name="Psychic Magic VII2*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63336,7 +63336,7 @@
         <attribute magic="VII" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2442" name="Psychic Magic II2**">
+    <GameObject id="2438" name="Psychic Magic II2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63351,7 +63351,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2443" name="Trawler">
+    <GameObject id="2439" name="Trawler">
       <AttributeBlock blockName="this">
         <attribute icon_type="trawler" />
         <attribute character="" />
@@ -63411,6 +63411,10 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
+      <contains id="2440" />
+      <contains id="2441" />
+      <contains id="2442" />
+      <contains id="2443" />
       <contains id="2444" />
       <contains id="2445" />
       <contains id="2446" />
@@ -63419,12 +63423,8 @@
       <contains id="2449" />
       <contains id="2450" />
       <contains id="2451" />
-      <contains id="2452" />
-      <contains id="2453" />
-      <contains id="2454" />
-      <contains id="2455" />
     </GameObject>
-    <GameObject id="2444" name="Trawler Move L3*">
+    <GameObject id="2440" name="Trawler Move L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63439,7 +63439,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2445" name="Trawler Move L4">
+    <GameObject id="2441" name="Trawler Move L4">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63453,7 +63453,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2446" name="Trawler Fight L3*">
+    <GameObject id="2442" name="Trawler Fight L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63468,7 +63468,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2447" name="Trawler Move L2**">
+    <GameObject id="2443" name="Trawler Move L2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63483,7 +63483,7 @@
         <attribute effort="2" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2448" name="Trawler Move M4*">
+    <GameObject id="2444" name="Trawler Move M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63498,7 +63498,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2449" name="Trawler Fight M3**">
+    <GameObject id="2445" name="Trawler Fight M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63513,7 +63513,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2450" name="Trawler Move M3**">
+    <GameObject id="2446" name="Trawler Move M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63528,7 +63528,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2451" name="Trawler Fight M4*">
+    <GameObject id="2447" name="Trawler Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63543,7 +63543,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2452" name="Trawler Fight L3*">
+    <GameObject id="2448" name="Trawler Fight L3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63558,7 +63558,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2453" name="Trawler Fight M5">
+    <GameObject id="2449" name="Trawler Fight M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63572,7 +63572,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2454" name="Trawler Fight M3**">
+    <GameObject id="2450" name="Trawler Fight M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63587,7 +63587,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2455" name="Trawler Fight L4">
+    <GameObject id="2451" name="Trawler Fight L4">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63601,7 +63601,7 @@
         <attribute strength="L" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2456" name="Wanderer">
+    <GameObject id="2452" name="Wanderer">
       <AttributeBlock blockName="this">
         <attribute icon_type="wanderer" />
         <attribute character="" />
@@ -63674,6 +63674,10 @@
         <attribute elves="-2" />
         <attribute cultists="-2" />
       </AttributeBlock>
+      <contains id="2453" />
+      <contains id="2454" />
+      <contains id="2455" />
+      <contains id="2456" />
       <contains id="2457" />
       <contains id="2458" />
       <contains id="2459" />
@@ -63682,12 +63686,8 @@
       <contains id="2462" />
       <contains id="2463" />
       <contains id="2464" />
-      <contains id="2465" />
-      <contains id="2466" />
-      <contains id="2467" />
-      <contains id="2468" />
     </GameObject>
-    <GameObject id="2457" name="Wanderer Move M4*">
+    <GameObject id="2453" name="Wanderer Move M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63702,7 +63702,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2458" name="Wanderer Move M5">
+    <GameObject id="2454" name="Wanderer Move M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63716,7 +63716,7 @@
         <attribute super_realm="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2459" name="Wanderer Fight M4*">
+    <GameObject id="2455" name="Wanderer Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63731,7 +63731,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2460" name="Wanderer Magic II3*">
+    <GameObject id="2456" name="Wanderer Magic II3*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="magic" />
@@ -63746,7 +63746,7 @@
         <attribute magic="II" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2461" name="Wanderer Move M3**">
+    <GameObject id="2457" name="Wanderer Move M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63761,7 +63761,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2462" name="Wanderer Fight M5">
+    <GameObject id="2458" name="Wanderer Fight M5">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63775,7 +63775,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2463" name="Wanderer Fight M3**">
+    <GameObject id="2459" name="Wanderer Fight M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63790,7 +63790,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2464" name="Wanderer Move M4*">
+    <GameObject id="2460" name="Wanderer Move M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63805,7 +63805,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2465" name="Wanderer Fight H5*">
+    <GameObject id="2461" name="Wanderer Fight H5*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63820,7 +63820,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2466" name="Wanderer Fight M4*">
+    <GameObject id="2462" name="Wanderer Fight M4*">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63835,7 +63835,7 @@
         <attribute effort="1" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2467" name="Wanderer Fight M3**">
+    <GameObject id="2463" name="Wanderer Fight M3**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="move" />
@@ -63850,7 +63850,7 @@
         <attribute strength="M" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2468" name="Trawler Fight H6">
+    <GameObject id="2464" name="Trawler Fight H6">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -63864,7 +63864,7 @@
         <attribute strength="H" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2469" name="Pathfinder">
+    <GameObject id="2465" name="Pathfinder">
       <AttributeBlock blockName="this">
         <attribute base_price="4" />
         <attribute icon_type="t1" />
@@ -63878,7 +63878,7 @@
         <attribute pathfinder="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2470" name="Gate Master">
+    <GameObject id="2466" name="Gate Master">
       <AttributeBlock blockName="this">
         <attribute base_price="5" />
         <attribute icon_type="t1" />
@@ -63892,7 +63892,7 @@
         <attribute gate_master="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2471" name="Dark Sword">
+    <GameObject id="2467" name="Dark Sword">
       <AttributeBlock blockName="this">
         <attribute treasure="large" />
         <attribute base_price="12" />
@@ -63912,7 +63912,26 @@
         <attribute kill_monsters_permanently="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2472" name="Extra Hitpoint">
+    <GameObject id="2468" name="Demon Leash">
+      <AttributeBlock blockName="this">
+        <attribute treasure="small" />
+        <attribute base_price="18" />
+        <attribute text="Hit demon with this item (speed 2) to control - fatigue one magic chit/turn" />
+        <attribute rw_expansion_1="" />
+        <attribute strength="N" />
+        <attribute length="11" />
+        <attribute facing="face_dn" />
+        <attribute attack="" />
+        <attribute author="Expansion 1" />
+        <attribute item="" />
+        <attribute fame="-8" />
+        <attribute notoriety="12" />
+        <attribute weight="L" />
+        <attribute demon_control="" />
+        <attribute demon_control_speed="2" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2469" name="Extra Hitpoint">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="14" />
@@ -63923,9 +63942,9 @@
         <attribute item="" />
         <attribute add_chit="" />
       </AttributeBlock>
-      <contains id="2473" />
+      <contains id="2470" />
     </GameObject>
-    <GameObject id="2473" name="Extra Hitpoint">
+    <GameObject id="2470" name="Extra Hitpoint">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="hitpoint" />
@@ -63941,7 +63960,7 @@
         <attribute treasure_chit="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2474" name="Fools Gold">
+    <GameObject id="2471" name="Fools Gold">
       <AttributeBlock blockName="this">
         <attribute treasure="small" />
         <attribute base_price="50" />
@@ -63955,7 +63974,7 @@
         <attribute fools_gold="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2475" name="Body Double">
+    <GameObject id="2472" name="Body Double">
       <AttributeBlock blockName="this">
         <attribute spell="VI" />
         <attribute duration="combat" />
@@ -63966,6 +63985,19 @@
         <attribute author="Expansion 1" />
         <attribute learnable="" />
         <attribute body_double="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2473" name="Spider Web">
+      <AttributeBlock blockName="this">
+        <attribute spell="III" />
+        <attribute duration="combat" />
+        <attribute target="individual" />
+        <attribute text="Opponent remains tied in combat box for entire evening." />
+        <attribute magic_color="gold" />
+        <attribute rw_expansion_1="" />
+        <attribute author="Expansion 1" />
+        <attribute learnable="" />
+        <attribute spider_web="" />
       </AttributeBlock>
     </GameObject>
   </objects>

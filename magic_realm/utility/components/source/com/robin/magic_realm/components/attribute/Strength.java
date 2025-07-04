@@ -161,6 +161,9 @@ public class Strength {
 			else if ("RED".equals(val)) {
 				num = RED;
 			}
+			else if ("N".equals(val)) {
+				num = NEGLIGIBLE;
+			}
 		}
 		return num;
 	}
