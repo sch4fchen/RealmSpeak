@@ -1144,7 +1144,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_SUMMON,"1.6a - DRUID doesn't summon monsters from Site chits.",false));
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DRUID_CURSES,"1.6b - DRUID is immune to curses.",false));
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_ELF,"1.7 - ELF must choose between Light Elf, or Great Elf.  Affects which chits can be played during the game.",false));
-		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_PALADIN,"The PALADIN’s COMRADE ability now gives him an extra Rest phase, instead of gaining extra phase when being followed.",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_PALADIN,"The PALADIN's COMRADE ability now gives him an extra Rest phase, instead of gaining extra phase when being followed.",false));
+		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.OPT_CHAR_ABILITY_DWARF,"The DWARF's SHORT LEG now restricts him to two MOVE actions, but still grants four activities, per day.",false));
 		
 		newOptionPane.setTabHtmlDescription(REVISED_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Revised Rules</font></body></html>");
 		newOptionPane.addOption(REVISED_RULES_TAB,new GameOption(Constants.REV_MISSILE,"REVISED MISSILE TABLE - Use the Revised Optional Missile Table for all missile attacks.",false,exclusiveMissileRules,null));

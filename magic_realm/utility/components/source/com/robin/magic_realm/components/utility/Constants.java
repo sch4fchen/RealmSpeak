@@ -253,6 +253,7 @@ public class Constants {
 	public static final String SEAFARING = "seafaring";
 	public static final String FIT = "fit";
 	public static final String CRAGSMAN = "cragsman";
+	public static final String MOVE_ACTIONS_PER_TURN = "move_actions_per_tun";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -799,6 +800,7 @@ public class Constants {
 	public static final String OPT_CHAR_ABILITY_DRUID_CURSES = "OptCharDruidCurses";
 	public static final String OPT_CHAR_ABILITY_ELF = "OptCharElf";
 	public static final String OPT_CHAR_ABILITY_PALADIN = "OptCharPaladin";
+	public static final String OPT_CHAR_ABILITY_DWARF = "OptCharDwarf";
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";

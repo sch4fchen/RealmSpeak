@@ -25,6 +25,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"-1 Water MOVE Cost",Constants.WATER_MOVE_ADJ,"-1"},
 		{"Advantages in river hex tiles and water clearings",Constants.SEAFARING,""},
 		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
+		{"Can only record two move actions per turn",Constants.MOVE_ACTIONS_PER_TURN,"2"},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Can walk woods on the every day of every week.",Constants.WALK_WOODS,""},
 		{"Can walk the woods when moving to or from a mountain clearing.",Constants.CRAGSMAN,""},

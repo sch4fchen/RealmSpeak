@@ -12225,6 +12225,17 @@
         <attribute woodfolk="-1" />
         <attribute bashkars="-1" />
       </AttributeBlock>
+      <AttributeBlock blockName="optional_2">
+        <attribute move_actions_per_turn="2" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="SHORT LEGS:  You can only record 2 MOVE actions per turn.  Each REST action is worth double." />
+        </attributeList>
+        <attributeList keyName="replace">
+          <attributeVal N0="advantages" />
+          <attributeVal N1="no_sunlight" />
+        </attributeList>
+        <attribute OptCharDwarf="" />
+      </AttributeBlock>
       <contains id="535" />
       <contains id="536" />
       <contains id="537" />
@@ -43890,6 +43901,17 @@
         <attribute bandits="-2" />
         <attribute elves="-2" />
         <attribute cultists="-2" />
+      </AttributeBlock>
+      <AttributeBlock blockName="optional_2">
+        <attribute move_actions_per_turn="2" />
+        <attribute OptCharDwarf="" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="SHORT LEGS:  You can only record 2 MOVE actions per turn.  Each REST action is worth double." />
+        </attributeList>
+        <attributeList keyName="replace">
+          <attributeVal N0="advantages" />
+          <attributeVal N1="no_sunlight" />
+        </attributeList>
       </AttributeBlock>
       <contains id="1657" />
       <contains id="1658" />
