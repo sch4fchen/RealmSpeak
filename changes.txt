@@ -1,4 +1,4 @@
-::ROADMAP::Quest Bug -> save gameVault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
+::ROADMAP::Vault and Tomb (if discovered): can be opened with a missile attack, if after roll strength is >=T (including attack spells: Lightning Bolt, Alchemists Mixture); site targets are considered armored. or by hurricane winds
 Expansion 1: spells: Spider Web, Wall of Force, Magic MirrorExpansion 1: treasures: Demon LeashExpansion 1: Optional Rule: Revised characters: DwarfSuper Realm: Events (Global Events = optional rule 11.11): 33 EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
