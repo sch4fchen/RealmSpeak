@@ -58048,7 +58048,7 @@
       <AttributeBlock blockName="this">
         <attribute mission="escort_party_sr" />
         <attribute gold_special="" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -58060,7 +58060,7 @@
       <AttributeBlock blockName="this">
         <attribute mission="food_ale_sr" />
         <attribute gold_special="" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -58072,7 +58072,7 @@
       <AttributeBlock blockName="this">
         <attribute mission="books_art" />
         <attribute gold_special="" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
@@ -58084,7 +58084,7 @@
       <AttributeBlock blockName="this">
         <attribute mission="tour_guide" />
         <attribute gold_special="" />
-        <attribute time_limit="14" />
+        <attribute time_limit="month" />
         <attribute notoriety_cost="10" />
         <attribute item="" />
         <attribute super_realm="" />
