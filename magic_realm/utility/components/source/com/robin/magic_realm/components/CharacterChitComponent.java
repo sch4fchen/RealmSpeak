@@ -1232,6 +1232,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public void changeWeaponState(HostPrefWrapper hostPrefs) {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
 		ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
+		if (hostPrefs.hasPref(Constants.SR_NO_ALERTING_WITHOUT_TARGET) && !this.hasTarget()) {
+			return;
+		}
 		if (weapons != null && !weapons.isEmpty()) {
 			CombatWrapper charCombat = new CombatWrapper(getGameObject());
 			boolean hit = false;
