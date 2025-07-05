@@ -644,6 +644,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			ar.setCancelled(true);
 			return true;
 		}
+		
+		if (!getCharacter().hasDoneActionsToday()) {
+			getCharacterFrame().checkDenizenControlToContinue();
+		}
+		
 		// Becomes unhidden at the start of the turn = before doing first action
 		if (!getCharacter().hasDoneActionsToday() && !getCharacter().getGameObject().hasThisAttribute(Constants.NO_UNHIDE)) {
 			getCharacter().setHidden(false);

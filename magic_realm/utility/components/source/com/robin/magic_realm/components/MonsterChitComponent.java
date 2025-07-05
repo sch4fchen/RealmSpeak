@@ -12,6 +12,7 @@ import com.robin.general.graphics.TextType.Alignment;
 import com.robin.general.swing.ImageCache;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -848,6 +849,20 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 	
 		Strength applied = harm.getAppliedStrength();
+		
+		if (this.getGameObject().hasThisAttribute(Constants.DEMON) && attacker.isCharacter()) {
+			WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
+			if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.DEMON_CONTROL)) {
+				int neededSpeed = weapon.getGameObject().getThisInt(Constants.DEMON_CONTROL_SPEED);
+				if (attacker.getAttackSpeed().fasterThanOrEqual(new Speed(neededSpeed))) {
+					this.getGameObject().setThisAttribute(Constants.CONTROLLED_DEMON);
+					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
+					character.addHireling(this.getGameObject(), 2);
+					this.clearTargets();
+					RealmLogging.logMessage(character.getName(),"Now controles "+getGameObject().getNameWithNumber());
+				}
+			}
+		}
 		
 		if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_WOUNDS) && applied.equalTo(vulnerability)) {
 			addWound();

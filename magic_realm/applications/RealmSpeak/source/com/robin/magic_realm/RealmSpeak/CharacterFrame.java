@@ -842,6 +842,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			gameHandler.updateCharacterFrames();
 		}
 	}
+	protected void checkDenizenControlToContinue() {
+		for (RealmComponent hireling : character.getAllHirelings()) {
+			if (hireling.getGameObject().hasThisAttribute(Constants.CONTROLLED_DEMON)) {
+				int ret = JOptionPane.showConfirmDialog(this,"Want to fatigue a Magic Chit to keep the control?","Controlling "+hireling.getGameObject().getNameWithNumber(),JOptionPane.YES_NO_OPTION);
+				if (ret==JOptionPane.NO_OPTION) {
+					character.removeHireling(hireling.getGameObject());
+				}
+				else {
+					ChitFatigueManager fatiguer = new ChitFatigueManager(gameHandler.getMainFrame(),character,1,0,0,1);
+					fatiguer.setVisible(true);
+					character.addHireling(hireling.getGameObject(),2);
+				}
+				gameHandler.submitChanges();
+				gameHandler.updateCharacterFrames();
+			}
+		}
+	}
 	protected void woundToContinue() {
 		int needToWound = character.getExtraWounds();
 		if (needToWound>0) {

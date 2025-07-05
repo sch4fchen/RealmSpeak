@@ -363,6 +363,7 @@ public class Constants {
 	public static final String KILL_MONSTERS_PERMANENTLY = "kill_monsters_permanently";
 	public static final String FOOLS_GOLD = "fools_gold";
 	public static final String DEMON_CONTROL = "demon_control";
+	public static final String CONTROLLED_DEMON = "controlled_demon";
 	public static final String DEMON_CONTROL_SPEED = "demon_control_speed";
 	
 	public static final String MAGIC_COLOR_BONUS = "magic_color_bonus";
