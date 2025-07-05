@@ -253,7 +253,7 @@ public class Constants {
 	public static final String SEAFARING = "seafaring";
 	public static final String FIT = "fit";
 	public static final String CRAGSMAN = "cragsman";
-	public static final String MOVE_ACTIONS_PER_TURN = "move_actions_per_tun";
+	public static final String MOVE_ACTIONS_PER_TURN = "move_actions_per_turn";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

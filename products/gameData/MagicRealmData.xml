@@ -12234,7 +12234,7 @@
           <attributeVal N0="advantages" />
           <attributeVal N1="no_sunlight" />
         </attributeList>
-        <attribute OptCharDwarf="" />
+        <attribute optkey="OptCharDwarf" />
       </AttributeBlock>
       <contains id="535" />
       <contains id="536" />
@@ -43904,7 +43904,6 @@
       </AttributeBlock>
       <AttributeBlock blockName="optional_2">
         <attribute move_actions_per_turn="2" />
-        <attribute OptCharDwarf="" />
         <attributeList keyName="advantages">
           <attributeVal N0="SHORT LEGS:  You can only record 2 MOVE actions per turn.  Each REST action is worth double." />
         </attributeList>
@@ -43912,6 +43911,7 @@
           <attributeVal N0="advantages" />
           <attributeVal N1="no_sunlight" />
         </attributeList>
+        <attribute optkey="OptCharDwarf" />
       </AttributeBlock>
       <contains id="1657" />
       <contains id="1658" />
