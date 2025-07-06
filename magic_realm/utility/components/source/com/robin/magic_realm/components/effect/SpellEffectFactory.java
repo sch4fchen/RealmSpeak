@@ -134,6 +134,7 @@ public class SpellEffectFactory {
 			case "mystic boots": return new ISpellEffect[]{new MoveChitEffect()};
 			case "rocks glow": return new ISpellEffect[]{new LightEffect()};
 			case "sleep": return new ISpellEffect[]{new SleepEffect()};
+			case "spider web": return new ISpellEffect[]{new SpiderWebEffect()};
 			
 			// super realm
 			case "alter object": return new ISpellEffect[]{new AlterObjectEffect()};

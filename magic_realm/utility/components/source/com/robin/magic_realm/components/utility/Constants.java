@@ -668,6 +668,8 @@ public class Constants {
 	public static final String ENCHANTED_WEAPON_SPEED = "enchanted_weapon_speed";
 	public static final String ONLY_MOVE = "only_move";
 	public static final String BODY_DOUBLE = "body_double";
+	public static final String SPIDER_WEB_ATTACK_BOXES = "spider_web_attack_boxes";
+	public static final String SPIDER_WEB_DEFENSE_BOXES = "spider_web_defense_boxes";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
