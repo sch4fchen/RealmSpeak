@@ -2097,6 +2097,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 							if (loc!=null) {
 								character.getCurrentLocation().energizeItems();
 							}
+							frame.checkDenizenControlToContinue();
 							RealmTurnPanel turn = new RealmTurnPanel(frame, game, hostPrefs);
 							needSubmit = true;
 							frame.showYourTurn(turn);
