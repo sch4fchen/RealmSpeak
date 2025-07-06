@@ -647,6 +647,25 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public ArrayList<String> getThisAttributeList(String key) {
 		return getAttributeList(THIS, key);
 	}
+	
+	public ArrayList<Integer> getThisAttributeIntList(String key) {
+		return getAttributeIntList(THIS, key);
+	}
+	
+	public ArrayList<Integer> getAttributeIntList(String blockName, String key) {
+		if (uncommitted != null) {
+			return uncommitted.getAttributeIntList(blockName, key);
+		}
+		if (attributeBlocks.containsKey(blockName)) {
+			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
+			Object obj = attributeBlock.get(key.toLowerCase());
+			if (obj==null || obj instanceof ArrayList) {
+				return (ArrayList<Integer>)obj;
+			}
+			throw new IllegalArgumentException("Found string instead of list for '"+blockName+"' and '"+key+"' in GameObject "+getName());
+		}
+		return null;
+	}
 
 	public int getThisInt(String key) throws NumberFormatException {
 		return getInt(THIS, key);

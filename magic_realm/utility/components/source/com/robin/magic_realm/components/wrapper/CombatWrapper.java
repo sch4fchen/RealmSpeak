@@ -913,4 +913,33 @@ public class CombatWrapper extends GameObjectWrapper {
 		}
 		return false;
 	}
+    public boolean canUseCombatBoxAttack(int box) {
+		if (getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+			ArrayList<String> availableBoxes = getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+			boolean boxAllowed = false;
+			for (String availableBox : availableBoxes) {
+				if (Integer.parseInt(availableBox) == box) {
+					boxAllowed = true;
+					break;
+				}
+			}
+			return boxAllowed;
+		}
+		return true;
+    }
+    
+    public boolean canUseCombatBoxDefense(int box) {
+		if (getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+			ArrayList<String> availableBoxes = getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+			boolean boxAllowed = false;
+			for (String availableBox : availableBoxes) {
+				if (Integer.parseInt(availableBox) == box) {
+					boxAllowed = true;
+					break;
+				}
+			}
+			return boxAllowed;
+		}
+		return true;
+    }
 }

@@ -2056,7 +2056,7 @@ public class CombatFrame extends JFrame {
 			
 			denizen.setTarget(lurer);
 			denizenCw.setCombatBoxAttack(boxA);
-			denizenCw.setCombatBoxAttack(boxD);
+			denizenCw.setCombatBoxDefense(boxD);
 			denizenPanel.removeGameObject(denizen.getGameObject());
 			denizenPanel.repaint();
 			if (lurer.isHidden()) {
@@ -2474,8 +2474,13 @@ public class CombatFrame extends JFrame {
 		return setGotUnhidden;
 	}
 	public void replaceManeuver(int box) {
-		Collection<RealmComponent> list = getAvailableManeuverOptions(box,true,false);
+		CombatWrapper characterCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!characterCombat.canUseCombatBoxDefense(box)) {
+			JOptionPane.showMessageDialog(this,"You cannot place a maneuver chit in this box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		
+		Collection<RealmComponent> list = getAvailableManeuverOptions(box,true,false);
 		// Find out which maneuver is already placed, and change the box
 		for (RealmComponent maneuver : list) {
 			CombatWrapper combat = new CombatWrapper(maneuver.getGameObject());
@@ -2552,6 +2557,12 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	private RealmComponent playManeuver(int box,Collection moveOptions) {
+		CombatWrapper characterCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!characterCombat.canUseCombatBoxDefense(box)) {
+			JOptionPane.showMessageDialog(this,"You cannot place a maneuver chit in this box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+		
 		RealmComponentOptionChooser chooser = MoveActivator.getChooserForMoveOptions(this,activeCharacter,moveOptions,true);
 		chooser.setVisible(true);
 		String selText = chooser.getSelectedText();

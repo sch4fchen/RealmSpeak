@@ -1,6 +1,8 @@
 package com.robin.magic_realm.components.effect;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.MonsterChitComponent;
@@ -31,18 +33,69 @@ public class DuelEffect implements ISpellEffect {
 		CombatWrapper combat1 = new CombatWrapper(targets.get(1).getGameObject());
 		combat1.setSheetOwnerId(targets.get(0));
 		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-			combat0.setCombatBoxAttack(RandomNumber.getRandom(3));
-			combat0.setCombatBoxDefense(RandomNumber.getRandom(3));
-			combat1.setCombatBoxAttack(RandomNumber.getRandom(3));
-			combat1.setCombatBoxDefense(RandomNumber.getRandom(3));
+			if (combat0.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+				ArrayList<String> boxes = combat0.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+				combat0.setCombatBoxAttack(Integer.parseInt(box));
+			}
+			else {
+				combat0.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
+			}
+			if (combat0.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+				ArrayList<String> boxes = combat0.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+				String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+				combat0.setCombatBoxAttack(Integer.parseInt(box));
+			} else {
+				combat0.setCombatBoxDefense(RandomNumber.getRandom(3)+1);
+			}
+			if (combat1.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+				ArrayList<String> boxes = combat1.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+				combat1.setCombatBoxAttack(Integer.parseInt(box));
+			}
+			else {
+				combat1.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
+			}
+			if (combat1.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+				ArrayList<String> boxes = combat1.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+				String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+				combat1.setCombatBoxAttack(Integer.parseInt(box));
+			} else {
+				combat1.setCombatBoxDefense(RandomNumber.getRandom(3)+1);
+			}
 		}
 		else {
-			int random1 = RandomNumber.getRandom(3);
-			combat0.setCombatBoxAttack(random1);
-			combat0.setCombatBoxDefense(random1);
-			int random2 = RandomNumber.getRandom(3);
-			combat1.setCombatBoxAttack(random2);
-			combat1.setCombatBoxDefense(random2);
+			if (combat0.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK) && combat0.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+				ArrayList<String> boxesA = combat0.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				ArrayList<String> boxesD = combat0.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				List<String> result = boxesA.stream()
+						  .distinct()
+						  .filter(boxesD::contains)
+						  .collect(Collectors.toList());
+				String box = result.get(RandomNumber.getRandom(result.size()));
+				combat0.setCombatBoxAttack(Integer.parseInt(box));
+				combat0.setCombatBoxDefense(Integer.parseInt(box));
+			}
+			else {
+				int random1 = RandomNumber.getRandom(3)+1;
+				combat0.setCombatBoxAttack(random1);
+				combat0.setCombatBoxDefense(random1);
+			}
+			if (combat1.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK) && combat1.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+				ArrayList<String> boxesA = combat1.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				ArrayList<String> boxesD = combat1.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+				List<String> result = boxesA.stream()
+						  .distinct()
+						  .filter(boxesD::contains)
+						  .collect(Collectors.toList());
+				String box = result.get(RandomNumber.getRandom(result.size()));
+				combat1.setCombatBoxAttack(Integer.parseInt(box));
+				combat1.setCombatBoxDefense(Integer.parseInt(box));
+			} else {
+				int random2 = RandomNumber.getRandom(3)+1;
+				combat1.setCombatBoxAttack(random2);
+				combat1.setCombatBoxDefense(random2);
+			}
 		}
 		
 		for (RealmComponent target : targets) {
@@ -51,9 +104,9 @@ public class DuelEffect implements ISpellEffect {
 				if (weapon != null) {
 					CombatWrapper combat = new CombatWrapper(target.getGameObject());
 					CombatWrapper combatWeapon = new CombatWrapper(weapon.getGameObject());
-					combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3));
+					combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
 					while (combat.getCombatBoxAttack() == combatWeapon.getCombatBoxAttack()) {
-						combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3));
+						combatWeapon.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
 					}
 				}
 			}

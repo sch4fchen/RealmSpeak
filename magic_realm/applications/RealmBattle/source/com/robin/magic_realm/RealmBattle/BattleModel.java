@@ -1662,7 +1662,13 @@ public class BattleModel {
 					((SpellWrapper)attacker).setCombatBox(RandomNumber.getRandom(3)+1);
 				}
 				else {
-					attackerCombat.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
+					if (target.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+						ArrayList<String> boxes = target.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+						String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+						attackerCombat.setCombatBoxAttack(Integer.valueOf(box));
+					} else {
+						attackerCombat.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
+					}
 				}
 				logBattleInfo("Random attack direction! "+attacker.getName()+" attacks box "+attacker.getAttackCombatBox()+".");
 			}
@@ -2425,8 +2431,20 @@ public class BattleModel {
 				ChitComponent chit = (ChitComponent)rc;
 				if (!SKIP_REPOSITIONING) {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-					combat.setCombatBoxAttack(boxA);
-					combat.setCombatBoxDefense(boxD);
+					if (rc.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+						ArrayList<String> boxes = rc.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+						String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+						combat.setCombatBoxAttack(Integer.parseInt(box));
+					} else {
+						combat.setCombatBoxAttack(boxA);
+					}
+					if (rc.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+						ArrayList<String> boxes = rc.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+						String box = boxes.get(RandomNumber.getRandom(boxes.size()));
+						combat.setCombatBoxAttack(Integer.parseInt(box));
+					} else {
+						combat.setCombatBoxDefense(boxD);
+					}
 					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+getNameForDefensekBox(boxD)+" (die: "+defenceDie+") & "+getNameForAttackBox(boxA)+" (die: "+attackDie+")");
 				}
 				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS) || FORCE_MONSTER_FLIP)) {
