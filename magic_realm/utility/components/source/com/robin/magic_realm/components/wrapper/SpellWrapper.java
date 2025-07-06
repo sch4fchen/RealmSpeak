@@ -1067,7 +1067,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	
 	public ClearingDetail getTargetAsClearing(RealmComponent target) {
 		TileComponent tile = (TileComponent)target;
-		return tile.getClearing(Integer.valueOf(getExtraIdentifier()).intValue());
+		return tile.getClearing(Integer.parseInt(getExtraIdentifier()));
 	}
 	public void unaffectTargets() {
 		unaffectTargets(true);

@@ -298,7 +298,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 			}
 		}
 		
-		return new Speed(Integer.valueOf(getGameObject().getThisInt("attack_speed")),speedModifier());
+		return new Speed(getGameObject().getThisInt("attack_speed"),speedModifier());
 	}
 	public Speed getFlySpeed() {
 		return null; // For now, there are no flying travelers.
@@ -338,9 +338,9 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		int otherSpeed = getGameObject().getThisInt("move_speed_change");
 		if (otherSpeed>0) {
 			alteredMoveSpeed = true;
-			return new Speed(Integer.valueOf(otherSpeed),speedModifier());
+			return new Speed(otherSpeed,speedModifier());
 		}
-		return new Speed(Integer.valueOf(getThisInt("move_speed")),speedModifier());
+		return new Speed(getThisInt("move_speed"),speedModifier());
 	}
 	public boolean hasAnAttack() {
 		return (getThisAttribute("strength")!=null && getThisAttribute("strength").length()>0)

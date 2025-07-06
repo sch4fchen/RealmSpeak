@@ -131,7 +131,7 @@ public class MRCharacter {
 
 	public int readInteger(String s) {
 		try {
-			Integer integer = Integer.valueOf(s);
+			Integer integer = Integer.parseInt(s);
 			return integer.intValue();
 		}
 		catch (NumberFormatException _ex) {

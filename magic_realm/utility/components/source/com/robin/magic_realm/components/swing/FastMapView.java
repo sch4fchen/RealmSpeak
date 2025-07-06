@@ -132,7 +132,7 @@ public class FastMapView extends JComponent {
 			String rot = go.getAttribute("mapGrid","mapRotation");
 			
 			if (pos!=null && rot!=null) {
-				tile.setRotation(Integer.valueOf(rot).intValue());
+				tile.setRotation(Integer.parseInt(rot));
 				Point gp = GraphicsUtil.asPoint(pos);
 				mapGrid.put(gp,tile);
 			}

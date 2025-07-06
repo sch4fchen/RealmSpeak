@@ -188,7 +188,7 @@ public class ExcelFormatParser {
 				String s5 = "";
 				String s6 = getField(vector, fieldpos1, 7);
 				try {
-					Integer integer = Integer.valueOf(s6);
+					Integer integer = Integer.parseInt(s6);
 					if (integer.intValue() > 0)
 						s5 = integer.toString().trim() + " <i>Spell" + plural(integer.intValue()) + "</i> " + s3;
 				}

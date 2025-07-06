@@ -261,7 +261,7 @@ public abstract class Meeting extends Trade {
 			}
 			String amountString = last.getGameObject().getThisAttribute(Constants.HIRE_WITH_CHIT);
 			if (amountString.isEmpty()) amountString = "1";
-			int amount = Integer.valueOf(amountString);
+			int amount = Integer.parseInt(amountString);
 			ArrayList<CharacterActionChitComponent> chits = character.getActiveChits();
 			if (chits == null || chits.size() == 0 || chits.size()<amount) {
 				JOptionPane.showMessageDialog(getParentFrame(),"You have not enough active character chits for hiring available.","Cannot hire "+last.getName(),JOptionPane.INFORMATION_MESSAGE,last.getIcon());

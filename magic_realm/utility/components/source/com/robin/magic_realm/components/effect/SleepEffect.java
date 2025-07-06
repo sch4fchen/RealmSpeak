@@ -8,7 +8,7 @@ public class SleepEffect implements ISpellEffect {
 	public void apply(SpellEffectContext context) {
 		CombatWrapper tile = context.getCombatTarget();
 		String clearing = context.Spell.getExtraIdentifier();
-		tile.addSleepClearing(Integer.valueOf(clearing));
+		tile.addSleepClearing(Integer.parseInt(clearing));
 	}
 
 	@Override

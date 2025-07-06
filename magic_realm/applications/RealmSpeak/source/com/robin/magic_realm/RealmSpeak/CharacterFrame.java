@@ -504,7 +504,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	private void setupVPs() {
 		int vps = character.getNewVPRequirement();
-		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, Integer.valueOf(vps));
+		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, vps);
 		vpDialog.setLocationRelativeTo(this);
 		vpDialog.setVisible(true);
 		gameHandler.submitChanges();
@@ -513,7 +513,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void deductVPs() {
 		int vps = character.getTotalAssignedVPs();
 		int deduct = character.getVPsToDeduct();
-		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, Integer.valueOf(vps), deduct);
+		CharacterVictoryConditionsDialog vpDialog = new CharacterVictoryConditionsDialog(gameHandler.getMainFrame(), character, vps, deduct);
 		vpDialog.setLocationRelativeTo(this);
 		vpDialog.setVisible(true);
 		gameHandler.submitChanges();
@@ -1753,21 +1753,21 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if (thingName.startsWith("fame")) {
 					try {
-						character.setFame(Integer.valueOf(thingName.substring(4)));
+						character.setFame(Integer.parseInt(thingName.substring(4)));
 					}
 					catch (Exception ex) {
 					}
 				}
 				else if (thingName.startsWith("notoriety")) {
 					try {
-						character.setNotoriety(Integer.valueOf(thingName.substring(9)));
+						character.setNotoriety(Integer.parseInt(thingName.substring(9)));
 					}
 					catch (Exception ex) {
 					}
 				}
 				else if (thingName.startsWith("gold")) {
 					try {
-						character.setGold(Integer.valueOf(thingName.substring(4)));
+						character.setGold(Integer.parseInt(thingName.substring(4)));
 					}
 					catch (Exception ex) {
 					}
@@ -1785,7 +1785,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("wounds")) {
 					int wounds = 0;
 					try {
-						wounds = Integer.valueOf(thingName.substring(6)).intValue();
+						wounds = Integer.parseInt(thingName.substring(6));
 					}
 					catch (Exception ex) {
 					}
@@ -1816,7 +1816,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("summon")) {
 					int monsterdie = -1;
 					try {
-						monsterdie = Integer.valueOf(thingName.substring(6)).intValue();
+						monsterdie = Integer.parseInt(thingName.substring(6));
 					}
 					catch (Exception ex) {
 					}
@@ -1830,7 +1830,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("reset")) {
 					int monsterdie = -1;
 					try {
-						monsterdie = Integer.valueOf(thingName.substring(5)).intValue();
+						monsterdie = Integer.parseInt(thingName.substring(5));
 					}
 					catch (Exception ex) {
 					}
@@ -1848,7 +1848,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("pop")) {
 					int roll = -1;
 					try {
-						roll = Integer.valueOf(thingName.substring(3)).intValue();
+						roll = Integer.parseInt(thingName.substring(3));
 					}
 					catch (Exception ex) {
 					}
@@ -1861,7 +1861,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("magicsight")) {
 					int roll = -1;
 					try {
-						roll = Integer.valueOf(thingName.substring(10)).intValue();
+						roll = Integer.parseInt(thingName.substring(10));
 					}
 					catch (Exception ex) {
 					}
@@ -1933,7 +1933,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 				else if (thingName.startsWith("setday")) {
 					try {
-						int day = Integer.valueOf(thingName.substring(6)).intValue();
+						int day = Integer.parseInt(thingName.substring(6));
 						GameWrapper game = gameHandler.getGame();
 						game.setDay(day);
 					}
@@ -1943,7 +1943,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				else if (thingName.startsWith("weather")) {
 					int result = -1;
 					try {
-						result = Integer.valueOf(thingName.substring(7)).intValue();
+						result = Integer.parseInt(thingName.substring(7));
 					}
 					catch (Exception ex) {
 					}

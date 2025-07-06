@@ -395,7 +395,7 @@ public class CenteredMapView extends JComponent {
 			String rot = obj.getAttribute(Tile.MAP_GRID,Tile.MAP_ROTATION);
 			
 			if (pos!=null && rot!=null) {
-				tc.setRotation(Integer.valueOf(rot).intValue());
+				tc.setRotation(Integer.parseInt(rot));
 				Point gp = GraphicsUtil.asPoint(pos);
 				points.add(gp);
 				addTile(tc,gp);

@@ -25,8 +25,8 @@ public class ColorMod {
 			while(changes.hasMoreTokens()) {
 				String change = changes.nextToken();
 				int dot = change.indexOf('.');
-				int fromColor = Integer.valueOf(change.substring(0,dot));
-				int toColor = Integer.valueOf(change.substring(dot+1));
+				int fromColor = Integer.parseInt(change.substring(0,dot));
+				int toColor = Integer.parseInt(change.substring(dot+1));
 				conversions.put(fromColor,toColor);
 			}
 		}

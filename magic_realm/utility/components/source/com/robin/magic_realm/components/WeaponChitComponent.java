@@ -60,7 +60,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
 			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
-				return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
+				return Integer.parseInt(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
 			}
 		}
 		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_LENGTH)) {
@@ -100,7 +100,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		if (val!=null && val.trim().length()>0) {
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
 				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
-				int baseSpeed = Integer.valueOf(val).intValue();
+				int baseSpeed = Integer.parseInt(val);
 				if (!isMissile()) {
 					if (baseSpeed+difference<2) {
 						difference = 2-baseSpeed;
@@ -153,7 +153,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
 			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
-				return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+				return Integer.parseInt(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
 			}
 		}
 		int sharpness = getFaceAttributeInt("sharpness");

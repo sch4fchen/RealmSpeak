@@ -72,7 +72,7 @@ public class TacticsChangeEditPanel extends AdvantageEditPanel {
 			val = getAttribute("replace_fight");
 		}
 		if (val!=null) {
-			tacticSpeedOption.setValue(Integer.valueOf(val));
+			tacticSpeedOption.setValue(Integer.parseInt(val));
 		}
 		
 		updateDescription();

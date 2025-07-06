@@ -24,8 +24,8 @@ public class ThornsEffect implements ISpellEffect {
 		TileComponent tile1 = new TileComponent(targets.get(0).getGameObject());
 		TileComponent tile2 = new TileComponent(targets.get(1).getGameObject());
 		
-		moveCharactersBetweenClearings(tile1,Integer.valueOf(clearing1),tile2,Integer.valueOf(clearing2));
-		moveCharactersBetweenClearings(tile2,Integer.valueOf(clearing2),tile1,Integer.valueOf(clearing1));
+		moveCharactersBetweenClearings(tile1,Integer.parseInt(clearing1),tile2,Integer.parseInt(clearing2));
+		moveCharactersBetweenClearings(tile2,Integer.parseInt(clearing2),tile1,Integer.parseInt(clearing1));
 		
 		TileComponent.addThorns(tile1,clearing1,tile2,clearing2);
 		

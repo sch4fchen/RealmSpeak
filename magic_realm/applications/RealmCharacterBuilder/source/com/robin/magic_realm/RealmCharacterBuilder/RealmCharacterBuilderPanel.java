@@ -1163,10 +1163,10 @@ public class RealmCharacterBuilderPanel extends JPanel {
 			updateStartingSpells();
 		}
 		public int startingSpellCount() {
-			return Integer.valueOf(startingSpellCount.getSelectedItem().toString());
+			return Integer.parseInt(startingSpellCount.getSelectedItem().toString());
 		}
 		private void updateStartingSpells() {
-			int count = Integer.valueOf(startingSpellCount.getSelectedItem().toString());
+			int count = Integer.parseInt(startingSpellCount.getSelectedItem().toString());
 			if (count==0) {
 				model.getCharacter().getGameObject().removeAttribute(levelKey,"spellcount");
 				model.getCharacter().getGameObject().removeAttribute(levelKey,"spelltypes");

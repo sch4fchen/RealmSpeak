@@ -701,7 +701,7 @@ public class ClearingUtility {
 			String rot = go.getAttribute("mapGrid","mapRotation");
 			
 			if (pos!=null && rot!=null) {
-				tc.setRotation(Integer.valueOf(rot).intValue());
+				tc.setRotation(Integer.parseInt(rot));
 				Point gp = GraphicsUtil.asPoint(pos);
 				mapGrid.put(gp,tc);
 			}

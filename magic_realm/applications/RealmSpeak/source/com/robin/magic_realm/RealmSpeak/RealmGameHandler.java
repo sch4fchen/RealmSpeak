@@ -1578,7 +1578,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						level = 10;
 					}
 					else {
-						level = Integer.valueOf(levelName.substring(0, 1)).intValue();
+						level = Integer.parseInt(levelName.substring(0, 1));
 					}
 					int bonusChits = dialog.getChosenBonusChits();
 					character.setStartingLevel(level);

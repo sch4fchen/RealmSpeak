@@ -44,11 +44,11 @@ public class DayKey implements Comparable<DayKey> {
 	}
 	public static int getMonth(String dayKey) {
 		int dayIndex = dayKey.indexOf("_day_");
-		return Integer.valueOf(dayKey.substring(6,dayIndex)).intValue();
+		return Integer.parseInt(dayKey.substring(6,dayIndex));
 	}
 	public static int getDay(String dayKey) {
 		int dayIndex = dayKey.indexOf("_day_");
-		return Integer.valueOf(dayKey.substring(dayIndex+5)).intValue();
+		return Integer.parseInt(dayKey.substring(dayIndex+5));
 	}
 	public DayKey addDays(int numberOfDays) {
 		int month = this.month + ((this.day+numberOfDays)/28);

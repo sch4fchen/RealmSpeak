@@ -429,7 +429,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 
 	public int getSharpness() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
-			return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+			return getGameObject().getThisInt(Constants.ENCHANTED_WEAPON_SHARPNESS);
 		}
 		int sharpness = getFaceAttributeInt("sharpness");
 		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS);

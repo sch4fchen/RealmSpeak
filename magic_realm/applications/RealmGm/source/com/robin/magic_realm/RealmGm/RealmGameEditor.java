@@ -339,7 +339,7 @@ public class RealmGameEditor extends JInternalFrame {
 				
 				String levelString = selectedLevel.toString().substring(0,2).trim();
 				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-				int level = Integer.valueOf(levelString.toString());
+				int level = Integer.parseInt(levelString.toString());
 				if (level >= 9) {
 					character.getGameObject().setThisAttribute("extra_phase");
 					character.getGameObject().addAttributeListItem("level_4", "advantages", level_9_advantage);
@@ -562,7 +562,7 @@ public class RealmGameEditor extends JInternalFrame {
 					CharacterWrapper character = new CharacterWrapper(leader.getGameObject());
 					String val = JOptionPane.showInputDialog("Hire term (days)?",14);
 					if (val!=null) {
-						int term = Integer.valueOf(val);
+						int term = Integer.parseInt(val);
 						for (RealmComponent rc:getSelectedComponents()) {
 							if (rc.isNative() || rc.isMonster()) {
 								SetupCardUtility.resetDenizen(rc.getGameObject());							

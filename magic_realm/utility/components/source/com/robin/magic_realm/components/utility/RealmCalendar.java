@@ -141,11 +141,11 @@ public class RealmCalendar {
 		if (currentMonth!=month || currentSeason==null || forceUpdate) {
 			currentMonth = month;
 			if (seasonOffset==-1) {
-				currentSeason = seasonsHash.get(Integer.valueOf(0));
+				currentSeason = seasonsHash.get(0);
 			}
 			else {
 				int n = ((currentMonth+seasonOffset-1)%NUMBER_OF_SEASONS)+1;
-				currentSeason = seasonsHash.get(Integer.valueOf(n));
+				currentSeason = seasonsHash.get(n);
 			}
 			changes = true;
 		}
@@ -184,7 +184,7 @@ public class RealmCalendar {
 		seasonDescription = "---";
 		if (currentSeason.hasAttribute(currentWeather,"special")) {
 			String note = currentSeason.getAttribute(currentWeather,"special"); // note = "note3" (for example)
-			specialNotes = Integer.valueOf(note.substring(4)).intValue();
+			specialNotes = Integer.parseInt(note.substring(4));
 			seasonDescription = currentSeason.getAttribute(currentWeather,"description");
 		}
 		

@@ -1287,7 +1287,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (String relBlock:getAllRelationshipBlocks(hostPrefs)) {
 			Hashtable<String,Object> hash = getGameObject().getAttributeBlock(relBlock);
 			for (String groupName : hash.keySet()) {
-				int rel = Integer.valueOf(hash.get(groupName).toString()).intValue();
+				int rel = Integer.parseInt(hash.get(groupName).toString());
 				if (rel>RelationshipType.ALLY) rel=RelationshipType.ALLY;
 				if (rel<RelationshipType.ENEMY) rel=RelationshipType.ENEMY;
 				if (rel==relationship) {

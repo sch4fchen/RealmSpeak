@@ -566,9 +566,9 @@ public class ActionRow {
 						}
 						else {
 							String rankStringLeader = (groupLeaders.get(group)).getGameObject().getThisAttribute("rank");
-							int rankLeader = "HQ".equals(rankStringLeader)?Integer.valueOf(0):Integer.valueOf(rankStringLeader);
+							int rankLeader = "HQ".equals(rankStringLeader)?Integer.valueOf(0):Integer.parseInt(rankStringLeader);
 							String rankStringDenizen = denizen.getGameObject().getThisAttribute("rank");
-							int rankDenizen = "HQ".equals(rankStringDenizen)?Integer.valueOf(0):Integer.valueOf(rankStringDenizen);					
+							int rankDenizen = "HQ".equals(rankStringDenizen)?Integer.valueOf(0):Integer.parseInt(rankStringDenizen);					
 							if (rankDenizen < rankLeader) {
 								groupLeaders.put(group, denizen);						
 							}
@@ -2083,11 +2083,11 @@ public class ActionRow {
 					public int compare(RealmComponent o1,RealmComponent o2) {
 						String rs1 = o1.getGameObject().getThisAttribute("rank");
 						if (rs1==null) rs1 = "0";
-						Integer rank1 = "HQ".equals(rs1)?Integer.valueOf(0):Integer.valueOf(rs1);
+						Integer rank1 = "HQ".equals(rs1)?Integer.valueOf(0):Integer.parseInt(rs1);
 						
 						String rs2 = o2.getGameObject().getThisAttribute("rank");
 						if (rs2==null) rs2 = "0";
-						Integer rank2 = "HQ".equals(rs2)?Integer.valueOf(0):Integer.valueOf(rs2);
+						Integer rank2 = "HQ".equals(rs2)?Integer.valueOf(0):Integer.parseInt(rs2);
 						
 						return rank1.compareTo(rank2);
 					}

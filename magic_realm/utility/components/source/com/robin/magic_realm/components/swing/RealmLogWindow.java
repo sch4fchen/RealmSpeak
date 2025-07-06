@@ -103,7 +103,7 @@ public class RealmLogWindow extends JFrame {
 			FileInputStream fileStream = new FileInputStream(saveFilePath);
 			InflaterInputStream inflater = new InflaterInputStream(fileStream);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(inflater));
-			int lines = Integer.valueOf(reader.readLine());
+			int lines = Integer.parseInt(reader.readLine());
 			String key;
 			String message;
 			for (int i=0;i<lines;i++) {

@@ -1380,7 +1380,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	
 	public static int readInt(String val) {
 		try {
-			Integer n = Integer.valueOf(val);
+			Integer n = Integer.parseInt(val);
 			return n.intValue();
 		}
 		catch(NumberFormatException ex) {

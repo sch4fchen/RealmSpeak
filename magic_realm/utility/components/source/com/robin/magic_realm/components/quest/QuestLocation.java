@@ -489,7 +489,7 @@ public class QuestLocation extends GameObjectWrapper {
 		if (match.matches()) {
 			String tileName = match.group(1).trim();
 			String clearingNumString = match.group(2).trim();
-			int clearingNum = clearingNumString.length()>0 ? Integer.valueOf(clearingNumString) : -1;
+			int clearingNum = clearingNumString.length()>0 ? Integer.parseInt(clearingNumString) : -1;
 			GameObject go = gameData.getGameObjectByNameIgnoreCase(tileName);
 			if (go!=null) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);

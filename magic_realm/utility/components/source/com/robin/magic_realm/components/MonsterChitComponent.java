@@ -622,7 +622,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				monsterRc = monsterPart.getWielder();
 			}
 			if (!monsterRc.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !monsterRc.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
-				return Integer.valueOf(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+				return getGameObject().getThisInt(Constants.ENCHANTED_WEAPON_SHARPNESS);
 			}
 		}
 		int sharpness = getFaceAttributeInt("sharpness");

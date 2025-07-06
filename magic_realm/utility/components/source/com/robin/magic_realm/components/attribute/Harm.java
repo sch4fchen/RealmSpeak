@@ -36,7 +36,7 @@ public class Harm {
 		int plus = val.indexOf('+');
 		String st = val.substring(0,plus);
 		String sh = val.substring(plus+1);
-		return new Harm(new Strength(st),Integer.valueOf(sh));
+		return new Harm(new Strength(st),Integer.parseInt(sh));
 	}
 	public int getSharpness() {
 		return sharpness;

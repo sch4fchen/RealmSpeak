@@ -288,7 +288,7 @@ public class CharacterVictoryConditionsDialog extends AggressiveDialog {
 		active.setGold(10);
 		active.setCharacterLevel(4);
 		active.fetchStartingInventory(new JFrame(),loader.getData(),false);
-		CharacterVictoryConditionsDialog vc = new CharacterVictoryConditionsDialog(new JFrame(),active,Integer.valueOf(5));
+		CharacterVictoryConditionsDialog vc = new CharacterVictoryConditionsDialog(new JFrame(),active,5);
 		vc.setLocationRelativeTo(null);
 		vc.setVisible(true);
 		System.exit(0);

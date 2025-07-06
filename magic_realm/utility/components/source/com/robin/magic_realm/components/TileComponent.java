@@ -503,7 +503,7 @@ public class TileComponent extends ChitComponent {
 	
 	public ClearingDetail getClearing(String numString) {
 		try {
-			int clearingNum = Integer.valueOf(numString);
+			int clearingNum = Integer.parseInt(numString);
 			return getClearing(clearingNum);
 		}
 		catch(NumberFormatException ex) {

@@ -115,8 +115,8 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 						rank2="0";
 					}
 					
-					int nRank1 = "HQ".equals(rank1)?0:Integer.valueOf(rank1).intValue();
-					int nRank2 = "HQ".equals(rank2)?0:Integer.valueOf(rank2).intValue();
+					int nRank1 = "HQ".equals(rank1)?0:Integer.parseInt(rank1);
+					int nRank2 = "HQ".equals(rank2)?0:Integer.parseInt(rank2);
 					
 					ret = nRank1 - nRank2;
 				}

@@ -574,8 +574,8 @@ public class SetupCardUtility {
 	}
 	private static int getDieRollForString(String dieString) {
 		String[] s = dieString.toLowerCase().split("d");
-		int count = Integer.valueOf(s[0]);
-		int sides = Integer.valueOf(s[1]);
+		int count = Integer.parseInt(s[0]);
+		int sides = Integer.parseInt(s[1]);
 		int total = 0;
 		for (int i=0;i<count;i++) {
 			total += RandomNumber.getDieRoll(sides);

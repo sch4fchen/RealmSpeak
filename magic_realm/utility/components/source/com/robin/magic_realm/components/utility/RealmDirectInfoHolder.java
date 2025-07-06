@@ -94,7 +94,7 @@ public class RealmDirectInfoHolder {
 	}
 	public int getGold() {
 		String val = list.get(GAME_OBJECT_ID_LIST_START);
-		return Integer.valueOf(val).intValue();
+		return Integer.parseInt(val);
 	}
 	public void setString(String in) {
 		clearGameObjectList();

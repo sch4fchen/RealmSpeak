@@ -73,10 +73,10 @@ public class WindowLayoutManager {
 		if (value==null) return null;
 		StringTokenizer tokens = new StringTokenizer(value,"_");
 		if (tokens.countTokens()!=4) return null;
-		int x = Integer.valueOf(tokens.nextToken());
-		int y = Integer.valueOf(tokens.nextToken());
-		int width = Integer.valueOf(tokens.nextToken());
-		int height = Integer.valueOf(tokens.nextToken());
+		int x = Integer.parseInt(tokens.nextToken());
+		int y = Integer.parseInt(tokens.nextToken());
+		int width = Integer.parseInt(tokens.nextToken());
+		int height = Integer.parseInt(tokens.nextToken());
 		return new Rectangle(x,y,width,height);
 	}
 	private void setLayoutName(int layoutNumber,String name) {

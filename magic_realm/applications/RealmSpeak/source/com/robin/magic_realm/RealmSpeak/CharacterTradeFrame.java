@@ -337,7 +337,7 @@ public class CharacterTradeFrame extends JFrame {
 			if (hasControl) {
 				goldPanel.addMouseListener(new MouseAdapter() {
 					public void mousePressed(MouseEvent ev) {
-						int goldOnTheTable = Integer.valueOf(goldLabel.getText()).intValue();
+						int goldOnTheTable = Integer.parseInt(goldLabel.getText());
 						int currentGold = (int)TradePanel.this.character.getGold();
 						
 						if (currentGold>0 && !TradePanel.this.character.hasCurse(Constants.ASHES)) {
@@ -345,7 +345,7 @@ public class CharacterTradeFrame extends JFrame {
 							String ret = JOptionPane.showInputDialog(goldLabel,message,String.valueOf(goldOnTheTable));
 							if (ret!=null) {
 								try {
-									Integer n = Integer.valueOf(ret);
+									Integer n = Integer.parseInt(ret);
 									if (n.intValue()<0) {
 										JOptionPane.showMessageDialog(goldLabel,"Gold can not be negative!","Error!",JOptionPane.ERROR_MESSAGE);
 									}
@@ -589,7 +589,7 @@ public class CharacterTradeFrame extends JFrame {
 			return discoveries;
 		}
 		public int getGold() {
-			return Integer.valueOf(goldLabel.getText()).intValue();
+			return Integer.parseInt(goldLabel.getText());
 		}
 	}
 	

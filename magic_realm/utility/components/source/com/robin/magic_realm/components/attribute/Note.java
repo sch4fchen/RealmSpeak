@@ -30,8 +30,8 @@ public class Note {
 		this.id = id;
 		
 		String[] s = date.split(":");
-		month = Integer.valueOf(s[0]);
-		day = Integer.valueOf(s[1]);
+		month = Integer.parseInt(s[0]);
+		day = Integer.parseInt(s[1]);
 		
 		if (source.startsWith("PLAYER")) {
 			playerName = source.substring(6);

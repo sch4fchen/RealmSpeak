@@ -27,8 +27,8 @@ public class Spoils {
 			notoriety = Double.valueOf(tokens.nextToken());
 			goldBounty = Double.valueOf(tokens.nextToken());
 			goldRecord = Double.valueOf(tokens.nextToken());
-			divisor = Integer.valueOf(tokens.nextToken());
-			multiplier = Integer.valueOf(tokens.nextToken());
+			divisor = Integer.parseInt(tokens.nextToken());
+			multiplier = Integer.parseInt(tokens.nextToken());
 		}
 		else throw new IllegalArgumentException("Invalid argument: "+key);
 	}

@@ -61,7 +61,7 @@ public class QuestRequirementParams {
 			qp.actionName = list.get(1)==null?null:list.get(1);
 			qp.dayKey = list.get(2)==null?null:list.get(2);
 			qp.actionType = CharacterActionType.valueOf(list.get(3));
-			qp.dieResult = Integer.valueOf(list.get(4));
+			qp.dieResult = Integer.parseInt(list.get(4));
 			qp.searchType = SearchResultType.valueOf(list.get(5));
 			qp.searchHadAnEffect = "T".equals(list.get(6));
 			qp.targetOfSearch = readGameObject(list.get(7),gameData);

@@ -66,8 +66,8 @@ public class Tile {
 	public static Point getPositionFromGameObject(GameObject obj) {
 		String pos = obj.getAttribute(MAP_GRID,MAP_POSITION);
 		StringTokenizer st = new StringTokenizer(pos,",");
-		int px = Integer.valueOf(st.nextToken()).intValue();
-		int py = Integer.valueOf(st.nextToken()).intValue();
+		int px = Integer.parseInt(st.nextToken());
+		int py = Integer.parseInt(st.nextToken());
 		return new Point(px,py);
 	}
 	public static int getRelativeEdgeNumber(String val) {
@@ -82,7 +82,7 @@ public class Tile {
 	}
 	public static int getRotationFromGameObject(GameObject obj) {
 		String rot = obj.getAttribute(MAP_GRID,MAP_ROTATION);
-		return Integer.valueOf(rot).intValue();
+		return Integer.parseInt(rot);
 	}
 	public static String convertEdge(String val,int rot) {
 		return getEdgeName(getRotatedEdgeNumber(val,rot));

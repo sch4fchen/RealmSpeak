@@ -144,7 +144,7 @@ public class CacheTransferDialog extends AggressiveDialog {
 								String.valueOf(gold));
 				
 				try {
-					int tgold = Integer.valueOf(transfer).intValue();
+					int tgold = Integer.parseInt(transfer);
 					if (tgold<0 || tgold>gold) {
 						JOptionPane.showMessageDialog(CacheTransferDialog.this,"Transfer amount must be a value from 0 to "+gold,"Error!",JOptionPane.ERROR_MESSAGE);
 					}

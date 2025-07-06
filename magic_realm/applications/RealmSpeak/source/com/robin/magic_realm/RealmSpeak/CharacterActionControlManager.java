@@ -177,7 +177,7 @@ public class CharacterActionControlManager {
 					}
 					int count = 0;
 					try {
-						count = Integer.valueOf(string).intValue();
+						count = Integer.parseInt(string);
 					}
 					catch(NumberFormatException ex) {
 						// ignore
