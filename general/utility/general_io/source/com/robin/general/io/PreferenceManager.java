@@ -158,7 +158,7 @@ public class PreferenceManager {
 		String val = get(key);
 		if (val!=null) {
 			try {
-				return Integer.valueOf(val).intValue();
+				return Integer.parseInt(val);
 			}
 			catch(NumberFormatException ex) {
 				// nothing

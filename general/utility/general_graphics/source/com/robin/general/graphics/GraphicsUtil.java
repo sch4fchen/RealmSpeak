@@ -542,8 +542,8 @@ public class GraphicsUtil {
 	}
 	public static Point asPoint(String s) {
 		StringTokenizer st = new StringTokenizer(s,",");
-		int x = Integer.valueOf(st.nextToken()).intValue();
-		int y = Integer.valueOf(st.nextToken()).intValue();
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
 		return new Point(x,y);
 	}
     public static Point shortenedLineFar(Point p1, Point p2, int pixelsShort) {

@@ -262,8 +262,8 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 			if (countAtt!=null) { // allows backward compatibility
 				String countString = element.getAttribute("count").getValue();
 				try {
-					Integer n = Integer.valueOf(countString);
-					count = n.intValue();
+					int n = Integer.parseInt(countString);
+					count = n;
 				}
 				catch(NumberFormatException ex) {
 				}

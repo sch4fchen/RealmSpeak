@@ -121,10 +121,10 @@ public class RandomNumber {
 		count = count.toUpperCase();
 		if (count.indexOf('D') >= 0) {
 			StringTokenizer st = new StringTokenizer(count, "D+");
-			int dice = Integer.valueOf(st.nextToken());
+			int dice = Integer.parseInt(st.nextToken());
 			int mod = 0;
 			if (st.hasMoreTokens()) {
-				mod = Integer.valueOf(st.nextToken());
+				mod = Integer.parseInt(st.nextToken());
 			}
 			int total = 0;
 			for (int i = 0; i < dice; i++) {
@@ -134,7 +134,7 @@ public class RandomNumber {
 			ret = total;
 		}
 		else {
-			ret = Integer.valueOf(count).intValue();
+			ret = Integer.parseInt(count);
 		}
 		return ret;
 	}

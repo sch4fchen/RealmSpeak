@@ -49,10 +49,10 @@ public class AttributeBar extends JComponent {
 	}
 	public void readKey(String key) {
 		StringTokenizer tokenz = new StringTokenizer(key,"_");
-		maxVal = Integer.valueOf(tokenz.nextToken()).intValue();
-		realVal = Integer.valueOf(tokenz.nextToken()).intValue();
-		projVal = Integer.valueOf(tokenz.nextToken()).intValue();
-		goalVal = Integer.valueOf(tokenz.nextToken()).intValue();
+		maxVal = Integer.parseInt(tokenz.nextToken());
+		realVal = Integer.parseInt(tokenz.nextToken());
+		projVal = Integer.parseInt(tokenz.nextToken());
+		goalVal = Integer.parseInt(tokenz.nextToken());
 		normalize();
 		repaint();
 	}

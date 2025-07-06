@@ -151,8 +151,8 @@ public class HexMapPoint {
 	}
 	public static HexMapPoint readKey(String key) {
 		StringTokenizer st = new StringTokenizer(key,",");
-		int x = Integer.valueOf(st.nextToken()).intValue();
-		int y = Integer.valueOf(st.nextToken()).intValue();
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
 		return new HexMapPoint(x,y);
 	}
 }

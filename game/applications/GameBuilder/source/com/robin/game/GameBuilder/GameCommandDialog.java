@@ -220,8 +220,8 @@ public class GameCommandDialog extends JDialog {
 		newCommand.setFrom((String)from.getSelectedItem());
 		newCommand.setTo((String)to.getSelectedItem());
 		try {
-			Integer n = Integer.valueOf(count.getText());
-			newCommand.setCount(n.intValue());
+			int n = Integer.parseInt(count.getText());
+			newCommand.setCount(n);
 		}
 		catch(NumberFormatException ex) {
 		}

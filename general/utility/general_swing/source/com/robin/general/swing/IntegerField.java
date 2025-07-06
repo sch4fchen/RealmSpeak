@@ -31,7 +31,7 @@ public class IntegerField extends JTextField {
 	public int getInt() {
 		String text = getText();
 		if (text.length()>0) {
-			return Integer.valueOf(getText()).intValue();
+			return Integer.parseInt(getText());
 		}
 		return 0;
 	}

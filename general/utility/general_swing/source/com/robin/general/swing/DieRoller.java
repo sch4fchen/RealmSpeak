@@ -65,7 +65,7 @@ public class DieRoller extends JComponent {
 		}
 		int amp = stringResult.indexOf("&");
 		if (amp>=0) {
-			modifier = Integer.valueOf(stringResult.substring(amp+1)).intValue(); // NFE is correct behavior if not a number
+			modifier = Integer.parseInt(stringResult.substring(amp+1)); // NFE is correct behavior if not a number
 			stringResult = stringResult.substring(0,amp);
 		}
 		StringTokenizer tokens = new StringTokenizer(stringResult,":");

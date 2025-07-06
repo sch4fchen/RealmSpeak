@@ -50,7 +50,7 @@ public class Die implements Icon {
 	public Die(int dieSize,int dotSize,String val) {
 		int line = val.indexOf('|');
 		name = line>=0?val.substring(0,line):"";
-		face = Integer.valueOf(val.substring(line+1));
+		face = Integer.parseInt(val.substring(line+1));
 		this.dieSize = dieSize;
 		this.dotSize = dotSize;
 		if (RED.equals(name)) {

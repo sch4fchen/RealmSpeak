@@ -456,7 +456,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 
 	public int getAttributeInt(String blockName, String key) {
 		// don't catch the exception here: I want it!
-		return Integer.valueOf(getAttribute(blockName, key)).intValue();
+		return Integer.parseInt(getAttribute(blockName, key));
 	}
 
 	/**
@@ -606,7 +606,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public int getInt(String blockName, String key) throws NumberFormatException {
 		String val = getAttribute(blockName, key);
 		if (val != null && val.trim().length()>0) {
-			return Integer.valueOf(val).intValue();
+			return Integer.parseInt(val);
 		}
 		return 0;
 	}
@@ -646,25 +646,6 @@ public class GameObject extends ModifyableObject implements Serializable {
 
 	public ArrayList<String> getThisAttributeList(String key) {
 		return getAttributeList(THIS, key);
-	}
-	
-	public ArrayList<Integer> getThisAttributeIntList(String key) {
-		return getAttributeIntList(THIS, key);
-	}
-	
-	public ArrayList<Integer> getAttributeIntList(String blockName, String key) {
-		if (uncommitted != null) {
-			return uncommitted.getAttributeIntList(blockName, key);
-		}
-		if (attributeBlocks.containsKey(blockName)) {
-			OrderedHashtable attributeBlock = attributeBlocks.get(blockName);
-			Object obj = attributeBlock.get(key.toLowerCase());
-			if (obj==null || obj instanceof ArrayList) {
-				return (ArrayList<Integer>)obj;
-			}
-			throw new IllegalArgumentException("Found string instead of list for '"+blockName+"' and '"+key+"' in GameObject "+getName());
-		}
-		return null;
 	}
 
 	public int getThisInt(String key) throws NumberFormatException {
@@ -1386,8 +1367,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 	public void setXML(Element element) {
 		String sid = element.getAttribute("id").getValue();
 		try {
-			Integer n = Integer.valueOf(sid);
-			id = n.intValue();
+			int n = Integer.parseInt(sid);
+			id = n;
 			reset();
 			revertNameToDefault();
 			Attribute nameAtt = element.getAttribute("name");

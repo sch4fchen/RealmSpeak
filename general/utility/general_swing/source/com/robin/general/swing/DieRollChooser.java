@@ -371,7 +371,7 @@ System.out.println(validEntry());
 		}
 		else {
 			// Constant
-			ret = Integer.valueOf(dieRollString).intValue();
+			ret = Integer.parseInt(dieRollString);
 		}
 		return ret;
 	}
@@ -382,8 +382,8 @@ System.out.println(validEntry());
 		
 		int[] n = new int[2];
 		
-		n[0] = Integer.valueOf(s1).intValue();
-		n[1] = Integer.valueOf(s2).intValue();
+		n[0] = Integer.parseInt(s1);
+		n[1] = Integer.parseInt(s2);
 		
 		return n;
 	}

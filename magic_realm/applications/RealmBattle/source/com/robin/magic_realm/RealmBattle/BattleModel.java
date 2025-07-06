@@ -1665,7 +1665,7 @@ public class BattleModel {
 					if (target.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
 						ArrayList<String> boxes = target.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
 						String box = boxes.get(RandomNumber.getRandom(boxes.size()));
-						attackerCombat.setCombatBoxAttack(Integer.valueOf(box));
+						attackerCombat.setCombatBoxAttack(Integer.parseInt(box));
 					} else {
 						attackerCombat.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
 					}
@@ -2441,7 +2441,7 @@ public class BattleModel {
 					if (rc.getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
 						ArrayList<String> boxes = rc.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
 						String box = boxes.get(RandomNumber.getRandom(boxes.size()));
-						combat.setCombatBoxAttack(Integer.parseInt(box));
+						combat.setCombatBoxDefense(Integer.parseInt(box));
 					} else {
 						combat.setCombatBoxDefense(boxD);
 					}
