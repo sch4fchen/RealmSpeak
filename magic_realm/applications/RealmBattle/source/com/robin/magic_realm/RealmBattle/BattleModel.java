@@ -873,8 +873,24 @@ public class BattleModel {
 				if (rc.getTarget()==null && rc.get2ndTarget()==null && combat.getAttackerCount()>0 && !combat.isSheetOwner()) { // being attacked, but not already on their own sheet
 					// As far as I know, there is NEVER a reason that the denizen shouldn't get their own sheet at this time
 					combat.setSheetOwner(true);
-					combat.setCombatBoxAttack(1);
-					combat.setCombatBoxDefense(1);
+					if (combat.canUseCombatBoxAttack(1) && combat.canUseCombatBoxDefense(1)) {
+						combat.setCombatBoxAttack(1);
+						combat.setCombatBoxDefense(1);
+					} else if(combat.canUseCombatBoxAttack(2) && combat.canUseCombatBoxDefense(2)) {
+							combat.setCombatBoxAttack(2);
+							combat.setCombatBoxDefense(2);
+					} else if(combat.canUseCombatBoxAttack(3) && combat.canUseCombatBoxDefense(3)) {
+						combat.setCombatBoxAttack(3);
+						combat.setCombatBoxDefense(3);
+					}
+					else {
+						ArrayList<String> boxesA = combat.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+						String boxA = boxesA.get(RandomNumber.getRandom(boxesA.size()));
+						combat.setCombatBoxAttack(Integer.parseInt(boxA));
+						ArrayList<String> boxesD = combat.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+						String boxD = boxesD.get(RandomNumber.getRandom(boxesD.size()));
+						combat.setCombatBoxAttack(Integer.parseInt(boxD));
+					}
 				}
 			}
 		}
@@ -2546,8 +2562,10 @@ public class BattleModel {
 	private static void repositionToBox(ArrayList<RealmComponent> list,int boxA, int boxD) {
 		for (RealmComponent rc : list) {
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			combat.setCombatBoxAttack(boxA);
-			combat.setCombatBoxDefense(boxD);
+			if (combat.canUseCombatBoxAttack(boxA) && combat.canUseCombatBoxDefense(boxD)) {
+				combat.setCombatBoxAttack(boxA);
+				combat.setCombatBoxDefense(boxD);
+			}
 		}
 	}
 	private static void changeTactics(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		

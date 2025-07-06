@@ -856,8 +856,7 @@ public class CombatFrame extends JFrame {
 					
 					if (theTarget!=null && targetCombat!=null && (!theTarget.isNative() || !hostPrefs.hasPref(Constants.TE_WATCHFUL_NATIVES))) {
 							targetCombat.setSheetOwner(true);
-							targetCombat.setCombatBoxAttack(1);
-							targetCombat.setCombatBoxDefense(1);
+							placeInFirstCombatBox(targetCombat);
 							changes = true;
 							removeDenizen(theTarget);
 							refreshParticipants();
@@ -2040,6 +2039,11 @@ public class CombatFrame extends JFrame {
 			return false;
 		}
 		CombatWrapper denizenCw = new CombatWrapper(denizen.getGameObject());
+		if (!denizenCw.canUseCombatBoxAttack(boxA) || !denizenCw.canUseCombatBoxDefense(boxD)) {
+			JOptionPane.showMessageDialog(this,denizen.getGameObject().getNameWithNumber()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,denizen.getIcon());
+			return false;
+		}
+		
 		if (!lurer.isImmuneTo(denizen)) {
 			CombatFrame.broadcastMessage(lurer.getGameObject().getNameWithNumber(),"Lures the "+denizen.getGameObject().getNameWithNumber());
 			
@@ -2585,6 +2589,11 @@ public class CombatFrame extends JFrame {
 	}
 	public void playParry(int box) {
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!charCombat.canUseCombatBoxDefense(box)) {
+			JOptionPane.showMessageDialog(this,"Cannot place a parry in this combat box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
@@ -2679,6 +2688,12 @@ public class CombatFrame extends JFrame {
 		updateSelection();
 	}
 	public void replaceAttack(int box) {
+		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!charCombat.canUseCombatBoxAttack(box)) {
+			JOptionPane.showMessageDialog(this,"Cannot placd an attack in this combat box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		WeaponChitComponent weapon = activeCharacter.getActivePrimaryWeapon();
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box,false);
 		
@@ -2718,6 +2733,12 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	public void replaceParry(int box, RealmComponent sheetOwner) {
+		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!charCombat.canUseCombatBoxDefense(box)) {
+			JOptionPane.showMessageDialog(this,"Cannot place a parry in this combat box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		Collection<CharacterActionChitComponent> fightChits = activeCharacter.getActiveFightChits();
 		for (CharacterActionChitComponent chit : fightChits) {
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
@@ -2760,6 +2781,11 @@ public class CombatFrame extends JFrame {
 	}
 	public void playAttack(int box, RealmComponent sheetOwner) {
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!charCombat.canUseCombatBoxAttack(box)) {
+			JOptionPane.showMessageDialog(this,"Cannot place an attack in this combat box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean battleMage = false;
@@ -2907,6 +2933,11 @@ public class CombatFrame extends JFrame {
 	}
 	public void playParryLikeShield(int box) {
 		CombatWrapper charCombat = new CombatWrapper(activeCharacter.getGameObject());
+		if (!charCombat.canUseCombatBoxDefense(box)) {
+			JOptionPane.showMessageDialog(this,"Cannot place a parry in this combat box.","Spider Web",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		GameObject go = charCombat.getCastSpell();
 		SpellWrapper spell = go==null?null:new SpellWrapper(go);
 		boolean mageCastedSpell = false;
@@ -3089,6 +3120,10 @@ public class CombatFrame extends JFrame {
 			}
 			
 			CombatWrapper combat = new CombatWrapper(target.getGameObject());
+			if (!combat.canUseCombatBoxAttack(boxA) || !combat.canUseCombatBoxDefense(boxD)) {
+				JOptionPane.showMessageDialog(this,target.getGameObject().getName()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,target.getIcon());
+				return;
+			}
 			combat.setCombatBoxAttack(boxA);
 			combat.setCombatBoxDefense(boxD);
 			updateSelection();
@@ -3161,6 +3196,13 @@ public class CombatFrame extends JFrame {
 		RealmComponent extra = null;
 		String extraName = null;
 		boolean includeCurrentBox = false;
+		
+		CombatWrapper combatTarget = new CombatWrapper(target.getGameObject());
+		if (!combatTarget.canUseCombatBoxAttack(boxA) || !combatTarget.canUseCombatBoxDefense(boxD)) {
+			JOptionPane.showMessageDialog(this,target.getGameObject().getName()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,target.getIcon());
+			return false;
+		}
+		
 		if (target.isMonster()) {
 			MonsterChitComponent monster = (MonsterChitComponent)target;
 			extra = monster.getWeapon();
@@ -3225,6 +3267,10 @@ public class CombatFrame extends JFrame {
 							extra.flip();
 						}
 						CombatWrapper combat = new CombatWrapper(extra.getGameObject());
+						if (!combat.canUseCombatBoxAttack(boxA) || !combat.canUseCombatBoxDefense(boxD)) {
+							JOptionPane.showMessageDialog(this,extra.getGameObject().getName()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,extra.getIcon());
+							return false;
+						}
 						combat.setCombatBoxAttack(i+1);
 						combat.setCombatBoxDefense(i+1);
 						break;
@@ -3272,8 +3318,13 @@ public class CombatFrame extends JFrame {
 			}
 			
 			CombatWrapper combat = new CombatWrapper(lonePiece.getGameObject());
-			combat.setCombatBoxAttack(boxA);
-			combat.setCombatBoxDefense(boxD);
+			if (!combat.canUseCombatBoxAttack(boxA) || !combat.canUseCombatBoxDefense(boxD)) {
+				JOptionPane.showMessageDialog(this,lonePiece.getGameObject().getName()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,lonePiece.getIcon());
+			}
+			else {
+				combat.setCombatBoxAttack(boxA);
+				combat.setCombatBoxDefense(boxD);
+			}
 		}
 		else {
 			chooser.setVisible(true);
@@ -3292,8 +3343,12 @@ public class CombatFrame extends JFrame {
 					}
 					
 					CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-					combat.setCombatBoxAttack(boxA);
-					combat.setCombatBoxDefense(boxD);
+					if (!combat.canUseCombatBoxAttack(boxA) || !combat.canUseCombatBoxDefense(boxD)) {
+						JOptionPane.showMessageDialog(this,chit.getGameObject().getName()+" cannot be placed in this combat box.","Spider Web",JOptionPane.WARNING_MESSAGE,chit.getIcon());
+					} else {
+						combat.setCombatBoxAttack(boxA);
+						combat.setCombatBoxDefense(boxD);
+					}
 				}
 			}
 		}
@@ -4559,8 +4614,7 @@ public class CombatFrame extends JFrame {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					if (!combat.isSheetOwner()) {
 						combat.setSheetOwner(true);
-						combat.setCombatBoxAttack(1);
-						combat.setCombatBoxDefense(1);
+						placeInFirstCombatBox(combat);
 					}
 					rc.clearTarget();
 				}
@@ -4571,14 +4625,35 @@ public class CombatFrame extends JFrame {
 					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 					if (!combat.isSheetOwner()) {
 						combat.setSheetOwner(true);
-						combat.setCombatBoxAttack(1);
-						combat.setCombatBoxDefense(1);
+						placeInFirstCombatBox(combat);
 					}
 					rc.clear2ndTarget();
 				}
 			}
 		}
-		
+	}
+	public static void placeInFirstCombatBox(CombatWrapper combat) {
+		placeInCombatBoxAvailable(combat,1);
+	}
+	public static void placeInCombatBoxAvailable(CombatWrapper combat,int startCombatBox) {
+		if (combat.canUseCombatBoxAttack(startCombatBox) && combat.canUseCombatBoxDefense(startCombatBox)) {
+			combat.setCombatBoxAttack(startCombatBox);
+			combat.setCombatBoxDefense(startCombatBox);
+		} else if(combat.canUseCombatBoxAttack((startCombatBox+1)%3) && combat.canUseCombatBoxDefense((startCombatBox+1)%3)) {
+				combat.setCombatBoxAttack((startCombatBox+1)%3);
+				combat.setCombatBoxDefense((startCombatBox+1)%3);
+		} else if(combat.canUseCombatBoxAttack((startCombatBox+2)%3) && combat.canUseCombatBoxDefense((startCombatBox+2)%3)) {
+			combat.setCombatBoxAttack((startCombatBox+2)%3);
+			combat.setCombatBoxDefense((startCombatBox+2)%3);
+		}
+		else {
+			ArrayList<String> boxesA = combat.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
+			String boxA = boxesA.get(RandomNumber.getRandom(boxesA.size()));
+			combat.setCombatBoxAttack(Integer.parseInt(boxA));
+			ArrayList<String> boxesD = combat.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
+			String boxD = boxesD.get(RandomNumber.getRandom(boxesD.size()));
+			combat.setCombatBoxAttack(Integer.parseInt(boxD));
+		}
 	}
 	public void showCombatSummary() {
 		BattleSummaryWrapper bsw = new BattleSummaryWrapper(theGame.getGameObject());

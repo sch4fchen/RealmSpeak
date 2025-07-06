@@ -799,60 +799,7 @@ public class CharacterCombatSheet extends CombatSheet {
 						updateLayout();
 					}
 					else {
-						// auto-position
-						ArrayList<RealmComponent> list = new ArrayList<>(layoutHash.getList(Integer.valueOf(POS_TARGET)));
-						Collections.sort(list);
-						int n=0;
-						int m=0;
-						if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-							n = RandomNumber.getRandom(3);
-							m = RandomNumber.getRandom(3);
-						}
-						while(list.size()>0) {
-							RealmComponent rc = list.remove(0); // pop
-							if (rc.isMonster()) {
-								MonsterChitComponent monster = (MonsterChitComponent)rc;
-								RealmComponent weapon = monster.getWeapon();
-								if (weapon!=null) {
-									list.add(0,weapon); // push
-								}
-								RealmComponent horse = (RealmComponent)rc.getHorse();
-								if (horse!=null) {
-									if (swingConstant==SwingConstants.LEFT) {
-										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBoxDefense(n+1);
-										combat.setCombatBoxAttack(m+1);
-									}
-									else {
-										list.add(0,horse); // push
-									}
-								}
-							}
-							else if (rc.isNative()) {
-								RealmComponent horse = (RealmComponent)rc.getHorse();
-								if (horse!=null) {
-									if (swingConstant==SwingConstants.LEFT) {
-										CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-										combat.setCombatBoxDefense(n+1);
-										combat.setCombatBoxAttack(m+1);
-									}
-									else {
-										list.add(0,horse); // push
-									}
-								}
-							}
-							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-							combat.setCombatBoxDefense(n+1);
-							combat.setCombatBoxAttack(m+1);
-							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-								n = RandomNumber.getRandom(3);
-								m = RandomNumber.getRandom(3);
-							} else {
-								n = (n+1)%3;
-								m = (m+1)%3;
-							}
-						}
-						updateLayout();
+						autoPositioning(swingConstant);
 					}
 					combatFrame.updateControls();
 				}
@@ -963,6 +910,87 @@ public class CharacterCombatSheet extends CombatSheet {
 		}
 		updateHotSpots();
 		repaint();
+	}
+	private void autoPositioning(int swingConstant) {
+		// auto-position
+		ArrayList<RealmComponent> list = new ArrayList<>(layoutHash.getList(Integer.valueOf(POS_TARGET)));
+		Collections.sort(list);
+		int n=0;
+		int m=0;
+		if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+			n = RandomNumber.getRandom(3);
+			m = RandomNumber.getRandom(3);
+		}
+		while(list.size()>0) {
+			RealmComponent rc = list.remove(0); // pop
+			if (rc.isMonster()) {
+				MonsterChitComponent monster = (MonsterChitComponent)rc;
+				RealmComponent weapon = monster.getWeapon();
+				if (weapon!=null) {
+					list.add(0,weapon); // push
+				}
+				RealmComponent horse = (RealmComponent)rc.getHorse();
+				if (horse!=null) {
+					if (swingConstant==SwingConstants.LEFT) {
+						CombatWrapper combat = new CombatWrapper(horse.getGameObject());
+						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
+							combat.setCombatBoxDefense(n+1);
+							combat.setCombatBoxAttack(m+1);
+						}
+						else {
+							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+								n = RandomNumber.getRandom(3);
+								m = RandomNumber.getRandom(3);
+							} else {
+								n = (n+1)%3;
+								m = (m+1)%3;
+							}
+						}
+					}
+					else {
+						list.add(0,horse); // push
+					}
+				}
+			}
+			else if (rc.isNative()) {
+				RealmComponent horse = (RealmComponent)rc.getHorse();
+				if (horse!=null) {
+					if (swingConstant==SwingConstants.LEFT) {
+						CombatWrapper combat = new CombatWrapper(horse.getGameObject());
+						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
+							combat.setCombatBoxDefense(n+1);
+							combat.setCombatBoxAttack(m+1);
+						}
+						else {
+							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+								n = RandomNumber.getRandom(3);
+								m = RandomNumber.getRandom(3);
+							} else {
+								n = (n+1)%3;
+								m = (m+1)%3;
+							}
+						}
+					}
+					else {
+						list.add(0,horse); // push
+					}
+				}
+			}
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
+				combat.setCombatBoxDefense(n+1);
+				combat.setCombatBoxAttack(m+1);
+			}
+			
+			if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+				n = RandomNumber.getRandom(3);
+				m = RandomNumber.getRandom(3);
+			} else {
+				n = (n+1)%3;
+				m = (m+1)%3;
+			}
+		}
+		updateLayout();
 	}
 	public boolean hasUnpositionedDenizens() {
 		return layoutHash.get(Integer.valueOf(POS_TARGET))!=null;

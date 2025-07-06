@@ -489,16 +489,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			int boxA = combat.getCombatBoxAttack();
 			if (boxD==0) {
 				if (horseSameBox) {
-					combat.setCombatBoxDefense(1);
-					combat.setCombatBoxAttack(1);
-					boxA = 1;
-					boxD = 1;
+					CombatFrame.placeInFirstCombatBox(combat);
+					boxD = combat.getCombatBoxDefense();
+					boxA = combat.getCombatBoxAttack();
 				}
 				else {
-					combat.setCombatBoxDefense(2);
-					combat.setCombatBoxAttack(2);
-					boxA = 2;
-					boxD = 2;
+					CombatFrame.placeInCombatBoxAvailable(combat,2);
+					boxD = combat.getCombatBoxDefense();
+					boxA = combat.getCombatBoxAttack();
 				}
 			}
 			if (secrecy) {
@@ -522,10 +520,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		int boxA = combat.getCombatBoxAttack();
 		int boxD = combat.getCombatBoxDefense();
 		if (boxA==0 || boxD==0) {
-			combat.setCombatBoxAttack(1);
-			combat.setCombatBoxDefense(1);
-			boxA = 1;
-			boxD = 1;
+			CombatFrame.placeInFirstCombatBox(combat);
+			boxD = combat.getCombatBoxDefense();
+			boxA = combat.getCombatBoxAttack();
 		}
 		if (secrecy) {
 			boxA = 0;
@@ -550,10 +547,9 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				boxA = combat.getCombatBoxAttack();
 				boxD = combat.getCombatBoxDefense();
 				if (boxA==0) {
-					combat.setCombatBoxAttack(2);
-					combat.setCombatBoxDefense(2);
-					boxA = 2;
-					boxD = 2;
+					CombatFrame.placeInCombatBoxAvailable(combat,2);
+					boxD = combat.getCombatBoxDefense();
+					boxA = combat.getCombatBoxAttack();
 				}
 				if (secrecy) {
 					boxA = 0;
