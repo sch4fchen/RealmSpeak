@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class SpiderWebEffect implements ISpellEffect {
 
@@ -84,9 +85,15 @@ public class SpiderWebEffect implements ISpellEffect {
 				}
 			}
 		}
+		
+		HostPrefWrapper hostPref = HostPrefWrapper.findHostPrefs(context.getGameData());
+		
 		if (attackBoxes.isEmpty() || (attackBoxes.size()==1 && attackBoxes.get(0)==0)) {
 			int randomBox = RandomNumber.getRandom(3)+1;
 			target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_ATTACK,Integer.toString(randomBox));
+			if (!hostPref.hasPref(Constants.SR_COMBAT)) {
+				target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBox));
+			}
 		}
 		else {
 			for (Integer box : attackBoxes) {
@@ -96,8 +103,10 @@ public class SpiderWebEffect implements ISpellEffect {
 			}
 		}
 		if (defenseBoxes.isEmpty() || (defenseBoxes.size()==1 && defenseBoxes.get(0)==0)) {
-			int randomBox = RandomNumber.getRandom(3)+1;
-			target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBox));
+			if (hostPref.hasPref(Constants.SR_COMBAT)) {
+				int randomBox = RandomNumber.getRandom(3)+1;
+				target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBox));
+			}
 		}
 		else {
 			for (Integer box : defenseBoxes) {
