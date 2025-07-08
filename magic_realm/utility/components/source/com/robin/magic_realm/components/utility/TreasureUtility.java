@@ -100,6 +100,8 @@ public class TreasureUtility {
 				}
 			}
 			
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
+			
 //			Strength characterVulnerability = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
 			Strength characterCarryWeight = character.getNeededSupportWeight();
 			ArrayList<GameObject> activeInventory = character.getActiveInventory();
@@ -136,21 +138,27 @@ public class TreasureUtility {
 			}
 			else if (thing.hasThisAttribute("boots")) {
 				// Boots card
+				boolean ridingHorse = false;
+				if (hostPrefs.hasPref(Constants.SR_BOOTS_ACTIVE_WHILE_RIDING) && character.getActiveSteed()!=null) {
+					ridingHorse = true;
+				}
 				
-				// Check to see that boots are strong enough to carry character
-				Strength bootStrength = RealmUtility.getBootsStrength(thing);
-				if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
-					// If good, then inactivate any existing boots
-					for (GameObject otherThing : activeInventory) {
-						if (otherThing.hasThisAttribute("boots")) {
-							otherThing.removeThisAttribute(Constants.ACTIVATED);
-							break; // no need to keep searching as long as this code is in place
+				if (!ridingHorse) {
+					// Check to see that boots are strong enough to carry character
+					Strength bootStrength = RealmUtility.getBootsStrength(thing);
+					if (bootStrength.strongerOrEqualTo(characterCarryWeight)) {
+						// If good, then inactivate any existing boots
+						for (GameObject otherThing : activeInventory) {
+							if (otherThing.hasThisAttribute("boots")) {
+								otherThing.removeThisAttribute(Constants.ACTIVATED);
+								break; // no need to keep searching as long as this code is in place
+							}
 						}
 					}
-				}
-				else {
-					JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.");
-					return false;
+					else {
+						JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.");
+						return false;
+					}
 				}
 			}
 			else if (thing.hasThisAttribute("gloves")) {
@@ -175,7 +183,6 @@ public class TreasureUtility {
 					}
 				}
 				
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 				boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !character.affectedByKey(Constants.STRONG);
 				boolean dualWielding = hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING);
 				if (thing.hasThisAttribute(Constants.SHIELD) && (twoHandedWeaponResctriction || dualWielding)) {
@@ -200,7 +207,6 @@ public class TreasureUtility {
 			}
 			else if (thing.hasThisAttribute("weapon")) {
 				// Inactivate any existing weapon
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 				for (GameObject otherThing : activeInventory) {
 					if (otherThing.hasThisAttribute("weapon") || (otherThing.hasThisAttribute(Constants.POTION) && otherThing.hasThisAttribute("attack"))) {
 						if ((hostPrefs.hasPref(Constants.OPT_DUAL_WIELDING) || character.affectedByKey(Constants.DUAL_WIELDING))
@@ -993,6 +999,8 @@ public class TreasureUtility {
 		if (character!=null) {
 			character.updateChitEffects();
 		}
+		
+		character.setNeedsInventoryCheck(true);
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionType = CharacterActionType.DeactivatingItem;

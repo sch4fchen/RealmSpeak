@@ -7388,18 +7388,26 @@ public class CharacterWrapper extends GameObjectWrapper {
 			newItem.setThisAttribute(Constants.ACTIVATED);
 		}
 		if (isCharacter()) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 			Strength weight = getNeededSupportWeight();
 			SteedChitComponent horse = (SteedChitComponent)getActiveSteed();
+			boolean ridingHorseStrongEnough = false;
 			if (horse!=null) {
 				if (horse.getTrotStrength().strongerOrEqualTo(weight)) {
+					if (hostPrefs.hasPref(Constants.SR_BOOTS_ACTIVE_WHILE_RIDING)) {
+						ridingHorseStrongEnough = true;
+					}
 					horse = null;
 				}
 			}
+			
 			RealmComponent boots = getActiveBoots();
-			if (boots!=null) {
-				Strength bootStrength = RealmUtility.getBootsStrength(boots.getGameObject());
-				if (bootStrength.strongerOrEqualTo(weight)) {
-					boots = null;
+			if (!ridingHorseStrongEnough) {
+				if (boots!=null) {
+					Strength bootStrength = RealmUtility.getBootsStrength(boots.getGameObject());
+					if (bootStrength.strongerOrEqualTo(weight)) {
+						boots = null;
+					}
 				}
 			}
 			
@@ -7419,7 +7427,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 					who.append(boots.getGameObject().getName());
 				}
 				ButtonOptionDialog dialog = null;
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 				if (newItem!=null) {
 					RealmComponent rc = RealmComponent.getRealmComponent(newItem);
 					dialog = new ButtonOptionDialog(frame,rc.getIcon(),"The "+newItem.getName()+" is too heavy for your "+who.toString()+".","Heavy Inventory",false);

@@ -1050,6 +1050,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_MOVEMENT_RESTRICTION,"MOVEMENT RESTRICTION (Super Realm Basic) - A MOVE chit is required for carring negligible weight items.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPT_MOVEMENT_RESTRICTION,"MOVEMENT RESTRICTION (Super Realm Optional) - A MOVE chit is required for moving.",false,null,new String[]{Constants.SR_MOVEMENT_RESTRICTION}));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_FOLLOWERS_ACTIONS_DURING_GUIDES_PHASE,"FOLLOWERS ACTIONS DURING GUIDES PHASE (all Rules) - Followers are alerting (and enchanting) during the guide's turn (and not in their own turn).",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_BOOTS_ACTIVE_WHILE_RIDING,"ACTIVATING BOOTS WHILE RIDING (Super Realm Basic) - Riding characters can activate boots, which are not strong enough to carry them.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_FLYING_ACTIVITIES,"FLYING ACTIVITIES A.3 (Magic Realm Advanced) - Flying characters can inspect the tiles they fly over and do the Alert activity.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 (Magic Realm Advanced/Super Realm Basic) - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
@@ -1364,6 +1365,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
 		optionPane.setOption(Constants.SR_ADV_EASIER_SPELL_LEARNING,true);
 		optionPane.setOption(Constants.SR_MOVEMENT_RESTRICTION,true);
+		optionPane.setOption(Constants.SR_BOOTS_ACTIVE_WHILE_RIDING,true);
 		optionPane.setOption(Constants.FE_KILLER_CAVES,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);

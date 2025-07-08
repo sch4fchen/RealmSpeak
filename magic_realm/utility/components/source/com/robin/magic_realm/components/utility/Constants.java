@@ -940,6 +940,7 @@ public class Constants {
 	public static final String SR_OPT_MOVEMENT_RESTRICTION = "MoveChitRequiredForMovement";
 	public static final String NO_SPELL_LEARNING_RESTRICTIONS = "NoSpellLearningRestrictions";
 	public static final String SR_SELLING = "Selling";
+	public static final String SR_BOOTS_ACTIVE_WHILE_RIDING = "BootsActiveWhileRiding";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";
