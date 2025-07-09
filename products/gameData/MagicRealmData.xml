@@ -12227,6 +12227,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="optional_2">
         <attribute move_actions_per_turn="2" />
+        <attribute optkey="OptCharDwarf" />
         <attributeList keyName="advantages">
           <attributeVal N0="SHORT LEGS:  You can only record 2 MOVE actions per turn.  Each REST action is worth double." />
         </attributeList>
@@ -12234,7 +12235,6 @@
           <attributeVal N0="advantages" />
           <attributeVal N1="no_sunlight" />
         </attributeList>
-        <attribute optkey="OptCharDwarf" />
       </AttributeBlock>
       <contains id="535" />
       <contains id="536" />
@@ -43904,6 +43904,7 @@
       </AttributeBlock>
       <AttributeBlock blockName="optional_2">
         <attribute move_actions_per_turn="2" />
+        <attribute optkey="OptCharDwarf" />
         <attributeList keyName="advantages">
           <attributeVal N0="SHORT LEGS:  You can only record 2 MOVE actions per turn.  Each REST action is worth double." />
         </attributeList>
@@ -43911,7 +43912,6 @@
           <attributeVal N0="advantages" />
           <attributeVal N1="no_sunlight" />
         </attributeList>
-        <attribute optkey="OptCharDwarf" />
       </AttributeBlock>
       <contains id="1657" />
       <contains id="1658" />
@@ -60201,8 +60201,8 @@
         <attribute speed="0" />
         <attribute action="magic" />
         <attribute scholar_price="20" />
-        <attribute schaman_price="20" />
         <attribute merchant_price="20" />
+        <attribute shaman_price="20" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2264" name="Elven Scroll">
