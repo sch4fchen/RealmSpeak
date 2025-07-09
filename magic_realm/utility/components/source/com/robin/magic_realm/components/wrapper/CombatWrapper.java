@@ -914,6 +914,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		return false;
 	}
     public boolean canUseCombatBoxAttack(int box) {
+    	if (box==0) return true;
 		if (getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK)) {
 			ArrayList<String> availableBoxes = getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK);
 			boolean boxAllowed = false;
@@ -929,6 +930,7 @@ public class CombatWrapper extends GameObjectWrapper {
     }
     
     public boolean canUseCombatBoxDefense(int box) {
+    	if (box==0) return true;
 		if (getGameObject().hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
 			ArrayList<String> availableBoxes = getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE);
 			boolean boxAllowed = false;

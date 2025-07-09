@@ -2461,7 +2461,7 @@ public class BattleModel {
 					} else {
 						combat.setCombatBoxDefense(boxD);
 					}
-					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+getNameForDefensekBox(boxD)+" (die: "+defenceDie+") & "+getNameForAttackBox(boxA)+" (die: "+attackDie+")");
+					RealmLogging.logMessage(chit.getGameObject().getNameWithNumber(),"Changes position: "+RealmUtility.getNameForDefensekBox(boxD)+" (die: "+defenceDie+") & "+RealmUtility.getNameForAttackBox(boxA)+" (die: "+attackDie+")");
 				}
 				if (tacticChange && (boxA==boxD || rc.getGameObject().hasThisAttribute(Constants.SENSITIVE_TACTICS) || FORCE_MONSTER_FLIP)) {
 					if (canChangeTactics(chit)) {
@@ -2473,28 +2473,6 @@ public class BattleModel {
 				}
 			}
 		}
-	}
-	private static String getNameForAttackBox(int box) {
-		switch(box) {
-			case 1:
-				return "THRUST";
-			case 2:
-				return "SWING";
-			case 3:
-				return "SMASH";
-			default: return "";
-		}
-	}
-	private static String getNameForDefensekBox(int box) {
-		switch(box) {
-		case 1:
-			return "CHARGE";
-		case 2:
-			return "DODGE";
-		case 3:
-			return "DUCK";
-		default: return "";
-	}
 	}
 	private static void reposition(String prefix,CombatWrapper combatTarget,HashLists<Key, RealmComponent> boxHash) {		
 		DieRoller roller = new DieRoller(); // Rule 22.5/2 specifies that modifiers do NOT affect this roll

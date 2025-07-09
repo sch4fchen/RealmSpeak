@@ -3,6 +3,7 @@ package com.robin.magic_realm.components.effect;
 import java.util.ArrayList;
 
 import com.robin.game.objects.GameObject;
+import com.robin.game.server.GameClient;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.BattleHorse;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
@@ -11,6 +12,8 @@ import com.robin.magic_realm.components.MonsterPartChitComponent;
 import com.robin.magic_realm.components.NativeChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -115,6 +118,16 @@ public class SpiderWebEffect implements ISpellEffect {
 				}
 			}
 		}
+		
+		StringBuilder sb = new StringBuilder();
+		for (String box : target.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_ATTACK)) {
+			sb.append(RealmUtility.getNameForAttackBox(Integer.parseInt(box))+" ");
+		}
+		for (String box : target.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
+			sb.append(RealmUtility.getNameForDefensekBox(Integer.parseInt(box))+" ");
+		}
+		RealmLogging.logMessage(
+				context.Caster.getName(),target.getGameObject().getNameWithNumber()+" was hit by Spider Web and can only use the following combat boxes: "+sb);
 	}
 
 	@Override

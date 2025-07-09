@@ -1191,4 +1191,26 @@ public class RealmUtility {
 		
 		return 0;
 	}
+	public static String getNameForAttackBox(int box) {
+		switch(box) {
+			case 1:
+				return "THRUST";
+			case 2:
+				return "SWING";
+			case 3:
+				return "SMASH";
+			default: return "";
+		}
+	}
+	public static String getNameForDefensekBox(int box) {
+		switch(box) {
+		case 1:
+			return "CHARGE";
+		case 2:
+			return "DODGE";
+		case 3:
+			return "DUCK";
+		default: return "";
+		}
+	}
 }
