@@ -36796,6 +36796,7 @@
         <attribute undead="" />
         <attribute skeleton="" />
         <attribute transmorph_immunity="" />
+        <attribute cannot_be_abandoned="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />

@@ -46,4 +46,8 @@ public class Inventory {
 				&& (!rc.isEnchanted()) // can't drop an enchanted artifact or book
 				&& !(active && go.hasThisAttribute("potion")); // can't drop an active potion
 	}
+	
+	public boolean canBeAbandoned() {
+		return canDrop() && !go.hasThisAttribute(Constants.CANNOT_BE_ABANDONED);
+	}
 }
