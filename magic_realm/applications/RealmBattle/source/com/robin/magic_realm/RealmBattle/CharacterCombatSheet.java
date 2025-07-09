@@ -933,11 +933,7 @@ public class CharacterCombatSheet extends CombatSheet {
 				if (horse!=null) {
 					if (swingConstant==SwingConstants.LEFT) {
 						CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
-							combat.setCombatBoxDefense(n+1);
-							combat.setCombatBoxAttack(m+1);
-						}
-						else {
+						while (!combat.canUseCombatBoxAttack(n+1) || !combat.canUseCombatBoxDefense(m+1)) {
 							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
 								n = RandomNumber.getRandom(3);
 								m = RandomNumber.getRandom(3);
@@ -945,6 +941,10 @@ public class CharacterCombatSheet extends CombatSheet {
 								n = (n+1)%3;
 								m = (m+1)%3;
 							}
+						}
+						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
+							combat.setCombatBoxDefense(n+1);
+							combat.setCombatBoxAttack(m+1);
 						}
 					}
 					else {
@@ -957,11 +957,7 @@ public class CharacterCombatSheet extends CombatSheet {
 				if (horse!=null) {
 					if (swingConstant==SwingConstants.LEFT) {
 						CombatWrapper combat = new CombatWrapper(horse.getGameObject());
-						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
-							combat.setCombatBoxDefense(n+1);
-							combat.setCombatBoxAttack(m+1);
-						}
-						else {
+						while (!combat.canUseCombatBoxAttack(n+1) || !combat.canUseCombatBoxDefense(m+1)) {
 							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
 								n = RandomNumber.getRandom(3);
 								m = RandomNumber.getRandom(3);
@@ -970,6 +966,10 @@ public class CharacterCombatSheet extends CombatSheet {
 								m = (m+1)%3;
 							}
 						}
+						if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
+							combat.setCombatBoxDefense(n+1);
+							combat.setCombatBoxAttack(m+1);
+						}
 					}
 					else {
 						list.add(0,horse); // push
@@ -977,6 +977,15 @@ public class CharacterCombatSheet extends CombatSheet {
 				}
 			}
 			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			while (!combat.canUseCombatBoxAttack(n+1) || !combat.canUseCombatBoxDefense(m+1)) {
+				if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+					n = RandomNumber.getRandom(3);
+					m = RandomNumber.getRandom(3);
+				} else {
+					n = (n+1)%3;
+					m = (m+1)%3;
+				}
+			}
 			if (combat.canUseCombatBoxAttack(n+1) && combat.canUseCombatBoxDefense(m+1)) {
 				combat.setCombatBoxDefense(n+1);
 				combat.setCombatBoxAttack(m+1);
