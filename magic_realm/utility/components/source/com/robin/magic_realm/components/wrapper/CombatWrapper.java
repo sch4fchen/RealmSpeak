@@ -897,9 +897,15 @@ public class CombatWrapper extends GameObjectWrapper {
 				}
 			}
 		}
+		go.removeThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK);
+		go.removeThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE);
 	}
 	public static boolean hasCombatInfo(GameObject test) {
-		return test.hasAttributeBlock(COMBAT_BLOCK);
+		return test.hasAttributeBlock(COMBAT_BLOCK) || affectedBySpiderWeb(test);
+	}
+	
+	private static boolean affectedBySpiderWeb(GameObject test) {
+		return test.hasThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK) || test.hasThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE);
 	}
 	
 	public void setHolyShield(Speed attackSpeed, int length) {

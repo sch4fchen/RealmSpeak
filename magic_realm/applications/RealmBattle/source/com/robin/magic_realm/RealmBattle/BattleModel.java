@@ -12,6 +12,7 @@ import com.robin.general.util.Key;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.effect.SpiderWebEffect;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.DevilsSpell;
@@ -1803,11 +1804,11 @@ public class BattleModel {
 							if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
 							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
 						}
-						hitCausedHarm = pop.harmWasApplied();
+						hitCausedHarm = hitCausedHarm || pop.harmWasApplied();
 						setSpellCasting();
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
+					if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.DEVILS_SPELL.matches(attacker.getAttackSpell())) {
 						if (attacker instanceof SpellWrapper) {
 							// Spells belong to characters
 							SpellWrapper spell = (SpellWrapper)attacker;
@@ -1826,26 +1827,26 @@ public class BattleModel {
 							if (!killerOrder.contains(attacker.getGameObject())) killerOrder.add(attacker.getGameObject());
 							BattleUtility.handleSpoilsOfWar((RealmComponent)attacker,RealmComponent.getRealmComponent(kill));
 						}
-						hitCausedHarm = ds.harmWasApplied();
+						hitCausedHarm = hitCausedHarm || ds.harmWasApplied();
 						setSpellCasting();
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
+					if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.CURSE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
 						// Imp's Curse
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Curse curse = Curse.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject());
-						hitCausedHarm = curse.harmWasApplied();
+						hitCausedHarm = hitCausedHarm || curse.harmWasApplied();
 						setSpellCasting();
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
+					if ((attacker.isMonster() || attacker.isNative() || transmorphed) && Constants.MESMERIZE.toLowerCase().equals(attacker.getAttackSpell().toLowerCase())) {
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with a Curse along box "+attacker.getAttackCombatBox());
 						Mesmerize mesmerize = Mesmerize.doNow(SpellWrapper.dummyFrame,attacker.getGameObject(),target.getGameObject(),false,0);
-						hitCausedHarm = mesmerize.harmWasApplied();
+						hitCausedHarm = hitCausedHarm || mesmerize.harmWasApplied();
 						setSpellCasting();
 						spellCasted = true;
 					}
-					else if ((attacker.isMonster() || attacker.isNative() || transmorphed) && !magicType.isEmpty()
+					if ((attacker.isMonster() || attacker.isNative() || transmorphed) && !magicType.isEmpty()
 							&& !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) && !((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
 						String spellName = attacker.getAttackSpell();
 						SpellWrapper spell = null;
@@ -1876,7 +1877,7 @@ public class BattleModel {
 										targetCombat.addHitBy(attacker.getGameObject());
 										currentNewWounds = targetCombat.getNewWounds();
 										logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
-										hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
+										hitCausedHarm = hitCausedHarm || target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
 										i++;
 									}
 								}
@@ -1903,13 +1904,13 @@ public class BattleModel {
 							}
 						}
 					}
-					else if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
-						hitCausedHarm = WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
+					if (attacker instanceof SpellWrapper && Constants.WALL_OF_FORCE.matches(magicType)) {
+						hitCausedHarm = hitCausedHarm || WallOfForce.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject());
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was shielded by 'wall of force' by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
 						setSpellCasting();
 					}
-					else if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
-						hitCausedHarm = Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
+					if (attacker instanceof SpellWrapper && Constants.FEAR.matches(magicType)) {
+						hitCausedHarm = hitCausedHarm || Fear.apply(new SpellWrapper(attacker.getGameObject()),target.getGameObject(),battleLocation);
 						logBattleInfo(target.getGameObject().getNameWithNumber()+" was hit with Fear by "+attacker.getName()+" along box "+attacker.getAttackCombatBox());
 						setSpellCasting();
 					}
@@ -1925,6 +1926,10 @@ public class BattleModel {
 						if (spell.freezingTarget()) {
 							targetCombat.freeze();;
 						}
+						if (spell.isSpiderWeb()) {
+							SpiderWebEffect.applySpiderWebEffect((RealmComponent)target,spell.getCaster().getGameObject(),gameData);
+							setSpellCasting();
+						}
 						spellCaster.addHarmApplied(attackerHarm,targetCombat.getGameObject());
 						setSpellCasting();
 					}
@@ -1937,7 +1942,7 @@ public class BattleModel {
 					currentNewWounds = targetCombat.getNewWounds();
 					
 					logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit with "+attackerHarm+" harm along box "+attacker.getAttackCombatBox());
-					hitCausedHarm = target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),attackerHarm,attackOrderPos);
+					hitCausedHarm = hitCausedHarm || target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),attackerHarm,attackOrderPos);
 				}
 				
 				if (hitCausedHarm) {

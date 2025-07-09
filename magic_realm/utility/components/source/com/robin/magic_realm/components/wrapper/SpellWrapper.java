@@ -1208,6 +1208,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return getGameObject().hasThisAttribute(Constants.FREEZING);
 	}
 	
+	public boolean isSpiderWeb() {
+		return getGameObject().hasThisAttribute(Constants.SPIDER_WEB);
+	}
+	
 	public boolean isControlHorseSpell() {
 		return getGameObject().hasThisAttribute(Constants.CONTROL_HORSE);
 	}

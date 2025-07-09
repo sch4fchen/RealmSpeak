@@ -64007,12 +64007,13 @@
         <attribute author="Expansion 1" />
         <attribute learnable="" />
         <attribute body_double="" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2473" name="Spider Web">
       <AttributeBlock blockName="this">
         <attribute spell="III" />
-        <attribute duration="combat" />
+        <attribute duration="attack" />
         <attribute target="individual" />
         <attribute text="Opponent remains tied in combat box for entire evening." />
         <attribute magic_color="gold" />
@@ -64020,6 +64021,9 @@
         <attribute author="Expansion 1" />
         <attribute learnable="" />
         <attribute spider_web="" />
+        <attribute length="18" />
+        <attribute strength="N" />
+        <attribute host_okay="" />
       </AttributeBlock>
     </GameObject>
   </objects>

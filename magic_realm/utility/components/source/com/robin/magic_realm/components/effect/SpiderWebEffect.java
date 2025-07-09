@@ -2,8 +2,8 @@ package com.robin.magic_realm.components.effect;
 
 import java.util.ArrayList;
 
+import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
-import com.robin.game.server.GameClient;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.BattleHorse;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
@@ -23,6 +23,11 @@ public class SpiderWebEffect implements ISpellEffect {
 	@Override
 	public void apply(SpellEffectContext context) {
 		RealmComponent target = context.Target;
+		GameObject caster = context.Caster;
+		GameData gameData = context.getGameData();
+		applySpiderWebEffect(target,caster,gameData);
+	}
+	public static void applySpiderWebEffect(RealmComponent target, GameObject caster, GameData gameData) {
 		CombatWrapper cw = new CombatWrapper(target.getGameObject());
 		ArrayList<Integer> attackBoxes = new ArrayList<>();
 		ArrayList<Integer> defenseBoxes = new ArrayList<>();
@@ -89,14 +94,11 @@ public class SpiderWebEffect implements ISpellEffect {
 			}
 		}
 		
-		HostPrefWrapper hostPref = HostPrefWrapper.findHostPrefs(context.getGameData());
+		HostPrefWrapper hostPref = HostPrefWrapper.findHostPrefs(gameData);
 		
+		int randomBox = RandomNumber.getRandom(3)+1;
 		if (attackBoxes.isEmpty() || (attackBoxes.size()==1 && attackBoxes.get(0)==0)) {
-			int randomBox = RandomNumber.getRandom(3)+1;
 			target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_ATTACK,Integer.toString(randomBox));
-			if (!hostPref.hasPref(Constants.SR_COMBAT)) {
-				target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBox));
-			}
 		}
 		else {
 			for (Integer box : attackBoxes) {
@@ -107,7 +109,10 @@ public class SpiderWebEffect implements ISpellEffect {
 		}
 		if (defenseBoxes.isEmpty() || (defenseBoxes.size()==1 && defenseBoxes.get(0)==0)) {
 			if (hostPref.hasPref(Constants.SR_COMBAT)) {
-				int randomBox = RandomNumber.getRandom(3)+1;
+				int randomBoxDefense = RandomNumber.getRandom(3)+1;
+				target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBoxDefense));
+			}
+			else {
 				target.getGameObject().addThisAttributeListItem(Constants.SPIDER_WEB_BOXES_DEFENSE,Integer.toString(randomBox));
 			}
 		}
@@ -126,15 +131,11 @@ public class SpiderWebEffect implements ISpellEffect {
 		for (String box : target.getGameObject().getThisAttributeList(Constants.SPIDER_WEB_BOXES_DEFENSE)) {
 			sb.append(RealmUtility.getNameForDefensekBox(Integer.parseInt(box))+" ");
 		}
-		RealmLogging.logMessage(
-				context.Caster.getName(),target.getGameObject().getNameWithNumber()+" was hit by Spider Web and can only use the following combat boxes: "+sb);
+		RealmLogging.logMessage(caster.getName(),target.getGameObject().getNameWithNumber()+" was hit by Spider Web and can only use the following combat boxes: "+sb);
 	}
 
 	@Override
 	public void unapply(SpellEffectContext context) {
-		GameObject target = context.Target.getGameObject();
-		target.removeThisAttribute(Constants.SPIDER_WEB_BOXES_ATTACK);
-		target.removeThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE);
 	}
 
 }
