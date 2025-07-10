@@ -1046,7 +1046,7 @@ public class TreasureUtility {
 			}
 			
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-			if (hostPrefs.hasPref(Constants.SR_HORSES_REMOVING_FROM_REALM) && !thing.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+			if (hostPrefs.hasPref(Constants.SR_HORSES_REMOVING_FROM_REALM) && (thing.hasThisAttribute(RealmComponent.HORSE) || thing.hasThisAttribute(RealmComponent.MONSTER_STEED)) && !thing.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
 				ClearingUtility.moveToLocation(thing,null);
 			}
 			if (thing.hasThisAttribute(Constants.REGENERATES_IMMEDIATELY)) {
@@ -1059,6 +1059,10 @@ public class TreasureUtility {
 						(new CharacterWrapper(rc.getGameObject())).setHidden(false);
 					}
 				}
+			}
+			
+			if (hostPrefs.hasPref(Constants.SR_ORDER_STACKS)) {
+				RealmUtility.sortGameObjectsHold(tl.tile.getGameObject(),false);
 			}
 			
 			if (listener!=null) {

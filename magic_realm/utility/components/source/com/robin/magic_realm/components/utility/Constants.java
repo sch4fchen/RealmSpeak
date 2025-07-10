@@ -946,6 +946,7 @@ public class Constants {
 	public static final String SR_BOOTS_ACTIVE_WHILE_RIDING = "BootsActiveWhileRiding";
 	public static final String SR_NO_HORSES_IN_CAVES = "NoHorsesInCaves";
 	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";
+	public static final String SR_ORDER_STACKS = "OrderStacks";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";
