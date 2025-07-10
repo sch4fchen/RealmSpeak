@@ -408,7 +408,7 @@ public class RealmUtility {
 			String reason = killer==null?"Killed":("Killed by "+killer.getName());
 			character.makeDead(reason);
 		}
-		else if (rc.isNative() || rc.isHorse() || rc.isMonster() || rc.isTraveler()) {
+		else if (rc.isNative() || rc.isNativeHorse() || rc.isHorse() || rc.isMonster() || rc.isTraveler()) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
 			// Everything else is generic
 			GameObject dead = rc.getGameObject();

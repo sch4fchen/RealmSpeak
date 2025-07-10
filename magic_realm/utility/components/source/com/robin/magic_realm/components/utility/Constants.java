@@ -429,6 +429,7 @@ public class Constants {
 	public static final String STEED_IN_CAVES_AND_WATER = "steed_in_caves_and_water";
 	public static final String STEED_SURVIVES_CAVES = "steed_survives_caves";
 	public static final String CANNOT_BE_ABANDONED = "cannot_be_abandoned";
+	public static final String REGENERATES_IMMEDIATELY = "regenerates_immediately";
 	public static final String TRANSMORPH_IMMUNITY = "transmorph_immunity";
 	public static final String TRANSMORPH_IMMUNITY_SELF = "transmorph_immunity_self";
 	public static final String MAGIC_IMMUNITY = "magic_immunity";
@@ -943,6 +944,8 @@ public class Constants {
 	public static final String NO_SPELL_LEARNING_RESTRICTIONS = "NoSpellLearningRestrictions";
 	public static final String SR_SELLING = "Selling";
 	public static final String SR_BOOTS_ACTIVE_WHILE_RIDING = "BootsActiveWhileRiding";
+	public static final String SR_NO_HORSES_IN_CAVES = "NoHorsesInCaves";
+	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

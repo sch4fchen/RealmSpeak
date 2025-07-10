@@ -523,7 +523,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		if (dropInventoryButton!=null) {
 			dropInventoryButton.setEnabled(!blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
 		}
-		abandonInventoryButton.setEnabled(!blocked && selInv!=null && selInv.canBeAbandoned() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
+		abandonInventoryButton.setEnabled(!blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
 		activateInventoryButton.setEnabled(!blocked && achar && selInv!=null && selInv.canActivate() && rearrangementAllowed && !transmorphed && !partway);
 		deactivateInventoryButton.setEnabled(!blocked && achar && selInv!=null && selInv.canDeactivate() && rearrangementAllowed && !partway);
 		if (distributeInventoryButton!=null) {

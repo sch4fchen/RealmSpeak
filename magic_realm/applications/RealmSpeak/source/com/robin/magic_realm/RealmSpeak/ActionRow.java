@@ -1021,6 +1021,24 @@ public class ActionRow {
 						}
 					}
 					
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+					if (hostPrefs.hasPref(Constants.SR_NO_HORSES_IN_CAVES) && location.hasClearing() && location.clearing.isCave()) {
+						for (GameObject item : character.getInventory()) {
+							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
+								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
+								if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+									TreasureUtility.doDrop(character,item,gameHandler.getUpdateFrameListener(),false);
+								}
+								if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+									SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+									for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
+										if (spell.isControlHorseSpell()) spell.expireSpell();
+									}
+								}
+							}
+						}
+					}
+					
 					// Here is the ACTUAL MOVE
 					character.moveToLocation(gameHandler.getMainFrame(),location);
 					if (location.hasClearing() && location.clearing.isEdge()) {
@@ -1042,13 +1060,14 @@ public class ActionRow {
 						character.getGameObject().removeThisAttribute(Constants.MAGIC_PATH_EFFECT);
 					}
 					
-					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-					if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES) && location.hasClearing() && location.clearing.isCave()) {
+					if ((hostPrefs.hasPref(Constants.FE_KILLER_CAVES)) && location.hasClearing() && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
 							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 								if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
-									item.detach();
+									if (hostPrefs.hasPref(Constants.FE_KILLER_CAVES)) {
+										RealmUtility.makeDead(RealmComponent.getRealmComponent(item));
+									}
 								}
 								if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
 									SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());

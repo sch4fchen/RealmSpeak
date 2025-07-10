@@ -1045,6 +1045,14 @@ public class TreasureUtility {
 				tl.clearing.add(thing,null); // Things dropped when flying are always lost
 			}
 			
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
+			if (hostPrefs.hasPref(Constants.SR_HORSES_REMOVING_FROM_REALM) && !thing.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+				ClearingUtility.moveToLocation(thing,null);
+			}
+			if (thing.hasThisAttribute(Constants.REGENERATES_IMMEDIATELY)) {
+				SetupCardUtility.resetDenizen(thing);
+			}
+			
 			if (thing.hasThisAttribute(Constants.NO_HIDE)) {
 				for (RealmComponent rc:tl.clearing.getClearingComponents()) {
 					if (rc.isCharacter()) {

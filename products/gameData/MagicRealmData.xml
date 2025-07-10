@@ -36797,6 +36797,7 @@
         <attribute skeleton="" />
         <attribute transmorph_immunity="" />
         <attribute cannot_be_abandoned="" />
+        <attribute regenerates_immediately="" />
       </AttributeBlock>
       <AttributeBlock blockName="trot">
         <attribute move_speed="6" />
@@ -39169,6 +39170,7 @@
         <attribute icon_size="1.1" />
         <attribute wraith="" />
         <attribute box_num="1" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39200,6 +39202,7 @@
         <attribute icon_size="1.1" />
         <attribute wraith="" />
         <attribute box_num="2" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39231,6 +39234,7 @@
         <attribute icon_size="1.1" />
         <attribute wraith="" />
         <attribute box_num="3" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
@@ -39262,6 +39266,7 @@
         <attribute icon_size="1.1" />
         <attribute wraith="" />
         <attribute box_num="4" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="3" />
