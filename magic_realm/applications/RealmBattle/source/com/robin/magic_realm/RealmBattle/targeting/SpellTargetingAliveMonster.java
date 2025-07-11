@@ -17,7 +17,7 @@ public class SpellTargetingAliveMonster extends SpellTargetingSingle {
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		ArrayList<RealmComponent> allBattleParticipants = combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true);
 		for (RealmComponent rc : allBattleParticipants) {
-			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.getGameObject().hasThisAttribute(Constants.UNDEAD) && !rc.hasMagicColorImmunity(spell)) {
+			if (rc.isMonster() && !rc.hasMagicProtection() && !rc.getGameObject().hasThisAttribute(Constants.UNDEAD_SUMMONED) && !rc.hasMagicColorImmunity(spell)) {
 				gameObjects.add(rc.getGameObject());
 			}
 		}

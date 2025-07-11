@@ -1230,6 +1230,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="ghost" />
         <attribute icon_size_alt="1.2" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -1263,6 +1264,7 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="ghost" />
         <attribute icon_size_alt="1.2" />
+        <attribute undead="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />

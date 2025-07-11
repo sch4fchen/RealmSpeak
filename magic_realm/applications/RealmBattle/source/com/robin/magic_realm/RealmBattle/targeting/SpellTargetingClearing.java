@@ -120,7 +120,7 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 		if (clearingTargetType.contains("undead")) {
 			ArrayList<RealmComponent> allBattleParticipants = battleModel.getAllBattleParticipants(true); // clearing affects everything, including hidden!!!
 			for (RealmComponent rc : allBattleParticipants) {
-				if (rc.getGameObject().hasThisAttribute(Constants.UNDEAD) && !gameObjects.contains(rc.getGameObject())) {
+				if ((rc.getGameObject().hasThisAttribute(Constants.UNDEAD) || rc.getGameObject().hasThisAttribute(Constants.UNDEAD_SUMMONED)) && !gameObjects.contains(rc.getGameObject())) {
 					gameObjects.add(rc.getGameObject());
 				}
 			}

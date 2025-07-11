@@ -55,6 +55,7 @@ public class RaiseDead extends MonsterTable {
 			for (int i=0;i<count;i++) {
 				GameObject undead = createUndead(getMonsterCreator(),data);
 				undead.setThisAttribute(Constants.UNDEAD);
+				undead.setThisAttribute(Constants.UNDEAD_SUMMONED);
 				if (hire) {
 					character.addHireling(undead);
 					CombatWrapper combat = new CombatWrapper(undead);
@@ -106,6 +107,7 @@ public class RaiseDead extends MonsterTable {
 		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units");
 		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
+		go.setThisAttribute(Constants.UNDEAD_SUMMONED);
 		return go;
 	}
 	public static GameObject createSkeletonArcher(MonsterCreator monsterCreator,GameData data) {
@@ -118,6 +120,7 @@ public class RaiseDead extends MonsterTable {
 		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
 		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
+		go.setThisAttribute(Constants.UNDEAD_SUMMONED);
 		return go;
 	}
 	public static GameObject createSkeletonSwordsman(MonsterCreator monsterCreator,GameData data) {
@@ -130,6 +133,7 @@ public class RaiseDead extends MonsterTable {
 		go.setThisAttribute(Constants.ICON_FOLDER+Constants.ALTERNATIVE,"wesnoth/units/addons");
 		go.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		go.setThisAttribute(Constants.UNDEAD);
+		go.setThisAttribute(Constants.UNDEAD_SUMMONED);
 		return go;
 	}
 	public static GameObject createZombie(MonsterCreator monsterCreator,GameData data,int r) {
@@ -138,6 +142,7 @@ public class RaiseDead extends MonsterTable {
 		monsterCreator.setupGameObject(go,"Zombie","zombie"+z,"M",false);
 		go.setThisAttribute("zombie");
 		go.setThisAttribute(Constants.UNDEAD);
+		go.setThisAttribute(Constants.UNDEAD_SUMMONED);
 		switch(r) {
 			case 0:
 				// M5/5 and H6/5

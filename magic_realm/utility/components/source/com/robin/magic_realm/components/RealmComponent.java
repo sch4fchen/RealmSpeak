@@ -1139,7 +1139,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 					|| rc.getGameObject().hasThisAttribute(Constants.SUCCUBUS)
 					|| rc.getGameObject().hasThisAttribute(Constants.VAMPIRE)
 					|| rc.getGameObject().hasThisAttribute(Constants.DEVIL)
-					|| rc.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
+					|| rc.getGameObject().hasThisAttribute(Constants.UNDEAD_SUMMONED)) {
 				return true;
 			}
 		}

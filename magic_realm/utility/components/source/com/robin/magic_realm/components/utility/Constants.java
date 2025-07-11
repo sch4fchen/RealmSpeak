@@ -476,12 +476,16 @@ public class Constants {
 	public static final String SKELETON = "skeleton";
 	public static final String WRAITH = "wraith";
 	public static final String UNDEAD = "undead";
+	public static final String UNDEAD_SUMMONED = "undead_summoned";
 	public static final String COLOSSUS = "colossus";
 	public static final String TITAN = "titan";	
 	public static final String MINOTAUR = "minotaur";
 	public static final String GARGOYLE = "gargoyle";
 	public static final String VIPER = "viper";
 	public static final String SERPENT = "serpent";
+	public enum MONSTER_TYPES {
+		DRAGON, DRAKE, WYRM, DEMON, DEVIL, IMP, ELEMENTAY, ANOMALY, GOLEM, ORC, GOBLIN, OGRE, TROLL, GIANT, FROST_GIANT, SPIDER, OCTOPUS, SCORPION, BAT, WOLF, BEAST, VAMPIRE, SUCCUBUS, GHOST, GHOUL, ZOMBIE, SKELETON, WRAITH, COLOSSUS, TITAN, MINOTAUR, GARGYLE, VIPER, SERPENT
+	}
 	
 	public static final String GIANT_CLUB = "giant_club";
 	public static final String GIANT_AXE = "giant_axe";

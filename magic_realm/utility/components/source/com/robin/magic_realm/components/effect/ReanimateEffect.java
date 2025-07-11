@@ -43,11 +43,10 @@ public class ReanimateEffect implements ISpellEffect {
 			monster.setThisAttribute(Constants.ICON_SIZE+Constants.ALTERNATIVE,"0.9");
 		}
 		monster.setThisAttribute(Constants.UNDEAD);
-		if (context.Target.getGameObject().hasThisAttribute("monster") ) {
-			monster.setThisAttribute("monster");
-		}
+		monster.setThisAttribute(Constants.UNDEAD_SUMMONED);
+		monster.setThisAttribute("monster");
 		if (context.Target.getGameObject().hasThisAttribute("native") ) {
-			monster.setThisAttribute("native");
+			monster.removeThisAttribute("native");
 		}
 		monster.setThisAttribute(Constants.SPOILS_NONE);
 		for (GameObject held : context.Target.getGameObject().getHold()) {

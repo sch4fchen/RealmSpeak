@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.Constants.MONSTER_TYPES;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -15,7 +16,7 @@ public class AnimateEffect implements ISpellEffect {
 		go.setName(Constants.UNDEAD_PREFIX+go.getName());
 		go.removeThisAttribute(Constants.DEAD);
 		go.removeThisAttribute(Constants.DEAD_PERMANENT);
-		go.setThisAttribute(Constants.UNDEAD);
+		go.setThisAttribute(Constants.UNDEAD_SUMMONED);
 		go.copyAttributeBlock("light","light_an");
 		go.copyAttributeBlock("dark","dark_an");
 		go.setAttribute("light","chit_color","white");
@@ -35,6 +36,13 @@ public class AnimateEffect implements ISpellEffect {
 			weapon.setAttribute("dark","attack_speed",weapon.getAttributeInt("dark","attack_speed")+1);
 		}
 		
+		for (MONSTER_TYPES monsterType : Constants.MONSTER_TYPES.values()) {
+			if (go.hasThisAttribute(monsterType.toString())) {
+				go.addThisAttributeListItem("monster_type_an", monsterType.toString());
+				go.removeThisAttribute(monsterType.toString());
+			}
+		}
+		
 		CharacterWrapper casterChar = new CharacterWrapper(context.Caster);
 		casterChar.addHireling(go);
 		context.Caster.add(go); // so that you don't have to assign as a follower right away
@@ -47,9 +55,13 @@ public class AnimateEffect implements ISpellEffect {
 		GameObject caster = context.Spell.getCaster().getGameObject();
 		
 		GameObject go = context.Target.getGameObject();
-		if (go.hasThisAttribute(Constants.UNDEAD)) { // so it doesn't get stuck in an infinite loop!
+		if (go.hasThisAttribute(Constants.UNDEAD_SUMMONED)) { // so it doesn't get stuck in an infinite loop!
 			go.setName(go.getName().substring(Constants.UNDEAD_PREFIX.length()));
-			go.removeThisAttribute(Constants.UNDEAD);
+			go.removeThisAttribute(Constants.UNDEAD_SUMMONED);
+			for (String monsterType : go.getThisAttributeList("monster_type_an")) {
+				go.setThisAttribute(monsterType);
+			}
+			go.removeThisAttribute("monster_type_an");
 			go.copyAttributeBlock("light_an","light");
 			go.copyAttributeBlock("dark_an","dark");
 			go.removeAttributeBlock("light_an");

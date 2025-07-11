@@ -662,7 +662,8 @@ public class TreasureUtility {
 				|| attacker.getGameObject().hasThisAttribute(Constants.SUCCUBUS)
 				|| attacker.getGameObject().hasThisAttribute(Constants.VAMPIRE)
 				|| attacker.getGameObject().hasThisAttribute(Constants.DEVIL)
-				|| attacker.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
+				|| attacker.getGameObject().hasThisAttribute(Constants.UNDEAD)
+				|| attacker.getGameObject().hasThisAttribute(Constants.UNDEAD_SUMMONED)) {
 					if (attacker.getTarget()!=null && attacker.getTarget().getGameObject() == character.getGameObject()) {
 						attacker.clearTarget();
 						characterCw.removeAttacker(attacker.getGameObject());
