@@ -381,7 +381,7 @@ public class CenteredMapView extends JComponent {
 		Collection<GameObject> tileObjects = RealmObjectMaster.getRealmObjectMaster(gameData).getTileObjects();
 		
 		// Add all the tiles
-		String anchorTileName = "Borderland";
+		String anchorTileName = this.anchorTileName;
 		int emptyCount = 0;
 		ArrayList<Point> points = new ArrayList<>();
 		for (GameObject obj : tileObjects) {
@@ -648,7 +648,7 @@ public class CenteredMapView extends JComponent {
 		repaint();
 	}
 	public void markAllMapEdges(boolean setMark) {
-		String anchorTileName = "Borderland";
+		String anchorTileName = this.anchorTileName;
 		ArrayList<ClearingDetail> allMapEdges = new ArrayList<>();
 		for (TileComponent tile : mapGrid.values()) {
 			allMapEdges.addAll(tile.getMapEdges());

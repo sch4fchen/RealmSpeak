@@ -3839,8 +3839,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * Removes an action follower from the character.
 	 * 
 	 * @param follower			The Follower to remove
-	 * @param monsterDie		The current monsterDie.  This is needed to summon monsters
-	 * 							appropriately for the abandoned follower.
+	 * @param monsterDie		The current monsterDie.  This is needed to summon monsters appropriately for the abandoned follower.
 	 */
 	public void removeActionFollower(CharacterWrapper follower,DieRoller monsterDieRoller,DieRoller nativeDieRoller) {
 		ArrayList<String> list = getList(ACTION_FOLLOWER);
@@ -3849,9 +3848,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			int index = newlist.indexOf(follower.getGameObject().getStringId());
 			if (index>=0) {
 				newlist.remove(index);
-				if (index==0) {
-					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-					
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+				boolean summoningOverwrite = false;
+				if (hostPrefs.hasPref(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS)) {
+					summoningOverwrite = true;
+				}
+				if (index==0 && !hostPrefs.hasPref(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS)) {
 					// "first" follower is removed, so we need to update the NO_SUMMON to the next follower, if there is any
 					if (newlist.size()>0) {
 						String id = newlist.iterator().next();
@@ -3859,7 +3861,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 						CharacterWrapper nextFollower = new CharacterWrapper(go);
 						nextFollower.setNoSummon(true);
 					}
-					
+				}
+				if (index==0 || summoningOverwrite) {
 					// Summon monsters now.
 					if (monsterDieRoller!=null) { // Might be null if sleep was the cause for stopping following
 						SetupCardUtility.summonMonsters(hostPrefs,new ArrayList<GameObject>(),follower,monsterDieRoller,nativeDieRoller);

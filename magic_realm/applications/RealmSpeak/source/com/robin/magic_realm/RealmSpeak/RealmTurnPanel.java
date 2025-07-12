@@ -1127,7 +1127,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			DieRoller monsterDieRoller = game.getMonsterDie();
 			DieRoller nativeDieRoller = game.getNativeDie();
 			ArrayList<GameObject> summoned = new ArrayList<>();
-			SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller,nativeDieRoller);
+			if (!hostPrefs.hasPref(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS) || getCharacter().getCharacterImFollowing()==null || getCharacter().isStopFollowing()) {
+				SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller,nativeDieRoller);
+			}
 			
 			if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
 				if (!summoned.isEmpty()) {
