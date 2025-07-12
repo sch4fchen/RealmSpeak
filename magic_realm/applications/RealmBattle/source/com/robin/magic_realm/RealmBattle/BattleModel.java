@@ -476,7 +476,7 @@ public class BattleModel {
 						// its obvious, so do it here
 						RealmComponent soleAttacker = attackers.iterator().next();
 						hireling.setTarget(soleAttacker);
-						boolean gotUnhidden = CombatFrame.makeTarget(null,null,hireling,soleAttacker);
+						boolean gotUnhidden = CombatFrame.makeTarget(CombatFrame.getSingleton(),null,hireling,soleAttacker);
 						if (gotUnhidden) {
 							setGotUnhidden();
 						}
@@ -2245,11 +2245,11 @@ public class BattleModel {
 						if (missileType.trim().length()==0) {
 							missileType = "missile";
 						}
-						roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller(missileType);
+						roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createRoller(missileType);
 					}
 					else {
 						SpellWrapper spell = new SpellWrapper(combat.getCastSpell());
-						roller = DieRollBuilder.getDieRollBuilder(null,character,spell.getRedDieLock()).createRoller("magicmissil"); // the 'e' is left off intentionally here, so that "indexOf" doesn't find the word "missile"
+						roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character,spell.getRedDieLock()).createRoller("magicmissil"); // the 'e' is left off intentionally here, so that "indexOf" doesn't find the word "missile"
 					}
 				}
 				else {
@@ -2333,7 +2333,7 @@ public class BattleModel {
 				RealmComponent rc = RealmComponent.getRealmComponent(attacker.getGameObject());
 				if (rc.isCharacter()) {
 					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
-					roller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("fumble");
+					roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createRoller("fumble");
 				}
 				else {
 					// Monsters and Natives just get two dice
@@ -2763,7 +2763,7 @@ public class BattleModel {
 						}
 						
 						if (canHide) {
-							DieRoller roller = DieRollBuilder.getDieRollBuilder(null,character).createHideRoller();
+							DieRoller roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createHideRoller();
 							CombatFrame.broadcastMessage(character.getGameObject().getName(),"World Fades: "+roller.getDescription());
 							if (roller.getHighDieResult()<6) {
 								character.setHidden(true);
