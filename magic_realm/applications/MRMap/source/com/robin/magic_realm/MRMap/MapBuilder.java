@@ -113,7 +113,7 @@ public class MapBuilder {
 				
 				// Add it to the grid
 				Tile tile = tmp.getTile();
-				if (tile.getClearingCount()==6) {
+				if (tile.getClearingCount()==6 &&  !tile.hasRiverPaths(0)) {
 					/*
 					 * This is a TOTAL hack, but should improve the speed of map building...
 					 * 
@@ -124,6 +124,8 @@ public class MapBuilder {
 					 * Note that by renaming the Tile object, the GameObject is unaffected, so there is no harm.  Might be
 					 * confusing if someone were to try to debug this code (How many friggen Borderlands are there!!) but
 					 * I'm guessing that will never happen.  Famous last words....?
+					 * 
+					 * This hack didn't work for at least one Super Realm River tile
 					 */
 					tile.changeName(anchor.getGameObject().getName());
 				}
