@@ -96,7 +96,7 @@ public class SummonDemon extends MonsterTable {
 				MonsterCreator.setupSide(demon,"dark","M",0,4,0,4,"darkgray");
 				demon.setThisAttribute(Constants.GHOUL);
 				demon.setThisAttribute(Constants.UNDEAD);
-				undead.setThisAttribute(Constants.UNDEAD_SUMMONED);
+				demon.setThisAttribute(Constants.UNDEAD_SUMMONED);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 			case Zombie:
@@ -105,7 +105,7 @@ public class SummonDemon extends MonsterTable {
 				MonsterCreator.setupSide(demon,"dark","L",0,5,0,5,"darkgray");
 				demon.setThisAttribute(Constants.ZOMBIE);
 				demon.setThisAttribute(Constants.UNDEAD);
-				undead.setThisAttribute(Constants.UNDEAD_SUMMONED);
+				demon.setThisAttribute(Constants.UNDEAD_SUMMONED);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 			case Ghost:
@@ -114,7 +114,7 @@ public class SummonDemon extends MonsterTable {
 				MonsterCreator.setupSide(demon,"dark","M",0,2,0,2,"darkgray");
 				demon.setThisAttribute(Constants.GHOST);
 				demon.setThisAttribute(Constants.UNDEAD);
-				undead.setThisAttribute(Constants.UNDEAD_SUMMONED);
+				demon.setThisAttribute(Constants.UNDEAD_SUMMONED);
 				demon.setThisAttribute(Constants.ICON_SIZE,"0.9");
 				break;
 		}
