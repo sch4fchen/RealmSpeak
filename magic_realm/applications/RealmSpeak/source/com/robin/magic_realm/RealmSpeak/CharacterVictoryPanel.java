@@ -60,7 +60,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		for (int i=1;i<victoryTable.getColumnCount();i++) {
 			victoryTable.getColumnModel().getColumn(i).setMaxWidth(50);
 		}
-		victoryTable.setDefaultRenderer(String.class,new ScoreCellRenderer(getHostPrefs().hasPref(Constants.QST_QUEST_CARDS)));
+		victoryTable.setDefaultRenderer(String.class,new ScoreCellRenderer((getHostPrefs().hasPref(Constants.QST_QUEST_CARDS) || getHostPrefs().hasPref(Constants.QST_SR_QUESTS))));
 		victoryTable.setCellSelectionEnabled(true);
 		victoryTable.getTableHeader().setDefaultRenderer(new ScoreHeaderRenderer());
 		JScrollPane sp1 = new JScrollPane(victoryTable);
@@ -363,7 +363,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 	
 	private ArrayList<VictoryTableRow> tableRows;
 	private void initializeTableRows(HostPrefWrapper hostPrefs) {
-		boolean showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR);
+		boolean showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS);
 		tableRows = new ArrayList<>();
 		if (showQuestPoints) {
 			tableRows.add(new ScoreRow(hostPrefs,"Quest Pts",VictoryRowType.QuestPoints) {
@@ -410,7 +410,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		private HostPrefWrapper hostPrefs;
 		public VictoryTableModel(HostPrefWrapper hostPrefs) {
 			this.hostPrefs = hostPrefs;
-			this.showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS);
+			this.showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS);
 		}
 		public HostPrefWrapper getHostPrefs() {
 			return hostPrefs;
@@ -552,11 +552,10 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		}
 		public boolean usesColumn(int col) {
 			if (col==COL_EARNED) {
-				if (rowType==VictoryRowType.QuestPoints) return false;
 				return (!isRestrictAssigned() || getScore().getAssignedVictoryPoints()>0);
 			}
 			if (rowType!=VictoryRowType.QuestPoints
-					&& hostPrefs.hasPref(Constants.QST_QUEST_CARDS)
+					&& (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS))
 					&& (col==COL_SCORE || col==COL_BASIC || col==COL_BONUS || col==COL_FINAL)) {
 				return false;
 			}
