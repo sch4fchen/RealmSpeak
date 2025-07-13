@@ -3361,9 +3361,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public Score getUsableSpellScore() {
 		int count = 0;
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		ArrayList<GameObject> recSpells = getRecordedSpells(getGameObject().getGameData());
 		for (GameObject go:recSpells) {
-			if (canLearn(go,true,true)) { // only include spells that are still learnable, in case you learned a spell with an artifact (enhanced magic rules), and that artifact is gone!
+			if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
+				if (canLearn(go,true,true,true)) {
+					count++;
+				}
+			}
+			else if (canLearn(go,true,true)) { // only include spells that are still learnable, in case you learned a spell with an artifact (enhanced magic rules), and that artifact is gone!
 				count++;
 			}
 		}
@@ -5063,13 +5069,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return canLearn(spell,ignoreDuplicates,false);
 	}
 	private boolean canLearn(GameObject spell,boolean ignoreDuplicates,boolean checkForRings) {
+		return canLearn(spell,ignoreDuplicates,checkForRings,false);
+	}
+	private boolean canLearn(GameObject spell,boolean ignoreDuplicates,boolean checkForRings,boolean alwaysCheckForMagicType) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 		// Check to see if character has a chit to support learning the new spell
 		int number = RealmUtility.convertMod(spell.getThisAttribute("spell"));
 		
 		// Examine all chits for a match (active, inactive, or enchanted)
 		boolean hasType = false;
-		if (hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
+		if (!alwaysCheckForMagicType && hostPrefs.hasPref(Constants.NO_SPELL_LEARNING_RESTRICTIONS)) {
 			hasType = true;
 		}
 		if (!hasType) {
