@@ -399,9 +399,8 @@ public class TreasureUtility {
 					String id = thing.getThisAttribute(Constants.SPELL_ID);
 					GameObject go = character.getGameObject().getGameData().getGameObject(Long.valueOf(id));
 					SpellWrapper spell = new SpellWrapper(go);
+					SpellMasterWrapper.getSpellMaster(character.getGameObject().getGameData()).addSpell(spell);
 					spell.unaffectTargets();
-					SpellMasterWrapper.getSpellMaster(go.getGameData()).addSpell(spell);
-
 					character.applyPhaseChit(parentFrame, thing, spell);
 				}
 				else if (thing.hasThisAttribute(Constants.POTION)) {
