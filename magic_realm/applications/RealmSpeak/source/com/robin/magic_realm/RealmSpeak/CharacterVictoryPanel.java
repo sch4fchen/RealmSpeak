@@ -60,7 +60,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		for (int i=1;i<victoryTable.getColumnCount();i++) {
 			victoryTable.getColumnModel().getColumn(i).setMaxWidth(50);
 		}
-		victoryTable.setDefaultRenderer(String.class,new ScoreCellRenderer((getHostPrefs().hasPref(Constants.QST_QUEST_CARDS) || getHostPrefs().hasPref(Constants.QST_SR_QUESTS))));
+		victoryTable.setDefaultRenderer(String.class,new ScoreCellRenderer());
 		victoryTable.setCellSelectionEnabled(true);
 		victoryTable.getTableHeader().setDefaultRenderer(new ScoreHeaderRenderer());
 		JScrollPane sp1 = new JScrollPane(victoryTable);
@@ -406,11 +406,11 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		protected String[] columnNameQuestPoints = {
 			"Category","Points"," ","Need","Recrd","Own","Total","Earned"
 		};
-		private boolean showQuestPoints;
+		private boolean usesBookOfQuests;
 		private HostPrefWrapper hostPrefs;
 		public VictoryTableModel(HostPrefWrapper hostPrefs) {
 			this.hostPrefs = hostPrefs;
-			this.showQuestPoints = hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS);
+			this.usesBookOfQuests = hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS);
 		}
 		public HostPrefWrapper getHostPrefs() {
 			return hostPrefs;
@@ -419,10 +419,10 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			return tableRows==null?0:tableRows.size();
 		}
 		public int getColumnCount() {
-			return showQuestPoints?columnNameQuestPoints.length:columnNameNormal.length;
+			return usesBookOfQuests?columnNameQuestPoints.length:columnNameNormal.length;
 		}
 		public String getColumnName(int column) {
-			return showQuestPoints?columnNameQuestPoints[column]:columnNameNormal[column];
+			return usesBookOfQuests?columnNameQuestPoints[column]:columnNameNormal[column];
 		}
 		public Class getColumnClass(int column) {
 			return String.class;
@@ -460,7 +460,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		private final Border SELECTED_BORDER = BorderFactory.createLineBorder(Color.blue,2);
 		private final Border CALC_BORDER = BorderFactory.createLineBorder(Color.green,2);
 
-		public ScoreCellRenderer(boolean showQuestPoints) {
+		public ScoreCellRenderer() {
 			setOpaque(true);
 		}
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSel, boolean hasFocus, int row, int column) {
@@ -554,8 +554,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 			if (col==COL_EARNED) {
 				return (!isRestrictAssigned() || getScore().getAssignedVictoryPoints()>0);
 			}
-			if (rowType!=VictoryRowType.QuestPoints
-					&& (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS))
+			if (rowType!=VictoryRowType.QuestPoints && hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)
 					&& (col==COL_SCORE || col==COL_BASIC || col==COL_BONUS || col==COL_FINAL)) {
 				return false;
 			}
