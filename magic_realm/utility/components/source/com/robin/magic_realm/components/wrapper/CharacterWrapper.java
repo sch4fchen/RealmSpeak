@@ -8061,6 +8061,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 							spellEffect.unapply(context);
 						}
 					}
+					spellWrapper.expireSpell();
 				}
 			}
 			getGameObject().removeThisAttribute(PHASE_CHITS);
