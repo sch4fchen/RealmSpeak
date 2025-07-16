@@ -445,7 +445,7 @@ public class RealmUtility {
 					GamePool pool = new GamePool(rc.getGameObject().getGameData().getGameObjects());
 					ArrayList<GameObject> boxes = pool.find("summon_n="+nativeName.toLowerCase());
 					for (GameObject box : boxes) {
-						ClearingUtility.dumpTravelersToTile(rcLocation.tile.getGameObject(),box,rcLocation.clearing.getNum());
+						ClearingUtility.dumpTravelersToTileFaceUp(rcLocation.tile.getGameObject(),box,rcLocation.clearing.getNum());
 					}
 				}
 			}

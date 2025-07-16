@@ -96,21 +96,21 @@ public class ClearingUtility {
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,false,false);
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,false,false,false);
 	}
 
 	/**
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,testKey,false,false);
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,testKey,false,false,false);
 	}
 		
 	/**
 	 * @return		The objects that were dumped
 	 */
 	public static ArrayList<GameObject> dumpGoldSpecialsToTile(GameObject tile,GameObject gameObject,int clearing) {
-		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,false);
+		return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,false,false);
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public class ClearingUtility {
 	public static ArrayList<GameObject> dumpTravelersToTile(GameObject tile,GameObject gameObject,int clearing) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
 		if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
-			return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,true);
+			return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,true,false);
 		}
 		return new ArrayList<>();
 	}
@@ -127,7 +127,18 @@ public class ClearingUtility {
 	/**
 	 * @return		The objects that were dumped
 	 */
-	private static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial, boolean onlyTravelers) {
+	public static ArrayList<GameObject> dumpTravelersToTileFaceUp(GameObject tile,GameObject gameObject,int clearing) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
+		if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
+			return ClearingUtility.dumpHoldToTile(tile,gameObject,clearing,null,true,true,true);
+		}
+		return new ArrayList<>();
+	}
+	
+	/**
+	 * @return		The objects that were dumped
+	 */
+	private static ArrayList<GameObject> dumpHoldToTile(GameObject tile,GameObject gameObject,int clearing,String testKey,boolean onlyGoldSpecial, boolean onlyTravelers, boolean faceUp) {
 		if (clearing==-1) {
 			clearing = recommendedClearing(tile);
 		}
@@ -148,7 +159,7 @@ public class ClearingUtility {
 					tile.add(go);
 					added.add(go);
 					if (go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
-						if (!hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS)) {
+						if (!hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) || faceUp) {
 							go.removeThisAttribute(Constants.DRAW_BACKSIDE);
 						}
 					}
