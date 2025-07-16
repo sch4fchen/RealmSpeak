@@ -68,7 +68,7 @@ public class AbilityEditor extends GenericEditor {
 		editPanel.apply();
 	}
 	private void initComponents() {
-		setSize(800,800);
+		setSize(800,1000);
 		setLayout(new BorderLayout());
 		editPanel = null;
 		JDialog frame = new JDialog();

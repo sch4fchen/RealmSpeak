@@ -59235,9 +59235,8 @@
         <attribute magic_color="white" />
         <attribute host_okay="" />
         <attribute learnable="" />
-        <attribute super_realm="" />
-        <attribute super_realm_spell="" />
         <attribute spell_extra_action="R" />
+        <attribute rw_expansion_1="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2210" name="Barkskin">
@@ -64032,6 +64031,19 @@
         <attribute length="18" />
         <attribute strength="N" />
         <attribute host_okay="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2475" name="Redirect">
+      <AttributeBlock blockName="this">
+        <attribute spell="I" />
+        <attribute duration="instant" />
+        <attribute target="individuals or items" />
+        <attribute text="Target is no longer bewitched by a spell of spellcaster's choice. The spell now bewitches the second target." />
+        <attribute magic_color="purple" />
+        <attribute host_okay="" />
+        <attribute learnable="" />
+        <attribute super_realm="" />
+        <attribute redirect="" />
       </AttributeBlock>
     </GameObject>
   </objects>
