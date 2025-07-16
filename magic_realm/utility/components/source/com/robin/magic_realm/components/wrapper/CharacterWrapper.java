@@ -6809,8 +6809,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Remove player attributes for hired native leaders
 		RealmComponent rc = RealmComponent.getRealmComponent(getGameObject());
 		if (rc.isNativeLeader()) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-			this.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
+			this.clearPlayerAttributes(false);
 		}
 			
 		Collection<RealmComponent> beforeCc = current.clearing.getClearingComponents();
