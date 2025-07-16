@@ -64037,7 +64037,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="I" />
         <attribute duration="instant" />
-        <attribute target="individuals or items" />
+        <attribute target="bewitched" />
         <attribute text="Target is no longer bewitched by a spell of spellcaster's choice. The spell now bewitches the second target." />
         <attribute magic_color="purple" />
         <attribute host_okay="" />

@@ -59,7 +59,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 		if (combatWeapon.wasThrown()) return 12;
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
-			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
 				return Integer.parseInt(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_LENGTH));
 			}
 		}
@@ -84,7 +85,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public Speed getSpeed() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SPEED)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
-			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
 				return new Speed(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SPEED),0);
 			}
 		}
@@ -120,7 +122,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public Strength getStrength() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
-			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
 				return new Strength(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH));
 			}
 		}
@@ -152,7 +155,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 	public int getSharpness() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
 			RealmComponent wielder = RealmComponent.getRealmComponent(getWielder().getGameObject());
-			if (!wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS) && !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS)) {
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
 				return Integer.parseInt(getGameObject().getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
 			}
 		}

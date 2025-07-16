@@ -236,7 +236,14 @@ public abstract class SpellTargeting {
 		else if ("owner".equals(targetType)) {
 			targeting = new SpellTargetingOwner(combatFrame,spell);
 		}
+		else if ("bewitched".equals(targetType) || "bewitched target".equals(targetType)) {
+			targeting = new SpellTargetingBewitched(combatFrame,spell);
+		}
 		
 		return targeting;
+	}
+	
+	public ArrayList<GameObject> getPossibleTargets() {
+		return gameObjects;
 	}
 }

@@ -88,6 +88,12 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	public boolean isAbsorbEssence() {
 		return getName().toLowerCase().matches("absorb essence");
 	}
+	public boolean isCurse() {
+		return getName().toLowerCase().matches("curse");
+	}
+	public boolean isMesmerize() {
+		return getName().toLowerCase().matches("mesmerize");
+	}
 	public boolean isBenevolent() {
 		return getGameObject().hasThisAttribute(Constants.BENEVOLENT);
 	}
