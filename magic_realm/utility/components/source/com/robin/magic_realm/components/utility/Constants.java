@@ -864,6 +864,7 @@ public class Constants {
 	public static final String FE_AMBUSH_END_OF_COMBATROUND = "AmbushRollEndOfCombatround";
 	public static final String FE_PONY_NO_MOUNTAINS = "PonyNoMountains";
 	public static final String FE_GLORY = "Glory";
+	public static final String FE_HIRED_CAPTAINS = "HiredCaptains";
 	public static final String FE_NO_DUPLICATE_SPELL_RECORDING = "NoDuplicateSpellRecording";
 	
 	// My House Rules

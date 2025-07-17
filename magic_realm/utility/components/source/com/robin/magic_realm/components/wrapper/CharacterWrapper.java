@@ -3408,6 +3408,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.FE_HIRED_CAPTAINS)) {
+			for (RealmComponent hireling : getAllHirelings()) {
+				if (hireling.isNativeLeader()) {
+					recordedFame += (new CharacterWrapper(hireling.getGameObject())).getRoundedFame();
+				}
+			}
+		}
+		
 		return new Score(recordedFame,treasureFame,10,getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.V_FAME),list);
 	}
 	public String getNotorietyString() {
@@ -3430,6 +3439,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 				treasureNot += item.getThisInt("notoriety");
 			}
 		}
+		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.FE_HIRED_CAPTAINS)) {
+			for (RealmComponent hireling : getAllHirelings()) {
+				if (hireling.isNativeLeader()) {
+					notoriety += (new CharacterWrapper(hireling.getGameObject())).getRoundedNotoriety();
+				}
+			}
+		}
+		
 		return new Score(notoriety,treasureNot,20,getGameObject().getInt(CharacterWrapper.VICTORY_REQ_BLOCK,CharacterWrapper.V_NOTORIETY),list);
 	}
 	public String getGoldString() {
@@ -3810,8 +3829,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void addNotoriety(double val) {
 		if (!isCharacter()) {
-			getHiringCharacter().addNotoriety(val);
-			return;
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			if (!hostPrefs.hasPref(Constants.FE_HIRED_CAPTAINS)) {
+				getHiringCharacter().addNotoriety(val);
+				return;
+			}
 		}
 		if (val!=0) { // no point adding zero!
 			setNotoriety(getNotoriety()+val);
@@ -3822,8 +3844,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void addFame(double val, boolean checkCurse) {
 		if (!isCharacter()) {
-			getHiringCharacter().addFame(val);
-			return;
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			if (!hostPrefs.hasPref(Constants.FE_HIRED_CAPTAINS)) {
+				getHiringCharacter().addFame(val);
+				return;
+			}
 		}
 		if (checkCurse && hasCurse(Constants.DISGUST) && val<0) {
 			throw new IllegalStateException("Cannot subtract fame from character with DISGUST curse");

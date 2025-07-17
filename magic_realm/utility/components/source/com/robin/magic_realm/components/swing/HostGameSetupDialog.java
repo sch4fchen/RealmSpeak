@@ -1163,6 +1163,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_AMBUSH_END_OF_COMBATROUND,"AMBUSH ROLL AT THE END OF COMBAT ROUND - The ambush roll is made at the end of a combat round.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC - A character cannot play a MAGIC counter, if he has any weapon counter except a staff activated.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_GLORY,"GLORY - When a character or his hired natives kill an enemy named on the campaign counter being carried by the character, the character gains fame points equal to the notoriety points he gets for killing the enemy.", false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_HIRED_CAPTAINS,"HIRED CAPTAINS (Super Realm Basic) - Hired native leaders record own fame and notoriety.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm Basic) - Pony moves cannot be used for climbing mountains.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,"NO DUPLICATE SPELL RECORDING SPELLS (Super Realm Basic) - Characters cannot record the same spell multiple times.",false));
 		
@@ -1374,6 +1375,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_ORDER_STACKS,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
+		optionPane.setOption(Constants.FE_HIRED_CAPTAINS,true);
 		optionPane.setOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,true);
 		optionPane.setOption(Constants.HOUSE2_NO_MISSION_VISITOR_FLIPSIDE,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);

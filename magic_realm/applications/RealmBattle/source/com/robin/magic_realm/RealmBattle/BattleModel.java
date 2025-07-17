@@ -1267,10 +1267,11 @@ public class BattleModel {
 	}
 	
 	private void scoreKills(int round, HostPrefWrapper hostPrefs) {
+		boolean hiredCaptains = hostPrefs.hasPref(Constants.FE_HIRED_CAPTAINS);
 		for (GameObject attacker : killerOrder) { // use killerOrder instead of killTallyHash.keySet to guarantee proper ordering of calculations (fixes BUG 1719)
 			RealmComponent rc = RealmComponent.getRealmComponent(attacker);
 			RealmComponent owner = rc.getOwner();
-			if (owner!=null) { // only characters and hirelings can score points and gold
+			if (owner!=null || hiredCaptains) { // only characters and hirelings can score points and gold
 				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 				CombatWrapper attackerCombat = new CombatWrapper(attacker);
 				ArrayList<GameObject> kills = killTallyHash.getList(attacker);
@@ -1303,10 +1304,11 @@ public class BattleModel {
 						attackerCombat.addKillResult();
 					}
 
-					int multiplier = attackerCombat.getHitResultCount();
-
 					Spoils spoils = Spoils.getSpoils(attacker,kill);
-					spoils.setMultiplier(multiplier);
+					if (!rc.isNativeLeader()) {
+						int multiplier = attackerCombat.getHitResultCount();
+						spoils.setMultiplier(multiplier);
+					}
 					spoils.setDivisor(divides);
 
 					character.addKill(kill,spoils); // for recording purposes, and quests
