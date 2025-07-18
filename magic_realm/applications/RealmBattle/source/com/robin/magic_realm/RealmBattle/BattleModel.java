@@ -1271,9 +1271,9 @@ public class BattleModel {
 		for (GameObject attacker : killerOrder) { // use killerOrder instead of killTallyHash.keySet to guarantee proper ordering of calculations (fixes BUG 1719)
 			RealmComponent rc = RealmComponent.getRealmComponent(attacker);
 			RealmComponent owner = rc.getOwner();
-			if (owner!=null || hiredCaptains) { // only characters and hirelings can score points and gold
+			if (owner!=null) { // only characters and hirelings can score points and gold
 				CharacterWrapper character = null;
-				if (hiredCaptains) {
+				if (hiredCaptains && !rc.isCharacter()) {
 					character = new CharacterWrapper(rc.getGameObject());
 				} else {
 					character = new CharacterWrapper(owner.getGameObject());
