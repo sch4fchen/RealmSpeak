@@ -1272,7 +1272,12 @@ public class BattleModel {
 			RealmComponent rc = RealmComponent.getRealmComponent(attacker);
 			RealmComponent owner = rc.getOwner();
 			if (owner!=null || hiredCaptains) { // only characters and hirelings can score points and gold
-				CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
+				CharacterWrapper character = null;
+				if (hiredCaptains) {
+					character = new CharacterWrapper(rc.getGameObject());
+				} else {
+					character = new CharacterWrapper(owner.getGameObject());
+				}
 				CombatWrapper attackerCombat = new CombatWrapper(attacker);
 				ArrayList<GameObject> kills = killTallyHash.getList(attacker);
 				// Need to sort from most to least notoriety (Rule 43.4)
@@ -1354,8 +1359,14 @@ public class BattleModel {
 								+kill.getNameWithNumber());
 					}
 
-					CombatWrapper ownerCombat = new CombatWrapper(owner.getGameObject());
-					ownerCombat.addSpoilsInfo(round,kill,spoils);
+					if (hiredCaptains) {
+						attackerCombat.addSpoilsInfo(round,kill,spoils);
+					}
+					else if (owner!=null) {
+						CombatWrapper ownerCombat = new CombatWrapper(owner.getGameObject());
+						ownerCombat.addSpoilsInfo(round,kill,spoils);
+					}
+
 				}
 			}
 		}
