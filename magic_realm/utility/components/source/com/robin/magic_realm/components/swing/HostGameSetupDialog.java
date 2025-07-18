@@ -1057,6 +1057,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_CACHING,"CACHING A.4 (Magic Realm Advanced/Super Realm Basic) - Characters may record a CACHE action during their turn to create private caches of treasure and gold.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
 		
 		newOptionPane.setTabHtmlDescription(DENIZEN_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Denizen Rules</font></body></html>");
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS B.1.1-1.4 (Magic Realm Optional) - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
@@ -1373,6 +1374,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_NO_HORSES_IN_CAVES,true);
 		optionPane.setOption(Constants.SR_HORSES_REMOVING_FROM_REALM,true);
 		optionPane.setOption(Constants.SR_ORDER_STACKS,true);
+		optionPane.setOption(Constants.SR_OPENING_TREASURE_LOCATIONS,true);
 		optionPane.setOption(Constants.FE_SEARCH_TABLES,true);
 		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
 		optionPane.setOption(Constants.FE_HIRED_CAPTAINS,true);

@@ -7733,6 +7733,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+        <attribute opens_treasure_locations="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="291" name="Fiery Blast">
@@ -8014,6 +8015,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+        <attribute opens_treasure_locations="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="301" name="Absorb Essence">
@@ -57516,6 +57518,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute opens_treasure_locations="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2133" name="Fiery Blast">
@@ -57771,6 +57774,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+        <attribute opens_treasure_locations="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2143" name="Absorb Essence">
@@ -63939,6 +63943,7 @@
         <attribute great="" />
         <attribute weight="H" />
         <attribute kill_monsters_permanently="" />
+        <attribute weapon="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2468" name="Demon Leash">
@@ -63958,6 +63963,7 @@
         <attribute weight="L" />
         <attribute demon_control="" />
         <attribute demon_control_speed="2" />
+        <attribute weapon="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2469" name="Extra Hitpoint">

@@ -677,6 +677,7 @@ public class Constants {
 	public static final String SPIDER_WEB = "spider_web";
 	public static final String SPIDER_WEB_BOXES_ATTACK = "spider_web_boxes_attack";
 	public static final String SPIDER_WEB_BOXES_DEFENSE = "spider_web_boxes_defense";
+	public static final String OPENS_TREASURE_LOCATION = "opens_treasure_locations";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
@@ -952,6 +953,7 @@ public class Constants {
 	public static final String SR_NO_HORSES_IN_CAVES = "NoHorsesInCaves";
 	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";
 	public static final String SR_ORDER_STACKS = "OrderStacks";
+	public static final String SR_OPENING_TREASURE_LOCATIONS = "OpeningTreasureLocationsWithSpells";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

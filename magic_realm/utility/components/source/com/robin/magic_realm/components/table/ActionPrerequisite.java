@@ -12,11 +12,13 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.SpellSet;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class ActionPrerequisite {
@@ -108,35 +110,50 @@ public class ActionPrerequisite {
 		// Try fatiguing T
 		Strength tStrength = new Strength("T");
 		Strength wishStrength = character.getWishStrength();
-		String blownSpellId = character.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
 		if (tStrength.equalTo(character.getMoveStrength(false,true)) || tStrength.equalTo(character.getFightStrength(false,true))) {
 			// Having strength from horse,boots is enough to satisfy the requirement (see rule 9.3/3b)
 			success = true;
 		}
-		if (!success && blownSpellId!=null) {
-			GameObject spell = character.getGameData().getGameObject(Long.valueOf(blownSpellId));
-			SpellWrapper spellWrapper = new SpellWrapper(spell);
-			if (spellWrapper.getCaster()!=null && spellWrapper.getCaster().getGameObject().getStringId().matches(character.getGameObject().getStringId())) {
-				success = true;
-			}
-		}
 		if (!success) {
+			boolean optionalOpeningTreasureLocations = HostPrefWrapper.findHostPrefs(source.getGameData()).hasPref(Constants.SR_OPENING_TREASURE_LOCATIONS);
 			// Instead, you need to fatigue a T chit
 			ArrayList<CharacterActionChitComponent> tremendousChits = new ArrayList<>();
 			Collection<CharacterActionChitComponent> active = character.getActiveChits();
 			for (CharacterActionChitComponent chit : active) {
-				if ("T".equals(chit.getStrength().toString())) {
-					tremendousChits.add(chit);
+				if ("T".equals(chit.getStrength().toString()) || ("X".equals(chit.getStrength().toString()) && !chit.isFly())) {
+					if (!optionalOpeningTreasureLocations || !chit.isMove() || !character.isMistLike()) {
+						tremendousChits.add(chit);
+					}
 				}
 			}
+			boolean hasSpellsOrTreasures = false;
+			ArrayList<SpellWrapper> spells = new ArrayList<>();
+			ArrayList<RealmComponent> items  = new ArrayList<>();
+			if (optionalOpeningTreasureLocations && !source.hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE)) {
+				for (SpellSet spellSet : character.getCastableSpellSets()) {
+					if (spellSet.getSpell().hasThisAttribute(Constants.OPENS_TREASURE_LOCATION)) {
+						spells.add(new SpellWrapper(spellSet.getSpell()));
+					}
+				}
+				for (GameObject item : character.getInventory()) {
+					RealmComponent rc = RealmComponent.getRealmComponent(item);
+					if (rc.isTreasure() && item.hasThisAttribute("attack") && item.hasThisAttribute(Constants.POTION)) {
+						items.add(rc);
+					}
+				}
+			}
+			//hurricaneWinds Spell and Lightning Bolt and Alchemists Mixture or Holy Handgrenade
+			
 			boolean hasTWishStrength = wishStrength!=null && wishStrength.strongerOrEqualTo(tStrength);
-			if (!tremendousChits.isEmpty() || hasTWishStrength) {
+			if (!tremendousChits.isEmpty() || hasTWishStrength || hasSpellsOrTreasures) {
 				if (performAction) {
 					RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Select a chit to fatigue:",true);
 					chooser.addRealmComponents(tremendousChits,false);
 					if (hasTWishStrength) {
 						chooser.addOption("WISH_","WISH Strength");
 					}
+					chooser.addRealmComponents(spells,false);
+					chooser.addRealmComponents(items,false);
 					chooser.setVisible(true);
 					String selText = chooser.getSelectedText();
 					if (selText!=null) {
@@ -145,16 +162,24 @@ public class ActionPrerequisite {
 							character.clearWishStrength();
 						}
 						else {
-							GameObject toFatigue = chooser.getFirstSelectedComponent().getGameObject();
-							if (toFatigue!=null) {
-								CharacterActionChitComponent chit = (CharacterActionChitComponent)RealmComponent.getRealmComponent(toFatigue);
-								chit.makeFatigued();
-								RealmUtility.reportChitFatigue(character,chit,"Fatigued chit: ");
-								if (chit.isFight()) {
-									character.clearWishStrength(); // in case that was used
+							RealmComponent rc = chooser.getFirstSelectedComponent();
+							if (rc.isTreasure()) {
+								
+							} else if (rc.isSpell()) {
+								
+							}
+							else {
+								GameObject toFatigue = chooser.getFirstSelectedComponent().getGameObject();
+								if (toFatigue!=null) {
+									CharacterActionChitComponent chit = (CharacterActionChitComponent)RealmComponent.getRealmComponent(toFatigue);
+									chit.makeFatigued();
+									RealmUtility.reportChitFatigue(character,chit,"Fatigued chit: ");
+									if (chit.isFight()) {
+										character.clearWishStrength(); // in case that was used
+									}
+									listener.stateChanged(new ChangeEvent(this));
+									success = true;
 								}
-								listener.stateChanged(new ChangeEvent(this));
-								success = true;
 							}
 						}
 					}
