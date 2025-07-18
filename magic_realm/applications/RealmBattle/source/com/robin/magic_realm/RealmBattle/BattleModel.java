@@ -2300,28 +2300,7 @@ public class BattleModel {
 				}
 				else if (hostPrefs.hasPref(Constants.REV_MISSILE)) {
 					// Revised Optional missile table
-					int change;
-					if (result<-1) {
-						change = 3;
-					}
-					else if (result<0) {
-						change = 2;
-					}
-					else if (result<2) {
-						change = 1;
-					}
-					else if (result<5) {
-						change = 0;
-					}
-					else if (result<7) {
-						change = -1;
-					}
-					else if (result<8) {
-						change = -2;
-					}
-					else {
-						change = -3;
-					}
+					int change = RealmUtility.revisedMissileTable(result);
 					totalHarm.changeLevels(change);
 					combat.addMissileRollSubtitle(RealmUtility.getLevelChangeString(change));
 					logBattleInfo("Missile table result (using revised): "+result+" = "+RealmUtility.getLevelChangeString(change));

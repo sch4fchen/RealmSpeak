@@ -239,6 +239,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		}
 		return null;
 	}
+	public void setCaster(CharacterWrapper caster) {
+		setString(CASTER_ID, String.valueOf(caster.getGameObject().getId()));
+	}
 	
 	public GameObject getIncantationObject() {
 		if (isAlive()) {

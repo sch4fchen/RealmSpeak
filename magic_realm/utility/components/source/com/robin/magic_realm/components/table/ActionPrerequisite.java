@@ -2,6 +2,8 @@ package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Hashtable;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,13 +12,18 @@ import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.general.swing.DieRoller;
+import com.robin.general.util.HashLists;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
+import com.robin.magic_realm.components.MagicChit;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.SpellSet;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.DieRollBuilder;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -126,13 +133,14 @@ public class ActionPrerequisite {
 					}
 				}
 			}
-			boolean hasSpellsOrTreasures = false;
-			ArrayList<SpellWrapper> spells = new ArrayList<>();
+			ArrayList<RealmComponent> spells = new ArrayList<>();
+			HashLists<String, SpellSet> spellSetHashlists = new HashLists<>();
 			ArrayList<RealmComponent> items  = new ArrayList<>();
 			if (optionalOpeningTreasureLocations && !source.hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE)) {
 				for (SpellSet spellSet : character.getCastableSpellSets()) {
-					if (spellSet.getSpell().hasThisAttribute(Constants.OPENS_TREASURE_LOCATION)) {
-						spells.add(new SpellWrapper(spellSet.getSpell()));
+					if (spellSet.getSpell().hasThisAttribute(Constants.OPENS_TREASURE_LOCATION) && spellSet.canBeCast()) {
+						spells.add(RealmComponent.getRealmComponent(spellSet.getSpell()));
+						spellSetHashlists.put(spellSet.getSpell().getName(),spellSet);
 					}
 				}
 				for (GameObject item : character.getInventory()) {
@@ -144,16 +152,18 @@ public class ActionPrerequisite {
 			}
 			//hurricaneWinds Spell and Lightning Bolt and Alchemists Mixture or Holy Handgrenade
 			
+			ArrayList<RealmComponent> allOptions  = new ArrayList<>();
+			allOptions.addAll(tremendousChits);
+			allOptions.addAll(spells);
+			allOptions.addAll(items);
 			boolean hasTWishStrength = wishStrength!=null && wishStrength.strongerOrEqualTo(tStrength);
-			if (!tremendousChits.isEmpty() || hasTWishStrength || hasSpellsOrTreasures) {
+			if (!allOptions.isEmpty() || hasTWishStrength) {
 				if (performAction) {
 					RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Select a chit to fatigue:",true);
-					chooser.addRealmComponents(tremendousChits,false);
+					chooser.addRealmComponents(allOptions,false);
 					if (hasTWishStrength) {
 						chooser.addOption("WISH_","WISH Strength");
 					}
-					chooser.addRealmComponents(spells,false);
-					chooser.addRealmComponents(items,false);
 					chooser.setVisible(true);
 					String selText = chooser.getSelectedText();
 					if (selText!=null) {
@@ -163,10 +173,71 @@ public class ActionPrerequisite {
 						}
 						else {
 							RealmComponent rc = chooser.getFirstSelectedComponent();
-							if (rc.isTreasure()) {
+							if (rc.isSpell() || rc.isTreasure()) {
+								int sharpness = rc.getGameObject().getThisInt("sharpness");
+								DieRoller roller = null;
+								if (rc.isSpell() && rc.getGameObject().hasThisAttribute("missile")) {
+									SpellWrapper spellWrapper = new SpellWrapper(rc.getGameObject());
+									roller = DieRollBuilder.getDieRollBuilder(frame,character,spellWrapper.getRedDieLock()).createRoller("magicmissil");
+								}
+								else if (rc.isTreasure() && rc.getGameObject().hasThisAttribute("missile")) {
+									roller = DieRollBuilder.getDieRollBuilder(frame,character).createRoller("missile");
+									TreasureUtility.doActivate(frame,character,rc.getGameObject(),listener,false);
+								}
+								int mod = RealmUtility.revisedMissileTable(roller.getHighDieResult());
+								Strength strength = new Strength(rc.getGameObject().getThisAttribute(Constants.STRENGTH),mod+sharpness);
 								
-							} else if (rc.isSpell()) {
+								if (rc.isSpell()) {
+									SpellWrapper spellWrapper = new SpellWrapper(rc.getGameObject());
+									ArrayList<SpellSet> list = spellSetHashlists.getList(spellWrapper.getGameObject().getName());
+									RealmComponentOptionChooser spellChooser = new RealmComponentOptionChooser(frame,"Choose Casting Options for "+spellWrapper.getName()+":",true);
+									// Then choose a set
+									Hashtable<String, SpellSet> setHash = new Hashtable<>();
+									int keyN = 0;
+									for (SpellSet set : list) { // by definition, the set is castable
+										for (GameObject type : set.getValidTypeObjects()) {
+											if (set.getInfiniteSource()!=null) {
+												String key = "P"+(keyN++);
+												spellChooser.addOption(key,"");
+												spellChooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(type));
+												setHash.put(key, set);
+											}
+											if (set.getInfiniteSource()==null || set.getColorMagic()==null) {
+												for (MagicChit chit:set.getValidColorChits()) {
+													String key = "P"+(keyN++);
+													spellChooser.addOption(key,"");
+													spellChooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(type));
+													spellChooser.addRealmComponentToOption(key,(RealmComponent)chit);
+													setHash.put(key, set);
+												}
+											}
+										}
+									}
+									spellChooser.setVisible(true);
+									if (spellChooser.getSelectedText()!=null) {
+										Collection<RealmComponent> c = spellChooser.getSelectedComponents();
+										Iterator<RealmComponent> i=c.iterator();
+										if (i.hasNext()) {
+											MagicChit colorChit = (MagicChit)i.next();
+											colorChit.makeFatigued();
+											RealmUtility.reportChitFatigue(character,colorChit,"Fatigued color chit: ");
+										}
+									}
+								}
 								
+								if (strength.strongerOrEqualTo(new Strength("T"))) {
+									success = true;
+								}				
+								else {
+									if (failReason.length()>0) {
+										failReason.append(" and");
+									}
+									failReason.append(" your attack wasn't strong enough (Strength: "+strength.toString()+")");
+								}
+								if (rc.getGameObject().hasThisAttribute(Constants.POTION)) {
+									character.expirePotion(rc.getGameObject());
+								}
+								listener.stateChanged(new ChangeEvent(this));
 							}
 							else {
 								GameObject toFatigue = chooser.getFirstSelectedComponent().getGameObject();

@@ -1213,4 +1213,25 @@ public class RealmUtility {
 		default: return "";
 		}
 	}
+	public static int revisedMissileTable(int dieResult) {
+		if (dieResult<-1) {
+			return 3;
+		}
+		if (dieResult<0) {
+			return 2;
+		}
+		if (dieResult<2) {
+			return 1;
+		}
+		if (dieResult<5) {
+			return 0;
+		}
+		if (dieResult<7) {
+			return -1;
+		}
+		if (dieResult<8) {
+			return -2;
+		}
+		return -3;
+	}
 }
