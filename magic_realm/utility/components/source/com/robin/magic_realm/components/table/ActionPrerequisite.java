@@ -230,7 +230,7 @@ public class ActionPrerequisite {
 											incantationComponent.getGameObject().addThisAttributeListItem(Constants.USED_MAGIC_TYPE_LIST,set.getCastMagicType());
 										}
 										if (incantationComponent.isActionChit()) {
-											CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+											CharacterActionChitComponent chit = (CharacterActionChitComponent)incantationComponent;
 											chit.makeFatigued();
 											RealmUtility.reportChitFatigue(character,chit,"Fatigued chit: ");
 										}										
