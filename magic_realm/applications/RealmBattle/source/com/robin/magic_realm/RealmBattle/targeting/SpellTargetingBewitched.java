@@ -79,7 +79,6 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 			}
 		}
 		
-		
 		return true;
 	}
 	
@@ -106,13 +105,17 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 			JOptionPane.showMessageDialog(combatFrame,"No spell target.",spell.getName()+" : No spell target available.",JOptionPane.INFORMATION_MESSAGE);
 		}
 		
+		SpellWrapper selectedSpellWrapper = new SpellWrapper(selectedSpell.getGameObject());
 		RealmComponentOptionChooser secondaryTargetChooser = new RealmComponentOptionChooser(combatFrame,"Select secondary target for "+spell.getName()+":",false);
-		SpellTargeting spellTargeting = SpellTargeting.getTargeting(combatFrame,new SpellWrapper(selectedSpell.getGameObject()));
+		SpellTargeting spellTargeting = SpellTargeting.getTargeting(combatFrame,selectedSpellWrapper);
 		spellTargeting.populate(battleModel, selectedSpell);
 		for (GameObject go : possibleSecondaryTargets) {
 			if (spellTargeting.getPossibleTargets().contains(go)) {
 				secondaryTargetChooser.addRealmComponent(RealmComponent.getRealmComponent(go));
 			}
+		}
+		if (selectedSpellWrapper.isAbsorbEssence()) {
+			return;
 		}
 		if (secondaryTargetChooser.hasOptions()) {
 			secondaryTargetChooser.setVisible(true);

@@ -20,6 +20,10 @@ public class RedirectEffect implements ISpellEffect {
 		GameObject secondaryTarget = context.Spell.getSecondaryTarget();
 		String spellId = context.Spell.getExtraIdentifier();
 		GameObject spell = context.getGameData().getGameObject(spellId);
+		SpellWrapper spellWrapper = new SpellWrapper(spell);
+		if (spellWrapper.isAbsorbEssence()) {
+			secondaryTarget = context.getCharacterCaster().getGameObject();
+		}
 		if (spell!=null && primaryTarget!=null && secondaryTarget!=null) {
 			ArrayList<SpellWrapper> bewitchingSpellsOnSecondaryTarget = SpellUtility.getBewitchingSpells(secondaryTarget);
 			for (SpellWrapper bewitchingSpell : bewitchingSpellsOnSecondaryTarget) {
@@ -30,7 +34,13 @@ public class RedirectEffect implements ISpellEffect {
 			}
 			
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(context.getGameData());
-			SpellWrapper spellWrapper = new SpellWrapper(spell);
+			if (spellWrapper.isAbsorbEssence()) {
+				spellWrapper.unaffectTargets();
+				spellWrapper.setCaster(context.getCharacterCaster());
+				spellWrapper.affectTargets(new JFrame(),GameWrapper.findGame(context.getGameData()),false,null);
+				return;
+			}
+			
 			spellWrapper.unaffectTargets();
 			spellWrapper.removeTarget(primaryTarget.getGameObject());
 			spellWrapper.addTarget(hostPrefs, secondaryTarget);
