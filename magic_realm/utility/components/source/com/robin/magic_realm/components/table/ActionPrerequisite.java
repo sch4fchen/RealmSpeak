@@ -215,8 +215,25 @@ public class ActionPrerequisite {
 									}
 									spellChooser.setVisible(true);
 									if (spellChooser.getSelectedText()!=null) {
+										String key = chooser.getSelectedOptionKey();
+										SpellSet set = setHash.get(key);
 										Collection<RealmComponent> c = spellChooser.getSelectedComponents();
 										Iterator<RealmComponent> i=c.iterator();
+										RealmComponent incantationComponent = i.next();
+										if (!incantationComponent.isActionChit()) {
+											String dayKey = character.getCurrentDayKey();
+											String usedSpell = incantationComponent.getGameObject().getThisAttribute(Constants.USED_SPELL);
+											if (usedSpell!=null && !usedSpell.equals(dayKey)) {
+												incantationComponent.getGameObject().removeThisAttribute(Constants.USED_MAGIC_TYPE_LIST);
+											}
+											incantationComponent.getGameObject().setThisAttribute(Constants.USED_SPELL,dayKey);
+											incantationComponent.getGameObject().addThisAttributeListItem(Constants.USED_MAGIC_TYPE_LIST,set.getCastMagicType());
+										}
+										if (incantationComponent.isActionChit()) {
+											CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+											chit.makeFatigued();
+											RealmUtility.reportChitFatigue(character,chit,"Fatigued chit: ");
+										}										
 										if (i.hasNext()) {
 											MagicChit colorChit = (MagicChit)i.next();
 											colorChit.makeFatigued();
