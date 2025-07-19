@@ -112,11 +112,11 @@ public class TreasureUtility {
 				// Horses cannot be activated in caves!
 				TileLocation tl = character.getCurrentLocation();
 				if (tl!=null && tl.isInClearing() && tl.clearing.isCave() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
-					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a cave.");
+					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a cave.","Cave",JOptionPane.INFORMATION_MESSAGE);
 					return false;
 				}
 				if (tl!=null && tl.isInClearing() && tl.clearing.isWater() && !rc.getGameObject().hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
-					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a river.");
+					JOptionPane.showMessageDialog(parentFrame,"You cannot activate a horse in a river.","River",JOptionPane.INFORMATION_MESSAGE);
 					return false;
 				}
 				
@@ -132,7 +132,7 @@ public class TreasureUtility {
 					}
 				}
 				else {
-					JOptionPane.showMessageDialog(parentFrame,"That horse is not strong enough to carry your character.");
+					JOptionPane.showMessageDialog(parentFrame,"That horse is not strong enough to carry your character.","Horse not strong enough",JOptionPane.INFORMATION_MESSAGE);
 					return false;
 				}
 			}
@@ -156,7 +156,7 @@ public class TreasureUtility {
 						}
 					}
 					else {
-						JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.");
+						JOptionPane.showMessageDialog(parentFrame,"Those boots are not strong enough to support your character.","Boots not strong enough",JOptionPane.INFORMATION_MESSAGE);
 						return false;
 					}
 				}
