@@ -20,8 +20,11 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.3.2
+NEW FEATURES:
 # RealmViewer shows all treasues, denizens and spells of Super Realm and Expansion 1
 # RealmViewer: add map
+BUGS/ISSUES:
+# Cannot trade with face down travelers in Super Realm
 Version 1.2.3.1SUPER REALM:
 # Hurricane Winds, Lightning Bolt and Alchemists Mixture can open treasure locations
 BUGS/ISSUES:

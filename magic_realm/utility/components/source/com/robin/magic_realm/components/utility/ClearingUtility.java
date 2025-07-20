@@ -523,7 +523,7 @@ public class ClearingUtility {
 					traders.add(rc);
 				}
 			}
-			else if (rc.isVisitor()) {
+			else if (rc.isVisitor() && 	!rc.getGameObject().hasThisAttribute(Constants.DRAW_BACKSIDE)) {
 				traders.add(rc);
 			}
 			else if (rc.isTraveler() && rc.getGameObject().hasThisAttribute(Constants.STORE) && rc.getGameObject().hasThisAttribute(Constants.SPAWNED)) {
