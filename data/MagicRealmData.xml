@@ -8015,7 +8015,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
-        <attribute opens_treasure_locations="" />
+        <attribute opens_treasure_locations="T" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="301" name="Absorb Essence">
@@ -57774,7 +57774,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
-        <attribute opens_treasure_locations="" />
+        <attribute opens_treasure_locations="T" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2143" name="Absorb Essence">

@@ -22,6 +22,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.DieRollBuilder;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -184,8 +185,15 @@ public class ActionPrerequisite {
 									roller = DieRollBuilder.getDieRollBuilder(frame,character).createRoller("missile");
 									TreasureUtility.doActivate(frame,character,rc.getGameObject(),listener,false);
 								}
-								int mod = RealmUtility.revisedMissileTable(roller.getHighDieResult());
-								Strength strength = new Strength(rc.getGameObject().getThisAttribute(Constants.STRENGTH),mod+sharpness);
+								int mod = 0;
+								if (roller!=null) {
+									int result = roller.getHighDieResult();
+									mod = RealmUtility.revisedMissileTable(result);
+									RealmLogging.logMessage(character.getName(),"Missile table result (using revised): "+result+" = "+RealmUtility.getLevelChangeString(mod));
+								}
+								String strengthString = rc.getGameObject().hasThisAttribute(Constants.STRENGTH)?rc.getGameObject().getThisAttribute(Constants.STRENGTH):rc.getGameObject().getThisAttribute(Constants.OPENS_TREASURE_LOCATION);
+								Strength strength = new Strength(strengthString,mod+sharpness);
+								RealmLogging.logMessage(character.getName(),"Final strength for opening "+source.getNameWithNumber()+" with "+rc.getGameObject().getNameWithNumber()+": "+strength.fullString());
 								
 								if (rc.isSpell()) {
 									SpellWrapper spellWrapper = new SpellWrapper(rc.getGameObject());
