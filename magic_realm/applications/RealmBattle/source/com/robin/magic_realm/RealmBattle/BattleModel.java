@@ -1273,7 +1273,7 @@ public class BattleModel {
 			RealmComponent owner = rc.getOwner();
 			if (owner!=null) { // only characters and hirelings can score points and gold
 				CharacterWrapper character = null;
-				if (hiredCaptains && !rc.isCharacter()) {
+				if (hiredCaptains && rc.isNativeLeader()) {
 					character = new CharacterWrapper(rc.getGameObject());
 				} else {
 					character = new CharacterWrapper(owner.getGameObject());
