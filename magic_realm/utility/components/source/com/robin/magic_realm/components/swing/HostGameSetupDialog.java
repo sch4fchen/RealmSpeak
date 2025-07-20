@@ -1096,7 +1096,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character's ability to use a shield for defense.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_STRONG,"DUAL WIELDING ALL WEAPONS - Heavier and two-handed weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier weapons can be dual wielded without an additional ability.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
@@ -1307,12 +1307,16 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_AUTOMATIC_ENCHANTING,true);
 		optionPane.setOption(Constants.OPT_COMMERCE,true);
 		optionPane.setOption(Constants.SR_SELLING,true);
+		optionPane.setOption(Constants.OPT_RIDING_HORSES,true);
 		optionPane.setOption(Constants.OPT_FUMBLE,true);
 		optionPane.setOption(Constants.OPT_STUMBLE,true);
 		optionPane.setOption(Constants.OPT_MISSILE,true);
 		optionPane.setOption(Constants.OPT_PENETRATING_ARMOR,true);
 		optionPane.setOption(Constants.OPT_NATIVES_FRIENDLY,true);
-		optionPane.setOption(Constants.FE_PONY_NO_MOUNTAINS,true);
+		optionPane.setOption(Constants.OPT_DUAL_WIELDING,true);
+		optionPane.setOption(Constants.OPT_PARRY,true);
+		optionPane.setOption(Constants.OPT_PARRY_LIKE_SHIELD,true);
+		optionPane.setOption(Constants.OPT_THROWING_WEAPONS,true);
 		optionPane.setOption(Constants.EXP_CUSTOM_CHARS,true);
 		optionPane.setOption(Constants.EXP_DEVELOPMENT,false);
 		optionPane.setOption(Constants.EXP_DEVELOPMENT_PLUS,true);
@@ -1322,7 +1326,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_MAGIC_SIGHT_OPTIONAL,true);
 		optionPane.setOption(Constants.TE_KNIGHT_ADJUSTMENT,true);
 		optionPane.setOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,true);
-		optionPane.setOption(Constants.HOUSE2_NO_SPELL_LIMIT,true);
 		optionPane.setOption(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES,true);
 		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
