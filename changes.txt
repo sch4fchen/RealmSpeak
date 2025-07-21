@@ -1,5 +1,5 @@
 ::ROADMAP::
-# Redirect spell: combinations with other spells
+# Redirect spell: Absorb Essence, Melt into Mist, Illusion+Lost+HurricaneWinds, Broomstick, Peace: attacker -> character, Enchant Artifact; SpellTargeting cast -> character, caster item -> character item   
 Super Realm: Events (Global Events = optional rule 11.11): 33 EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -23,6 +23,8 @@ Version 1.2.3.2
 NEW FEATURES:
 # RealmViewer shows all treasues, denizens and spells of Super Realm and Expansion 1
 # RealmViewer: add map
+SUPER REALM:
+# Improve Redirect spell
 BUGS/ISSUES:
 # Cannot trade with face down travelers in Super Realm
 # Owner of underlings gets fame and notoriety for kills 
