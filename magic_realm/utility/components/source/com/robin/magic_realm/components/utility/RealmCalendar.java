@@ -176,7 +176,7 @@ public class RealmCalendar {
 		sunlight = currentSeason.getInt(currentWeather,"sunlight");
 		sheltered = currentSeason.getInt(currentWeather,"sheltered");
 		mountainMoveCost = currentSeason.getInt("this","mountain_cost");
-		frozenWater = currentSeason.hasThisAttribute("frozen_water");
+		frozenWater = currentSeason.hasAttribute(currentWeather,"frozen_water");
 		flood = currentSeason.hasThisAttribute("flood");
 		weatherName = currentSeason.getAttribute(currentWeather,"name");
 		weatherTypeName = StringUtilities.capitalize(currentWeather);

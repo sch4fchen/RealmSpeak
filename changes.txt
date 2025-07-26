@@ -1,4 +1,6 @@
 ::ROADMAP::
+# Seasons: Note 7 from the weather table in SR: Storm: fatigue one asterix in water clearings
+# Enchanted Treasures in SR cannot be inactive.
 # Redirect spell: Absorb Essence, Melt into Mist, Illusion+Lost+HurricaneWinds, affected Broomstick, Broomstick itself, Peace: attacker -> character, Enchant Artifact; SpellTargeting cast -> character, caster item -> character item   
 Super Realm: Events (Global Events = optional rule 11.11): 33 EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
@@ -27,7 +29,8 @@ SUPER REALM:
 # Improve Redirect spell
 BUGS/ISSUES:
 # Cannot trade with face down travelers in Super Realm
-# Owner of underlings gets fame and notoriety for kills 
+# Owner of underlings gets fame and notoriety for kills
+# Fix frozon water
 Version 1.2.3.1SUPER REALM:
 # Hurricane Winds, Lightning Bolt and Alchemists Mixture can open treasure locations
 BUGS/ISSUES:
