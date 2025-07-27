@@ -124,6 +124,16 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 		}
 		else {
 			SpellTargeting spellTargeting = SpellTargeting.getTargeting(combatFrame,selectedSpellWrapper);
+			if (spellTargeting instanceof SpellTargetingCaster) {
+				spellTargeting = new SpellTargetingCharacter(combatFrame,spell,spell.getGameObject().hasThisAttribute("targetLightOnly"));
+			}
+			else if (spellTargeting instanceof SpellTargetingMyItem) {
+				spellTargeting = new SpellTargetingItem(combatFrame,spell,true,true);
+			}
+			else if (spellTargeting instanceof SpellTargetingAttacker) {
+				spellTargeting = new SpellTargetingIndividual(combatFrame,spell);
+			}
+		
 			if (spellTargeting == null) {
 				JOptionPane.showMessageDialog(combatFrame,"No secondary target.",spell.getName()+" : No secondary target available.",JOptionPane.INFORMATION_MESSAGE);
 			}

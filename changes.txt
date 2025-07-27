@@ -1,5 +1,5 @@
 ::ROADMAP::
-# Redirect spell: Illusion+Lost+HurricaneWinds, affected Broomstick, Broomstick itself, Peace: attacker -> character, Enchant Artifact; SpellTargeting cast -> character, caster item -> character item
+# Redirect spell: Illusion+Lost+HurricaneWinds, affected Broomstick, Broomstick itself,Enchant Artifact
 Super Realm: Events (Global Events = optional rule 11.11): 33 EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
