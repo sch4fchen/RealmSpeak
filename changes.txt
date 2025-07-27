@@ -30,6 +30,7 @@ BUGS/ISSUES:
 # Owner of underlings gets fame and notoriety for kills
 # Fix frozon water
 # Fix weather fatigue in water clearings during stormy weather
+# Enchanted treasures cannot be deactivated
 Version 1.2.3.1SUPER REALM:
 # Hurricane Winds, Lightning Bolt and Alchemists Mixture can open treasure locations
 BUGS/ISSUES:

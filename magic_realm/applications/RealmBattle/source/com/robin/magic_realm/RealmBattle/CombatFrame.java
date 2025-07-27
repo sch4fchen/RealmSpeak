@@ -3963,10 +3963,13 @@ public class CombatFrame extends JFrame {
 			Collection<GameObject> c = activate?activeCharacter.getActiveInventory():activeCharacter.getInactiveInventory();
 			if (c.size()>0) {
 				for (GameObject go : c) {
-					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					String key = "C"+(keyN++);
-					chooser.addOption(key,activate?"Inactivate":"Activate");
-					chooser.addRealmComponentToOption(key,rc);
+					Inventory inv = new Inventory(go);
+					if (!activate||inv.canDeactivate()) {
+						RealmComponent rc = RealmComponent.getRealmComponent(go);
+						String key = "C"+(keyN++);
+						chooser.addOption(key,activate?"Inactivate":"Activate");
+						chooser.addRealmComponentToOption(key,rc);
+					}
 				}
 				chooser.addOption("nothing","Skip "+(activate?"Inactivate":"Activate"));
 				chooser.setVisible(true);
