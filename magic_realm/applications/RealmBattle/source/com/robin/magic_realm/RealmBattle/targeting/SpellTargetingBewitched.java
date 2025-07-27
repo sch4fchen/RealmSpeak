@@ -114,18 +114,25 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 		
 		SpellWrapper selectedSpellWrapper = new SpellWrapper(selectedSpell.getGameObject());
 		RealmComponentOptionChooser secondaryTargetChooser = new RealmComponentOptionChooser(combatFrame,"Select secondary target for "+spell.getName()+":",false);
-		SpellTargeting spellTargeting = SpellTargeting.getTargeting(combatFrame,selectedSpellWrapper);
-		if (spellTargeting == null) {
-			JOptionPane.showMessageDialog(combatFrame,"No secondary target.",spell.getName()+" : No secondary target available.",JOptionPane.INFORMATION_MESSAGE);
-		}
-		spellTargeting.populate(battleModel, selectedSpell);
-		for (GameObject go : possibleSecondaryTargets) {
-			if (spellTargeting.getPossibleTargets().contains(go)) {
-				secondaryTargetChooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+		
+		if (selectedSpellWrapper.isAbsorbEssence()) {
+			for (GameObject go : possibleSecondaryTargets) {
+				if (RealmComponent.getRealmComponent(go).isCharacter()) {
+					secondaryTargetChooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+				}
 			}
 		}
-		if (selectedSpellWrapper.isAbsorbEssence()) {
-			return;
+		else {
+			SpellTargeting spellTargeting = SpellTargeting.getTargeting(combatFrame,selectedSpellWrapper);
+			if (spellTargeting == null) {
+				JOptionPane.showMessageDialog(combatFrame,"No secondary target.",spell.getName()+" : No secondary target available.",JOptionPane.INFORMATION_MESSAGE);
+			}
+			spellTargeting.populate(battleModel, selectedSpell);
+			for (GameObject go : possibleSecondaryTargets) {
+				if (spellTargeting.getPossibleTargets().contains(go)) {
+					secondaryTargetChooser.addRealmComponent(RealmComponent.getRealmComponent(go));
+				}
+			}
 		}
 		if (secondaryTargetChooser.hasOptions()) {
 			secondaryTargetChooser.setVisible(true);
