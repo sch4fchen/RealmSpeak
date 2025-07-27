@@ -31,7 +31,7 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 
 	public boolean populate(BattleModel battleModel,RealmComponent activeParticipant) {
 		this.battleModel = battleModel;
-		for (RealmComponent participant : combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true)) {
+		for (RealmComponent participant : combatFrame.findCanBeSeen(battleModel.getAllBattleParticipants(true),true,true)) {
 			ArrayList<SpellWrapper> bewitchingSpells = SpellUtility.getBewitchingSpells(participant.getGameObject());
 			if (!participant.hasMagicProtection() && !participant.hasMagicColorImmunity(spell)) {
 				possibleSecondaryTargets.add(participant.getGameObject());

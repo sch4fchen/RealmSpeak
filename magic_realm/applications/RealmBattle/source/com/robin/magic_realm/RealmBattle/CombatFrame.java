@@ -2237,17 +2237,26 @@ public class CombatFrame extends JFrame {
 		return assignTarget(activeParticipant,list);
 	}
 	public boolean canBeSeen(RealmComponent rc,boolean magicAttack) {
-		return (!rc.isMistLike() || activeCharacter.affectedByKey(Constants.IGNORE_MIST_LIKE)) && (!magicAttack || !rc.hasMagicProtection())
+		return canBeSeen(rc,magicAttack,false);
+	}
+	public boolean canBeSeen(RealmComponent rc,boolean magicAttack,boolean canTargetMistLike) {
+		return (canTargetMistLike || !rc.isMistLike() || activeCharacter.affectedByKey(Constants.IGNORE_MIST_LIKE)) && (!magicAttack || !rc.hasMagicProtection())
 				&& (!rc.isHidden() || activeCharacter.foundHiddenEnemy(rc.getGameObject()) || rc.getOwner()==activeParticipant);
 	}
 	/**
 	 * @return			The list of RealmComponents that can be seen by the activeCharacter.
 	 */
 	public ArrayList<RealmComponent> findCanBeSeen(Collection<RealmComponent> list,boolean magicAttack) {
+		return findCanBeSeen(list,magicAttack,false);
+	}
+	/**
+	 * @return			The list of RealmComponents that can be seen by the activeCharacter.
+	 */
+	public ArrayList<RealmComponent> findCanBeSeen(Collection<RealmComponent> list,boolean magicAttack,boolean canTargetMistLike) {
 		ArrayList<RealmComponent> ret = new ArrayList<>();
 		for (RealmComponent rc : list) {
 			// Make sure participant is "visible" to attacker
-			if (canBeSeen(rc,magicAttack)) {
+			if (canBeSeen(rc,magicAttack,canTargetMistLike)) {
 				ret.add(rc);
 				if (hostPrefs.hasPref(Constants.OPT_RIDING_HORSES)) {
 					RealmComponent horse = (RealmComponent)rc.getHorse();
