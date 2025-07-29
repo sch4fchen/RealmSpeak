@@ -24,7 +24,18 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		return getWielder().sizeModifier();
 	}
 	protected int speedModifier() {
-		return getWielder().speedModifier();
+		int mod = 0;
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getFaceAttributeString("speed").matches(Constants.WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getWeightWithoutSizeAltering()))).getLevels();
+			mod = mod+difference;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		return getWielder().speedModifier()+mod;
 	}
 	public Strength getStrength() {
 		if (getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON_STRENGTH)) {
@@ -34,18 +45,20 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 			}
 		}
 		Strength strength = super.getStrength();
+		int mod = 0;
 		if (!gameObject.hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) strength = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
-				strength.modify(-1);
+				mod--;
 			}
 			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
-				strength.modify(1);
+				mod++;
 			}
 		}
 		if (strength.getChar()!="T" && getGameObject().getHeldBy().hasThisAttribute(Constants.STRONG_MF)) {
-			strength.modify(1);
+			mod++;
 		}
+		strength.modify(mod);
 		return strength;
 	}
 	public Strength getWeight() {
@@ -54,16 +67,26 @@ public class MonsterPartChitComponent extends MonsterChitComponent {
 		}
 		return super.getWeightWithFallback("L");
 	}
+	public Strength getWeightWithoutSizeAltering() {
+		if (gameObject.hasThisAttribute(Constants.MONSTER_WEAPON)) {
+			return super.getWeightWithoutModifiers("M");
+		}
+		return super.getWeightWithoutModifiers("L");
+	}
 	public Strength getVulnerability() {
 		Strength vul = new Strength("M"); // This is the default "size" for a monster weapon
+		int mod = 0;
 		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) vul = new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
 		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
-			vul.modify(-1);
+			mod--;
 		}
 		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
-			vul.modify(1);
+			mod++;
 		}
-		vul.modify(sizeModifier());
+		if (getWielder().isShrunk()) {
+			mod--;
+		}
+		vul.modify(mod);
 		return vul;
 	}
 	public Speed getMoveSpeed() {

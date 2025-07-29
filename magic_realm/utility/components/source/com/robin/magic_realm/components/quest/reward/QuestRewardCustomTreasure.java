@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.table.Loot;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardCustomTreasure extends QuestReward {
@@ -54,9 +55,9 @@ public class QuestRewardCustomTreasure extends QuestReward {
 			customTreasure.setThisAttribute("notoriety", getTreasureNotoriety());
 		}
 		if (getTreasureWeight()!=NO_CHANGE) {
-			customTreasure.setThisAttribute("weight", getTreasureWeight());
-			if (customTreasure.getThisAttribute("weight") == "N") {
-				customTreasure.removeThisAttribute("weight");
+			customTreasure.setThisAttribute(Constants.WEIGHT, getTreasureWeight());
+			if (customTreasure.getThisAttribute(Constants.WEIGHT) == "N") {
+				customTreasure.removeThisAttribute(Constants.WEIGHT);
 			}
 		}
 		if (getTreasureSize()!=NO_CHANGE) {

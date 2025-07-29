@@ -353,13 +353,19 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (length == null) {
 			length = Integer.valueOf(0);
 		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getWeightWithoutModifiers("L")))).getLevels();
+			length = length + difference;
+		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
 			length--;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			length++;
 		}
-		return length<0?0:length;
+		if (length<=0) return 0;
+		if (length>=18) return 18;
+		return length;
 	}
 
 	public Speed getMoveSpeed() {
@@ -595,7 +601,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			return new Strength("T");
 		}
 		Strength vul =  new Strength(getThisAttribute( "vulnerability"));
-		int mod = sizeModifier();
+		int mod = 0;
+		if(isShrunk()) {
+			mod--;
+		}
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			mod--;
 		}
@@ -650,6 +659,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (new CombatWrapper(getGameObject()).isFreezed()) {
 			mod++;
 		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getFaceAttributeString("speed").matches(Constants.WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getWeightWithoutModifiers("L")))).getLevels();
+			mod = mod + difference;
+		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
 			mod--;
 		}
@@ -677,6 +690,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		int mod = 0;
 		if (isShrunk()) {
 			mod--;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getWeightWithoutModifiers("L")))).getLevels();
+			mod = mod + difference;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
 			mod--;

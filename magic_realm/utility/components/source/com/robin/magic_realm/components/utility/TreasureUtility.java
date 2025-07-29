@@ -1529,5 +1529,37 @@ public class TreasureUtility {
 		companion.copyAttributeBlockFrom(item,Constants.COMPANION+"_dark");
 		companion.renameAttributeBlock(Constants.COMPANION+"_dark","dark");
 		return companion;
+	}	public static Strength getStrengthForTreasure(GameObject tw) {
+		Strength strength = new Strength(tw.getThisAttribute("strength"));
+		int mod = 0;
+		if (tw.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		if (tw.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
+			mod = mod+difference;
+		}
+		strength.modify(mod);
+		return strength; 
+	}
+	public static int getLengthForTreasure(GameObject tw) {
+		int mod = 0;
+		if (tw.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		if (tw.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
+			mod = mod+difference;
+		}
+		int length = tw.getThisInt("length")+mod;
+		if (length<=0) return 0;
+		if (length>=18) return 18;
+		return length;
 	}
 }

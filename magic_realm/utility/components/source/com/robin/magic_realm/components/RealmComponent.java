@@ -1295,17 +1295,25 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return getWeight(null);
 	}
 	
+	protected Strength getWeightWithoutModifiers(String fallback) {
+		return getWeight(fallback,false);
+	}
 	private Strength getWeight(String fallback) {
+		return getWeight(fallback,true);
+	}
+	private Strength getWeight(String fallback,boolean includeModifiers) {
 		int mod = 0;
-		if (gameObject.hasThisAttribute(Constants.WEIGHT_NEGLIGIBLE)) return new Strength("N");
-		if (!affectedByKey(Constants.ENCHANTED_WEAPON)
-				|| (!gameObject.hasThisAttribute("weapon") && !gameObject.hasThisAttribute("armor") && !gameObject.hasThisAttribute(Constants.SHIELD)
-					&& !gameObject.hasThisAttribute(Constants.MONSTER_WEAPON) && !gameObject.hasThisAttribute("part"))) {
-			if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
-			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
-			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
-			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-				return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+		if (includeModifiers) {
+			if (gameObject.hasThisAttribute(Constants.WEIGHT_NEGLIGIBLE)) return new Strength("N");
+			if (!affectedByKey(Constants.ENCHANTED_WEAPON)
+					|| (!gameObject.hasThisAttribute("weapon") && !gameObject.hasThisAttribute("armor") && !gameObject.hasThisAttribute(Constants.SHIELD)
+						&& !gameObject.hasThisAttribute(Constants.MONSTER_WEAPON) && !gameObject.hasThisAttribute("part"))) {
+				if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
+				if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
+				if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
+				if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+					return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+				}
 			}
 		}
 		String baseValue = "";

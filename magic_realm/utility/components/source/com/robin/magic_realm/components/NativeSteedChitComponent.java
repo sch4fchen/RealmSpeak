@@ -65,6 +65,18 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		}
 		return 0;
 	}
+	protected int vulnerabilityModifier() {
+		RealmComponent rider = getRider();
+		if (rider!=null) {
+			if (rider.isNative() && ((NativeChitComponent)rider).isShrunk()) {
+				return -1;
+			}
+			else if (rider.isMonster() && !rider.isMonsterPart() && ((MonsterChitComponent)rider).isShrunk()) {
+				return -1;
+			}
+		}
+		return 0;
+	}
 	protected int speedModifier() {
 		int mod = 0;
 		RealmComponent rider = getRider();
@@ -461,7 +473,7 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public Strength getVulnerability() {
 		Strength strength = new Strength(getThisAttribute("vulnerability"));
-		int mod = sizeModifier();
+		int mod = vulnerabilityModifier();
 		if (getGameObject().hasThisAttribute(Constants.WEAKENED_VULNERABILITY)) {
 			mod--;
 		}

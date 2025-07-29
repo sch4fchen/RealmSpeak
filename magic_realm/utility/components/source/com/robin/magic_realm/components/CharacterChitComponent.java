@@ -291,8 +291,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			if (tw!=null && (combatChit==null || combatChit.getWeaponId().equals(tw.getStringId()))) {
 				CombatWrapper twCombat = new CombatWrapper(tw);
 				if (twCombat.hasCombatBox()) {
-					if (length < tw.getThisInt("length")) {
-						length = tw.getThisInt("length");
+					int twLength = TreasureUtility.getLengthForTreasure(tw);
+					if (length < twLength) {
+						length = twLength;
 					}
 				}
 			}
@@ -532,7 +533,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 							hasWeapon = true;
 							missileWeapon = tw.hasThisAttribute("missile");
-							weaponStrength = getStrengthForTreasure(tw);
+							weaponStrength = TreasureUtility.getStrengthForTreasure(tw);
 							sharpness = tw.getThisInt("sharpness");
 							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
 							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
@@ -1312,13 +1313,5 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	public boolean isMistLike() {
 		RealmComponent rc = getTransmorphedComponent();
 		return rc!=null && rc.isMistLike();
-	}
-	public static Strength getStrengthForTreasure(GameObject tw) {
-		Strength strength = new Strength(tw.getThisAttribute("strength"));
-		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
-			strength.modify(difference);
-		}
-		return strength; 
 	}
 }

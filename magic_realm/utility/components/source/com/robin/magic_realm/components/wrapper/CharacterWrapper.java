@@ -3093,8 +3093,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (chitCombat.getWeaponId().equals(tw.getStringId())) {
 					CombatWrapper twCombat = new CombatWrapper(tw);
 					if (twCombat.getCombatBoxDefense()==box && twCombat.getPlacedAsParry()) {
-						if (length < tw.getThisInt("length")) {
-							length = tw.getThisInt("length");
+						int twLength = TreasureUtility.getLengthForTreasure(tw);
+						if (length < twLength) {
+							length = twLength;
 						}
 					}
 				}
@@ -3185,7 +3186,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 							}
 							hasWeapon = true;
 							missileWeapon = tw.hasThisAttribute("missile");
-							weaponStrength = CharacterChitComponent.getStrengthForTreasure(tw);
+							weaponStrength = TreasureUtility.getStrengthForTreasure(tw);
 							sharpness = tw.getThisInt("sharpness");
 							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
 							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);

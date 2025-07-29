@@ -100,6 +100,17 @@ public class FlyChitComponent extends StateChitComponent {
 		return new Strength(getGameObject().getThisAttribute("strength"));
 	}
 	public Speed getSpeed() {
-		return new Speed(getGameObject().getThisAttribute("speed"));
+		int mod = 0;
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getThisAttribute("speed").matches(Constants.WEIGHT)) {
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute("strength")))).getLevels();
+			mod = mod+difference;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		return new Speed(getGameObject().getThisAttribute("speed"),mod);
 	}
 }
