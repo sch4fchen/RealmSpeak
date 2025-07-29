@@ -129,7 +129,14 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		drawDamageAssessment(g);
 	}
 	private Strength getStrength() {
-		return new Strength(getFaceAttributeString("strength"));
+		int mod = 0;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		return new Strength(getFaceAttributeString("strength"),mod);
 	}
 	// BattleChit Interface
 	public boolean targets(BattleChit chit) {

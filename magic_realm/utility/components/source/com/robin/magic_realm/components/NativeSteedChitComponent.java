@@ -326,7 +326,14 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 	}
 	public Strength getStrength() {
 		Strength strength = new Strength(getFaceAttributeString("strength"));
-		strength.modify(sizeModifier());
+		int mod = sizeModifier();
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		strength.modify(mod);
 		return strength;
 	}
 	public Harm getHarm() {

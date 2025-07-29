@@ -143,7 +143,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	
 	public boolean cannotChangeTactics() {
 		return getGameObject().hasThisAttribute(Constants.NO_CHANGE_TACTICS) || hasFaceAttribute(Constants.NO_CHANGE_TACTICS) || getWeight().isMaximum()
-				|| (getShield()!=null && !getShield().isDestroyed() && getShield().getWeight().equalTo(new Strength("X")));
+				|| (getShield()!=null && !getShield().isDestroyed() && getShield().getWeight().isMaximum());
 	}
 	
 	public boolean changeTacticsAfterCasting() {
@@ -473,9 +473,13 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 			return speed;
 		}
-		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
+		int baseMoveSpeed = 6;
+		if (hasFaceAttribute("move_speed")) {
+			baseMoveSpeed = getFaceAttributeInteger("move_speed");
+		}
+		Speed speed = new Speed(baseMoveSpeed,speedModifier());
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier()-1);
+			speed = new Speed(baseMoveSpeed,speedModifier()-1);
 		}
 		return speed;
 	}

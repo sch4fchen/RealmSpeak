@@ -381,9 +381,13 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			}
 			return speed;
 		}
-		Speed speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier());
+		int baseMoveSpeed = 6;
+		if (hasFaceAttribute("move_speed")) {
+			baseMoveSpeed = getFaceAttributeInteger("move_speed");
+		}
+		Speed speed = new Speed(baseMoveSpeed,speedModifier());
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(getFaceAttributeInteger("move_speed"),speedModifier()-1);
+			speed = new Speed(baseMoveSpeed,speedModifier()-1);
 		}
 		return speed;
 	}

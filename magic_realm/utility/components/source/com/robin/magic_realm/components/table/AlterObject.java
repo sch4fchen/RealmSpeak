@@ -6,7 +6,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Strength;
-import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;

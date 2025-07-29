@@ -1776,7 +1776,7 @@ public class CombatFrame extends JFrame {
 			for (RealmComponent rc : c) {
 				if (rc.isActionChit()) {
 					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
-					if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(heaviestInventory)) {
+					if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(heaviestInventory) && !chit.getStrength().isMaximum()) {
 						// Check the box_constraint (important for the DUCK chit)
 						int constraint = chit.getGameObject().getThisInt("box_constraint");
 						if (constraint==0 || constraint==box) {
@@ -1791,7 +1791,10 @@ public class CombatFrame extends JFrame {
 				}
 				else if (rc.isFlyChit()) {
 					// The only "Fly Chit" besides action chits right now is the Broomstick, which doesn't really have asterisks or constraints
-					list.add(rc);
+					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+					if (!chit.getStrength().isMaximum()) {
+						list.add(rc);
+					}
 				}
 			}
 			
@@ -1800,7 +1803,7 @@ public class CombatFrame extends JFrame {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("boots")) {
 					Strength bootStrength = RealmUtility.getBootsStrength(go);
-					if (bootStrength.strongerOrEqualTo(heaviestInventory)) {
+					if (bootStrength.strongerOrEqualTo(heaviestInventory) && !rc.getWeight().isMaximum()) {
 						list.add(rc);
 					}
 				}
@@ -1815,7 +1818,7 @@ public class CombatFrame extends JFrame {
 				}
 				else if (go.hasThisAttribute("fly_strength")) {
 					Strength flyStrength = new Strength(go.getThisAttribute("fly_strength"));
-					if (flyStrength.strongerOrEqualTo(heaviestInventory)) {
+					if (flyStrength.strongerOrEqualTo(heaviestInventory) && !flyStrength.isMaximum()) {
 						list.add(rc);
 					}
 				}
@@ -1828,7 +1831,10 @@ public class CombatFrame extends JFrame {
 			RealmComponent rc = RealmComponent.getRealmComponent(transmorph);
 			if (rc.isMonster()) {
 				MonsterChitComponent monster = (MonsterChitComponent)rc;
-				list.add(monster.getMoveChit());
+				MonsterMoveChitComponent chit = monster.getMoveChit();
+				if (!chit.getMoveStrength().isMaximum()) {
+					list.add(monster.getMoveChit());
+				}
 			}
 		}
 		
@@ -1849,7 +1855,7 @@ public class CombatFrame extends JFrame {
 			
 			// Find all active chits that have less than (effortLimit-totalEffort) asterisks
 			for (CharacterActionChitComponent chit :  activeCharacter.getActiveFightChits()) {
-				if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(weaponWeight)) {
+				if (chit.getEffortAsterisks()<=effortLeft && chit.getStrength().strongerOrEqualTo(weaponWeight) && !chit.getStrength().isNegligible()) {
 					// Check the box_constraint (for fight_lock type options - custom characters only)
 					int constraint = chit.getGameObject().getThisInt("box_constraint");
 					if (constraint==0 || constraint==box) {
@@ -1868,7 +1874,7 @@ public class CombatFrame extends JFrame {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (go.hasThisAttribute("gloves")) {
 					Strength gloveStrength = RealmUtility.getGlovesStrength(go);
-					if (gloveStrength.strongerOrEqualTo(weaponWeight)) {
+					if (gloveStrength.strongerOrEqualTo(weaponWeight) && !gloveStrength.isNegligible() && !rc.getWeight().isMaximum()) {
 						list.add(rc);
 					}
 				}
