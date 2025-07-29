@@ -115,7 +115,7 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 		SpellWrapper selectedSpellWrapper = new SpellWrapper(selectedSpell.getGameObject());
 		RealmComponentOptionChooser secondaryTargetChooser = new RealmComponentOptionChooser(combatFrame,"Select secondary target for "+spell.getName()+":",false);
 		
-		if (selectedSpellWrapper.isAbsorbEssence()) {
+		if (selectedSpellWrapper.isAbsorbEssence() || SpellTargeting.targetingCharacterOrTile(selectedSpellWrapper.getGameObject().getThisAttribute("target"))) {
 			for (GameObject go : possibleSecondaryTargets) {
 				if (RealmComponent.getRealmComponent(go).isCharacter()) {
 					secondaryTargetChooser.addRealmComponent(RealmComponent.getRealmComponent(go));
@@ -129,6 +129,15 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 			}
 			else if (spellTargeting instanceof SpellTargetingMyItem) {
 				spellTargeting = new SpellTargetingItem(combatFrame,spell,true,true);
+			}
+			else if (spellTargeting instanceof SpellTargetingMyArmor) {
+				spellTargeting = new SpellTargetingArmor(combatFrame,spell);
+			}
+			else if (spellTargeting instanceof SpellTargetingMyWeapon) {
+				spellTargeting = new SpellTargetingWeapon(combatFrame,spell);
+			}
+			else if (spellTargeting instanceof SpellTargetingMyStaff) {
+				spellTargeting = new SpellTargetingStaff(combatFrame,spell);
 			}
 			else if (spellTargeting instanceof SpellTargetingAttacker) {
 				spellTargeting = new SpellTargetingIndividual(combatFrame,spell);

@@ -133,7 +133,7 @@ public abstract class SpellTargeting {
 		else if ("tile".equals(targetType)) {
 			targeting = new SpellTargetingTile(combatFrame,spell);
 		}
-		else if ("character,tile".equals(targetType) || "character, tile".equals(targetType)) {
+		else if (targetingCharacterOrTile(targetType)) {
 			// Show a dialog to make a choice here
 			ButtonOptionDialog choice = new ButtonOptionDialog(combatFrame,null,"Target which?",spell.getGameObject().getName());
 			choice.addSelectionObject("Character");
@@ -245,5 +245,9 @@ public abstract class SpellTargeting {
 	
 	public ArrayList<GameObject> getPossibleTargets() {
 		return gameObjects;
+	}
+	
+	protected static boolean targetingCharacterOrTile(String targetType) {
+		return "character,tile".equals(targetType) || "character, tile".equals(targetType);
 	}
 }
