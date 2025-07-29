@@ -31,7 +31,6 @@ public class AlterObject extends RealmTable {
 			"X",
 	};
 	private SpellWrapper spell;
-	private boolean cancelSpell = false;
 	
 	public AlterObject(JFrame frame,GameObject caster, SpellWrapper spell) {
 		super(frame,null);

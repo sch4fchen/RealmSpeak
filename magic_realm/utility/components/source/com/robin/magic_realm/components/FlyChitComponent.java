@@ -78,8 +78,8 @@ public class FlyChitComponent extends StateChitComponent {
 		tt = new TextType("FLY",getChitSize(),"BOLD");
 		tt.draw(g,x,y,Alignment.Center);
 		
-		String strength = getGameObject().getThisAttribute("strength");
-		String speed = getGameObject().getThisAttribute("speed");
+		String strength = getStrength().toString();
+		String speed = getSpeed().getSpeedString();
 		tt = new TextType(strength+speed,getChitSize(),"BOLD");
 		y+=tt.getHeight(g);
 		tt.draw(g,x,y,Alignment.Center);
@@ -97,7 +97,14 @@ public class FlyChitComponent extends StateChitComponent {
 	}
 	public Strength getStrength() {
 		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
-		return new Strength(getGameObject().getThisAttribute("strength"));
+		int mod = 0;
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+			mod++;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+			mod--;
+		}
+		return new Strength(getGameObject().getThisAttribute("strength"),mod);
 	}
 	public Speed getSpeed() {
 		int mod = 0;
