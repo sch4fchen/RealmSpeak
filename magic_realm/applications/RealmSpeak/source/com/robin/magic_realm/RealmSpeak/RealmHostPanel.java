@@ -485,6 +485,15 @@ public class RealmHostPanel extends JPanel {
 					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(1));
 				}
 			}
+			
+			if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
+				if (RealmCalendar.isFirstDayOfAWeek(game.getDay())) {
+					RealmEvents.shuffleEvents(host);
+				}
+				if(game.getDay()>=8 || game.getMonth()>=2) {
+					RealmEvents.drawEvent(host);
+				}
+			}
 
 			// Figure out who is following who, and determine which characters actually get to move here
 			ArrayList<GameObject> allChars = new ArrayList<>(getLivingCharacters());
@@ -858,6 +867,10 @@ public class RealmHostPanel extends JPanel {
 		spellMaster.deenergizePermanentSpells();
 		spellMaster.uneffectTargetsForMidnightSpells(game);
 		
+		if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
+			RealmEvents.expireEvents(host);
+		}
+		
 		testQuestRequirements(activeCharacters);
 		
 		// New Day
@@ -973,7 +986,7 @@ public class RealmHostPanel extends JPanel {
 		// Re-energize permanent spells (FIXME this doesn't seem to be sufficient for Flying Carpet??)
 		spellMaster.energizePermanentSpells(null,game);
 		
-		checkForGameEnd(activeCharacters);
+		checkForGameEnd(activeCharacters);		
 	}
 	private void checkForGameEnd(ArrayList<GameObject> livingCharacters) {
 		if (hostPrefs.hasPref(Constants.QST_BOOK_OF_QUESTS)) {

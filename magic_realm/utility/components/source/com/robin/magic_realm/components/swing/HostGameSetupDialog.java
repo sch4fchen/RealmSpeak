@@ -1139,6 +1139,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm Basic) - Each Campaign, Mission and Task can only completed once by every character.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ONE_OF_EACH_GOLD_SPECIAL,"CAMPAIGNS and TASKS only one of each (Super Realm Basic) - Only one Campaign and one Task token can be carried at the same time.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_END_GAME_SCORING,"END GAME SCORING (Super Realm Basic) - For scoring, Characters must discard those items that exceed the carrying capacity of his strongest in-play Move chit, active horse, or active Boots card. Melt into Mist, Enchant Artifact and Unleash Power spells are taken into account for scoring. Only castable spells are taken into account for scoring.",false));
+		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_EVENTS,"EVENTS (Super Realm Advanced) - Every day an event is drawn.",false));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
@@ -1330,6 +1331,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,true);
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		optionPane.setOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,true);
+		optionPane.setOption(Constants.SR_EVENTS,true);
 		
 		updateWarnings();
 	}
