@@ -142,6 +142,9 @@ public class SpellTargetingBewitched extends SpellTargetingSingle {
 			else if (spellTargeting instanceof SpellTargetingAttacker) {
 				spellTargeting = new SpellTargetingIndividual(combatFrame,spell);
 			}
+			else if (spellTargeting instanceof SpellTargetingArtifact) {
+				spellTargeting = new SpellTargetingOtherArtifact(combatFrame,spell);
+			}
 		
 			if (spellTargeting == null) {
 				JOptionPane.showMessageDialog(combatFrame,"No secondary target.",spell.getName()+" : No secondary target available.",JOptionPane.INFORMATION_MESSAGE);
