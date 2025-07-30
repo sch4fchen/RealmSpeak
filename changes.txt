@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Events: 27 Events
+Super Realm: Events: 26 Events
 Super Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -18,6 +18,10 @@ Would be nice to make weapon abilities too:
 	Immobilizing2 - When it hits all attacks undercut in next round
 	Stunning - Target cannot play an attack next round
 
+
+Version 1.2.3.3
+NEW FEATURES:
+# Events added:
 
 Version 1.2.3.2
 NEW FEATURES:
