@@ -97,7 +97,7 @@ public class RealmEvents {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> list = new ArrayList<>();
 		for (int i=0;i<7;i++) {
-			list.add(Events.Black.toString());
+			list.add(Events.Blank.toString());
 		}
 		Events[] possibleEvents = Events.values();
 		for (int i=0;i<3;i++) {
