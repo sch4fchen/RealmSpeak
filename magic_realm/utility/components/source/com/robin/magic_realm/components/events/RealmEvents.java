@@ -1,4 +1,4 @@
-package com.robin.magic_realm.RealmSpeak;
+package com.robin.magic_realm.components.events;
 
 import java.util.ArrayList;
 
@@ -7,16 +7,14 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.game.server.GameHost;
 import com.robin.general.util.RandomNumber;
-import com.robin.magic_realm.components.events.BlankEvent;
-import com.robin.magic_realm.components.events.IEvent;
-import com.robin.magic_realm.components.events.PrismEvent;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 
 public class RealmEvents {
 	
-	private static String eventsConfiguration = "eventsConfiguration";
+	private static String eventsConfiguration = "RealmEvents";
 	private static String eventsForTheWeek = "events";
 	private static String activeEvents = "events_active";
-	private static String Blank = "Blank";
+	private static String infiniteColorMagicSource = "infinite_colorMagic_Source";
 	
 	private static enum Events {
 		Blank,
@@ -66,7 +64,7 @@ public class RealmEvents {
 		config.addThisAttributeListItem(activeEvents,eventString);
 		IEvent event = createEvent(Events.valueOf(eventString));
 		host.broadcast("host","Event: "+event.getTitle());
-		event.apply(host);
+		event.apply(host.getGameData());
 	}
 	
 	public static void expireEvents(GameHost host) {
@@ -76,7 +74,7 @@ public class RealmEvents {
 		
 		for (String eventString : events) {
 			IEvent event = createEvent(Events.valueOf(eventString));
-			event.expire(host);
+			event.expire(host.getGameData());
 		}
 		config.removeThisAttribute(activeEvents);
 	}
@@ -99,7 +97,7 @@ public class RealmEvents {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> list = new ArrayList<>();
 		for (int i=0;i<7;i++) {
-			list.add(Blank);
+			list.add(Events.Black.toString());
 		}
 		Events[] possibleEvents = Events.values();
 		for (int i=0;i<3;i++) {
@@ -109,7 +107,7 @@ public class RealmEvents {
 		config.setThisAttributeList(eventsForTheWeek,list);
 	}
 	
-	private static GameObject findEventsConfig(GameData data) {
+	public static GameObject findEventsConfig(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> config = pool.find("name="+eventsConfiguration);
 		if (config==null || config.isEmpty()) {
@@ -126,9 +124,35 @@ public class RealmEvents {
 	
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
+			case White: return new WhiteEvent();
+			case Grey: return new GreyEvent();
+			case Gold: return new GoldEvent();
+			case Purple: return new PurpleEvent();
+			case Black: return new BlackEvent();
 			case Prism: return new PrismEvent();
 			case Blank:
 			default: return new BlankEvent();
 		}
+	}
+	
+	public static void addInfiniteColorMagicSource(GameData data,String color) {
+		GameObject config = findEventsConfig(data);
+		config.addThisAttributeListItem(infiniteColorMagicSource, color);
+	}
+	
+	public static void removeInfiniteColorMagicSource(GameData data,String color) {
+		GameObject config = findEventsConfig(data);
+		config.removeThisAttributeListItem(infiniteColorMagicSource, color);
+	}
+	
+	public static ArrayList<ColorMagic> getInfiniteColorMagicSources(GameData data) {
+		GameObject config = findEventsConfig(data);
+		ArrayList<ColorMagic> list = new ArrayList<>();
+		if (config.hasThisAttribute(infiniteColorMagicSource)) {
+			for (String color : config.getThisAttributeList(infiniteColorMagicSource)) {
+				list.add(ColorMagic.makeColorMagic(color,true));
+			}
+		}
+		return list;
 	}
 }

@@ -1,10 +1,10 @@
 package com.robin.magic_realm.components.events;
 
-import com.robin.game.server.GameHost;
+import com.robin.game.objects.GameData;
 
 public interface IEvent {
 	String getTitle();
 	String getDescription();
-	void apply(GameHost host);
-	void expire(GameHost host);
+	void apply(GameData data);
+	void expire(GameData data);
 }

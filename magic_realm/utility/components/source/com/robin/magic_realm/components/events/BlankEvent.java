@@ -1,13 +1,13 @@
 package com.robin.magic_realm.components.events;
 
-import com.robin.game.server.GameHost;
+import com.robin.game.objects.GameData;
 
 public class BlankEvent implements IEvent {
 	private static final String title = "Blank";
 	private static final String description = "No event today.";
-	public void apply(GameHost host) {
+	public void apply(GameData data) {
 	}
-	public void expire(GameHost host) {
+	public void expire(GameData data) {
 	}
 	@Override
 	public String getTitle() {

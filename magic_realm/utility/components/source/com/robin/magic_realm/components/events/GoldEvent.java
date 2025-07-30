@@ -3,18 +3,14 @@ package com.robin.magic_realm.components.events;
 import com.robin.game.objects.GameData;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 
-public class PrismEvent implements IEvent {
-	private static final String title = "Prism";
-	private static final String description = "A source of grey, gold and purple magic is in every clearing of every hex.";
+public class GoldEvent implements IEvent {
+	private static final String title = "Gold";
+	private static final String description = "A source of gold magic is in every clearing of every hex.";
 	public void apply(GameData data) {
-		RealmEvents.addInfiniteColorMagicSource(data,ColorMagic.Grey);
 		RealmEvents.addInfiniteColorMagicSource(data,ColorMagic.Gold);
-		RealmEvents.addInfiniteColorMagicSource(data,ColorMagic.Purple);
 	}
 	public void expire(GameData data) {
-		RealmEvents.removeInfiniteColorMagicSource(data,ColorMagic.Grey);
 		RealmEvents.removeInfiniteColorMagicSource(data,ColorMagic.Gold);
-		RealmEvents.removeInfiniteColorMagicSource(data,ColorMagic.Purple);
 	}
 	@Override
 	public String getTitle() {

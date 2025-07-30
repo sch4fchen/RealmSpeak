@@ -13,6 +13,7 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.effect.SpiderWebEffect;
+import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.table.Curse;
 import com.robin.magic_realm.components.table.DevilsSpell;
@@ -851,6 +852,8 @@ public class BattleModel {
 		ArrayList<ColorMagic> availableColors = battleLocation.clearing.getAllSourcesOfColor(false);
 		RealmCalendar cal = RealmCalendar.getCalendar(gameData);
 		availableColors.addAll(cal.getColorMagic(theGame.getMonth(),theGame.getDay()));
+		availableColors.addAll(RealmEvents.getInfiniteColorMagicSources(gameData));
+		
 		boolean colorSupplied = false;
 		for (ColorMagic color : availableColors) {
 			if (requiredColorMagic.getColor() == color.getColor()) {

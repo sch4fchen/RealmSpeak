@@ -17,6 +17,7 @@ import com.robin.magic_realm.components.attribute.GuildLevelType.GuildLevel;
 import com.robin.magic_realm.components.effect.ISpellEffect;
 import com.robin.magic_realm.components.effect.PhaseChitEffectFactory;
 import com.robin.magic_realm.components.effect.SpellEffectContext;
+import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.CenteredMapView;
@@ -6397,6 +6398,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// 7th day color magic!
 		RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
 		color.addAll(cal.getColorMagic(getCurrentMonth(),getCurrentDay()));
+		// Events
+		color.addAll(RealmEvents.getInfiniteColorMagicSources(getGameObject().getGameData()));
 		
 		if (isPhantasm()) { // can use color from character or clearing! (I think)
 			color.addAll(getHiringCharacter().getInfiniteColorSources());

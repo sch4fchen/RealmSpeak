@@ -10,6 +10,7 @@ import com.robin.general.util.HashLists;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 
@@ -336,6 +337,9 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			infiniteSources.addAll(cal.getColorMagic(game.getMonth(),game.getDay()));
 		}
 
+		// Events
+		infiniteSources.addAll(RealmEvents.getInfiniteColorMagicSources(game.getGameObject().getGameData()));
+		
 		if (infiniteSources.size()>0) {
 			ColorMagic spellColor = spell.getRequiredColorMagic();
 			if (spellColor==null || infiniteSources.contains(spellColor)) {
