@@ -33,7 +33,7 @@ public class RealmEvents {
 		//ProwlIII,
 		Regenerate,
 		//Enchant,
-		//Break,
+		Break,
 		White,
 		Grey,
 		Gold,
