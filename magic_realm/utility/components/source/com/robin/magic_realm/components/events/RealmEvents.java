@@ -7,7 +7,12 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.game.server.GameHost;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
+import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.RealmObjectMaster;
+import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class RealmEvents {
 	
@@ -32,7 +37,7 @@ public class RealmEvents {
 		//ProwlII,
 		//ProwlIII,
 		Regenerate,
-		//Enchant,
+		Enchant,
 		Break,
 		White,
 		Grey,
@@ -124,6 +129,9 @@ public class RealmEvents {
 	
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
+			case Regenerate: return new RegenerateEvent();
+			case Enchant: return new EnchantEvent();
+			case Break: return new BreakEvent();
 			case White: return new WhiteEvent();
 			case Grey: return new GreyEvent();
 			case Gold: return new GoldEvent();
@@ -154,5 +162,59 @@ public class RealmEvents {
 			}
 		}
 		return list;
+	}
+	
+	public static ArrayList<CharacterWrapper> getLivingCharacters(GameData gameData) {
+		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(gameData).getPlayerCharacterObjects());
+		ArrayList<GameObject> list = pool.find(CharacterWrapper.NAME_KEY);
+		ArrayList<CharacterWrapper> active = new ArrayList<>();
+		for (GameObject characterGo : list) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
+			if (!character.isDead()) {
+				active.add(character);
+			}
+		}
+		return active;
+	}
+	
+	public static TileComponent chooseRandomTile(GameData data) {
+		return chooseRandomTile(data,null);
+	}
+	public static TileComponent chooseRandomTile(GameData data,ArrayList<String> tileTypes) {
+		ArrayList<TileComponent> list = new ArrayList<>();
+		for (CharacterWrapper character: getLivingCharacters(data)) {
+			TileLocation loc = character.getCurrentLocation();
+			if (loc!=null && loc.tile!=null && !list.contains(loc.tile)) {
+				if (tileTypes!=null) {
+					for (String type : tileTypes) {
+						if (loc.tile.getTileType().matches(type)) {
+							list.add(loc.tile);
+							break;
+						}
+					}
+				}
+				else {
+					list.add(loc.tile);
+				}
+			}
+			for (RealmComponent hireling : character.getAllHirelings()) {
+				TileLocation locHireling = hireling.getCurrentLocation();
+				if (locHireling!=null && locHireling.tile!=null && !list.contains(locHireling.tile)) {
+					if (tileTypes!=null) {
+						for (String type : tileTypes) {
+							if (locHireling.tile.getTileType().matches(type)) {
+								list.add(locHireling.tile);
+								break;
+							}
+						}
+					}
+					else {
+						list.add(locHireling.tile);
+					}
+				}
+			}
+		}
+		if (list.isEmpty()) return null;
+		return list.get(RandomNumber.getRandom(list.size()));
 	}
 }
