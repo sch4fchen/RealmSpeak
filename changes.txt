@@ -23,6 +23,7 @@ Version 1.2.3.2
 NEW FEATURES:
 # RealmViewer shows all treasues, denizens and spells of Super Realm and Expansion 1
 # RealmViewer: add map
+# Optional rule: Events
 SUPER REALM:
 # Improve Redirect spell
 BUGS/ISSUES:

@@ -237,6 +237,7 @@ public class GameHtmlGenerator extends HtmlGenerator {
 		g.setColor(Color.lightGray);
 		g.fillRect(0,0,rect.width,rect.height);
 		map.clearMapAttentionMessage();
+		map.clearMapAttentionMessage2();
 		map.clearMarkClearingAlertText();
 		map.setShowEmbellishments(game.getGameStarted());
 		map.setReplot(true);

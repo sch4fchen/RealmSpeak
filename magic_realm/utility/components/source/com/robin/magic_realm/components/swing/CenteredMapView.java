@@ -53,7 +53,9 @@ public class CenteredMapView extends JComponent {
 	private static final Font SEASON_FONT = new Font("Dialog",Font.BOLD,12);
 	private static final Font INSTRUCTION_FONT = new Font("Dialog",Font.BOLD,18);
 	private static final Color MAP_ATTENTION_COLOR = new Color(100,255,100,190);
+	private static final Color MAP_ATTENTION_COLOR2 = new Color(255,150,50,190);
 	private static final Font MAP_ATTENTION_FONT = new Font("Arial",Font.BOLD,24);
+	private static final Font MAP_ATTENTION_FONT_SMALL = new Font("Arial",Font.BOLD,18);
 	private static final Stroke THIN_STROKE = new BasicStroke(2);
 	private static final Stroke THICK_STROKE = new BasicStroke(3);
 	private static final Stroke PLOT_PATH_STROKE = new BasicStroke(5,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
@@ -98,6 +100,7 @@ public class CenteredMapView extends JComponent {
 	private TileLocation currentTileLocation = null;
 	
 	private String mapAttentionMessage = null;
+	private ArrayList<String> mapAttentionMessage2 = null;
 	
 	private String markClearingAlertText = null;
 	
@@ -173,6 +176,7 @@ public class CenteredMapView extends JComponent {
 		MouseInputAdapter mia = new MouseInputAdapter() {
 			public void mousePressed(MouseEvent ev) {
 				mapAttentionMessage = null;
+				mapAttentionMessage2 = null;
 				startingPoint = ev.getPoint();
 				overJiggle = false;
 				sticky = ev.getPoint();
@@ -227,6 +231,7 @@ public class CenteredMapView extends JComponent {
 			}
 			public void mouseClicked(MouseEvent ev) {
 				mapAttentionMessage = null;
+				mapAttentionMessage2 = null;
 				if (tileBeingPlaced==null) {
 					if (MouseUtility.isRightOrControlClick(ev)) { // right mouse click
 						TileLocation tl = getTileLocationAtPoint(ev.getPoint());
@@ -437,6 +442,18 @@ public class CenteredMapView extends JComponent {
 	}
 	public void clearMapAttentionMessage() {
 		this.mapAttentionMessage = null;
+	}
+	public ArrayList<String> getMapAttentionMessage2() {
+		return mapAttentionMessage2;
+	}
+	public void addMapAttentionMessage2(String val) {
+		if(this.mapAttentionMessage2==null) {
+			mapAttentionMessage2 = new ArrayList<>();
+		}
+		this.mapAttentionMessage2.add(val);
+	}
+	public void clearMapAttentionMessage2() {
+		this.mapAttentionMessage2 = null;
 	}
 	public String getMarkClearingAlertText() {
 		return markClearingAlertText;
@@ -1180,6 +1197,30 @@ public class CenteredMapView extends JComponent {
 			GraphicsUtil.drawCenteredString(g,r.x,r.y-2,r.width,r.height,mapAttentionMessage);
 			g.setStroke(THICK_STROKE);
 			g.setColor(Color.white);
+			g.drawRect(r.x+1,r.y+1,r.width-3,r.height-3);
+		}
+		
+		if (mapAttentionMessage2!=null) {
+			Dimension size = getSize();
+			int numberOfTextLines = mapAttentionMessage2.size();
+			Rectangle r = new Rectangle(50,size.height-400>>1,size.width-100,10+20*numberOfTextLines);
+			g.setColor(MAP_ATTENTION_COLOR2);
+			g.fillRect(r.x,r.y,r.width,r.height);
+			g.setFont(MAP_ATTENTION_FONT);
+			g.setColor(Color.black);
+			int textLine = 0;
+			for (String text : mapAttentionMessage2) {
+				GraphicsUtil.drawCenteredString(g,r.x,r.y-2+10-10*numberOfTextLines+textLine*20,r.width,r.height,text);
+				if (textLine%2!=1) {
+					g.setFont(MAP_ATTENTION_FONT_SMALL);
+				}
+				else {
+					g.setFont(MAP_ATTENTION_FONT);
+				}
+				textLine++;
+			}
+			g.setStroke(THICK_STROKE);
+			g.setColor(Color.black);
 			g.drawRect(r.x+1,r.y+1,r.width-3,r.height-3);
 		}
 		

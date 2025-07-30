@@ -9,6 +9,7 @@ import com.robin.game.server.GameHost;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.events.BlankEvent;
 import com.robin.magic_realm.components.events.IEvent;
+import com.robin.magic_realm.components.events.PrismEvent;
 
 public class RealmEvents {
 	
@@ -18,6 +19,7 @@ public class RealmEvents {
 	private static String Blank = "Blank";
 	
 	private static enum Events {
+		Blank,
 		ViolentStorm,
 		Fog,
 		Illusion,
@@ -63,6 +65,7 @@ public class RealmEvents {
 		String eventString = events.remove(i);
 		config.addThisAttributeListItem(activeEvents,eventString);
 		IEvent event = createEvent(Events.valueOf(eventString));
+		host.broadcast("host","Event: "+event.getTitle());
 		event.apply(host);
 	}
 	
@@ -76,6 +79,20 @@ public class RealmEvents {
 			event.expire(host);
 		}
 		config.removeThisAttribute(activeEvents);
+	}
+	
+	public static ArrayList<IEvent> getCurrentEvents(GameData gameData) {
+		GameObject config = findEventsConfig(gameData);
+		ArrayList<String> events = config.getThisAttributeList(activeEvents);
+		if (events==null) return null;
+		
+		ArrayList<IEvent> list = new ArrayList<>();
+		for (String eventString : events) {
+			IEvent event = createEvent(Events.valueOf(eventString));
+			list.add(event);
+		}
+		
+		return list;
 	}
 	
 	public static void shuffleEvents(GameHost host) {
@@ -109,8 +126,9 @@ public class RealmEvents {
 	
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
-			default:
-				return new BlankEvent();
+			case Prism: return new PrismEvent();
+			case Blank:
+			default: return new BlankEvent();
 		}
 	}
 }
