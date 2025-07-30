@@ -20,6 +20,7 @@ import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmBattle.RealmBattle;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.events.IEvent;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
@@ -1313,6 +1314,17 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					else if (hostPrefs.hasPref(Constants.OPT_WEATHER) && !weather.equals(lastWeather)) {
 						lastWeather = weather;
 						inspector.getMap().setMapAttentionMessage(cal.getWeatherName(month));
+					}
+				}
+				
+				if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
+					ArrayList<IEvent> events = RealmEvents.getCurrentEvents(getClient().getGameData());
+					if (events!=null && !events.isEmpty()) {
+						inspector.getMap().clearMapAttentionMessage2();
+						for (IEvent event : events) {
+							inspector.getMap().addMapAttentionMessage2(event.getTitle());
+							inspector.getMap().addMapAttentionMessage2(event.getDescription());
+						}
 					}
 				}
 
