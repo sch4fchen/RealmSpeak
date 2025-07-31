@@ -33,6 +33,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String FIRST_EDITION_RULES_TAB = "First Edition";
 	private static final String HOUSE_RULES_TAB = "House Rules";
 	private static final String HOUSE2_RULES_TAB = "Robin's House";
+	private static final String MAP_BUILDING = "Map Building";
 	private static final String RANDOM_GEN_TAB = "# Generators";
 	
 	private static final Border TOP_LINE = BorderFactory.createMatteBorder(2,0,0,0,Color.blue);
@@ -1037,8 +1038,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm Basic) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm Basic) - All denizen regenerate at the end of the month.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm Basic) - Horses are regenerated.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.MAP_BUILDING_HILL_TILES,"MAP GENERATION: HILL TILES MUST CONNECT ALL CLEARINGS - Hill tiles connect all clearings.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm Basic) - Spying is not possible (for looting or discovering paths).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_INFORMATION_SHARING,"NO INFORMATION SHARING (Super Realm Basic) - Information about the location of secret passages, hidden paths, treasure sites and TWT is not transferable. This information is not transferable and can only be learned by following.",false));
@@ -1203,6 +1202,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_DONT_RECYCLE_CHARACTERS,"NO CHARACTER RECYCLE - Once a character dies, they cannot be played again for the remainder of the game.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_FORCE_INN_AFTER_GAMESTART,"FORCE INN AFTER START - Characters joining AFTER the start of the game, MUST start at the Inn, regardless of their normal options.",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_ALLOW_LEVEL_GAINS_PAST_FOUR,"LEVEL REWARDS PAST FOUR - When playing extended development rules, you will get rewards past level four if you advance during the game.",false));		
+		
+		newOptionPane.setTabHtmlDescription(MAP_BUILDING,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Map Building</font></body></html>");
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_HILL_TILES,"MAP GENERATION: HILL TILES MUST CONNECT ALL CLEARINGS - Hill tiles connect all clearings.",false));
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER,"MAP GENERATION: NON-RIVER TILES ADJACENT TO RIVER - Map will be regenerated, if not all rilver tiles have at least one non-river adjacent tile.",false));
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT,"MAP GENERATION: LAKE WOODS TILE MUST CONNECT - Map will be regenerated, if not all clearings of the Lake Wodds tile connect back to the river.",false));
 		
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
 		newOptionPane.addOption(RANDOM_GEN_TAB,new GameOption(Constants.RANDOM_R250_521,"Use R250/521 - A very fast shift-register sequence random number generator, invented by Kirkpatrick and Stoll in 1981.",false,exclusiveRandomGen,null));
