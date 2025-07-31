@@ -22,6 +22,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.3
 NEW FEATURES:
 # Events added
+# Optional rules for map generation and building the river
 
 Version 1.2.3.2
 NEW FEATURES:

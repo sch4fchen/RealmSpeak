@@ -145,6 +145,42 @@ public class MapBuilder {
 			}
 		}
 		
+		if (hostPrefs.hasPref(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT)) {
+			for (Tile tile : mapGrid.values()) {
+				if (tile.getGameObject().getName().matches("Lake Woods")) {
+					for (String clearing : tile.getClearings()) {
+						if (!tile.connectsToTilename(mapGrid,clearing,anchor.getGameObject().getName())) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		
+		if (hostPrefs.hasPref(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER) || hostPrefs.hasPref(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER)) {
+			int neededCount = 1;
+			if (hostPrefs.hasPref(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER)) {
+				neededCount = 2;
+			}
+			for (Tile tile : mapGrid.values()) {
+				if (tile.hasRiverPaths(0)) {
+					Point pos = tile.getMapPosition();
+					int adjCount = 0;
+					for (int edge=0;edge<6;edge++) {
+						Point adjPos = Tile.getAdjacentPosition(pos,edge);
+						for (int adj=0;adj<6;adj++) {
+							Tile adjTile = mapGrid.get(Tile.getAdjacentPosition(adjPos,adj));
+							if (adjTile!=null && !adjTile.hasRiverPaths(0)) {
+								adjCount++;
+							}
+						}
+						if (adjCount>=neededCount) continue;
+						if (edge==6) return false;
+					}
+				}
+			}
+		}
+		
 		for (Tile tile : mapGrid.values()) {
 			tile.writeToGameObject();
 		}

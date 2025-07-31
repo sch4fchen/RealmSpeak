@@ -985,6 +985,7 @@ public class Constants {
 	public static final String MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT = "map_building_increase_prio_tile_placement";
 	public static final String MAP_BUILDING_HILL_TILES = "map_building_hill_tiles";
 	public static final String MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER = "map_building_non_river_tiles_adjacent_to_river";
+	public static final String MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER = "map_building_two_non_river_tiles_adjacent_to_river";
 	public static final String MAP_BUILDING_LAKE_WOODS_MUST_CONNECT = "map_building_lake_woods_must_connect";
 	
 	public static final String CACHE_NAME = "'s Cache #";

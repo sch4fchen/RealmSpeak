@@ -1206,7 +1206,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.setTabHtmlDescription(MAP_BUILDING,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Map Building</font></body></html>");
 		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,"MAP GENERATION: MORE CONSISTENT MAPS - Tiles are more likly to be placed to river tiles when generating the map.",false));
 		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_HILL_TILES,"MAP GENERATION: HILL TILES MUST CONNECT ALL CLEARINGS - Hill tiles connect all clearings.",false));
-		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER,"MAP GENERATION: NON-RIVER TILES ADJACENT TO RIVER - Map will be regenerated, if not all rilver tiles have at least one non-river adjacent tile.",false));
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER,"MAP GENERATION: NON-RIVER TILES ADJACENT TO RIVER - Map will be regenerated, if not all rilver tiles have at least ONE non-river adjacent tile.",false));
+		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER,"MAP GENERATION: NON-RIVER TILES ADJACENT TO RIVER - Map will be regenerated, if not all rilver tiles have at least TWO non-river adjacent tile.",false));
 		newOptionPane.addOption(MAP_BUILDING,new GameOption(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT,"MAP GENERATION: LAKE WOODS TILE MUST CONNECT - Map will be regenerated, if not all clearings of the Lake Wodds tile connect back to the river.",false));
 		
 		newOptionPane.setTabHtmlDescription(RANDOM_GEN_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Random Number Generator Preference - For more details see:</font><br>http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation.html</body></html>");
