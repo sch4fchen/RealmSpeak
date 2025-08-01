@@ -5,7 +5,9 @@ import com.robin.game.objects.GameData;
 public class BlankEvent implements IEvent {
 	private static final String title = "Blank";
 	private static final String description = "No event today.";
-	public void apply(GameData data) {
+	public void applyBirdsong(GameData data) {
+	}
+	public void applySunset(GameData data) {
 	}
 	public void expire(GameData data) {
 	}

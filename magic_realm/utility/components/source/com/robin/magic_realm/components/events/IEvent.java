@@ -5,6 +5,7 @@ import com.robin.game.objects.GameData;
 public interface IEvent {
 	String getTitle();
 	String getDescription();
-	void apply(GameData data);
+	void applyBirdsong(GameData data);
+	void applySunset(GameData data);
 	void expire(GameData data);
 }

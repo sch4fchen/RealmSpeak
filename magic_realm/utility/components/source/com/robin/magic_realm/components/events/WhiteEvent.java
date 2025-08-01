@@ -6,8 +6,10 @@ import com.robin.magic_realm.components.attribute.ColorMagic;
 public class WhiteEvent implements IEvent {
 	private static final String title = "White";
 	private static final String description = "A source of white magic is in every clearing of every hex.";
-	public void apply(GameData data) {
+	public void applyBirdsong(GameData data) {
 		RealmEvents.addInfiniteColorMagicSource(data,ColorMagic.White);
+	}
+	public void applySunset(GameData data) {
 	}
 	public void expire(GameData data) {
 		RealmEvents.removeInfiniteColorMagicSource(data,ColorMagic.White);

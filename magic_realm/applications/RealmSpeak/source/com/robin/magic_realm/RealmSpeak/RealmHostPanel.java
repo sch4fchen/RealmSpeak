@@ -494,6 +494,7 @@ public class RealmHostPanel extends JPanel {
 				if(game.getDay()>=8 || game.getMonth()>=2) {
 					RealmEvents.drawEvent(host);
 				}
+				RealmEvents.applyBirdsong(host);
 			}
 
 			// Figure out who is following who, and determine which characters actually get to move here
@@ -744,6 +745,10 @@ public class RealmHostPanel extends JPanel {
 			for (GameObject characterGo : activeCharacters) {
 				CharacterWrapper character = new CharacterWrapper(characterGo);
 				character.applySunset();
+			}
+			
+			if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
+				RealmEvents.applySunset(host);
 			}
 			game.setState(GameWrapper.GAME_STATE_RESOLVING);
 			sendEmailAll("The day is over, and the game moves into evening combat.");

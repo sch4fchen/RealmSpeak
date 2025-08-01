@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 public class RegenerateEvent implements IEvent {
 	private static final String title = "Regenerate";
 	private static final String description = "A prowling denizens immediately regenerate.";
-	public void apply(GameData data) {
+	public void applyBirdsong(GameData data) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GameWrapper game = GameWrapper.findGame(data);
 		SetupCardUtility.resetGeneralDwellings(data);
@@ -24,6 +24,8 @@ public class RegenerateEvent implements IEvent {
 		if (nativeDieRoller.getNumberOfDice()>1) {
 			SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(1));
 		}
+	}
+	public void applySunset(GameData data) {
 	}
 	public void expire(GameData data) {
 	}

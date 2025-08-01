@@ -7,7 +7,9 @@ import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 public class BreakEvent implements IEvent {
 	private static final String title = "Break";
 	private static final String description = "At midnight, all spells in effect anywhere are broken. This includes Curses and Mesmerizes.";
-	public void apply(GameData data) {
+	public void applyBirdsong(GameData data) {
+	}
+	public void applySunset(GameData data) {
 	}
 	public void expire(GameData data) {
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(data);

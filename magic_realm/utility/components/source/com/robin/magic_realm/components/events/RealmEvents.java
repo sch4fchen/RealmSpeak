@@ -70,7 +70,28 @@ public class RealmEvents {
 		config.addThisAttributeListItem(activeEvents,eventString);
 		IEvent event = createEvent(Events.valueOf(eventString));
 		host.broadcast("host","Event: "+event.getTitle());
-		event.apply(host.getGameData());
+	}
+	
+	public static void applyBirdsong(GameHost host) {
+		GameObject config = findEventsConfig(host.getGameData());
+		ArrayList<String> events = config.getThisAttributeList(activeEvents);
+		if (events==null) return;
+		
+		for (String eventString : events) {
+			IEvent event = createEvent(Events.valueOf(eventString));
+			event.applyBirdsong(host.getGameData());
+		}
+	}
+	
+	public static void applySunset(GameHost host) {
+		GameObject config = findEventsConfig(host.getGameData());
+		ArrayList<String> events = config.getThisAttributeList(activeEvents);
+		if (events==null) return;
+		
+		for (String eventString : events) {
+			IEvent event = createEvent(Events.valueOf(eventString));
+			event.applySunset(host.getGameData());
+		}
 	}
 	
 	public static void expireEvents(GameHost host) {
