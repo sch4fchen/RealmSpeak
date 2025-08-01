@@ -22,6 +22,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.5
 BUGS/ISSUES:
 # Fix river validation for map generation
+# Fix Hound treasure deactivation
 
 Version 1.2.3.4
 BUGS/ISSUES:

@@ -948,9 +948,10 @@ public class TreasureUtility {
 						}
 						combat.targetsRemoveAttackers();
 						CombatWrapper.clearAllCombatInfo(companion);
-						companion.detach();
-						data.removeObject(companion);
+						character.removeHireling(companion);
+						SetupCardUtility.resetDenizen(companion);
 						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
+						data.removeObject(companion);
 					}
 					else {
 						return false;
