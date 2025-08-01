@@ -19,6 +19,7 @@ import com.robin.general.io.*;
 import com.robin.general.swing.*;
 import com.robin.general.util.RandomNumber;
 import com.robin.general.util.RandomNumberType;
+import com.robin.magic_realm.MRMap.MapBuilder;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderFrame;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
@@ -33,6 +34,7 @@ import com.robin.magic_realm.components.quest.QuestDeck;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
+import com.robin.magic_realm.map.Tile;
 
 import edu.stanford.ejalbert.BrowserLauncher;
 
@@ -208,6 +210,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			
 		protected JMenu helpMenu;
 			protected JMenuItem spurGameHelp;
+			protected JMenuItem validateMap;
 			protected JMenuItem ruleCreditsHelp;
 			protected JMenuItem licenseHelp;
 			protected JMenuItem creditsHelp;
@@ -642,6 +645,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		gameDataFile.setEnabled(!joinedGame && !gameInProgress);
 		
 		spurGameHelp.setEnabled(gameInProgress);
+		validateMap.setEnabled(gameInProgress);
 		
 		launchGm.setEnabled(!joinedGame && !gameInProgress);
 		launchCharacterEditor.setEnabled(!joinedGame && !gameInProgress);
@@ -1552,6 +1556,13 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					}
 				});
 			helpMenu.add(spurGameHelp);
+				validateMap = new JMenuItem("Validate Map");
+				validateMap.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						validateMap(gameHandler.getClient().getGameData());
+					}
+				});
+			helpMenu.add(validateMap);
 			helpMenu.add(new JSeparator());
 				ruleCreditsHelp = new JMenuItem("3rd Edition Rule Credits");
 				ruleCreditsHelp.addActionListener(new ActionListener() {
@@ -1681,6 +1692,42 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			gameHandler.updateCharacterList(); // Guarantees the frames will get updated
 		}
 	}
+	public void validateMap(GameData data) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
+		Hashtable<Point, Tile> mapGrid = MapBuilder.getMapGrid(data,hostPrefs);
+		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
+		Tile anchor = MapBuilder.findAnchorTile(MapBuilder.startTileList(data,keyVals));
+		
+		String text = "Lake Woods: ";
+		if (hostPrefs.hasPref(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT)) {
+			boolean woodsTileValidation = MapBuilder.validateLakeWoodsTile(hostPrefs, mapGrid, anchor);
+			if (woodsTileValidation) {
+				text = text + "OK";
+			}
+			else {
+				text = text + "NOT OK";
+			}
+		}
+		else {
+			text = text + "not validated";
+		}
+		text = text + "  //  River validation: ";
+		if (hostPrefs.hasPref(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER) || hostPrefs.hasPref(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER)) {
+			boolean riverValidation = MapBuilder.validateRiver(hostPrefs, mapGrid);
+			if (riverValidation) {
+				text = text + "OK";
+			}
+			else {
+				text = text + "NOT OK";
+			}
+		}
+		else {
+			text = text + "not validated";
+		}
+		
+		JOptionPane.showMessageDialog(this, text, "Map validation", JOptionPane.PLAIN_MESSAGE, ImageCache.getIcon("interface/build"));
+	}
+	
 	private void loadHostGame(boolean netConnect) {
 		JFileChooser chooser;
 		if (lastSaveGame!=null) {

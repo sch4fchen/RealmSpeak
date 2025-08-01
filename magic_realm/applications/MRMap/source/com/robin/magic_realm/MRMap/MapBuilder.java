@@ -145,6 +145,17 @@ public class MapBuilder {
 			}
 		}
 		
+		if (!validateLakeWoodsTile(hostPrefs, mapGrid, anchor)) return false;
+		
+		if (!validateRiver(hostPrefs, mapGrid)) return false;
+		
+		for (Tile tile : mapGrid.values()) {
+			tile.writeToGameObject();
+		}
+		System.out.println();
+		return true;
+	}
+	public static boolean validateLakeWoodsTile(HostPrefWrapper hostPrefs, Hashtable<Point, Tile> mapGrid, Tile anchor) {
 		if (hostPrefs.hasPref(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT)) {
 			for (Tile tile : mapGrid.values()) {
 				if (tile.getGameObject().getName().matches("Lake Woods")) {
@@ -156,7 +167,9 @@ public class MapBuilder {
 				}
 			}
 		}
-		
+		return true;
+	}
+	public static boolean validateRiver(HostPrefWrapper hostPrefs, Hashtable<Point, Tile> mapGrid) {
 		if (hostPrefs.hasPref(Constants.MAP_BUILDING_NON_RIVER_TILES_ADJACENT_TO_RIVER) || hostPrefs.hasPref(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER)) {
 			int neededCount = 1;
 			if (hostPrefs.hasPref(Constants.MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER)) {
@@ -180,12 +193,17 @@ public class MapBuilder {
 				}
 			}
 		}
-		
-		for (Tile tile : mapGrid.values()) {
-			tile.writeToGameObject();
-		}
-		System.out.println();
 		return true;
+	}
+	public static Hashtable<Point, Tile> getMapGrid(GameData data, HostPrefWrapper hostPrefs) {
+		Hashtable<Point, Tile> mapGrid = new Hashtable<>();
+		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
+		ArrayList<Tile> tiles = startTileList(data,keyVals);
+		for (Tile tile : tiles) {
+			tile.readFromGameObject();
+			mapGrid.put(Tile.getPositionFromGameObject(tile.getGameObject()),tile);
+		}
+		return mapGrid;
 	}
 	public static void main(String[]args) {
 	    RealmLoader loader = new RealmLoader();
