@@ -155,6 +155,23 @@ public class MapBuilder {
 		System.out.println();
 		return true;
 	}
+	public static boolean validateAdjacentTiles(Hashtable<Point, Tile> mapGrid) {
+		int neededCount = 2;
+		for (Tile tile : mapGrid.values()) {
+			Point pos = tile.getMapPosition();
+			int adjCount = 0;
+			for (int edge=0;edge<6;edge++) {
+				Point adjPos = Tile.getAdjacentPosition(pos,edge);
+				Tile adjTile = mapGrid.get(adjPos);
+				if (adjTile!=null) {
+					adjCount++;
+				}
+				if (adjCount>=neededCount) continue;
+				if (edge==5) return false;
+			}
+		}
+		return true;
+	}
 	public static boolean validateLakeWoodsTile(HostPrefWrapper hostPrefs, Hashtable<Point, Tile> mapGrid, Tile anchor) {
 		if (hostPrefs.hasPref(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT)) {
 			for (Tile tile : mapGrid.values()) {

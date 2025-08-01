@@ -1698,7 +1698,14 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		Collection<String> keyVals = GamePool.makeKeyVals(hostPrefs.getGameKeyVals());
 		Tile anchor = MapBuilder.findAnchorTile(MapBuilder.startTileList(data,keyVals));
 		
-		String text = "Lake Woods: ";
+		String text = "Validate adjacent tiles: ";
+		if (MapBuilder.validateAdjacentTiles(mapGrid)) {
+			text = text + "OK";
+		}
+		else {
+			text = text + "NOT OK";
+		}
+		text = text + "  //  Lake Woods: ";
 		if (hostPrefs.hasPref(Constants.MAP_BUILDING_LAKE_WOODS_MUST_CONNECT)) {
 			boolean woodsTileValidation = MapBuilder.validateLakeWoodsTile(hostPrefs, mapGrid, anchor);
 			if (woodsTileValidation) {
