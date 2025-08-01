@@ -181,14 +181,12 @@ public class MapBuilder {
 					int adjCount = 0;
 					for (int edge=0;edge<6;edge++) {
 						Point adjPos = Tile.getAdjacentPosition(pos,edge);
-						for (int adj=0;adj<6;adj++) {
-							Tile adjTile = mapGrid.get(Tile.getAdjacentPosition(adjPos,adj));
-							if (adjTile!=null && !adjTile.hasRiverPaths(0)) {
-								adjCount++;
-							}
+						Tile adjTile = mapGrid.get(adjPos);
+						if (adjTile!=null && !adjTile.hasRiverPaths(0)) {
+							adjCount++;
 						}
 						if (adjCount>=neededCount) continue;
-						if (edge==6) return false;
+						if (edge==5) return false;
 					}
 				}
 			}
