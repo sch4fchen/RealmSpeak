@@ -227,7 +227,7 @@ public class Tile {
 		
 		return false;
 	}
-	// These methods are just here so I can code - their purpose will be coded later
+
 	public int getClearingCount() {
 		return clearings.size();
 	}
@@ -317,7 +317,7 @@ public class Tile {
 	 * 
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
-	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean hillTilesRule) {
+	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean hillTilesRule,boolean rangeSetup) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -339,6 +339,20 @@ public class Tile {
 				}
 				if (pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
 					riverConnected = true;
+				}
+				if (rangeSetup && !tile.hasRiverPaths(0)) {
+					for (String clearing : tile.getClearings()) {
+						//mountain clearing must connect to another mountain clearing
+						//cave clearing must connect to another cave clearing
+					}
+					String tileType = tile.getGameObject().getThisAttribute("tile_type");
+					String adjacentTileType = adjTile.getGameObject().getThisAttribute("tile_type");
+					if ((tileType.matches("W") || tileType.matches("F")) && !adjacentTileType.matches("W") && !adjacentTileType.matches("F")) {
+						return false;
+					}
+					if ((tileType.matches("V") && adjacentTileType.matches("H")) || (tileType.matches("H") && adjacentTileType.matches("V"))) {
+						return false;
+					}
 				}
 				adjTileCount++;
 			}
