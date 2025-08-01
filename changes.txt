@@ -19,6 +19,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.3.5
+
+
 Version 1.2.3.4
 BUGS/ISSUES:
 # Fix crash when drawing a new event
@@ -27,8 +30,6 @@ Version 1.2.3.3
 NEW FEATURES:
 # Events added
 # Optional rules for map generation and building the river
-BUGS/ISSUES:
-# Fix crash when drawing a new event
 
 Version 1.2.3.2
 NEW FEATURES:
