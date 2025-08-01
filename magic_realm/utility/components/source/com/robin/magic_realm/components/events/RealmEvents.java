@@ -75,7 +75,7 @@ public class RealmEvents {
 	public static void applyBirdsong(GameHost host) {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> events = config.getThisAttributeList(activeEvents);
-		if (events==null) return;
+		if (events == null || events.isEmpty()) return;
 		
 		for (String eventString : events) {
 			IEvent event = createEvent(Events.valueOf(eventString));
@@ -86,7 +86,7 @@ public class RealmEvents {
 	public static void applySunset(GameHost host) {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> events = config.getThisAttributeList(activeEvents);
-		if (events==null) return;
+		if (events == null || events.isEmpty()) return;
 		
 		for (String eventString : events) {
 			IEvent event = createEvent(Events.valueOf(eventString));
