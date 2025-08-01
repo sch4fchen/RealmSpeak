@@ -20,6 +20,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.3.4
+BUGS/ISSUES:
+# Fix crash when drawing a new event
 
 Version 1.2.3.3
 NEW FEATURES:

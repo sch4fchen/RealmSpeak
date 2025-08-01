@@ -64,7 +64,7 @@ public class RealmEvents {
 	public static void drawEvent(GameHost host) {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> events = config.getThisAttributeList(eventsForTheWeek);
-		if (events.isEmpty()) return;
+		if (events == null || events.isEmpty()) return;
 		int i = RandomNumber.getRandom(events.size());
 		String eventString = events.remove(i);
 		config.addThisAttributeListItem(activeEvents,eventString);
