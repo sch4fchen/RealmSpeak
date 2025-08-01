@@ -33,7 +33,7 @@ public class RealmEvents {
 		//FrozenRiver,
 		//CaveIn,
 		//HurricaneWinds,
-		//ProwlI,
+		ProwlI,
 		//ProwlII,
 		//ProwlIII,
 		Regenerate,
@@ -151,6 +151,7 @@ public class RealmEvents {
 	
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
+			case ProwlI: return new ProwlIEvent();
 			case Regenerate: return new RegenerateEvent();
 			case Enchant: return new EnchantEvent();
 			case Break: return new BreakEvent();

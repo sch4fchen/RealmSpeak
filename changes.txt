@@ -20,6 +20,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.3.5
+NEW FEATURES:
+# Events added
 BUGS/ISSUES:
 # Fix river validation for map generation
 # Fix Hound treasure deactivation

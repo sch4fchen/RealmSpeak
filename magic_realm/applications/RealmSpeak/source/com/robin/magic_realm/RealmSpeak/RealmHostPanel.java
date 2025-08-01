@@ -472,6 +472,18 @@ public class RealmHostPanel extends JPanel {
 				host.broadcast("host","Native Die roll is "+nativeDieRoller.getDescription(false));
 			}
 
+			if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
+				if (RealmCalendar.isFirstDayOfAWeek(game.getDay())) {
+					RealmEvents.shuffleEvents(host);
+				}
+				if(game.getDay()>=8 || game.getMonth()>=2) {
+					RealmEvents.drawEvent(host);
+				}
+				RealmEvents.applyBirdsong(host);
+				monsterDieRoller = game.getMonsterDie();
+				nativeDieRoller = game.getNativeDie();
+			}
+			
 			game.clearRegeneratedDenizens();
 			
 			if (RealmCalendar.isSeventhDay(game.getDay()) && !hostPrefs.hasPref(Constants.SR_NO_7TH_DAY_REGENERATION)) {
@@ -485,16 +497,14 @@ public class RealmHostPanel extends JPanel {
 				if (nativeDieRoller.getNumberOfDice()>1) {
 					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(1));
 				}
-			}
-			
-			if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
-				if (RealmCalendar.isFirstDayOfAWeek(game.getDay())) {
-					RealmEvents.shuffleEvents(host);
+				
+				// for events only
+				if (monsterDieRoller.getNumberOfDice()>2) {
+					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(2), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 				}
-				if(game.getDay()>=8 || game.getMonth()>=2) {
-					RealmEvents.drawEvent(host);
+				if (nativeDieRoller.getNumberOfDice()>2) {
+					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(2));
 				}
-				RealmEvents.applyBirdsong(host);
 			}
 
 			// Figure out who is following who, and determine which characters actually get to move here
