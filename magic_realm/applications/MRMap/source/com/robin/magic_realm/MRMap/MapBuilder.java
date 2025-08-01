@@ -68,9 +68,9 @@ public class MapBuilder {
 			for (Tile tile : tiles) {
 				addPossibleTilePlacements(mapGrid,tile,anchor,hostPrefs,availableMapPositions,allTileResults,tileResultsPrio1,tileResultsPrio2);
 			}
-			if (hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP) && allTileResults.size()==0 && tileResultsPrio1.size()==0 && tileResultsPrio2.size()==0) {
+			if ((hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP) || hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP_VARIANT)) && allTileResults.size()==0 && tileResultsPrio1.size()==0 && tileResultsPrio2.size()==0) {
 				for (Tile tile : tiles) {
-					addPossibleTilePlacements(mapGrid,tile,anchor,hostPrefs,availableMapPositions,allTileResults,tileResultsPrio1,tileResultsPrio2,false);
+					addPossibleTilePlacements(mapGrid,tile,anchor,hostPrefs,availableMapPositions,allTileResults,tileResultsPrio1,tileResultsPrio2,false,false);
 				}
 			}
 			if (allTileResults.size()>0 || tileResultsPrio1.size()>0 || tileResultsPrio2.size()>0) {
@@ -132,9 +132,9 @@ public class MapBuilder {
 		return true;
 	}
 	private static void addPossibleTilePlacements(Hashtable<Point, Tile> mapGrid, Tile tile, Tile anchor, HostPrefWrapper hostPrefs, ArrayList<Point> availableMapPositions, ArrayList<ArrayList<TileMappingPossibility>> allTileResults, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio1, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio2) {
-		addPossibleTilePlacements(mapGrid,tile,anchor,hostPrefs,availableMapPositions,allTileResults,tileResultsPrio1,tileResultsPrio2,hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP));
+		addPossibleTilePlacements(mapGrid,tile,anchor,hostPrefs,availableMapPositions,allTileResults,tileResultsPrio1,tileResultsPrio2,hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP),hostPrefs.hasPref(Constants.MAP_BUILDING_RANGE_SETUP_VARIANT));
 	}
-	private static void addPossibleTilePlacements(Hashtable<Point, Tile> mapGrid, Tile tile, Tile anchor, HostPrefWrapper hostPrefs, ArrayList<Point> availableMapPositions, ArrayList<ArrayList<TileMappingPossibility>> allTileResults, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio1, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio2, boolean rangeSetup) {
+	private static void addPossibleTilePlacements(Hashtable<Point, Tile> mapGrid, Tile tile, Tile anchor, HostPrefWrapper hostPrefs, ArrayList<Point> availableMapPositions, ArrayList<ArrayList<TileMappingPossibility>> allTileResults, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio1, ArrayList<ArrayList<TileMappingPossibility>> tileResultsPrio2, boolean rangeSetup, boolean rangeSetupVariant) {
 		// Only use unmapped tiles
 		if (!mapGrid.contains(tile)) {
 			ArrayList<TileMappingPossibility> tileResults = new ArrayList<>();					
@@ -143,7 +143,7 @@ public class MapBuilder {
 				// Try every rotation
 				for (int rot=0;rot<6;rot++) {
 					// Test the tile at pos, with rotation rot
-					if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES),rangeSetup)) {
+					if (Tile.isMappingPossibility(mapGrid,tile,pos,rot,anchor.getGameObject().getName(),hostPrefs.hasPref(Constants.MAP_BUILDING_HILL_TILES),rangeSetup,rangeSetupVariant)) {
 						tileResults.add(new TileMappingPossibility(tile,pos,rot));
 						if (hostPrefs.hasPref(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT) && Tile.isMappingNextToPrioritizedTile(mapGrid,tile,pos,rot)) {
 							tileResults.add(new TileMappingPossibility(tile,pos,rot));

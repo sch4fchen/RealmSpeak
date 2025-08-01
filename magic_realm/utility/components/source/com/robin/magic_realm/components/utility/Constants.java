@@ -988,6 +988,7 @@ public class Constants {
 	public static final String MAP_BUILDING_2_NON_RIVER_TILES_ADJACENT_TO_RIVER = "map_building_two_non_river_tiles_adjacent_to_river";
 	public static final String MAP_BUILDING_LAKE_WOODS_MUST_CONNECT = "map_building_lake_woods_must_connect";
 	public static final String MAP_BUILDING_RANGE_SETUP = "map_building_range_setup";
+	public static final String MAP_BUILDING_RANGE_SETUP_VARIANT = "map_building_range_setup_variant";
 	
 	public static final String CACHE_NAME = "'s Cache #";
 }

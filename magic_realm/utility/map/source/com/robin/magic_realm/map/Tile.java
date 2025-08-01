@@ -317,7 +317,7 @@ public class Tile {
 	 * 
 	 * @return		true if the Tile object will fit at the specified location and rotation.
 	 */
-	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean hillTilesRule,boolean rangeSetup) {
+	public static boolean isMappingPossibility(Hashtable mapGrid,Tile tile,Point pos,int rot,String anchorTilename,boolean hillTilesRule,boolean rangeSetup,boolean rangeSetupVariant) {
 		// Setup the position
 		tile.setMapPosition(pos);
 		tile.setRotation(rot);
@@ -340,25 +340,27 @@ public class Tile {
 				if (pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
 					riverConnected = true;
 				}
-				if (rangeSetup && !tile.hasRiverPaths(0)) {
-					for (String clearing : tile.getClearings()) {
-						if (tile.clearingConnectsToEdge(clearing,edge,0)) {
-							Collection<String> c = tile.getConnected(clearing);
-							if (c!=null && c.size()>0) {
-								for (String connectedClearing : c) {
-									if (Tile.clearingIsEdge(connectedClearing)) {
-										int realEdge = tile.getRealEdgeNumber(connectedClearing);
-										int adjTileRealEdge = (realEdge+3)%6;
-										int adjTileRelativeEdge = adjTileRealEdge-adjTile.getRotation();
-										while(adjTileRelativeEdge<0) adjTileRelativeEdge+=6;
-										Collection<String> newTileClearings = adjTile.getConnected(getEdgeName(adjTileRelativeEdge));
-										if (newTileClearings!=null) {
-											for (String newClearing : newTileClearings) {
-												if (tile.getTypeForClearing(clearing,0).matches("mountain") && !adjTile.getTypeForClearing(newClearing,0).matches("mountain")) {
-													return false;
-												}
-												if (tile.getTypeForClearing(clearing,0).matches("caves") && !adjTile.getTypeForClearing(newClearing,0).matches("caves")) {
-													return false;
+				if ((rangeSetup || rangeSetupVariant) && !tile.hasRiverPaths(0)) {
+					if (rangeSetup) {
+						for (String clearing : tile.getClearings()) {
+							if (tile.clearingConnectsToEdge(clearing,edge,0)) {
+								Collection<String> c = tile.getConnected(clearing);
+								if (c!=null && c.size()>0) {
+									for (String connectedClearing : c) {
+										if (Tile.clearingIsEdge(connectedClearing)) {
+											int realEdge = tile.getRealEdgeNumber(connectedClearing);
+											int adjTileRealEdge = (realEdge+3)%6;
+											int adjTileRelativeEdge = adjTileRealEdge-adjTile.getRotation();
+											while(adjTileRelativeEdge<0) adjTileRelativeEdge+=6;
+											Collection<String> newTileClearings = adjTile.getConnected(getEdgeName(adjTileRelativeEdge));
+											if (newTileClearings!=null) {
+												for (String newClearing : newTileClearings) {
+													if (tile.getTypeForClearing(clearing,0).matches("mountain") && !adjTile.getTypeForClearing(newClearing,0).matches("mountain")) {
+														return false;
+													}
+													if (tile.getTypeForClearing(clearing,0).matches("caves") && !adjTile.getTypeForClearing(newClearing,0).matches("caves")) {
+														return false;
+													}
 												}
 											}
 										}
@@ -367,6 +369,25 @@ public class Tile {
 							}
 						}
 					}
+					if (rangeSetupVariant) {
+						boolean mountain = false;
+						boolean caves = false;
+						for (String type : tile.getClearingTypes(0)) {
+							if (type.matches("mountain")) mountain = true;
+							if (type.matches("caves")) mountain = true;
+						}
+						if (mountain || caves) {
+							boolean adjMountain = false;
+							boolean adjCaves = false;
+							for (String type : adjTile.getClearingTypes(0)) {
+								if (type.matches("mountain")) adjMountain = true;
+								if (type.matches("caves")) adjCaves = true;
+							}
+							if (mountain && !adjMountain) return false;
+							if (caves && !adjCaves) return false;
+						}
+					}
+					
 					String tileType = tile.getGameObject().getThisAttribute("tile_type");
 					String adjacentTileType = adjTile.getGameObject().getThisAttribute("tile_type");
 					if ((tileType.matches("W") || tileType.matches("F")) && !adjacentTileType.matches("W") && !adjacentTileType.matches("F")) {
