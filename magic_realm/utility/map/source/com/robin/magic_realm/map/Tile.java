@@ -342,8 +342,30 @@ public class Tile {
 				}
 				if (rangeSetup && !tile.hasRiverPaths(0)) {
 					for (String clearing : tile.getClearings()) {
-						//mountain clearing must connect to another mountain clearing
-						//cave clearing must connect to another cave clearing
+						if (tile.clearingConnectsToEdge(clearing,edge,0)) {
+							Collection<String> c = tile.getConnected(clearing);
+							if (c!=null && c.size()>0) {
+								for (String connectedClearing : c) {
+									if (Tile.clearingIsEdge(connectedClearing)) {
+										int realEdge = tile.getRealEdgeNumber(connectedClearing);
+										int adjTileRealEdge = (realEdge+3)%6;
+										int adjTileRelativeEdge = adjTileRealEdge-adjTile.getRotation();
+										while(adjTileRelativeEdge<0) adjTileRelativeEdge+=6;
+										Collection<String> newTileClearings = adjTile.getConnected(getEdgeName(adjTileRelativeEdge));
+										if (newTileClearings!=null) {
+											for (String newClearing : newTileClearings) {
+												if (tile.getTypeForClearing(clearing,0).matches("mountain") && !adjTile.getTypeForClearing(newClearing,0).matches("mountain")) {
+													return false;
+												}
+												if (tile.getTypeForClearing(clearing,0).matches("caves") && !adjTile.getTypeForClearing(newClearing,0).matches("caves")) {
+													return false;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 					String tileType = tile.getGameObject().getThisAttribute("tile_type");
 					String adjacentTileType = adjTile.getGameObject().getThisAttribute("tile_type");
@@ -456,6 +478,52 @@ public class Tile {
 			}
 		}
 		return clearingTypes;
+	}
+	
+	public String getTypeForClearing(String clearing, int side) {
+		String sideName; 
+		if (side == 0) {
+			sideName = "normal";
+		}
+		else {
+			sideName = "enchanted";
+		}
+		Hashtable attributes = gameObject.getAttributeBlock(sideName);
+		return (String)attributes.get(clearing+"_type");
+	}
+	
+	public boolean clearingConnectsToEdge(String clearing, int edge, int side) {
+		String sideName; 
+		if (side == 0) {
+			sideName = "normal";
+		}
+		else {
+			sideName = "enchanted";
+		}
+		String edgeName = getEdgeName(edge);
+		int i=1;
+		Hashtable attributes = gameObject.getAttributeBlock(sideName);
+		while (true) {
+			if (attributes.get("path_"+i+"_type")!=null) {
+				String from = (String)attributes.get("path_"+i+"_from");
+				String to = (String)attributes.get("path_"+i+"_to");
+				if ((from.matches(edgeName) && to.matches(clearing)) || (from.matches(clearing) && to.matches(edgeName))) {
+					return true;
+				}
+				i++;
+			}
+			else {
+				break;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean clearingIsEdge(String clearing) {
+		if (clearing.matches("clearing_.*")) {
+			return false;
+		}
+		return true;
 	}
 	
 	public boolean hasRiverPaths(int side) {
