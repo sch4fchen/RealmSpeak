@@ -8,7 +8,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 
-public class ProwlIEvent implements IEvent {
+public class Prowl1Event implements IEvent {
 	private static final String title = "Prowl I";
 	private static final String description = "An additional row of monsters is prowling this day.";
 	public void applyBirdsong(GameData data) {
