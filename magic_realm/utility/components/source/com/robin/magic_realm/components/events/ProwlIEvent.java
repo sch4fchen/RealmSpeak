@@ -10,14 +10,14 @@ import com.robin.magic_realm.components.wrapper.GameWrapper;
 
 public class ProwlIEvent implements IEvent {
 	private static final String title = "Prowl I";
-	private static final String description = "An additional row of monsters is prowling this day (if the Monster Roll is different from the current Day's roll).";
+	private static final String description = "An additional row of monsters is prowling this day.";
 	public void applyBirdsong(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
 		ArrayList<GameObject> mrGameObjects = pool.extract(GameWrapper.getKeyVals());
 		if (mrGameObjects == null || mrGameObjects.isEmpty()) return;
 		GameWrapper game = new GameWrapper(mrGameObjects.get(0));
 		DieRoller monsterDie = game.getMonsterDie();
-		monsterDie.addDie("Prowl I");
+		monsterDie.addRedDie();
 		game.setMonsterDie(monsterDie);
 	}
 	public void applySunset(GameData data) {
