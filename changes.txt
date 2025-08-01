@@ -23,7 +23,7 @@ Version 1.2.3.5
 NEW FEATURES:
 # Events added
 BUGS/ISSUES:
-# Fix river validation for map generation
+# Fix river and adjacent tiles validation for map generation
 # Fix Hound treasure deactivation
 
 Version 1.2.3.4

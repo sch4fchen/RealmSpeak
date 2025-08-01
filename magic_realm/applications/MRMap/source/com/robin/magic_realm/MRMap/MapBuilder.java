@@ -113,7 +113,7 @@ public class MapBuilder {
 				
 				// Add it to the grid
 				Tile tile = tmp.getTile();
-				if (tile.getClearingCount()==6 &&  !tile.hasRiverPaths(0)) {
+				if (tile.getClearingCount()==6 && !tile.hasRiverPaths(0)) {
 					/*
 					 * This is a TOTAL hack, but should improve the speed of map building...
 					 * 
@@ -145,8 +145,8 @@ public class MapBuilder {
 			}
 		}
 		
+		if (!validateAdjacentTiles(mapGrid)) return false;
 		if (!validateLakeWoodsTile(hostPrefs, mapGrid, anchor)) return false;
-		
 		if (!validateRiver(hostPrefs, mapGrid)) return false;
 		
 		for (Tile tile : mapGrid.values()) {
@@ -225,7 +225,7 @@ public class MapBuilder {
 		GameData data = loader.getData();
 		System.out.println("loaded "+data.getGameObjects().size());
 		ArrayList<String> keyVals = new ArrayList<>();
-		keyVals.add("original_game");
+		keyVals.add("super_realm");
 		while(!MapBuilder.autoBuildMap(data,keyVals))
 		for (GameObject obj : data.getGameObjects()) {
 			if (obj.hasKey("tile")) {

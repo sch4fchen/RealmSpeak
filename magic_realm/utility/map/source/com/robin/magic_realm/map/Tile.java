@@ -324,6 +324,7 @@ public class Tile {
 		// First test the join
 		boolean joinError = false;
 		boolean riverConnected = false;
+		int adjTileCount = 0;
 		for (int edge=0;edge<6;edge++) {
 			Tile adjTile = (Tile)mapGrid.get(Tile.getAdjacentPosition(pos,edge));
 			// Only need to test joins where there is a tile
@@ -339,8 +340,13 @@ public class Tile {
 				if (pathsTypes.contains("river") && adjTilePathsTypes.contains("river")) {
 					riverConnected = true;
 				}
+				adjTileCount++;
 			}
 		}
+		if (adjTileCount<2 && !tile.name.matches(anchorTilename) && !tile.getGameObject().hasThisAttribute("map_building_prio")) {
+			return false;
+		}
+		
 		if (!riverConnected && tile.hasRiverPaths(tile.side) && !tile.name.matches(anchorTilename)) {
 			return false;
 		}
@@ -377,7 +383,6 @@ public class Tile {
 		}
 		
 		// If the tile has no join errors, save the result
-		// (no need to check if adjacent to two tiles here)
 		return !joinError;
 	}
 	
