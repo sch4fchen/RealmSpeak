@@ -4005,6 +4005,11 @@ public class CombatFrame extends JFrame {
 				}
 			}
 			// do it!
+			if (rcToInactivate!=null && rcToInactivate.getGameObject().hasThisAttribute("color_source")) {
+				JOptionPane.showMessageDialog(this,"Cancelled action.  No inventory was activated/inactivated.","Activate/Inactivate Cancelled",JOptionPane.INFORMATION_MESSAGE);
+				broadcastMessage(activeCharacter.getGameObject().getName(),"Unable to deactivate the "+rcToInactivate.getGameObject().getName());
+				return;
+			}
 			if (rcToActivate!=null) {
 				broadcastMessage(activeCharacter.getGameObject().getName(),"Activates the "+rcToActivate.getGameObject().getName());
 				if (rcToActivate.getGameObject().hasThisAttribute(Constants.AUTO_FLEE)) {
@@ -4128,7 +4133,7 @@ public class CombatFrame extends JFrame {
 			for (GameObject go : chooser.getChosenObjects()) {				
 				boolean dropOkay = true;
 				// Deactivate first (but only if activated!)
-				if (go.hasThisAttribute(Constants.ACTIVATED)) {
+				if (go.hasThisAttribute(Constants.ACTIVATED) && !go.hasThisAttribute("color_source")) {
 					dropOkay = TreasureUtility.doDeactivate(this,activeCharacter,go);
 				}
 				if (dropOkay) {

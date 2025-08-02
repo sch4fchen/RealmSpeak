@@ -25,6 +25,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix river and adjacent tiles validation for map generation
 # Fix Hound treasure deactivation
+# Fix deactivation of enchanted treasures
 
 Version 1.2.3.4
 BUGS/ISSUES:

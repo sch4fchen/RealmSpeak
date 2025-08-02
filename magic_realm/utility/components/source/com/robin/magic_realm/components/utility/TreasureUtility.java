@@ -884,12 +884,6 @@ public class TreasureUtility {
 			return true; // already deactivated, so automatically successful.
 		}
 		if (!forceDeactivation) {
-			if (thing.hasThisAttribute("color_source")) {
-				if (frame!=null) {
-					JOptionPane.showMessageDialog(frame,"You cannot deactivate an enchanted treasure.");
-				}
-				return false;
-			}
 			if (thing.hasThisAttribute(Constants.CONTROLLED_HORSE)) {
 				if (frame!=null) {
 					JOptionPane.showMessageDialog(frame,"You cannot deactivate the steed.");
