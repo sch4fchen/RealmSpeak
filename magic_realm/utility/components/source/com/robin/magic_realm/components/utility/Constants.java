@@ -954,7 +954,10 @@ public class Constants {
 	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";
 	public static final String SR_ORDER_STACKS = "OrderStacks";
 	public static final String SR_OPENING_TREASURE_LOCATIONS = "OpeningTreasureLocationsWithSpells";
+	
+	// Events
 	public static final String SR_EVENTS = "Events";
+	public static final String SP_STORMY_BY_EVENT = "sp_stormy_by_event";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

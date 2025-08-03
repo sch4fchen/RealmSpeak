@@ -1,5 +1,6 @@
 ::ROADMAP::
-Super Realm: Events: 21 Events
+Super Realm: Events: 20 Events
+ViolentStorm, Enchant: show affected tiles in message
 Super Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)

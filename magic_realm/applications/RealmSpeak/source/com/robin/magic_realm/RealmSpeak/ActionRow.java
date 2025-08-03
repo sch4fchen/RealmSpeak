@@ -530,7 +530,9 @@ public class ActionRow {
 			// Check for Violent Storm
 			if (willBeAffectedByStorm()) {
 				TileLocation current = character.getCurrentLocation();
-				int phasesLost = current.tile.getGameObject().getThisInt(Constants.SP_STORMY);
+				int phasesLost1 = current.tile.getGameObject().getThisInt(Constants.SP_STORMY);
+				int phasesLost2 = current.tile.getGameObject().getThisInt(Constants.SP_STORMY_BY_EVENT);
+				int phasesLost = phasesLost1+phasesLost2;
 				gameHandler.broadcast(character.getGameObject().getName(),"Caught in Violent Storm!!  Loses "+phasesLost+" phases.");
 				turnPanel.doLosePhases(phasesLost);
 				character.setStormed(true);
@@ -602,7 +604,7 @@ public class ActionRow {
 		if (!character.getStormed()) {
 			TileLocation current = character.getCurrentLocation();
 			if (current.isInClearing()
-					&& current.tile.getGameObject().hasThisAttribute(Constants.SP_STORMY)
+					&& (current.tile.getGameObject().hasThisAttribute(Constants.SP_STORMY) || current.tile.getGameObject().hasThisAttribute(Constants.SP_STORMY_BY_EVENT))
 					&& !current.clearing.isCave()
 					&& !current.clearing.holdsDwellingWithShelter()) {
 				// Ended a phase in a stormy clearing, and haven't been affected yet, so...

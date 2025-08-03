@@ -11,6 +11,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -23,7 +24,7 @@ public class RealmEvents {
 	
 	private static enum Events {
 		Blank,
-		//ViolentStorm,
+		ViolentStorm,
 		//Fog,
 		//Illusion,
 		//Lost,
@@ -151,6 +152,7 @@ public class RealmEvents {
 	
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
+			case ViolentStorm: return new ViolentStormEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();
@@ -187,6 +189,18 @@ public class RealmEvents {
 			}
 		}
 		return list;
+	}
+	
+	public static void addEffectForTile(GameObject config,String effect,String id) {
+		config.addThisAttributeListItem(effect, id);
+	}
+	
+	public static void removeEffectForTile(GameObject config,String effect,String id) {
+		config.removeThisAttributeListItem(effect, id);
+	}
+	
+	public static ArrayList<String> getTileIdsForEffect(GameObject config,String effect) {
+		return config.getThisAttributeList(effect);
 	}
 	
 	public static ArrayList<CharacterWrapper> getLivingCharacters(GameData gameData) {
@@ -241,5 +255,14 @@ public class RealmEvents {
 		}
 		if (list.isEmpty()) return null;
 		return list.get(RandomNumber.getRandom(list.size()));
+	}
+	public static ArrayList<TileComponent> chooseRandomAndAdjacentTiles(GameData data) {
+		ClearingUtility.initAdjacentTiles(data);
+		
+		ArrayList<TileComponent> allTiles = new ArrayList<>();
+		TileComponent tile = RealmEvents.chooseRandomTile(data);
+		allTiles.add(tile);
+		allTiles.addAll(tile.getAllAdjacentTiles());
+		return allTiles;
 	}
 }

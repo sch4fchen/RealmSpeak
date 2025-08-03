@@ -8,7 +8,7 @@ import com.robin.magic_realm.components.TileComponent;
 
 public class EnchantEvent implements IEvent {
 	private static final String title = "Enchant";
-	private static final String description = "Choose a random hex, which isn't a 'W' or 'H' hex and flip it.";
+	private static final String description = "A random hex, which isn't a 'W' or 'H' hex, flips.";
 	public void applyBirdsong(GameData data) {
 		ArrayList<String> tileTypes = new ArrayList<>(Arrays.asList("V","M","C","XM","XC","S","F","ST","R"));
 		TileComponent tile = RealmEvents.chooseRandomTile(data, tileTypes);
