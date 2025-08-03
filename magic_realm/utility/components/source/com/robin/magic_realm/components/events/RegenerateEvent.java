@@ -9,7 +9,7 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RegenerateEvent implements IEvent {
 	private static final String title = "Regenerate";
-	private static final String description = "A prowling denizens immediately regenerate.";
+	private static final String description = "All prowling denizens immediately regenerate.";
 	public void applyBirdsong(GameData data) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		GameWrapper game = GameWrapper.findGame(data);
@@ -34,7 +34,7 @@ public class RegenerateEvent implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
+	public String getDescription(GameData data) {
 		return description;
 	}
 }

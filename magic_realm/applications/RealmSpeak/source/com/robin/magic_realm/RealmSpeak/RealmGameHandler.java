@@ -1324,7 +1324,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						inspector.getMap().clearMapAttentionMessage2();
 						for (IEvent event : events) {
 							inspector.getMap().addMapAttentionMessage2(event.getTitle());
-							inspector.getMap().addMapAttentionMessage2(event.getDescription());
+							inspector.getMap().addMapAttentionMessage2(event.getDescription(getClient().getGameData()));
 						}
 					}
 				}

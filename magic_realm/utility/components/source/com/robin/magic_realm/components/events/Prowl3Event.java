@@ -32,7 +32,7 @@ public class Prowl3Event implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
+	public String getDescription(GameData data) {
 		return description;
 	}
 }

@@ -55,7 +55,7 @@ public class CenteredMapView extends JComponent {
 	private static final Color MAP_ATTENTION_COLOR = new Color(100,255,100,190);
 	private static final Color MAP_ATTENTION_COLOR2 = new Color(255,150,50,190);
 	private static final Font MAP_ATTENTION_FONT = new Font("Arial",Font.BOLD,24);
-	private static final Font MAP_ATTENTION_FONT_SMALL = new Font("Arial",Font.BOLD,18);
+	private static final Font MAP_ATTENTION_FONT_SMALL = new Font("Arial",Font.BOLD,16);
 	private static final Stroke THIN_STROKE = new BasicStroke(2);
 	private static final Stroke THICK_STROKE = new BasicStroke(3);
 	private static final Stroke PLOT_PATH_STROKE = new BasicStroke(5,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
@@ -1203,7 +1203,7 @@ public class CenteredMapView extends JComponent {
 		if (mapAttentionMessage2!=null) {
 			Dimension size = getSize();
 			int numberOfTextLines = mapAttentionMessage2.size();
-			Rectangle r = new Rectangle(50,size.height-400>>1,size.width-100,10+20*numberOfTextLines);
+			Rectangle r = new Rectangle(20,size.height-400>>1,size.width-40,10+20*numberOfTextLines);
 			g.setColor(MAP_ATTENTION_COLOR2);
 			g.fillRect(r.x,r.y,r.width,r.height);
 			g.setFont(MAP_ATTENTION_FONT);

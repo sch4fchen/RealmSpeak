@@ -19,7 +19,7 @@ public class WhiteEvent implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
+	public String getDescription(GameData data) {
 		return description;
 	}
 }

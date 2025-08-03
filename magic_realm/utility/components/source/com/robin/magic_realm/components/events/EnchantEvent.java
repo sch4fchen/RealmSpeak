@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import com.robin.game.objects.GameData;
 import com.robin.magic_realm.components.TileComponent;
+import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class EnchantEvent implements IEvent {
 	private static final String title = "Enchant";
@@ -15,6 +16,7 @@ public class EnchantEvent implements IEvent {
 		if (tile!=null) {
 			tile.flip();
 		}
+		RealmLogging.logMessage("Event","Enchant: "+tile.getGameObject().getNameWithNumber()+" is flipped.");
 	}
 	public void applySunset(GameData data) {
 	}
@@ -25,7 +27,7 @@ public class EnchantEvent implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
+	public String getDescription(GameData data) {
 		return description;
 	}
 }

@@ -16,7 +16,7 @@ public class BlankEvent implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
+	public String getDescription(GameData data) {
 		return description;
 	}
 }

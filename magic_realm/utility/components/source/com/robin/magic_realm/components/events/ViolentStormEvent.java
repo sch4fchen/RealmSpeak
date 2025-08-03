@@ -57,7 +57,19 @@ public class ViolentStormEvent implements IEvent {
 		return title;
 	}
 	@Override
-	public String getDescription() {
-		return description;
+	public String getDescription(GameData data) {
+		GameObject config = RealmEvents.findEventsConfig(data);
+		String text = "";
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.SP_STORMY_BY_EVENT);
+		int phasesLost = 0;
+		if (ids!=null && !ids.isEmpty()) {
+			for (String id : ids) {
+				GameObject tile = data.getGameObject(Long.valueOf(id));
+				phasesLost = tile.getThisInt(Constants.SP_STORMY_BY_EVENT);
+				text = text + tile.getNameWithNumber() + ", ";
+			}
+		}
+		text = text.substring(0,text.length()-2) + " are affected by the Violent Storm ("+phasesLost+" phase"+(phasesLost==1?"":"s")+").";
+		return text;
 	}
 }
