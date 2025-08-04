@@ -766,13 +766,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					}
 				}
 			}
-			if (calendar.isFatiguePhasesWater(month)) {
+			if (calendar.isFatiguePhasesWater(month) && (ar.getAction().startsWith("M")||ar.getAction().startsWith("FLY"))) {
 				if (locationAfterAction.isInClearing() && locationAfterAction.clearing.isWater() && !locationAfterAction.clearing.isFrozenWater() && !getCharacter().affectedByKey(Constants.SEAFARING)) {
 					if (!locationAfterAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
 						if (locationBeforeAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
-							getCharacter().setWeatherFatigue(ar.getCount()); //climbing a mountain costs two phases, but only after second phase the fatigue is triggered
+							getCharacter().setWeatherFatigue(ar.getCount());
 						} else {
-							getCharacter().setWeatherFatigue(ar.getPhaseCount()*ar.getCount());
+							getCharacter().setWeatherFatigue(ar.getCount());
 						}
 					}
 				}

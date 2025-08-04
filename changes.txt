@@ -26,6 +26,7 @@ BUGS/ISSUES:
 # Fix river and adjacent tiles validation for map generation
 # Fix Hound treasure deactivation
 # Fix deactivation of enchanted treasures
+# Fix weather fatigue in water clearings during stormy weather
 
 Version 1.2.3.4
 BUGS/ISSUES:
