@@ -769,11 +769,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			if (calendar.isFatiguePhasesWater(month) && (ar.getAction().startsWith("M")||ar.getAction().startsWith("FLY"))) {
 				if (locationAfterAction.isInClearing() && locationAfterAction.clearing.isWater() && !locationAfterAction.clearing.isFrozenWater() && !getCharacter().affectedByKey(Constants.SEAFARING)) {
 					if (!locationAfterAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
-						if (locationBeforeAction.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER))) {
-							getCharacter().setWeatherFatigue(ar.getCount());
-						} else {
-							getCharacter().setWeatherFatigue(ar.getCount());
-						}
+						getCharacter().setWeatherFatigue(ar.getCount());
 					}
 				}
 			}
