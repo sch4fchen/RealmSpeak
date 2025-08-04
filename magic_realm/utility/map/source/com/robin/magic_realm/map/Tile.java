@@ -400,7 +400,7 @@ public class Tile {
 				adjTileCount++;
 			}
 		}
-		if (adjTileCount<2 && !tile.name.matches(anchorTilename) && !tile.getGameObject().hasThisAttribute("map_building_prio")) {
+		if (adjTileCount<2 && !tile.name.matches(anchorTilename) && !tile.getGameObject().hasThisAttribute("map_building_prio") && mapGrid.size()!=1) {
 			return false;
 		}
 		
