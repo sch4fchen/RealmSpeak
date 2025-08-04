@@ -696,7 +696,7 @@ public class CharacterActionControlManager {
 			}
 			
 			for(ClearingDetail clearing:getGameHandler().getInspector().getMap().getAllMarkedClearings()) {
-				if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
+				if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER) || clearing.getParent().getGameObject().hasThisAttribute(Constants.EVENT_FOG)) {
 					clearing.setMarked(false);
 				}
 				else if (!enhancedPeer && !mtToMtPeer && !flyingActivity) {

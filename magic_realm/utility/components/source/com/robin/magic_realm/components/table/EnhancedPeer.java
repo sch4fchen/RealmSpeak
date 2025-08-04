@@ -18,7 +18,7 @@ public class EnhancedPeer extends Peer {
 		return targetClearing.getDescription();
 	}
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
-		if (targetClearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
+		if (targetClearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER) || targetClearing.getParent().getGameObject().hasThisAttribute(Constants.EVENT_FOG)) {
 			return "Cannot Peer Here: FOG";
 		}
 		return super.apply(character,inRoller);

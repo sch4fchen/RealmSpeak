@@ -25,9 +25,9 @@ public class RealmEvents {
 	private static enum Events {
 		Blank,
 		ViolentStorm,
-		//Fog,
-		//Illusion,
-		//Lost,
+		Fog,
+		Illusion,
+		Lost,
 		//NightOfTheDemon,
 		//Migrate,
 		//HorseWhisper,
@@ -153,6 +153,9 @@ public class RealmEvents {
 	public static IEvent createEvent(Events eventName){
 		switch(eventName){
 			case ViolentStorm: return new ViolentStormEvent();
+			case Fog: return new FogEvent();
+			case Illusion: return new IllusionEvent();
+			case Lost: return new LostEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();

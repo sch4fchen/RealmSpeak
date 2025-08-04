@@ -38,7 +38,7 @@ public class PeerClearingChooser {
 		CenteredMapView.getSingleton().setMarkClearingAlertText(text);
 		ArrayList<ClearingDetail> clearingsMarked = CenteredMapView.getSingleton().markClearingsInTile(planned.tile,Arrays.asList(TYPES),true);
 		for(ClearingDetail clearing:clearingsMarked) {
-			if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER)) {
+			if (clearing.getParent().getGameObject().hasThisAttribute(Constants.SP_NO_PEER) || clearing.getParent().getGameObject().hasThisAttribute(Constants.EVENT_FOG)) {
 				clearing.setMarked(false);
 			}
 			else {

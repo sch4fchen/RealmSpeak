@@ -1889,7 +1889,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void checkForLostInTheMaze(TileLocation current) {
 		// Lost in the Maze rule for Super Realm
-		if (current!=null && current.hasClearing() && hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) && !affectedByKey(Constants.REALM_MAP)) {
+		if (current!=null && current.hasClearing() && (hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) || hasCharacterTileAttribute(Constants.EVENT_LOST)) && !affectedByKey(Constants.REALM_MAP)) {
 			for (RealmComponent tl : current.clearing.getTreasureLocations()) {
 				if (tl.getGameObject().hasThisAttribute(Constants.MAZE)) {
 					getGameObject().setThisAttribute(Constants.LOST_IN_THE_MAZE);
@@ -7506,7 +7506,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * This method is here primarily for the Fog spell
 	 */
 	public boolean canPeer() {
-		if (hasCharacterTileAttribute(Constants.SP_NO_PEER)) return false;
+		if (hasCharacterTileAttribute(Constants.SP_NO_PEER) || hasCharacterTileAttribute(Constants.EVENT_FOG)) return false;
 		TileLocation loc = getCurrentLocation();
 		if (loc!=null && loc.clearing!=null) {
 			for (RealmComponent rc : loc.clearing.getDeepClearingComponents()) {
@@ -7518,7 +7518,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return true;
 	}
 	public boolean moveRandomly() {
-		return (hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) || getGameObject().hasThisAttribute((Constants.LOST_IN_THE_MAZE))) && !affectedByKey(Constants.REALM_MAP);
+		return (hasCharacterTileAttribute(Constants.SP_MOVE_IS_RANDOM) || hasCharacterTileAttribute(Constants.EVENT_LOST) || getGameObject().hasThisAttribute((Constants.LOST_IN_THE_MAZE))) && !affectedByKey(Constants.REALM_MAP);
 	}
 	public boolean hasCharacterTileAttribute(String attribute) {
 		if (getGameObject().hasThisAttribute(attribute)) {

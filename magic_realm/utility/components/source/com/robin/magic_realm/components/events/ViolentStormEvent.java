@@ -33,8 +33,8 @@ public class ViolentStormEvent implements IEvent {
 				phasesLost = 1;
 			}
 			for (TileComponent tile : tiles) {
-				tile.getGameObject().setThisAttribute(Constants.SP_STORMY_BY_EVENT,phasesLost);
-				RealmEvents.addEffectForTile(config,Constants.SP_STORMY_BY_EVENT,tile.getGameObject().getStringId());
+				tile.getGameObject().setThisAttribute(Constants.EVENT_VIOLENT_STORM,phasesLost);
+				RealmEvents.addEffectForTile(config,Constants.EVENT_VIOLENT_STORM,tile.getGameObject().getStringId());
 				RealmLogging.logMessage("Event","Violent Storm: "+phasesLost+" phase"+(phasesLost==1?"":"s")+" lost on entry on tile "+tile.getGameObject().getName());
 			}
 		}
@@ -43,12 +43,12 @@ public class ViolentStormEvent implements IEvent {
 	}
 	public void expire(GameData data) {
 		GameObject config = RealmEvents.findEventsConfig(data);
-		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.SP_STORMY_BY_EVENT);
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_VIOLENT_STORM);
 		if (ids!=null && !ids.isEmpty()) {
 			for (String id : ids) {
 				GameObject tile = data.getGameObject(Long.valueOf(id));
-				tile.removeThisAttribute(Constants.SP_STORMY_BY_EVENT);
-				RealmEvents.removeEffectForTile(config,Constants.SP_STORMY_BY_EVENT,id);
+				tile.removeThisAttribute(Constants.EVENT_VIOLENT_STORM);
+				RealmEvents.removeEffectForTile(config,Constants.EVENT_VIOLENT_STORM,id);
 			}
 		}
 	}
@@ -60,12 +60,12 @@ public class ViolentStormEvent implements IEvent {
 	public String getDescription(GameData data) {
 		GameObject config = RealmEvents.findEventsConfig(data);
 		String text = "";
-		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.SP_STORMY_BY_EVENT);
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_VIOLENT_STORM);
 		int phasesLost = 0;
 		if (ids!=null && !ids.isEmpty()) {
 			for (String id : ids) {
 				GameObject tile = data.getGameObject(Long.valueOf(id));
-				phasesLost = tile.getThisInt(Constants.SP_STORMY_BY_EVENT);
+				phasesLost = tile.getThisInt(Constants.EVENT_VIOLENT_STORM);
 				text = text + tile.getNameWithNumber() + ", ";
 			}
 		}
