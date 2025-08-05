@@ -819,14 +819,6 @@ public class ActionRow {
 			}
 		}
 		
-		// First and foremost, make sure character can carry everything
-		if (!character.canMove() && current.isInClearing()) {
-			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You cannot move with your current inventory.  Drop something first.");
-			completed = false;
-			return;
-		}
-		
-		
 		result = "";
 		if (character.moveRandomly() && !current.isBetweenClearings()) {
 			// Pick a random location
@@ -1009,6 +1001,13 @@ public class ActionRow {
 								}
 							}
 						}
+					}
+					
+					// First and foremost, make sure character can carry everything
+					if (!character.canMove() && current.isInClearing()) {
+						JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You cannot move with your current inventory.  Drop something first.");
+						completed = false;
+						return;
 					}
 					
 					if (character.isMistLike()) {
