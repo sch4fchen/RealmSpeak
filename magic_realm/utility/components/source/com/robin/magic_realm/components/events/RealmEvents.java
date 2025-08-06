@@ -30,7 +30,7 @@ public class RealmEvents {
 		Lost,
 		NightOfTheDemon,
 		//Migrate,
-		//HorseWhisper,
+		HorseWhisper,
 		//FrozenRiver,
 		//CaveIn,
 		//HurricaneWinds,
@@ -157,6 +157,7 @@ public class RealmEvents {
 			case Illusion: return new IllusionEvent();
 			case Lost: return new LostEvent();
 			case NightOfTheDemon: return new NightOfTheDemonEvent();
+			case HorseWhisper: return new HorseWhisperEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();

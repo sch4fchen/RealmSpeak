@@ -303,6 +303,11 @@ public class MoveActivator {
 	public static RealmComponentOptionChooser getChooserForMoveOptions(JFrame frame,CharacterWrapper activeCharacter,Collection<RealmComponent> moveOptions,boolean includeHorseFlip) {
 		CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
 		boolean canGallop = !combat.hasGalloped();
+		TileLocation loc = activeCharacter.getCurrentLocation();
+		if (loc !=null && loc.tile!=null && loc.tile.getGameObject().hasThisAttribute(Constants.EVENT_HORSE_WHISPER)) {
+			canGallop = false;
+		}
+		
 		Strength heaviestInv = activeCharacter.getNeededSupportWeight();
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Select Maneuver:",true);
 		int keyN = 0;
