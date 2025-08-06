@@ -154,7 +154,7 @@ public class ClearingDetail {
 		return type.equals("water") && !parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
 	}
 	public boolean isFrozenWater() {
-		return (type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER)) && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return (type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) || parent.getGameObject().hasThisAttribute(Constants.EVENT_FROZEN_WATER)) && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
 	}
 	public boolean isLighted() {
 		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;

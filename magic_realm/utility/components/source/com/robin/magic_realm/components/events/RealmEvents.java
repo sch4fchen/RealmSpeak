@@ -31,7 +31,7 @@ public class RealmEvents {
 		NightOfTheDemon,
 		Migrate,
 		HorseWhisper,
-		//FrozenRiver,
+		FrozenRiver,
 		//CaveIn,
 		//HurricaneWinds,
 		ProwlI,
@@ -159,6 +159,9 @@ public class RealmEvents {
 			case NightOfTheDemon: return new NightOfTheDemonEvent();
 			case Migrate: return new MigrateEvent();
 			case HorseWhisper: return new HorseWhisperEvent();
+			case FrozenRiver: return new FrozenRiverEvent();
+			//case CaveIn: return new CaveInEvent();
+			//case HurricaneWinds: return new HurricaneWindsEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();
@@ -170,6 +173,17 @@ public class RealmEvents {
 			case Gold: return new GoldEvent();
 			case Purple: return new PurpleEvent();
 			case Black: return new BlackEvent();
+			//case ViolentWinds: return new ViolentWindsEvent();
+			//case Thorns: return new ThornsEvent();
+			//case Flood: return new FloodEvent();
+			//case NegativeAura: return new NegativeAuraEvent();
+			//case FlutterMigrate: return new FlutterMigrateEvent();
+			//case PatterMigrate: return new PatterMigrateEvent();
+			//case SlitherMigrate: return new SlitherMigrateEvent();
+			//case HowlMigrate: return new HowlMigrateEvent();
+			//case RoarMigrate: return new RoarMigrateEvent();
+			//case MountainSurge: return new MountainSurgeEvent();
+			//case PeacefulDay: return new PeacefulDayEvent();
 			case Prism: return new PrismEvent();
 			case Blank:
 			default: return new BlankEvent();
