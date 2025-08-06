@@ -155,6 +155,9 @@ public abstract class Search extends RealmTable {
 		return list;
 	}
 	protected String doDiscoverChits(CharacterWrapper character) {
+		return doDiscoverChits(character,false);
+	}
+	protected String doDiscoverChits(CharacterWrapper character, boolean usesMagicSight) {
 		doClues(character);
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionName = getTableKey();
@@ -168,7 +171,7 @@ public abstract class Search extends RealmTable {
 		for (RealmComponent rc : allChits) {
 			// only discover discovery chits
 			if (rc.getGameObject().hasThisAttribute("chit")) {
-				boolean foundSomething = discoverChit(getParentFrame(),character,currentClearing,rc,qp,getListener());
+				boolean foundSomething = discoverChit(getParentFrame(),character,currentClearing,rc,qp,getListener(),usesMagicSight);
 				if (foundSomething) {
 					if (count>0) {
 						message = message + ",";
@@ -185,11 +188,11 @@ public abstract class Search extends RealmTable {
 		character.testQuestRequirements(getParentFrame(),qp);
 		return message;
 	}
-	public static boolean discoverChit(JFrame frame,CharacterWrapper character,ClearingDetail currentClearing,RealmComponent rc,QuestRequirementParams qp,ChangeListener listener) {
+	public static boolean discoverChit(JFrame frame,CharacterWrapper character,ClearingDetail currentClearing,RealmComponent rc,QuestRequirementParams qp,ChangeListener listener,boolean usesMagicSight) {
 		String discoveryName = rc.getGameObject().getName();
 		if (rc.getGameObject().hasThisAttribute("discovery")) {
 			if (!character.hasTreasureLocationDiscovery(rc.getGameObject().getName())) {
-				character.addTreasureLocationDiscovery(rc.getGameObject().getName());
+				character.addTreasureLocationDiscovery(rc.getGameObject().getName(),usesMagicSight);
 				qp.objectList.add(rc.getGameObject());
 				return true;
 			}

@@ -3517,12 +3517,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return evps;
 	}
 	
-	public boolean canUseMagicSight() {	
+	public boolean canUseMagicSight() {
+		if (getGameObject().hasThisAttribute(Constants.MAGIC_SIGHT)) {
+			return true;
+		}
 		for (GameObject item:getEnhancingItemsAndNomads()) {
 			if (item.hasThisAttribute(Constants.MAGIC_SIGHT)) {
 				return true;
 			}
-		}		
+		}
 		return false;
 	}
 	
@@ -4098,6 +4101,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getList(DISC_SECRET_PASSAGES);
 	}
 	public void addTreasureLocationDiscovery(String name) {
+		addTreasureLocationDiscovery(name,false);
+	}
+	public void addTreasureLocationDiscovery(String name, boolean usesMagicSight) {
 		if (hasTreasureLocationDiscovery(name)) { // don't add it more than once!
 			return;
 		}
@@ -4136,7 +4142,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		for (CharacterWrapper actionFollower : getActionFollowers()) {
 			if (!actionFollower.isMinion()) { // otherwise, there is a possiblilty for an infinite loop!
-				actionFollower.addTreasureLocationDiscovery(name);
+				if (!hostPrefs.hasPref(Constants.SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT) || !usesMagicSight || actionFollower.canUseMagicSight()) {
+					actionFollower.addTreasureLocationDiscovery(name);
+				}
 			}
 		}
 	}

@@ -311,7 +311,7 @@ public class MagicSight extends Search {
 
 	public String applyFive(CharacterWrapper character) {
 		// Discover Chits
-		return doDiscoverChits(character);
+		return doDiscoverChits(character,true);
 	}
 
 	public String applySix(CharacterWrapper character) {

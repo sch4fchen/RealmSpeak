@@ -1041,6 +1041,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm Basic) - Spying is not possible (for looting or discovering paths).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_INFORMATION_SHARING,"NO INFORMATION SHARING (Super Realm Basic) - Information about the location of secret passages, hidden paths, treasure sites and TWT is not transferable. This information is not transferable and can only be learned by following.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT,"FOLLOWERS ONLY DISCOVER WITH MAGIC SIGHT (Super Realm Basic) - If the guide is using Magic Sight, followers only discover a site the guide uses if they also use Magic Sight.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_REVEAL_TRAVELERS,"REVEAL TRAVELERS (Super Realm Basic) - Travelers are revealed, when a character does a Search or Trade activity on the corresponding site or native leader.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_MAGIC_SIGHT_OPTIONAL,"MAGIC SIGHT NOT SELF-CANCELLING (Super Realm Basic) - Maigc Sight effect of abilities, spells, treasures and nomads is not self-cancelling and usage of Phantom Glass and Shadow are optional.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS,"NO SUMMONING FOR FOLLOWERS (Super Realm Basic) - Followers never cause summoning monsters, but when stopping following.",false));
@@ -1381,6 +1382,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.SR_END_GAME_SCORING,true);
 		optionPane.setOption(Constants.SR_NO_SPYING,true);
 		optionPane.setOption(Constants.SR_NO_INFORMATION_SHARING,true);
+		optionPane.setOption(Constants.SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT,true);
 		optionPane.setOption(Constants.NO_SPELL_LEARNING_RESTRICTIONS,true);
 		optionPane.setOption(Constants.SR_MOVEMENT_RESTRICTION,true);
 		optionPane.setOption(Constants.SR_BOOTS_ACTIVE_WHILE_RIDING,true);

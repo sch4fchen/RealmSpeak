@@ -1177,7 +1177,7 @@ public class QuestTesterFrame extends JFrame {
 		discoverButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				RealmComponent rc = clearingComponents.getSelectedValue();
-				Search.discoverChit(QuestTesterFrame.this, character, character.getCurrentLocation().clearing, rc, new QuestRequirementParams(), null);
+				Search.discoverChit(QuestTesterFrame.this, character, character.getCurrentLocation().clearing, rc, new QuestRequirementParams(), null,false);
 				updateCharacterPanel();
 				retestQuest();
 			}

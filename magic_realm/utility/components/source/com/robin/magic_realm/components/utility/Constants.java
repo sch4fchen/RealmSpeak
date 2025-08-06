@@ -954,6 +954,7 @@ public class Constants {
 	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";
 	public static final String SR_ORDER_STACKS = "OrderStacks";
 	public static final String SR_OPENING_TREASURE_LOCATIONS = "OpeningTreasureLocationsWithSpells";
+	public static final String SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT = "FollowersOnlyDiscoverWithMagicSight";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";
