@@ -19,7 +19,7 @@ public class IllusionEvent implements IEvent {
 			for (TileComponent tile : tiles) {
 				tile.getGameObject().addThisAttributeListItem(Constants.DIEMOD,dieMod);
 				RealmEvents.addEffectForTile(config,Constants.EVENT_ILLUSION,tile.getGameObject().getStringId());
-				RealmLogging.logMessage("Event","Illusion: Add one to all SEARCH die rolls in "+tile.getGameObject().getName());
+				RealmLogging.logMessage("Event","Illusion: Add one to all SEARCH die rolls in "+tile.getGameObject().getNameWithNumber());
 			}
 		}
 	}

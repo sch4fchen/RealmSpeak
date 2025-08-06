@@ -19,7 +19,7 @@ public class HorseWhisperEvent implements IEvent {
 			GameObject config = RealmEvents.findEventsConfig(data);
 			tile.getGameObject().setThisAttribute(Constants.EVENT_HORSE_WHISPER);
 			RealmEvents.addEffectForTile(config,Constants.EVENT_HORSE_WHISPER,tile.getGameObject().getStringId());
-			RealmLogging.logMessage("Event","Horse Whisper: All horses in "+tile.getGameObject().getName()+" cannot gallop.");
+			RealmLogging.logMessage("Event","Horse Whisper: All horses in "+tile.getGameObject().getNameWithNumber()+" cannot gallop.");
 		}
 	}
 	public void expire(GameData data) {

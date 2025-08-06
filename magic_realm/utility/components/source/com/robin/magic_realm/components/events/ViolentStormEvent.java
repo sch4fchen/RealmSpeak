@@ -35,7 +35,7 @@ public class ViolentStormEvent implements IEvent {
 			for (TileComponent tile : tiles) {
 				tile.getGameObject().setThisAttribute(Constants.EVENT_VIOLENT_STORM,phasesLost);
 				RealmEvents.addEffectForTile(config,Constants.EVENT_VIOLENT_STORM,tile.getGameObject().getStringId());
-				RealmLogging.logMessage("Event","Violent Storm: "+phasesLost+" phase"+(phasesLost==1?"":"s")+" lost on entry on tile "+tile.getGameObject().getName());
+				RealmLogging.logMessage("Event","Violent Storm: "+phasesLost+" phase"+(phasesLost==1?"":"s")+" lost on entry on tile "+tile.getGameObject().getNameWithNumber());
 			}
 		}
 	}

@@ -18,7 +18,7 @@ public class FogEvent implements IEvent {
 			for (TileComponent tile : tiles) {
 				tile.getGameObject().setThisAttribute(Constants.EVENT_FOG);
 				RealmEvents.addEffectForTile(config,Constants.EVENT_FOG,tile.getGameObject().getStringId());
-				RealmLogging.logMessage("Event","Fog: Cannot peer in "+tile.getGameObject().getName());
+				RealmLogging.logMessage("Event","Fog: Cannot peer in "+tile.getGameObject().getNameWithNumber());
 			}
 		}
 	}

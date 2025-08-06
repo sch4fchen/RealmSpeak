@@ -17,7 +17,7 @@ public class NightOfTheDemonEvent implements IEvent {
 			GameObject config = RealmEvents.findEventsConfig(data);
 			tile.getGameObject().setThisAttribute(Constants.EVENT_NIGHT_OF_THE_DEMON);
 			RealmEvents.addEffectForTile(config,Constants.EVENT_NIGHT_OF_THE_DEMON,tile.getGameObject().getStringId());
-			RealmLogging.logMessage("Event","Night of the Demon: Summon Demon for each combat in "+tile.getGameObject().getName());
+			RealmLogging.logMessage("Event","Night of the Demon: Summon Demon for each combat in "+tile.getGameObject().getNameWithNumber());
 		}
 	}
 	public void applySunset(GameData data) {
