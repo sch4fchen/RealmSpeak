@@ -962,6 +962,7 @@ public class Constants {
 	public static final String EVENT_FOG = "event_fog";
 	public static final String EVENT_ILLUSION = "event_illusion";
 	public static final String EVENT_LOST = "event_lost";
+	public static final String EVENT_NIGHT_OF_THE_DEMON = "event_night_of_the_demon";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

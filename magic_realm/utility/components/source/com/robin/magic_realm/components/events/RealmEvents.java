@@ -28,7 +28,7 @@ public class RealmEvents {
 		Fog,
 		Illusion,
 		Lost,
-		//NightOfTheDemon,
+		NightOfTheDemon,
 		//Migrate,
 		//HorseWhisper,
 		//FrozenRiver,
@@ -156,6 +156,7 @@ public class RealmEvents {
 			case Fog: return new FogEvent();
 			case Illusion: return new IllusionEvent();
 			case Lost: return new LostEvent();
+			case NightOfTheDemon: return new NightOfTheDemonEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();

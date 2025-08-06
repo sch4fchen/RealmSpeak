@@ -132,4 +132,12 @@ public class SummonDemon extends MonsterTable {
 			tl.clearing.add(demon,null);
 		}
 	}
+	public void summon(GameData data, DemonType type, TileLocation tl) {
+		GameObject demon = createDemon(data, type);
+		CombatWrapper combat = new CombatWrapper(demon);
+		combat.setSheetOwner(false);
+		if (tl!=null && tl.isInClearing()) {
+			tl.clearing.add(demon,null);
+		}
+	}
 }

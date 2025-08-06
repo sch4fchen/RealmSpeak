@@ -7,10 +7,13 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GameObjectWrapper;
 import com.robin.game.server.GameClient;
+import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.table.SummonDemon;
+import com.robin.magic_realm.components.table.SummonDemon.DemonType;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -69,7 +72,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 			TileLocation tl = TileLocation.parseTileLocation(data,tlKey);
 			BattleModel model = RealmBattle.buildBattleModel(tl,data);
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-			
+			applyEventEffects(data,tl);
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
 				if (!monster.isMonster()) continue;
@@ -185,6 +188,26 @@ public class BattlesWrapper extends GameObjectWrapper {
 		removeAttribute(CURRENT_BATTLE_LOCATION);
 		return false;
 	}
+	private static void applyEventEffects(GameData data, TileLocation tl) {
+		if (tl.tile.getGameObject().hasThisAttribute(Constants.EVENT_NIGHT_OF_THE_DEMON)) {
+			SummonDemon summonTable = new SummonDemon(null);
+			DieRoller dieRoller = new DieRoller();
+			dieRoller.rollDice();
+			int result = dieRoller.getHighDieResult();
+			DemonType type = null;
+			switch (result) {
+				case 1: type = DemonType.Devil;
+				case 2: type = DemonType.WingedDemon;
+				case 3: type = DemonType.Demon;
+				case 4: type = DemonType.Ghoul;
+				case 5: type = DemonType.Zombie;
+				case 6: type = DemonType.Ghost;
+				default: type = DemonType.Ghost;
+			}
+			summonTable.summon(data, type, tl);
+		}
+	}
+	
 	public void clearBattleInfo(TileLocation tl,GameData data) {
 		BattleModel model = RealmBattle.buildBattleModel(tl,data);
 		for (RealmComponent owner : model.getAllOwningCharacters()) {
