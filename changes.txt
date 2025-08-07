@@ -17,6 +17,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.3.6
+
+
 Version 1.2.3.5
 NEW FEATURES:
 # Events added
