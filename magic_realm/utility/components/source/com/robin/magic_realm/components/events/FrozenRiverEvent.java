@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components.events;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import com.robin.game.objects.GameData;
@@ -12,6 +13,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
+import com.robin.magic_realm.map.Tile;
 
 public class FrozenRiverEvent implements IEvent {
 	private static final String title = "Frozen River";
@@ -31,11 +33,18 @@ public class FrozenRiverEvent implements IEvent {
 		}
 		
 		if (!waterTiles.isEmpty()) {
-			TileComponent chosenTile = waterTiles.get(RandomNumber.getRandom(waterTiles.size()));
-			waterTiles.clear();
-			waterTiles.add(chosenTile);
-			waterTiles.addAll(chosenTile.getAllAdjacentTiles());
+			TileComponent chosenTile = waterTiles.remove(RandomNumber.getRandom(waterTiles.size()));
+			ArrayList<TileComponent> freezingTiles = new ArrayList<>();
+			freezingTiles.add(chosenTile);
+			Point basePosition = Tile.getPositionFromGameObject(chosenTile.getGameObject());
 			for (TileComponent tile : waterTiles) {
+				Point position = Tile.getPositionFromGameObject(tile.getGameObject());
+				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
+						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
+					freezingTiles.add(tile);
+				}
+			}
+			for (TileComponent tile : freezingTiles) {
 				GameObject config = RealmEvents.findEventsConfig(data);
 				tile.getGameObject().setThisAttribute(Constants.EVENT_FROZEN_WATER);
 				RealmEvents.addEffectForTile(config,Constants.EVENT_FROZEN_WATER,tile.getGameObject().getStringId());
