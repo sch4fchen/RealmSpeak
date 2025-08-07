@@ -958,6 +958,7 @@ public class Constants {
 	
 	// Events
 	public static final String SR_EVENTS = "Events";
+	public static final String EVENT = "event";
 	public static final String EVENT_VIOLENT_STORM = "event_violent_storm";
 	public static final String EVENT_FOG = "event_fog";
 	public static final String EVENT_ILLUSION = "event_illusion";
@@ -965,6 +966,7 @@ public class Constants {
 	public static final String EVENT_NIGHT_OF_THE_DEMON = "event_night_of_the_demon";
 	public static final String EVENT_HORSE_WHISPER = "event_horse_whisper";
 	public static final String EVENT_FROZEN_WATER = "event_frozen_water";
+	public static final String EVENT_CAVE_IN = "event_cave_in";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

@@ -18,7 +18,7 @@ public class MigrateEvent implements IEvent {
 	public void applyBirdsong(GameData data) {
 	}
 	public void applySunset(GameData data) {
-		ArrayList<String> tileTypes = new ArrayList<>(Arrays.asList("M","XM","C","XC","F","R","W","S"));
+		ArrayList<String> tileTypes = new ArrayList<>(Arrays.asList("M","C","F","R","W","S"));
 		TileComponent tile = RealmEvents.chooseRandomTile(data, tileTypes);
 		if (tile!=null) {
 			String type = tile.getTileType();

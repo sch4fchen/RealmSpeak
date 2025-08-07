@@ -94,6 +94,7 @@ public class BattleBuilder extends JFrame {
 		setTitle("RealmSpeak Battle Builder");
 		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		getContentPane().setLayout(new BorderLayout());
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		Box box;
 		JPanel panel;

@@ -7,6 +7,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.game.server.GameHost;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
@@ -32,7 +33,7 @@ public class RealmEvents {
 		Migrate,
 		HorseWhisper,
 		FrozenRiver,
-		//CaveIn,
+		CaveIn,
 		//HurricaneWinds,
 		ProwlI,
 		ProwlII,
@@ -160,7 +161,7 @@ public class RealmEvents {
 			case Migrate: return new MigrateEvent();
 			case HorseWhisper: return new HorseWhisperEvent();
 			case FrozenRiver: return new FrozenRiverEvent();
-			//case CaveIn: return new CaveInEvent();
+			case CaveIn: return new CaveInEvent();
 			//case HurricaneWinds: return new HurricaneWindsEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
@@ -284,5 +285,42 @@ public class RealmEvents {
 		allTiles.add(tile);
 		allTiles.addAll(tile.getAllAdjacentTiles());
 		return allTiles;
+	}
+	public static ClearingDetail chooseRandomClearing(GameData data,ArrayList<String> clearingTypes) {
+		ArrayList<ClearingDetail> list = new ArrayList<>();
+		for (CharacterWrapper character: getLivingCharacters(data)) {
+			TileLocation loc = character.getCurrentLocation();
+			if (loc!=null && loc.clearing!=null && !list.contains(loc.clearing)) {
+				if (clearingTypes!=null) {
+					for (String type : clearingTypes) {
+						if (loc.clearing.getType().matches(type)) {
+							list.add(loc.clearing);
+							break;
+						}
+					}
+				}
+				else {
+					list.add(loc.clearing);
+				}
+			}
+			for (RealmComponent hireling : character.getAllHirelings()) {
+				TileLocation locHireling = hireling.getCurrentLocation();
+				if (locHireling!=null && locHireling.clearing!=null && !list.contains(locHireling.clearing)) {
+					if (clearingTypes!=null) {
+						for (String type : clearingTypes) {
+							if (locHireling.clearing.getType().matches(type)) {
+								list.add(locHireling.clearing);
+								break;
+							}
+						}
+					}
+					else {
+						list.add(locHireling.clearing);
+					}
+				}
+			}
+		}
+		if (list.isEmpty()) return null;
+		return list.get(RandomNumber.getRandom(list.size()));
 	}
 }
