@@ -3367,8 +3367,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<GameObject> recSpells = getRecordedSpells(getGameObject().getGameData());
 		for (GameObject go:recSpells) {
 			if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
-				if (canLearn(go,true,true,true)) {
-					count++;
+				ArrayList<SpellSet> castableSets = getCastableSpellSets(true);
+				for (SpellSet set : castableSets) {
+					if (set.getSpell().getName().matches(go.getName())) {
+						count++;
+						break;
+					}
 				}
 			}
 			else if (canLearn(go,true,true)) { // only include spells that are still learnable, in case you learned a spell with an artifact (enhanced magic rules), and that artifact is gone!

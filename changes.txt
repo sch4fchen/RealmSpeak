@@ -28,6 +28,7 @@ BUGS/ISSUES:
 # Fix Hound treasure deactivation
 # Fix deactivation of enchanted treasures
 # Fix weather fatigue in water clearings during stormy weather
+# Fix spell scoring for Super Realm
 
 Version 1.2.3.4
 BUGS/ISSUES:
