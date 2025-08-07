@@ -425,20 +425,6 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			}
 		}
 		
-		if (getGameObject().hasThisAttribute(Constants.POISON_IMMUNITY)) {
-			if (attacker.isCharacter()) {
-				WeaponChitComponent weapon = ((CharacterChitComponent)attacker).getAttackingWeapon();
-				if (weapon!=null && weapon.getGameObject().hasThisAttribute(Constants.POISON)) {
-					harm.dampenSharpness();
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Steed has poison immunity and additional sharpness is ignored: "+harm.toString());
-				}
-			}
-			if (attacker.getGameObject().hasThisAttribute(Constants.POISON)) {
-				harm.dampenSharpness();
-				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Steed has poison immunity and additional sharpness is ignored: "+harm.toString());
-			}
-		}
-		
 		Strength applied = harm.getAppliedStrength();
 		if (hostPrefs.hasPref(Constants.HOUSE2_DENIZENS_WOUNDS) && applied.equalTo(vulnerability)) {
 			addWound();
