@@ -874,7 +874,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			comp = new TreasureCardComponent(obj);
 		}
 		else if (obj.hasThisAttribute(SPELL) || obj.hasThisAttribute(Constants.SPELL_DENIZEN)) {
-			comp = new SpellCardComponent(obj);
+			if (obj.hasThisAttribute(Constants.EVENT)) {
+				comp = new EventSpellCardComponent(obj);
+			} else {
+				comp = new SpellCardComponent(obj);
+			}
 		}
 		else if (obj.hasThisAttribute(QUEST)) {
 			comp = new QuestCardComponent(obj);

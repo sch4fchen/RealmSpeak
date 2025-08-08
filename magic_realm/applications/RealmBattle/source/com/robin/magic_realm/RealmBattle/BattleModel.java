@@ -563,6 +563,8 @@ public class BattleModel {
 	}
 	
 	public void doEnergizeSpells() {
+		energizeRoofCollapsesEvent();
+		
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
 		HashLists<Integer,BattleChit> monsterSpells = new HashLists<>();
@@ -846,6 +848,39 @@ public class BattleModel {
 			}
 		}
 	}
+	
+	private void energizeRoofCollapsesEvent() {
+		if (battleLocation.tile.getGameObject().hasThisAttribute(Constants.EVENT_CAVE_IN)) {
+			ArrayList<String> clearings = battleLocation.tile.getGameObject().getThisAttributeList(Constants.EVENT_CAVE_IN);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
+			for (String cl : clearings) {
+				if (battleLocation.clearing.getNumString().matches(cl)) {
+					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
+					for (RealmComponent participant : allBattleParticipants) {
+						GameObject spell = gameData.createNewObject();
+						spell.setName("Roof Collapses");
+						spell.setThisAttribute(RealmComponent.SPELL);
+						spell.setThisAttribute("duration","attack");
+						spell.setThisAttribute("attack_speed","4");
+						spell.setThisAttribute("length","18");
+						spell.setThisAttribute("strength","H");
+						spell.setThisAttribute(Constants.EVENT);
+						SpellWrapper roofCollapses = new  SpellWrapper(spell);
+						CombatWrapper combatSpell = new CombatWrapper(spell);
+						CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
+						combatSpell.setCombatBoxAttack(3);
+						combatSpell.setCombatBoxDefense(3);
+						roofCollapses.addTarget(hostPrefs, participant.getGameObject(), true);
+						combatParticipant.addAttacker(spell);
+						battleLocation.clearing.add(spell, null);
+					}
+					logBattleInfo("EVENT: Roof Collapses ist casted.");
+					break;
+				}
+			}
+		}
+	}
+	
 	
 	private boolean colorSuppliedForDenizenSpell(SpellWrapper spell) {
 		ColorMagic requiredColorMagic = spell.getRequiredColorMagic();

@@ -207,34 +207,6 @@ public class BattlesWrapper extends GameObjectWrapper {
 			}
 			summonTable.summon(data, type, tl);
 		}
-		if (tl.tile.getGameObject().hasThisAttribute(Constants.EVENT_CAVE_IN)) {
-			ArrayList<String> clearings = tl.tile.getGameObject().getThisAttributeList(Constants.EVENT_CAVE_IN);
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
-			for (String cl : clearings) {
-				if (tl.clearing.getNumString().matches(cl)) {
-					BattleModel model = RealmBattle.buildBattleModel(tl,data);
-					ArrayList<RealmComponent> allBattleParticipants = model.getAllBattleParticipants(true);
-					for (RealmComponent participant : allBattleParticipants) {
-						GameObject spell = data.createNewObject();
-						spell.setThisAttribute("name","Roof Collapses");
-						spell.setThisAttribute(RealmComponent.SPELL);
-						spell.setThisAttribute("duration","attack");
-						spell.setThisAttribute("attack_speed","4");
-						spell.setThisAttribute("length","18");
-						spell.setThisAttribute("strength","H");
-						spell.setThisAttribute(Constants.EVENT);
-						SpellWrapper roofCollapses = new  SpellWrapper(spell);
-						CombatWrapper combatSpell = new CombatWrapper(spell);
-						CombatWrapper combatParticipant = new CombatWrapper(spell);
-						combatSpell.setCombatBoxAttack(3);
-						roofCollapses.addTarget(hostPrefs, participant.getGameObject(), true);
-						combatParticipant.addAttacker(spell);
-						tl.clearing.add(spell, null);
-					}
-					break;
-				}
-			}
-		}
 	}
 	
 	public void clearBattleInfo(TileLocation tl,GameData data) {
