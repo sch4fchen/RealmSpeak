@@ -276,7 +276,12 @@ public abstract class Commerce extends Trade {
 				}
 			}
 			
-			switch(tradeInfo.getRelationshipType()+conditionalBonus) {
+			int relationship = tradeInfo.getRelationshipType()+conditionalBonus;
+			if (relationship>RelationshipType.ALLY) {
+				relationship = RelationshipType.ALLY;
+			}
+			
+			switch(relationship) {
 				case RelationshipType.ENEMY:
 					commerce = new SellingEnemy(frame,tradeInfo,merchandise,hostPrefs);
 					break;

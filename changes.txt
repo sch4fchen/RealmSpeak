@@ -21,6 +21,8 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.6
 NEW FEATURES:
 # Events added
+BUGS/ISSUES:
+# Super Realm Selling rule: Fix selling Fame item to allied natives 
 
 Version 1.2.3.5
 NEW FEATURES:

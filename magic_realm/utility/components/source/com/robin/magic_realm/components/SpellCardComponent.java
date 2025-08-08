@@ -81,9 +81,11 @@ public class SpellCardComponent extends CardComponent {
 			
 			// Spell target
 			String target = gameObject.getThisAttribute("target");
-			tt = new TextType(target,PRINT_WIDTH,"NORMAL");
-			tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
-			pos += tt.getHeight(g);
+			if (target!=null) {
+				tt = new TextType(target,PRINT_WIDTH,"NORMAL");
+				tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
+				pos += tt.getHeight(g);
+			}
 			
 			// Draw the title
 			tt = new TextType(gameObject.getName(),PRINT_WIDTH,"TITLE");
@@ -125,8 +127,10 @@ public class SpellCardComponent extends CardComponent {
 			// Spell Type
 			String spell = gameObject.getThisAttribute("spell");
 			String magic_color = ColorMagic.getColorName(gameObject.getThisAttribute("magic_color"));
-			tt = new TextType("("+spell+","+magic_color.toUpperCase()+")",PRINT_WIDTH,"TITLE");
-			tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
+			if (magic_color!=null) {
+				tt = new TextType("("+spell+","+magic_color.toUpperCase()+")",PRINT_WIDTH,"TITLE");
+				tt.draw(g,PRINT_MARGIN,pos,Alignment.Center);
+			}
 			
 			// If the spell is alive, and a chit was used, the chit will be shown here
 			if (includeEmbellishments) {

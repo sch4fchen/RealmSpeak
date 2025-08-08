@@ -217,7 +217,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 					for (RealmComponent participant : allBattleParticipants) {
 						GameObject spell = data.createNewObject();
 						spell.setThisAttribute("name","Roof Collapses");
-						spell.setThisAttribute("spell");
+						spell.setThisAttribute(RealmComponent.SPELL);
 						spell.setThisAttribute("duration","attack");
 						spell.setThisAttribute("attack_speed","4");
 						spell.setThisAttribute("length","18");
@@ -229,6 +229,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 						combatSpell.setCombatBoxAttack(3);
 						roofCollapses.addTarget(hostPrefs, participant.getGameObject(), true);
 						combatParticipant.addAttacker(spell);
+						tl.clearing.add(spell, null);
 					}
 					break;
 				}
