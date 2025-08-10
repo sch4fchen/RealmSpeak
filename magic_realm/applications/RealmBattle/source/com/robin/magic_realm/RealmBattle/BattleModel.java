@@ -861,6 +861,7 @@ public class BattleModel {
 					for (RealmComponent participant : allBattleParticipants) {
 						GameObject spell = gameData.createNewObject(objectToCopy);
 						spell.setThisAttribute(Constants.EVENT);
+						spell.setThisAttribute("target",participant.getGameObject().getNameWithNumber());
 						spell.removeThisAttribute("learnable");
 						CombatWrapper combatSpell = new CombatWrapper(spell);
 						combatSpell.setCombatBoxAttack(3);
