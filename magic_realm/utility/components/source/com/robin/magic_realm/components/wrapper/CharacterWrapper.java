@@ -3367,7 +3367,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<GameObject> recSpells = getRecordedSpells(getGameObject().getGameData());
 		for (GameObject go:recSpells) {
 			if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
-				ArrayList<SpellSet> castableSets = getCastableSpellSets(true);
+				ArrayList<SpellSet> castableSets = getCastableSpellSets(true,true,true);
 				for (SpellSet set : castableSets) {
 					if (set.getSpell().getName().matches(go.getName())) {
 						count++;
@@ -5327,9 +5327,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * 				be a recorded spell, or one that was awakened in a book or artifact.
 	 */
 	public ArrayList<SpellSet> getCastableSpellSets() {
-		return getCastableSpellSets(false);
+		return getCastableSpellSets(false,false,false);
 	}
-	private ArrayList<SpellSet> getCastableSpellSets(boolean ignoreColorRequirement) {
+	private ArrayList<SpellSet> getCastableSpellSets(boolean ignoreColorRequirement, boolean ignoreLocationRequirement, boolean allowAllMagicChits) {
 		ArrayList<SpellSet> castableSpellSets = new ArrayList<>();
 		if (getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
 			return castableSpellSets;
@@ -5352,7 +5352,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if ((!hostPrefs.hasPref(Constants.FE_STEEL_AGAINST_MAGIC) && !this.affectedByKey(Constants.STAFF_RESTRICTED_SPELLCASTING)) || hasOnlyStaffAsActivatedWeapon()) {
 			colorChits = getColorMagicChits();
 			// Find all available magic chits
-			magicChits = getActiveMagicChits();
+			if (allowAllMagicChits) {
+				magicChits = getAllMagicCits();
+			} else {
+				magicChits = getActiveMagicChits();
+			}
 		}
 		
 		// Start a collection of potential spell sets
@@ -5367,7 +5371,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (GameObject go:getAllSpells()) {
 			SpellWrapper spell = new SpellWrapper(go);
 			if (current!=null) { // battle sim
-				if (spell.canCast(code,current.tile.getClearingCount())) {
+				if (spell.canCast(code,current.tile.getClearingCount()) || ignoreLocationRequirement) {
 					SpellSet set = new SpellSet(spell.getGameObject());
 					potentialSets.add(set);
 				}
@@ -5383,7 +5387,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (availMagicTypes.isEmpty()) continue;
 				for (GameObject go : awakenedSpells) {
 					SpellWrapper spell = new SpellWrapper(go);
-					if (spell.canCast(code,current.tile.getClearingCount())) {
+					if (spell.canCast(code,current.tile.getClearingCount()) || ignoreLocationRequirement) {
 						SpellSet set = new SpellSet(spell.getGameObject());
 						String spellType = set.getCastMagicType();
 						if (availMagicTypes.contains(spellType)) {
@@ -5454,12 +5458,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 			
-			if (set.getSpell().hasThisAttribute("non_mountain_clearing")) {
+			if (set.getSpell().hasThisAttribute("non_mountain_clearing") && !ignoreLocationRequirement) {
 				if (current!=null && current.tile!=null && current.tile.getTileType().matches("M")) {
 					continue;
 				}
 			}
-			if (set.getSpell().hasThisAttribute("river_or_adjacent_hex")) {
+			if (set.getSpell().hasThisAttribute("river_or_adjacent_hex") && !ignoreLocationRequirement) {
 				boolean riverTile = false;
 				boolean adjacentIsRiverTile = false;
 				if (current==null || current.tile==null) {
@@ -5490,8 +5494,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return castableSpellSets;
 	}
 	
-	public ArrayList<SpellSet> getCastableSpellSetsIgnoringColorRequirement() {
-		return getCastableSpellSets(true);
+	public ArrayList<SpellSet> getPotentialCastableSpellSets() {
+		return getCastableSpellSets(true,true,true);
 	}
 	
 	/**
@@ -6011,6 +6015,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public ArrayList<StateChitComponent> getAllMagicStateChits() {
 		ArrayList<StateChitComponent> ret = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getAllChits()) {
+			if ("MAGIC".equals(chit.getAction())) {
+				ret.add(chit);
+			}
+		}
+		return ret;
+	}
+	public ArrayList<CharacterActionChitComponent> getAllMagicCits() {
+		ArrayList<CharacterActionChitComponent> ret = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getAllChits()) {
 			if ("MAGIC".equals(chit.getAction())) {
 				ret.add(chit);

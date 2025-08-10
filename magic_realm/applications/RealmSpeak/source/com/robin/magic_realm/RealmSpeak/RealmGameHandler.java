@@ -541,7 +541,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			
 			if (hostPrefs.hasPref(Constants.SR_END_GAME_SCORING)) {
 				boolean meltIntoMistAvailable = false;
-				for (SpellSet spellSet : ch.getCastableSpellSetsIgnoringColorRequirement()) {
+				for (SpellSet spellSet : ch.getPotentialCastableSpellSets()) {
 					if (spellSet.getSpell().getName().toLowerCase().matches("melt into mist")) {
 						meltIntoMistAvailable = true;
 						break;

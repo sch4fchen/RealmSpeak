@@ -287,7 +287,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 	}
 	public boolean canCast(String clearingCode,int clearingCount) {
 		// Only "non-already-cast" spells that are finished (notready indicates the coding isn't in place yet)
-		if (!getGameObject().hasThisAttribute("notready") && !isAlive()) {
+		if (!isAlive()) {
 			String clearingRequirement = getGameObject().getThisAttribute("clearing_req");
 			if (clearingRequirement==null || clearingRequirement.equals(clearingCode)) {
 				int tileRequirement = getGameObject().getThisInt("tile_req"); // whistle for monsters
