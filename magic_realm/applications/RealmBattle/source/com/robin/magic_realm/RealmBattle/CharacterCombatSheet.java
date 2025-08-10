@@ -792,9 +792,11 @@ public class CharacterCombatSheet extends CombatSheet {
 						}
 						
 						for (RealmComponent rc : toReset) {
-							CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-							combat.setCombatBoxAttack(0);
-							combat.setCombatBoxDefense(0);
+							if (!(rc instanceof EventSpellCardComponent)) {
+								CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+								combat.setCombatBoxAttack(0);
+								combat.setCombatBoxDefense(0);
+							}
 						}
 						updateLayout();
 					}

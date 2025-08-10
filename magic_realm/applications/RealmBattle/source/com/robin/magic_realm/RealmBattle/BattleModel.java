@@ -867,6 +867,8 @@ public class BattleModel {
 						combatSpell.setCombatBoxDefense(3);
 						RealmComponent spellRc = RealmComponent.getRealmComponent(spell);
 						spellRc.setTarget(participant);
+						CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
+						combatParticipant.addAttacker(spell);
 						battleLocation.clearing.add(spell, null);
 					}
 					logBattleInfo("EVENT: Roof Collapses ist casted.");
