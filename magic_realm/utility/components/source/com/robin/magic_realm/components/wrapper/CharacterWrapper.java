@@ -6670,21 +6670,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 				CenteredMapView.getSingleton().setMarkClearingAlertText("Select clearing to land");
 				ArrayList<ClearingDetail> clearingsMarked = CenteredMapView.getSingleton().markClearingsInTile(current.tile,null,true);
 				for(ClearingDetail clearing:clearingsMarked) {
-					if (clearing.isAffectedByViolentWinds()) {
+					if (clearing.isAffectedByViolentWindsSpell()) {
 						clearing.setMarked(false);
 					}
 				}
 				TileLocationChooser chooser = new TileLocationChooser(frame,CenteredMapView.getSingleton(),current);
 				chooser.setVisible(true);
-				CenteredMapView.getSingleton().markAllClearings(false);
 				current = chooser.getSelectedLocation();
+				CenteredMapView.getSingleton().markAllClearings(false);
 			}
 			else {
 				int clearingCount = current.tile.getClearingCount();
 				ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
 				while(current.clearing==null) {
 					int r = RandomNumber.getHighLow(1,6);
-					if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
+					if (!current.tile.getClearing(r).isAffectedByViolentWindsSpell()) {
 						current.clearing = current.tile.getClearing(r);
 					}
 					else {

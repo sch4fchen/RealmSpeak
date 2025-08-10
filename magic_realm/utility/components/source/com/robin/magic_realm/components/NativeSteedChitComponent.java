@@ -103,6 +103,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
 			mod++;
 		}
+		if (flies() && getCurrentLocation()!=null && getCurrentLocation().clearing!=null && getCurrentLocation().clearing.isAffectedByViolentWinds()) {
+			mod++;
+		}
 		RealmComponent owner = getHeldBy();
 		if (getGameObject().hasThisAttribute("horse") && this.isActivated() && getStrength().strongerOrEqualTo(new Strength("M")) && owner!=null) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());

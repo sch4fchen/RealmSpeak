@@ -46,7 +46,7 @@ public class RealmEvents {
 		Gold,
 		Purple,
 		Black,
-		//ViolentWinds,
+		ViolentWinds,
 		//Thorns,
 		//Flood,
 		//NegativeAura,
@@ -174,7 +174,7 @@ public class RealmEvents {
 			case Gold: return new GoldEvent();
 			case Purple: return new PurpleEvent();
 			case Black: return new BlackEvent();
-			//case ViolentWinds: return new ViolentWindsEvent();
+			case ViolentWinds: return new ViolentWindsEvent();
 			//case Thorns: return new ThornsEvent();
 			//case Flood: return new FloodEvent();
 			//case NegativeAura: return new NegativeAuraEvent();
@@ -322,5 +322,9 @@ public class RealmEvents {
 		}
 		if (list.isEmpty()) return null;
 		return list.get(RandomNumber.getRandom(list.size()));
+	}
+	public static ArrayList<GameObject> chooseAllTiles(GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		return pool.find("tile");
 	}
 }

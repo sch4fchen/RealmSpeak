@@ -868,6 +868,10 @@ public class ClearingDetail {
 	}
 	public boolean isAffectedByViolentWinds() {
 		GameObject tile = getTileLocation().tile.getGameObject();
+		return tile.hasThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum())) || tile.hasThisAttribute(Constants.EVENT_VIOLENT_WINDS);
+	}
+	public boolean isAffectedByViolentWindsSpell() {
+		GameObject tile = getTileLocation().tile.getGameObject();
 		return tile.hasThisAttributeListItem(Constants.VIOLENT_WINDS, String.valueOf(getNum()));
 	}
 	public void setAffectedByViolentWinds(boolean val) {
