@@ -39,6 +39,19 @@ public class HorseWhisperEvent implements IEvent {
 	}
 	@Override
 	public String getDescription(GameData data) {
-		return description;
+		GameObject config = RealmEvents.findEventsConfig(data);
+		String text = "";
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_HORSE_WHISPER);
+		if (ids!=null && !ids.isEmpty()) {
+			for (String id : ids) {
+				GameObject tile = data.getGameObject(Long.valueOf(id));
+				text = text + tile.getNameWithNumber() + ", ";
+			}
+		}
+		else {
+			return description;
+		}
+		text = "In "+text.substring(0,text.length()-2) + " all horses cannot gallop.";
+		return text;
 	}
 }

@@ -44,6 +44,21 @@ public class CaveInEvent implements IEvent {
 	}
 	@Override
 	public String getDescription(GameData data) {
-		return description;
+		GameObject config = RealmEvents.findEventsConfig(data);
+		String text = "";
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_CAVE_IN);
+		if (ids!=null && !ids.isEmpty()) {
+			for (String id : ids) {
+				GameObject tile = data.getGameObject(Long.valueOf(id));
+				for (String cl : tile.getThisAttributeList(Constants.EVENT_CAVE_IN)) {;
+					text = text + tile.getNameWithNumber() +" ("+cl+")"+ ", ";
+				}
+			}
+		}
+		else {
+			return description;
+		}
+		text = "In "+text.substring(0,text.length()-2) + " Roof Collapses is casted in the first round of combat.";
+		return text;
 	}
 }

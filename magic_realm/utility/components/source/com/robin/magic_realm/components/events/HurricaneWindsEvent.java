@@ -44,6 +44,21 @@ public class HurricaneWindsEvent implements IEvent {
 	}
 	@Override
 	public String getDescription(GameData data) {
-		return description;
+		GameObject config = RealmEvents.findEventsConfig(data);
+		String text = "";
+		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_HURRICANE_WINDS);
+		if (ids!=null && !ids.isEmpty()) {
+			for (String id : ids) {
+				GameObject tile = data.getGameObject(Long.valueOf(id));
+				for (String cl : tile.getThisAttributeList(Constants.EVENT_HURRICANE_WINDS)) {;
+					text = text + tile.getNameWithNumber() +" ("+cl+")"+ ", ";
+				}
+			}
+		}
+		else {
+			return description;
+		}
+		text = "In " + text.substring(0,text.length()-2) + " Hurricane Winds is cast in the first round of combat.";
+		return text;
 	}
 }
