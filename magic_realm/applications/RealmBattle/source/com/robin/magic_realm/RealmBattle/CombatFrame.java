@@ -1515,12 +1515,23 @@ public class CombatFrame extends JFrame {
 				denizenPanel.enableSelection();
 			}
 			if (endButton!=null) {
+				boolean event = false;
+				if (currentBattleModel.getBattleLocation().tile.getGameObject().hasThisAttribute(Constants.EVENT_CAVE_IN)) {
+					ArrayList<String> clearings = currentBattleModel.getBattleLocation().tile.getGameObject().getThisAttributeList(Constants.EVENT_CAVE_IN);
+					for (String cl : clearings) {
+						if (currentBattleModel.getBattleLocation().clearing.getNumString().matches(cl)) {
+							event = true;
+							break;
+						}
+					}
+				}
 				boolean canEnd =
 					interactiveFrame													// Not observing
 					&& endCombatFrame==null												// Didn't already request END
 					&& !randomAss														// Not doing random assignment (or kicking some random ass?)
 					&& currentBattleModel.canSkipCombat(actionState)					// BattleModel allows skip combat
-					&& !changes;														// Are no changes
+					&& !changes															// Are no changes
+					&& !event;
 				endButton.setEnabled(canEnd);
 			}
 			if (chargeButton!=null) {

@@ -856,25 +856,21 @@ public class BattleModel {
 			for (String cl : clearings) {
 				if (battleLocation.clearing.getNumString().matches(cl)) {
 					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
+					GamePool pool = new GamePool(gameData.getGameObjects());
+					GameObject objectToCopy = pool.findFirst("name=Roof Collapses");
 					for (RealmComponent participant : allBattleParticipants) {
-						GameObject spell = gameData.createNewObject();
-						spell.setName("Roof Collapses");
-						spell.setThisAttribute(RealmComponent.SPELL);
-						spell.setThisAttribute("duration","attack");
-						spell.setThisAttribute("attack_speed","4");
-						spell.setThisAttribute("length","18");
-						spell.setThisAttribute("strength","H");
+						GameObject spell = gameData.createNewObject(objectToCopy);
 						spell.setThisAttribute(Constants.EVENT);
-						SpellWrapper roofCollapses = new  SpellWrapper(spell);
+						spell.removeThisAttribute("learnable");
 						CombatWrapper combatSpell = new CombatWrapper(spell);
-						CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
 						combatSpell.setCombatBoxAttack(3);
 						combatSpell.setCombatBoxDefense(3);
-						roofCollapses.addTarget(hostPrefs, participant.getGameObject(), true);
-						combatParticipant.addAttacker(spell);
+						RealmComponent spellRc = RealmComponent.getRealmComponent(spell);
+						spellRc.setTarget(participant);
 						battleLocation.clearing.add(spell, null);
 					}
 					logBattleInfo("EVENT: Roof Collapses ist casted.");
+					battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_CAVE_IN,cl);
 					break;
 				}
 			}
@@ -2475,6 +2471,7 @@ public class BattleModel {
 		for (Key key : boxHash.keySet()) {
 			ArrayList<RealmComponent> list = boxHash.getList(key);
 			for (RealmComponent rc : list) {
+				if (rc instanceof EventSpellCardComponent) continue;
 				int attackDie = RandomNumber.getRandom(6)+1;
 				int defenceDie = RandomNumber.getRandom(6)+1;
 				int boxA = (attackDie+1)/2;
@@ -2713,6 +2710,13 @@ public class BattleModel {
 		ArrayList<RealmComponent> rcsToMakeDead = new ArrayList<>();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
 		for (RealmComponent rc:all) {
+			if (rc instanceof EventSpellCardComponent) {
+				rc.clearTargets();
+				CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
+				battleLocation.clearing.remove(rc.getGameObject());
+				battleLocation.tile.getGameObject().remove(rc.getGameObject());
+				break;
+			}
 			boolean disengage=true;
 			boolean disengage1 = true;
 			boolean disengage2 = true;

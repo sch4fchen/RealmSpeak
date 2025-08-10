@@ -364,7 +364,7 @@ public class RealmUtility {
 		RealmComponent killerRc = null;
 		if (killer!=null) {
 			killerRc = RealmComponent.getRealmComponent(killer);
-			if (killerRc!=null && killerRc.isSpell()) { // as in the case of attack spells
+			if (killerRc!=null && killerRc.isSpell() && !(killerRc instanceof EventSpellCardComponent)) { // as in the case of attack spells
 				SpellWrapper spell = new SpellWrapper(killer);
 				killer = spell.getCaster().getGameObject();
 				killerRc = RealmComponent.getRealmComponent(killer);

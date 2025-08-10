@@ -40,7 +40,7 @@ public class BattleGroup implements Comparable {
 		return owningCharacter==null;
 	}
 	public void addBattleParticipant(BattleChit bp) {
-		if (bp.isDenizen()==isDenizen()) {
+		if (bp.isDenizen()==isDenizen() || bp instanceof EventSpellCardComponent) {
 			battleParticipants.add((RealmComponent)bp);
 		}
 		else {

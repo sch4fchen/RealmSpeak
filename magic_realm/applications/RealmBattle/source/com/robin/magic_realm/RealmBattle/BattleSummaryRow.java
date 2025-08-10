@@ -63,7 +63,7 @@ public class BattleSummaryRow implements Comparable<BattleSummaryRow> {
 			horse = RealmComponent.getRealmComponent(target).getHorseIncludeDead();
 		}
 		
-		if (attacker.hasThisAttribute("spell")) {
+		if (attacker.hasThisAttribute("spell") && !attacker.hasThisAttribute(Constants.EVENT)) {
 			SpellWrapper spell = new SpellWrapper(attacker);
 			combat = new CombatWrapper(spell.getCaster().getGameObject());
 		}
