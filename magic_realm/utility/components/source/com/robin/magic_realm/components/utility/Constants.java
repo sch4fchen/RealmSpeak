@@ -967,6 +967,7 @@ public class Constants {
 	public static final String EVENT_HORSE_WHISPER = "event_horse_whisper";
 	public static final String EVENT_FROZEN_WATER = "event_frozen_water";
 	public static final String EVENT_CAVE_IN = "event_cave_in";
+	public static final String EVENT_HURRICANE_WINDS = "event_hurricane_winds";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

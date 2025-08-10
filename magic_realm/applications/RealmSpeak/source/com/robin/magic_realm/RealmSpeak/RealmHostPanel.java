@@ -338,7 +338,8 @@ public class RealmHostPanel extends JPanel {
 		ArrayList<GameObject> denizenObjects = RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getDenizenObjects();
 		for (GameObject go:denizenObjects) {
 			String blownSpellId = go.getThisAttribute(Constants.BLOWS_TARGET);
-			if (blownSpellId!=null) {
+			boolean hurricaneWindsEvent = go.hasThisAttribute(Constants.EVENT_HURRICANE_WINDS);
+			if (blownSpellId!=null || hurricaneWindsEvent) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
 				if (!rc.getGameObject().hasThisAttribute(Constants.DEAD) && !rc.isPlayerControlledLeader()) {
 					// Land now!
@@ -374,10 +375,12 @@ public class RealmHostPanel extends JPanel {
 					}
 				}
 				
-				// Regardless, expire the wind spell
-				GameObject spellGo = host.getGameData().getGameObject(Long.valueOf(blownSpellId));
-				SpellWrapper spell = new SpellWrapper(spellGo);
-				spell.expireSpell();
+				if (blownSpellId!=null) {
+					// Regardless, expire the wind spell
+					GameObject spellGo = host.getGameData().getGameObject(Long.valueOf(blownSpellId));
+					SpellWrapper spell = new SpellWrapper(spellGo);
+					spell.expireSpell();
+				}
 			}
 		}
 

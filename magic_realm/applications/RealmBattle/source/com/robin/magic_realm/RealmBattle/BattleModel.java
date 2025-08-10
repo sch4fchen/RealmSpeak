@@ -1,5 +1,6 @@
 package com.robin.magic_realm.RealmBattle;
 
+import java.awt.Point;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -24,6 +25,7 @@ import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.table.WallOfForce;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
+import com.robin.magic_realm.map.Tile;
 
 public class BattleModel {
 	
@@ -564,6 +566,7 @@ public class BattleModel {
 	
 	public void doEnergizeSpells() {
 		energizeRoofCollapsesEvent();
+		energizeHurricaneWindsEvent();
 		
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
@@ -852,7 +855,6 @@ public class BattleModel {
 	private void energizeRoofCollapsesEvent() {
 		if (battleLocation.tile.getGameObject().hasThisAttribute(Constants.EVENT_CAVE_IN)) {
 			ArrayList<String> clearings = battleLocation.tile.getGameObject().getThisAttributeList(Constants.EVENT_CAVE_IN);
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
 			for (String cl : clearings) {
 				if (battleLocation.clearing.getNumString().matches(cl)) {
 					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
@@ -872,7 +874,7 @@ public class BattleModel {
 						combatParticipant.addAttacker(spell);
 						battleLocation.clearing.add(spell, null);
 					}
-					logBattleInfo("EVENT: Roof Collapses ist casted.");
+					logBattleInfo("EVENT: Roof Collapses is casted.");
 					battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_CAVE_IN,cl);
 					break;
 				}
@@ -880,6 +882,22 @@ public class BattleModel {
 		}
 	}
 	
+	private void energizeHurricaneWindsEvent() {
+		if (battleLocation.tile.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS)) {
+			ArrayList<String> clearings = battleLocation.tile.getGameObject().getThisAttributeList(Constants.EVENT_HURRICANE_WINDS);
+			for (String cl : clearings) {
+				if (battleLocation.clearing.getNumString().matches(cl)) {
+					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
+					for (RealmComponent participant : allBattleParticipants) {
+						participant.getGameObject().setThisAttribute(Constants.EVENT_HURRICANE_WINDS);
+					}
+					logBattleInfo("EVENT: Hurricane Winds is casted.");
+					battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_HURRICANE_WINDS,cl);
+					break;
+				}
+			}
+		}
+	}
 	
 	private boolean colorSuppliedForDenizenSpell(SpellWrapper spell) {
 		ColorMagic requiredColorMagic = spell.getRequiredColorMagic();
@@ -2920,9 +2938,13 @@ public class BattleModel {
 			}
 			else {
 				// Check first for Hurricane Winds
+				boolean hurricaneWindsEvent = rc.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS);
 				String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
 				if (blownSpellId!=null) {
 					blowTarget(blownSpellId, rc);
+					disengage = true;
+				} else if (hurricaneWindsEvent) {
+					blowTarget(null, rc);
 					disengage = true;
 				}
 				else {
@@ -3273,7 +3295,7 @@ public class BattleModel {
 	public ArrayList<RealmComponent> getAllBlowees() {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		for (RealmComponent rc : getAllBattleParticipants(true)) {
-			if (rc.getGameObject().hasThisAttribute(Constants.BLOWS_TARGET)) {
+			if (rc.getGameObject().hasThisAttribute(Constants.BLOWS_TARGET) || rc.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS)) {
 				list.add(rc);
 			}
 		}
@@ -3304,51 +3326,71 @@ public class BattleModel {
 		return ret;
 	}
 	public void blowTarget(String blownSpellId, RealmComponent rc) {
+		// Yep, getting blown away here
+		
+		// Flip to light side
+		RealmUtility.normalizeParticipant(rc);
+		
+		// Move to target tile
+		SpellWrapper spell = null;
+		TileLocation tl = null;
 		if (blownSpellId!=null) {
-			// Yep, getting blown away here
-			
-			// Flip to light side
-			RealmUtility.normalizeParticipant(rc);
-			
-			// Move to target tile
 			GameObject go = gameData.getGameObject(Long.valueOf(blownSpellId));
-			SpellWrapper spell = new SpellWrapper(go);
+			spell = new SpellWrapper(go);
 			TileComponent tile = (TileComponent)RealmComponent.getRealmComponent(spell.getSecondaryTarget());
-			TileLocation tl = new TileLocation(tile,true);
-			
-			if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
-				TileLocation loc = rc.getCurrentLocation();
-				if (loc.clearing!=null) {
-					ArrayList<GameObject> leftBehindItems = new ArrayList<>();
-					for (GameObject item : rc.getGameObject().getHold()) {
-						RealmComponent itemRc = RealmComponent.getRealmComponent(item);
-						if ((itemRc.isHiredOrControlled() || itemRc.isNative() || itemRc.isMonster()) && itemRc.getCurrentLocation().equals(loc)) {
-							leftBehindItems.add(item);
-						}
-					}
-					for (GameObject item : leftBehindItems) {
-						loc.clearing.add(item, null);
-					}
+			tl = new TileLocation(tile,true);
+		}
+		else {
+			TileLocation loc = rc.getCurrentLocation();
+			ArrayList<TileComponent> possibleTiles = new ArrayList<>();
+			Point basePosition = Tile.getPositionFromGameObject(loc.tile.getGameObject());
+			GamePool pool = new GamePool(gameData.getGameObjects());
+			ArrayList<GameObject> tiles = pool.find("tile");
+			for (GameObject tile : tiles) {
+				Point position = Tile.getPositionFromGameObject(tile);
+				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
+						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
+					possibleTiles.add(new TileComponent(tile));
 				}
 			}
-			
-			ClearingUtility.moveToLocation(rc.getGameObject(),tl);
-			
-			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
-			// Clear all attackers
-			for (GameObject attacker:combat.getAttackers()) {
-				RealmComponent arc = RealmComponent.getRealmComponent(attacker);
-				arc.clearTargets();
-				combat.removeAttacker(attacker);
-			}
-			
-			// Expire the wind spell if rc is a player controlled critter
-			if (rc.isAnyLeader()) {
-				spell.expireSpell();
-				rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
-			}
-			logBattleInfo(rc+" is blown away to "+tile.getGameObject().getNameWithNumber()+"!");
+			TileComponent chosenTile = possibleTiles.get(RandomNumber.getRandom(possibleTiles.size()));
+			tl = new TileLocation(chosenTile,true);
 		}
+		
+		if (!hostPrefs.hasPref(Constants.HOUSE2_HURRICANE_WINDS_BLOWS_HIRELINGS)) {
+			TileLocation loc = rc.getCurrentLocation();
+			if (loc.clearing!=null) {
+				ArrayList<GameObject> leftBehindItems = new ArrayList<>();
+				for (GameObject item : rc.getGameObject().getHold()) {
+					RealmComponent itemRc = RealmComponent.getRealmComponent(item);
+					if ((itemRc.isHiredOrControlled() || itemRc.isNative() || itemRc.isMonster()) && itemRc.getCurrentLocation().equals(loc)) {
+						leftBehindItems.add(item);
+					}
+				}
+				for (GameObject item : leftBehindItems) {
+					loc.clearing.add(item, null);
+				}
+			}
+		}
+		
+		ClearingUtility.moveToLocation(rc.getGameObject(),tl);
+		
+		CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+		// Clear all attackers
+		for (GameObject attacker:combat.getAttackers()) {
+			RealmComponent arc = RealmComponent.getRealmComponent(attacker);
+				arc.clearTargets();
+			combat.removeAttacker(attacker);
+		}
+		
+		// Expire the wind spell if rc is a player controlled critter
+		if (rc.isAnyLeader()) {
+			if (spell!=null) {
+				spell.expireSpell();
+			}
+			rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
+		}
+		logBattleInfo(rc+" is blown away to "+tl.tile.getGameObject().getNameWithNumber()+"!");
 	}
 	
 	private boolean testRedDeadDisengage(MonsterChitComponent monster,CombatWrapper combat,CombatWrapper targetCombat) {

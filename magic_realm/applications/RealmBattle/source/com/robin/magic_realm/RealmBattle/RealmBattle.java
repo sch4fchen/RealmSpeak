@@ -655,6 +655,8 @@ public class RealmBattle {
 			String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
 			if (blownSpellId!=null) {
 				model.blowTarget(blownSpellId, rc);
+			} else if (rc.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS)) {
+				model.blowTarget(null, rc);
 			}
 		}
 	}
