@@ -58,6 +58,7 @@ public class HurricaneWindsEvent implements IEvent {
 		else {
 			return description;
 		}
+		if (text.isEmpty()) return description;
 		text = "In " + text.substring(0,text.length()-2) + " Hurricane Winds is cast in the first round of combat.";
 		return text;
 	}

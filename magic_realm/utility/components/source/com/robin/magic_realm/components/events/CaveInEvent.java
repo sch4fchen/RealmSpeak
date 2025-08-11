@@ -58,6 +58,7 @@ public class CaveInEvent implements IEvent {
 		else {
 			return description;
 		}
+		if (text.isEmpty()) return description;
 		text = "In "+text.substring(0,text.length()-2) + " Roof Collapses is casted in the first round of combat.";
 		return text;
 	}

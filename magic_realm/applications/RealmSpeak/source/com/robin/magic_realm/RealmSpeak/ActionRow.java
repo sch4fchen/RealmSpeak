@@ -2504,6 +2504,17 @@ public class ActionRow {
 			return;
 		}
 		
+		boolean violentWinds = false;
+		if (current.tile.getGameObject().hasThisAttribute(Constants.EVENT_VIOLENT_WINDS)) {
+			violentWinds = true;
+			if (!current.isFlying() || character.hasDoneActionsToday()) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You cannot fly as Violent Winds are blowing! MOVE is cancelled",
+						"Violent Winds Event",JOptionPane.PLAIN_MESSAGE);
+				cancelled = true;
+				return;
+			}
+		}
+		
 		// First, make sure Flying is a possibility - otherwise BLOCK character..? See Rule 47.2
 		ArrayList<StrengthChit> flyStrengthChits = character.getFlyStrengthChits(true);
 		boolean startedBetweenTiles = current.isBetweenTiles();
@@ -2590,7 +2601,7 @@ public class ActionRow {
 		if (location != null) {
 			character.moveToLocation(gameHandler.getMainFrame(),location);
 			result = "Flew to tile.";
-			if (startedBetweenTiles) {
+			if (violentWinds || startedBetweenTiles) {
 				character.land(gameHandler.getMainFrame());
 				result = "Flew to tile and landed.";
 			}

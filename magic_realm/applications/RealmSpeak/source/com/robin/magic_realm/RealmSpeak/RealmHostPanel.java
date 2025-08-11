@@ -479,7 +479,7 @@ public class RealmHostPanel extends JPanel {
 				if (RealmCalendar.isFirstDayOfAWeek(game.getDay())) {
 					RealmEvents.shuffleEvents(host);
 				}
-				if(game.getDay()>=8 || game.getMonth()>=2) {
+				if(game.getDay()>=RealmEvents.firstEventDay || game.getMonth()>=RealmEvents.firstEventMonth) {
 					RealmEvents.drawEvent(host);
 				}
 				RealmEvents.applyBirdsong(host);

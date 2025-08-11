@@ -11,7 +11,6 @@ public class ViolentWindsEvent implements IEvent {
 	private static final String description = "No one is able to Fly today (but first Fly activity for landing). Flyers +1 to maneuver.";
 	public void applyBirdsong(GameData data) {
 		GameObject config = RealmEvents.findEventsConfig(data);
-		config.setThisAttribute(Constants.EVENT_VIOLENT_WINDS);
 		for (GameObject tile : RealmEvents.chooseAllTiles(data)) {
 			tile.setThisAttribute(Constants.EVENT_VIOLENT_WINDS);
 			RealmEvents.addEffectForTile(config,Constants.EVENT_VIOLENT_WINDS,tile.getStringId());
@@ -21,7 +20,6 @@ public class ViolentWindsEvent implements IEvent {
 	}
 	public void expire(GameData data) {
 		GameObject config = RealmEvents.findEventsConfig(data);
-		config.removeThisAttribute(Constants.EVENT_VIOLENT_WINDS);
 		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_VIOLENT_WINDS);
 		if (ids!=null && !ids.isEmpty()) {
 			for (String id : ids) {

@@ -18,10 +18,14 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class RealmEvents {
 	
-	private static String eventsConfiguration = "RealmEvents";
-	private static String eventsForTheWeek = "events";
-	private static String activeEvents = "events_active";
-	private static String infiniteColorMagicSource = "infinite_colorMagic_Source";
+	private static final String eventsConfiguration = "RealmEvents";
+	private static final String eventsForTheWeek = "events";
+	private static final String activeEvents = "events_active";
+	private static final String infiniteColorMagicSource = "infinite_colorMagic_Source";
+	public static final int firstEventDay = 8;
+	public static final int firstEventMonth = 2;
+	public static final int blankEventsPerWeek = 7;
+	public static final int normalEventsPerWeek = 3;
 	
 	private static enum Events {
 		Blank,
@@ -125,11 +129,11 @@ public class RealmEvents {
 	public static void shuffleEvents(GameHost host) {
 		GameObject config = findEventsConfig(host.getGameData());
 		ArrayList<String> list = new ArrayList<>();
-		for (int i=0;i<7;i++) {
+		for (int i=0;i<blankEventsPerWeek;i++) {
 			list.add(Events.Blank.toString());
 		}
 		Events[] possibleEvents = Events.values();
-		for (int i=0;i<3;i++) {
+		for (int i=0;i<normalEventsPerWeek;i++) {
 			int j = RandomNumber.getRandom(Events.values().length);
 			list.add(possibleEvents[j].toString());
 		}
