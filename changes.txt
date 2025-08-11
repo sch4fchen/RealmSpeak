@@ -26,6 +26,7 @@ NEW FEATURES:
 # Events added
 BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
+# Fix running away using Broomstick
 
 Version 1.2.3.5
 NEW FEATURES:

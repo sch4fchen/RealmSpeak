@@ -1811,7 +1811,7 @@ public class CombatFrame extends JFrame {
 				}
 				else if (rc.isFlyChit()) {
 					// The only "Fly Chit" besides action chits right now is the Broomstick, which doesn't really have asterisks or constraints
-					CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
+					FlyChitComponent chit = (FlyChitComponent)rc;
 					if (!chit.getStrength().isMaximum()) {
 						list.add(rc);
 					}
