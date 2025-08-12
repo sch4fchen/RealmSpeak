@@ -476,7 +476,7 @@ public class RealmHostPanel extends JPanel {
 			}
 
 			if (hostPrefs.hasPref(Constants.SR_EVENTS)) {
-				if (RealmCalendar.isFirstDayOfAWeek(game.getDay())) {
+				if (cal.isFirstDayOfAWeek(game.getDay())) {
 					RealmEvents.shuffleEvents(host);
 				}
 				if(game.getDay()>=RealmEvents.firstEventDay || game.getMonth()>=RealmEvents.firstEventMonth) {

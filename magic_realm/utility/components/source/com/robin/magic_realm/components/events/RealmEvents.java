@@ -138,6 +138,7 @@ public class RealmEvents {
 			list.add(possibleEvents[j].toString());
 		}
 		config.setThisAttributeList(eventsForTheWeek,list);
+		host.broadcast("host","Events shuffled");
 	}
 	
 	public static GameObject findEventsConfig(GameData data) {

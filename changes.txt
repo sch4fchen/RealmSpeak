@@ -1,5 +1,5 @@
 ::ROADMAP::
-Event: ViolentWinds: No one is able to Fly today (but first Fly activity for landing)
+Event
 Super Realm: EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -27,6 +27,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
 # Fix running away using Broomstick
+# Fix Events in combination with seasons
 
 Version 1.2.3.5
 NEW FEATURES:

@@ -480,11 +480,8 @@ public class RealmCalendar {
 	public static boolean isSeventhDay(int day) {
 		return day==7 || day==14 || day==21 || day==28;
 	}
-	public static boolean isFirstDayOfAWeek(int day) {
-		return day==1 || day==8 || day==15 || day==22;
-	}
-	public static boolean isFirstDayOfMonth(int day) {
-		return day==1;
+	public boolean isFirstDayOfAWeek(int day) {
+		return day==7-days+1 || day==7-days+8 || day==7-days+15 || day==7-days+22;
 	}
 	public static boolean isLastDayOfMonth(int day) {
 		return day==DAYS_IN_A_MONTH;
