@@ -216,7 +216,7 @@ public class TableLoot extends Loot {
 			 * Teleport to any ruins on the map and continue turn from there as if nothing else had changed.  If
 			 * already in a ruins clearing, you can stay there.
 			 */
-			doTransport(character,"ruins");
+			doTransportToTile(character,"R");
 			ret = "Teleport to ANY Ruins";
 			qp.searchType = SearchResultType.RuinsTeleport;
 			qp.searchHadAnEffect = true;
@@ -226,7 +226,7 @@ public class TableLoot extends Loot {
 			 * Teleport to any ruins on the map and continue turn from there as if nothing else had changed.  If
 			 * already in a woods clearing, you can stay there.
 			 */
-			doTransport(character,"woods");
+			doTransportToTile(character,"W");
 			ret = "Teleport to ANY Woods";
 			qp.searchType = SearchResultType.WoodsTeleport;
 			qp.searchHadAnEffect = true;
@@ -393,14 +393,21 @@ public class TableLoot extends Loot {
 			character.addNote(clearing.getParent(),"Clues",note);
 		}
 	}
+	private void doTransportToTile(CharacterWrapper character, String type) {
+		doTransport(character,type,true);
+	}
 	private void doTransport(CharacterWrapper character, String type) {
+		doTransport(character,type,false);
+	}
+	private void doTransport(CharacterWrapper character, String type, boolean tile) {
 		// Get the map to pop to the forefront, centered on the clearing, and the move possibilities marked
 		transportVictim = character;
 		TileLocation planned = character.getPlannedLocation();
 		CenteredMapView.getSingleton().setMarkClearingAlertText("Transport to which "+type+" clearing?");
-		if (type.matches("ruins")) {
-			CenteredMapView.getSingleton().markRuinsClearings(true);
-		} else {
+		if (tile) {
+			CenteredMapView.getSingleton().markClearingsInTilesWithType(type,true);
+		}
+		else {
 			CenteredMapView.getSingleton().markClearings(type,true);
 		}
 		TileLocationChooser chooser = new TileLocationChooser(getParentFrame(),CenteredMapView.getSingleton(),planned);
@@ -408,8 +415,8 @@ public class TableLoot extends Loot {
 		TileLocation tl = chooser.getSelectedLocation();
 		transportVictim.jumpMoveHistory(); // because the victim didn't walk there
 		transportVictim.moveToLocation(null,tl);
-		if (type.matches("ruins")) {
-			CenteredMapView.getSingleton().markRuinsClearings(false);
+		if (tile) {
+			CenteredMapView.getSingleton().markClearingsInTilesWithType(type,false);
 		} else {
 			CenteredMapView.getSingleton().markClearings(type,false);
 		}

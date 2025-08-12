@@ -28,6 +28,7 @@ BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
 # Fix running away using Broomstick
 # Fix Events in combination with seasons
+# Fix Teleport to Woods tile for Fairy Grove
 
 Version 1.2.3.5
 NEW FEATURES:
