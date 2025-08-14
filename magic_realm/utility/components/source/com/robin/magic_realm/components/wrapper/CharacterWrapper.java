@@ -2459,9 +2459,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if(loc == null || loc.clearing==null) {
 			return false;
 		}
+		CombatWrapper combat = new CombatWrapper(getGameObject());
+		if (combat.getAttackerCount()>0 && combat.getChargeChitCount()>0) {
+			return false;
+		}
 		for (RealmComponent tl : loc.clearing.getTreasureLocations()) {
-			if (tl.getGameObject().hasThisAttribute(Constants.TELEPORT_TO_LOCATION) && hasTreasureLocationDiscovery(tl.getGameObject().getName())) {
-				return true;
+			if (tl.getGameObject().hasThisAttribute(Constants.TELEPORT_TO_LOCATION)) {
+				String destination = tl.getGameObject().getThisAttribute(Constants.TELEPORT_TO_LOCATION);
+				if (destination!=null && hasTreasureLocationDiscovery(tl.getGameObject().getNameWithNumber())) {
+					GameObject destinationGo = new GamePool(getGameData().getGameObjects()).findFirst("name="+destination);
+					if (destinationGo!=null) {
+						RealmComponent rc = RealmComponent.getRealmComponent(destinationGo);
+						if (rc.isTreasureLocation() && ((TreasureLocationChitComponent)rc).isFaceUp()) {
+							return true;
+						}
+					}
+				}
 			}
 		}
 		return false;

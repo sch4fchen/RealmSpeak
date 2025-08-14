@@ -24,6 +24,7 @@ import com.robin.magic_realm.components.table.PowerOfThePit;
 import com.robin.magic_realm.components.table.RaiseDead;
 import com.robin.magic_realm.components.table.WallOfForce;
 import com.robin.magic_realm.components.utility.*;
+import com.robin.magic_realm.components.utility.SpellUtility.TeleportType;
 import com.robin.magic_realm.components.wrapper.*;
 import com.robin.magic_realm.map.Tile;
 
@@ -565,6 +566,7 @@ public class BattleModel {
 	}
 	
 	public void doEnergizeSpells() {
+		energizeInstantTeleport();
 		energizeRoofCollapsesEvent();
 		energizeHurricaneWindsEvent();
 		
@@ -848,6 +850,24 @@ public class BattleModel {
 			// Need to check battle model - if nobody is left in the clearing to fight, things should get reset
 			if (!RealmBattle.testCombatInClearing(battleLocation,gameData)) {
 				CombatFrame.closeCombatFrameIfNeeded();
+			}
+		}
+	}
+	
+	private void energizeInstantTeleport() {
+		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
+			CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+			if (combat.getInstantTeleport()!=null) {
+				CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
+				if (!character.canUseInstantTeleport()) {
+					RealmLogging.logMessage(rc.getGameObject().getName(),"Cannot use teleport, spell is canceled.");
+				}
+				else {
+					String destination = combat.getInstantTeleport();
+					SpellUtility.doTeleport(CombatFrame.getSingleton(), "Instant Teleport", character, TeleportType.Location, 0, destination);
+					RealmLogging.logMessage(rc.getGameObject().getName(),"Teleports to "+destination);
+				}
+				combat.removeInstantTeleport();
 			}
 		}
 	}

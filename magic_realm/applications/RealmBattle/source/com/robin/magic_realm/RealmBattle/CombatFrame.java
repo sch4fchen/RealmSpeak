@@ -13,6 +13,7 @@ import javax.swing.filechooser.FileFilter;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.game.server.GameClient;
 import com.robin.general.io.*;
 import com.robin.general.swing.*;
@@ -765,7 +766,7 @@ public class CombatFrame extends JFrame {
 			teleportInstantButton = new JButton("Teleport (instant)");
 			teleportInstantButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					teleportInstant();
+					setTeleportInstant();
 				}
 			});
 		}
@@ -3912,7 +3913,7 @@ public class CombatFrame extends JFrame {
 			}
 		}
 	}
-	private void teleportInstant() {
+	private void setTeleportInstant() {
 		int ret = JOptionPane.showConfirmDialog(null,"You want to teleport instantly?","Teleport",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		if (ret==JOptionPane.YES_OPTION) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select destination:",true);
@@ -3921,8 +3922,14 @@ public class CombatFrame extends JFrame {
 				for (RealmComponent tl : loc.clearing.getTreasureLocations()) {
 					if (tl.getGameObject().hasThisAttribute(Constants.TELEPORT_TO_LOCATION)) {
 						String destination = tl.getGameObject().getThisAttribute(Constants.TELEPORT_TO_LOCATION);
-						if (destination!=null && activeCharacter.hasTreasureLocationDiscovery(tl.getGameObject().getName())) {
-							chooser.addRealmComponent(tl, "Teleport to "+destination);
+						if (destination!=null && activeCharacter.hasTreasureLocationDiscovery(tl.getGameObject().getNameWithNumber())) {
+							GameObject destinationGo = new GamePool(gameData.getGameObjects()).findFirst("name="+destination);
+							if (destinationGo!=null) {
+								RealmComponent rc = RealmComponent.getRealmComponent(destinationGo);
+								if (rc.isTreasureLocation() && ((TreasureLocationChitComponent)rc).isFaceUp()) {
+									chooser.addRealmComponent(tl, "Teleport to "+destination);
+								}
+							}
 						}
 					}
 				}
@@ -3932,8 +3939,10 @@ public class CombatFrame extends JFrame {
 			if (selText!=null) {
 				RealmComponent treasureLocation = chooser.getFirstSelectedComponent();
 				String destination = treasureLocation.getGameObject().getThisAttribute(Constants.TELEPORT_TO_LOCATION);
+				CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
+				combat.setInstantTeleport(destination);
 				SpellUtility.doTeleport(this, "Instant Teleport", activeCharacter, TeleportType.Location, 0, destination);
-				broadcastMessage(activeCharacter.getGameObject().getName(),"Teleported to "+destination);
+				broadcastMessage(activeCharacter.getGameObject().getName(),"Will teleport to "+destination);
 				changes = true;
 				updateControls();
 			}

@@ -101,6 +101,8 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String WAS_UNHIDING = "WAS_UNHIDING";
 	private static final String T_MONSTER_FLIPPED_RED_SIDE_UP = "T_MONSTER_FLIPPED_RED_SIDE_UP";
 	
+	private static final String TELEPORT_TO = "TELEPORT_TO";
+	
 	public CombatWrapper(GameObject obj) {
 		super(obj);
 	}
@@ -214,6 +216,15 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getRaisedDead() {
 		return getBoolean(CASTED_RAISE_THE_DEAD);
+	}
+	public void setInstantTeleport(String destination) {
+		setString(TELEPORT_TO, destination);
+	}
+	public String getInstantTeleport() {
+		return getString(TELEPORT_TO);
+	}
+	public void removeInstantTeleport() {
+		setBoolean(TELEPORT_TO,false);
 	}
 	public void freeze() {
 		setBoolean(FREEZED, true);
@@ -868,6 +879,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			go.removeAttribute(COMBAT_BLOCK,FREEZED);
 			go.removeAttribute(COMBAT_BLOCK,Constants.HOLY_SHIELD);
+			go.removeAttribute(COMBAT_BLOCK,TELEPORT_TO);
 			
 			ArrayList<String> list = go.getAttributeList(COMBAT_BLOCK,RANDOMIZE_PREFICES);
 			if (list!=null) {

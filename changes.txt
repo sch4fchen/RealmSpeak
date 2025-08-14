@@ -1,5 +1,5 @@
 ::ROADMAP::
-Event
+A tweak is needed for followers when weather causes fatigue: SR needs to make the leader pause while followers fatigue - just like it already does for Rest phases. 
 Super Realm: EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -29,6 +29,7 @@ BUGS/ISSUES:
 # Fix running away using Broomstick
 # Fix Events in combination with seasons
 # Fix Teleport to Woods tile for Fairy Grove
+# Fix conditions for teleporting using Spire/Tower treasure location
 
 Version 1.2.3.5
 NEW FEATURES:
