@@ -260,6 +260,14 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		return false;
 	}
+	private boolean isAwaitingFollowersWeatherFatigue() {
+		for (CharacterWrapper follower:actionFollowers) {
+			if (follower.getWeatherFatigue()>0) {
+				return true;
+			}
+		}
+		return false;
+	}
 	private boolean isAwaitingFollowersSpellActions() {
 		for (CharacterWrapper follower:actionFollowers) {
 			if (follower.getFollowSpellActions()>0) {
@@ -315,6 +323,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		boolean haveFollowersThatHaveSpellActions = isAwaitingFollowersSpellActions();
 		boolean haveFollowersThatHaveFollowAlerts = isAwaitingFollowersAlerting();
 		boolean haveFollowersThatHaveFollowRests = isAwaitingFollowersResting();
+		boolean haveFollowersThatHaveWeatherFatigue = isAwaitingFollowersWeatherFatigue();
 		boolean beingFollowedByOtherPlayers = false;
 		for (CharacterWrapper follower:actionFollowers) {
 			if (!follower.getPlayerName().equals(me)) {
@@ -325,9 +334,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		playNextButton.setText(haveFollowersThatHaveSpellActions?"Followers Enchanting...":PLAY_NEXT);
 		playNextButton.setText(haveFollowersThatHaveFollowAlerts?"Followers Alerting...":PLAY_NEXT);
 		playNextButton.setText(haveFollowersThatHaveFollowRests?"Followers Resting...":PLAY_NEXT);
+		playNextButton.setText(haveFollowersThatHaveWeatherFatigue?"Followers Exhausting...":PLAY_NEXT);
 		
 		boolean actionsLeft = isNextAction();
-		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions);
+		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions && !haveFollowersThatHaveWeatherFatigue);
 		playNextButton.setFlashing(playNextButton.isEnabled());
 		playAllButton.setEnabled(!controlsLocked && actionsLeft && !beingFollowedByOtherPlayers);
 		finishedPlayButton.setEnabled(!controlsLocked && !actionsLeft && (current==null || (!current.isBetweenClearings() && !current.isBetweenTiles())));
@@ -932,7 +942,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions()) {
+		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;

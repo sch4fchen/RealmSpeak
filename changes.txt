@@ -1,5 +1,4 @@
 ::ROADMAP::
-A tweak is needed for followers when weather causes fatigue: SR needs to make the leader pause while followers fatigue - just like it already does for Rest phases. 
 Super Realm: EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
@@ -25,6 +24,7 @@ Version 1.2.3.6
 NEW FEATURES:
 # Events added
 # Custom Characters: fetching starting items from other expansions
+# Guide has to wait for followers to exhaust weather fatigue
 BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
 # Fix running away using Broomstick
