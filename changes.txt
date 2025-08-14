@@ -24,6 +24,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.6
 NEW FEATURES:
 # Events added
+# Custom Characters: fetching starting items from other expansions
 BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
 # Fix running away using Broomstick

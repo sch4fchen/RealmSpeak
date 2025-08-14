@@ -8,6 +8,7 @@ import javax.swing.event.ChangeListener;
 
 import com.robin.game.objects.*;
 import com.robin.game.server.GameClient;
+import com.robin.general.io.ResourceFinder;
 import com.robin.general.swing.*;
 import com.robin.general.util.*;
 import com.robin.magic_realm.components.*;
@@ -5667,6 +5668,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			// Fetch from the main object pool
 			item = fetchItem(frame,pool,weapon,hostKeyVals,chooseSource);
 		}
+		if (item == null) {
+			// Fetch from the object pool, even from other expansions
+			item = fetchItem(frame,pool,weapon,null,chooseSource);
+		}
 		if (item==null) return; // Might be null if someone strips a character, suicides, and respawns them
 		getGameObject().add(item);
 		WeaponChitComponent wcc = (WeaponChitComponent)RealmComponent.getRealmComponent(item);
@@ -5682,6 +5687,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			while(st.hasMoreTokens()) {
 				String token = st.nextToken();
 				GameObject item = fetchItem(frame,pool,token,hostKeyVals,!custom && chooseSource);
+				if (item == null) {
+					// Fetch from other expansions
+					item = fetchItem(frame,pool,token,null,chooseSource);
+				}
 				if (item!=null) { // Might be null if someone strips a character, suicides, and respawns them
 					if (custom) {
 						// make a copy of the item
@@ -5708,6 +5717,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			if (customArmor == null) {
 				// Fetch from the main object pool
 				customArmor = fetchItem(frame,pool,custom_armor,hostKeyVals,chooseSource);
+			}
+			if (customArmor == null) {
+				// Fetch from the object pool, even from other expansions
+				customArmor = fetchItem(frame,pool,custom_armor,null,chooseSource);
 			}
 			if (customArmor==null) return; // Might be null if someone strips a character, suicides, and respawns them
 			getGameObject().add(customArmor);
@@ -5801,10 +5814,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject item = null;
 		itemName = RealmUtility.updateNameToBoard(getGameObject(),itemName);
 		ArrayList<String> keyVals = new ArrayList<>();
-		keyVals.add(hostKeyVals);
+		if (hostKeyVals!=null) {
+			keyVals.add(hostKeyVals);
+		}
 		keyVals.add("name="+itemName);
 		keyVals.add("!magic");
 		ArrayList<GameObject> found = pool.extract(keyVals);
+		if (hostKeyVals == null && (found==null || found.size()==0)) {
+			GameData data = new GameData();
+			String dataFilename = "data/MagicRealmData.xml";
+			data.loadFromStream(ResourceFinder.getInputStream(dataFilename));
+			GamePool comepletePool = new GamePool(data.getGameObjects());
+			keyVals.clear();
+			keyVals.add("name="+itemName);
+			keyVals.add("!magic");
+			found = comepletePool.extract(keyVals);
+		}
 		if (found!=null && found.size()>0) {
 			ArrayList<GameObject> available = new ArrayList<>();
 			for (GameObject obj:found) {
