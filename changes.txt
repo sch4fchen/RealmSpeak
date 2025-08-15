@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: EventsSuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
+Super Realm: Events: Thorns, Flood, ..Migrate, MountainSurge, PeacefulDaySuper Realm: Optional Rules: Bounty Hunter (SR: 10.2, p.114)Super Realm: Optional Rules: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Optional Rules: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Optional Rules: Sentimental Value (SR: 10.6, p.115)Super Realm: Optional Rules: Credit (SR: 10.7, p.115)
 Super Realm: Optional Rules: Grounded Missions and Tasks (SR: 10.8, p.115)
@@ -20,9 +20,13 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.3.7
+NEW FEATURES:
+# More Events added
+
 Version 1.2.3.6
 NEW FEATURES:
-# Events added
+# More Events added
 # Custom Characters: fetching starting items from other expansions
 # Guide has to wait for followers to exhaust weather fatigue
 # Optional rule: Resolve wounds at the end of the combat round
@@ -36,7 +40,7 @@ BUGS/ISSUES:
 
 Version 1.2.3.5
 NEW FEATURES:
-# Events added
+# More Events added
 # Optional rules: Range setup
 SUPER REALM:
 # Guide using Magic Sight: only followers with Magic Sight discover
@@ -53,7 +57,7 @@ BUGS/ISSUES:
 
 Version 1.2.3.3
 NEW FEATURES:
-# Events added
+# More Events added
 # Optional rules for map generation and building the river
 
 Version 1.2.3.2
