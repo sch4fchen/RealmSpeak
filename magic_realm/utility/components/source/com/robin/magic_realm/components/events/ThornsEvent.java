@@ -11,7 +11,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class ThornsEvent implements IEvent {
 	private static final String title = "Thorns";
-	private static final String description = "At Sunset, all roadways of a random M, C, F, R tile are affected by Thorns.";
+	private static final String description = "At Sunset, all roadways of a random M, C, F, R hex are affected by Thorns.";
 	
 	public void applyBirdsong(GameData data) {
 	}

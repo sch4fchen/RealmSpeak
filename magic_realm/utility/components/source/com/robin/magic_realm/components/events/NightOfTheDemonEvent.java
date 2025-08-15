@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class NightOfTheDemonEvent implements IEvent {
 	private static final String title = "Night of the Demon";
-	private static final String description = "Roll on Summon Demon effect for each combat in a random tile.";
+	private static final String description = "Roll on Summon Demon effect for each combat in a random hex.";
 	public void applyBirdsong(GameData data) {
 		TileComponent tile = RealmEvents.chooseRandomTile(data);
 		if (tile!=null) {

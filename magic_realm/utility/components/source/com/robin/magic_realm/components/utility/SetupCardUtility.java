@@ -713,12 +713,17 @@ public class SetupCardUtility {
 		if (!character.isMinion() && !character.isSleep()) { // Minions and sleeping characters do not summon monsters or prowling denizens
 			TileLocation current = character.getCurrentLocation();
 			if ((!character.getNoSummon() || hostPrefs.hasPref(Constants.SR_NO_SUMMONING_FOR_FOLLOWERS)) && !character.getGameObject().hasThisAttribute(Constants.NO_SUMMONING)) { // Only the "first" follower in the "group" summons monsters!				
+				boolean peacefulDay = false;
+				if (current.tile!=null & current.tile.getGameObject().hasThisAttribute(Constants.EVENT_PEACEFUL_DAY)) {
+					peacefulDay = true;
+				}
+				
 				boolean atPeaceWithNature = character.affectedByKey(Constants.PEACE_WITH_NATURE);
-				boolean warningSounds = !atPeaceWithNature;
+				boolean warningSounds = !atPeaceWithNature && !peacefulDay;
 				boolean prowling = true;
 				
 				boolean lull = character.getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.DRUID_LULL) || character.getGameObject().hasThisAttribute(Constants.DRUID_LULL);
-				boolean siteChits = !lull;
+				boolean siteChits = !lull && !peacefulDay;
 				
 				if (atPeaceWithNature && hostPrefs.hasPref(Constants.HOUSE2_PEACE_WITH_NATURE_SITES)) {
 					siteChits = false;

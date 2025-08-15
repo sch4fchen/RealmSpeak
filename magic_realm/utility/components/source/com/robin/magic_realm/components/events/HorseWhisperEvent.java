@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class HorseWhisperEvent implements IEvent {
 	private static final String title = "Horse Whisper";
-	private static final String description = "At Sunset, all horses in a random tile cannot gallop.";
+	private static final String description = "At Sunset, all horses in a random hex cannot gallop.";
 	public void applyBirdsong(GameData data) {
 	}
 	public void applySunset(GameData data) {

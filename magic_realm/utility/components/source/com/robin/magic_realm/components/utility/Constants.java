@@ -975,6 +975,7 @@ public class Constants {
 	public static final String EVENT_NEGATIVE_AURA = "event_negative_aura";
 	public static final String EVENT_THORNS = "event_thorns";
 	public static final String EVENT_FLOOD = "event_flood";
+	public static final String EVENT_PEACEFUL_DAY = "event_peaceful_day";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

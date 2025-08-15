@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class LostEvent implements IEvent {
 	private static final String title = "Illusion";
-	private static final String description = "A random tile and all adjacent tiles are affected by Lost.";
+	private static final String description = "A random hex and all adjacent hexes are affected by Lost.";
 	public void applyBirdsong(GameData data) {
 		ArrayList<TileComponent> tiles = RealmEvents.chooseRandomAndAdjacentTiles(data);
 		if (tiles!=null && !tiles.isEmpty()) {

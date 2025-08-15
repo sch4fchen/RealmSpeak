@@ -11,7 +11,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class FloodEvent implements IEvent {
 	private static final String title = "Flood";
-	private static final String description = "In all non-mountain clearings of a random River and all adjacent tiles Flood is cast in the first round of combat";
+	private static final String description = "In all non-mountain clearings of a random River hex and all adjacent hexes Flood is cast in the first round of combat.";
 	
 	public void applyBirdsong(GameData data) {
 	}

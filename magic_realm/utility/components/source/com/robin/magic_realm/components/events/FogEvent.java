@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class FogEvent implements IEvent {
 	private static final String title = "Fog";
-	private static final String description = "A random tile and all adjacent tiles are affected by Fog.";
+	private static final String description = "A random hex and all adjacent hexes are affected by Fog.";
 	public void applyBirdsong(GameData data) {
 		ArrayList<TileComponent> tiles = RealmEvents.chooseRandomAndAdjacentTiles(data);
 		if (tiles!=null && !tiles.isEmpty()) {

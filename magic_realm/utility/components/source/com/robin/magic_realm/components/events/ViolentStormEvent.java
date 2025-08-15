@@ -11,7 +11,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class ViolentStormEvent implements IEvent {
 	private static final String title = "Violent Storm";
-	private static final String description = "A random tile and all adjacent tiles are affected by the Violent Storm.";
+	private static final String description = "A random hex and all adjacent hexes are affected by the Violent Storm.";
 	public void applyBirdsong(GameData data) {
 		ArrayList<TileComponent> tiles = RealmEvents.chooseRandomAndAdjacentTiles(data);
 		if (tiles!=null && !tiles.isEmpty()) {

@@ -9,7 +9,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class NegativeAuraEvent implements IEvent {
 	private static final String title = "Negative Aura";
-	private static final String description = "A random tile with unhired denizens is affected by Negative Aura.";
+	private static final String description = "A random hex with unhired denizens is affected by Negative Aura.";
 	public void applyBirdsong(GameData data) {
 		GameObject tile = RealmEvents.chooseRandomTileWithUnhiredNatives(data);
 		if (tile!=null) {

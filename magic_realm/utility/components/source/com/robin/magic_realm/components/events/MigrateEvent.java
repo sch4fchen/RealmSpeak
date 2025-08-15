@@ -13,7 +13,7 @@ import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class MigrateEvent implements IEvent {
 	private static final String title = "Migrate";
-	private static final String description = "At Sunset, swap the warning chits of a random M, C, F, R, W or S tiles and another tily of the same type.";
+	private static final String description = "At Sunset, swap the warning chits of a random M, C, F, R, W or S hex and another hex of the same type.";
 	
 	public void applyBirdsong(GameData data) {
 	}

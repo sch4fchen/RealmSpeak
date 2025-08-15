@@ -12,7 +12,7 @@ import com.robin.magic_realm.components.wrapper.GameWrapper;
 
 public class FrozenRiverEvent implements IEvent {
 	private static final String title = "Frozen River";
-	private static final String description = "A random River tile and all adjacent tiles have their water clearings frozen until the end of the week.";
+	private static final String description = "A random River hex and all adjacent hexes have their water clearings frozen until the end of the week.";
 	public void applyBirdsong(GameData data) {
 		ArrayList<TileComponent> freezingTiles = RealmEvents.chooseRandomWaterAndAdjacentTiles(data);		
 		if (!freezingTiles.isEmpty()) {
