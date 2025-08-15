@@ -57,7 +57,7 @@ public class QuestRewardExorcise extends QuestReward {
 	
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("Exorcise is casted in");
+		sb.append("Exorcise is cast in");
 		if (location() && getQuestLocation()!=null) {
 			sb.append(getQuestLocation().getName()+".");
 		}

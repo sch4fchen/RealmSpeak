@@ -1517,6 +1517,15 @@ public class CombatFrame extends JFrame {
 			}
 			if (endButton!=null) {
 				boolean event = false;
+				if (!event && currentBattleModel.getBattleLocation().tile.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS)) {
+					ArrayList<String> clearings = currentBattleModel.getBattleLocation().tile.getGameObject().getThisAttributeList(Constants.EVENT_HURRICANE_WINDS);
+					for (String cl : clearings) {
+						if (currentBattleModel.getBattleLocation().clearing.getNumString().matches(cl)) {
+							event = true;
+							break;
+						}
+					}
+				}
 				if (!event && currentBattleModel.getBattleLocation().tile.getGameObject().hasThisAttribute(Constants.EVENT_CAVE_IN)) {
 					ArrayList<String> clearings = currentBattleModel.getBattleLocation().tile.getGameObject().getThisAttributeList(Constants.EVENT_CAVE_IN);
 					for (String cl : clearings) {
@@ -1526,8 +1535,8 @@ public class CombatFrame extends JFrame {
 						}
 					}
 				}
-				if (!event && currentBattleModel.getBattleLocation().tile.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS)) {
-					ArrayList<String> clearings = currentBattleModel.getBattleLocation().tile.getGameObject().getThisAttributeList(Constants.EVENT_HURRICANE_WINDS);
+				if (!event && currentBattleModel.getBattleLocation().tile.getGameObject().hasThisAttribute(Constants.EVENT_FLOOD)) {
+					ArrayList<String> clearings = currentBattleModel.getBattleLocation().tile.getGameObject().getThisAttributeList(Constants.EVENT_FLOOD);
 					for (String cl : clearings) {
 						if (currentBattleModel.getBattleLocation().clearing.getNumString().matches(cl)) {
 							event = true;

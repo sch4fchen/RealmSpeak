@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components.events;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import com.robin.game.objects.GameData;
@@ -15,6 +16,7 @@ import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.map.Tile;
 
 public class RealmEvents {
 	
@@ -52,7 +54,7 @@ public class RealmEvents {
 		Black,
 		ViolentWinds,
 		Thorns,
-		//Flood,
+		Flood,
 		NegativeAura,
 		//FlutterMigrate,
 		//PatterMigrate,
@@ -181,7 +183,7 @@ public class RealmEvents {
 			case Black: return new BlackEvent();
 			case ViolentWinds: return new ViolentWindsEvent();
 			case Thorns: return new ThornsEvent();
-			//case Flood: return new FloodEvent();
+			case Flood: return new FloodEvent();
 			case NegativeAura: return new NegativeAuraEvent();
 			//case FlutterMigrate: return new FlutterMigrateEvent();
 			//case PatterMigrate: return new PatterMigrateEvent();
@@ -347,5 +349,33 @@ public class RealmEvents {
 	public static ArrayList<GameObject> chooseAllTiles(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
 		return pool.find("tile");
+	}
+	public static ArrayList<TileComponent> chooseRandomWaterAndAdjacentTiles(GameData data) {
+		ArrayList<GameObject> allTiles = RealmEvents.chooseAllTiles(data);
+		ArrayList<TileComponent> waterTiles = new ArrayList<>();
+		ArrayList<TileComponent> chosenTiles = new ArrayList<>();
+		for (GameObject tile : allTiles) {
+			TileComponent tileComponent = new TileComponent(tile);
+			for (ClearingDetail cl : tileComponent.getClearings()) {
+				if (cl.isWater() || cl.isFrozenWater()) {
+					waterTiles.add(tileComponent);
+					break;
+				}
+			}
+		}
+		
+		if (!waterTiles.isEmpty()) {
+			TileComponent chosenTile = waterTiles.remove(RandomNumber.getRandom(waterTiles.size()));
+			chosenTiles.add(chosenTile);
+			Point basePosition = Tile.getPositionFromGameObject(chosenTile.getGameObject());
+			for (TileComponent tile : waterTiles) {
+				Point position = Tile.getPositionFromGameObject(tile.getGameObject());
+				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
+						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
+					chosenTiles.add(tile);
+				}
+			}
+		}
+		return chosenTiles;
 	}
 }

@@ -62,7 +62,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCastMultipleSpells.TARGET_VALUE_TYPE, "Only count points gained during the", FieldType.StringSelector, TargetValueType.values()));
 				break;
 			case CastSpell:
-				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be casted (regex)", FieldType.Regex, null, new String[] {"spell"}));
+				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.REGEX_FILTER, "Spell to be cast (regex)", FieldType.Regex, null, new String[] {"spell"}));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.SCROLL_OR_BOOK, "Must use a scroll or book", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.ARTIFACT, "Must use an artifact", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.RING, "Must use a ring", FieldType.Boolean));

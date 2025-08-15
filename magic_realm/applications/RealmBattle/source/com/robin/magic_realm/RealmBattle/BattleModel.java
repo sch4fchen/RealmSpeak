@@ -567,8 +567,9 @@ public class BattleModel {
 	
 	public void doEnergizeSpells() {
 		energizeInstantTeleport();
-		energizeRoofCollapsesEvent();
 		energizeHurricaneWindsEvent();
+		energizeRoofCollapsesEvent();
+		energizeFloodEvent();
 		
 		// Find and hash all spells and casters cast this round by speed
 		HashLists<Integer,SpellWrapper> spells = new HashLists<>();
@@ -884,23 +885,75 @@ public class BattleModel {
 					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
 					GamePool pool = new GamePool(gameData.getGameObjects());
 					GameObject objectToCopy = pool.findFirst("name=Roof Collapses");
-					for (RealmComponent participant : allBattleParticipants) {
-						GameObject spell = gameData.createNewObject(objectToCopy);
-						spell.setThisAttribute(Constants.EVENT);
-						spell.setThisAttribute("target",participant.getGameObject().getNameWithNumber());
-						spell.removeThisAttribute("learnable");
-						CombatWrapper combatSpell = new CombatWrapper(spell);
-						combatSpell.setCombatBoxAttack(3);
-						combatSpell.setCombatBoxDefense(3);
-						RealmComponent spellRc = RealmComponent.getRealmComponent(spell);
-						spellRc.setTarget(participant);
-						CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
-						combatParticipant.addAttacker(spell);
-						battleLocation.clearing.add(spell, null);
+					if (objectToCopy!=null) {
+						for (RealmComponent participant : allBattleParticipants) {
+							GameObject spell = gameData.createNewObject(objectToCopy);
+							spell.setThisAttribute(Constants.EVENT);
+							spell.setThisAttribute("target",participant.getGameObject().getNameWithNumber());
+							spell.removeThisAttribute("learnable");
+							CombatWrapper combatSpell = new CombatWrapper(spell);
+							combatSpell.setCombatBoxAttack(3);
+							combatSpell.setCombatBoxDefense(3);
+							RealmComponent spellRc = RealmComponent.getRealmComponent(spell);
+							spellRc.setTarget(participant);
+							CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
+							combatParticipant.addAttacker(spell);
+							battleLocation.clearing.add(spell, null);
+						}
+						logBattleInfo("EVENT: Roof Collapses is cast.");
+						battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_CAVE_IN,cl);
+						break;
 					}
-					logBattleInfo("EVENT: Roof Collapses is casted.");
-					battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_CAVE_IN,cl);
-					break;
+				}
+			}
+		}
+	}
+	
+	private void energizeFloodEvent() {
+		if (battleLocation.tile.getGameObject().hasThisAttribute(Constants.EVENT_FLOOD) && !battleLocation.clearing.isMountain()) {
+			ArrayList<String> clearings = battleLocation.tile.getGameObject().getThisAttributeList(Constants.EVENT_FLOOD);
+			for (String cl : clearings) {
+				if (battleLocation.clearing.getNumString().matches(cl)) {
+					ArrayList<RealmComponent> allBattleParticipants = getAllBattleParticipants(true);
+					GamePool pool = new GamePool(gameData.getGameObjects());
+					GameObject objectToCopy = pool.findFirst("name=Flood");
+					if (objectToCopy!=null) {
+						for (RealmComponent participant : allBattleParticipants) {
+							if (participant.isMonster() && ((MonsterChitComponent)participant).flies()) {
+								continue;
+							}
+							if (participant.isNative() && ((NativeChitComponent)participant).flies()) {
+								continue;
+							}
+							if (participant instanceof NativeSteedChitComponent && ((NativeSteedChitComponent)participant).flies()) {
+								continue;
+							}
+							if (participant instanceof SteedChitComponent && ((SteedChitComponent)participant).flies()) {
+								continue;
+							}
+							GameObject spell = gameData.createNewObject(objectToCopy);
+							spell.setThisAttribute(Constants.EVENT);
+							spell.setThisAttribute("target",participant.getGameObject().getNameWithNumber());
+							spell.removeThisAttribute("learnable");
+							CombatWrapper combatSpell = new CombatWrapper(spell);
+							if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+								combatSpell.setCombatBoxAttack(RandomNumber.getRandom(3)+1);
+								combatSpell.setCombatBoxDefense(RandomNumber.getRandom(3)+1);
+							} else {
+								int random = RandomNumber.getRandom(3)+1;
+								combatSpell.setCombatBoxAttack(random);
+								combatSpell.setCombatBoxDefense(random);
+							}
+							RealmComponent spellRc = RealmComponent.getRealmComponent(spell);
+							spellRc.setTarget(participant);
+							CombatWrapper combatParticipant = new CombatWrapper(participant.getGameObject());
+							combatParticipant.addAttacker(spell);
+							battleLocation.clearing.add(spell, null);
+						}
+						logBattleInfo("EVENT: Flood is cast.");
+						battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_FLOOD,cl);
+						break;
+					}
 				}
 			}
 		}
@@ -915,7 +968,7 @@ public class BattleModel {
 					for (RealmComponent participant : allBattleParticipants) {
 						participant.getGameObject().setThisAttribute(Constants.EVENT_HURRICANE_WINDS);
 					}
-					logBattleInfo("EVENT: Hurricane Winds is casted.");
+					logBattleInfo("EVENT: Hurricane Winds is cast.");
 					battleLocation.tile.getGameObject().removeThisAttributeListItem(Constants.EVENT_HURRICANE_WINDS,cl);
 					break;
 				}
@@ -2792,7 +2845,6 @@ public class BattleModel {
 				CombatWrapper.clearRoundCombatInfo(rc.getGameObject());
 				battleLocation.clearing.remove(rc.getGameObject());
 				battleLocation.tile.getGameObject().remove(rc.getGameObject());
-				break;
 			}
 			boolean disengage=true;
 			boolean disengage1 = true;
