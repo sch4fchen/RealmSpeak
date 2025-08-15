@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -53,7 +54,7 @@ public class RealmEvents {
 		ViolentWinds,
 		//Thorns,
 		//Flood,
-		//NegativeAura,
+		NegativeAura,
 		//FlutterMigrate,
 		//PatterMigrate,
 		//SlitherMigrate,
@@ -182,7 +183,7 @@ public class RealmEvents {
 			case ViolentWinds: return new ViolentWindsEvent();
 			//case Thorns: return new ThornsEvent();
 			//case Flood: return new FloodEvent();
-			//case NegativeAura: return new NegativeAuraEvent();
+			case NegativeAura: return new NegativeAuraEvent();
 			//case FlutterMigrate: return new FlutterMigrateEvent();
 			//case PatterMigrate: return new PatterMigrateEvent();
 			//case SlitherMigrate: return new SlitherMigrateEvent();
@@ -276,6 +277,22 @@ public class RealmEvents {
 					else {
 						list.add(locHireling.tile);
 					}
+				}
+			}
+		}
+		if (list.isEmpty()) return null;
+		return list.get(RandomNumber.getRandom(list.size()));
+	}
+	public static GameObject chooseRandomTileWithUnhiredNatives(GameData data) {
+		ArrayList<GameObject> list = new ArrayList<>();
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> denizens = pool.find(RealmComponent.NATIVE+",!treasure");
+		for (GameObject denizen: denizens) {
+			RealmComponent rc = RealmComponent.getRealmComponent(denizen);
+			if (!rc.isHiredOrControlled()) {
+				GameObject heldBy = denizen.getHeldBy();
+				if (heldBy!=null && heldBy.hasThisAttribute(RealmComponent.TILE)) {
+					list.add(heldBy);
 				}
 			}
 		}

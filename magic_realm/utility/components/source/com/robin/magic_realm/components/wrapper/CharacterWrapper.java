@@ -1317,10 +1317,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return relationship;
 	}
 	public boolean isNegativeAuraInClearing() {
-		if (getCurrentLocation()!=null && getCurrentLocation().clearing!=null) {
-			for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
-				if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA) && !rc.isSpell() && !rc.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
-					return true;
+		TileLocation loc = getCurrentLocation();
+		if (loc!=null) {
+			if (loc.tile!=null && loc.tile.getGameObject().hasThisAttribute(Constants.EVENT_NEGATIVE_AURA)) {
+				return true;
+			}
+			if (getCurrentLocation().clearing!=null) {
+				for (RealmComponent rc : getCurrentLocation().clearing.getDeepClearingComponents()) {
+					if (rc.getGameObject().hasThisAttribute(Constants.NEGATIVE_AURA) && !rc.isSpell() && !rc.getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
+						return true;
+					}
 				}
 			}
 		}
