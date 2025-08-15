@@ -841,6 +841,9 @@ public class ClearingDetail {
 	}
 	private boolean testThorns(TileComponent tile, TileComponent otherTile, ClearingDetail other) {
 		if (tile==null||otherTile==null||other==null) return false;
+		if ((tile!=null && tile.getGameObject().hasThisAttribute(Constants.EVENT_THORNS)) || (otherTile!=null && otherTile.getGameObject().hasThisAttribute(Constants.EVENT_THORNS))) {
+			return true;
+		}
 		if (tile.equals(otherTile)) {
 			if (tile.getGameObject().hasThisAttribute(Constants.THORNS)) {
 				ArrayList<String> allThorns = tile.getGameObject().getThisAttributeList(Constants.THORNS);

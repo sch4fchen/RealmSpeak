@@ -973,6 +973,7 @@ public class Constants {
 	public static final String EVENT_HURRICANE_WINDS = "event_hurricane_winds";
 	public static final String EVENT_VIOLENT_WINDS = "event_violent_winds";
 	public static final String EVENT_NEGATIVE_AURA = "event_negative_aura";
+	public static final String EVENT_THORNS = "event_thorns";
 	
 	// Random Number Generators
 	public static final String RANDOM_R250_521 = "RndR250_521";

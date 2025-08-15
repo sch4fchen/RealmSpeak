@@ -51,7 +51,7 @@ public class RealmEvents {
 		Purple,
 		Black,
 		ViolentWinds,
-		//Thorns,
+		Thorns,
 		//Flood,
 		NegativeAura,
 		//FlutterMigrate,
@@ -180,7 +180,7 @@ public class RealmEvents {
 			case Purple: return new PurpleEvent();
 			case Black: return new BlackEvent();
 			case ViolentWinds: return new ViolentWindsEvent();
-			//case Thorns: return new ThornsEvent();
+			case Thorns: return new ThornsEvent();
 			//case Flood: return new FloodEvent();
 			case NegativeAura: return new NegativeAuraEvent();
 			//case FlutterMigrate: return new FlutterMigrateEvent();
