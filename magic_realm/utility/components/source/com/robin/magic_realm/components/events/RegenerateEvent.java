@@ -3,6 +3,7 @@ package com.robin.magic_realm.components.events;
 import com.robin.game.objects.GameData;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
@@ -24,6 +25,7 @@ public class RegenerateEvent implements IEvent {
 		if (nativeDieRoller.getNumberOfDice()>1) {
 			SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(1));
 		}
+		RealmLogging.logMessage("Event","Regenerate: All prowling denizens regenerated.");
 	}
 	public void applySunset(GameData data) {
 	}

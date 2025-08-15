@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.events;
 
 import com.robin.game.objects.GameData;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
 
@@ -17,6 +18,7 @@ public class BreakEvent implements IEvent {
 		for (CharacterWrapper character:RealmEvents.getLivingCharacters(data)) {
 			character.removeAllCurses();
 		}
+		RealmLogging.logMessage("Break","All spells in effect anywhere are broken.");
 	}
 	@Override
 	public String getTitle() {

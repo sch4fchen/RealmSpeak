@@ -16,8 +16,8 @@ public class FrozenRiverEvent implements IEvent {
 	public void applyBirdsong(GameData data) {
 		ArrayList<TileComponent> freezingTiles = RealmEvents.chooseRandomWaterAndAdjacentTiles(data);		
 		if (!freezingTiles.isEmpty()) {
+			GameObject config = RealmEvents.findEventsConfig(data);
 			for (TileComponent tile : freezingTiles) {
-				GameObject config = RealmEvents.findEventsConfig(data);
 				tile.getGameObject().setThisAttribute(Constants.EVENT_FROZEN_WATER);
 				RealmEvents.addEffectForTile(config,Constants.EVENT_FROZEN_WATER,tile.getGameObject().getStringId());
 				RealmLogging.logMessage("Event","Frozen Water: All water clreaings in "+tile.getGameObject().getNameWithNumber()+" are frozen until the end of the week.");

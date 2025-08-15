@@ -145,16 +145,16 @@ public class ClearingDetail {
 		return null;
 	}
 	public boolean isNormal() {
-		return type.equals("normal") && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return type.equals("normal") && !hasSpellEffect(Constants.MOUNTAIN_SURGE) && !hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE);
 	}
 	public boolean isCave() {
-		return type.equals("caves") && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return type.equals("caves") && !hasSpellEffect(Constants.MOUNTAIN_SURGE) && !hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE);
 	}
 	public boolean isWater() {
-		return type.equals("water") && !parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return type.equals("water") && !parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) && !hasSpellEffect(Constants.MOUNTAIN_SURGE) && !hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE);
 	}
 	public boolean isFrozenWater() {
-		return (type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) || parent.getGameObject().hasThisAttribute(Constants.EVENT_FROZEN_WATER)) && !hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return (type.equals("frozen_water") || parent.getGameObject().hasThisAttribute(Constants.FROZEN_WATER) || parent.getGameObject().hasThisAttribute(Constants.EVENT_FROZEN_WATER)) && !hasSpellEffect(Constants.MOUNTAIN_SURGE) && !hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE);
 	}
 	public boolean isLighted() {
 		if (!parent.getGameObject().hasThisAttribute(Constants.LIGHTED)) return false;
@@ -172,10 +172,10 @@ public class ClearingDetail {
 		}
 	}
 	public boolean isMountain() {
-		return type.equals("mountain") || hasSpellEffect(Constants.MOUNTAIN_SURGE);
+		return type.equals("mountain") || hasSpellEffect(Constants.MOUNTAIN_SURGE) || hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE);
 	}
 	public boolean isWoods() {
-		return (type.equals("woods") || type.equals("frozen_water")) && !hasSpellEffect(Constants.MOUNTAIN_SURGE); //treat frozen water clearings as woods clearings
+		return (type.equals("woods") || type.equals("frozen_water")) && !hasSpellEffect(Constants.MOUNTAIN_SURGE) && !hasEventEffect(Constants.EVENT_MOUNTAIN_SURGE); //treat frozen water clearings as woods clearings
 	}
 	public int moveCost(CharacterWrapper character,TileLocation currentLocation) {
 		int val = 1;
@@ -751,6 +751,9 @@ public class ClearingDetail {
 	}
 	public boolean hasSpellEffect(String effect) {
 		return getParent().getGameObject().hasThisAttributeListItem(spellEffectKey(),effect);
+	}
+	public boolean hasEventEffect(String effect) {
+		return getParent().getGameObject().hasThisAttributeListItem(effect,this.getNumString());
 	}
 	public boolean hasKnownGate(CharacterWrapper character) {
 		boolean usableGate = false;

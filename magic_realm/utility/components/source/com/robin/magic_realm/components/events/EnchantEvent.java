@@ -15,8 +15,8 @@ public class EnchantEvent implements IEvent {
 		TileComponent tile = RealmEvents.chooseRandomTile(data, tileTypes);
 		if (tile!=null) {
 			tile.flip();
+			RealmLogging.logMessage("Event","Enchant: "+tile.getGameObject().getNameWithNumber()+" is flipped.");
 		}
-		RealmLogging.logMessage("Event","Enchant: "+tile.getGameObject().getNameWithNumber()+" is flipped.");
 	}
 	public void applySunset(GameData data) {
 	}

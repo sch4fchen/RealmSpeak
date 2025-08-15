@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class ViolentWindsEvent implements IEvent {
 	private static final String title = "Violent Winds";
@@ -15,6 +16,7 @@ public class ViolentWindsEvent implements IEvent {
 			tile.setThisAttribute(Constants.EVENT_VIOLENT_WINDS);
 			RealmEvents.addEffectForTile(config,Constants.EVENT_VIOLENT_WINDS,tile.getStringId());
 		}
+		RealmLogging.logMessage("Event","Violent Winds: No one is able to Fly today (but first Fly activity for landing). Flyers +1 to maneuver.");
 	}
 	public void applySunset(GameData data) {
 	}

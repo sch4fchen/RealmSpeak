@@ -6,10 +6,11 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.DieRoller;
+import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.GameWrapper;
 
 public class Prowl3Event implements IEvent {
-	private static final String title = "Prowl I";
+	private static final String title = "Prowl III";
 	private static final String description = "An additional row of monsters and natives are prowling this day.";
 	public void applyBirdsong(GameData data) {
 		GamePool pool = new GamePool(data.getGameObjects());
@@ -22,6 +23,7 @@ public class Prowl3Event implements IEvent {
 		DieRoller nativeDie = game.getNativeDie();
 		nativeDie.addRedDie();
 		game.setNativeDie(nativeDie);
+		RealmLogging.logMessage("Event","Prowl III: An additional row of monsters and natives are prowling this day.");
 	}
 	public void applySunset(GameData data) {
 	}

@@ -61,7 +61,7 @@ public class RealmEvents {
 		//SlitherMigrate,
 		//HowlMigrate,
 		//RoarMigrate,
-		//MountainSurge,
+		MountainSurge,
 		PeacefulDay,
 		Prism
 	}
@@ -190,7 +190,7 @@ public class RealmEvents {
 			//case SlitherMigrate: return new SlitherMigrateEvent();
 			//case HowlMigrate: return new HowlMigrateEvent();
 			//case RoarMigrate: return new RoarMigrateEvent();
-			//case MountainSurge: return new MountainSurgeEvent();
+			case MountainSurge: return new MountainSurgeEvent();
 			case PeacefulDay: return new PeacefulDayEvent();
 			case Prism: return new PrismEvent();
 			case Blank:
