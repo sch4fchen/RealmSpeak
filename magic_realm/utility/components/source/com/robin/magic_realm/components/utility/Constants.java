@@ -790,6 +790,7 @@ public class Constants {
 	public static final String ADV_FLYING_ACTIVITIES = "FlyingActivities";
 	
 	// Optional Rules
+	public static final String OPT_END_OF_ROUND_WOUNDING = "EndOfRoundWounding";
 	public static final String NO_COMBAT = "no_combat";
 	public static final String NO_SUMMONING = "no_summoning";
 	public static final String OPT_STUMBLE = "Stumble";

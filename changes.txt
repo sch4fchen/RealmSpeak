@@ -25,6 +25,7 @@ NEW FEATURES:
 # Events added
 # Custom Characters: fetching starting items from other expansions
 # Guide has to wait for followers to exhaust weather fatigue
+# Optional rule: Resolve wounds at the end of the combat round
 BUGS/ISSUES:
 # Super Realm Selling rule: Fix selling Fame item to allied natives 
 # Fix running away using Broomstick

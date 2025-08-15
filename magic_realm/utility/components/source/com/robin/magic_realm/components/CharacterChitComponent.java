@@ -1046,11 +1046,15 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					else {
 						// Dead character!
 						characterWasKilled = true;
+						if (hostPrefs.hasPref(Constants.OPT_END_OF_ROUND_WOUNDING)) {
+							combat.setKilledByWounds(true);
+						}
 					}
 				}
 				else {
 					// Dead character!
 					characterWasKilled = true;
+					combat.setKilledByWounds(false);
 				}
 			}
 			else if (harm.isWound()) {
@@ -1062,6 +1066,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				else {
 					// Dead character!
 					characterWasKilled = true;
+					if (hostPrefs.hasPref(Constants.OPT_END_OF_ROUND_WOUNDING)) {
+						combat.setKilledByWounds(true);
+					}
 				}
 			}
 
@@ -1080,6 +1087,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					else {
 						// Dead character!
 						characterWasKilled = true;
+						if (hostPrefs.hasPref(Constants.OPT_END_OF_ROUND_WOUNDING)) {
+							combat.setKilledByWounds(true);
+						}
 					}
 				}
 				else {

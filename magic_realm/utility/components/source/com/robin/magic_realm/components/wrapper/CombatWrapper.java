@@ -61,6 +61,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String KILLED_LENGTH = "KILLED_LENGTH";
 	private static final String KILLED_SPEED = "KILLED_SPEED";
 	private static final String NEW_WOUNDS = "NEW_WOUNDS";
+	private static final String KILLED_BY_WOUNDS = "KILLED_BY_WOUNDS";
 	private static final String MISSILE_ROLLS = "MISSILE_ROLLS";
 	private static final String MISSILE_ROLL_SUBTITLES = "M_ROLL_SS";
 	private static final String MISSILE_ROLL_TARGETIDS = "M_ROLL_TI";
@@ -538,6 +539,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	public int getNewWounds() {
 		return getInt(NEW_WOUNDS);
 	}
+	public void setKilledByWounds(boolean val) {
+		setBoolean(KILLED_BY_WOUNDS,val);
+	}
+	public boolean killedByWounds() {
+		return getBoolean(KILLED_BY_WOUNDS);
+	}
 	public void addHealing(int val) {
 		int current = getInt(HEALING);
 		setInt(HEALING,val+current);
@@ -843,6 +850,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,KILLED_LENGTH);
 			go.removeAttribute(COMBAT_BLOCK,KILLED_SPEED);
 			go.removeAttribute(COMBAT_BLOCK,NEW_WOUNDS);
+			go.removeAttribute(COMBAT_BLOCK,KILLED_BY_WOUNDS);
 			go.removeAttribute(COMBAT_BLOCK,HEALING);
 			go.removeAttribute(COMBAT_BLOCK,MISSILE_ROLLS);
 			go.removeAttribute(COMBAT_BLOCK,MISSILE_ROLL_SUBTITLES);

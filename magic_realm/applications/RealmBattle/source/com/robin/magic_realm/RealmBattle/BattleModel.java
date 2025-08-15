@@ -1664,17 +1664,21 @@ public class BattleModel {
 		
 		// The attacker can't attack if he/she is dead, unless their attack is simultaneous with their killer.
 		if (killer!=null && attackCancelled==null) {
-			// The attacker was killed, but was it simultaneous?
-			boolean simultaneous = killSpeed == attacker.getAttackSpeed().getNum()
-					&& killLength == attacker.getLength().intValue();
-			/*
-			BattleChit killerChit = RealmComponent.getBattleChit(killer);
-			boolean simultaneous = killerChit.getAttackSpeed().equals(attacker.getAttackSpeed())
-										&& killerChit.getLength().equals(attacker.getLength());
-			*/
-			if (!simultaneous) {
-				// nope - attack is cancelled
-				attackCancelled = attackerName+" was already killed by "+killer.getNameWithNumber()+".";
+			if (attackerCombat.killedByWounds()) {
+				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" can still attack, as wounds are resolved later.");
+			 } else {
+				// The attacker was killed, but was it simultaneous?
+				boolean simultaneous = killSpeed == attacker.getAttackSpeed().getNum()
+						&& killLength == attacker.getLength().intValue();
+				/*
+				BattleChit killerChit = RealmComponent.getBattleChit(killer);
+				boolean simultaneous = killerChit.getAttackSpeed().equals(attacker.getAttackSpeed())
+											&& killerChit.getLength().equals(attacker.getLength());
+				*/
+				if (!simultaneous) {
+					// nope - attack is cancelled
+					attackCancelled = attackerName+" was already killed by "+killer.getNameWithNumber()+".";
+				}
 			}
 		}
 		
