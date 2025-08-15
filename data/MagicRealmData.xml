@@ -37116,10 +37116,10 @@
         <attribute needs_init="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
-        <attribute change_tactics_after_casting="" />
-        <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
+        <attribute cast_only_in_first_round="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -37128,6 +37128,7 @@
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
+        <attribute change_tactics_for_non_spell_attack="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37156,10 +37157,10 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
-        <attribute change_tactics_after_casting="" />
-        <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
+        <attribute cast_only_in_first_round="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -37168,6 +37169,7 @@
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
+        <attribute change_tactics_for_non_spell_attack="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37196,10 +37198,10 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
-        <attribute change_tactics_after_casting="" />
-        <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
+        <attribute cast_only_in_first_round="" />
+        <attribute fast_caster="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -37208,6 +37210,7 @@
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
+        <attribute change_tactics_for_non_spell_attack="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />
@@ -37237,10 +37240,10 @@
         <attribute denizen="" />
         <attribute icon_size="0.9" />
         <attribute no_change_tactics="" />
-        <attribute change_tactics_after_casting="" />
-        <attribute fast_caster="" />
         <attribute native_name="Caster" />
         <attribute roving_native="" />
+        <attribute cast_only_in_first_round="" />
+        <attribute fast_caster="" />
         <attributeList keyName="extra_actions">
           <attributeVal N0="SP" />
         </attributeList>
@@ -37252,6 +37255,7 @@
         <attribute chit_color="paleyellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
+        <attribute change_tactics_for_non_spell_attack="" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
         <attribute move_speed="4" />

@@ -150,6 +150,14 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		return getGameObject().hasThisAttribute(Constants.CHANGE_TACTICS_AFTER_CASTING) || hasFaceAttribute(Constants.CHANGE_TACTICS_AFTER_CASTING);
 	}
 
+	public boolean changeTacticsForNonSpellAttack() {
+		return getGameObject().hasThisAttribute(Constants.CHANGE_TACTICS_FOR_NON_SPELL_ATTACK) || hasFaceAttribute(Constants.CHANGE_TACTICS_FOR_NON_SPELL_ATTACK);
+	}
+	
+	public boolean castOnlyInFirstCombatRound() {
+		return getGameObject().hasThisAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND) || hasFaceAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND);
+	}
+	
 	public void changeTactics() {
 		flip();
 	}

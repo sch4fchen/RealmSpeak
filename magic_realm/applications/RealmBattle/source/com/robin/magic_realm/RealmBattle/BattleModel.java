@@ -589,7 +589,7 @@ public class BattleModel {
 				}
 			}
 		}
-		
+		int combatRound = CombatFrame.getSingleton().getCurrentRound();
 		for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
 			boolean transmorphed = false;
 			if (battleParticipant.isCharacter()) {
@@ -599,6 +599,10 @@ public class BattleModel {
 			}
 			if ((battleParticipant.isMonster() || battleParticipant.isNative() || transmorphed) && !battleParticipant.isMonsterPart()) {
 				BattleChit denizen = (BattleChit)battleParticipant;
+				if (combatRound!=1 && (denizen.getGameObject().hasThisAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND) || ((ChitComponent)denizen).hasFaceAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND))) {
+					continue;
+				}
+				
 				if (hostPrefs.hasPref(Constants.OPT_POWER_OF_THE_PIT_DEMON) && Constants.POWER_OF_THE_PIT.matches(denizen.getAttackSpell()) && !spellCasters.contains(denizen)) {
 					spellCasters.add(denizen);
 					monsterSpells.put(Integer.valueOf(denizen.getAttackSpeed().getNum()),denizen);
@@ -992,6 +996,7 @@ public class BattleModel {
 		 * 		CIRCLE - Attackers = 0-n
 		 * 		RED - Self
 		 */
+		int combatRound = CombatFrame.getSingleton().getCurrentRound();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
 		for (RealmComponent rc : all) {
 			RealmComponent target = rc.getTarget();
@@ -1059,6 +1064,31 @@ public class BattleModel {
 						self.add(rc);
 						repositionAndChangeTactics(CombatWrapper.GROUP_RED,combat,self);
 					}
+				}
+			}
+			
+			boolean changeTacticsForNonSpellAttack = false;
+			String magicType = null;
+			String attackSpell = null;
+			if (rc.isMonster()) {
+				MonsterChitComponent monsterChit = (MonsterChitComponent)rc;
+				if (monsterChit.changeTacticsForNonSpellAttack()) {
+					magicType = monsterChit.getMagicType();
+					attackSpell = monsterChit.getAttackSpell();
+					changeTacticsForNonSpellAttack = true;
+				}
+			} else if (rc.isNative()) {
+				NativeChitComponent nativeChit = (NativeChitComponent)rc;
+				if (nativeChit.changeTacticsForNonSpellAttack() && nativeChit.castOnlyInFirstCombatRound()) {
+					magicType = nativeChit.getMagicType();
+					attackSpell = nativeChit.getAttackSpell();
+					changeTacticsForNonSpellAttack = true;
+				}
+			}
+			if (changeTacticsForNonSpellAttack && combat.getCastSpell()==null) {
+				if (((magicType == null || magicType.isEmpty()) && (attackSpell == null || attackSpell.isEmpty()))
+						|| (combatRound!=1 && (rc.getGameObject().hasThisAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND) || ((ChitComponent)rc).hasFaceAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND)))) {
+					rc.flip();
 				}
 			}
 		}
@@ -1942,57 +1972,59 @@ public class BattleModel {
 							&& !attacker.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF) && !((ChitComponent)attacker).hasFaceAttribute(Constants.SPELL_TARGETS_SELF)) {
 						String spellName = attacker.getAttackSpell();
 						SpellWrapper spell = null;
-						for (GameObject held : attacker.getGameObject().getHold()) {
-							if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
-								spell = new SpellWrapper(held);
-								break;
+						if (round==1 || (!attacker.getGameObject().hasThisAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND) && !((ChitComponent)attacker).hasFaceAttribute(Constants.CAST_ONLY_IN_FIRST_COMBAT_ROUND))) {
+							for (GameObject held : attacker.getGameObject().getHold()) {
+								if (held.getName().toLowerCase().matches(spellName.toLowerCase()) && held.hasThisAttribute(Constants.SPELL_DENIZEN)) {
+									spell = new SpellWrapper(held);
+									break;
+								}
 							}
-						}
-						if (spell!=null) {
-							if (!attacker.isNative() || !attackerCombat.isAffectedByExorcise() || colorSuppliedForDenizenSpell(spell)) {
-								spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
-								spell.castSpellByDenizen(attacker.getGameObject());
-								if (spell.isAttackSpell()) {
-									int attacks = spell.getGameObject().getThisInt("min_targets");
-									if(attacks == 0) {
-										attacks = 1;
-									}
-									int i=1;
-									while (i<=attacks) {
-										Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
-										CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
-										if (spell.freezingTarget()) {
-											targetCombat.freeze();
+							if (spell!=null) {
+								if (!attacker.isNative() || !attackerCombat.isAffectedByExorcise() || colorSuppliedForDenizenSpell(spell)) {
+									spell.selectTargetForDenizen(hostPrefs, battleLocation, attacker, (RealmComponent)target);
+									spell.castSpellByDenizen(attacker.getGameObject());
+									if (spell.isAttackSpell()) {
+										int attacks = spell.getGameObject().getThisInt("min_targets");
+										if(attacks == 0) {
+											attacks = 1;
 										}
-										spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
-										// Apply the hit
-										targetCombat.addHitBy(attacker.getGameObject());
-										currentNewWounds = targetCombat.getNewWounds();
-										logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
-										hitCausedHarm = hitCausedHarm || target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
-										i++;
+										int i=1;
+										while (i<=attacks) {
+											Harm spellHarm = getAdjustedHarm(spell,fumbleModifier,targetCombat.getGameObject().getStringId());
+											CombatWrapper spellCaster = new CombatWrapper(spell.getCaster().getGameObject());
+											if (spell.freezingTarget()) {
+												targetCombat.freeze();
+											}
+											spellCaster.addHarmApplied(spellHarm,targetCombat.getGameObject());
+											// Apply the hit
+											targetCombat.addHitBy(attacker.getGameObject());
+											currentNewWounds = targetCombat.getNewWounds();
+											logBattleInfo(target.getGameObject().getNameWithNumber()+" is hit by the spell "+spell.getName()+" with "+spellHarm+" harm along box "+attacker.getAttackCombatBox());
+											hitCausedHarm = hitCausedHarm || target.applyHit(theGame,hostPrefs,attacker,attacker.getAttackCombatBox(),spellHarm,attackOrderPos);
+											i++;
+										}
 									}
+									else {
+										ArrayList<String> logs = new ArrayList<String>();
+										if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
+											logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
+										}
+										else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
+											logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
+										}
+										if (logs != null && !logs.isEmpty()) {
+											for (String log : logs) {
+												logBattleInfo(log);
+											}
+										}
+										spell.recognizeCastedSpellByDenizen();
+									}
+									setSpellCasting();
+									spellCasted = true;
 								}
 								else {
-									ArrayList<String> logs = new ArrayList<String>();
-									if (spell.isInstantSpell() && !spell.uneffectAtMidnight()) {
-										logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,true,null);
-									}
-									else if (spell.isCombatSpell() || spell.isDaySpell() || spell.isPermanentSpell() || spell.isPhaseSpell() || spell.isMoveSpell() || spell.uneffectAtMidnight()) {
-										logs = spell.affectTargets(CombatFrame.getSingleton(),theGame,false,null);
-									}
-									if (logs != null && !logs.isEmpty()) {
-										for (String log : logs) {
-											logBattleInfo(log);
-										}
-									}
-									spell.recognizeCastedSpellByDenizen();
+									logBattleInfo(attacker.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 								}
-								setSpellCasting();
-								spellCasted = true;
-							}
-							else {
-								logBattleInfo(attacker.getGameObject().getNameWithNumber()+" is affected by Exorcise and thus cannot cast "+spell.getName()+".");
 							}
 						}
 					}

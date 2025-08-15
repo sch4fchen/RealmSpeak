@@ -32,6 +32,7 @@ BUGS/ISSUES:
 # Fix Events in combination with seasons
 # Fix Teleport to Woods tile for Fairy Grove
 # Fix conditions for teleporting using Spire/Tower treasure location
+# Fix Cultists combat tactics
 
 Version 1.2.3.5
 NEW FEATURES:

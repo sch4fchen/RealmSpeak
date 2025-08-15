@@ -204,6 +204,10 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		return this;
 	}
 	public boolean selectTargetForDenizen(HostPrefWrapper hostPrefs, TileLocation battleLocation, BattleChit denizen, RealmComponent target) {
+		if (this.getGameObject().getThisAttribute("target").matches("caster")) {
+			addTarget(hostPrefs, denizen.getGameObject(),true);
+			return true;
+		}
 		if (denizen.getGameObject().hasThisAttribute(Constants.SPELL_TARGETS_SELF)|| ((denizen.isNative() || denizen.isMonster()) && ((ChitComponent)denizen).hasFaceAttribute(Constants.SPELL_TARGETS_SELF))) {
 			addTarget(hostPrefs, denizen.getGameObject());
 			return true;
@@ -1173,7 +1177,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 				Constants.VAMPIRE,Constants.SUCCUBUS,Constants.GHOST,Constants.GHOUL,Constants.ZOMBIE,Constants.SKELETON,Constants.WRAITH,Constants.COLOSSUS,Constants.TITAN,Constants.MINOTAUR,Constants.GARGOYLE,Constants.VIPER,Constants.SERPENT,
 				Constants.UNDEAD,Constants.UNDEAD_SUMMONED,
 				Constants.TRANSMORPH_IMMUNITY,Constants.TRANSMORPH_IMMUNITY_SELF,Constants.MAGIC_IMMUNITY,
-				Constants.NO_CHANGE_TACTICS,Constants.KILLS_HORSE,Constants.DESTROYS_ARMOR,Constants.CHANGE_TACTICS_AFTER_CASTING,Constants.ATTACK_AFTER_CASTING,Constants.SPELL_TARGETS_SELF,Constants.FAST_CASTER,Constants.SPELL_PRE_BATTLE,
+				Constants.NO_CHANGE_TACTICS,Constants.KILLS_HORSE,Constants.DESTROYS_ARMOR,Constants.CHANGE_TACTICS_AFTER_CASTING,Constants.CHANGE_TACTICS_FOR_NON_SPELL_ATTACK,Constants.ATTACK_AFTER_CASTING,Constants.SPELL_TARGETS_SELF,Constants.FAST_CASTER,Constants.SPELL_PRE_BATTLE,
 				Constants.SUPER_REALM
 			};
 		ArrayList<String> thisTest = new ArrayList<>(Arrays.asList(thisVars));

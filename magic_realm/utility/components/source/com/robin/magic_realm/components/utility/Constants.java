@@ -437,8 +437,10 @@ public class Constants {
 	public static final String KILLS_HORSE = "kills_horse";
 	public static final String DESTROYS_ARMOR = "destroys_armor";
 	public static final String CHANGE_TACTICS_AFTER_CASTING = "change_tactics_after_casting";
+	public static final String CHANGE_TACTICS_FOR_NON_SPELL_ATTACK = "change_tactics_for_non_spell_attack";
 	public static final String ATTACK_AFTER_CASTING = "attack_after_casting";
 	public static final String SPELL_TARGETS_SELF = "spell_targets_self";
+	public static final String CAST_ONLY_IN_FIRST_COMBAT_ROUND = "cast_only_in_first_round";
 	public static final String FAST_CASTER = "fast_caster";
 	public static final String SPELL_DENIZEN = "spell_denizen";
 	public static final String SPELL_PRE_BATTLE = "spell_pre_battle";
