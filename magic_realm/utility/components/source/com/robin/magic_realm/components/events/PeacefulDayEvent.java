@@ -12,7 +12,7 @@ public class PeacefulDayEvent implements IEvent {
 	private static final String title = "Peaceful Day";
 	private static final String description = "A random hex won't summon monsters this day.";
 	public void applyBirdsong(GameData data) {
-		TileComponent tile = RealmEvents.chooseRandomTile(data);
+		TileComponent tile = RealmEvents.chooseRandomTileWithSummonChit(data);
 		if (tile!=null) {
 			GameObject config = RealmEvents.findEventsConfig(data);
 			tile.getGameObject().setThisAttribute(Constants.EVENT_PEACEFUL_DAY);

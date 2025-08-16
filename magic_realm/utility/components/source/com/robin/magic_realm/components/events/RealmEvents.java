@@ -245,13 +245,33 @@ public class RealmEvents {
 	}
 	
 	public static TileComponent chooseRandomTile(GameData data) {
-		return chooseRandomTile(data,null);
+		return chooseRandomTile(data,null,false);
+	}
+	public static TileComponent chooseRandomTileWithSummonChit(GameData data) {
+		return chooseRandomTile(data,null,true);
 	}
 	public static TileComponent chooseRandomTile(GameData data,ArrayList<String> tileTypes) {
+		return chooseRandomTile(data,tileTypes,false);
+	}
+	public static TileComponent chooseRandomTile(GameData data,ArrayList<String> tileTypes, boolean onlyWithSummonChit) {
 		ArrayList<TileComponent> list = new ArrayList<>();
 		for (CharacterWrapper character: getLivingCharacters(data)) {
 			TileLocation loc = character.getCurrentLocation();
 			if (loc!=null && loc.tile!=null && !list.contains(loc.tile)) {
+				if (onlyWithSummonChit) {
+					ArrayList<GameObject> hold = loc.tile.getGameObject().getHold();
+					boolean foundChit = false;
+					for (GameObject go : hold) {
+						RealmComponent rc = RealmComponent.getRealmComponent(go);
+						if (rc.isWarning() || rc.isSound()) {
+							foundChit = true;
+							break;
+						}
+					}
+					if (!foundChit) {
+						continue;
+					}
+				}
 				if (tileTypes!=null) {
 					for (String type : tileTypes) {
 						if (loc.tile.getTileType().matches(type)) {
@@ -267,6 +287,20 @@ public class RealmEvents {
 			for (RealmComponent hireling : character.getAllHirelings()) {
 				TileLocation locHireling = hireling.getCurrentLocation();
 				if (locHireling!=null && locHireling.tile!=null && !list.contains(locHireling.tile)) {
+					if (onlyWithSummonChit) {
+						ArrayList<GameObject> hold = loc.tile.getGameObject().getHold();
+						boolean foundChit = false;
+						for (GameObject go : hold) {
+							RealmComponent rc = RealmComponent.getRealmComponent(go);
+							if (rc.isWarning() || rc.isSound()) {
+								foundChit = true;
+								break;
+							}
+						}
+						if (!foundChit) {
+							continue;
+						}
+					}
 					if (tileTypes!=null) {
 						for (String type : tileTypes) {
 							if (locHireling.tile.getTileType().matches(type)) {
