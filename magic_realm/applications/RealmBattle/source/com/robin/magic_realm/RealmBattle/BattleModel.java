@@ -26,7 +26,6 @@ import com.robin.magic_realm.components.table.WallOfForce;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.utility.SpellUtility.TeleportType;
 import com.robin.magic_realm.components.wrapper.*;
-import com.robin.magic_realm.map.Tile;
 
 public class BattleModel {
 	
@@ -3450,17 +3449,9 @@ public class BattleModel {
 		}
 		else {
 			TileLocation loc = rc.getCurrentLocation();
+			ClearingUtility.initAdjacentTiles(getGameData());
 			ArrayList<TileComponent> possibleTiles = new ArrayList<>();
-			Point basePosition = Tile.getPositionFromGameObject(loc.tile.getGameObject());
-			GamePool pool = new GamePool(gameData.getGameObjects());
-			ArrayList<GameObject> tiles = pool.find("tile");
-			for (GameObject tile : tiles) {
-				Point position = Tile.getPositionFromGameObject(tile);
-				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
-						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
-					possibleTiles.add(new TileComponent(tile));
-				}
-			}
+			possibleTiles.addAll(loc.tile.getAllAdjacentTiles());
 			TileComponent chosenTile = possibleTiles.get(RandomNumber.getRandom(possibleTiles.size()));
 			tl = new TileLocation(chosenTile,true);
 		}

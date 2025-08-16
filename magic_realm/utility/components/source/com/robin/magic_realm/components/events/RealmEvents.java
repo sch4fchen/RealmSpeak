@@ -40,7 +40,7 @@ public class RealmEvents {
 		HorseWhisper,
 		FrozenRiver,
 		CaveIn,
-		HurricaneWinds,
+		//HurricaneWinds,
 		ProwlI,
 		ProwlII,
 		ProwlIII,
@@ -169,7 +169,7 @@ public class RealmEvents {
 			case HorseWhisper: return new HorseWhisperEvent();
 			case FrozenRiver: return new FrozenRiverEvent();
 			case CaveIn: return new CaveInEvent();
-			case HurricaneWinds: return new HurricaneWindsEvent();
+			//case HurricaneWinds: return new HurricaneWindsEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();
