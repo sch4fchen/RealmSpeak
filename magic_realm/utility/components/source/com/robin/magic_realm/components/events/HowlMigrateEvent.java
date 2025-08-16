@@ -6,6 +6,7 @@ import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.StateChitComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.utility.RealmLogging;
 
@@ -23,7 +24,7 @@ public class HowlMigrateEvent implements IEvent {
 		GameObject chosenChit = null;
 		for (GameObject go : randomTile.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (rc.isSound() && go.getThisAttribute("sound").matches("howl")) {
+			if (rc.isSound() && go.getThisAttribute("sound").matches("howl") && ((StateChitComponent)rc).isFaceUp()) {) {
 				if (chosenChit == null || go.getThisInt("clearing") > chosenChit.getThisInt("clearing")) {
 					chosenChit = go;
 				}
