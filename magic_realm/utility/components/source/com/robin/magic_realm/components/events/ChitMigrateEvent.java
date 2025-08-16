@@ -15,8 +15,6 @@ public class ChitMigrateEvent implements IEvent {
 		soundType=type;
 	}
 	private String soundType = "";
-	private String title = soundType+" Migrate";
-	private String description = "At sunset the highest numbered "+soundType+" chit is moved to an adjacent hex and summons denizens.";
 	public void applyBirdsong(GameData data) {
 	}
 	public void applySunset(GameData data) {
@@ -51,10 +49,10 @@ public class ChitMigrateEvent implements IEvent {
 	}
 	@Override
 	public String getTitle() {
-		return title;
+		return soundType+" Migrate";
 	}
 	@Override
 	public String getDescription(GameData data) {
-		return description;
+		return "At sunset the highest numbered "+soundType+" chit is moved to an adjacent hex and summons denizens.";
 	}
 }
