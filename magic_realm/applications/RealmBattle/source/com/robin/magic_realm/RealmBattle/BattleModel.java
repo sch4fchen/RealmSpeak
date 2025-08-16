@@ -3449,9 +3449,17 @@ public class BattleModel {
 		}
 		else {
 			TileLocation loc = rc.getCurrentLocation();
-			ClearingUtility.initAdjacentTiles(getGameData());
 			ArrayList<TileComponent> possibleTiles = new ArrayList<>();
-			possibleTiles.addAll(loc.tile.getAllAdjacentTiles());
+			Point basePosition = RealmUtility.getTilePositionFromGameObject(loc.tile.getGameObject());
+			GamePool pool = new GamePool(gameData.getGameObjects());
+			ArrayList<GameObject> tiles = pool.find("tile");
+			for (GameObject tile : tiles) {
+				Point position = RealmUtility.getTilePositionFromGameObject(tile);
+				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
+						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
+					possibleTiles.add(new TileComponent(tile));
+				}
+			}
 			TileComponent chosenTile = possibleTiles.get(RandomNumber.getRandom(possibleTiles.size()));
 			tl = new TileLocation(chosenTile,true);
 		}

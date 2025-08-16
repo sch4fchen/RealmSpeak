@@ -1234,4 +1234,11 @@ public class RealmUtility {
 		}
 		return -3;
 	}
+	public static Point getTilePositionFromGameObject(GameObject obj) {
+		String pos = obj.getAttribute("mapGrid","mapPosition");
+		StringTokenizer st = new StringTokenizer(pos,",");
+		int px = Integer.parseInt(st.nextToken());
+		int py = Integer.parseInt(st.nextToken());
+		return new Point(px,py);
+	}
 }

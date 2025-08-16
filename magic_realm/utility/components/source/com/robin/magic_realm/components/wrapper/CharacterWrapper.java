@@ -6728,6 +6728,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
 				while(current.clearing==null) {
 					int r = RandomNumber.getHighLow(1,6);
+					if (current.tile.getClearing(r) == null) continue;
 					if (!current.tile.getClearing(r).isAffectedByViolentWindsSpell()) {
 						current.clearing = current.tile.getClearing(r);
 					}

@@ -15,8 +15,8 @@ import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.map.Tile;
 
 public class RealmEvents {
 	
@@ -40,7 +40,7 @@ public class RealmEvents {
 		HorseWhisper,
 		FrozenRiver,
 		CaveIn,
-		//HurricaneWinds,
+		HurricaneWinds,
 		ProwlI,
 		ProwlII,
 		ProwlIII,
@@ -169,7 +169,7 @@ public class RealmEvents {
 			case HorseWhisper: return new HorseWhisperEvent();
 			case FrozenRiver: return new FrozenRiverEvent();
 			case CaveIn: return new CaveInEvent();
-			//case HurricaneWinds: return new HurricaneWindsEvent();
+			case HurricaneWinds: return new HurricaneWindsEvent();
 			case ProwlI: return new Prowl1Event();
 			case ProwlII: return new Prowl2Event();
 			case ProwlIII: return new Prowl3Event();
@@ -367,9 +367,9 @@ public class RealmEvents {
 		if (!waterTiles.isEmpty()) {
 			TileComponent chosenTile = waterTiles.remove(RandomNumber.getRandom(waterTiles.size()));
 			chosenTiles.add(chosenTile);
-			Point basePosition = Tile.getPositionFromGameObject(chosenTile.getGameObject());
+			Point basePosition = RealmUtility.getTilePositionFromGameObject(chosenTile.getGameObject());
 			for (TileComponent tile : waterTiles) {
-				Point position = Tile.getPositionFromGameObject(tile.getGameObject());
+				Point position = RealmUtility.getTilePositionFromGameObject(tile.getGameObject());
 				if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
 						&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
 					chosenTiles.add(tile);
