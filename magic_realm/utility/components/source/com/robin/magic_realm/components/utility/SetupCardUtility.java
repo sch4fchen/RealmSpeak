@@ -341,7 +341,7 @@ public class SetupCardUtility {
 		if (includeWarningSounds) {
 			// Cycle through sound chits and summon anything possible
 			String tileType = tl.tile.getGameObject().getThisAttribute("tile_type");
-			for (GameObject sound : soundChits) {				
+			for (GameObject sound : soundChits) {
 				StateChitComponent chit = (StateChitComponent)RealmComponent.getRealmComponent(sound);
 				chit.addSummonedToday(monsterDie);
 				
@@ -421,7 +421,7 @@ public class SetupCardUtility {
 		go.setThisAttribute(Constants.GM_GROW);
 		return go;
 	}
-	private static boolean GameObjectMatchesBoardNumber(GameObject go,String boardNumber) {
+	public static boolean GameObjectMatchesBoardNumber(GameObject go,String boardNumber) {
 		if (boardNumber == null) return true;
 		String bn = go.getThisAttribute(Constants.BOARD_NUMBER);	
 		return (bn==null && boardNumber == "") || (bn != null && boardNumber.matches(bn));
@@ -625,7 +625,7 @@ public class SetupCardUtility {
 	 * location that matches up with the summon name.  This method is used by the summonMonsters(...) method
 	 * to determine which monsters/natives are summoned for a given warning or sound chit name.
 	 */
-	private static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String tileType,String boardNum,Collection<String> redChitNames) {
+	public static GameObject getFirstLocationWithSummonName(ArrayList<GameObject> otherLocations,String name,String tileType,String boardNum,Collection<String> redChitNames) {
 		if (tileType==null) tileType = "";
 		String nameWithType = (name+" "+tileType).toLowerCase(); // ie., roar M
 		for (GameObject loc : otherLocations) {

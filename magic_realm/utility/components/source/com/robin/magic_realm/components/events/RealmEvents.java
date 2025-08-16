@@ -2,6 +2,8 @@ package com.robin.magic_realm.components.events;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -14,8 +16,10 @@ import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.ClearingUtility;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class RealmEvents {
@@ -56,11 +60,11 @@ public class RealmEvents {
 		Thorns,
 		Flood,
 		NegativeAura,
-		//FlutterMigrate,
-		//PatterMigrate,
-		//SlitherMigrate,
-		//HowlMigrate,
-		//RoarMigrate,
+		FlutterMigrate,
+		PatterMigrate,
+		SlitherMigrate,
+		HowlMigrate,
+		RoarMigrate,
 		MountainSurge,
 		PeacefulDay,
 		Prism
@@ -185,11 +189,11 @@ public class RealmEvents {
 			case Thorns: return new ThornsEvent();
 			case Flood: return new FloodEvent();
 			case NegativeAura: return new NegativeAuraEvent();
-			//case FlutterMigrate: return new FlutterMigrateEvent();
-			//case PatterMigrate: return new PatterMigrateEvent();
-			//case SlitherMigrate: return new SlitherMigrateEvent();
-			//case HowlMigrate: return new HowlMigrateEvent();
-			//case RoarMigrate: return new RoarMigrateEvent();
+			case FlutterMigrate: return new FlutterMigrateEvent();
+			case PatterMigrate: return new PatterMigrateEvent();
+			case SlitherMigrate: return new SlitherMigrateEvent();
+			case HowlMigrate: return new HowlMigrateEvent();
+			case RoarMigrate: return new RoarMigrateEvent();
 			case MountainSurge: return new MountainSurgeEvent();
 			case PeacefulDay: return new PeacefulDayEvent();
 			case Prism: return new PrismEvent();
@@ -411,5 +415,50 @@ public class RealmEvents {
 			}
 		}
 		return chosenTiles;
+	}
+	public static ArrayList<GameObject> getAllAdjacentTiles(GameObject chosenTile,GameData data) {
+		ArrayList<GameObject> allTiles = chooseAllTiles(data);
+		ArrayList<GameObject> adjacentTiles = new ArrayList<>();
+		Point basePosition = RealmUtility.getTilePositionFromGameObject(chosenTile);
+		for (GameObject tile : allTiles) {
+			Point position = RealmUtility.getTilePositionFromGameObject(tile);
+			if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
+					&& (position.y==basePosition.y || position.y==basePosition.y-1 || position.y==basePosition.y+1)) {
+				adjacentTiles.add(tile);
+			}
+		}
+		return adjacentTiles;
+	}
+	public static void summonMonstersForSoundChit(GameObject sound, GameObject tile, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		ArrayList<GameObject> summons = pool.find("summon");
+		String boardNum = sound.getThisAttribute(Constants.BOARD_NUMBER);
+		ArrayList<GameObject> otherLocations = new ArrayList<>();
+		for (GameObject go:summons) {
+			if(!SetupCardUtility.GameObjectMatchesBoardNumber(go,boardNum)) continue;
+			if (go.hasKey("gold_special_target")) {
+				continue;
+			}
+			otherLocations.add(go);
+		}
+		Collections.sort(otherLocations,new Comparator<GameObject>() {
+			public int compare(GameObject go1,GameObject go2) {
+				int n1 = go1.getInt("this","box_num");
+				int n2 = go2.getInt("this","box_num");
+				return n1-n2;
+			}
+		});
+		ArrayList<String> redChitNames = new ArrayList<>();
+		for (GameObject go : tile.getHold()) {
+			if (!go.hasKey("red_special")) continue;
+			redChitNames.add(go.getName());
+		}
+		String soundName = sound.getThisAttribute("sound");
+		int soundClearing = sound.getThisInt("clearing");
+
+		GameObject loc = SetupCardUtility.getFirstLocationWithSummonName(otherLocations,soundName,null,boardNum,redChitNames);
+		if (loc!=null) {
+			ClearingUtility.dumpHoldToTile(tile,loc,soundClearing);
+		}
 	}
 }
