@@ -1,10 +1,10 @@
 package com.robin.magic_realm.components.events;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
-import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.StateChitComponent;
 import com.robin.magic_realm.components.TileComponent;
@@ -39,10 +39,30 @@ public class ChitMigrateEvent implements IEvent {
 		GameObject tile = chosenChit.getHeldBy();
 		if (tile.hasThisAttribute(RealmComponent.TILE)) {
 			ArrayList<GameObject> adjacentTiles = RealmEvents.getAllAdjacentTiles(tile,data);
-			GameObject chosenTile = adjacentTiles.get(RandomNumber.getRandom(adjacentTiles.size()));
-			chosenTile.add(chosenChit);
-			RealmEvents.summonMonstersForSoundChit(chosenChit, chosenTile, data);
-			RealmLogging.logMessage("Event",soundType+" Migrate: "+chosenChit.getNameWithNumber()+" is moved to "+chosenTile.getNameWithNumber()+" and summons denizens.");
+			Collections.shuffle(adjacentTiles);
+			Collections.shuffle(adjacentTiles);
+			GameObject chosenTile = null;
+			for (GameObject adjTile : adjacentTiles) {
+				for (GameObject held : adjTile.getHold()) {
+					RealmComponent rc = RealmComponent.getRealmComponent(held);
+					if (rc.isCharacter() || rc.isHiredOrControlled()) {
+						chosenTile = adjTile;
+						break;
+					}
+				}
+				if (chosenTile!=null) {
+					break;
+				}
+			}
+			if (chosenTile!=null) {
+				chosenTile.add(chosenChit);
+				RealmEvents.summonMonstersForSoundChit(chosenChit, chosenTile, data);
+				RealmLogging.logMessage("Event",soundType+" Migrate: "+chosenChit.getNameWithNumber()+" is moved to "+chosenTile.getNameWithNumber()+" and summons denizens.");
+			}
+			else {
+				RealmLogging.logMessage("Event",soundType+" Migrate: No valid adjacent tile found.");
+				return;
+			}
 		}
 	}
 	public void expire(GameData data) {

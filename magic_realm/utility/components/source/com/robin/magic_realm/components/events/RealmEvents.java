@@ -420,6 +420,7 @@ public class RealmEvents {
 		ArrayList<GameObject> allTiles = chooseAllTiles(data);
 		ArrayList<GameObject> adjacentTiles = new ArrayList<>();
 		Point basePosition = RealmUtility.getTilePositionFromGameObject(chosenTile);
+		allTiles.remove(chosenTile);
 		for (GameObject tile : allTiles) {
 			Point position = RealmUtility.getTilePositionFromGameObject(tile);
 			if ((position.x==basePosition.x || position.x==basePosition.x-1 || position.x==basePosition.x+1)
