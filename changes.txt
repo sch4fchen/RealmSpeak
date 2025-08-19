@@ -20,7 +20,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.3.8
-
+NEW FEATURES:
+# Taking notes when trading quests
 
 Version 1.2.3.7
 NEW FEATURES:

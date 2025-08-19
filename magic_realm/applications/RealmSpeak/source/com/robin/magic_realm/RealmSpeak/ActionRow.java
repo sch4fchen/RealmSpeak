@@ -1467,19 +1467,21 @@ public class ActionRow {
 					}
 					if (!characterQuests.isEmpty()) {
 						ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
+						ArrayList<GameObject> questsToNote = new ArrayList<>();
 						GameObject holder = null;
 						if (trader.isNative()) {
 							holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
 							for(GameObject item:holder.getHold()) {
 								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
 									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
-								}
+									questsToNote.add(item);								}
 							}
 						}
 						else {
 							for (GameObject item : trader.getHold()) {
 								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
 									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+									questsToNote.add(item);	
 								}
 							}
 						}
@@ -1495,7 +1497,6 @@ public class ActionRow {
 							if (selectedTraderQuest!=null && selectedTraderQuest!="No Trade") {
 								RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
 								for (RealmComponent quest:characterQuests) {
-									
 									characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
 								}
 								characterQuestChooser.addOption("none","No Trade");
@@ -1514,6 +1515,7 @@ public class ActionRow {
 										trader.getGameObject().add(quest2.getGameObject());
 									}
 									character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
+									character.addNoteTrade(trader.getGameObject(),questsToNote);
 								}
 							}
 						}
