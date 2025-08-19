@@ -303,13 +303,16 @@ public class TransmorphEffect implements ISpellEffect {
 		if (target.isMistLike()) {
 			// Mists cannot have a target!
 			target.clearTargets();
-			// Mists cannot have a followers!
-			CharacterWrapper character = new CharacterWrapper(target.getGameObject());
-			ArrayList<CharacterWrapper> followers = character.getActionFollowers();
-			if (followers!=null) {
-				for (CharacterWrapper follower : followers) {
-					if (!follower.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
-						character.removeActionFollower(follower,null,null);
+			if (spell.getGameObject().hasThisAttribute(Constants.NO_FOLLOWERS)) {
+				target.getGameObject().setThisAttribute(Constants.NO_FOLLOWERS);
+				// Mists cannot have a followers!
+				CharacterWrapper character = new CharacterWrapper(target.getGameObject());
+				ArrayList<CharacterWrapper> followers = character.getActionFollowers();
+				if (followers!=null) {
+					for (CharacterWrapper follower : followers) {
+						if (!follower.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+							character.removeActionFollower(follower,null,null);
+						}
 					}
 				}
 			}

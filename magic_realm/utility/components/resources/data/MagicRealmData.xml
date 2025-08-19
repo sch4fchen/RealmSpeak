@@ -57957,6 +57957,7 @@
         <attribute benevolent_for_leaders="" />
         <attribute benevolent_for_monsters="" />
         <attribute only_move="" />
+        <attribute no_followers="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
