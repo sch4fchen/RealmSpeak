@@ -39,6 +39,10 @@ public class TreasureUtility {
 	 */
 	public static boolean doActivate(JFrame parentFrame,CharacterWrapper character,GameObject thing,ChangeListener listener,boolean fromCombat) {
 		if (thing!=null) {
+			if (character.isMistLike()) {
+				JOptionPane.showMessageDialog(parentFrame,"You cannot activate an item, if you are a Mist.");
+				return false;
+			}
 			if (thing.hasThisAttribute(Constants.NO_ACTIVATE)) {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" is broken, and can no longer be activated.");
 				return false;

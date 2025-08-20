@@ -286,6 +286,7 @@ public class TransmorphEffect implements ISpellEffect {
 		if (target.isPlayerControlledLeader()) {
 			CharacterWrapper character = new CharacterWrapper(target.getGameObject());
 			
+			if (!spell.getGameObject().hasThisAttribute(Constants.KEEP_INVENTORY)) {
 			// Transmorph gold
 			double gold = character.getGold();
 			if (gold>0) {
@@ -299,6 +300,15 @@ public class TransmorphEffect implements ISpellEffect {
 			character.getInventory().stream()
 				.filter(go -> RealmComponent.getRealmComponent(go).isItem())
 				.forEach(i -> spell.getGameObject().add(i));
+			}
+			else {
+				for (GameObject item : character.getInventory()) {
+					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					if (rc.isItem() && !rc.getGameObject().hasThisAttribute("color_source")) {
+						rc.setActivated(false);
+					}
+				}
+			}
 		}
 		if (target.isMistLike()) {
 			// Mists cannot have a target!
@@ -307,6 +317,7 @@ public class TransmorphEffect implements ISpellEffect {
 				target.getGameObject().setThisAttribute(Constants.NO_FOLLOWERS);
 				// Mists cannot have a followers!
 				CharacterWrapper character = new CharacterWrapper(target.getGameObject());
+				character.setStopFollowing(true);
 				ArrayList<CharacterWrapper> followers = character.getActionFollowers();
 				if (followers!=null) {
 					for (CharacterWrapper follower : followers) {
@@ -316,9 +327,9 @@ public class TransmorphEffect implements ISpellEffect {
 					}
 				}
 			}
-			if (spell.getGameObject().hasThisAttribute(Constants.ONLY_MOVE)) {
-				target.getGameObject().setThisAttribute(Constants.ONLY_MOVE);
-			}
+		}
+		if (spell.getGameObject().hasThisAttribute(Constants.ONLY_MOVE)) {
+			target.getGameObject().setThisAttribute(Constants.ONLY_MOVE);
 		}
 	}
 			

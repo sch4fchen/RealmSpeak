@@ -2642,7 +2642,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transmorph = getTransmorph();
 
 		// Test move types
-		if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move && id!=ActionId.Follow) {
+		if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move) {
 			return false;
 		}
 		if (id==ActionId.Move && mustFly()) {
