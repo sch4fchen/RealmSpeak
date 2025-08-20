@@ -22,6 +22,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.8
 NEW FEATURES:
 # Taking notes when trading quests
+# Modify Melt Into Mist spell for SR
 
 Version 1.2.3.7
 NEW FEATURES:

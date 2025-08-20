@@ -1790,7 +1790,7 @@ public class BattleModel {
 		if (attackCancelled == null && target!=null && (attacker instanceof RealmComponent)
 				&& (target.getGameObject().hasThisAttribute(Constants.MIST_LIKE) || (target.isCharacter() && new CharacterWrapper(target.getGameObject()).isMistLike()))) {
 			boolean ignoresMistLike = false;
-			if (!attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+			if (attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
 				ignoresMistLike = true;
 			}
 			if (!ignoresMistLike && attacker.isCharacter()) {
