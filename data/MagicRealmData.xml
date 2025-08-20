@@ -57945,7 +57945,7 @@
         <attribute spell="VI" />
         <attribute duration="permanent" />
         <attribute target="individual" />
-        <attribute text="Can only MOVE T4 (no fight)" />
+        <attribute text="Can only MOVE T4, even paths and passages (no fight, T vulnerable non-armored)" />
         <attribute magic_color="purple" />
         <attribute transmorph="mist" />
         <attribute disengage="ALL" />

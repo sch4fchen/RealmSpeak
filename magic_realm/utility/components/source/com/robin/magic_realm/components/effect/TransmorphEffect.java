@@ -303,7 +303,7 @@ public class TransmorphEffect implements ISpellEffect {
 			}
 			else {
 				for (GameObject item : character.getInventory()) {
-					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					RealmComponent rc = RealmComponent.getRealmComponent(item);
 					if (rc.isItem() && !rc.getGameObject().hasThisAttribute("color_source")) {
 						rc.setActivated(false);
 					}
