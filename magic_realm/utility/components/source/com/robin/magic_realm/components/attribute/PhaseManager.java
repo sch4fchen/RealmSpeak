@@ -414,6 +414,7 @@ public class PhaseManager {
 		// Convert detail action into plain action (M-CV3 becomes M)
 		String phase = simplifyAction(fullPhase);
 		boolean movePhase = "M".equals(phase) || "M!".equals(phase);
+		boolean flyPhase = "FLY".equals(phase) || "FLY!".equals(phase);
 
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
 		TileLocation newLocation = null;
@@ -484,9 +485,9 @@ public class PhaseManager {
 			}
 		}
 			
-//		if (movePhase) {
-//			removeLocationSpecificFreeActions(actionLocation);
-//		}
+		if (movePhase || flyPhase) {
+			removeLocationSpecificFreeActions(actionLocation);
+		}
 	}
 	public void removeLocationSpecificFreeActions(TileLocation tl) {
 		// Moved, so make sure that any free actions gained by location are removed
