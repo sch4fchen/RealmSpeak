@@ -950,11 +950,15 @@ public class RealmHostPanel extends JPanel {
 		if (hostPrefs.hasPref(Constants.SR_END_OF_MONTH_REGENERATION) && RealmCalendar.isLastDayOfMonth(game.getDay())) {
 			for (GameObject go:pool.find(hostPrefs.getGameKeyVals() + ",dwelling,warning,general_dwelling,tile_type=W")) {
 				GameObject tile = go.getHeldBy();
-				if (tile.hasThisAttribute("tile")) {
+				if (tile!=null && tile.hasThisAttribute("tile")) {
+					ArrayList<GameObject> chits = new ArrayList<>();
 					for (GameObject chit : tile.getHold()) {
 						if (RealmComponent.getRealmComponent(chit).isWarning()) {
-							chit.add(go);
+							chits.add(chit);
 						}
+					}
+					for (GameObject chit : chits) {
+						chit.add(go);
 					}
 				}
 			}
