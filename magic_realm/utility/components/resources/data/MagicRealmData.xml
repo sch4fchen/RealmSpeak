@@ -34010,6 +34010,10 @@
         <attribute path_6_to="SW" />
         <attribute path_6_type="normal" />
         <attribute path_6_arc="20.3,65.9" />
+		<attribute path_7_from="clearing_4" />
+        <attribute path_7_to="N" />
+        <attribute path_7_type="normal" />
+        <attribute path_7_arc="49.1,6.7" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1189" name="Jolly Hills">

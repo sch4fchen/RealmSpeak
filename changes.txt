@@ -23,6 +23,8 @@ Version 1.2.3.8
 NEW FEATURES:
 # Taking notes when trading quests
 # Modify Melt Into Mist spell for SR
+BUGS/ISSUES:
+# Fix path of enchanted Ivy Hills
 
 Version 1.2.3.7
 NEW FEATURES:
