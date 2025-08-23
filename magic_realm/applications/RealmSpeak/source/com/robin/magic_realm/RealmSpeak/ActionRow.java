@@ -1458,6 +1458,7 @@ public class ActionRow {
 				}
 				
 				if (!negate && completed && hostPrefs.hasPref(Constants.QST_SR_QUESTS) && !character.isBlocked() && (trader.isNative() || trader.isVisitor() || trader.isTraveler())) {
+					boolean tradedQuests = false;
 					ArrayList<QuestCardComponent> unfinishedQuests = character.getUnfinishedNotAllPlayQuests();
 					ArrayList<QuestCardComponent> characterQuests = new ArrayList<>();
 					for (QuestCardComponent quest : unfinishedQuests) {
@@ -1465,63 +1466,67 @@ public class ActionRow {
 							characterQuests.add(quest);
 						}
 					}
-					if (!characterQuests.isEmpty()) {
-						ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
-						ArrayList<GameObject> questsToNote = new ArrayList<>();
-						GameObject holder = null;
-						if (trader.isNative()) {
-							holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
-							for(GameObject item:holder.getHold()) {
-								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
-									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
-									questsToNote.add(item);								}
-							}
-						}
-						else {
-							for (GameObject item : trader.getHold()) {
-								if ((RealmComponent.getRealmComponent(item)).isQuest()) {
-									traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
-									questsToNote.add(item);	
-								}
-							}
-						}
-						
-						if (traderQuests!=null && !traderQuests.isEmpty()) {
-							RealmComponentOptionChooser traderQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
-							for (RealmComponent quest:traderQuests) {
-								traderQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
-							}
-							traderQuestChooser.addOption("none","No Trade");
-							traderQuestChooser.setVisible(true);
-							String selectedTraderQuest = traderQuestChooser.getSelectedText();
-							if (selectedTraderQuest!=null && selectedTraderQuest!="No Trade") {
-								RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
-								for (RealmComponent quest:characterQuests) {
-									characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
-								}
-								characterQuestChooser.addOption("none","No Trade");
-								characterQuestChooser.setVisible(true);
-								String selectedCharacterQuest = characterQuestChooser.getSelectedText();
-								if (selectedCharacterQuest!=null && selectedTraderQuest!="No Trade") {
-									RealmComponent quest1 = traderQuestChooser.getFirstSelectedComponent();
-									RealmComponent quest2 = characterQuestChooser.getFirstSelectedComponent();
-									
-									character.removeQuest(new Quest(quest2.getGameObject()));
-									if (trader.isNative()) {
-										holder.remove(quest1.getGameObject());
-										holder.add(quest2.getGameObject());
-									} else {
-										trader.getGameObject().remove(quest1.getGameObject());
-										trader.getGameObject().add(quest2.getGameObject());
-									}
-									character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
-									character.addNoteTrade(trader.getGameObject(),questsToNote);
-								}
+					ArrayList<QuestCardComponent> traderQuests = new ArrayList<>();
+					ArrayList<GameObject> questsToNote = new ArrayList<>();
+					GameObject holder = null;
+					if (trader.isNative()) {
+						holder = SetupCardUtility.getDenizenHolder(trader.getGameObject());
+						for(GameObject item:holder.getHold()) {
+							if ((RealmComponent.getRealmComponent(item)).isQuest()) {
+								traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+								questsToNote.add(item);
 							}
 						}
 					}
+					else {
+						for (GameObject item : trader.getHold()) {
+							if ((RealmComponent.getRealmComponent(item)).isQuest()) {
+								traderQuests.add((QuestCardComponent) RealmComponent.getRealmComponent(item));
+								questsToNote.add(item);	
+							}
+						}
+					}
+					
+					if (!characterQuests.isEmpty() && traderQuests!=null && !traderQuests.isEmpty()) {
+						RealmComponentOptionChooser traderQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
+						for (RealmComponent quest:traderQuests) {
+							traderQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
+						}
+						traderQuestChooser.addOption("none","No Trade");
+						traderQuestChooser.setVisible(true);
+						String selectedTraderQuest = traderQuestChooser.getSelectedText();
+						if (selectedTraderQuest!=null && selectedTraderQuest!="No Trade") {
+							RealmComponentOptionChooser characterQuestChooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select quest to trade:",true);
+							for (RealmComponent quest:characterQuests) {
+								characterQuestChooser.addRealmComponent(quest,quest.getGameObject().getName());
+							}
+							characterQuestChooser.addOption("none","No Trade");
+							characterQuestChooser.setVisible(true);
+							String selectedCharacterQuest = characterQuestChooser.getSelectedText();
+							if (selectedCharacterQuest!=null && selectedTraderQuest!="No Trade") {
+								RealmComponent quest1 = traderQuestChooser.getFirstSelectedComponent();
+								RealmComponent quest2 = characterQuestChooser.getFirstSelectedComponent();
+								
+								character.removeQuest(new Quest(quest2.getGameObject()));
+								if (trader.isNative()) {
+									holder.remove(quest1.getGameObject());
+									holder.add(quest2.getGameObject());
+								} else {
+									trader.getGameObject().remove(quest1.getGameObject());
+									trader.getGameObject().add(quest2.getGameObject());
+								}
+								character.addQuest(gameHandler.getMainFrame(), new Quest(quest1.getGameObject()));
+								tradedQuests = true;
+								questsToNote.remove(quest1.getGameObject());
+								questsToNote.add(quest2.getGameObject());
+								character.addNoteTrade(trader.getGameObject(),questsToNote);
+							}
+						}
+					}
+					if (!tradedQuests) {
+						character.addNoteTrade(trader.getGameObject(),questsToNote);
+					}
 				}
-				
 			}
 			else {
 				completed = false;
