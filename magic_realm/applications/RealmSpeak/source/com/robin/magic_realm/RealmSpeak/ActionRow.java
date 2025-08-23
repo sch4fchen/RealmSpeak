@@ -1025,16 +1025,20 @@ public class ActionRow {
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 					if (hostPrefs.hasPref(Constants.SR_NO_HORSES_IN_CAVES) && location.hasClearing() && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
-							if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
-								TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
-								if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
-									TreasureUtility.doDrop(character,item,gameHandler.getUpdateFrameListener(),false);
-								}
-								if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
-									SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
-									for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
-										if (spell.isControlHorseSpell()) spell.expireSpell();
-									}
+							abandonHorse(item,character);
+						}
+						for (RealmComponent hireling : character.getFollowingHirelings()) {
+							for (GameObject item : hireling.getHold()) {
+								abandonHorse(item,hireling);
+							}
+						}
+						for (CharacterWrapper follower : character.getActionFollowers()) {
+							for (GameObject item : follower.getInventory()) {
+								abandonHorse(item,follower);
+							}
+							for (RealmComponent hireling : follower.getFollowingHirelings()) {
+								for (GameObject item : hireling.getHold()) {
+									abandonHorse(item,hireling);
 								}
 							}
 						}
@@ -1171,6 +1175,38 @@ public class ActionRow {
 		}
 		if (cancelled && turnPanel.getActionControlManager()!=null) {
 			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),result,"Move Cancelled",JOptionPane.WARNING_MESSAGE);
+		}
+	}
+	private void abandonHorse(GameObject item, CharacterWrapper character) {
+		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
+			TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
+			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+				TreasureUtility.doDrop(character,item,gameHandler.getUpdateFrameListener(),false);
+			}
+			if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+				SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+				for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
+					if (spell.isControlHorseSpell()) {
+						spell.expireSpell();
+					}
+				}
+			}
+		}
+	}
+	private void abandonHorse(GameObject item, RealmComponent hireling) {
+		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
+			item.removeThisAttribute(Constants.ACTIVATED);
+			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+				TreasureUtility.doDrop(new CharacterWrapper(hireling.getGameObject()),item,null,false);
+			}
+			if (item.hasThisAttribute(Constants.BREAK_CONTROL_WHEN_INACTIVE)) {
+				SpellMasterWrapper spellmaster = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+				for (SpellWrapper spell : spellmaster.getAffectingSpells(item)) {
+					if (spell.isControlHorseSpell()) {
+						spell.expireSpell();
+					}
+				}
+			}
 		}
 	}
 	private void doSearchAction() {
