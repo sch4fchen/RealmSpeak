@@ -1,4 +1,5 @@
 ::ROADMAP::
+Super Realm: Spells: FreeSpell, Luck (instead of Staff to Snake and Spirit Guide)
 Super Realm: Bounty Hunter (SR: 10.2, p.114)Super Realm: Scattered Horses (SR: 10.3, p.114)
 Super Realm: Protected Leaders (SR: 10.4, p.114)
 Super Realm: Sentimental Value (SR: 10.6, p.115)Super Realm: Credit (SR: 10.7, p.115)

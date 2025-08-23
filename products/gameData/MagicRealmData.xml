@@ -16880,7 +16880,11 @@
         <attribute chit_color="lightblue" />
         <attribute icon_type="serpent" />
         <attribute icon_folder="monsters" />
+		<attribute icon_type_alt="add-ons-War_of_Legends-images-units-steelhive-steel_serpent" />
+        <attribute icon_folder_alt="wesnoth/units/addons" />
+        <attribute icon_size_alt="0.9" />
         <attribute length="0" />
+		<attribute serpent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="667" name="Rod of the Mage">
