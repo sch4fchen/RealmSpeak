@@ -155,7 +155,11 @@ public class ClearingUtility {
 				if (onlyGoldSpecial && !go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) continue;
 				if (itemsAndSpells || (!go.hasThisAttribute("item") && !go.hasThisAttribute("spell"))) {
 					go.setThisAttribute("clearing",String.valueOf(clearing));
-					GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
+					if (go.hasThisAttribute(RealmComponent.GOLD_SPECIAL) && onlyTravelers && !faceUp) {
+						GameClient.broadcastClient("host","Traveler is added to "+tile.getName()+", clearing "+clearing);
+					} else {
+						GameClient.broadcastClient("host",go.getName()+" is added to "+tile.getName()+", clearing "+clearing);
+					}
 					tile.add(go);
 					added.add(go);
 					if (go.hasThisAttribute(RealmComponent.GOLD_SPECIAL)) {
