@@ -322,7 +322,28 @@ public class SetupCardUtility {
 			String warningName = warning.getThisAttribute(RealmComponent.WARNING); // ie., bones
 			String tileType = warning.getThisAttribute("tile_type");  // ie., C
 			if (tileType==null) {
-				tileType = tl.tile.getTileType();
+				if (warning.hasThisAttribute("tile_type_clearing_watercave") && tl.clearing!=null) {
+					if (tl.clearing.isWater() || tl.clearing.isCave()) {
+						tileType = "C";
+					}
+				}
+				if (warning.hasThisAttribute("tile_type_tile")) {
+					String currentTile = tl.tile.getTileType();
+					for (String type : warning.getThisAttributeList("tile_type_tile")) {
+						if (type.matches(currentTile)) {
+							tileType = type;
+							break;
+						}
+					}
+				}
+				if (tileType==null) {
+					if (warning.hasThisAttribute("tile_type_fallback")) {
+						tileType = warning.getThisAttribute("tile_type_fallback").toUpperCase();
+					}
+					else {
+						tileType = tl.tile.getTileType();
+					}
+				}
 			}
 			
 			String boardNum = warning.getThisAttribute(Constants.BOARD_NUMBER);

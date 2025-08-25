@@ -8400,6 +8400,11 @@
         <attribute nosecret="" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute tile_type_fallback="none" />
+        <attributeList keyName="tile_type_tile">
+          <attributeVal N0="C" />
+          <attributeVal N1="M" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
     <GameObject id="322" name="Cloven Hoof">
@@ -16880,11 +16885,11 @@
         <attribute chit_color="lightblue" />
         <attribute icon_type="serpent" />
         <attribute icon_folder="monsters" />
-		<attribute icon_type_alt="add-ons-War_of_Legends-images-units-steelhive-steel_serpent" />
+        <attribute icon_type_alt="add-ons-War_of_Legends-images-units-steelhive-steel_serpent" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute icon_size_alt="0.9" />
         <attribute length="0" />
-		<attribute serpent="" />
+        <attribute serpent="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="667" name="Rod of the Mage">
@@ -34014,7 +34019,7 @@
         <attribute path_6_to="SW" />
         <attribute path_6_type="normal" />
         <attribute path_6_arc="20.3,65.9" />
-		<attribute path_7_from="clearing_4" />
+        <attribute path_7_from="clearing_4" />
         <attribute path_7_to="N" />
         <attribute path_7_type="normal" />
         <attribute path_7_arc="49.1,6.7" />
@@ -56019,6 +56024,8 @@
         <attribute nosecret="" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute tile_type_clearing_watercave="" />
+        <attribute tile_type_fallback="M" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2035" name="Cloven Hoof">
