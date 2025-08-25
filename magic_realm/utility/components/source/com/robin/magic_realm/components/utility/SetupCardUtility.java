@@ -327,6 +327,28 @@ public class SetupCardUtility {
 						tileType = "C";
 					}
 				}
+				if (warning.hasThisAttribute("tile_type_clearing") && tl.clearing!=null) {
+					for (String type : warning.getThisAttributeList("tile_type_clearing")) {
+						if (type.matches("V") && tl.clearing.isNormal()) {
+							tileType = "V";
+						} else if (type.matches("N") && tl.clearing.isNormal()) {
+							tileType = "N";
+						} else if (type.matches("C") && tl.clearing.isCave()) {
+							tileType = "C";
+						} else if (type.matches("M") && tl.clearing.isMountain()) {
+							tileType = "M";
+						} else if (type.matches("W") && tl.clearing.isWoods()) {
+							tileType = "W";
+						} else if (type.matches("WATER") && tl.clearing.isWater()) {
+							tileType = "WATER";
+						} else if (type.matches("FROZEN_WATER") && tl.clearing.isFrozenWater()) {
+							tileType = "FROZEN_WATER";
+						}
+						if (tileType!=null) {
+							break;
+						}
+					}
+				}
 				if (warning.hasThisAttribute("tile_type_tile")) {
 					String currentTile = tl.tile.getTileType();
 					for (String type : warning.getThisAttributeList("tile_type_tile")) {
