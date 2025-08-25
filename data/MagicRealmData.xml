@@ -22442,7 +22442,7 @@
         <attribute days="5" />
         <attribute basic="2" />
         <attribute sunlight="3" />
-        <attribute name="flood" />
+        <attribute name="Showers" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="4" />
@@ -22494,7 +22494,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="6" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Rain" />
         <attribute sunlight="2" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />
@@ -22541,7 +22541,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Soft Rain" />
         <attribute sunlight="2" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />
@@ -22583,7 +22583,7 @@
         <attribute days="7" />
         <attribute basic="2" />
         <attribute sunlight="2" />
-        <attribute name="flood" />
+        <attribute name="Showers" />
       </AttributeBlock>
       <AttributeBlock blockName="storm">
         <attribute days="5" />
@@ -22637,7 +22637,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Thunderstorm" />
         <attribute sunlight="1" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />
@@ -22686,7 +22686,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Rain" />
         <attribute sunlight="1" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />
@@ -22733,7 +22733,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Cold Rain" />
         <attribute sunlight="1" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />
@@ -22781,7 +22781,7 @@
       <AttributeBlock blockName="storm">
         <attribute days="7" />
         <attribute basic="2" />
-        <attribute name="flood" />
+        <attribute name="Cold Rain" />
         <attribute sunlight="1" />
         <attribute special="note7" />
         <attribute description="If a character in a non-frozen water clearing, he must fatigue one asterisk" />

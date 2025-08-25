@@ -28,6 +28,7 @@ SUPER REALM:
 # Deactivate and abandon horses of followers and hirelings
 BUGS/ISSUES:
 # Fix path of enchanted Ivy Hills
+# Fix naming of some seasons
 
 Version 1.2.3.7
 NEW FEATURES:
