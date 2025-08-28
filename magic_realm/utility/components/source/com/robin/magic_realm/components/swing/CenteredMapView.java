@@ -1024,8 +1024,14 @@ public class CenteredMapView extends JComponent {
 					if (drawSeasonInfo) {
 						String desc = calendar.getSeasonDescription(game.getMonth());
 						g.setColor(Color.white);
+						int baseHeight = 100;
+						boolean frozenWater = calendar.isFreezingWeather(game.getMonth());
+						if (frozenWater) {
+							baseHeight +=10;
+						}
+						
 						int ww = Math.min(size.width,200);
-						int wh = Math.min(size.height-105,desc.length()>0?150:100);
+						int wh = Math.min(size.height-105,desc.length()>0?baseHeight+50:baseHeight);
 						int wx = x+101-ww;
 						int wy = y+101;
 						g.fillRect(wx,wy,ww,wh);
@@ -1050,6 +1056,11 @@ public class CenteredMapView extends JComponent {
 						dy+=20;
 						g.drawString("Sheltered:",dx,dy);
 						g.drawString(String.valueOf(sheltered),dx+100,dy);
+						if (frozenWater) {
+							dy+=10;
+							TextType tt = new TextType("Water: frozen",ww-60,"BOLD_BLUE");
+							tt.draw(g,dx+20,dy);
+						}
 						if (desc.length()>0) {
 							dy+=10;
 							TextType tt = new TextType(desc,ww-60,"BOLD_BLUE");

@@ -21,7 +21,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.3.9
-
+NEW FEATURES:
+# Update weather descriptions
 
 Version 1.2.3.8
 NEW FEATURES:

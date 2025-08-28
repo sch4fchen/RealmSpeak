@@ -304,7 +304,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		if (hostPrefs.hasPref(Constants.OPT_WEATHER)) {
 			String[] weather = {"clear","showers","storm","special"};
 			text.append("<table border=\"1\" cellpadding=\"2\" cellspacing=\"0\">");
-			text.append("<th>Die Roll</th><th>Weather</th><th>Days</th><th>Basic</th><th>Sunlight</th><th>Sheltered</th><th>Special</th>\n");
+			text.append("<th>Die Roll</th><th>Weather</th><th>Days</th><th>Basic</th><th>Sunlight</th><th>Sheltered</th><th>Water</th><th>Special</th>\n");
 			for (int i=weather.length-1;i>=0;i--) {
 				boolean thisWeather = monthOffset==0 && realmCalendar.getWeatherTypeName(month).toLowerCase().equals(weather[i]);
 				if (thisWeather) {
@@ -334,6 +334,8 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 				text.append(filter(season.getAttribute(weather[i],"sunlight")));
 				text.append("</td><td align=\"center\" valign=\"top\">");
 				text.append(filter(season.getAttribute(weather[i],"sheltered")));
+				text.append("</td><td align=\"center\" valign=\"top\">");
+				text.append(season.hasAttribute(weather[i],"frozen_water")?"frozen":"-");
 				text.append("</td><td align=\"left\" valign=\"top\">");
 				text.append(filter(season.getAttribute(weather[i],"description")));
 				text.append("</td></tr>");
