@@ -62941,7 +62941,7 @@
       <AttributeBlock blockName="level_4">
         <attribute name="Paladin" />
         <attribute weapon="Mace" />
-        <attribute armor="Armor" />
+        <attribute armor="Helmet,Breastplate,Shield" />
         <attribute spellcount="2" />
         <attribute comrade="" />
         <attributeList keyName="advantages">

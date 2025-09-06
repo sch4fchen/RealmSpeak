@@ -23,6 +23,8 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.9
 NEW FEATURES:
 # Update weather descriptions
+BUGS/ISSUES:
+# Fix starting armor for Paladin
 
 Version 1.2.3.8
 NEW FEATURES:
