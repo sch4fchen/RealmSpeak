@@ -17,7 +17,7 @@ public class LostEvent implements IEvent {
 			GameObject config = RealmEvents.findEventsConfig(data);
 			for (TileComponent tile : tiles) {
 				RealmEvents.addEffectForTile(config,Constants.EVENT_LOST,tile.getGameObject().getStringId());
-				RealmLogging.logMessage("Event","Lost: Add one to all SEARCH die rolls in "+tile.getGameObject().getNameWithNumber());
+				RealmLogging.logMessage("Event","Lost: Each affected individual moves randomly in "+tile.getGameObject().getNameWithNumber());
 			}
 		}
 	}
