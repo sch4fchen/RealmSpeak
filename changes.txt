@@ -23,6 +23,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.3.9
 NEW FEATURES:
 # Update weather descriptions
+# RealmEvents: single event can occur only once per week
 BUGS/ISSUES:
 # Fix starting armor for Paladin
 

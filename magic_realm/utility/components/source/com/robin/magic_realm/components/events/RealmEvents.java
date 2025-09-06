@@ -138,10 +138,14 @@ public class RealmEvents {
 		for (int i=0;i<blankEventsPerWeek;i++) {
 			list.add(Events.Blank.toString());
 		}
-		Events[] possibleEvents = Events.values();
+		ArrayList<String> possibleEvents = new ArrayList<>();
+		for (Events event : Events.values()) {
+			possibleEvents.add(event.toString());
+		}
+		possibleEvents.remove(Events.Blank.toString());
 		for (int i=0;i<normalEventsPerWeek;i++) {
-			int j = RandomNumber.getRandom(Events.values().length);
-			list.add(possibleEvents[j].toString());
+			int j = RandomNumber.getRandom(possibleEvents.size());
+			list.add(possibleEvents.remove(j).toString());
 		}
 		config.setThisAttributeList(eventsForTheWeek,list);
 		host.broadcast("host","Events shuffled");
