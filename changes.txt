@@ -22,7 +22,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.0
-
+BUGS/ISSUES:
+# Fix placing denizen and character attacks in same combat box of hireling
 
 Version 1.2.3.9
 NEW FEATURES:

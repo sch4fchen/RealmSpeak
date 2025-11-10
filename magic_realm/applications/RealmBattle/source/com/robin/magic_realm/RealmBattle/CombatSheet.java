@@ -188,6 +188,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(index));
 		if (list!=null) {
 			for (RealmComponent rc : list) {
+				if (rc.isWeapon() && this instanceof DenizenCombatSheet) {
+					RealmComponent holder = rc.getHeldBy();
+					if (holder!=null) {
+						RealmComponent target1 = holder.getTarget();
+						RealmComponent target2 = holder.get2ndTarget();
+						if (target1!=sheetOwner && target2!=sheetOwner) continue;
+					}
+				}
 				if ((includeHorses || !rc.isNativeHorse()) && !rc.isActionChit()) {
 					count++;
 				}
