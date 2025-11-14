@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import com.robin.general.swing.AggressiveDialog;
+import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.attribute.TileLocation;
 
 public class TileLocationChooser extends AggressiveDialog {
@@ -45,6 +46,7 @@ public class TileLocationChooser extends AggressiveDialog {
 		this.viewer = map;
 		selectedLocation = null;
 		initComponents();
+		setIconImage(IconFactory.findIcon("images/interface/build.gif").getImage());
 		if (lastDisplayArea == null) {
 			setSize(800,600);
 			setLocationRelativeTo(parent);

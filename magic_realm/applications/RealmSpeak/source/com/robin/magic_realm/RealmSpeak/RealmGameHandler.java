@@ -470,8 +470,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 	private void doCharacterTransfer(CharacterWrapper character, String newPlayerName) {
 		character.setPlayerName(newPlayerName);
-		character.setPlayerPassword(""); // so that it get's updated by the
-											// player's machine
+		character.setPlayerPassword(""); // so that it get's updated by the player's machine
 		character.setPlayerEmail("");
 
 		// Remove frame
@@ -1904,6 +1903,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		GameClient.submitAndWait(client);
 		characterTable.repaint();
 	}
+	
+	public void submitChangesWithTimeout() {
+		logger.finer("submitChanges()");
+		GameClient.submitWithTimeout(client);
+		characterTable.repaint();
+	}
 
 	private GameWrapper findGame() {
 		GamePool pool = new GamePool(client.getGameData().getGameObjects());
@@ -2030,9 +2035,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						String id = character.getGameObject().getStringId();
 						characterFrames.put(id, frame);
 						characterFrameOrder.add(0, id);
-						playerWarned.remove(character.getGameObject().getStringId()); // just
-																						// in
-																						// case
+						playerWarned.remove(character.getGameObject().getStringId()); // just in case
 						framesCreated = true;
 						// broadcastChat(character,"<JOINED>"); // This just
 						// looks ugly in the chat
@@ -2179,7 +2182,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		if (needSubmit) {
-			submitChanges();
+			submitChangesWithTimeout();
 		}
 
 		characterTableModel.rebuild();
