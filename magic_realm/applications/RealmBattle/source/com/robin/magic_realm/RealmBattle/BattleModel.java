@@ -564,7 +564,7 @@ public class BattleModel {
 		}
 	}
 	
-	public void doEnergizeSpells() {
+	public void doEnergizeSpells(int combatRound) {
 		energizeInstantTeleport();
 		energizeHurricaneWindsEvent();
 		energizeRoofCollapsesEvent();
@@ -589,7 +589,6 @@ public class BattleModel {
 				}
 			}
 		}
-		int combatRound = CombatFrame.getSingleton().getCurrentRound();
 		for (RealmComponent battleParticipant : getAllBattleParticipants(true)) {
 			boolean transmorphed = false;
 			if (battleParticipant.isCharacter()) {
