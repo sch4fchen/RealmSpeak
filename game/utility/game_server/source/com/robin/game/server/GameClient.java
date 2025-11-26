@@ -16,7 +16,7 @@ public abstract class GameClient extends GameNet {
 	
 	private static final int MILLISECONDS_SLEEP_PER_REQUEST = 50;
 	
-	private static final int SLEEPS_TO_HIT_TIMEOUT = 400;
+	private static final int SLEEPS_TO_HIT_TIMEOUT = 100;
 	
 	public static final String DATA_NAME = "client";
 	
@@ -190,9 +190,6 @@ public abstract class GameClient extends GameNet {
 	}
 	public boolean waitingToSubmit() {
 		return waitingSubmit;
-	}
-	public void removeWaitingToSubmit() {
-		waitingSubmit = false;
 	}
 	private RequestObject getNextInQueue() {
 		if (requestQueue.size()>0) {
@@ -455,14 +452,15 @@ public abstract class GameClient extends GameNet {
 	 * Submits changes to the client, and waits for them to be live.
 	 */
 	public synchronized static void submitAndWait(GameClient client) {
-		submit(client,false);
+		submitWaitOrTimeout(client,false);
 	}
 	
-	public synchronized static void submitWithTimeout(GameClient client) {
-		submit(client,true);
+	public synchronized void submitWithTimeout() {
+		submitWaitOrTimeout(this,true);
+		waitingSubmit = false;
 	}
 	
-	private synchronized static void submit(GameClient client, boolean timeout) {
+	private synchronized static void submitWaitOrTimeout(GameClient client, boolean timeout) {
 		// Test to make sure this is not being called by the same thread as the client!
 		if (THREAD_NAME.equals(Thread.currentThread().getName())) {
 			throw new IllegalStateException("Ack!  Can't call submitAndWait from the SAME THREAD as the client!");
@@ -476,9 +474,9 @@ public abstract class GameClient extends GameNet {
 			while(client.waitingToSubmit()) {
 				Thread.sleep(MILLISECONDS_SLEEP_PER_REQUEST); // Without this, it hangs unnecessarily
 				sleeping++;
-				if (timeout && sleeping == SLEEPS_TO_HIT_TIMEOUT) {
-					client.removeWaitingToSubmit();
+				if (timeout && sleeping >= SLEEPS_TO_HIT_TIMEOUT) {
 					logger.fine("timeout");
+					break;
 				}
 			}
 		}

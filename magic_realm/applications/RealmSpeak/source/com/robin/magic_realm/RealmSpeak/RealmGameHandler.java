@@ -1906,7 +1906,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	
 	public void submitChangesWithTimeout() {
 		logger.finer("submitChanges()");
-		GameClient.submitWithTimeout(client);
+		client.submitWithTimeout();
 		characterTable.repaint();
 	}
 
