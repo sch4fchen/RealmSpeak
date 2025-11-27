@@ -25,6 +25,7 @@ Version 1.2.4.0
 BUGS/ISSUES:
 # Fix placing denizen and character attacks in same combat box of hireling
 # Set timeout instead of infinite waiting when updating character list
+# Transmorphed characters cannot use items (e.g. Alchemist's Mixture) in combat, but in Super Realm
 
 Version 1.2.3.9
 NEW FEATURES:

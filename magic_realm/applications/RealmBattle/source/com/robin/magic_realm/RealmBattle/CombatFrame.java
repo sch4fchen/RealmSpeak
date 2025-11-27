@@ -2867,9 +2867,11 @@ public class CombatFrame extends JFrame {
 		ArrayList<WeaponChitComponent> weapons = activeCharacter.getActiveWeapons();
 		
 		// Check for Treasure Weapons (Alchemist's Mixture)
-		for (GameObject item : activeCharacter.getActiveInventory()) {
-			if (item.hasThisAttribute("attack")) { // ONLY the Alchemist's Mixture has this, for now! - Now the Holy Hand Grenade
-				weaponCard = RealmComponent.getRealmComponent(item);
+		if (!activeCharacter.isTransmorphed()) {
+			for (GameObject item : activeCharacter.getActiveInventory()) {
+				if (item.hasThisAttribute("attack")) { // ONLY the Alchemist's Mixture has this, for now! - Now the Holy Hand Grenade
+					weaponCard = RealmComponent.getRealmComponent(item);
+				}
 			}
 		}
 		
