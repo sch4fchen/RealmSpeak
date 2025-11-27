@@ -21,11 +21,14 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.4.1
+
+
 Version 1.2.4.0
 BUGS/ISSUES:
 # Fix placing denizen and character attacks in same combat box of hireling
 # Set timeout instead of infinite waiting when updating character list
-# Transmorphed characters cannot use items (e.g. Alchemist's Mixture) in combat, but in Super Realm
+# Transmorphed characters cannot use items (e.g. Alchemist's Mixture) in combat
 
 Version 1.2.3.9
 NEW FEATURES:
