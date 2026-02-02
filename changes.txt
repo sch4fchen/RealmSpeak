@@ -23,6 +23,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.4.1
 BUGS/ISSUES:
+# Fix calculating character's weight
 
 Version 1.2.4.0
 BUGS/ISSUES:
