@@ -1,14 +1,18 @@
 ::ROADMAP::
 Super Realm: Spells: FreeSpell, Luck (instead of Staff to Snake and Spirit Guide)
-Super Realm: Bounty Hunter (SR: 10.2)Super Realm: Scattered Horses (SR: 10.3)
+Super Realm: Bounty Hunter (SR: 10.2)
+Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
-Super Realm: Sentimental Value (SR: 10.6)Super Realm: Credit (SR: 10.7)
+Super Realm: Sentimental Value (SR: 10.6)
+Super Realm: Credit (SR: 10.7)
 Super Realm: Grounded Missions and Tasks (SR: 10.8)
-Super Realm: Regrouping (SR: 10.10)Super Realm: Stealing (SR: 11.3)
+Super Realm: Regrouping (SR: 10.10)
+Super Realm: Stealing (SR: 11.3)
 Super Realm: Hiring Unused Characters (SR: 11.4)
 Super Realm: Cornered (SR: 11.13)
 Expansion 1: Offroad Travel
-Expansion 1: BountyExpansion 1: Stealing and Thief/Assassin character (option to add to other game modes)
+Expansion 1: Bounty
+Expansion 1: Stealing and Thief/Assassin character (option to add to other game modes)
 ---Additional and new features---
 Expansion 1: Optional Rule: Dwarf: 4 activities as normal, but max. 2 moves / turn (without horse, treasures...)Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch
 Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
@@ -23,6 +27,7 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.4.2
 BUGS/ISSUES:
+# Fix running away to disappeared roadway
 
 Version 1.2.4.1
 BUGS/ISSUES:

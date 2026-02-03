@@ -669,8 +669,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		boolean pony = getCharacter().isPonyActive();
 		if (!ar.isSpawned() && !ar.getIsFollowing()) { // don't do this test for followers!
 			// Need to verify that action can actually occur
-			boolean valid = getCharacter().actionIsValid(ar.getAction(),getCharacter().getCurrentLocation());
 			TileLocation current = getCharacter().getCurrentLocation();
+			boolean valid = getCharacter().actionIsValid(ar.getAction(),current);
 			boolean isInCave = current.isInClearing() && current.clearing.isCave();
 			boolean enlighted = current.isInClearing() && current.clearing.isLighted();
 			boolean isOutside = !current.isInside(hostPrefs.hasPref(Constants.HOUSE2_RED_SPECIAL_SHELTER) || getCharacter().affectedByKey(Constants.ADVANCED_SHELTERS));
