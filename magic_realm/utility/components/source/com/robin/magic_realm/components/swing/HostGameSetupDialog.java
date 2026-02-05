@@ -1073,6 +1073,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_NATIVE_BLOCKING,"NATIVE BLOCKING (Super Realm Basic) - UNFRIENDLY and ENEMY native groups may block.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_DAMAGED_RELATIONS,"DAMAGED RELATIONS (Super Realm Basic) - Killing unhired native affects other clan members and relationship is set to enemy.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_THEMATIC_ROVING_NATIVES,"THEMATIC ROVING NATIVES (Super Realm Advanced) - Roving native leaders operate as any other native leader and have abilities.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_SENTIMENTAL_VALUE,"SENTIMENTAL VALUE (Super Realm Advanced) - Selling/Buying items with special FAME prices affect friendliness with certain native groups (identical to optional rule Grudges and Gratitudes).",false));
 		
 		newOptionPane.setTabHtmlDescription(ADVANCED_MAGIC_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Magic Rules</font></body></html>");
 		newOptionPane.addOption(ADVANCED_MAGIC_RULES_TAB,new GameOption(Constants.OPT_ENHANCED_MAGIC,"ENHANCED MAGIC C.1 - Spells and Magic chits are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.",false,exclusiveEnhancedMagicRules,null));

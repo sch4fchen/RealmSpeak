@@ -252,7 +252,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 	}
 	private void loseTradeItems() {
 		for (GameObject item : onTheTable) {
-			TradeUtility.loseItem(character,item,tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES));
+			TradeUtility.loseItem(character,item,tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE));
 			if (item.hasThisAttribute(Constants.FOOLS_GOLD)) {
 				characterNeedsToRunAway = true;
 			}
@@ -273,7 +273,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		
 		// Some treasures have special value to native groups...
 		int fame = TreasureUtility.getFamePrice(merchandise,tradeInfo.getGameObject());
-		if (fame>0 && hostPrefs.hasPref(Constants.OPT_GRUDGES)) {
+		if (fame>0 && hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE)) {
 			// Decrease friendship
 			character.changeRelationship(tradeInfo.getGameObject(), -1);
 			RealmLogging.logMessage(character.getGameObject().getName(),"Loses a level of friendliness with "+tradeInfo.getGameObject().getName()+".");

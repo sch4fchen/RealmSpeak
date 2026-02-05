@@ -948,6 +948,7 @@ public class Constants {
 	public static final String SR_ADV_SURVIVAL_TACTICS = "SurvivalTactics";
 	public static final String SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING = "SurvivalTacticsParryNotAlerting";
 	public static final String SR_ADV_THEMATIC_ROVING_NATIVES = "ThematicRovingNatives";
+	public static final String SR_ADV_SENTIMENTAL_VALUE = "SentimentalValue";
 	public static final String SR_ADV_EASIER_SPELL_LEARNING = "EasierSpellLearning";
 	public static final String SR_END_GAME_SCORING = "SuperRealmEndGameScoring";
 	public static final String SR_MOVEMENT_RESTRICTION = "MovementRestriction";

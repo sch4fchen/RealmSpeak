@@ -3,7 +3,6 @@ Super Realm: Spells: FreeSpell, Luck (instead of Staff to Snake and Spirit Guide
 Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
-Super Realm: Sentimental Value (SR: 10.6)
 Super Realm: Credit (SR: 10.7)
 Super Realm: Grounded Missions and Tasks (SR: 10.8)
 Super Realm: Regrouping (SR: 10.10)
@@ -26,6 +25,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.2
+NEW FEATURES:
+# Optional rule: Sentimental Value
 BUGS/ISSUES:
 # Fix running away to disappeared roadway
 

@@ -159,7 +159,7 @@ public abstract class Commerce extends Trade {
 			itemList.add(merchandise.getGameObject());
 			sb.append("You sold the "+merchandise.getGameObject().getName()+" for "+price+" gold.\n");
 			character.addGold(price);
-			TradeUtility.loseItem(character,merchandise.getGameObject(),tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES));
+			TradeUtility.loseItem(character,merchandise.getGameObject(),tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE));
 		}
 		
 		// Finally, make sure the inventory status is still legal 
@@ -189,7 +189,7 @@ public abstract class Commerce extends Trade {
 			sb.append("You sold the "+merchandise.getGameObject().getName()+" for "+basePrice+" gold.\n");
 			character.addGold(basePrice);
 			totalGoldReceieved += basePrice;
-			TradeUtility.loseItem(character,merchandise.getGameObject(),tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES));
+			TradeUtility.loseItem(character,merchandise.getGameObject(),tradeInfo.getGameObject(),hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE));
 		}
 		
 		// Finally, make sure the inventory status is still legal 
