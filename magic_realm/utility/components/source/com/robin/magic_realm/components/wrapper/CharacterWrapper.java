@@ -2323,6 +2323,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return false;
 	}
+	public boolean usesWalkingTheWoods(PathDetail path) {
+		boolean mistLike = isMistLike();
+		if (!path.requiresDiscovery() || isSpiritGuided() || hasMeditatePathsAndPassages()) return false;
+		if (path.connectsToMapEdge()) return false;		
+		if (path.isHidden() && (hasHiddenPathDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return false;
+		if (path.isSecret() && (hasSecretPassageDiscovery(path.getFullPathKey()) || mistLike || moveRandomly())) return false;
+		if (path.isHidden() && (hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_HIDDEN))){
+			return false;
+		}
+		if (path.isSecret() && hasActiveInventoryThisKeyAndValue(Constants.ROAD_KNOWLEDGE,Constants.ROAD_KNOWLEDGE_SECRET)){
+			return false;
+		}
+		if (!path.connectsToMapEdge() && canWalkWoods(path.getFrom().getParent(),path.getFrom(),path.getTo())) return true;
+		
+		return false;
+	}
 	public boolean addsOneToMoveExceptCaves() {
 		if (affectedByKey(Constants.NONCAVE_MOVE_DISADVANTAGE)) {
 			return true;

@@ -4,7 +4,6 @@ Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
 Super Realm: Credit (SR: 10.7)
-Super Realm: Grounded Missions and Tasks (SR: 10.8)
 Super Realm: Regrouping (SR: 10.10)
 Super Realm: Stealing (SR: 11.3)
 Super Realm: Hiring Unused Characters (SR: 11.4)
@@ -27,6 +26,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.4.2
 NEW FEATURES:
 # Optional rule: Sentimental Value
+# Optional rule: Grounded Missions and Tasks
 BUGS/ISSUES:
 # Fix running away to disappeared roadway
 

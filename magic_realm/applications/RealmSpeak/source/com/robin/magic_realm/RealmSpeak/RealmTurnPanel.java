@@ -643,7 +643,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						getCharacterFrame().updateCharacter();
 						getGameHandler().getInspector().redrawMap();
 					}
-				}				
+				}
 			}
 		}
 	}

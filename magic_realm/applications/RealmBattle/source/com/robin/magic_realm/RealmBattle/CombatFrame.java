@@ -23,6 +23,8 @@ import com.robin.magic_realm.RealmBattle.targeting.SpellTargeting;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.table.*;
 import com.robin.magic_realm.components.utility.*;
@@ -3652,6 +3654,25 @@ public class CombatFrame extends JFrame {
 			}
 			for (GameObject item:toDrop) {
 				broadcastMessage(activeCharacter.getGameObject().getName(),item.getName()+" was left behind!");
+			}
+		}
+		
+		if (hostPrefs.hasPref(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS)) {
+			for (GameObject item:activeCharacter.getInventory()) {
+				if (RealmComponent.getRealmComponent(item).isGoldSpecial()) {
+					GoldSpecialChitComponent gs = (GoldSpecialChitComponent)RealmComponent.getRealmComponent(item);
+					if (gs.isMission() || gs.isTask()) {
+						gs.expireEffect(activeCharacter);
+						activeCharacter.addFailedGoldSpecial(gs);
+						TreasureUtility.doDrop(activeCharacter,item,combatListener,false);
+						
+						QuestRequirementParams qp = new QuestRequirementParams();
+						qp.actionName = item.getName();
+						qp.actionType = CharacterActionType.AbandonMissionCampaign;
+						qp.targetOfSearch = gs.getGameObject();
+						activeCharacter.testQuestRequirements(this,qp);
+					}
+				}
 			}
 		}
 		

@@ -879,6 +879,8 @@ public class ActionRow {
 					
 			boolean overridePath = false;
 			boolean magicPath = false;
+			boolean gates = false;
+			boolean pathfinder = false;
 			
 			if (character.affectedByKey(Constants.MAGIC_PATH_EFFECT)) {
 				magicPath = path == null && current.tile == location.tile?true:false;
@@ -911,10 +913,12 @@ public class ActionRow {
 			
 			if (!overridePath && path==null) {
 				overridePath = ClearingUtility.canUseGates(character,location.clearing);
+				gates = true;
 			}
 			
 			if (path!=null && path.isHidden() && character.hasActiveInventoryThisKey(Constants.PATHFINDER)) {
 				overridePath = true;
+				pathfinder = true;
 			}
 			
 			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null)) {
@@ -1039,6 +1043,28 @@ public class ActionRow {
 							for (RealmComponent hireling : follower.getFollowingHirelings()) {
 								for (GameObject item : hireling.getHold()) {
 									abandonHorse(item,hireling);
+								}
+							}
+						}
+					}
+					
+					if (hostPrefs.hasPref(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS)) {
+						if (!character.moveRandomly() && !magicPath && !gates && !pathfinder && (!current.isTileOnly() || current.isFlying()) &&
+								(path==null || character.usesWalkingTheWoods(path)) && character.canWalkWoods(current.tile,current.clearing,location.clearing)) {
+							for (GameObject item:character.getInventory()) {
+								if (RealmComponent.getRealmComponent(item).isGoldSpecial()) {
+									GoldSpecialChitComponent gs = (GoldSpecialChitComponent)RealmComponent.getRealmComponent(item);
+									if (gs.isMission() || gs.isTask()) {
+										gs.expireEffect(character);
+										character.addFailedGoldSpecial(gs);
+										TreasureUtility.doDrop(character,item,gameHandler.getUpdateFrameListener(),false);
+										
+										QuestRequirementParams qp = new QuestRequirementParams();
+										qp.actionName = item.getName();
+										qp.actionType = CharacterActionType.AbandonMissionCampaign;
+										qp.targetOfSearch = gs.getGameObject();
+										character.testQuestRequirements(gameHandler.getMainFrame(),qp);
+									}
 								}
 							}
 						}
@@ -2632,6 +2658,26 @@ public class ActionRow {
 			}
 			for (GameObject item:toDrop) {
 				gameHandler.broadcast(character.getGameObject().getName(),item.getName()+" was left behind!");
+			}
+		}
+		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
+		if (hostPrefs.hasPref(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS)) {
+			for (GameObject item:character.getInventory()) {
+				if (RealmComponent.getRealmComponent(item).isGoldSpecial()) {
+					GoldSpecialChitComponent gs = (GoldSpecialChitComponent)RealmComponent.getRealmComponent(item);
+					if (gs.isMission() || gs.isTask()) {
+						gs.expireEffect(character);
+						character.addFailedGoldSpecial(gs);
+						TreasureUtility.doDrop(character,item,gameHandler.getUpdateFrameListener(),false);
+						
+						QuestRequirementParams qp = new QuestRequirementParams();
+						qp.actionName = item.getName();
+						qp.actionType = CharacterActionType.AbandonMissionCampaign;
+						qp.targetOfSearch = gs.getGameObject();
+						character.testQuestRequirements(gameHandler.getMainFrame(),qp);
+					}
+				}
 			}
 		}
 		
