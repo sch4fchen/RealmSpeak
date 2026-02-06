@@ -22,6 +22,9 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 
+Version 1.2.4.4
+BUGS/ISSUES:
+
 Version 1.2.4.3
 NEW FEATURES:
 # Seasonal tile graphics
