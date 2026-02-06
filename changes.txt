@@ -24,7 +24,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.3
-BUGS/ISSUES:
+NEW FEATURES:
+# Seasonal tile graphics
 
 Version 1.2.4.2
 NEW FEATURES:

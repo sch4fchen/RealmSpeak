@@ -458,6 +458,9 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("'Alternative' Map Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Fabio Patris",listing,listingColor));
 		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Seasonal Map Graphics",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("MyopicTopic",listing,listingColor));
+		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Custom Characters' Graphics",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Casey Benn",listing,listingColor));
 		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
