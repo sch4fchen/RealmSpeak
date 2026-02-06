@@ -2837,6 +2837,42 @@ public class BattleModel {
 		ArrayList<SpellWrapper> spellsToExpireAtRoundEnd = new ArrayList<>();
 		ArrayList<RealmComponent> rcsToMakeDead = new ArrayList<>();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
+	
+		if (hostPrefs.hasPref(Constants.SR_OPT_CORNERED)) {
+			for (RealmComponent rc:all) {
+				RealmComponent target = rc.getTarget();
+				if (!rc.getGameObject().hasThisAttribute(Constants.DEAD) && target!=null && !target.getGameObject().hasThisAttribute(Constants.DEAD)) {
+					CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+					CombatWrapper targetCombat = new CombatWrapper(target.getGameObject());
+					if (combat.getKilledBy()==null && targetCombat.getKilledBy()==null) {
+						boolean pinningMonster = false;
+						if (rc.isCharacter()) {
+							MonsterChitComponent transmorph = ((CharacterChitComponent)rc).getTransmorphedComponent();
+							if (transmorph!=null && transmorph.canPinOpponent() && transmorph.isDarkSideUp()) {
+								pinningMonster = true;
+							}
+						}
+						if (rc.isMonster() && !rc.isMonsterPart() && ((MonsterChitComponent)rc).canPinOpponent() && ((MonsterChitComponent)rc).isDarkSideUp()) {
+							pinningMonster = true;
+						}
+						if (pinningMonster) {
+							int maneuver = 0;
+							int attack = combat.getCombatBoxAttack();
+							if (target.isCharacter()) {
+								maneuver = (new CharacterChitComponent(target.getGameObject())).getManeuverCombatBox();
+							}
+							else {
+								maneuver = targetCombat.getCombatBoxDefense();
+							}
+							if ((attack==1 && maneuver==2) || (attack==2 && maneuver==3) || (attack==3 && maneuver==1)) {
+								rc.flip();
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		for (RealmComponent rc:all) {
 			if (rc instanceof EventSpellCardComponent) {
 				rc.clearTargets();
@@ -3042,7 +3078,7 @@ public class BattleModel {
 				
 				rcsToMakeDead.add(rc);
 			}
-			else {
+			else {				
 				// Check first for Hurricane Winds
 				boolean hurricaneWindsEvent = rc.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS);
 				String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);

@@ -1113,6 +1113,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_NO_ALERTING_WITHOUT_TARGET,"NO ALERTING WITHOUT A TARGET - When missing, a weapon is only alerting if a target was assigned.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS,"SURVIVAL TACTICS (Super Realm Advanced) - This rule makes it a little easier to survive in combat, and increases odds of killing denizens. It also makes combat more involved with decisions players have to make.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING,"SURVIVAL TACTICS - PARRYING DOES NOT ALERT (Super Realm Advanced) - Weapon counters cannot become alerted as a result of doing a Parry and missing their target.",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_CORNERED,"CORNERED (Super Realm Optional) - It is now possible to flip a red-side-up tremendous monster red-side-down in the middle of combat.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));

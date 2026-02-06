@@ -4,10 +4,9 @@ Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
 Super Realm: Credit (SR: 10.7)
-Super Realm: Regrouping (SR: 10.10)
+Super Realm: Regrouping (SR: 10.9)
 Super Realm: Stealing (SR: 11.3)
 Super Realm: Hiring Unused Characters (SR: 11.4)
-Super Realm: Cornered (SR: 11.13)
 Expansion 1: Offroad Travel
 Expansion 1: Bounty
 Expansion 1: Stealing and Thief/Assassin character (option to add to other game modes)
@@ -26,6 +25,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.4.3
 NEW FEATURES:
 # Seasonal tile graphics
+# Optional rule: Cornered
 
 Version 1.2.4.2
 NEW FEATURES:
