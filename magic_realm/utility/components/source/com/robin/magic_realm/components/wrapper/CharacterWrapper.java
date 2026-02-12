@@ -1940,7 +1940,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setStopFollowing(false);
 		
 		TileLocation loc = getCurrentLocation();
-		if (loc.isInClearing()) {
+		if (loc!=null && loc.isInClearing()) {
 			for (GameObject item : getNomads()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(item);
 				GameClient.broadcastClient("host",item.getName()+" is dropped in "+loc);
