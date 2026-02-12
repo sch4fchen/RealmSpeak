@@ -557,7 +557,9 @@ public class CharacterActionControlManager {
 			cc.setMarkColor(Color.yellow);
 		}
 		startMapSelect(DayAction.MOVE_ACTION.getCode(),"MOVE to which clearing?");
-		getGameHandler().getInspector().getMap().centerOn(tl);
+		if (getGameHandler().isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+			getGameHandler().getInspector().getMap().centerOn(tl);
+		}
 	}
 	public void recordExternalMoveAction(TileLocation tl) {
 		if (currentlyRecordingAction==null && moveAction.isEnabled()) {
@@ -611,7 +613,9 @@ public class CharacterActionControlManager {
 //			planned.tile.doRepaint(); // LEAVE FOR AWHILE
 		}
 		startMapSelect(DayAction.FLY_ACTION.getCode(),"FLY to which tile?");
-		getGameHandler().getInspector().getMap().centerOn(planned);
+		if (getGameHandler().isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+			getGameHandler().getInspector().getMap().centerOn(planned);
+		}
 	}
 	private void recordEnhancedPeerAction() {
 		/* 
@@ -705,7 +709,9 @@ public class CharacterActionControlManager {
 			}
 			
 			startMapSelect(DayAction.ENH_PEER_ACTION.getCode(),"PEER in which clearing?");
-			getGameHandler().getInspector().getMap().centerOn(tl);
+			if (getGameHandler().isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+				getGameHandler().getInspector().getMap().centerOn(tl);
+			}
 		}
 	}
 	private void recordRemoteSpellAction() {
@@ -731,7 +737,9 @@ public class CharacterActionControlManager {
 		}
 		
 		startMapSelect(DayAction.REMOTE_SPELL_ACTION.getCode(),"REMOTE SPELL in which clearing?");
-		getGameHandler().getInspector().getMap().centerOn(tl);
+		if (getGameHandler().isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+			getGameHandler().getInspector().getMap().centerOn(tl);
+		}
 	}
 	private boolean doRecord(String action) {
 		return doRecord(action,null,1,1);

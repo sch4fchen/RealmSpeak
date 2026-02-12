@@ -1145,7 +1145,9 @@ public class ActionRow {
 					params.actionType = CharacterActionType.Move;
 					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 					
-					gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+					if (gameHandler.isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+						gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+					}
 					gameHandler.updateCharacterFrames();
 					result = result+"moved";
 					
@@ -2694,7 +2696,9 @@ public class ActionRow {
 				character.land(gameHandler.getMainFrame());
 				result = "Flew to tile and landed.";
 			}
-			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+			if (gameHandler.isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
+				gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+			}
 			
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Fly;

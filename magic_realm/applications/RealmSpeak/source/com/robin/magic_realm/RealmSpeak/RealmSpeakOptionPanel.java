@@ -58,6 +58,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JCheckBox mapSliderOption;
 	protected JCheckBox highlightClearingNumbersOption;
 	protected JCheckBox showSeasonIconOption;
+	protected JCheckBox followCharacterOption;
 	
 	protected ChatLineViewOption[] showChatLinesOption;
 	protected JRadioButton showChatLineHeaderCharacterNameOption; 
@@ -184,6 +185,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		mapSliderOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MAP_SLIDER));
 		highlightClearingNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS));
 		showSeasonIconOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SHOW_SEASON_ICON));
+		followCharacterOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MAP_FOLLOW_CHARACTER));
 		int lines = options.getOptions().getInt(RealmSpeakOptions.NUMBER_OF_CHAT_LINES);
 		for (int i=0;i<showChatLinesOption.length;i++) {
 			showChatLinesOption[i].setSelected(showChatLinesOption[i].getLines()==lines);
@@ -243,6 +245,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.HIGHLIGHT_CLEARING_NUMBERS,highlightClearingNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.SHOW_SEASON_ICON,showSeasonIconOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.MAP_FOLLOW_CHARACTER,followCharacterOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.NUMBER_OF_CHAT_LINES,getSelectedNumberOfChatLines());
 		options.getOptions().set(RealmSpeakOptions.HEADER_CHAT_LINES,getSelectedChatHeaderMode().toString());
 		if (dailyCombatOffOption.isSelected()) {
@@ -570,7 +573,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getMapOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(3,1));
+		JPanel panel = new JPanel(new GridLayout(4,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Map View"));
 		mapSliderOption = new JCheckBox("Show Zoom Slider");
 		panel.add(mapSliderOption);
@@ -578,6 +581,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(highlightClearingNumbersOption);
 		showSeasonIconOption = new JCheckBox("Show Season Icon");
 		panel.add(showSeasonIconOption);
+		followCharacterOption = new JCheckBox("Map Following Character");
+		panel.add(followCharacterOption);
 		return panel;
 	}
 	private JPanel getChatDisplayOptionsPanel() {

@@ -23,6 +23,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.4
+NEW FEATURES:
+# Map option to (not) follow character's movement 
 BUGS/ISSUES:
 
 Version 1.2.4.3
