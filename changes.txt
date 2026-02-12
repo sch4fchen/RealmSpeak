@@ -26,6 +26,7 @@ Version 1.2.4.4
 NEW FEATURES:
 # Map option to (not) follow character's movement 
 BUGS/ISSUES:
+# Fixed rendering seasonal tiles
 
 Version 1.2.4.3
 NEW FEATURES:
