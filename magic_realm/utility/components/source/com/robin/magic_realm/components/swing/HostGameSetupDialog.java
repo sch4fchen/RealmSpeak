@@ -410,7 +410,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,980);
+		setSize(1080,1040);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
