@@ -549,13 +549,12 @@ public class PhaseManager {
 			phases = new StringTokenizer(fullAction,",");
 			count = phases.countTokens();
 		}
-		
 
 		// Convert detail action into plain action (M-CV3 becomes M)
 		String action = simplifyAction(fullAction);
 		boolean movePhase = "M".equals(action) || "M!".equals(action);
 		TileLocation newLocation = null;
-		if (movePhase) {
+		if (movePhase && !"M".equals(fullAction)) { // no new location, if testing for move action M in general
 			String simpleAction = fullAction;
 			if (phases!=null) {
 				simpleAction = phases.nextToken();

@@ -23,6 +23,8 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.5
+BUGS/ISSUES:
+# Fix crash for multi board games
 
 Version 1.2.4.4
 NEW FEATURES:
