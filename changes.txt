@@ -23,12 +23,14 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.5
+NEW FEATURES:
+# Hall of Fame: no duplicate entries
 BUGS/ISSUES:
 # Fix crash for multi board games
 
 Version 1.2.4.4
 NEW FEATURES:
-# Map option to (not) follow character's movement 
+# Map option to (not) follow character's movement
 BUGS/ISSUES:
 # Fixed rendering seasonal tiles
 

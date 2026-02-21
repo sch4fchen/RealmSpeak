@@ -127,6 +127,21 @@ public class HallOfFame {
 		go.setThisAttribute(RS_VERSION,Constants.REALM_SPEAK_VERSION);
 		go.setThisAttribute(GAME_DATE,DateUtility.convertDate2String(DateUtility.getNow()));
 		
+		// Check for duplicate entry
+		for (GameObject existing : hallData.getGameObjects()) {
+			if (!existing.getName().matches(go.getName())) continue;
+			if (!existing.getThisAttribute(CharacterWrapper.V_GREAT_TREASURES).matches(go.getThisAttribute(CharacterWrapper.V_GREAT_TREASURES))) continue;
+			if (!existing.getThisAttribute(CharacterWrapper.V_USABLE_SPELLS).matches(go.getThisAttribute(CharacterWrapper.V_USABLE_SPELLS))) continue;
+			if (!existing.getThisAttribute(CharacterWrapper.V_FAME).matches(go.getThisAttribute(CharacterWrapper.V_FAME))) continue;
+			if (!existing.getThisAttribute(CharacterWrapper.V_NOTORIETY).matches(go.getThisAttribute(CharacterWrapper.V_NOTORIETY))) continue;
+			if (!existing.getThisAttribute(CharacterWrapper.V_GOLD).matches(go.getThisAttribute(CharacterWrapper.V_GOLD))) continue;
+			if (!existing.getThisAttribute(TOTAL_VPS).matches(go.getThisAttribute(TOTAL_VPS))) continue;
+			if (!existing.getThisAttribute(TOTAL_SCORE).matches(go.getThisAttribute(TOTAL_SCORE))) continue;
+			if (!existing.getThisAttribute(PLAYER_NAME).matches(go.getThisAttribute(PLAYER_NAME))) continue;
+			if (!existing.getThisAttribute(DAYS_PLAYED).matches(go.getThisAttribute(DAYS_PLAYED))) continue;
+			return;
+		}
+		
 		// Tack on hostprefs
 		OrderedHashtable block = go.getAttributeBlock(HostPrefWrapper.HOST_PREF_BLOCK);
 		block.putAll(hostPrefs.getGameObject().getAttributeBlock(HostPrefWrapper.HOST_PREF_BLOCK));
