@@ -143,11 +143,9 @@ public class CharacterBattleBuilderPanel extends JPanel {
 		characterIsPresentCheckBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				if (characterIsPresentCheckBox.isSelected()) {
-					character.getGameObject().setThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					character.getGameObject().setThisAttribute(BattleBuilder.CHARACTER_PRESENT);
 				}
 				else {
-					character.getGameObject().removeThisAttribute(BattleBuilder.BATTLE_BUILDER_KEY);
 					character.getGameObject().removeThisAttribute(BattleBuilder.CHARACTER_PRESENT);
 				}
 			}

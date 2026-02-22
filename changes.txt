@@ -25,6 +25,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.4.5
 NEW FEATURES:
 # Hall of Fame: no duplicate entries
+# BattleBuilder: Option for character not being present in battle
 BUGS/ISSUES:
 # Fix crash for multi board games
 

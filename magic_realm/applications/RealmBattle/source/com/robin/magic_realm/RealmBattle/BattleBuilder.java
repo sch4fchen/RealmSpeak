@@ -67,7 +67,6 @@ public class BattleBuilder extends JFrame {
 	
 	// Info
 	private ClearingDetail battleClearing;
-//	private ClearingDetail alternateClearing; // for handling character "away"
 	
 	private boolean cancelled = false;
 	
@@ -532,13 +531,6 @@ public class BattleBuilder extends JFrame {
 		if (clearingName==null) {
 			return;
 		}
-		battleClearing = clearingHash.get(clearingName);
-		
-		for (CharacterBattleBuilderPanel panel : characterPanels) {
-			if (panel.getCharacter().getCurrentLocation()!=null) {
-				battleClearing.add(panel.getCharacter().getGameObject(),null);
-			}
-		}
 		
 		prefs.set(BATTLE_BUILDER_CLEARING,clearingHash.get(clearingName).getNum());
 		prefs.set(BATTLE_BUILDER_TILE,tileName);
@@ -660,7 +652,6 @@ public class BattleBuilder extends JFrame {
 			}
 			
 			CharacterWrapper character = new CharacterWrapper(chosen);
-			battleClearing.add(character.getGameObject(),null);
 			character.setPlayerName(testPlayerName);
 			character.setPlayerPassword("");
 			character.setPlayerEmail(""); // no e-mail for battle tests
@@ -672,6 +663,7 @@ public class BattleBuilder extends JFrame {
 			character.initRelationships(hostPrefs);
 			character.setGold(50);
 			chosen.setThisAttribute(BATTLE_BUILDER_KEY);
+			chosen.setThisAttribute(CHARACTER_PRESENT);
 			if (lastCharacter!=null) {
 				character.setEnemyCharacter(lastCharacter.getGameObject(),true);
 			}
@@ -873,7 +865,10 @@ public class BattleBuilder extends JFrame {
 		for (GameObject go : everything) {
 			go.removeThisAttribute(BATTLE_BUILDER_KEY);
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (rc.isCharacter() || rc.isNative() || rc.isMonster() || rc.isTraveler()) {
+			if (rc.isCharacter() && !rc.getGameObject().hasThisAttribute(CHARACTER_PRESENT)) {
+				battleClearing.remove(rc.getGameObject());
+			}
+			if ((rc.isCharacter() && rc.getGameObject().hasThisAttribute(CHARACTER_PRESENT)) || rc.isNative() || rc.isMonster() || rc.isTraveler()) {
 				battleClearing.add(go,null);
 			}
 		}
