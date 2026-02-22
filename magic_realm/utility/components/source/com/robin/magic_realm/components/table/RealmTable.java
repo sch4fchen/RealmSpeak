@@ -117,7 +117,7 @@ public abstract class RealmTable {
 			int ret = JOptionPane.showConfirmDialog(
 					parentFrame,
 					"Do you want to re-roll this roll ("+roller.getStringResult()+")?",
-					"Luck",
+					this.toString() + " - Luck",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
 			if (ret==JOptionPane.YES_OPTION) {
