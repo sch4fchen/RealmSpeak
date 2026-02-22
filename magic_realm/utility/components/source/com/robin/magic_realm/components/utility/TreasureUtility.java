@@ -47,6 +47,10 @@ public class TreasureUtility {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" is broken, and can no longer be activated.");
 				return false;
 			}
+			if (thing.hasThisAttribute(Constants.CANNOT_BE_ACTIVATED)) {
+				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" cannot be activated.");
+				return false;
+			}
 			if (thing.hasThisAttribute(Constants.COMBAT_ONLY) && !fromCombat) {
 				JOptionPane.showMessageDialog(parentFrame,"The "+thing.getName()+" can only be activated during combat.");
 				return false;

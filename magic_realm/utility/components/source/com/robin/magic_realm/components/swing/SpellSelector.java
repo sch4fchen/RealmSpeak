@@ -215,6 +215,7 @@ public class SpellSelector extends AggressiveDialog {
 					toPanel.revalidate();
 					toPanel.repaint();
 					maintainSlots(new ArrayList());
+					refreshFromPanel();
 					updateControls();
 				}
 			});

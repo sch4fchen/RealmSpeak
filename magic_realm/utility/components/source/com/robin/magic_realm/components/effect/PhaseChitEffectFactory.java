@@ -13,6 +13,7 @@ public class PhaseChitEffectFactory {
 			case "reserve": return new ISpellEffect[]{new MagicChitEffect()};
 			case "dark_favor": return new ISpellEffect[]{new DarkFavorEffect(), new ApplyNamedEffect(Constants.DARK_FAVOR)};
 			case "dazzle": return new ISpellEffect[]{new ApplyNamedEffect(Constants.DAZZLE)};
+			case "luck": return new ISpellEffect[]{new ApplyNamedEffect(Constants.LUCK)};
 			
 			default: return null;
 		}

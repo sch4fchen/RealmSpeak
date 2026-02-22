@@ -8190,4 +8190,45 @@ public class CharacterWrapper extends GameObjectWrapper {
     public void removeRunAwayLastUsedChit() {
     	setString(RUN_AWAY_LAST_USED_CHIT,null);
     }
+    public boolean hasLuck() {
+    	if (affectedByKey(Constants.LUCK)) return true;
+    	for (GameObject phaseChit : getInventory()) {
+    		if (!phaseChit.hasThisAttribute(Constants.PHASE_CHIT)) continue;
+    		if (phaseChit.hasAttributeBlock(Constants.EFFECTS)) {
+				for (String effect : phaseChit.getAttributeBlock(Constants.EFFECTS).keySet()) {
+					if (effect.toLowerCase().matches(Constants.LUCK.toLowerCase())) {
+						return true;
+					}
+				}
+			}
+		}
+    	return false;
+    }
+    public void removeLuck(JFrame frame) {
+	    GameData gameData = getGameObject().getGameData();
+		for (GameObject phaseChit : getInventory()) {
+			if (!phaseChit.hasThisAttribute(Constants.PHASE_CHIT)) continue;
+			if (phaseChit.hasAttributeBlock(Constants.EFFECTS)) {
+				SpellWrapper spellWrapper = null;
+				for (String effect : phaseChit.getAttributeBlock(Constants.EFFECTS).keySet()) {
+					if (effect.toLowerCase().matches(Constants.LUCK.toLowerCase())) {
+						String spellId = phaseChit.getThisAttribute(Constants.SPELL_ID);
+						GameObject spell = gameData.getGameObject(Long.valueOf(spellId));
+						spellWrapper = new SpellWrapper(spell);
+						unapplyPhaseChit(frame, phaseChit, spellWrapper);
+						break;
+					}
+				}
+				if (spellWrapper!=null) {
+					spellWrapper.expireSpell();
+				}
+			}
+		}
+		SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(gameData);
+		for (SpellWrapper spell:spellMaster.getAffectingSpells(getGameObject())) {
+			if (spell.isActive() && spell.getGameObject().hasThisAttribute(Constants.LUCK)) {
+				spell.expireSpell();
+			}
+		}
+    }
 }

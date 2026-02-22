@@ -59747,34 +59747,26 @@
         <attribute cannot_be_followed="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2236" name="Staff to Snake">
+    <GameObject id="2236" name="Luck">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
-        <attribute duration="combat" />
-        <attribute target="staff" />
-        <attribute text="Change staff into Snake with M4**/4" />
+        <attribute duration="phase" />
+        <attribute target="character" />
+        <attribute text="You may re-roll a table result you just made." />
         <attribute magic_color="white" />
         <attribute host_okay="" />
-        <attribute ch2companion="House" />
         <attribute benevolent="" />
-        <attribute learnable="" />
         <attribute super_realm="" />
-      </AttributeBlock>
-      <AttributeBlock blockName="ch2companion">
-        <attribute vulnerability="M" />
-        <attribute armored="" />
-        <attribute strength="M" />
-        <attribute attack_speed="4" />
-        <attribute move_speed="4" />
-        <attribute sharpness="2" />
-        <attribute name="Snake" />
-        <attribute chit_color="lightblue" />
-        <attribute icon_type="add-ons-War_of_Legends-images-units-steelhive-steel_serpent" />
-        <attribute icon_folder="wesnoth/units/addons" />
-        <attribute length="0" />
-        <attribute icon_size="0.9" />
-        <attribute serpent="" />
-      </AttributeBlock>
+		<attribute super_realm_spell="" />
+	  </AttributeBlock>
+	  <AttributeBlock blockName="phase_chit">
+		<attribute phase_chit="" />
+		<attribute text="Luck" />
+		<attribute cannot_be_activated="" />
+	  </AttributeBlock>
+	  <AttributeBlock blockName="phase_chit_effects">
+		<attribute luck="" />
+	  </AttributeBlock>
     </GameObject>
     <GameObject id="2237" name="Spirit Guide">
       <AttributeBlock blockName="this">

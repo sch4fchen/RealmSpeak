@@ -112,6 +112,23 @@ public abstract class RealmTable {
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
 		this.roller = inRoller;
 		int result = getResult(roller);
+		
+		if (character.hasLuck()) {
+			int ret = JOptionPane.showConfirmDialog(
+					parentFrame,
+					"Do you want to re-roll this roll ("+roller.getStringResult()+")?",
+					"Luck",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
+			if (ret==JOptionPane.YES_OPTION) {
+				character.removeLuck(parentFrame);
+				inRoller.rollDice("");
+				this.roller = inRoller;
+				result = getResult(roller);
+				return apply(character,inRoller);
+			}
+		}
+		
 		return apply(character,result);
 	}
 	public String apply(CharacterWrapper character, int number) {

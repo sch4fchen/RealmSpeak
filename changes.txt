@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Spells: FreeSpell, Luck (instead of Staff to Snake and Spirit Guide)
+Super Realm: Spells: FreeSpell (instead of Spirit Guide)
 Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
@@ -24,11 +24,13 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.4.5
 NEW FEATURES:
+# Super Realm: Luck spell (replacing Staff to Snake)
 # Hall of Fame: no duplicate entries
 # BattleBuilder: Option for character not being present in battle
 # BattleBuilder: Support running away
 BUGS/ISSUES:
 # Fix crash for multi board games
+# Fix resetting spell selection
 
 Version 1.2.4.4
 NEW FEATURES:

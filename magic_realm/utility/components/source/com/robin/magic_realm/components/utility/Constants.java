@@ -546,6 +546,7 @@ public class Constants {
 	public static final String CONVERT_CHITS = "convert_chits";
 	public static final String CURSED ="cursed"; // cannot be deactivated, except at chapel where the item is destroyed.
 	public static final String NO_ACTIVATE = "no_activate";
+	public static final String CANNOT_BE_ACTIVATED = "cannot_be_activated";
 	public static final String COLOR_CAPTURE = "color_capture";
 	public static final String BEAST_AWAY = "beast_away";
 	public static final String NO_FATIGUE = "no_fatigue";
@@ -682,6 +683,7 @@ public class Constants {
 	public static final String SPIDER_WEB_BOXES_ATTACK = "spider_web_boxes_attack";
 	public static final String SPIDER_WEB_BOXES_DEFENSE = "spider_web_boxes_defense";
 	public static final String OPENS_TREASURE_LOCATION = "opens_treasure_locations";
+	public static final String LUCK = "luck";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

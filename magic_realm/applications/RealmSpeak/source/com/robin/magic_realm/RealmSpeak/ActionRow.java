@@ -165,8 +165,8 @@ public class ActionRow {
 								RealmComponent chitRc = RealmComponent.getRealmComponent(chitGo);
 								chitRc.setActivated(false);
 								String spellId = chitGo.getThisAttribute(Constants.SPELL_ID);
-								GameObject spelGo = gameData.getGameObject(Long.valueOf(spellId));
-								SpellWrapper spell = new SpellWrapper(spelGo);
+								GameObject spellGo = gameData.getGameObject(Long.valueOf(spellId));
+								SpellWrapper spell = new SpellWrapper(spellGo);
 								spell.affectTargets(new JFrame(),GameWrapper.findGame(gameData),false,null);
 								SpellMasterWrapper.getSpellMaster(gameData).addSpell(spell);
 								character.unapplyPhaseChit(new JFrame(), chitGo, spell);
@@ -760,6 +760,19 @@ public class ActionRow {
 					}
 					else {
 						result = "Failed";
+						if (character.hasLuck()) {
+							int ret = JOptionPane.showConfirmDialog(
+									gameHandler.getMainFrame(),
+									"Do you want to re-roll this Hide roll?",
+									"Luck",
+									JOptionPane.YES_NO_OPTION,
+									JOptionPane.INFORMATION_MESSAGE);
+							if (ret==JOptionPane.YES_OPTION) {
+								character.removeLuck(gameHandler.getMainFrame());
+								doHideAction();
+								return;
+							}
+						}
 					}
 					
 					QuestRequirementParams params = new QuestRequirementParams();
