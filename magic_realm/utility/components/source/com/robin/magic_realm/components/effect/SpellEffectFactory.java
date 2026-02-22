@@ -153,6 +153,7 @@ public class SpellEffectFactory {
 			case "enchant key": return new ISpellEffect[]{new ApplyNamedEffect(Constants.KEY)};
 			case "enchant weapon": return new ISpellEffect[]{new EnchantWeaponEffect(),new ApplyNamedEffect(Constants.IGNORE_MIST_LIKE)};
 			case "free the soul": return new ISpellEffect[]{new FreeTheSoulEffect()};
+			case "free spell": return new ISpellEffect[]{new FreeSpellEffect()};
 			case "frozen water": return new ISpellEffect[]{new FrozenWaterEffect()};
 			case "guide beast": return new ISpellEffect[]{new ControlEffect()};
 			case "grow wings": return new ISpellEffect[]{new ApplyNamedEffect(Constants.GROW_WINGS)};

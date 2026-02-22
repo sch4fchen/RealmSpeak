@@ -1,5 +1,5 @@
 ::ROADMAP::
-Super Realm: Spells: FreeSpell (instead of Spirit Guide)
+Super Realm: Spells: FreeSpell
 Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
@@ -23,7 +23,7 @@ Would be nice to make weapon abilities too:
 
 
 Version 1.2.4.6
-
+# Super Realm: Free Spell (replacing Spirit Guide)
 
 Version 1.2.4.5
 NEW FEATURES:
