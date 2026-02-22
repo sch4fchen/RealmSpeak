@@ -239,6 +239,9 @@ public abstract class SpellTargeting {
 		else if ("bewitched".equals(targetType) || "bewitched target".equals(targetType)) {
 			targeting = new SpellTargetingBewitched(combatFrame,spell);
 		}
+		else if ("site, TWT".equals(targetType)) {
+			targeting = new SpellTargetingSiteOrTwt(combatFrame,spell);
+		}
 		
 		return targeting;
 	}

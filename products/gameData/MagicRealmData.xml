@@ -59768,14 +59768,14 @@
 		<attribute luck="" />
 	  </AttributeBlock>
     </GameObject>
-    <GameObject id="2237" name="Spirit Guide">
+    <GameObject id="2237" name="Free Spell">
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
-        <attribute duration="day" />
-        <attribute target="character" />
-        <attribute text="Travel along secret paths and passages, but learn none of them" />
+        <attribute duration="combat" />
+        <attribute target="site, TWT" />
+        <attribute text="You may cast the top spell from the target as it were an awakened artifact in your inventory." />
         <attribute magic_color="black" />
-        <attribute spirit_guide="" />
+        <attribute free_spell="" />
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute learnable="" />
