@@ -3484,7 +3484,7 @@ public class CombatFrame extends JFrame {
 		if (result!=MoveActionResult.NO_MOVE_POSSIBLE) {
 			TileLocation runToClearing = chooseClearingToRunTo(activator.isFly());
 			
-			if (result==MoveActionResult.SUCCESSFUL && runToClearing!=null) {
+			if (result==MoveActionResult.SUCCESSFUL && (runToClearing!=null || activeCharacter.getGameObject().hasThisAttribute(BattleBuilder.CHARACTER_PRESENT))) {
 				activator.prepareFatigue();
 				// Set the character's location between clearings (or tiles)
 				doRun(runToClearing,activator.getFly(),activator.getAttackers(),activator.getSelectedMoveChit());
