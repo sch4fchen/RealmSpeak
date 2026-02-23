@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
@@ -44,6 +45,16 @@ public class ExorciseEffect implements ISpellEffect {
 		else if (context.Target.isSpell()) {
 			SpellWrapper otherSpell = new SpellWrapper(context.Target.getGameObject());
 			otherSpell.expireSpell();
+		}
+		else if (context.Target.isTreasureLocation() || context.Target.getGameObject().hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE)) {
+			for (GameObject held : context.Target.getHold()) {
+				if (held.hasThisAttribute(RealmComponent.SPELL)) {
+					SpellWrapper spellWrapper = new SpellWrapper(held);
+					if (spellWrapper.isAlive() && spellWrapper.getGameObject().hasThisAttribute(Constants.FREED_SPELL)) {
+						spellWrapper.expireSpell();
+					}
+				}
+			}
 		}
 		else {
 			System.out.println("No effect on target.");

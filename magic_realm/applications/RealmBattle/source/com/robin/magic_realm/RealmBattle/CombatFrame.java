@@ -3936,6 +3936,7 @@ public class CombatFrame extends JFrame {
 						}
 						if (incantationObject.hasThisAttribute(Constants.MAGIC_CHANGE_BY_FREE_SPELL)) {
 							spell.setCaster(activeCharacter);
+							spell.getGameObject().setThisAttribute(Constants.FREED_SPELL);
 						}
 						combat.setCastSpell(spell.getGameObject());
 						changes = true;

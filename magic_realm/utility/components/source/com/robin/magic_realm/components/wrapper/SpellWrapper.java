@@ -374,6 +374,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			setBoolean(SPELL_ALIVE,false);
 			setBoolean(SPELL_AFFECTED,false); // Probably redundant
 			setBoolean(SPELL_EXPIRES_AT_ROUND_END,false);
+			getGameObject().removeThisAttribute(Constants.FREED_SPELL);
 			
 			// Remove it from the spell master, just in case
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
@@ -419,6 +420,7 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 			setBoolean(SPELL_INERT,false);
 			setBoolean(SPELL_ALIVE,false);
 			setBoolean(SPELL_AFFECTED,false); // Probably redundant
+			getGameObject().removeThisAttribute(Constants.FREED_SPELL);
 			
 			// Remove it from the spell master, just in case
 			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());

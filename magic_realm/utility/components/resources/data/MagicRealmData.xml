@@ -7509,6 +7509,8 @@
           <attributeVal N1="demons" />
           <attributeVal N2="spells" />
           <attributeVal N3="curses" />
+		  <attributeVal N4="sites" />
+		  <attributeVal N5="twts" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -57361,6 +57363,8 @@
           <attributeVal N5="succubi" />
           <attributeVal N6="vampires" />
           <attributeVal N7="devils" />
+		  <attributeVal N8="sites" />
+		  <attributeVal N9="twts" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
