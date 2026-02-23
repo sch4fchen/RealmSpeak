@@ -75,6 +75,9 @@ public abstract class SpellTargeting {
 		else if ("artifact".equals(targetType)) {
 			targeting = new SpellTargetingArtifact(combatFrame,spell);
 		}
+		else if ("site, TWT spell".equals(targetType)) {
+			targeting = new SpellTargetingSiteOrTwtWithSpell(combatFrame,spell);
+		}
 		else if (targetType.indexOf("spell")>=0 || targetType.indexOf("curse")>=0) {
 			targeting = new SpellTargetingSpellOrCurse(combatFrame,spell);
 		}
@@ -238,9 +241,6 @@ public abstract class SpellTargeting {
 		}
 		else if ("bewitched".equals(targetType) || "bewitched target".equals(targetType)) {
 			targeting = new SpellTargetingBewitched(combatFrame,spell);
-		}
-		else if ("site, TWT with spell".equals(targetType)) {
-			targeting = new SpellTargetingSiteOrTwtWithSpell(combatFrame,spell);
 		}
 		
 		return targeting;

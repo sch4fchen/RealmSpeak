@@ -59772,7 +59772,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="combat" />
-        <attribute target="site, TWT with spell" />
+        <attribute target="site, TWT spell" />
         <attribute text="You may cast the top spell from the target as it were an awakened artifact in your inventory." />
         <attribute magic_color="black" />
         <attribute free_spell="" />
