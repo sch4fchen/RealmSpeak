@@ -5435,6 +5435,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		
+		// Check for freed spells
+		for (SpellWrapper spell : getAliveSpells()) {
+			if (spell.getGameObject().hasThisAttribute(Constants.FREED_SPELL)) {
+				String freedSpellId = spell.getGameObject().getThisAttribute(Constants.FREED_SPELL);
+				GameObject freedSpell = getGameData().getGameObject(Long.valueOf(freedSpellId));
+				SpellSet set = new SpellSet(freedSpell);
+				set.addTypeObject(spell.getIncantationObject());
+				potentialSets.add(set);
+			}
+		}
+		
 		// Now filter out the non-castable spells (missing some component)
 		boolean optionalArtifacts = hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS) || affectedByKey(Constants.ENHANCED_ARTIFACTS);
 		for (SpellSet set:potentialSets) {

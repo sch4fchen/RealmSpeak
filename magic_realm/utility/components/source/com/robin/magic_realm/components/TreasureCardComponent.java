@@ -76,7 +76,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 			
 			pos = 0;
 			
-			// Save a line position for the word "Potion"			
+			// Save a line position for the word "Potion"
 			tt = new TextType("Potion",PRINT_WIDTH,"ITALIC");
 			if (gameObject.hasKey("potion")) {
 				// Draw the word "Potion" if the treasure is a potion

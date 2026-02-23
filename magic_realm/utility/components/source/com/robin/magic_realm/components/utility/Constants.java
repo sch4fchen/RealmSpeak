@@ -567,6 +567,7 @@ public class Constants {
 	public static final String COMPANION_FROM_HOLD_RETURNS = "companion_from_hold_returns";
 	public static final String REDUCE_WEIGHT = "reduce_weight";
 	public static final String MAGIC_CHANGE = "magic_change";
+	public static final String MAGIC_CHANGE_BY_FREE_SPELL = "magic_change_by_free_spell";
 	public static final String FORCED_ENCHANTMENT = "forced_enchant";
 	public static final String TELEPORT = "teleport";
 	public static final String TREASURE_CHIT = "treasure_chit";
@@ -684,6 +685,7 @@ public class Constants {
 	public static final String SPIDER_WEB_BOXES_DEFENSE = "spider_web_boxes_defense";
 	public static final String OPENS_TREASURE_LOCATION = "opens_treasure_locations";
 	public static final String LUCK = "luck";
+	public static final String FREED_SPELL = "freed_spell";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

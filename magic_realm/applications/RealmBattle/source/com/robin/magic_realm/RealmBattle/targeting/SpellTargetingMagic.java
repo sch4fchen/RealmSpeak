@@ -33,7 +33,8 @@ public class SpellTargetingMagic extends SpellTargetingMultiple {
 			}
 			for (CharacterActionChitComponent chit : allChits) {
 				if (types==null || types.contains(chit.getMagicType())) {
-					if (!nonMagicChangedChitsOnly || !chit.getGameObject().hasThisAttribute(Constants.MAGIC_CHANGE))
+					if (!nonMagicChangedChitsOnly
+							|| (!chit.getGameObject().hasThisAttribute(Constants.MAGIC_CHANGE) && !chit.getGameObject().hasThisAttribute(Constants.MAGIC_CHANGE_BY_FREE_SPELL)))
 					gameObjects.add(chit.getGameObject());
 				}
 			}

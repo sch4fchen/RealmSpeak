@@ -703,10 +703,12 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 
 	public String getMagicType() {
 		String changeType = getGameObject().getThisAttribute(Constants.MAGIC_CHANGE);
-		if (changeType==null) {
+		String changeType2 = getGameObject().getThisAttribute(Constants.MAGIC_CHANGE_BY_FREE_SPELL);
+		if (changeType==null && changeType2==null) {
 			return getChitAttribute("magic");
 		}
 		usingAlteredAttributes = true;
+		if (changeType2!=null) return changeType2;
 		return changeType;
 	}
 	
