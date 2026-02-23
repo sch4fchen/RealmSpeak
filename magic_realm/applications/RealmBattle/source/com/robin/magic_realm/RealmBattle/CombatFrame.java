@@ -3934,6 +3934,9 @@ public class CombatFrame extends JFrame {
 							spell.addColorChit(colorChit);
 							RealmUtility.reportChitFatigue(activeCharacter,colorChit,"Fatigued color chit: ");
 						}
+						if (incantationObject.hasThisAttribute(Constants.MAGIC_CHANGE_BY_FREE_SPELL)) {
+							spell.setCaster(activeCharacter);
+						}
 						combat.setCastSpell(spell.getGameObject());
 						changes = true;
 						updateControls();
