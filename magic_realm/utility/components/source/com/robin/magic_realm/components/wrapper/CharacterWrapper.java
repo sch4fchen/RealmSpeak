@@ -2728,6 +2728,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		else if (transmorph!=null) {
 			if (id==ActionId.Trade
+					|| id==ActionId.Steal
 					|| id==ActionId.Hire
 					|| id==ActionId.Spell
 					|| id==ActionId.SpellPrep

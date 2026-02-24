@@ -21,6 +21,7 @@ public class DayAction {
 		Heal,
 		Repair,
 		Fortify,
+		Steal
 	}
 	
 	public static DayAction HIDE_ACTION = new DayAction(ActionId.Hide,"Hide","H","hide");
@@ -37,6 +38,7 @@ public class DayAction {
 	public static DayAction FLY_ACTION = new DayAction(ActionId.Fly,"Fly","FLY","fly"); // (tile) 
 	public static DayAction REMOTE_SPELL_ACTION = new DayAction(ActionId.RemSpell,"Rem.Spell","RS","remotespell"); // (clearing)
 	public static DayAction CACHE_ACTION = new DayAction(ActionId.Cache,"Cache","C","cache");
+	public static DayAction STEAL_ACTION = new DayAction(ActionId.Steal,"Steal","ST","steal");
 	
 	// Special Actions (custom characters)
 	public static DayAction HEAL_ACTION = new DayAction(ActionId.Heal,"Heal","HL","heal");				// Mostly like REST
@@ -58,6 +60,7 @@ public class DayAction {
 		FLY_ACTION,
 		REMOTE_SPELL_ACTION,
 		CACHE_ACTION,
+		STEAL_ACTION,
 		
 		HEAL_ACTION,
 		REPAIR_ACTION,

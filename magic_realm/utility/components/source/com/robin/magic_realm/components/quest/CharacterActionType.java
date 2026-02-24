@@ -20,6 +20,7 @@ public enum CharacterActionType {
 	SearchTable,
 	Teleport,
 	Trading,
+	Stealing,
 	AbandonMissionCampaign,
 	CompleteMissionCampaign,
 	FailMissionCampaign,

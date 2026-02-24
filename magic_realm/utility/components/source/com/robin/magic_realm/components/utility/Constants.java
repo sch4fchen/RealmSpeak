@@ -861,6 +861,7 @@ public class Constants {
 	public static final String EXP_ASSASSIN_THIEF = "Assassinthief";
 	public static final String EXP_SUDDEN_DEATH = "SuddenDeath";
 	public static final String EXP_BOUNTY_POINTS_FOR_DISCOVERIES = "BountyPointsForDiscoeries";
+	public static final String EXP_STEALING = "Stealing";
 	
 	// 3rd edition rules
 	public static final String TE_KNIGHT_ADJUSTMENT = "KnightAdjustment";

@@ -259,6 +259,9 @@ public class ActionRow {
 		else if (ActionId.Trade==id) {
 			description = "Trade";
 		}
+		else if (ActionId.Trade==id) {
+			description = "Steal";
+		}
 		else if (ActionId.Rest==id) {
 			description = "Rest "+count+" time"+(count==1?"":"s");
 		}
@@ -446,6 +449,9 @@ public class ActionRow {
 					// Something happened, so BLOCK!!
 					character.setBlocked(true);
 				}
+			}
+			else if (ActionId.Steal==id) {
+				doStealAction();
 			}
 			else if (ActionId.Rest==id) {
 				doRestAction();
@@ -1909,6 +1915,11 @@ public class ActionRow {
 			}
 		}
 		return false;
+	}
+	private void doStealAction() {
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Stealing;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {
