@@ -1917,6 +1917,18 @@ public class ActionRow {
 		return false;
 	}
 	private void doStealAction() {
+		TileLocation tl = character.getCurrentLocation();
+		ArrayList<RealmComponent> victims = ClearingUtility.getAllVictimsForStealing(character,tl.clearing);
+		
+		if (!victims.isEmpty()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select victim to steal from:",false);
+			for (RealmComponent rc:victims) {
+				chooser.addRealmComponent(rc,rc.getGameObject().getName());
+			}
+			chooser.setVisible(true);
+			String selText = chooser.getSelectedText();
+		}
+		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
