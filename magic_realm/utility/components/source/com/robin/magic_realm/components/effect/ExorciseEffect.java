@@ -46,7 +46,7 @@ public class ExorciseEffect implements ISpellEffect {
 			SpellWrapper otherSpell = new SpellWrapper(context.Target.getGameObject());
 			otherSpell.expireSpell();
 		}
-		else if (context.Target.isTreasureLocation() || context.Target.getGameObject().hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE)) {
+		else if (context.Target.isTreasureLocation()) {
 			for (GameObject held : context.Target.getHold()) {
 				if (held.hasThisAttribute(RealmComponent.SPELL)) {
 					SpellWrapper spellWrapper = new SpellWrapper(held);

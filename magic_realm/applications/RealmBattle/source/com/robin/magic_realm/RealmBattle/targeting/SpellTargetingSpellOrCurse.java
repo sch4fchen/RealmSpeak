@@ -3,6 +3,7 @@ package com.robin.magic_realm.RealmBattle.targeting;
 import java.util.Collection;
 
 import com.robin.game.objects.GameData;
+import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
@@ -37,6 +38,18 @@ public class SpellTargetingSpellOrCurse extends SpellTargetingSingle {
 					for (String curse : curses) {
 						identifiers.add(curse);
 						gameObjects.add(rc.getGameObject());
+					}
+				}
+			}
+		}
+		if (spell.getGameObject().hasThisAttribute(Constants.TARGETS_SITES_FREED_SPELL)) {
+			for (RealmComponent rc : battleModel.getBattleLocation().clearing.getClearingComponents()) {
+				if (rc.isTreasureLocation() && spell.getCaster().hasTreasureLocationDiscovery(rc.toString())) {
+					for (GameObject held : rc.getHold()) {
+						if (held.hasThisAttribute(RealmComponent.SPELL)) {
+							gameObjects.add(rc.getGameObject());
+							break;
+						}
 					}
 				}
 			}

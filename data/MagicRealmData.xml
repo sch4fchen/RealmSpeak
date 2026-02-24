@@ -7510,7 +7510,6 @@
           <attributeVal N2="spells" />
           <attributeVal N3="curses" />
 		  <attributeVal N4="sites" />
-		  <attributeVal N5="twts" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -8100,6 +8099,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="306" name="Persuade">
@@ -8168,6 +8168,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="310" name="Melt Into Mist">
@@ -57364,7 +57365,6 @@
           <attributeVal N6="vampires" />
           <attributeVal N7="devils" />
 		  <attributeVal N8="sites" />
-		  <attributeVal N9="twts" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -57896,6 +57896,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2148" name="Persuade">
@@ -57957,6 +57958,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2152" name="Melt Into Mist">
@@ -59776,7 +59778,7 @@
       <AttributeBlock blockName="this">
         <attribute spell="VII" />
         <attribute duration="combat" />
-        <attribute target="site, TWT spell" />
+        <attribute target="site with spell" />
         <attribute text="You may cast the top spell from the target as it were an awakened artifact in your inventory." />
         <attribute magic_color="black" />
         <attribute free_spell="" />

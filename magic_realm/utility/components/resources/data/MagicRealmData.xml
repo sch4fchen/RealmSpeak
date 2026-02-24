@@ -8100,6 +8100,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="306" name="Persuade">
@@ -8168,6 +8169,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="310" name="Melt Into Mist">
@@ -57896,6 +57898,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2148" name="Persuade">
@@ -57957,6 +57960,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2152" name="Melt Into Mist">

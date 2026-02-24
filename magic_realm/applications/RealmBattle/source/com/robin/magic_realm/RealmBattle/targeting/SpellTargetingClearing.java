@@ -161,14 +161,6 @@ public class SpellTargetingClearing extends SpellTargetingSpecial {
 				}
 			}
 		}
-		if (clearingTargetType.contains("twts")) {
-			TileLocation loc = battleModel.getBattleLocation();
-			for (RealmComponent rc : loc.clearing.getDeepClearingComponents()) {
-				if (rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_WITHIN_TREASURE)) {
-					gameObjects.add(rc.getGameObject());
-				}
-			}
-		}
 		boolean ignorebattle = spell.getGameObject().hasThisAttribute("nobattle");
 		for (GameObject theTarget : gameObjects) {
 			spell.addTarget(combatFrame.getHostPrefs(),theTarget,ignorebattle);

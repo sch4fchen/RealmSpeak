@@ -686,6 +686,8 @@ public class Constants {
 	public static final String OPENS_TREASURE_LOCATION = "opens_treasure_locations";
 	public static final String LUCK = "luck";
 	public static final String FREED_SPELL = "freed_spell";
+	public static final String TARGETS_SITES_FREED_SPELL = "targets_sites_freed_spell";
+	
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
