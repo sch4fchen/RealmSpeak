@@ -29,7 +29,7 @@ public class StealAttempt extends RealmTable {
 		this.victim = victim;
 	}
 	public String getTableName(boolean longDescription) {
-		return "Steal Attempt";
+		return "Stealing";
 	}
 	public String getTableKey() {
 		return KEY;

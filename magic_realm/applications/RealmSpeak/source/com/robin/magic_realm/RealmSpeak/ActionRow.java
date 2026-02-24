@@ -1934,6 +1934,7 @@ public class ActionRow {
 		RealmComponent victim = chooser.getFirstSelectedComponent();
 		realmTable = new StealAttempt(gameHandler.getMainFrame(),victim);
 		roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
+		roller.addModifier(character.getStealAttempts());
 		message = realmTable.apply(character,roller);
 		result = realmTable.getTableName(false) + " - " + message;
 		gameHandler.updateCharacterFrames();

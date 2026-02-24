@@ -8,7 +8,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class StealReward extends RealmTable {
 	
-	public static final String KEY = "Stealing";
+	public static final String KEY = "StealReward";
 	private static final String[] RESULT = {
 		"Choice",
 		"Mount",
@@ -18,10 +18,16 @@ public class StealReward extends RealmTable {
 		"Nothing",
 	};
 	private RealmComponent victim;
+	private int modifier = 0;
 	
 	public StealReward(JFrame frame,RealmComponent victim) {
 		super(frame,null);
 		this.victim = victim;
+	}
+	public StealReward(JFrame frame,RealmComponent victim,int modifier) {
+		super(frame,null);
+		this.victim = victim;
+		this.modifier = modifier;
 	}
 	public String getTableName(boolean longDescription) {
 		return "Steal Reward";
