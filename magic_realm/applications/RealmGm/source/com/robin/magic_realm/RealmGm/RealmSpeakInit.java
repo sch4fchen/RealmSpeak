@@ -61,6 +61,14 @@ public class RealmSpeakInit {
 			prepSuperRealmCharacters();
 		}
 		
+		if(!hostPrefs.getGameKeyVals().contains("rw_expansion_1") && hostPrefs.hasPref(Constants.EXP_ASSASSIN_THIEF)){
+			GamePool pool = new GamePool(data.getGameObjects());
+			ArrayList<GameObject> exp1Characters = pool.find("rw_expansion_1_character");
+			for (GameObject go:exp1Characters) {
+				go.setThisKeyVals(hostPrefs.getGameKeyVals());
+			}
+		}
+		
 		// Construct quest "deck" if any
 		if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 			prepQuestDeck();

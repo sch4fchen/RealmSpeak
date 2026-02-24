@@ -7509,7 +7509,7 @@
           <attributeVal N1="demons" />
           <attributeVal N2="spells" />
           <attributeVal N3="curses" />
-		  <attributeVal N4="sites" />
+          <attributeVal N4="sites" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -8099,7 +8099,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
-		<attribute targets_sites_freed_spell="" />
+        <attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="306" name="Persuade">
@@ -8168,7 +8168,7 @@
         <attribute host_okay="" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
-		<attribute targets_sites_freed_spell="" />
+        <attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="310" name="Melt Into Mist">
@@ -57364,7 +57364,7 @@
           <attributeVal N5="succubi" />
           <attributeVal N6="vampires" />
           <attributeVal N7="devils" />
-		  <attributeVal N8="sites" />
+          <attributeVal N8="sites" />
         </attributeList>
       </AttributeBlock>
     </GameObject>
@@ -57896,7 +57896,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
-		<attribute targets_sites_freed_spell="" />
+        <attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2148" name="Persuade">
@@ -57958,7 +57958,7 @@
         <attribute host_okay="" />
         <attribute learnable="" />
         <attribute super_realm="" />
-		<attribute targets_sites_freed_spell="" />
+        <attribute targets_sites_freed_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2152" name="Melt Into Mist">
@@ -59763,16 +59763,16 @@
         <attribute host_okay="" />
         <attribute benevolent="" />
         <attribute super_realm="" />
-		<attribute super_realm_spell="" />
-	  </AttributeBlock>
-	  <AttributeBlock blockName="phase_chit">
-		<attribute phase_chit="" />
-		<attribute text="Luck" />
-		<attribute cannot_be_activated="" />
-	  </AttributeBlock>
-	  <AttributeBlock blockName="phase_chit_effects">
-		<attribute luck="" />
-	  </AttributeBlock>
+        <attribute super_realm_spell="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit">
+        <attribute phase_chit="" />
+        <attribute text="Luck" />
+        <attribute cannot_be_activated="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="phase_chit_effects">
+        <attribute luck="" />
+      </AttributeBlock>
     </GameObject>
     <GameObject id="2237" name="Free Spell">
       <AttributeBlock blockName="this">
@@ -64095,6 +64095,260 @@
         <attribute learnable="" />
         <attribute super_realm="" />
         <attribute redirect="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2476" name="Thief">
+      <AttributeBlock blockName="this">
+        <attribute icon_type="druid" />
+        <attribute character="" />
+        <attribute vulnerability="L" />
+        <attribute start="Inn" />
+        <attribute facing="dark" />
+        <attribute pronoun="he" />
+        <attribute magicuser="" />
+        <attribute icon_folder="characters" />
+        <attribute creator="" />
+        <attribute artcredit="Aethmud / DALL-E" />
+        <attribute potrait_folder="characterdetail_exp1" />
+        <attribute potrait_file="thief" />
+        <attribute rw_expansion_1="" />
+        <attribute rw_expansion_1_character="" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_1">
+        <attribute name="Stray" />
+      </AttributeBlock>
+      <AttributeBlock blockName="level_2">
+        <attribute name="Robber" />
+        <attributeList keyName="advantages">
+          <attributeVal N0="FURTIVENESS:  Get one extra HIDE phase every day." />
+        </attributeList>
+        <attributeList keyName="extra_actions">
+          <attributeVal N0="H" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_3">
+        <attribute name="Rogue" />
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="VIII" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="level_4">
+        <attribute name="Thief" />
+        <attribute spellcount="1" />
+        <attributeList keyName="spelltypes">
+          <attributeVal N0="II" />
+          <attributeVal N1="VIII" />
+        </attributeList>
+        <attributeList keyName="advantages">
+          <attributeVal N0="STEALING:  Substract 1 from all all stealing die rolls." />
+        </attributeList>
+        <attributeList keyName="diemod">
+          <attributeVal N0="-1:stealing:all" />
+        </attributeList>
+      </AttributeBlock>
+      <AttributeBlock blockName="relationship">
+        <attribute bashkars="2" />
+        <attribute lancers="1" />
+        <attribute order="-1" />
+        <attribute shaman="-1" />
+        <attribute woodfolk="-2" />
+        <attribute pagans="1" />
+        <attribute hunters="-1" />
+        <attribute bandits="-2" />
+        <attribute dwarves="-2" />
+        <attribute elves="-2" />
+        <attribute cultists="-2" />
+      </AttributeBlock>
+      <contains id="2477" />
+      <contains id="2478" />
+      <contains id="2479" />
+      <contains id="2480" />
+      <contains id="2481" />
+      <contains id="2482" />
+      <contains id="2483" />
+      <contains id="2484" />
+      <contains id="2485" />
+      <contains id="2486" />
+      <contains id="2487" />
+      <contains id="2488" />
+    </GameObject>
+    <GameObject id="2477" name="Thief Move L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="3" />
+        <attribute strength="L" />
+        <attribute effort="1" />
+        <attribute character_level="1" />
+        <attribute stage="1" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2478" name="Thief Move L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="4" />
+        <attribute strength="L" />
+        <attribute character_level="1" />
+        <attribute stage="2" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2479" name="Thief Fight L3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="3" />
+        <attribute strength="L" />
+        <attribute effort="1" />
+        <attribute character_level="1" />
+        <attribute stage="3" />
+        <attribute level="1" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2480" name="Thief Fight L4">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="4" />
+        <attribute strength="L" />
+        <attribute character_level="2" />
+        <attribute stage="4" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2481" name="Thief Move L2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="move" />
+        <attribute speed="2" />
+        <attribute strength="L" />
+        <attribute effort="2" />
+        <attribute character_level="2" />
+        <attribute stage="5" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2482" name="Thief Fight L2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="2" />
+        <attribute strength="L" />
+        <attribute effort="2" />
+        <attribute character_level="2" />
+        <attribute stage="6" />
+        <attribute level="2" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2483" name="Thief Magic II3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute magic="II" />
+        <attribute effort="1" />
+        <attribute character_level="3" />
+        <attribute stage="7" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2484" name="Thief Magic VIII4*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="4" />
+        <attribute magic="VIII" />
+        <attribute effort="1" />
+        <attribute character_level="3" />
+        <attribute stage="8" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2485" name="Thief Magic VIII3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute magic="VIII" />
+        <attribute effort="1" />
+        <attribute character_level="3" />
+        <attribute stage="9" />
+        <attribute level="3" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2486" name="Thief Stab T2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="2" />
+        <attribute effort="2" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2487" name="Thief Magic II3*">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="3" />
+        <attribute magic="II" />
+        <attribute effort="1" />
+        <attribute character_level="4" />
+        <attribute stage="11" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2488" name="Thief Magic VIII2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="magic" />
+        <attribute speed="2" />
+        <attribute magic="VIII" />
+        <attribute effort="2" />
+        <attribute character_level="4" />
+        <attribute stage="12" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
       </AttributeBlock>
     </GameObject>
   </objects>
