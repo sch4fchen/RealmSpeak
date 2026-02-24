@@ -1975,6 +1975,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
 		getGameObject().removeThisAttribute(Constants.DRINKS_BOUGHT);
 		getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
+		getGameObject().removeThisAttribute(Constants.STEALING_ATTEMPTS);
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
@@ -3789,6 +3790,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setFortDamaged(boolean val) {
 		setBoolean(FORT_DAMAGED,val);
+	}
+	public int getStealAttempt() {
+		return getGameObject().getThisInt(Constants.STEAL_ATTEMPTS);
+	}
+	public void addStealAttempt() {
+		getGameObject().setThisAttribute(Constants.STEAL_ATTEMPTS,getStealAttempt()+1);
 	}
 	public void setNeedsQuestCheck(boolean val) {
 		setBoolean(NEED_QUEST_CHECK,val);

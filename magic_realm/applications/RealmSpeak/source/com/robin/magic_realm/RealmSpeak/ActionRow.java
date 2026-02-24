@@ -1937,7 +1937,7 @@ public class ActionRow {
 		message = realmTable.apply(character,roller);
 		result = realmTable.getTableName(false) + " - " + message;
 		gameHandler.updateCharacterFrames();
-		//character.addStealAttempt();
+		character.addStealAttempt();
 		
 		if (realmTable.getNewTable()!=null) {
 			RealmTable newTable = realmTable.getNewTable();
