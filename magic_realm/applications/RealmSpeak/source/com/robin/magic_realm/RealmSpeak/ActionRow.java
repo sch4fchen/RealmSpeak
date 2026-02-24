@@ -2789,8 +2789,8 @@ public class ActionRow {
 					GameObject go = character.getGameObject().getGameData().createNewObject();
 					int num = character.getNextCacheNumber();
 					go.setName(character.getGameObject().getName()+Constants.CACHE_NAME+num);
-					character.addTreasureLocationDiscovery(go.getName());
 					go.setThisAttribute(RealmComponent.CACHE_CHIT);
+					character.addTreasureLocationDiscovery(go.getName());
 					go.setThisAttribute("clearing",tl.clearing.getNumString());
 					go.setThisAttribute(RealmComponent.TREASURE_LOCATION,character.getGameObject().getName());
 					go.setThisAttribute("cache_number",num);

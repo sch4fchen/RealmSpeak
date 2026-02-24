@@ -2778,6 +2778,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 			return hostPrefs.hasPref(Constants.ADV_CACHING);
 		}
 		
+		if (id==ActionId.Steal) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			return hostPrefs.hasPref(Constants.EXP_STEALING);
+		}
+		
 		if (id==ActionId.Rest) {
 			return !hasActiveInventoryThisKey(Constants.MAJOR_WOUND);
 		}
@@ -4158,7 +4163,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 
 		addListItem(DISC_TREASURE_LOCATIONS,name);
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameData);
-		if ((hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) || this.affectedByKey(Constants.ADVENTURER)) && this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
+		if (!discovery.hasThisAttribute(RealmComponent.CACHE_CHIT) &&
+				(hostPrefs.hasPref(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES) || this.affectedByKey(Constants.ADVENTURER)) &&
+				this.isCharacter() && !discovery.hasThisAttribute(Constants.DISCOVERED)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(gameData.getGameObjectByNameIgnoreCase(name));
 			if (rc!=null) { 
 				if (rc.isTreasureLocation() && discovery.hasThisAttribute(Constants.DISCOVERY)) {
@@ -4176,7 +4183,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
+		if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR) && !discovery.hasThisAttribute(RealmComponent.CACHE_CHIT)) {
 			addDeductVPs(1);
 		}
 		discovery.setThisAttribute(Constants.DISCOVERED);
@@ -7001,6 +7008,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			actionIdHash.put(DayAction.getDayAction(ActionId.Spell).getCode(),ActionId.Spell);
 			actionIdHash.put(DayAction.getDayAction(ActionId.SpellPrep).getCode(),ActionId.SpellPrep);
 			actionIdHash.put(DayAction.getDayAction(ActionId.Cache).getCode(),ActionId.Cache);
+			actionIdHash.put(DayAction.getDayAction(ActionId.Steal).getCode(),ActionId.Steal);
 
 			// Special actions
 			actionIdHash.put(DayAction.getDayAction(ActionId.Heal).getCode(),ActionId.Heal);

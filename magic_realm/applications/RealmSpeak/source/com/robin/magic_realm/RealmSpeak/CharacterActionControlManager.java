@@ -38,6 +38,7 @@ public class CharacterActionControlManager {
 	public Action flyAction;			// select a tile from a list of adjacent tiles
 	public Action remoteSpellAction;
 	public Action cacheAction;
+	public Action stealAction;
 	
 	public Action healAction;
 	public Action repairAction;
@@ -58,6 +59,7 @@ public class CharacterActionControlManager {
 	public ActionIcon flyIcon = new ActionIcon("fly","Fly",DayAction.FLY_ACTION.getCode());
 	public ActionIcon remoteSpellIcon = new ActionIcon("remotespell","Remote SP",DayAction.REMOTE_SPELL_ACTION.getCode());
 	public ActionIcon cacheIcon = new ActionIcon("cache","Cache",DayAction.CACHE_ACTION.getCode());
+	public ActionIcon stealIcon = new ActionIcon("steal","Steal",DayAction.STEAL_ACTION.getCode());
 	
 	public ActionIcon healIcon = new ActionIcon("heal","Heal",DayAction.HEAL_ACTION.getCode());
 	public ActionIcon repairIcon = new ActionIcon("repair","Repair",DayAction.REPAIR_ACTION.getCode());
@@ -250,6 +252,13 @@ public class CharacterActionControlManager {
 			}
 		};
 		cacheAction.putValue(Action.SHORT_DESCRIPTION,DayAction.CACHE_ACTION.getName());
+		stealAction = new AbstractAction("",stealIcon) {
+			public void actionPerformed(ActionEvent ev) {
+				recordingARed = stealIcon.isWarningOn();
+				doRecord(DayAction.STEAL_ACTION.getCode());
+			}
+		};
+		stealAction.putValue(Action.SHORT_DESCRIPTION,DayAction.STEAL_ACTION.getName());
 		healAction = new AbstractAction("",healIcon) {
 			public void actionPerformed(ActionEvent ev) {
 				recordingARed = healIcon.isWarningOn();
@@ -288,6 +297,7 @@ public class CharacterActionControlManager {
 		toolbar.add(remoteSpellAction).setToolTipText(remoteSpellIcon.getText());
 		toolbar.addSeparator();
 		toolbar.add(cacheAction).setToolTipText(cacheIcon.getText());
+		toolbar.add(stealAction).setToolTipText(stealIcon.getText());
 		if (character.hasSpecialActions()) {
 			toolbar.addSeparator();
 			if (character.hasSpecialAction(ActionId.Heal)) {
@@ -875,6 +885,7 @@ public class CharacterActionControlManager {
 		handleInvalidAction(flyAction,flyIcon,willBeRed(pm,DayAction.FLY_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(remoteSpellAction,remoteSpellIcon,willBeRed(pm,DayAction.REMOTE_SPELL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(cacheAction,cacheIcon,willBeRed(pm,DayAction.CACHE_ACTION,usingPony,planned),birdsong,recordingActions);
+		handleInvalidAction(stealAction,stealIcon,willBeRed(pm,DayAction.STEAL_ACTION,usingPony,planned),birdsong,recordingActions);
 		
 		handleInvalidAction(healAction,healIcon,willBeRed(pm,DayAction.HEAL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(repairAction,repairIcon,willBeRed(pm,DayAction.REPAIR_ACTION,usingPony,planned),birdsong,recordingActions);
