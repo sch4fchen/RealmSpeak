@@ -259,7 +259,7 @@ public class ActionRow {
 		else if (ActionId.Trade==id) {
 			description = "Trade";
 		}
-		else if (ActionId.Trade==id) {
+		else if (ActionId.Steal==id) {
 			description = "Steal";
 		}
 		else if (ActionId.Rest==id) {
@@ -1920,18 +1920,38 @@ public class ActionRow {
 		TileLocation tl = character.getCurrentLocation();
 		ArrayList<RealmComponent> victims = ClearingUtility.getAllVictimsForStealing(character,tl.clearing);
 		
-		if (!victims.isEmpty()) {
-			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select victim to steal from:",false);
-			for (RealmComponent rc:victims) {
-				chooser.addRealmComponent(rc,rc.getGameObject().getName());
-			}
-			chooser.setVisible(true);
-			String selText = chooser.getSelectedText();
+		if (victims.isEmpty()) {
+			result = "Nobody to steal from.";
+			completed = true;
+			return;
+		}	
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select victim to steal from:",false);
+		for (RealmComponent rc:victims) {
+			chooser.addRealmComponent(rc,rc.getGameObject().getName());
+		}
+		chooser.setVisible(true);
+		String message = null;
+		RealmComponent victim = chooser.getFirstSelectedComponent();
+		realmTable = new StealAttempt(gameHandler.getMainFrame(),victim);
+		roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
+		message = realmTable.apply(character,roller);
+		result = realmTable.getTableName(false) + " - " + message;
+		gameHandler.updateCharacterFrames();
+		//character.addStealAttempt();
+		
+		if (realmTable.getNewTable()!=null) {
+			RealmTable newTable = realmTable.getNewTable();
+			newAction = new ActionRow(turnPanel,character,newTable,isFollowing);
+			newAction.setRoller(DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(newTable));
+			message = newTable.apply(character,roller);
+			newAction.setResult(newTable.getTableName(false) + " - " + message);;
+			gameHandler.updateCharacterFrames();
 		}
 		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		completed = true;
 	}
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {

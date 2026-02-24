@@ -22,7 +22,7 @@ Would be nice to make weapon abilities too:
 Version 1.2.4.6
 # Super Realm: Free Spell (replacing Spirit Guide)
 # Expansion 1: Thief
-# Expansion 1 rule: Stealing
+# Expansion 1:: Stealing
 BUGS/ISSUES:
 # Fix deducting VPs and getting bounty points for discoveries for caches
 
