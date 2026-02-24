@@ -15,7 +15,7 @@ public class FreeTheSoulEffect implements ISpellEffect {
 		if (context.Target.getGameObject().hasThisAttribute(Constants.GHOST)||context.Target.getGameObject().hasThisAttribute(Constants.WRAITH)
 				||context.Target.getGameObject().hasThisAttribute(Constants.GHOUL)||context.Target.getGameObject().hasThisAttribute(Constants.SKELETON)
 				||context.Target.getGameObject().hasThisAttribute(Constants.UNDEAD)) {
-			DieRoller roller = DieRollBuilder.getDieRollBuilder(context.Parent,(new CharacterWrapper(context.Caster)),0).createRoller("Free the Soul");
+			DieRoller roller = DieRollBuilder.getDieRollBuilder(context.Parent,(new CharacterWrapper(context.Caster)),0).createRoller("FreeTheSoul");
 			RealmLogging.logMessage(context.Caster.getName(),"Free the Soul result: "+roller.getHighDieResult());
 			if (roller.getHighDieResult()<6) {
 				RealmLogging.logMessage(context.Caster.getName(),"Free the Soul: Kills "+context.Target.getGameObject().getName());
@@ -30,7 +30,7 @@ public class FreeTheSoulEffect implements ISpellEffect {
 			else {
 				RealmLogging.logMessage(context.Caster.getName(),"Free the Soul: Does not kill "+context.Target.getGameObject().getName());
 				if (context.Target.getHorse()!=null && !context.Target.getHorse().isDead()) {
-					roller = DieRollBuilder.getDieRollBuilder(context.Parent,(new CharacterWrapper(context.Caster)),0).createRoller("Free the Soul");
+					roller = DieRollBuilder.getDieRollBuilder(context.Parent,(new CharacterWrapper(context.Caster)),0).createRoller("FreeTheSoul");
 					RealmLogging.logMessage(context.Caster.getName(),"Free the Soul result: "+roller.getHighDieResult());
 					if (roller.getHighDieResult()<6) {
 						killHorse(context);

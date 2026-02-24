@@ -10,7 +10,7 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class AlterSize extends RealmTable {
 	
-	public static final String KEY = "Alter Object";
+	public static final String KEY = "AlterSize";
 	private static final String[] RESULT = {
 			"Tougher",
 			"Larger",
@@ -26,7 +26,7 @@ public class AlterSize extends RealmTable {
 		this.spell = spell;
 	}
 	public String getTableName(boolean longDescription) {
-		return "Alter Object";
+		return "Alter Size";
 	}
 	public String getTableKey() {
 		return KEY;

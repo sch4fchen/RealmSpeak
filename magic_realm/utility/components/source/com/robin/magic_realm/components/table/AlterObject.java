@@ -12,7 +12,7 @@ import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class AlterObject extends RealmTable {
 	
-	public static final String KEY = "Alter Object";
+	public static final String KEY = "AlterObject";
 	private static final String[] RESULT = {
 			"Negligible weight",
 			"Light weight",
