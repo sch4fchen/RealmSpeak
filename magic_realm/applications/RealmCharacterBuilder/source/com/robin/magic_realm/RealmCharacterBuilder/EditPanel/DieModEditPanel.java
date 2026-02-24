@@ -16,11 +16,11 @@ public class DieModEditPanel extends AdvantageEditPanel {
 	
 	private static final String[][] TABLE = {
 		{"Natives","Meeting","Commerce"},
-		{"Spells","Curse","PoP:powerofthepit","Wish","Transform","Meditate","Mesmerize","SummonDemon","Lost","Violent Storm","Magic Missile:magicmissil"},
+		{"Spells","Curse","PoP:powerofthepit","Wish","Transform","Lost","Violent Storm","Magic Missile:magicmissil","Alter Object:alterobject","Alter Size:altersize","Dark Favor:darkfavor","Devils Spell:devilsspell","Free the Soul:freethesoul","Meditate","Mesmerize","Summon Demon:summondemon"},
 		{"Actions","Hide","Hire","Trade"},
 		{"Battle","Missile","Thrown","Fumble","Stumble"},
 		
-		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture"},
+		{"Expansion","Raise Dead:raisedead","Summon Elemental:summonelemental","Summon Animal:summonanimal","Capture","Stealing"},
 		{"Treasure within Treasure","TWT:twt", "Toadstool Circle", "Crypt of the Knight", "Enchanted Meadow", "Cicle of Stones", "Ethereal Abbey", "Fairy Grove", "Haunted Grave", "Mage Library"},
 		{"Search","Locate","Loot","Magic Sight:magicsight","Peer","Read Runes:readrunes"},
 	};
