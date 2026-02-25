@@ -7684,6 +7684,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		addNote(trader,"Trade",list.toString());
 	}
+	public void addNoteSteal(GameObject trader,Collection<GameObject> hold) {
+		StringBufferedList list = new StringBufferedList();
+		for (GameObject go : hold) {
+			list.append(go.getName());
+		}
+		addNote(trader,"Steal",list.toString());
+	}
 	public Note getNoteTrade(GameObject trader) {
 		return getNote(trader.getStringId(),"Trade");
 	}

@@ -1,10 +1,15 @@
 package com.robin.magic_realm.components.table;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class StealReward extends RealmTable {
@@ -41,6 +46,7 @@ public class StealReward extends RealmTable {
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {
+		StealTablesCommon.stealChoice(getParentFrame(),character,victim,"Steal Reward");
 		return RESULT[0];
 	}
 
@@ -53,6 +59,20 @@ public class StealReward extends RealmTable {
 	}
 
 	public String applyFour(CharacterWrapper character) {
+		GameObject holder = SetupCardUtility.getDenizenHolder(victim.getGameObject());
+		ArrayList<RealmComponent> treasures = new ArrayList<>();
+		for(GameObject item:holder.getHold()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(item);
+			if ( rc.isTreasure()) {
+				treasures.add(rc);
+			}
+		}
+		if (treasures.size()==0) {
+			JOptionPane.showMessageDialog(getParentFrame(),"No treasure to steal from "+victim.getGameObject().getNameWithNumber(),"Steal Reward",JOptionPane.INFORMATION_MESSAGE);
+		}
+		else {
+			character.getGameObject().add(treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject());
+		}
 		return RESULT[3];
 	}
 
