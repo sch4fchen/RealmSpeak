@@ -551,7 +551,7 @@ public class ActionRow {
 		if (!character.isBlocked() && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 			character.setBlocked(true);
 		}
-		if (hostPrefs.hasPref(Constants.SR_NATIVE_BLOCKING)) {
+		if (hostPrefs.hasPref(Constants.SR_NATIVE_BLOCKING) && !character.isBlocked()) {
 			ArrayList<RealmComponent> natives = RealmUtility.willBeBlockedByNatives(character,isFollowing);
 			
 			HashMap<String,Integer> groups = new HashMap<String,Integer>();
@@ -587,15 +587,15 @@ public class ActionRow {
 			
 			if (!groups.isEmpty()) {
 				for (String group : groups.keySet()) {
-					realmTable = Meeting.createMeetingTable(
+					ActionRow newAction = new ActionRow(turnPanel,character,Meeting.createMeetingTable(
 							gameHandler.getMainFrame(),
 							character,
 							character.getCurrentLocation(),
 							groupLeaders.get(group),
 							null,
 							null,
-							groups.get(group));
-					handleTable(false);
+							groups.get(group)),isFollowing);
+					newAction.handleTable(false);
 				}
 			}
 		}
@@ -1682,8 +1682,8 @@ public class ActionRow {
 					}
 				}
 			}
-			TileLocation current = character.getCurrentLocation();
 			if (unhide) {
+				TileLocation current = character.getCurrentLocation();
 				character.setHidden(false);
 				if (current!=null && current.hasClearing()) {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {

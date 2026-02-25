@@ -516,17 +516,9 @@ public class ClearingUtility {
 	 * Returns all native leaders, visitors, and travelers w/stores that are in the clearing.
 	 */
 	public static ArrayList<RealmComponent> getAllTraders(CharacterWrapper character,ClearingDetail clearing) {
-		return getAllItemCarrier(character,clearing,false);
-	}
-	
-	public static ArrayList<RealmComponent> getAllVictimsForStealing(CharacterWrapper character,ClearingDetail clearing) {
-		return getAllItemCarrier(character,clearing,true);
-	}
-	
-	private static ArrayList<RealmComponent> getAllItemCarrier(CharacterWrapper character,ClearingDetail clearing,boolean ignoreDamagedRelations) {
 		ArrayList<RealmComponent> traders = new ArrayList<>();
 		for (RealmComponent rc:clearing.getClearingComponents()) {
-			if (!ignoreDamagedRelations && character.hasDamagedRelations(rc.getGameObject())) {
+			if (character.hasDamagedRelations(rc.getGameObject())) {
 				continue;
 			}
 			if (rc.isNative() && rc.getOwnerId()==null) {
@@ -546,6 +538,19 @@ public class ClearingUtility {
 			}
 		}
 		return traders;
+	}
+	
+	public static ArrayList<RealmComponent> getAllVictimsForStealing(CharacterWrapper character,ClearingDetail clearing) {
+		ArrayList<RealmComponent> victims = new ArrayList<>();
+		for (RealmComponent rc:clearing.getClearingComponents()) {
+			if (rc.isNative() && rc.getOwnerId()==null) {
+				String rank = rc.getGameObject().getThisAttribute("rank");
+				if (rank!=null && "HQ".equals(rank)) {
+					victims.add(rc);
+				}
+			}
+		}
+		return victims;
 	}
 
 	/**

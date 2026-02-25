@@ -1,9 +1,15 @@
 package com.robin.magic_realm.components.table;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.RelationshipType;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class StealAttempt extends RealmTable {
@@ -17,19 +23,14 @@ public class StealAttempt extends RealmTable {
 		"Suspect - Lose one level of friendliness",
 		"Caught/Block - Natives become Enemy",
 	};
-	private RealmComponent victim;	
-	
-	//Native
-	//Visitor
-	//Traveler
-	//Guild
-	
+	private RealmComponent victim;
+		
 	public StealAttempt(JFrame frame,RealmComponent victim) {
 		super(frame,null);
 		this.victim = victim;
 	}
 	public String getTableName(boolean longDescription) {
-		return "Stealing";
+		return "Steal Attempt";
 	}
 	public String getTableKey() {
 		return KEY;
@@ -38,11 +39,30 @@ public class StealAttempt extends RealmTable {
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {
+		GameObject holder = SetupCardUtility.getDenizenHolder(victim.getGameObject());
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(getParentFrame(),"Select item to steal:",false);
+		for(GameObject item:holder.getHold()) {
+			RealmComponent rc = RealmComponent.getRealmComponent(item);
+			if (rc.isItem() || rc.isTreasure()) {
+				if (rc.isTreasure() && !item.hasThisAttribute(Constants.TREASURE_SEEN)) {
+					item.setThisAttribute(Constants.TREASURE_SEEN);
+				}
+				chooser.addRealmComponent(RealmComponent.getRealmComponent(item),item.getName());
+			}
+		}
+		if (chooser.getComponentCount()==0) {
+			JOptionPane.showMessageDialog(getParentFrame(),"Nothing to steal from "+victim.getGameObject().getNameWithNumber(),"Steal Attempt",JOptionPane.INFORMATION_MESSAGE);
+		}
+		else {
+			chooser.setVisible(true);
+			RealmComponent selectedItem = chooser.getFirstSelectedComponent();
+			character.getGameObject().add(selectedItem.getGameObject());
+		}
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		super.setNewTable(new StealReward(getParentFrame(),victim));
+		super.setNewTable(new StealReward(getParentFrame(),victim,-1));
 		return RESULT[1];
 	}
 
@@ -57,10 +77,14 @@ public class StealAttempt extends RealmTable {
 	}
 
 	public String applyFive(CharacterWrapper character) {
+		character.changeRelationship(victim.getGameObject(), -1);
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
+		character.changeRelationshipTo(victim.getGameObject(), RelationshipType.ENEMY);
+		character.setBlocked(true);
+		character.setHidden(false);
 		return RESULT[5];
 	}
 }
