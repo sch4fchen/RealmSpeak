@@ -51,10 +51,12 @@ public class StealReward extends RealmTable {
 	}
 
 	public String applyTwo(CharacterWrapper character) {
+		StealTablesCommon.stealChoiceHorse(getParentFrame(),character,victim,"Steal Reward");
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
+		StealTablesCommon.stealChoiceArmor(getParentFrame(),character,victim,"Steal Reward");
 		return RESULT[2];
 	}
 
