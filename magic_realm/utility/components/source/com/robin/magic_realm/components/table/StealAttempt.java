@@ -44,7 +44,9 @@ public class StealAttempt extends RealmTable {
 		for(GameObject item:holder.getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
 			if (rc.isItem() || rc.isTreasure()) {
-				if (rc.isTreasure() && !item.hasThisAttribute(Constants.TREASURE_SEEN)) {
+				if (rc.isTreasure()) {
+					TreasureCardComponent treasure = (TreasureCardComponent)rc;
+					treasure.setFaceUp();
 					item.setThisAttribute(Constants.TREASURE_SEEN);
 				}
 				chooser.addRealmComponent(RealmComponent.getRealmComponent(item),item.getName());
