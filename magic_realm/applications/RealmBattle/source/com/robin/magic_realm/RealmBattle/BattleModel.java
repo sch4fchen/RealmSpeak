@@ -1027,7 +1027,7 @@ public class BattleModel {
 		}
 	}
 	
-	public void doRepositioningAndTactics() {
+	public void doRepositioningAndTactics(int combatRound) {
 		/*
 		 * Find all participants that have their own sheet, and start there.
 		 * 
@@ -1047,7 +1047,6 @@ public class BattleModel {
 		 * 		CIRCLE - Attackers = 0-n
 		 * 		RED - Self
 		 */
-		int combatRound = CombatFrame.getSingleton().getCurrentRound();
 		ArrayList<RealmComponent> all = getAllBattleParticipants(true);
 		for (RealmComponent rc : all) {
 			RealmComponent target = rc.getTarget();
@@ -2544,20 +2543,18 @@ public class BattleModel {
 							combat = new CombatWrapper(weapon.getGameObject());
 							boxA = combat.getCombatBoxAttack();
 							boxD = combat.getCombatBoxDefense();
-							if ((boxA==0 || boxD==0) && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
-								throw new IllegalStateException("box is zero for "+weapon.getGameObject().getName()+" during reposition!!");
+							if (boxA!=0 && boxD!=0) {
+								boxHash.put(new Key(boxA,boxD),weapon);
 							}
-							boxHash.put(new Key(boxA,boxD),weapon);
 						}
 						NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorse();
 						if (horse!=null) {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
 							boxD = combat.getCombatBoxDefense();
-							if ((boxA==0 || boxD==0) && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
-								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
+							if (boxA!=0 && boxD!=0) {
+								boxHash.put(new Key(boxA,boxD),horse);
 							}
-							boxHash.put(new Key(boxA,boxD),horse);
 						}
 					}
 					else if (rc.isNative()) {
@@ -2567,10 +2564,9 @@ public class BattleModel {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
 							boxD = combat.getCombatBoxDefense();
-							if ((boxA==0 || boxD==0) && !hostPrefs.hasPref(Constants.SR_COMBAT)) {
-								throw new IllegalStateException("box is zero for "+horse.getGameObject().getName()+" during reposition!!");
+							if (boxA!=0 && boxD!=0) {
+								boxHash.put(new Key(boxA,boxD),horse);
 							}
-							boxHash.put(new Key(boxA,boxD),horse);
 						}
 					}
 				}// box might be zero if targeting an unassigned monster with a spell

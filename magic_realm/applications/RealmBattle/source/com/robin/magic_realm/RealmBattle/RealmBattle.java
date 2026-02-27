@@ -295,7 +295,7 @@ public class RealmBattle {
 						case Constants.COMBAT_POSITIONING:
 							LogStage("Positioning");
 							// need to energize spells here
-							energizeSpells(currentCombatLocation,data,Constants.COMBAT_POSITIONING);
+							energizeSpells(currentCombatLocation,data);
 							fixSheetOwners(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_TACTICS:
@@ -661,8 +661,9 @@ public class RealmBattle {
 		}
 	}
 	
-	public static void energizeSpells(TileLocation location,GameData data,int combatRound) {
+	public static void energizeSpells(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
+		int combatRound = model.getBattleRound(Constants.COMBAT_POSITIONING);
 		model.doEnergizeSpells(combatRound);
 	}
 	
@@ -682,7 +683,8 @@ public class RealmBattle {
 	public static void repositionTactics(TileLocation location,GameData data) {
 		logger.fine("----");
 		BattleModel model = buildBattleModel(location,data);
-		model.doRepositioningAndTactics();
+		int combatRound = model.getBattleRound(Constants.COMBAT_TACTICS);
+		model.doRepositioningAndTactics(combatRound);
 	}
 	
 	public static void resolveCombat(TileLocation location,GameData data) {
