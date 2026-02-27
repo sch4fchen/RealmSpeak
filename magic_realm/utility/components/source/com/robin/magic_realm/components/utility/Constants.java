@@ -862,7 +862,7 @@ public class Constants {
 	public static final String EXP_ASSASSIN_THIEF = "Assassinthief";
 	public static final String EXP_SUDDEN_DEATH = "SuddenDeath";
 	public static final String EXP_BOUNTY_POINTS_FOR_DISCOVERIES = "BountyPointsForDiscoeries";
-	public static final String EXP_STEALING = "Stealing";
+	public static final String EXP_STEALING = "StealingNatives";
 	
 	// 3rd edition rules
 	public static final String TE_KNIGHT_ADJUSTMENT = "KnightAdjustment";
@@ -972,6 +972,7 @@ public class Constants {
 	public static final String SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT = "FollowersOnlyDiscoverWithMagicSight";
 	public static final String SR_ADV_GROUNDED_MISSIONS_AND_TASKS = "GroundedMissionsAndTasks";
 	public static final String SR_OPT_CORNERED = "Cornered";
+	public static final String SR_OPT_STEALING = "StealingInCombat";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";

@@ -151,6 +151,7 @@ public class CombatFrame extends JFrame {
 	private JButton hireNomadButton;
 	private JButton dropBelongingsButton;
 	private JButton abandonBelongingsButton;
+	private JButton stealButton;
 	private JButton suggestButton;
 	
 	// assign targets
@@ -323,6 +324,7 @@ public class CombatFrame extends JFrame {
 		hireNomadButton = null;
 		dropBelongingsButton = null;
 		abandonBelongingsButton = null;
+		stealButton = null;
 		suggestButton = null;
 		selectTargetFromUnassignedButton = null;
 		changeTacticsButton = null;
@@ -840,6 +842,17 @@ public class CombatFrame extends JFrame {
 		}
 		return abandonBelongingsButton;
 	}
+	private JButton getStealButton() {
+		if (stealButton==null) {
+			stealButton = new JButton("Steal");
+			stealButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					steal();
+				}
+			});
+		}
+		return stealButton;
+	}
 	private JButton getSelectTargetFromUnassignedButton() {
 		if (selectTargetFromUnassignedButton==null) {
 			selectTargetFromUnassignedButton = new JButton("Select Unassigned Target");
@@ -1092,6 +1105,10 @@ public class CombatFrame extends JFrame {
 
 					if (hostPrefs.usesSuperRealm()) {
 						list.add(getHireNomadButton());
+					}
+					
+					if (hostPrefs.hasPref(Constants.SR_OPT_STEALING) && activeCharacter.isHidden()) {
+						list.add(getStealButton());
 					}
 					
 					if (activeCharacterIsHere) {
@@ -1618,6 +1635,9 @@ public class CombatFrame extends JFrame {
 			}
 			if (hireNomadButton!=null) {
 				hireNomadButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
+			}
+			if (stealButton!=null) {
+				stealButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
 			}
 			if (selectTargetFromUnassignedButton!=null) {
 				selectTargetFromUnassignedButton.setEnabled(!targetsSelected && activeCharacterIsHere);
@@ -4216,6 +4236,30 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 	}
+	public void steal() {
+		TileLocation loc = currentBattleModel.getBattleLocation();
+		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select victim to steal from:",true);
+		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+			if (rc.isHidden() && !activeCharacter.foundHiddenEnemy(rc.getGameObject())) continue;
+			if (rc.isCharacter() && (new CharacterWrapper(rc.getGameObject()).foundHiddenEnemy(activeCharacter.getGameObject()))) continue;
+			if (rc.isCharacter() || rc.isHiredOrControlled()) {
+				chooser.add(rc);
+			}
+		}
+		if (chooser.getComponentCount()==0) {
+			JOptionPane.showMessageDialog(this,"No one to steal from.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
+		chooser.setVisible(true);
+		RealmComponent victim = chooser.getFirstSelectedComponent();
+		if (victim == null) {
+			return;
+		}
+		//hideRoll
+		//loot from inactive inventory (stack must be organized Rule 4.3.4.)
+		changes = true;
+	}
+	
 	/**
 	 * @return Returns the activeParticipant.
 	 */
