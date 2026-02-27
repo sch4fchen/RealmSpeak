@@ -113,7 +113,7 @@ public abstract class RealmTable {
 		this.roller = inRoller;
 		int result = getResult(roller);
 		
-		if (character.hasLuck()) {
+		if (character!=null && character.hasLuck()) {
 			int ret = JOptionPane.showConfirmDialog(
 					parentFrame,
 					"Do you want to re-roll this roll ("+roller.getStringResult()+")?",
