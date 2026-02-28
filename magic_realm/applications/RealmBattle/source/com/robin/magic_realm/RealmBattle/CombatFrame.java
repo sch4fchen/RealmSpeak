@@ -4294,7 +4294,7 @@ public class CombatFrame extends JFrame {
 			JOptionPane.showMessageDialog(this,"Nothing to steal from "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			return;
 		}
-		//order inventory & action cannot be undone
+		RealmUtility.sortGameObjectsHold(victim.getGameObject(),false);
 		inventory = new CharacterWrapper(victim.getGameObject()).getInactiveInventory();
 		
 		DieRoller stealRoller = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createRoller("stealing");
@@ -4304,9 +4304,9 @@ public class CombatFrame extends JFrame {
 			JOptionPane.showMessageDialog(this,"Failed to steal from the inactive inventory.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 		}
 		else {
-			GameObject loot = inventory.get(lootRoll);
+			GameObject loot = inventory.get(lootRoll-1);
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Stealed from "+victim.getGameObject().getName());
-			JOptionPane.showMessageDialog(this,"You have stolen "+loot.getName()+" from the "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			JOptionPane.showMessageDialog(this,"You have stolen the "+loot.getName()+" from the "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			Loot.addItemToCharacter(this,null,activeCharacter,loot);
 		}
 	}

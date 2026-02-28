@@ -1324,7 +1324,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.OPT_ENHANCED_ARTIFACTS,true);
 		optionPane.setOption(Constants.OPT_AUTOMATIC_ENCHANTING,true);
 		optionPane.setOption(Constants.OPT_COMMERCE,true);
-		optionPane.setOption(Constants.SR_SELLING,true);
+		optionPane.setOption(Constants.SR_ADV_SELLING,true);
 		optionPane.setOption(Constants.OPT_RIDING_HORSES,true);
 		optionPane.setOption(Constants.OPT_FUMBLE,true);
 		optionPane.setOption(Constants.OPT_STUMBLE,true);
