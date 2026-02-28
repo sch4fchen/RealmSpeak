@@ -2542,8 +2542,8 @@ public class BattleModel {
 						if (weapon!=null) {
 							combat = new CombatWrapper(weapon.getGameObject());
 							boxA = combat.getCombatBoxAttack();
-							boxD = combat.getCombatBoxDefense();
-							if (boxA!=0 && boxD!=0) {
+							boxD = combat.getCombatBoxDefense();							
+							if ((boxA!=0 && boxD!=0) || hostPrefs.hasPref(Constants.SR_COMBAT)) {
 								boxHash.put(new Key(boxA,boxD),weapon);
 							}
 						}
@@ -2552,7 +2552,7 @@ public class BattleModel {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
 							boxD = combat.getCombatBoxDefense();
-							if (boxA!=0 && boxD!=0) {
+							if ((boxA!=0 && boxD!=0) || hostPrefs.hasPref(Constants.SR_COMBAT)) {
 								boxHash.put(new Key(boxA,boxD),horse);
 							}
 						}
@@ -2564,7 +2564,7 @@ public class BattleModel {
 							combat = new CombatWrapper(horse.getGameObject());
 							boxA = combat.getCombatBoxAttack();
 							boxD = combat.getCombatBoxDefense();
-							if (boxA!=0 && boxD!=0) {
+							if ((boxA!=0 && boxD!=0) || hostPrefs.hasPref(Constants.SR_COMBAT)) {
 								boxHash.put(new Key(boxA,boxD),horse);
 							}
 						}
