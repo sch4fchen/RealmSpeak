@@ -2041,6 +2041,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 					// what to do otherwise?  random clearing?
 				}
 			}
+			else if (rc.isCredit()) {
+				int daysLeft = item.getThisInt("time_limit_days");
+				daysLeft--;
+				if (daysLeft<=0) {
+					GameClient.broadcastClient(getGameObject().getName(),"Failed to pay back the credit to the "+StringUtilities.capitalize(item.getThisAttribute(RealmComponent.CREDIT))+" by the required time limit.");
+					this.getGameObject().remove(item);
+				}
+				else {
+					rc.getGameObject().setThisAttribute("time_limit_days",daysLeft);
+				}
+			}
 		}
 		
 		// Fatigue alerted chits
