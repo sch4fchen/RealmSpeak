@@ -1107,7 +1107,7 @@ public class CombatFrame extends JFrame {
 						list.add(getHireNomadButton());
 					}
 					
-					if (hostPrefs.hasPref(Constants.SR_OPT_STEALING) && activeCharacter.isHidden()) {
+					if (hostPrefs.hasPref(Constants.SR_OPT_STEALING)) {
 						list.add(getStealButton());
 					}
 					
@@ -1637,7 +1637,7 @@ public class CombatFrame extends JFrame {
 				hireNomadButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
 			}
 			if (stealButton!=null) {
-				stealButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged());
+				stealButton.setEnabled(!changes && activeCharacterIsHere && !combat.getHasCharged() && activeCharacter.isHidden());
 			}
 			if (selectTargetFromUnassignedButton!=null) {
 				selectTargetFromUnassignedButton.setEnabled(!targetsSelected && activeCharacterIsHere);
@@ -4239,14 +4239,16 @@ public class CombatFrame extends JFrame {
 	public void steal() {
 		TileLocation loc = currentBattleModel.getBattleLocation();
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select victim to steal from:",true);
+		boolean noVictims = true;
 		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 			if (rc.isHidden() && !activeCharacter.foundHiddenEnemy(rc.getGameObject())) continue;
 			if (rc.isCharacter() && (new CharacterWrapper(rc.getGameObject()).foundHiddenEnemy(activeCharacter.getGameObject()))) continue;
 			if (rc.isCharacter() || rc.isHiredLeader()) {
-				chooser.add(rc);
+				chooser.addRealmComponent(rc,rc.getGameObject().getName());
+				noVictims = false;
 			}
 		}
-		if (chooser.getComponentCount()==0) {
+		if (noVictims) {
 			JOptionPane.showMessageDialog(this,"No one to steal from.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			return;
 		}
@@ -4256,6 +4258,7 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 		changes = true;
+		updateControls();
 		
 		RealmCalendar cal = RealmCalendar.getCalendar(gameData);
 		boolean canHide = !cal.isHideDisabled(activeCharacter.getCurrentMonth());
@@ -4275,6 +4278,7 @@ public class CombatFrame extends JFrame {
 		DieRoller hideRoller = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
 		if (hideRoller.getHighDieResult() < 6) {
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Hides successfully!");
+			JOptionPane.showMessageDialog(this,"You hide successfully.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 		}
 		else {
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Does not hide successfully!");
@@ -4282,21 +4286,26 @@ public class CombatFrame extends JFrame {
 			return;
 		}
 		
-		ArrayList<GameObject> inventory = new CharacterWrapper(victim.getGameObject()).getInventory();
+		ArrayList<GameObject> inventory = new CharacterWrapper(victim.getGameObject()).getInactiveInventory();
 		if (inventory.size() == 0) {
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Nothing to steal from "+victim.getGameObject().getName());
+			JOptionPane.showMessageDialog(this,"Nothing to steal from "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			return;
 		}
 		//order inventory
 		inventory = new CharacterWrapper(victim.getGameObject()).getInactiveInventory();
 		
 		DieRoller stealRoller = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createRoller("stealing");
-		int loot = stealRoller.getHighDieResult();
-		if (loot>=inventory.size()) {
+		int lootRoll = stealRoller.getHighDieResult();
+		if (lootRoll>=inventory.size()) {
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Failed to steal from the inactive inventory.");
 			JOptionPane.showMessageDialog(this,"Failed to steal from the inactive inventory.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 		}
 		else {
-			Loot.addItemToCharacter(this,null,activeCharacter,inventory.get(stealRoller.getHighDieResult()));
+			GameObject loot = inventory.get(lootRoll);
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Stealed from "+victim.getGameObject().getName());
+			JOptionPane.showMessageDialog(this,"You have stolen "+loot.getName()+" from "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			Loot.addItemToCharacter(this,null,activeCharacter,loot);
 		}
 	}
 	
