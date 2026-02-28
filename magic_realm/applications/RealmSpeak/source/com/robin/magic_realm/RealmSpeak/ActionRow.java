@@ -1737,7 +1737,7 @@ public class ActionRow {
 			else {
 				// Selling
 				boolean allowMultiple = true;
-				if (hostPrefs.hasPref(Constants.SR_SELLING)) {
+				if (hostPrefs.hasPref(Constants.SR_ADV_SELLING)) {
 					allowMultiple = false;
 				}
 				tradeDialog = new RealmTradeDialog(gameHandler.getMainFrame(),"Select item(s) to SELL to "+traderRel+":",allowMultiple,true,false);

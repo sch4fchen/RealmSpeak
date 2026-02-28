@@ -963,7 +963,8 @@ public class Constants {
 	public static final String SR_MOVEMENT_RESTRICTION = "MovementRestriction";
 	public static final String SR_OPT_MOVEMENT_RESTRICTION = "MoveChitRequiredForMovement";
 	public static final String NO_SPELL_LEARNING_RESTRICTIONS = "NoSpellLearningRestrictions";
-	public static final String SR_SELLING = "Selling";
+	public static final String SR_ADV_SELLING = "Selling";
+	public static final String SR_ADV_CREDIT = "Credit";
 	public static final String SR_BOOTS_ACTIVE_WHILE_RIDING = "BootsActiveWhileRiding";
 	public static final String SR_NO_HORSES_IN_CAVES = "NoHorsesInCaves";
 	public static final String SR_HORSES_REMOVING_FROM_REALM = "HoresesRemovingFromTheRealm";

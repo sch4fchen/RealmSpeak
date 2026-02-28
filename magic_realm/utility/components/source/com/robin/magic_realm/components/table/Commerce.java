@@ -249,7 +249,7 @@ public abstract class Commerce extends Trade {
 		}
 	}
 	public static Commerce createCommerceTable(JFrame frame,CharacterWrapper character,TileLocation currentLocation,RealmComponent trader,Collection<RealmComponent> merchandise,int ignoreBuyDrinksLimit,HostPrefWrapper hostPrefs) {
-		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE) && !hostPrefs.hasPref(Constants.SR_SELLING)) {
+		if (!hostPrefs.hasPref(Constants.OPT_COMMERCE) && !hostPrefs.hasPref(Constants.SR_ADV_SELLING)) {
 			return new CommerceNone(frame,new TradeInfo(trader),merchandise,hostPrefs);
 		}
 		
@@ -257,7 +257,7 @@ public abstract class Commerce extends Trade {
 		
 		Commerce commerce = null;
 		
-		if (hostPrefs.hasPref(Constants.SR_SELLING)) {		
+		if (hostPrefs.hasPref(Constants.SR_ADV_SELLING)) {		
 			String visitor = trader.getGameObject().getThisAttribute(Constants.VISITOR);
 			if (visitor!=null) {
 				String priceKey = visitor.toLowerCase()+"_price";
