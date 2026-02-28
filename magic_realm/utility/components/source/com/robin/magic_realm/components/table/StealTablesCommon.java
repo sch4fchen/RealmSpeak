@@ -30,8 +30,6 @@ public class StealTablesCommon {
 			RealmComponent rc = RealmComponent.getRealmComponent(item);
 			if ((allItems || (treasures && rc.isTreasure()) || (horse && rc.isHorse()) || (armor && rc.isArmor())) && (rc.isItem() || rc.isTreasure())) {
 				if (rc.isTreasure()) {
-					TreasureCardComponent treasure = (TreasureCardComponent)rc;
-					treasure.setFaceUp();
 					holdToNote.add(item);
 				}
 				chooser.addRealmComponent(RealmComponent.getRealmComponent(item),item.getName());
@@ -54,7 +52,7 @@ public class StealTablesCommon {
 			character.addNoteSteal(victim.getGameObject(),holdToNote);
 			chooser.setVisible(true);
 			RealmComponent selectedItem = chooser.getFirstSelectedComponent();
-			character.getGameObject().add(selectedItem.getGameObject());
+			Loot.addItemToCharacter(frame, null, character, selectedItem.getGameObject());
 		}
 	}
 }

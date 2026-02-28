@@ -4242,7 +4242,7 @@ public class CombatFrame extends JFrame {
 		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 			if (rc.isHidden() && !activeCharacter.foundHiddenEnemy(rc.getGameObject())) continue;
 			if (rc.isCharacter() && (new CharacterWrapper(rc.getGameObject()).foundHiddenEnemy(activeCharacter.getGameObject()))) continue;
-			if (rc.isCharacter() || rc.isHiredOrControlled()) {
+			if (rc.isCharacter() || rc.isHiredLeader()) {
 				chooser.add(rc);
 			}
 		}
@@ -4255,9 +4255,49 @@ public class CombatFrame extends JFrame {
 		if (victim == null) {
 			return;
 		}
-		//hideRoll
-		//loot from inactive inventory (stack must be organized Rule 4.3.4.)
 		changes = true;
+		
+		RealmCalendar cal = RealmCalendar.getCalendar(gameData);
+		boolean canHide = !cal.isHideDisabled(activeCharacter.getCurrentMonth());
+		if (!canHide && hostPrefs.hasPref(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES) && loc.isInClearing() && loc.clearing.isCave()) {
+			canHide = true;
+		}
+		GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(loc,Constants.NO_HIDE);
+		if (noHideItem!=null) {
+			canHide = false;
+		}
+		
+		if (canHide = false || activeCharacter.affectedByKey(Constants.SQUEAK)) {
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Cannot HIDE, steal fails");
+			return;
+		}
+		
+		DieRoller hideRoller = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createHideRoller();
+		if (hideRoller.getHighDieResult() < 6) {
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Hides successfully!");
+		}
+		else {
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Does not hide successfully!");
+			JOptionPane.showMessageDialog(this,"You do not hide successfully.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
+		
+		ArrayList<GameObject> inventory = new CharacterWrapper(victim.getGameObject()).getInventory();
+		if (inventory.size() == 0) {
+			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Nothing to steal from "+victim.getGameObject().getName());
+			return;
+		}
+		//order inventory
+		inventory = new CharacterWrapper(victim.getGameObject()).getInactiveInventory();
+		
+		DieRoller stealRoller = DieRollBuilder.getDieRollBuilder(this,activeCharacter).createRoller("stealing");
+		int loot = stealRoller.getHighDieResult();
+		if (loot>=inventory.size()) {
+			JOptionPane.showMessageDialog(this,"Failed to steal from the inactive inventory.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+		}
+		else {
+			Loot.addItemToCharacter(this,null,activeCharacter,inventory.get(stealRoller.getHighDieResult()));
+		}
 	}
 	
 	/**

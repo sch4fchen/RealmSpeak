@@ -73,7 +73,7 @@ public class StealReward extends RealmTable {
 			JOptionPane.showMessageDialog(getParentFrame(),"No treasure to steal from "+victim.getGameObject().getNameWithNumber(),"Steal Reward",JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
-			character.getGameObject().add(treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject());
+			Loot.addItemToCharacter(getParentFrame(), null, character, treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject());
 		}
 		return RESULT[3];
 	}

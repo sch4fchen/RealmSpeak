@@ -1945,7 +1945,8 @@ public class ActionRow {
 			newAction = new ActionRow(turnPanel,character,newTable,isFollowing);
 			newAction.setRoller(DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(newTable));
 			message = newTable.apply(character,roller);
-			newAction.setResult(newTable.getTableName(false) + " - " + message);;
+			newAction.setResult(newTable.getTableName(false) + " - " + message);
+			newAction.completed = true;
 			gameHandler.updateCharacterFrames();
 		}
 		

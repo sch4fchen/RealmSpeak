@@ -59786,6 +59786,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
+		<attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2238" name="Adventure Guide">
