@@ -1805,6 +1805,18 @@ public class ActionRow {
 						gameHandler.broadcast(character.getGameObject().getName(),"Bidding for "+merchandiseName);
 					}
 					
+					boolean credit = false;
+					if (!repair && hostPrefs.hasPref(Constants.SR_ADV_CREDIT) && character.getFame()>0) {
+						int ret = JOptionPane.showConfirmDialog(
+								new JFrame(),
+								"Do you want to buy on credit (pay with fame)?",
+								"Buy on Credit",
+								JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,character.getIcon());
+						if (ret == JOptionPane.YES_OPTION) {
+							credit = true;
+						}
+					}
+					
 					// Determine price, and then verify with player that they want to buy
 					realmTable = Meeting.createMeetingTable(
 							gameHandler.getMainFrame(),
@@ -1815,6 +1827,9 @@ public class ActionRow {
 							null,
 							RelationshipType.ALLY);
 					((Meeting)realmTable).setSpecificAction("Trade");
+					if (credit) {
+						((Meeting)realmTable).setCreditFame();
+					}
 					handleTable();
 				}
 				else {
@@ -2319,6 +2334,19 @@ public class ActionRow {
 				ArrayList<RealmComponent> list = new ArrayList<>(chooser.getSelectedComponents());
 				ChitComponent last = (ChitComponent)list.get(list.size()-1);
 				
+				boolean credit = false;
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+				if (hostPrefs.hasPref(Constants.SR_ADV_CREDIT) && !last.isTraveler() && character.getFame()>0) {
+					int ret = JOptionPane.showConfirmDialog(
+							new JFrame(),
+							"Do you want to hire on credit (pay with fame)?",
+							"Hire on Credit",
+							JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,character.getIcon());
+					if (ret == JOptionPane.YES_OPTION) {
+						credit = true;
+					}
+				}
+				
 				// Now we have the group to hire.  Need to do the Meeting table...
 				realmTable = Meeting.createMeetingTable(
 						gameHandler.getMainFrame(),
@@ -2329,6 +2357,9 @@ public class ActionRow {
 						list,
 						last.isTraveler()?RelationshipType.NEUTRAL:RelationshipType.ALLY);
 				((Meeting)realmTable).setSpecificAction("Hire");
+				if (credit) {
+					((Meeting)realmTable).setCreditFame();
+				}
 				
 				if (last.isTraveler()) {
 					// No need to roll for travelers

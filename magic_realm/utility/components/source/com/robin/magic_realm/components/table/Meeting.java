@@ -27,6 +27,7 @@ public abstract class Meeting extends Trade {
 	protected Collection<RealmComponent> hireGroup; // might be null if trading or rolling for meeting
 	
 	protected boolean blockBattle;
+	protected boolean creditFame = false;
 	
 	public Meeting(JFrame frame,TradeInfo trader,GameObject merchandise,Collection<RealmComponent> hireGroup) {
 		super(frame,trader);
@@ -72,6 +73,9 @@ public abstract class Meeting extends Trade {
 	protected boolean useDeclineOpportunityRule() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(tradeInfo.getGameData());
 		return hostPrefs.hasPref(Constants.HOUSE2_DECLINE_OPPORTUNITY);
+	}
+	public void setCreditFame() {
+		creditFame = true;
 	}
 	protected String doOpportunity(CharacterWrapper character,Meeting newTable) {
 		if (useDeclineOpportunityRule() && (merchandise!=null || hireGroup!=null)) { // only ask the question, if this is a TRADE or HIRE (not for battling results!!)
@@ -229,6 +233,11 @@ public abstract class Meeting extends Trade {
 		}
 	}
 	protected void buyingMerchandise(CharacterWrapper character,int mult) {
+		if (mult>0 && this.creditFame == true) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
+			RealmPaymentDialog.receiveItemNoBoon(getParentFrame(),hostPrefs,character,tradeInfo,merchandise,mult,false,getListener());
+			return;
+		}
 		// Everything is handled by the RealmPaymentDialog now.
 		RealmPaymentDialog dialog = new RealmPaymentDialog(getParentFrame(),"TRADE",character,tradeInfo,merchandise,mult,getListener());
 		dialog.setVisible(true);
@@ -365,6 +374,25 @@ public abstract class Meeting extends Trade {
 							askingPrice = basePrice;
 						}
 					}
+				}
+				
+				if (this.creditFame==true) {
+					if (character.getFame()<askingPrice) {
+						JOptionPane.showMessageDialog(
+								getParentFrame(),
+								"You only have "+character.getFame()+" fame, and cannot afford to hire the group on credit.",
+								offerTitle,
+								JOptionPane.INFORMATION_MESSAGE,
+								last.getIcon());
+					}
+					else {
+						character.addFame(-askingPrice);
+						character.addCreditFame(askingPrice,groupName);
+						for (RealmComponent rc : hireGroup) {
+							character.addHireling(rc.getGameObject());
+						}
+					}
+					return;
 				}
 				
 				if (charGold>=askingPrice) {

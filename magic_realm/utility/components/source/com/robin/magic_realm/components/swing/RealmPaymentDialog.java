@@ -271,6 +271,10 @@ public class RealmPaymentDialog extends AggressiveDialog {
 			return;
 		}
 		
+		receiveItemNoBoon(mainFrame,hostPrefs,character,tradeInfo,merchandise,repair,listener);
+	}
+	public static void receiveItemNoBoon(JFrame frame,HostPrefWrapper hostPrefs,CharacterWrapper character,TradeInfo tradeInfo,GameObject merchandise,boolean repair,ChangeListener listener) {
+		RealmComponent mc = RealmComponent.getRealmComponent(merchandise);
 		// Some treasures have special value to native groups...
 		int fame = TreasureUtility.getFamePrice(merchandise,tradeInfo.getGameObject());
 		if (fame>0 && hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE)) {
@@ -282,7 +286,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		
 		if (mc.isSpell()) {
 			// spells are learned
-			character.recordNewSpell(mainFrame,merchandise);
+			character.recordNewSpell(frame,merchandise);
 			RealmLogging.logMessage(character.getGameObject().getName(),"Learns a new spell from the "+tradeInfo.getGameObject().getName()+": "+merchandise.getName());
 		}
 		else {
@@ -306,7 +310,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 				dwelling = SetupCardUtility.getDenizenHolder(tradeInfo.getGameObject());
 			}
 			character.addNoteTrade(tradeInfo.getGameObject(),dwelling.getHold());
-			character.checkInventoryStatus(mainFrame,merchandise,listener);
+			character.checkInventoryStatus(frame,merchandise,listener);
 			RealmLogging.logMessage(character.getGameObject().getName(),"Buys the "+merchandise.getName()+" from the "+tradeInfo.getGameObject().getName());
 		}
 		
@@ -316,7 +320,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		params.objectList = new ArrayList<>();
 		params.objectList.add(merchandise);
 		params.targetOfSearch = tradeInfo.getGameObject();
-		character.testQuestRequirements(mainFrame,params);
+		character.testQuestRequirements(frame,params);
 	}
 	private void doCancel() {
 		if (mc.isBoon()) {
