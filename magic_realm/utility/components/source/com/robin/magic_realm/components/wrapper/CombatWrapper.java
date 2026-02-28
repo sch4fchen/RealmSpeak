@@ -80,6 +80,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String TARGETING_RIDER = "TARGETING_RIDER";
 	private static final String GALLOPED = "GALLOPED";
 	private static final String RAISE_THE_DEAD = "RAISE_THE_DEAD";
+	private static final String STEAL = "STEAL";
 	private static final String SPELL_CANCELED = "SPELL_CANCELED";
 	private static final String ATTACKED_AFTER_CASTING = "ATTACKED_AFTER_CASTING";
 	private static final String FREEZED = "FREEZED";
@@ -217,6 +218,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean getRaisedDead() {
 		return getBoolean(CASTED_RAISE_THE_DEAD);
+	}
+	public void setHasStolen() {
+		setBoolean(STEAL, true);
+	}
+	public boolean hasStolen() {
+		return getBoolean(STEAL);
 	}
 	public void setInstantTeleport(String destination) {
 		setString(TELEPORT_TO, destination);
@@ -883,6 +890,7 @@ public class CombatWrapper extends GameObjectWrapper {
 			go.removeAttribute(COMBAT_BLOCK,HIT_WEAPON_ID);
 			go.removeAttribute(COMBAT_BLOCK,SHEET_OWNER_ID);
 			go.removeAttribute(COMBAT_BLOCK,RAISE_THE_DEAD);
+			go.removeAttribute(COMBAT_BLOCK,STEAL);
 			go.removeAttribute(COMBAT_BLOCK,SPELL_CANCELED);
 			go.removeAttribute(COMBAT_BLOCK,ATTACKED_AFTER_CASTING);
 			go.removeAttribute(COMBAT_BLOCK,FREEZED);

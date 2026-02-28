@@ -1651,7 +1651,7 @@ public class CombatFrame extends JFrame {
 						&& !activeCharacter.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)
 						&& activeCharacter.getActiveMoveChits().size() > 0 && activeCharacter.getColorChits().size() > 0);
 			}
-			undoButton.setEnabled(interactiveFrame && endCombatFrame==null && (changes || nonaffectingChanges));
+			undoButton.setEnabled(interactiveFrame && endCombatFrame==null && (changes || nonaffectingChanges) && !combat.hasStolen());
 		}
 		if (endCombatFrame==null && currentBattleModel!=null) {
 			TileLocation tl = currentBattleModel.getBattleLocation();
@@ -4257,6 +4257,8 @@ public class CombatFrame extends JFrame {
 		if (victim == null) {
 			return;
 		}
+		CombatWrapper characterCombat = new CombatWrapper(activeCharacter.getGameObject());
+		characterCombat.setHasStolen();
 		changes = true;
 		updateControls();
 		
