@@ -10,21 +10,22 @@ import com.robin.general.graphics.TextType;
 import com.robin.general.graphics.TextType.Alignment;
 import com.robin.general.util.StringUtilities;
 
-public class BoonChitComponent extends ChitComponent {
+public class CreditChitComponent extends ChitComponent {
 	/*
 	 * "this" block contains
-	 * 	boon
+	 * 	credit
 	 * 	native = order
 	 * 	base_price = 12
+	 *  days_left = 13
 	 */
-	public BoonChitComponent(GameObject obj) {
+	public CreditChitComponent(GameObject obj) {
 		super(obj);
 		lightColor = MagicRealmColor.PINK;
 		darkColor = MagicRealmColor.PINK;
 	}
 
 	public String getName() {
-		return BOON;
+		return CREDIT;
 	}
 
 	public void paintComponent(Graphics g1) {
@@ -35,17 +36,20 @@ public class BoonChitComponent extends ChitComponent {
 		TextType tt;
 		
 		// Title
-		tt = new TextType("Boon", getChitSize(), "TITLE");
+		tt = new TextType("Credit", getChitSize(), "TITLE");
 		tt.draw(g, margin, pos, Alignment.Center);
 		pos += tt.getHeight(g);
 		
 		// Draw the description
-		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute("boon"));
+		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute("credit"));
 		String cost = gameObject.getThisAttribute("base_price");
+		String daysLeft = gameObject.getThisAttribute("days_left");
 		StringBuffer sb = new StringBuffer();
-		sb.append("Repay this boon to the ");
+		sb.append("Repay this credit in the next ");
+		sb.append(daysLeft);
+		sb.append(" days to the ");
 		sb.append(nativeGroup);
-		sb.append(" to regain friendliness.");
+		sb.append(" to regain fame.");
 		tt = new TextType(sb.toString(),getChitSize()-10,"NORMAL");
 		tt.draw(g,margin+5,pos,Alignment.Center);
 		pos += tt.getHeight(g);

@@ -487,7 +487,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				}
 				
 				if (item!=null) {
-					if (item.hasThisAttribute(Constants.ACTIVATED) || item.hasThisAttribute("gold_special") || item.hasThisAttribute("boon")) {
+					if (item.hasThisAttribute(Constants.ACTIVATED) || item.hasThisAttribute("gold_special") || item.hasThisAttribute("boon") || item.hasThisAttribute("credit")) {
 						activeInv.add(item);
 					}
 					else {

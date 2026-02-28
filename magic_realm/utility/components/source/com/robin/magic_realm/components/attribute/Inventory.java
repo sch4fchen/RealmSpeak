@@ -35,10 +35,12 @@ public class Inventory {
 				&& !rc.isGoldSpecial()
 				&& !rc.isMinorCharacter()
 				&& !rc.isVisitor()
-				&& !rc.isBoon();
+				&& !rc.isBoon()
+				&& !rc.isCredit();
 	}
 	public boolean canDrop() {
 		return !rc.isBoon()
+				&& !rc.isCredit()
 				&& !rc.isPhaseChit()
 				&& !rc.isNativeHorse()
 				&& !rc.isMinorCharacter()

@@ -16,6 +16,7 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.swing.RealmPaymentDialog;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
@@ -234,8 +235,21 @@ public abstract class Meeting extends Trade {
 	}
 	protected void buyingMerchandise(CharacterWrapper character,int mult) {
 		if (mult>0 && this.creditFame == true) {
+			RealmComponent merchandiseRc = RealmComponent.getRealmComponent(merchandise);
+			int price = mult * TreasureUtility.getBasePrice(tradeInfo.getTrader(),merchandiseRc);
+			if (character.getFame()<price) {
+				JOptionPane.showMessageDialog(
+						getParentFrame(),
+						"You only have "+character.getFame()+" fame, and cannot afford to hire the group on credit.",
+						tradeInfo.getName()+" Offer - Price x "+mult,
+						JOptionPane.INFORMATION_MESSAGE,
+						merchandiseRc.getIcon());
+				return;
+			}
+			character.addFame(-price);
+			character.addCreditFame(tradeInfo.getTrader().getGameObject(),price);
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
-			RealmPaymentDialog.receiveItemNoBoon(getParentFrame(),hostPrefs,character,tradeInfo,merchandise,mult,false,getListener());
+			RealmPaymentDialog.receiveItemNoBoon(getParentFrame(),hostPrefs,character,tradeInfo,merchandise,false,getListener());
 			return;
 		}
 		// Everything is handled by the RealmPaymentDialog now.
@@ -387,7 +401,7 @@ public abstract class Meeting extends Trade {
 					}
 					else {
 						character.addFame(-askingPrice);
-						character.addCreditFame(askingPrice,groupName);
+						character.addCreditFame(tradeInfo.getTrader().getGameObject(),askingPrice);
 						for (RealmComponent rc : hireGroup) {
 							character.addHireling(rc.getGameObject());
 						}

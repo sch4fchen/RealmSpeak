@@ -411,7 +411,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 			sb.append(" you for ");
 			sb.append(askingPrice==0?basePrice:askingPrice);
 			sb.append(" gold");
-			if (askingPrice==0 && !mc.isBoon()) { // boons can't be offered as a boon!!
+			if (askingPrice==0 && !mc.isBoon() && !mc.isCredit()) { // boons can't be offered as a boon!!
 				sb.append(",\nor give it to you as a BOON (lose 1 level friendliness)");
 				askingPrice = basePrice;
 				boonOffer = true;

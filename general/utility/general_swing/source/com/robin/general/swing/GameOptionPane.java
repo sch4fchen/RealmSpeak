@@ -13,22 +13,14 @@ public class GameOptionPane extends JPanel implements ActionListener {
 	private OrderedHashtable<String, String> keyHash;
 	private OrderedHashtable tabHash; // String tabKey:OrderedHashtable options or String tabKey:Component c
 	private Hashtable<String, String> tabDescriptionHash;
-	private boolean editMode;
 	private int tabPlacement = SwingConstants.TOP;
 	private ArrayList<ActionListener> actionListeners;
 	
 	public GameOptionPane() {
-		this(SwingConstants.TOP,true);
+		this(SwingConstants.TOP);
 	}
 	public GameOptionPane(int tabPlacement) {
-		this(tabPlacement,true);
-	}
-	public GameOptionPane(boolean editMode) {
-		this(SwingConstants.TOP,editMode);
-	}
-	public GameOptionPane(int tabPlacement,boolean editMode) {
 		super(new BorderLayout());
-		this.editMode = editMode;
 		keyHash = new OrderedHashtable<>();
 		tabHash = new OrderedHashtable<>();
 		tabDescriptionHash = new Hashtable<>();
@@ -143,7 +135,6 @@ public class GameOptionPane extends JPanel implements ActionListener {
 				OrderedHashtable options = (OrderedHashtable)obj;
 				for (Iterator o=options.values().iterator();o.hasNext();) {
 					GameOption option = (GameOption)o.next();
-					option.setEnabled(editMode);
 					box.add(option.getPanel());
 				}
 				box.add(Box.createVerticalGlue());
@@ -154,7 +145,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 			String html = tabDescriptionHash.get(tabKey);
 			if (html!=null) {
 				Box hbox = Box.createHorizontalBox();
-					JEditorPane pane = new JEditorPane("text/html",html) {
+					JEditorPane pane = new JEditorPane("text/html",html.toUpperCase()) {
 						public boolean isFocusTraversable() {
 							return false;
 						}
@@ -162,61 +153,14 @@ public class GameOptionPane extends JPanel implements ActionListener {
 					pane.setEditable(false);
 					pane.setOpaque(true);
 					pane.setBackground(new Color(220,220,255));
-					pane.setMinimumSize(new Dimension(50,50));
-					pane.setPreferredSize(new Dimension(50,50));
+					pane.setMinimumSize(new Dimension(50,25));
+					pane.setPreferredSize(new Dimension(50,25));
 				hbox.add(pane);
-					Box vbox = Box.createVerticalBox();
-					if (editMode) {
-							TabActionButton allButton = new TabActionButton("All",tabKey);
-							allButton.addActionListener(new ActionListener() {
-								public void actionPerformed(ActionEvent ev) {
-									TabActionButton thisButton = (TabActionButton)ev.getSource();
-									selectAll(thisButton.getTabKey());
-								}
-							});
-						vbox.add(allButton);
-							TabActionButton noneButton = new TabActionButton("None",tabKey);
-							noneButton.addActionListener(new ActionListener() {
-								public void actionPerformed(ActionEvent ev) {
-									TabActionButton thisButton = (TabActionButton)ev.getSource();
-									selectNone(thisButton.getTabKey());
-								}
-							});
-						vbox.add(noneButton);
-					}
-				hbox.add(vbox);
-				
 				tabPanel.add(hbox,"North");
 			}
 			tabPane.addTab(tabKey,tabPanel);
 		}
 		add(tabPane,"Center");
-	}
-	public void selectAll(String tabKey) {
-		setActive(tabKey,true);
-	}
-	public void selectNone(String tabKey) {
-		setActive(tabKey,false);
-	}
-	private void setActive(String tabKey,boolean active) {
-		Object obj = tabHash.get(tabKey);
-		if (obj instanceof OrderedHashtable) {
-			OrderedHashtable hash = (OrderedHashtable)obj;
-			for (Iterator i=hash.values().iterator();i.hasNext();) {
-				GameOption option = (GameOption)i.next();
-				option.setActive(active);
-			}
-		}
-	}
-	private class TabActionButton extends JButton {
-		private String tabKey;
-		public TabActionButton(String text,String tabKey) {
-			super(text);
-			this.tabKey = tabKey;
-		}
-		public String getTabKey() {
-			return tabKey;
-		}
 	}
 	public void dumpResults() {
 		for (Iterator i=tabHash.keySet().iterator();i.hasNext();) {
@@ -239,7 +183,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 //		int night = 14;
 		JFrame frame = new JFrame();
 		frame.getContentPane().setLayout(new BorderLayout());
-			final GameOptionPane pane = new GameOptionPane(false);
+			final GameOptionPane pane = new GameOptionPane();
 			pane.addOption("Rules",new GameOption("TEST_KEY_1","This is just a test of the option thing",false));
 			pane.addOption("Rules",new GameOption("TEST_KEY_2","Maybe you would like something different",false));
 			pane.addOption("Rules",new GameOption("TEST_KEY_3","Why the heck would you want to?  Who knows, but this should be long enough to test the bit where text wraps around and fills up the box as much as possible.  Will it work?  Who knows!!  What if this got really really really really long?  Would it still work?",false));

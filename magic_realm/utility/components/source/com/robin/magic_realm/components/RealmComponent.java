@@ -84,6 +84,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final String DWELLING = "dwelling";
 	public static final String TREASURE = "treasure";
 	public static final String BOON = "boon";
+	public static final String CREDIT = "credit";
 	public static final String SPELL = "spell";
 	public static final String FAMILIAR = "familiar";
 	public static final String PHANTASM = "phantasm";
@@ -426,6 +427,10 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	
 	public boolean isBoon() {
 		return (this instanceof BoonChitComponent);
+	}
+	
+	public boolean isCredit() {
+		return (this instanceof CreditChitComponent);
 	}
 	
 	public boolean isVisitor() {
@@ -885,6 +890,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		else if (obj.hasThisAttribute(BOON)) {
 			comp = new BoonChitComponent(obj);
+		}
+		else if (obj.hasThisAttribute(CREDIT)) {
+			comp = new CreditChitComponent(obj);
 		}
 		else if (obj.hasThisAttribute(HORSE)) {
 			if (obj.hasThisAttribute(NATIVE) || obj.hasThisAttribute(MONSTER_STEED)) {

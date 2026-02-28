@@ -841,7 +841,7 @@ public class QuestTesterFrame extends JFrame {
 		hirelingAdd.setToolTipText("Hire new hirelings");
 		hirelingAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> things = chooseOther("Hireling", "native,!treasure,!dwelling,!horse,!boon");
+				ArrayList<GameObject> things = chooseOther("Hireling", "native,!treasure,!dwelling,!horse,!boon,!credit");
 				if (things == null)
 					return;
 				
@@ -1091,7 +1091,7 @@ public class QuestTesterFrame extends JFrame {
 		JButton addNative = new JButton("Native");
 		addNative.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> things = chooseOther("Native", "native,!treasure,!dwelling,!horse,!boon");
+				ArrayList<GameObject> things = chooseOther("Native", "native,!treasure,!dwelling,!horse,!boon,!credit");
 				if (things == null)
 					return;
 				for (GameObject thing : things) {

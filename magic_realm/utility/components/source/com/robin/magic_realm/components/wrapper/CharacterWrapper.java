@@ -2857,7 +2857,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				//go._outputDetail();
 				System.err.println(go+" has no RC?");
 			}
-			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isMinorCharacter()) {
+			else if (rc.isItem() || rc.isPhaseChit() || rc.isGoldSpecial() || rc.isBoon() || rc.isCredit() || rc.isMinorCharacter()) {
 				ret.add(go);
 			}
 		}
@@ -2879,6 +2879,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return list;
+	}
+	public GameObject addCreditFame(GameObject denizen,int price) {
+		GameObject credit = denizen.getGameData().createNewObject();
+		credit.setName("Credit");
+		
+		String groupName = denizen.getThisAttribute("native");
+		if (groupName==null) {
+			groupName = denizen.getThisAttribute(Constants.VISITOR);
+		}
+		
+		credit.setThisAttribute("credit",groupName);
+		credit.setThisAttribute("base_price",price);
+		credit.setThisAttribute("days_left",13);
+		this.getGameObject().add(credit);
+		return credit;
 	}
 	public ArrayList<GameObject> getSellableInventory() {
 		ArrayList<GameObject> list = new ArrayList<>();
@@ -3288,7 +3303,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<GameObject> inactive = new ArrayList<>();
 		for (GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
-			if (!rc.isActivated() && !rc.isBoon() && (includePhaseChits || !rc.isPhaseChit())) {
+			if (!rc.isActivated() && !rc.isBoon() && !rc.isCredit() && (includePhaseChits || !rc.isPhaseChit())) {
 				inactive.add(go);
 			}
 		}
@@ -6903,7 +6918,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (itemRc.isTreasure() && item.hasThisAttribute("potion") && item.hasThisAttribute("activated")) {
 					TreasureUtility.handleExpiredPotion(item);
 				}
-				else if (itemRc.isBoon()) {
+				else if (itemRc.isBoon() || itemRc.isCredit()) {
 					// Boons are simply lost into the ether!
 					getGameObject().remove(item);
 				}
