@@ -240,7 +240,7 @@ public abstract class Meeting extends Trade {
 	public void hiringNatives(CharacterWrapper character,int mult) {
 		int basePrice = 0;
 		RealmComponent last = null;
-		boolean hireWithChit = false;		
+		boolean hireWithChit = false;
 		for (RealmComponent hire : hireGroup) {
 			basePrice += hire.getGameObject().getThisInt("base_price");
 			if (hire.getGameObject().hasThisAttribute(Constants.HIRE_WITH_CHIT)) {
@@ -343,15 +343,27 @@ public abstract class Meeting extends Trade {
 			
 			if (ret==JOptionPane.YES_OPTION) {
 				if (isBoon) {
-					// special case for BOON
-					ret = JOptionPane.showConfirmDialog(getParentFrame(),"Take the boon?",tradeInfo.getName()+" Offers Boon",
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(tradeInfo.getGameData());
+					boolean credit = false;
+					if (hostPrefs.hasPref(Constants.SR_ADV_CREDIT) && character.getNotoriety()>=basePrice) {
+						ret = JOptionPane.showConfirmDialog(getParentFrame(),"Take the credit ("+basePrice+" notoriety)?",tradeInfo.getName()+" Offers Credit",
 								JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,last.getIcon());
-					if (ret==JOptionPane.YES_OPTION) {
-						character.changeRelationship(tradeInfo.getGameObject(),-1);
-						character.getGameObject().add(RealmPaymentDialog.createBoon(tradeInfo.getGameObject(),basePrice));
+						if (ret==JOptionPane.YES_OPTION) {
+							character.addNotoriety(-basePrice);
+							credit = true;
+						}
 					}
-					else {
-						askingPrice = basePrice;
+					if (!credit) {
+						// special case for BOON
+						ret = JOptionPane.showConfirmDialog(getParentFrame(),"Take the boon?",tradeInfo.getName()+" Offers Boon",
+									JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,last.getIcon());
+						if (ret==JOptionPane.YES_OPTION) {
+							character.changeRelationship(tradeInfo.getGameObject(),-1);
+							character.getGameObject().add(RealmPaymentDialog.createBoon(tradeInfo.getGameObject(),basePrice));
+						}
+						else {
+							askingPrice = basePrice;
+						}
 					}
 				}
 				
