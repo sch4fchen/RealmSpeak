@@ -2871,8 +2871,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<GameObject> list = new ArrayList<>();
 		Collection<GameObject> c = getInventory();
 		for (GameObject item : c) {
-			if (item.hasThisAttribute("boon")) {
-				String toWhom = item.getThisAttribute("boon");
+			if (item.hasThisAttribute(RealmComponent.BOON)) {
+				String toWhom = item.getThisAttribute(RealmComponent.BOON);
 				if (toWhom.equals(nativeName)) {
 					list.add(item);
 				}
@@ -2889,9 +2889,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			groupName = denizen.getThisAttribute(Constants.VISITOR);
 		}
 		
-		credit.setThisAttribute("credit",groupName);
+		credit.setThisAttribute(RealmComponent.CREDIT,groupName);
 		credit.setThisAttribute("base_price",price);
-		credit.setThisAttribute("days_left",13);
+		credit.setThisAttribute("time_limit_days",13);
 		this.getGameObject().add(credit);
 		return credit;
 	}

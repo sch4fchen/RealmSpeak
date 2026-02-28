@@ -346,6 +346,11 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		}
 	}
 	private void doActivate() {
+		GameObject credit = activeInventoryObjectPanel.getSelectedGameObject();
+		if (credit!=null && credit.hasThisAttribute(RealmComponent.CREDIT)) {
+			payCredit(credit);
+			return;
+		}
 		boolean daytimeRecord = getCharacter().canDoDaytimeRecord();
 		GameObject thing = inactiveInventoryObjectPanel.getSelectedGameObject();
 		if (getCharacterFrame().getTurnPanel()==null || getCharacterFrame().getTurnPanel().getPhaseManager().canActivateThing(thing)) {
@@ -457,6 +462,27 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		viewer.setVisible(true);
 	}
 
+	private void payCredit(GameObject credit) {
+		TileLocation loc = getCharacter().getCurrentLocation();
+		if (loc==null || !loc.hasClearing()) return;
+		String groupName = credit.getThisAttribute(RealmComponent.CREDIT);
+		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+			if (rc.isNativeLeader() && rc.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase().matches(groupName.toLowerCase())) {
+				int price = credit.getThisInt("base_price");
+				if (getCharacter().getGold()<price) {
+					JOptionPane.showMessageDialog(getMainFrame(),"You do not have enough gold to pay the credit back.","Paying Credit",JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
+				getCharacter().addGold(-price);
+				getCharacter().addFame(price);
+				getCharacter().getGameObject().remove(credit);
+				JOptionPane.showMessageDialog(getMainFrame(),"You paid your credit back and got your fame back.","Paying Credit",JOptionPane.INFORMATION_MESSAGE);
+				getCharacterFrame().updateCharacter();
+				break;
+			}
+		}
+	}
+	
 	public void updatePanel() {
 		boolean hiredLeader = getCharacter().isHiredLeader();
 		ArrayList<GameObject> activeInv = new ArrayList<>();
@@ -487,7 +513,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 				}
 				
 				if (item!=null) {
-					if (item.hasThisAttribute(Constants.ACTIVATED) || item.hasThisAttribute("gold_special") || item.hasThisAttribute("boon") || item.hasThisAttribute("credit")) {
+					if (item.hasThisAttribute(Constants.ACTIVATED) || item.hasThisAttribute("gold_special") || item.hasThisAttribute(RealmComponent.BOON) || item.hasThisAttribute(RealmComponent.CREDIT)) {
 						activeInv.add(item);
 					}
 					else {
@@ -537,6 +563,12 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		deactivateInventoryButton.setEnabled(!blocked && achar && selInv!=null && selInv.canDeactivate() && rearrangementAllowed && !partway);
 		if (distributeInventoryButton!=null) {
 			distributeInventoryButton.setEnabled(!blocked && rearrangementAllowed && !partway);
+		}
+		if (selInv!=null && selInv.getGameObject().hasThisAttribute(RealmComponent.CREDIT)) {
+			activateInventoryButton.setText("Pay Credit");
+		}
+		else {
+			activateInventoryButton.setText("Activate");
 		}
 	}
 }

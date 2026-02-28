@@ -40,7 +40,7 @@ public class BoonChitComponent extends ChitComponent {
 		pos += tt.getHeight(g);
 		
 		// Draw the description
-		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute("boon"));
+		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute(RealmComponent.BOON));
 		String cost = gameObject.getThisAttribute("base_price");
 		StringBuffer sb = new StringBuffer();
 		sb.append("Repay this boon to the ");

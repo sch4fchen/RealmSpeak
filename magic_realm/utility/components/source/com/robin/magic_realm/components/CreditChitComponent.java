@@ -16,7 +16,7 @@ public class CreditChitComponent extends ChitComponent {
 	 * 	credit
 	 * 	native = order
 	 * 	base_price = 12
-	 *  days_left = 13
+	 *  time_limit_days = 13
 	 */
 	public CreditChitComponent(GameObject obj) {
 		super(obj);
@@ -41,9 +41,9 @@ public class CreditChitComponent extends ChitComponent {
 		pos += tt.getHeight(g);
 		
 		// Draw the description
-		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute("credit"));
+		String nativeGroup = StringUtilities.capitalize(gameObject.getThisAttribute(RealmComponent.CREDIT));
 		String cost = gameObject.getThisAttribute("base_price");
-		String daysLeft = gameObject.getThisAttribute("days_left");
+		String daysLeft = gameObject.getThisAttribute("time_limit_days");
 		StringBuffer sb = new StringBuffer();
 		sb.append("Repay this credit in the next ");
 		sb.append(daysLeft);
