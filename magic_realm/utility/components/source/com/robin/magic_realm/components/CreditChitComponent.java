@@ -16,7 +16,7 @@ public class CreditChitComponent extends ChitComponent {
 	 * 	credit
 	 * 	native = order
 	 * 	base_price = 12
-	 *  time_limit_days = 13
+	 *  time_limit_days = 14
 	 */
 	public CreditChitComponent(GameObject obj) {
 		super(obj);

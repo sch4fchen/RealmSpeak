@@ -2902,7 +2902,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		
 		credit.setThisAttribute(RealmComponent.CREDIT,groupName);
 		credit.setThisAttribute("base_price",price);
-		credit.setThisAttribute("time_limit_days",13);
+		credit.setThisAttribute("time_limit_days",14);
 		this.getGameObject().add(credit);
 		return credit;
 	}
