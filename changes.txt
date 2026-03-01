@@ -2,7 +2,6 @@
 Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
-Super Realm: Regrouping (SR: 10.9)
 ---Additional and new features---
 Expansion 1: Optional Rule: Dwarf: 4 activities as normal, but max. 2 moves / turn (without horse, treasures...)Super Realm: Optional Rules: Optional Abilities (SR: 11.2, p.123): Witch
 Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
@@ -19,6 +18,7 @@ Version 1.2.4.7
 NEW FEATURES:
 # Optional rule: Stealing (Super Realm)
 # Optional rule: Credit
+# Optional rule: Regrouping
 BUGS/ISSUES:
 # Fix reposition native attacker with horse on denizen combat sheet
 

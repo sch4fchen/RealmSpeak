@@ -1075,6 +1075,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_DAMAGED_RELATIONS,"DAMAGED RELATIONS (Super Realm Basic) - Killing unhired native affects other clan members and relationship is set to enemy.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_THEMATIC_ROVING_NATIVES,"THEMATIC ROVING NATIVES (Super Realm Advanced) - Roving native leaders operate as any other native leader and have abilities.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_SENTIMENTAL_VALUE,"SENTIMENTAL VALUE (Super Realm Advanced) - Selling/Buying items with special FAME prices affect friendliness with certain native groups (identical to optional rule Grudges and Gratitudes).",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_OPT_REGROUPING,"REGROUPING (Super Realm Optional 1) - Natives who become unhired automatically return to their home.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.EXP_STEALING,"STEALING (Expansion 1) - Characters who feel the establishment owes them a living, can try their hand at stealing.",false));
 		
 		newOptionPane.setTabHtmlDescription(ADVANCED_MAGIC_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Magic Rules</font></body></html>");

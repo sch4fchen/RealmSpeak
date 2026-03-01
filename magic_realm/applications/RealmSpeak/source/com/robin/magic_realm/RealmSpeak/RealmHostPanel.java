@@ -933,6 +933,9 @@ public class RealmHostPanel extends JPanel {
 					CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 					character.removeHireling(go);
 					host.broadcast("host",character.getGameObject().getName()+" loses "+rc.getGameObject().getName()+" as a hireling (term is up).");
+					if (hostPrefs.hasPref(Constants.SR_OPT_REGROUPING) && rc.isNative()) {
+						SetupCardUtility.regroupNative(rc,host.getGameData());
+					}
 				}
 				else {
 					throw new IllegalStateException("For some reason, " + go.getName() + " is owned by " + owner.getGameObject().getName() + ", which is not a character!!!");

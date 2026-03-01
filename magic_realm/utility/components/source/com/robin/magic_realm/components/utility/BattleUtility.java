@@ -228,6 +228,7 @@ public class BattleUtility {
 	public static boolean treacheryFlag = false;
 	public static void processTreachery(CharacterWrapper activeCharacter,RealmComponent theTarget) {
 		treacheryFlag = true;
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(activeCharacter.getGameData());
 		for (RealmComponent rc:activeCharacter.getAllHirelingsFromSame(theTarget)) {
 			moveToNewSheet(rc,false,false);
 			
@@ -238,6 +239,9 @@ public class BattleUtility {
 			activeCharacter.addTreachery(theTarget.getGameObject());
 			
 			activeCharacter.removeHireling(rc.getGameObject());
+			if (hostPrefs.hasPref(Constants.SR_OPT_REGROUPING) && rc.isNative()) {
+				SetupCardUtility.regroupNative(rc,activeCharacter.getGameData());
+			}
 			if (!activeCharacter.isBattling(rc.getGameObject())) {
 				activeCharacter.addBattlingNative(rc.getGameObject());
 			}

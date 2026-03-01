@@ -1314,4 +1314,58 @@ public class SetupCardUtility {
 			}
 		}
 	}
+	
+	public static void regroupNative(RealmComponent rc, GameData data) {
+		GamePool pool = new GamePool(data.getGameObjects());
+		String boardNum = rc.getGameObject().getThisAttribute(Constants.BOARD_NUMBER);
+		if (rc.getGameObject().hasThisAttribute("garrison")) {
+			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
+			if (denizenHolder!=null && rc.getGameObject().hasThisAttribute("garrison")) {
+				TileLocation tl = ClearingUtility.getTileLocation(denizenHolder);
+				tl.clearing.add(rc.getGameObject(),null);
+			}
+			return;
+		}
+		
+		String groupName = rc.getGameObject().getThisAttribute(RealmComponent.NATIVE);
+		ArrayList<String> query = new ArrayList<>();
+		query.add("denizen");
+		query.add(RealmComponent.NATIVE+"="+groupName);
+		if (boardNum!=null && !boardNum.isEmpty()) {
+			query.add(Constants.BOARD_NUMBER+"="+boardNum);
+		}
+		ArrayList<GameObject> denizens = pool.find(query);
+		ArrayList<RealmComponent> groupMembers = new ArrayList<>();
+		for (GameObject denizen : denizens) {
+			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+			if (denizenRc.isNative() && !denizenRc.isHireling()&& !denizenRc.isCompanion() && !denizenRc.isControlledNative()) {
+				TileLocation loc = denizenRc.getCurrentLocation();
+				if (loc!=null && loc.hasClearing()) {
+					for (RealmComponent clearingComponent : loc.clearing.getClearingComponents()) {
+						if (clearingComponent.isDwelling()) {
+							groupMembers.add(denizenRc);
+							break;
+						}
+					}
+				}				
+			}
+		}
+		if (!groupMembers.isEmpty()) {
+			Collections.sort(groupMembers, new Comparator<RealmComponent>() {
+				public int compare(RealmComponent rc1, RealmComponent rc2) {
+					String rank1 = rc1.getGameObject().getThisAttribute("rank");
+					String rank2 = rc2.getGameObject().getThisAttribute("rank");
+					if (rank1.matches("HQ")) return -1;
+					if (rank2.matches("HQ")) return +1;
+					return Integer.valueOf(rank1).compareTo(Integer.valueOf(rank2));
+				}
+			});
+			TileLocation loc = groupMembers.get(0).getCurrentLocation();
+			loc.clearing.add(rc.getGameObject(), null);
+		}
+		else {
+			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
+			denizenHolder.add(rc.getGameObject());
+		}		
+	}
 }

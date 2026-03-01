@@ -974,6 +974,7 @@ public class Constants {
 	public static final String SR_ADV_GROUNDED_MISSIONS_AND_TASKS = "GroundedMissionsAndTasks";
 	public static final String SR_OPT_CORNERED = "Cornered";
 	public static final String SR_OPT_STEALING = "StealingInCombat";
+	public static final String SR_OPT_REGROUPING = "Regrouping";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";
