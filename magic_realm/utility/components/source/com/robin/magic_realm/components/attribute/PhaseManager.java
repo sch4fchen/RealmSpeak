@@ -554,7 +554,7 @@ public class PhaseManager {
 		String action = simplifyAction(fullAction);
 		boolean movePhase = "M".equals(action) || "M!".equals(action);
 		TileLocation newLocation = null;
-		if (movePhase && !"M".equals(fullAction)) { // no new location, if testing for move action M in general
+		if (movePhase && !"M".equals(fullAction) && !"M,M".equals(fullAction)) { // no new location, if testing for move action M in general
 			String simpleAction = fullAction;
 			if (phases!=null) {
 				simpleAction = phases.nextToken();
