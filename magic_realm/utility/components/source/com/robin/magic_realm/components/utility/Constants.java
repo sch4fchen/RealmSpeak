@@ -953,6 +953,9 @@ public class Constants {
 	public static final String SR_COMBAT_POSITIONING = "SrCombatPositioning";
 	public static final String SR_NO_ALERTING_WITHOUT_TARGET = "SrNoAlertingWithoutTarget";
 	public static final String SR_ADV_SERVERE_WOUNDS = "SevereWounds";
+	public static final String SR_ADV_BOUNTY_HUNTER = "BountyHunter";
+	public static final String SR_ADV_SCATTERED_HORSES = "ScatteredHorses";
+	public static final String SR_ADV_PROTECTED_LEADERS = "ProtectedLeaders";
 	public static final String SR_ADV_STEEL_AGAINST_MAGIC = "SrSteelAgainstMagic";
 	public static final String SR_ADV_SURVIVAL_TACTICS = "SurvivalTactics";
 	public static final String SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING = "SurvivalTacticsParryNotAlerting";
