@@ -16,9 +16,12 @@ Would be nice to make weapon abilities too:
 
 Version 1.2.4.7
 NEW FEATURES:
-# Optional rule: Stealing (Super Realm)
+# Optional rule: Bounty Hunter
+# Optional rule: Scattered Horses
+# Optional rule: Protected Leaders
 # Optional rule: Credit
 # Optional rule: Regrouping
+# Optional rule: Stealing (Super Realm)
 BUGS/ISSUES:
 # Fix reposition native attacker with horse on denizen combat sheet
 
