@@ -255,10 +255,10 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			else {
 				id = name.substring(name.length() - 2).trim();
 			}
-			tt = new TextType(letterCode+id,getChitSize(),"WHITE_NOTE");
+			tt = new TextType(letterCode+id,getChitSize(),"NORMAL");
 		}
 		else {
-			tt = new TextType(name,getChitSize(),"WHITE_NOTE");
+			tt = new TextType(name,getChitSize(),"NORMAL");
 		}
 		tt.draw(g,getChitSize()-10-tt.getWidth(g),7,Alignment.Left);
 		if (RealmComponent.displaySubline && getGameObject().hasThisAttribute("native")) {
