@@ -661,6 +661,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				int ret = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), pane, "Pickup " + gsrc.getGameObject().getName() + "?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
 				if (ret == JOptionPane.YES_OPTION) {
 					// Verify the character can afford it
+					if (gsrc.isCampaign() && hostPrefs.hasPref(Constants.SR_ADV_BOUNTY_HUNTER)) {
+						
+					}
 					if (hostPrefs.hasPref(Constants.HOUSE2_CAMPAIGN_DEBT) || gsrc.meetsPointRequirement(getCharacter())) {
 						if (!gsrc.isComplete(getCharacter(),getCharacter().getCurrentLocation())) {
 							boolean cannotPickUp = false;
@@ -669,11 +672,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Mission which you have already completed (or failed).", "Already completed mission", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isCampaign() && character.hasCampaignCompleted(gsrc.toString()) || character.hasCampaignFailed(gsrc.toString())) {
+								if (gsrc.isCampaign() && (character.hasCampaignCompleted(gsrc.toString()) || character.hasCampaignFailed(gsrc.toString()) && !hostPrefs.hasPref(Constants.SR_ADV_BOUNTY_HUNTER))) {
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Campaign which you have already completed (or failed).", "Already completed campaign", JOptionPane.ERROR_MESSAGE);
 								}
-								if (gsrc.isTask() && character.hasTaskCompleted(gsrc.toString()) || character.hasTaskFailed(gsrc.toString())) {
+								if (gsrc.isTask() && (character.hasTaskCompleted(gsrc.toString()) || character.hasTaskFailed(gsrc.toString()))) {
 									cannotPickUp = true;
 									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You cannot pick up a Task which you have already completed (or failed).", "Already completed task", JOptionPane.ERROR_MESSAGE);
 								}
@@ -700,6 +703,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							}
 							
 							if (!cannotPickUp) {
+								if (hostPrefs.hasPref(Constants.SR_ADV_BOUNTY_HUNTER)) {
+									
+								}
+								
 								// Setup campaign/mission (do this BEFORE picking up chit, so clearing count is accurate!)
 								gsrc.setup(getCharacter());
 		

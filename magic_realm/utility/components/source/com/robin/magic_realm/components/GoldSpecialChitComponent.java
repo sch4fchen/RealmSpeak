@@ -102,7 +102,11 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				tt.draw(g,2,y-11,Alignment.Center,color);
 			}
 			else if (gameObject.hasThisAttribute(Constants.CAMPAIGN)) {
-				tt = new TextType("Campaign",getChitSize()-4,"NORMAL");
+				String campaignText = "Campaign";
+				if (gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+					campaignText = campaignText+" (Bounty Hunter)";
+				}
+				tt = new TextType(campaignText,getChitSize()-4,"NORMAL");
 				tt.draw(g,2,y-11,Alignment.Center,color);
 			}
 			if (getGameObject().hasThisAttribute(Constants.TASK_COMPLETED)) {
@@ -455,8 +459,10 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				character.addDeductVPs(1);
 			}
 		}
-		if (getGameObject().hasThisAttribute("campaign")) {
-			character.addCompletedCampaign(getGameObject().getName());
+		if (getGameObject().hasThisAttribute(Constants.CAMPAIGN)) {
+			if (!getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+				character.addCompletedCampaign(getGameObject().getName());
+			}
 			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS)) {
 				character.addDeductVPs(2);
 			}

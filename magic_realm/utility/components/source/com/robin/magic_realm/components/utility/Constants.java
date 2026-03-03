@@ -284,6 +284,7 @@ public class Constants {
 	public static final String NOMAD = "nomad";
 	public static final String TASK = "task";
 	public static final String CAMPAIGN = "campaign";
+	public static final String BOUNTY_HUNTER = "bounty_hunter";
 	public static final String BLACKSMITH = "blacksmith";
 	public static final String CLERIC = "cleric";
 	public static final String NO_SELLING = "no_selling";

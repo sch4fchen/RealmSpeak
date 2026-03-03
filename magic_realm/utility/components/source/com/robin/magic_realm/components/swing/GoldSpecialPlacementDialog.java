@@ -137,7 +137,7 @@ public class GoldSpecialPlacementDialog extends AggressiveDialog {
 			subGrid.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 			for (int i=0;i<2;i++) {
 				JToggleButton button;
-				boolean isCampaign = chit[i].hasThisAttribute("campaign");
+				boolean isCampaign = chit[i].hasThisAttribute(Constants.CAMPAIGN);
 				if (chit[i].hasThisAttribute(Constants.GOLD_SPECIAL_PLACED) || (isCampaign && ignoreCampaigns)) {
 					button = new JToggleButton();
 					button.setEnabled(false);
