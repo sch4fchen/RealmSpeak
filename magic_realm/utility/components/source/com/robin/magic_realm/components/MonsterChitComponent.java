@@ -366,7 +366,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				drawIcon(g, getIconFolder(), icon_type, size,-5,yOffset,null);
 			}
 			else {
-				if (chitSize == T_CHIT_SIZE) {
+				if (gameObject.hasThisAttribute(Constants.ICON_SIZE_OVERRIDE)) {
+					drawIcon(g, getIconFolder(), icon_type, Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE_OVERRIDE)));
+				}
+				else if (chitSize == T_CHIT_SIZE) {
 					drawIcon(g, getIconFolder(), icon_type, 0.9);
 				}
 				else if (chitSize == S_CHIT_SIZE) {

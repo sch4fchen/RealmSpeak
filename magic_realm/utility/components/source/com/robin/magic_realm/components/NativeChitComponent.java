@@ -230,7 +230,10 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 				yOffset = getThisInt(Constants.ICON_Y_OFFSET);
 			}
 			
-			if (chitSize == T_CHIT_SIZE) {
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE_OVERRIDE)) {
+				drawIcon(g, iconDir, icon_type, Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE_OVERRIDE)));
+			}
+			else if (chitSize == T_CHIT_SIZE) {
 				if (size==0) size = 0.9;
 				drawIcon(g, iconDir, icon_type, size, 0, yOffset, null);
 			}

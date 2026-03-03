@@ -30,7 +30,7 @@ public class Constants {
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
 	public static final String REALM_SPEAK_VERSION = "1.2.4.7";
-	public static final String REALM_SPEAK_IMAGES_VERSION = "1.2.2.8";
+	public static final String REALM_SPEAK_IMAGES_VERSION = "1.2.5.0";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
 	public static final String PLAYER_TO_PLACE_NEXT = "p_2_p_n";
@@ -120,6 +120,7 @@ public class Constants {
 	// Used by RealmComponent ThisAttributes
 	public static final String ICON_TYPE = "icon_type";
 	public static final String ICON_SIZE = "icon_size";
+	public static final String ICON_SIZE_OVERRIDE = "icon_size_override";
 	public static final String ALTERNATIVE = "_alt";
 	public static final String ICON_CHARACTER = "_character";
 	public static final String ICON_Y_OFFSET = "icon_y_offset";

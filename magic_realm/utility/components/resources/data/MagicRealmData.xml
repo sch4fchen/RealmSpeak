@@ -21,7 +21,6 @@
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="fireDragon" />
         <attribute icon_size_alt="0.4" />
-        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -17891,7 +17890,6 @@
         <attribute icon_type_alt="fireDragon" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.4" />
-        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="5" />
@@ -19517,7 +19515,6 @@
         <attribute icon_type_alt="fireDragon" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_size_alt="0.4" />
-        <attribute icon_y_offset_alt="4" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
         <attribute move_speed="4" />
@@ -35373,6 +35370,7 @@
         <attribute icon_type="fireDragon" />
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="0.4" />
+		<attribute icon_size_override="0.5" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1221" name="Lair">
@@ -36420,7 +36418,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.4" />
-        <attribute icon_y_offset="4" />
+		<attribute icon_size_override="0.5" />
         <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -42089,6 +42087,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute icon_size="0.4" />
+		<attribute icon_size_override="0.5" />
         <attribute box_num="3" />
       </AttributeBlock>
       <contains id="1489" />
@@ -42209,7 +42208,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.4" />
-        <attribute icon_y_offset="4" />
+		<attribute icon_size_override="0.5" />
         <attribute dragon="" />
         <attribute box_num="3" />
       </AttributeBlock>
