@@ -35370,7 +35370,7 @@
         <attribute icon_type="fireDragon" />
         <attribute icon_folder="wesnoth/units" />
         <attribute icon_size="0.4" />
-		<attribute icon_size_override="0.5" />
+        <attribute icon_size_override="0.5" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1221" name="Lair">
@@ -36418,7 +36418,7 @@
         <attribute needs_init="" />
         <attribute denizen="" />
         <attribute icon_size="0.4" />
-		<attribute icon_size_override="0.5" />
+        <attribute icon_size_override="0.5" />
         <attribute dragon="" />
       </AttributeBlock>
       <AttributeBlock blockName="light">
@@ -37139,7 +37139,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
         <attribute change_tactics_for_non_spell_attack="" />
@@ -37149,7 +37149,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
       </AttributeBlock>
       <contains id="2186" />
     </GameObject>
@@ -37180,7 +37180,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
         <attribute change_tactics_for_non_spell_attack="" />
@@ -37190,7 +37190,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
       </AttributeBlock>
       <contains id="2187" />
     </GameObject>
@@ -37221,7 +37221,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute length="9" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
         <attribute change_tactics_for_non_spell_attack="" />
@@ -37231,7 +37231,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
       </AttributeBlock>
       <contains id="2188" />
     </GameObject>
@@ -37266,7 +37266,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="2" />
         <attribute length="9" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="V" />
         <attribute attack_spell="Summon Demon" />
         <attribute change_tactics_for_non_spell_attack="" />
@@ -37276,7 +37276,7 @@
         <attribute attack_speed="4" />
         <attribute strength="M" />
         <attribute length="9" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
       </AttributeBlock>
       <contains id="2189" />
     </GameObject>
@@ -39679,7 +39679,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39687,7 +39687,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -39718,7 +39718,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39726,7 +39726,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -39757,7 +39757,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39765,7 +39765,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -39796,7 +39796,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39804,7 +39804,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -39835,7 +39835,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39843,7 +39843,7 @@
         <attribute attack_speed="1" />
         <attribute strength="L" />
         <attribute length="14" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -39878,7 +39878,7 @@
       <AttributeBlock blockName="light">
         <attribute move_speed="2" />
         <attribute attack_speed="0" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute magic_type="VII" />
       </AttributeBlock>
       <AttributeBlock blockName="dark">
@@ -39886,7 +39886,7 @@
         <attribute attack_speed="1" />
         <attribute strength="M" />
         <attribute length="16" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="2" />
         <attribute missile="" />
       </AttributeBlock>
@@ -41825,7 +41825,7 @@
         <attribute move_speed="6" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -41834,7 +41834,7 @@
         <attribute attack_speed="6" />
         <attribute strength="T" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -41865,7 +41865,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="T" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -41874,7 +41874,7 @@
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -41905,7 +41905,7 @@
         <attribute move_speed="6" />
         <attribute attack_speed="5" />
         <attribute strength="T" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -41914,7 +41914,7 @@
         <attribute attack_speed="4" />
         <attribute strength="H" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -41945,7 +41945,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="H" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -41954,7 +41954,7 @@
         <attribute attack_speed="6" />
         <attribute strength="T" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -41985,7 +41985,7 @@
         <attribute move_speed="6" />
         <attribute attack_speed="4" />
         <attribute strength="H" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -41994,7 +41994,7 @@
         <attribute attack_speed="5" />
         <attribute strength="H" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -42030,7 +42030,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="6" />
         <attribute strength="T" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="5" />
       </AttributeBlock>
@@ -42039,7 +42039,7 @@
         <attribute attack_speed="6" />
         <attribute strength="T" />
         <attribute length="5" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
         <attribute move_speed_bonus_combat_box3="1" />
       </AttributeBlock>
@@ -42087,7 +42087,7 @@
         <attribute icon_folder="wesnoth/units" />
         <attribute super_realm="" />
         <attribute icon_size="0.4" />
-		<attribute icon_size_override="0.5" />
+        <attribute icon_size_override="0.5" />
         <attribute box_num="3" />
       </AttributeBlock>
       <contains id="1489" />
@@ -42208,7 +42208,7 @@
         <attribute denizen="" />
         <attribute super_realm="" />
         <attribute icon_size="0.4" />
-		<attribute icon_size_override="0.5" />
+        <attribute icon_size_override="0.5" />
         <attribute dragon="" />
         <attribute box_num="3" />
       </AttributeBlock>
@@ -47565,7 +47565,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="3" />
       </AttributeBlock>
@@ -47574,7 +47574,7 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute length="3" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47603,7 +47603,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="3" />
       </AttributeBlock>
@@ -47612,7 +47612,7 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute length="3" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47641,7 +47641,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="4" />
       </AttributeBlock>
@@ -47650,7 +47650,7 @@
         <attribute attack_speed="3" />
         <attribute strength="L" />
         <attribute length="4" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47679,7 +47679,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="4" />
       </AttributeBlock>
@@ -47688,7 +47688,7 @@
         <attribute attack_speed="3" />
         <attribute strength="L" />
         <attribute length="4" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47717,7 +47717,7 @@
         <attribute move_speed="5" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="4" />
       </AttributeBlock>
@@ -47726,7 +47726,7 @@
         <attribute attack_speed="3" />
         <attribute strength="L" />
         <attribute length="4" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -47759,7 +47759,7 @@
         <attribute move_speed="4" />
         <attribute attack_speed="3" />
         <attribute strength="M" />
-        <attribute chit_color="paleyellow" />
+        <attribute chit_color="yellow" />
         <attribute sharpness="1" />
         <attribute length="3" />
       </AttributeBlock>
@@ -47768,7 +47768,7 @@
         <attribute attack_speed="4" />
         <attribute strength="L" />
         <attribute length="3" />
-        <attribute chit_color="yellow" />
+        <attribute chit_color="darkyellow" />
         <attribute sharpness="1" />
       </AttributeBlock>
     </GameObject>
@@ -59785,7 +59785,7 @@
         <attribute benevolent="" />
         <attribute learnable="" />
         <attribute super_realm="" />
-		<attribute super_realm_spell="" />
+        <attribute super_realm_spell="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2238" name="Adventure Guide">

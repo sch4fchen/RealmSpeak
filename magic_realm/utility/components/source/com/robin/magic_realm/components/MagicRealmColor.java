@@ -17,6 +17,7 @@ public class MagicRealmColor {
 	public static final Color PURPLE		= new Color(180,145,180);
 	public static final Color YELLOW		= new Color(239,235,123);
 	public static final Color PALEYELLOW	= new Color(255,255,200);
+	public static final Color DARKYELLOW	= new Color(255,209, 26);
 	public static final Color PEACH			= new Color(229,186,136);
 	public static final Color TAN			= new Color(198,167, 85);
 	public static final Color GOLD			= new Color(239,204,110);
@@ -108,6 +109,9 @@ public class MagicRealmColor {
 		else if (string.equals("PALEYELLOW")) {
 			return PALEYELLOW;
 		}
+		else if (string.equals("DARKYELLOW")) {
+			return DARKYELLOW;
+		}
 		else if (string.equals("DARKBLUE")) {
 			return DARKBLUE;
 		}
@@ -131,7 +135,7 @@ public class MagicRealmColor {
 		case "1":
 			return BLUE;
 		case "2":
-			return GREEN; 
+			return GREEN;
 		case "3":
 			return RED;
 		case "4":

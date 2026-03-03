@@ -76,8 +76,16 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				darkColor = Color.white;
 			}
 			else {
-				lightColor = MagicRealmColor.getColor(getAttribute("light", "chit_color"));
-				darkColor = MagicRealmColor.getColor(getAttribute("dark", "chit_color"));
+				String lightColorString = getAttribute("light", "chit_color");
+				if (lightColorString == null || lightColorString.isEmpty()) {
+					lightColorString = getAttribute("intact", "chit_color");
+				}
+				String darkColorString = getAttribute("dark", "chit_color");
+				if (darkColorString == null || darkColorString.isEmpty()) {
+					darkColorString = getAttribute("damaged", "chit_color");
+				}
+				lightColor = MagicRealmColor.getColor(lightColorString);
+				darkColor = MagicRealmColor.getColor(darkColorString);
 			}
 		}
 		catch (Exception ex) {
