@@ -3284,7 +3284,12 @@ public class CombatFrame extends JFrame {
 			}
 			
 			RealmComponent extra2 = (RealmComponent)target.getHorse();
-			includeCurrentBox = false;
+			if (!hostPrefs.hasPref(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX)) {
+				includeCurrentBox = false;
+			}
+			else {
+				includeCurrentBox = true;
+			}
 			if (extra2!=null && (horseSameBox || extra!=null)) {
 				CombatWrapper combat = new CombatWrapper(extra2.getGameObject());
 				combat.setCombatBoxAttack(boxA);
@@ -3298,7 +3303,12 @@ public class CombatFrame extends JFrame {
 		else if (target.isNative() || target.isTraveler()) {
 			extra = (RealmComponent)target.getHorse();
 			extraName = "native horse";
-			includeCurrentBox = false;
+			if (!hostPrefs.hasPref(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX)) {
+				includeCurrentBox = false;
+			}
+			else {
+				includeCurrentBox = true;
+			}
 			if (extra!=null && horseSameBox) {
 				CombatWrapper combat = new CombatWrapper(extra.getGameObject());
 				combat.setCombatBoxAttack(boxA);

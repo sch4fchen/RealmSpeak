@@ -721,7 +721,9 @@ public class CharacterCombatSheet extends CombatSheet {
 		}
 	}
 	protected void handleClick(int index,int swingConstant) {
-		swingConstant = SwingConstants.RIGHT; //always ask where to place native horse
+		if (!hostPrefs.hasPref(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX)) {
+			swingConstant = SwingConstants.RIGHT; //always ask where to place native horse
+		}
 		if (hotspotHash.get(Integer.valueOf(index))==null) {
 			// Don't handle clicks unless there is a hotspot
 			return;

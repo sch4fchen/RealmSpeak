@@ -787,21 +787,23 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				HOTSPOT_TITLE_COLOR);
 		titleBorder.paintBorder(this,g,x,y,HOTSPOT_SIZE,HOTSPOT_SIZE+5);
 		
-		/*String[] split = splitHotSpot(index);
-		if (split!=null) {
-			int half = HOTSPOT_SIZE>>1;
-			g.setColor(HOTSPOT_LINE_COLOR);
-			g.fillRect(x+half-2,y+16,4,HOTSPOT_SIZE-16);
-			
-			g.setColor(HOTSPOT_SPLIT_BACKING);
-			g.fillRect(x-2,y+15,12,HOTSPOT_SIZE-20);
-			g.fillRect(x+90,y+15,12,HOTSPOT_SIZE-20);
-			
-			g.setColor(Color.black);
-			g.setFont(Constants.RESULT_FONT);
-			TextType.drawText(g,split[0],x,y+5,HOTSPOT_SIZE,90,Alignment.Center);
-			TextType.drawText(g,split[1],x+93,y+5,HOTSPOT_SIZE,90,Alignment.Center);
-		}*/
+		if (hostPrefs.hasPref(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX)) {
+			String[] split = splitHotSpot(index);
+			if (split!=null) {
+				int half = HOTSPOT_SIZE>>1;
+				g.setColor(HOTSPOT_LINE_COLOR);
+				g.fillRect(x+half-2,y+16,4,HOTSPOT_SIZE-16);
+				
+				g.setColor(HOTSPOT_SPLIT_BACKING);
+				g.fillRect(x-2,y+15,12,HOTSPOT_SIZE-20);
+				g.fillRect(x+90,y+15,12,HOTSPOT_SIZE-20);
+				
+				g.setColor(Color.black);
+				g.setFont(Constants.RESULT_FONT);
+				TextType.drawText(g,split[0],x,y+5,HOTSPOT_SIZE,90,Alignment.Center);
+				TextType.drawText(g,split[1],x+93,y+5,HOTSPOT_SIZE,90,Alignment.Center);
+			}
+		}
 	}
 	private void paintRealmComponent(Graphics g,RealmComponent rc,int index) {
 		ImageIcon icon = rc.getIcon();
