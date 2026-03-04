@@ -9,12 +9,12 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 ::ROADMAP::
-Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
 
 Version 1.2.4.7
 NEW FEATURES:
+# Optional rule: Bounty Hunter
 # Optional rule: Credit
 # Optional rule: Regrouping
 # Optional rule: Stealing (Super Realm)
