@@ -9,6 +9,7 @@ Would be nice to make weapon abilities too:
 	Stunning - Target cannot play an attack next round
 
 ::ROADMAP::
+Multiple characters should be able to target denizen (on his own sheet), e.g. char 1 + 2 should be able to target hireling of char 3
 Super Realm: Bounty Hunter (SR: 10.2)
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
@@ -20,6 +21,8 @@ NEW FEATURES:
 # Optional rule: Stealing (Super Realm)
 BUGS/ISSUES:
 # Fix reposition native attacker with horse on denizen combat sheet
+# Place horses in attack combat boxes
+# Native/Monster and horse/weapon cannot be put in same combat box
 
 Version 1.2.4.6
 NEW FEATURES:
