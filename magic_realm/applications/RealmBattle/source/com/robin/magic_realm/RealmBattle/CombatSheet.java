@@ -491,7 +491,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		CombatWrapper combat;
 		// Place horse (if any) first
 		RealmComponent horse = (RealmComponent)participant.getHorse();
-		if (horse!=null && !attacker) {
+		if (horse!=null) {
 			combat = new CombatWrapper(horse.getGameObject());
 			int boxD = combat.getCombatBoxDefense();
 			int boxA = combat.getCombatBoxAttack();
