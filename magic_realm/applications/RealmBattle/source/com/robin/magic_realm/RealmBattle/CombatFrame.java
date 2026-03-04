@@ -1437,7 +1437,10 @@ public class CombatFrame extends JFrame {
 			lockNextButton.setVisible(false);
 			if (row>=0) {
 				if (row==0) {
-					combatSheetPanel.add(new JScrollPane(new CombatSummarySheet(this)));
+					CombatSummarySheet combatSummarySheet = new CombatSummarySheet(this);
+					int height = 400+allParticipants.size()*(PARTICIPANT_ROW_HEIGHT+PARTICIPANT_ROW_HEIGHT/2);
+					combatSummarySheet.setPreferredSize(new Dimension(600,height));
+					combatSheetPanel.add(new JScrollPane(combatSummarySheet));
 				}
 				else {
 					RealmComponent rc = allParticipants.get(row-1);
