@@ -25,6 +25,7 @@ public enum CharacterActionType {
 	CompleteMissionCampaign,
 	FailMissionCampaign,
 	PickUpMissionCampaign,
+	CompleteBounty,
 	;
 	
 	public String getDescriptor() {

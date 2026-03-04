@@ -1241,4 +1241,20 @@ public class RealmUtility {
 		int py = Integer.parseInt(st.nextToken());
 		return new Point(px,py);
 	}
+	public static ArrayList<GameObject> getLivingCharacters(GameData data) {
+		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(data).getPlayerCharacterObjects());
+		ArrayList<GameObject> list = pool.find(CharacterWrapper.NAME_KEY);
+		ArrayList<GameObject> active = new ArrayList<>();
+		for (GameObject characterGo : list) {
+			CharacterWrapper character = new CharacterWrapper(characterGo);
+			if (!character.isDead()) {
+				active.add(character.getGameObject());
+				ArrayList<GameObject> minions = character.getMinions();
+				if (minions!=null) {
+					active.addAll(minions);
+				}
+			}
+		}
+		return active;
+	}
 }

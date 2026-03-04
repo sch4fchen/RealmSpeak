@@ -1159,20 +1159,7 @@ public class RealmHostPanel extends JPanel {
 	 * @return		All active (non-dead) characters
 	 */
 	private ArrayList<GameObject> getLivingCharacters() {
-		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects());
-		ArrayList<GameObject> list = pool.find(CharacterWrapper.NAME_KEY);
-		ArrayList<GameObject> active = new ArrayList<>();
-		for (GameObject characterGo : list) {
-			CharacterWrapper character = new CharacterWrapper(characterGo);
-			if (!character.isDead()) {
-				active.add(character.getGameObject());
-				ArrayList<GameObject> minions = character.getMinions();
-				if (minions!=null) {
-					active.addAll(minions);
-				}
-			}
-		}
-		return active;
+		return RealmUtility.getLivingCharacters(host.getGameData());
 	}
 	public ArrayList<String> getPlayerNames() {
 		ArrayList<String> names = new ArrayList<>();

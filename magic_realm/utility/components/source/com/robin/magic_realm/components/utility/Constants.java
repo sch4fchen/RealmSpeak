@@ -286,6 +286,11 @@ public class Constants {
 	public static final String TASK = "task";
 	public static final String CAMPAIGN = "campaign";
 	public static final String BOUNTY_HUNTER = "bounty_hunter";
+	public static final String BOUNTY_HUNTER_TARGET = "bounty_hunter_target";
+	public static final String CAMPAIGN_FAME = "bounty_hunter_fame";
+	public static final String CAMPAIGN_NOTORIETY = "campaign_fame_cost";
+	public static final String CAMPAGIN_FOE = "bounty_hunter_foe";
+	public static final String CAMPAGIN_PARTNER = "bounty_hunter_foe";
 	public static final String BLACKSMITH = "blacksmith";
 	public static final String CLERIC = "cleric";
 	public static final String NO_SELLING = "no_selling";

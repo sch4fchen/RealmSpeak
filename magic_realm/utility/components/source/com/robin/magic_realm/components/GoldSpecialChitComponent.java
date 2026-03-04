@@ -104,7 +104,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 			else if (gameObject.hasThisAttribute(Constants.CAMPAIGN)) {
 				String campaignText = "Campaign";
 				if (gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER)) {
-					campaignText = campaignText+" (Bounty Hunter)";
+					campaignText = campaignText+" (Bounty Hunter: "+gameObject.getThisAttribute(Constants.BOUNTY_HUNTER_TARGET)+")";
 				}
 				tt = new TextType(campaignText,getChitSize()-4,"NORMAL");
 				tt.draw(g,2,y-11,Alignment.Center,color);
@@ -472,13 +472,23 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		}
 		
 		QuestRequirementParams qp = new QuestRequirementParams();
-		qp.actionType = CharacterActionType.CompleteMissionCampaign;
+		if (!getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+			qp.actionType = CharacterActionType.CompleteMissionCampaign;
+		} else {
+			qp.actionType = CharacterActionType.CompleteBounty;
+		}
 		qp.actionName = getGameObject().getName();
 		qp.targetOfSearch = getGameObject();
 		character.addPostQuestParams(qp);
 	}
 	public boolean isComplete(CharacterWrapper character,TileLocation current) {
-		if (getGameObject().hasThisAttribute(Constants.MISSION)) {
+		if (getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+			GameData data = getGameObject().getGameData();
+			GamePool pool = new GamePool(data.getGameObjects());
+			GameObject target = pool.findFirst("id="+getGameObject().getThisAttribute(Constants.BOUNTY_HUNTER));
+			return target.hasThisAttribute(Constants.DEAD) || target.hasThisAttribute(Constants.DEAD_PERMANENT);
+		}
+		else if (getGameObject().hasThisAttribute(Constants.MISSION)) {
 			// Mission is complete when in a clearing with the deliverTarget dwelling
 			if (current.isInClearing()) {
 				RealmComponent dwelling = current.clearing.getDwelling();
@@ -600,7 +610,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				character.changeRelationship(relBlock,group,2, false);
 			}
 			// (Foes move to ENEMY)
-			if (!"Quest".equals(getGameObject().getName())) {
+			if (!"Quest".equals(getGameObject().getName()) || getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
 				for (String group : getFoes()) {
 					int current = character.getRelationship(relBlock,group);
 					int change = RelationshipType.ENEMY - current;
@@ -641,6 +651,25 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				character.getGameObject().removeThisAttributeListItem(Constants.TASK_VISITED_SITES,requiredTl.toLowerCase());
 			}
 		}
+		if (getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+			getGameObject().removeThisAttribute("fame_cost");
+			if (getGameObject().hasThisAttribute(Constants.CAMPAIGN_FAME)) {
+				getGameObject().setThisAttribute("fame_cost",getGameObject().getThisAttribute(Constants.CAMPAIGN_FAME));
+			}
+			getGameObject().removeThisAttribute("notoriety_cost");
+			if (getGameObject().hasThisAttribute(Constants.CAMPAIGN_NOTORIETY)) {
+				getGameObject().setThisAttribute("notoriety_cost",getGameObject().getThisAttribute(Constants.CAMPAIGN_NOTORIETY));
+			}
+			getGameObject().removeThisAttribute("foe");
+			if (getGameObject().hasThisAttribute(Constants.CAMPAGIN_FOE)) {
+				getGameObject().setThisAttribute("foe",getGameObject().getThisAttribute(Constants.CAMPAGIN_FOE));
+			}
+			getGameObject().removeThisAttribute("partner");
+			if (getGameObject().hasThisAttribute(Constants.CAMPAGIN_PARTNER)) {
+				getGameObject().setThisAttribute("partner",getGameObject().getThisAttribute(Constants.CAMPAGIN_PARTNER));
+			}
+		}
+		getGameObject().removeThisAttribute(Constants.BOUNTY_HUNTER);
 	}
 	public boolean meetsPointRequirement(CharacterWrapper character) {
 		int fame = getGameObject().getThisInt("fame_cost");
@@ -679,6 +708,9 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 	}
 	public boolean isTask() {
 		return gameObject.hasThisAttribute(Constants.TASK);
+	}
+	public boolean isBountyHunter() {
+		return gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER);
 	}
 	/*
 	 * See Section 36 of 2nd edition manual
