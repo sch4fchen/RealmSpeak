@@ -787,7 +787,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				HOTSPOT_TITLE_COLOR);
 		titleBorder.paintBorder(this,g,x,y,HOTSPOT_SIZE,HOTSPOT_SIZE+5);
 		
-		String[] split = splitHotSpot(index);
+		/*String[] split = splitHotSpot(index);
 		if (split!=null) {
 			int half = HOTSPOT_SIZE>>1;
 			g.setColor(HOTSPOT_LINE_COLOR);
@@ -801,7 +801,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 			g.setFont(Constants.RESULT_FONT);
 			TextType.drawText(g,split[0],x,y+5,HOTSPOT_SIZE,90,Alignment.Center);
 			TextType.drawText(g,split[1],x+93,y+5,HOTSPOT_SIZE,90,Alignment.Center);
-		}
+		}*/
 	}
 	private void paintRealmComponent(Graphics g,RealmComponent rc,int index) {
 		ImageIcon icon = rc.getIcon();

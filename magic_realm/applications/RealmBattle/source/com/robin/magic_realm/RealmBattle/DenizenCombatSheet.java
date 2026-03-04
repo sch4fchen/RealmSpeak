@@ -581,6 +581,7 @@ public class DenizenCombatSheet extends CombatSheet {
 	}
 	
 	protected void handleClick(int index,int swingConstant) {
+		swingConstant = SwingConstants.RIGHT; //always ask where to place native horse
 		if (hotspotHash.get(Integer.valueOf(index))==null) {
 			// Don't handle clicks unless there is a hotspot
 			return;
