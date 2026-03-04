@@ -689,7 +689,16 @@ public class DenizenCombatSheet extends CombatSheet {
 				}
 				else if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
 					// Character target assignment
-					combatFrame.assignTarget(layoutHash.getList(Integer.valueOf(POS_DEFENDER_BOX1)));
+					ArrayList<RealmComponent> list = new ArrayList<>();
+					ArrayList<RealmComponent> list1 = layoutHash.getList(Integer.valueOf(POS_DEFENDER_BOX1));
+					if (list1!=null) {
+						list.addAll(list1);
+					}
+					ArrayList<RealmComponent> list2 = layoutHash.getList(Integer.valueOf(POS_DEFENDER));
+					if (list2!=null) {
+						list.addAll(list2);
+					}
+					combatFrame.assignTarget(list);
 				}
 				break;
 			case POS_DEFENDER_TARGET_BOX1:
