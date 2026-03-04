@@ -487,10 +487,10 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 	}
 	public boolean isComplete(CharacterWrapper character,TileLocation current) {
 		if (getGameObject().hasThisAttribute(Constants.BOUNTY_HUNTER)) {
-			GameData data = getGameObject().getGameData();
-			GamePool pool = new GamePool(data.getGameObjects());
-			GameObject target = pool.findFirst("id="+getGameObject().getThisAttribute(Constants.BOUNTY_HUNTER));
-			return target.hasThisAttribute(Constants.DEAD) || target.hasThisAttribute(Constants.DEAD_PERMANENT);
+			GameObject target = getGameObject().getGameData().getGameObject(Long.valueOf(getGameObject().getThisAttribute(Constants.BOUNTY_HUNTER)));
+			CharacterWrapper targetdCharacter = new CharacterWrapper(target);
+			TileLocation loc = targetdCharacter.getCurrentLocation();
+			return target!=null && (target.hasThisAttribute(Constants.DEAD) || target.hasThisAttribute(Constants.DEAD_PERMANENT) || loc == null);
 		}
 		else if (getGameObject().hasThisAttribute(Constants.MISSION)) {
 			// Mission is complete when in a clearing with the deliverTarget dwelling
