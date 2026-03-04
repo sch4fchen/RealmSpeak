@@ -83,7 +83,9 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 		tt = new TextType(name,getChitSize()-4,"Plain");
 		int h = tt.getHeight(g);
 		int y = ((getChitSize()-h)>>1)-3;
-		tt.draw(g,2,y,Alignment.Center,color);
+		if (!gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+			tt.draw(g,2,y,Alignment.Center,color);
+		}
 		if (!gameObject.hasThisAttribute(Constants.DRAW_BACKSIDE) && gameObject.hasThisAttribute(Constants.SUPER_REALM)) {
 			if (gameObject.hasThisAttribute(Constants.VISITOR)) {
 				tt = new TextType("Visitor",getChitSize()-4,"NORMAL");
@@ -101,12 +103,14 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 				tt = new TextType("Task",getChitSize()-4,"NORMAL");
 				tt.draw(g,2,y-11,Alignment.Center,color);
 			}
+			else if (gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER)) {
+				tt = new TextType("Bounty",getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y-11,Alignment.Center,color);
+				tt = new TextType(gameObject.getThisAttribute(Constants.BOUNTY_HUNTER_TARGET),getChitSize()-4,"NORMAL");
+				tt.draw(g,2,y+4,Alignment.Center,color);
+			}
 			else if (gameObject.hasThisAttribute(Constants.CAMPAIGN)) {
-				String campaignText = "Campaign";
-				if (gameObject.hasThisAttribute(Constants.BOUNTY_HUNTER)) {
-					campaignText = campaignText+" (Bounty Hunter: "+gameObject.getThisAttribute(Constants.BOUNTY_HUNTER_TARGET)+")";
-				}
-				tt = new TextType(campaignText,getChitSize()-4,"NORMAL");
+				tt = new TextType("Campaign",getChitSize()-4,"NORMAL");
 				tt.draw(g,2,y-11,Alignment.Center,color);
 			}
 			if (getGameObject().hasThisAttribute(Constants.TASK_COMPLETED)) {

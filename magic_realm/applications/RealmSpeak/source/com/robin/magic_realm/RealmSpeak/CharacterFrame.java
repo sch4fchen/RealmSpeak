@@ -686,6 +686,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							for (GameObject livingCharacter : livingCharacters) {
 								if (livingCharacter.getStringId().matches(character.getGameObject().getStringId())) continue;
 								CharacterWrapper livingCharacterWrapper = new CharacterWrapper(livingCharacter);
+								if (livingCharacterWrapper.isHiredLeader() || livingCharacterWrapper.isFamiliar()) continue;
 								ArrayList<String> enemyClans = new ArrayList<>();
 								ArrayList<String> notEnemyClans = new ArrayList<>();
 								for (GameObject nativeLeader : nativeLeaders) {
@@ -695,7 +696,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 											enemyClans.add(nativeLeader.getThisAttribute(Constants.CLAN));
 										}
 									} else {
-										notEnemyClans.add(nativeLeader.getThisAttribute(Constants.CLAN));
+										if (!notEnemyClans.contains(nativeLeader.getThisAttribute(Constants.CLAN))) {
+											notEnemyClans.add(nativeLeader.getThisAttribute(Constants.CLAN));
+										}
 									}
 								}
 								for (String clan : notEnemyClans) {
@@ -714,7 +717,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 								foesToClan1.clear();
 							}
 							if (!foes.isEmpty() || !foesToClan1.isEmpty()) {
-								int bountyHunterQuestion = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), pane, "Pickup " + gsrc.getGameObject().getName() + "as Bounty Hunter?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
+								int bountyHunterQuestion = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
 								if (bountyHunterQuestion == JOptionPane.YES_OPTION) {
 									RealmComponent target = null;
 									if (foesToClan1.isEmpty() && foes.size()==1) {
