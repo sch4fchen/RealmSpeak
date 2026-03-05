@@ -12,6 +12,10 @@ Would be nice to make weapon abilities too:
 Super Realm: Scattered Horses (SR: 10.3)
 Super Realm: Protected Leaders (SR: 10.4)
 
+Version 1.2.4.8
+NEW FEATURES:
+#
+
 Version 1.2.4.7
 NEW FEATURES:
 # Optional rule: Bounty Hunter
