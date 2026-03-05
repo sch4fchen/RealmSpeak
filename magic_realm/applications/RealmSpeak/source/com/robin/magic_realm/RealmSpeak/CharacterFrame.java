@@ -713,97 +713,95 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 									}
 								}
 							}
-							if (character.getNotoriety()<8) {
-								foesToClan1.clear();
-							}
-							if (!foes.isEmpty() || !foesToClan1.isEmpty()) {
-								int bountyHunterQuestion = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
-								if (bountyHunterQuestion == JOptionPane.YES_OPTION) {
-									if (character.getNotoriety()<15) {
-										JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded notoriety points to collect this campaign as Bounty Hunter.", "Not enough notoriety points", JOptionPane.ERROR_MESSAGE);
-										return;
-									}
-
-									RealmComponent target = null;
-									if (foesToClan1.isEmpty() && foes.size()==1) {
-										target = foes.get(0);
-									} else if (foes.isEmpty() && foesToClan1.size()==1) {
-										target = foes.get(0);
-									} else {
-										RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Which character will be the foe?",false);
-										for (RealmComponent foe : foes) {
-											chooser.addRealmComponent(foe);
-										}
-										for (RealmComponent foe : foesToClan1) {
-											chooser.addRealmComponent(foe);
-										}
-										chooser.setVisible(true);
-										target = chooser.getFirstSelectedComponent();
-									}
-									if (foesToClan1.contains(target) && character.getFame()<8) {
-										JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded fame points to collect this campaign as Bounty Hunter.", "Not enough fame points", JOptionPane.ERROR_MESSAGE);
-										return;
-									}
-									gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER,target.getGameObject().getStringId());
-									gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER_TARGET,target.getGameObject().getName());
-									
-									if (gsrc.getGameObject().hasThisAttribute("fame_cost")) {
-										gsrc.getGameObject().setThisAttribute(Constants.CAMPAIGN_FAME,gsrc.getGameObject().getThisAttribute("fame_cost"));
-										gsrc.getGameObject().removeThisAttribute("fame_cost");
-									}
-									if (foesToClan1.contains(target)) {
-										gsrc.getGameObject().setThisAttribute("fame_cost",8);
-									}
-									if (gsrc.getGameObject().hasThisAttribute("notoriety_cost")) {
-										gsrc.getGameObject().setThisAttribute(Constants.CAMPAIGN_NOTORIETY,gsrc.getGameObject().getThisAttribute("notoriety_cost"));
-										gsrc.getGameObject().removeThisAttribute("notoriety_cost");
-									}
-									gsrc.getGameObject().setThisAttribute("notoriety_cost",15);
-									
-									if (gsrc.getGameObject().hasThisAttribute("foe")) {
-										gsrc.getGameObject().setThisAttribute(Constants.CAMPAGIN_FOE,gsrc.getGameObject().getThisAttribute("foe"));
-										gsrc.getGameObject().removeThisAttribute("foe");
-									}
-									
-									if (gsrc.getGameObject().hasThisAttribute("partner")) {
-										gsrc.getGameObject().setThisAttribute(Constants.CAMPAGIN_PARTNER,gsrc.getGameObject().getThisAttribute("partner"));
-										gsrc.getGameObject().removeThisAttribute("partner");
-									}
-									CharacterWrapper targetedCharacter = new CharacterWrapper(target.getGameObject());
-									ArrayList<String> foeNatives = new ArrayList<>();
-									for (GameObject nativeLeader : nativeLeaders) {
-										if (!nativeLeader.hasThisAttribute(Constants.CLAN)) continue;
-										if (targetedCharacter.getRelationship(nativeLeader)<=-2) {
-											String groupName = nativeLeader.getThisAttribute("native").toLowerCase();
-											if (groupName!=null && !foeNatives.contains(groupName)) {
-												foeNatives.add(groupName);
-											}
-										}
-									}
-									StringBuilder allGroups = new StringBuilder();
-									if (!foeNatives.isEmpty()) {
-										for (String group : foeNatives) {
-											allGroups.append(group+",");
-										}
-									}
-									allGroups.append("mercenaries");
-									gsrc.getGameObject().setThisAttribute("partner",allGroups.toString());
-									
-									gsrc.setup(getCharacter());
-									character.getGameObject().add(gsrc.getGameObject());
-									gsrc.getGameObject().removeThisAttribute("clearing");
-									QuestRequirementParams qp = new QuestRequirementParams();
-									qp.actionName = gsrc.getGameObject().getName();
-									qp.actionType = CharacterActionType.PickUpMissionCampaign;
-									qp.targetOfSearch = gsrc.getGameObject();
-									if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
-										gameHandler.getInspector().redrawMap();
-									}
-			
-									gameHandler.submitChanges();
-									gameHandler.updateCharacterFrames();
+							int bountyHunterQuestion = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
+							if (bountyHunterQuestion == JOptionPane.YES_OPTION) {
+								if (foesToClan1.isEmpty() && foes.isEmpty()) {
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "There are no targets for a Bounty Hunter.", "No Bounty Hunter targets", JOptionPane.ERROR_MESSAGE);
 									return;
 								}
+								RealmComponent target = null;
+								if (foesToClan1.isEmpty() && foes.size()==1) {
+									target = foes.get(0);
+								} else if (foes.isEmpty() && foesToClan1.size()==1) {
+									target = foes.get(0);
+								} else {
+									RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Which character will be the foe?",false);
+									for (RealmComponent foe : foes) {
+										chooser.addRealmComponent(foe);
+									}
+									for (RealmComponent foe : foesToClan1) {
+										chooser.addRealmComponent(foe);
+									}
+									chooser.setVisible(true);
+									target = chooser.getFirstSelectedComponent();
+								}
+								if (character.getNotoriety()<15) {
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded notoriety points to collect this campaign as Bounty Hunter.", "Not enough notoriety points", JOptionPane.ERROR_MESSAGE);
+									return;
+								}
+								if (foesToClan1.contains(target) && character.getFame()<8) {
+									JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded fame points to collect this campaign as Bounty Hunter.", "Not enough fame points", JOptionPane.ERROR_MESSAGE);
+									return;
+								}
+								gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER,target.getGameObject().getStringId());
+								gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER_TARGET,target.getGameObject().getName());
+								
+								if (gsrc.getGameObject().hasThisAttribute("fame_cost")) {
+									gsrc.getGameObject().setThisAttribute(Constants.CAMPAIGN_FAME,gsrc.getGameObject().getThisAttribute("fame_cost"));
+									gsrc.getGameObject().removeThisAttribute("fame_cost");
+								}
+								if (foesToClan1.contains(target)) {
+									gsrc.getGameObject().setThisAttribute("fame_cost",8);
+								}
+								if (gsrc.getGameObject().hasThisAttribute("notoriety_cost")) {
+									gsrc.getGameObject().setThisAttribute(Constants.CAMPAIGN_NOTORIETY,gsrc.getGameObject().getThisAttribute("notoriety_cost"));
+									gsrc.getGameObject().removeThisAttribute("notoriety_cost");
+								}
+								gsrc.getGameObject().setThisAttribute("notoriety_cost",15);
+								
+								if (gsrc.getGameObject().hasThisAttribute("foe")) {
+									gsrc.getGameObject().setThisAttribute(Constants.CAMPAGIN_FOE,gsrc.getGameObject().getThisAttribute("foe"));
+									gsrc.getGameObject().removeThisAttribute("foe");
+								}
+								
+								if (gsrc.getGameObject().hasThisAttribute("partner")) {
+									gsrc.getGameObject().setThisAttribute(Constants.CAMPAGIN_PARTNER,gsrc.getGameObject().getThisAttribute("partner"));
+									gsrc.getGameObject().removeThisAttribute("partner");
+								}
+								CharacterWrapper targetedCharacter = new CharacterWrapper(target.getGameObject());
+								ArrayList<String> foeNatives = new ArrayList<>();
+								for (GameObject nativeLeader : nativeLeaders) {
+									if (!nativeLeader.hasThisAttribute(Constants.CLAN)) continue;
+									if (targetedCharacter.getRelationship(nativeLeader)<=-2) {
+										String groupName = nativeLeader.getThisAttribute("native").toLowerCase();
+										if (groupName!=null && !foeNatives.contains(groupName)) {
+											foeNatives.add(groupName);
+										}
+									}
+								}
+								StringBuilder allGroups = new StringBuilder();
+								if (!foeNatives.isEmpty()) {
+									for (String group : foeNatives) {
+										allGroups.append(group+",");
+									}
+								}
+								allGroups.append("mercenaries");
+								gsrc.getGameObject().setThisAttribute("partner",allGroups.toString());
+								
+								gsrc.setup(getCharacter());
+								character.getGameObject().add(gsrc.getGameObject());
+								gsrc.getGameObject().removeThisAttribute("clearing");
+								QuestRequirementParams qp = new QuestRequirementParams();
+								qp.actionName = gsrc.getGameObject().getName();
+								qp.actionType = CharacterActionType.PickUpMissionCampaign;
+								qp.targetOfSearch = gsrc.getGameObject();
+								if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+									gameHandler.getInspector().redrawMap();
+								}
+		
+								gameHandler.submitChanges();
+								gameHandler.updateCharacterFrames();
+								return;
 							}
 						}
 					}
