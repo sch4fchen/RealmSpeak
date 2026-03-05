@@ -661,7 +661,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				int ret = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), pane, "Pickup " + gsrc.getGameObject().getName() + "?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
 				if (ret == JOptionPane.YES_OPTION) {
 					// Verify the character can afford it
-					if (gsrc.isCampaign() && hostPrefs.hasPref(Constants.SR_ADV_BOUNTY_HUNTER) && character.getNotoriety()>=15) {
+					if (gsrc.isCampaign() && hostPrefs.hasPref(Constants.SR_ADV_BOUNTY_HUNTER)) {
 						GamePool pool = new GamePool(character.getGameData().getGameObjects());
 						ArrayList<GameObject> nativeLeaders = pool.find("native,rank=HQ");
 						ArrayList<String> enemyClansToCharacter = new ArrayList<>();
@@ -719,6 +719,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							if (!foes.isEmpty() || !foesToClan1.isEmpty()) {
 								int bountyHunterQuestion = JOptionPane.showConfirmDialog(gameHandler.getMainFrame(), "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", "Pickup " + gsrc.getGameObject().getName() + " as Bounty Hunter?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, gsrc.getIcon());
 								if (bountyHunterQuestion == JOptionPane.YES_OPTION) {
+									if (character.getNotoriety()<15) {
+										JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded notoriety points to collect this campaign as Bounty Hunter.", "Not enough notoriety points", JOptionPane.ERROR_MESSAGE);
+										return;
+									}
+
 									RealmComponent target = null;
 									if (foesToClan1.isEmpty() && foes.size()==1) {
 										target = foes.get(0);
@@ -734,6 +739,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 										}
 										chooser.setVisible(true);
 										target = chooser.getFirstSelectedComponent();
+									}
+									if (foesToClan1.contains(target) && character.getFame()<8) {
+										JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You do not have enough recorded fame points to collect this campaign as Bounty Hunter.", "Not enough fame points", JOptionPane.ERROR_MESSAGE);
+										return;
 									}
 									gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER,target.getGameObject().getStringId());
 									gsrc.getGameObject().setThisAttribute(Constants.BOUNTY_HUNTER_TARGET,target.getGameObject().getName());
