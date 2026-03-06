@@ -439,6 +439,22 @@ public class RealmUtility {
 				controlledDenizen.clearPlayerAttributes(!rc.isMonster() && hostPrefs.hasPref(Constants.HOUSE2_NATIVES_REMEMBER_DISCOVERIES));
 			}
 			
+			if (hostPrefs.hasPref(Constants.SR_ADV_SCATTERED_HORSES) && rcLocation.tile!=null) {
+				if (rc.isNative() || rc.isMonster()) {
+					BattleHorse horse = rc.getHorse();
+					if (horse!=null) {
+						rcLocation.addScatteredHorse(horse.getGameObject());
+					}
+				}
+				else if (rc.isCharacter()) {
+					for (GameObject item : rc.getGameObject().getHold()) {
+						if (item.hasThisAttribute(RealmComponent.HORSE) || item.hasThisAttribute(RealmComponent.MONSTER_STEED)) {
+							rcLocation.addScatteredHorse(item);
+						}
+					}
+				}
+			}
+			
 			if (hostPrefs.hasPref(Constants.SR_REVEAL_TRAVELERS) && rcLocation != null && rcLocation.hasClearing()) {
 				String nativeName = rc.getGameObject().getThisAttribute(RealmComponent.NATIVE);
 				if (nativeName!=null && !nativeName.isEmpty()) {

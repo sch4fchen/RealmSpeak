@@ -9,8 +9,10 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
+import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmObjectMaster;
+import com.robin.magic_realm.components.utility.RealmUtility;
 
 public class TileLocation {
 	public TileComponent tile;
@@ -272,5 +274,36 @@ public class TileLocation {
 	public void energizeItems() {
 		if (clearing==null) return;
 		clearing.energizeItems();
+	}
+	
+	public void addScatteredHorse(GameObject horse) {
+		if (!horse.hasThisAttribute(RealmComponent.HORSE) && !horse.hasThisAttribute(RealmComponent.MONSTER_STEED)) return;
+		horse.removeThisAttribute("clearing");
+		tile.getGameObject().add(horse);
+	}
+	
+	public void placeScatteredHorse() {
+		GameObject horse = null;
+		for (GameObject go : tile.getGameObject().getHold()) {
+			if (go.hasThisAttribute(RealmComponent.HORSE) || go.hasThisAttribute(RealmComponent.MONSTER_STEED)) {
+				horse = go;
+			}
+		}
+		if (horse!=null) {
+			ArrayList<ClearingDetail> possibleClearings = new ArrayList<>();
+			for (ClearingDetail cl : tile.getClearings()) {
+				if (!cl.isCave() || horse.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
+					possibleClearings.add(cl);
+				}
+			}
+			if (possibleClearings.isEmpty()) {
+				ClearingUtility.moveToLocation(horse,null);
+				return;
+			}
+			ClearingDetail chosenCl = possibleClearings.get(RandomNumber.getRandom(possibleClearings.size()));
+			TileLocation chosenTileLocation = new TileLocation(chosenCl);
+			ClearingUtility.moveToLocation(horse,chosenTileLocation);
+			RealmUtility.sortGameObjectsHold(chosenTileLocation.tile.getGameObject(),false);
+		}
 	}
 }

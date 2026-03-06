@@ -1058,6 +1058,9 @@ public class TreasureUtility {
 			if (hostPrefs.hasPref(Constants.SR_HORSES_REMOVING_FROM_REALM) && (thing.hasThisAttribute(RealmComponent.HORSE) || thing.hasThisAttribute(RealmComponent.MONSTER_STEED)) && !thing.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
 				ClearingUtility.moveToLocation(thing,null);
 			}
+			if (hostPrefs.hasPref(Constants.SR_ADV_SCATTERED_HORSES) && (thing.hasThisAttribute(RealmComponent.HORSE) || thing.hasThisAttribute(RealmComponent.MONSTER_STEED))) {
+				tl.addScatteredHorse(thing);
+			}
 			if (thing.hasThisAttribute(Constants.REGENERATES_IMMEDIATELY)) {
 				SetupCardUtility.resetDenizen(thing);
 			}

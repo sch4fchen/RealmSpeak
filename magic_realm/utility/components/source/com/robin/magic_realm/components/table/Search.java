@@ -73,6 +73,8 @@ public abstract class Search extends RealmTable {
 			character.addNote(currentClearing.getParent(),"Clues",note);
 		}
 		
+		character.getCurrentLocation().placeScatteredHorse();
+		
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionName = getTableKey();
 		qp.actionType = CharacterActionType.SearchTable;

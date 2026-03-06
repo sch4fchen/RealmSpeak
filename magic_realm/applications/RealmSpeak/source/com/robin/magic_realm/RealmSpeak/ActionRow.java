@@ -1227,7 +1227,6 @@ public class ActionRow {
 		}
 	}
 	private void abandonHorse(GameObject item, CharacterWrapper character) {
-		// check for scattered horses
 		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 			TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
@@ -1244,7 +1243,6 @@ public class ActionRow {
 		}
 	}
 	private void abandonHorse(GameObject item, RealmComponent hireling) {
-		// check for scattered horses
 		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 			item.removeThisAttribute(Constants.ACTIVATED);
 			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
