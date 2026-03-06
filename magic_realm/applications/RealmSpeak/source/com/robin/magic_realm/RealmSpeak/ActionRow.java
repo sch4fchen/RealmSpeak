@@ -822,12 +822,14 @@ public class ActionRow {
 		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
 		
 		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
-		RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
-		if (discoverToLeave!=null) {
-			JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
-					"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
-			cancelled = true;
-			return;
+		if ((character.isCharacter() || character.isHiredLeader()) && !character.isFamiliar()) {
+			RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
+			if (discoverToLeave!=null) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
+						"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
+				cancelled = true;
+				return;
+			}
 		}
 		
 		if (character.isTransmorphed()) {
@@ -1225,6 +1227,7 @@ public class ActionRow {
 		}
 	}
 	private void abandonHorse(GameObject item, CharacterWrapper character) {
+		// check for scattered horses
 		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 			TreasureUtility.doDeactivate(gameHandler.getMainFrame(), character, item);
 			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {
@@ -1241,6 +1244,7 @@ public class ActionRow {
 		}
 	}
 	private void abandonHorse(GameObject item, RealmComponent hireling) {
+		// check for scattered horses
 		if (RealmComponent.getRealmComponent(item).isHorse() && !item.hasThisAttribute(Constants.STEED_IN_CAVES_AND_WATER)) {
 			item.removeThisAttribute(Constants.ACTIVATED);
 			if (!item.hasThisAttribute(Constants.STEED_SURVIVES_CAVES)) {

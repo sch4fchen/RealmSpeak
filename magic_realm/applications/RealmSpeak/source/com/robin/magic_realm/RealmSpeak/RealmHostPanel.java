@@ -496,8 +496,10 @@ public class RealmHostPanel extends JPanel {
 				if (monsterDieRoller.getNumberOfDice()>1) {
 					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(1), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 				}
-				SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(0));
-				if (nativeDieRoller.getNumberOfDice()>1) {
+				if (nativeDieRoller!=null) {
+					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(0));
+				}
+				if (nativeDieRoller!=null && nativeDieRoller.getNumberOfDice()>1) {
 					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(1));
 				}
 				
@@ -505,7 +507,7 @@ public class RealmHostPanel extends JPanel {
 				if (monsterDieRoller.getNumberOfDice()>2) {
 					SetupCardUtility.resetDenizens(host.getGameData(), monsterDieRoller.getValue(2), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 				}
-				if (nativeDieRoller.getNumberOfDice()>2) {
+				if (nativeDieRoller!=null && nativeDieRoller.getNumberOfDice()>2) {
 					SetupCardUtility.resetNatives(host.getGameData(), nativeDieRoller.getValue(2));
 				}
 			}
