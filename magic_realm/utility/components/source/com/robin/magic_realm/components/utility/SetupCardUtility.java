@@ -849,6 +849,24 @@ public class SetupCardUtility {
 				WarningChitComponent warning = (WarningChitComponent)dh;
 				warning.setFaceUp();
 			}
+			
+			if (denizen.hasThisAttribute(Constants.NATIVE_CACHE)) {
+				GameObject cache = denizen.getGameData().getGameObject(new Long(denizen.getThisAttribute(Constants.NATIVE_CACHE)));
+				ArrayList<GameObject> allItems = new ArrayList<>();
+				for (GameObject item : cache.getHold()) {
+					allItems.add(item);
+				}
+				for (GameObject item : allItems) {
+					denizenHolder.add(item);
+				}
+				cache.removeThisAttribute("clearing");
+				GameObject holder = cache.getHeldBy();
+				if (holder!=null) {
+					holder.remove(cache);
+				}
+				denizen.removeThisAttribute(Constants.NATIVE_CACHE);
+				RealmUtility.sortGameObjectsHold(denizenHolder, false);
+			}
 		}
 		
 		if (rc.isHorse() && !rc.isNative() && !rc.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED)) {

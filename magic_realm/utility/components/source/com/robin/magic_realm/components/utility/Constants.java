@@ -1041,4 +1041,5 @@ public class Constants {
 	public static final String MAP_BUILDING_RANGE_SETUP_VARIANT = "map_building_range_setup_variant";
 	
 	public static final String CACHE_NAME = "'s Cache #";
+	public static final String NATIVE_CACHE = "native_cache";
 }

@@ -358,6 +358,7 @@ public class RealmUtility {
 			return;
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
 		TileLocation rcLocation = ClearingUtility.getTileLocation(rc);
 		CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 		GameObject killer = combat.getKilledBy();
@@ -388,10 +389,39 @@ public class RealmUtility {
 			rc.getGameObject().removeThisAttribute(Constants.SPOILS_INVENTORY_SETUP);
 		}
 		else {
-			// This is the default
-			if (rcLocation != null && !rcLocation.isFlying()) { // Had to add this for when wasps die because the queen is killed!
-				moveInventory(rc.getGameObject(),rcLocation.tile.getGameObject(),rcLocation.clearing.getNum(),true);
-				rc.getGameObject().removeThisAttribute(Constants.SPOILS_INVENTORY_DROP);
+			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS) && rc.isNativeLeader()) {
+				CacheChitComponent cache;
+				int num = (new CharacterWrapper(rc.getGameObject())).getNextCacheNumber();
+				GameObject go = rc.getGameObject().getGameData().createNewObject();
+				go.setName(rc.getGameObject().getName()+Constants.CACHE_NAME+num);
+				go.setThisAttribute(RealmComponent.CACHE_CHIT);
+				go.setThisAttribute("clearing",rcLocation.clearing.getNumString());
+				go.setThisAttribute(RealmComponent.TREASURE_LOCATION,rc.getGameObject().getName());
+				go.setThisAttribute("cache_number",num);
+				go.setThisAttribute("discovery");
+				go.setThisAttribute("chit");
+				go.setThisAttribute("ts_section","zcache"); // z so that it sorts to the end
+				go.setThisAttribute("ts_color","gold");
+				go.setThisKeyVals(hostPrefs.getGameKeyVals());
+				if (rc.getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
+					// Might as well put the B character caches on the B setup card, and so on.
+					go.setThisAttribute(Constants.BOARD_NUMBER,rc.getGameObject().getThisAttribute(Constants.BOARD_NUMBER));
+				}
+				rc.getGameObject().setThisAttribute(Constants.NATIVE_CACHE,go.getStringId());
+				cache = (CacheChitComponent)RealmComponent.getRealmComponent(go);
+				cache.setOwner(RealmComponent.getRealmComponent(rc.getGameObject()));
+				cache.setFaceUp();
+				rcLocation.clearing.add(go,null);
+				GameObject holder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
+				moveInventoryIncludingSpells(holder,cache.getGameObject());
+				RealmUtility.sortGameObjectsHold(cache.getGameObject(), false);
+			}
+			else {
+				// This is the default
+				if (rcLocation != null && !rcLocation.isFlying()) { // Had to add this for when wasps die because the queen is killed!
+					moveInventory(rc.getGameObject(),rcLocation.tile.getGameObject(),rcLocation.clearing.getNum(),true);
+					rc.getGameObject().removeThisAttribute(Constants.SPOILS_INVENTORY_DROP);
+				}
 			}
 		}
 		
@@ -409,7 +439,6 @@ public class RealmUtility {
 			character.makeDead(reason);
 		}
 		else if (rc.isNative() || rc.isNativeHorse() || rc.isHorse() || rc.isMonster() || rc.isTraveler()) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(rc.getGameObject().getGameData());
 			// Everything else is generic
 			GameObject dead = rc.getGameObject();
 			RealmComponent owner = rc.getOwner();
@@ -598,7 +627,13 @@ public class RealmUtility {
 	private static void moveInventory(GameObject inventoryHolder,GameObject destination) {
 		moveInventory(inventoryHolder,destination,0,false);
 	}
+	private static void moveInventoryIncludingSpells(GameObject inventoryHolder,GameObject destination) {
+		moveInventory(inventoryHolder,destination,0,false,true);
+	}
 	private static void moveInventory(GameObject inventoryHolder,GameObject destination,int clearing,boolean faceDown) {
+		moveInventory(inventoryHolder,destination,clearing,faceDown,false);
+	}
+	private static void moveInventory(GameObject inventoryHolder,GameObject destination,int clearing,boolean faceDown,boolean includeSpells) {
 		if (inventoryHolder!=null && destination!=null) {
 			ArrayList<GameObject> holderHold = new ArrayList<>();
 			holderHold.addAll(inventoryHolder.getHold()); // to avoid concurrent mods
