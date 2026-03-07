@@ -2345,7 +2345,7 @@ public class CombatFrame extends JFrame {
 				RealmComponent theTarget = chooser.getFirstSelectedComponent();
 				
 				if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING)) {
-					if (theTarget.isNativeLeader()) {
+					if (theTarget.isNativeLeader() && !theTarget.isHiredOrControlled()) {
 						String groupName = theTarget.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase();
 						BattleGroup group = currentBattleModel.getDenizenBattleGroup();
 						for (RealmComponent member : group.getBattleParticipants()) {

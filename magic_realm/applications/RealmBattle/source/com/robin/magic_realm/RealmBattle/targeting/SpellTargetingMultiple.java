@@ -71,7 +71,7 @@ public abstract class SpellTargetingMultiple extends SpellTargeting {
 			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING)) {
 				for (GameObject target : chosen) {
 					RealmComponent theTarget = RealmComponent.getRealmComponent(target);
-					if (theTarget.isNativeLeader() && !theTarget.getGameObject().hasThisAttribute(Constants.DEAD)) {
+					if (theTarget.isNativeLeader() && !theTarget.isHiredOrControlled() && !theTarget.getGameObject().hasThisAttribute(Constants.DEAD)) {
 						CombatWrapper combatWrapperTarget = new CombatWrapper(theTarget.getGameObject());
 						if (combatWrapperTarget.getKilledBy()==null) {
 							String groupName = theTarget.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase();
