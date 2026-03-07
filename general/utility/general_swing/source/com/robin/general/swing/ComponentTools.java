@@ -3,6 +3,7 @@ package com.robin.general.swing;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.table.TableColumn;
 
 public class ComponentTools {
@@ -17,6 +18,19 @@ public class ComponentTools {
 	public static void setMetalLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	public static void setNimbusLookAndFeel() {
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();

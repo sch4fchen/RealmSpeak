@@ -21,6 +21,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 
 	protected JRadioButton systemLookAndFeelOption;
 	protected JRadioButton crossPlatformLookAndFeelOption;
+	protected JRadioButton nimbusLookAndFeelOption;
 	
 	protected JCheckBox responsive;
 	
@@ -92,7 +93,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 	}
 	private void updateControls() {
 		crossPlatformLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.METAL_LNF));
-		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected());
+		nimbusLookAndFeelOption.setSelected(options.getOptions().isPref(RealmSpeakOptions.NIMBUS_LNF));
+		systemLookAndFeelOption.setSelected(!crossPlatformLookAndFeelOption.isSelected() && !nimbusLookAndFeelOption.isSelected());
 		responsive.setSelected(options.getOptions().getBoolean(CustomUiUtility.RESPONSIVE));
 		switch(options.getOptions().getInt(CustomUiUtility.BACKGROUND_COLOR)) {
 			default:
@@ -240,6 +242,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.CHARACTER_CHIT_DISPLAY_STYLE,getCharacterChitDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.TILES_DISPLAY_STYLE,getTilesDisplayStyle());
 		options.getOptions().set(RealmSpeakOptions.METAL_LNF,crossPlatformLookAndFeelOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.NIMBUS_LNF,nimbusLookAndFeelOption.isSelected());
 		options.getOptions().set(CustomUiUtility.RESPONSIVE,isResponsive());
 		options.getOptions().set(CustomUiUtility.BACKGROUND_COLOR,getSelectedBackgroundColor());
 		options.getOptions().set(RealmSpeakOptions.MAP_SLIDER,mapSliderOption.isSelected());
@@ -442,7 +445,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		dispose();
 	}
 	private JPanel getLookAndFeelOptions() {
-		JPanel panel = new JPanel(new GridLayout(2,1));
+		JPanel panel = new JPanel(new GridLayout(3,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Look and Feel"));
 		ButtonGroup group = new ButtonGroup();
 		crossPlatformLookAndFeelOption = new JRadioButton("Cross Platform");
@@ -459,6 +462,13 @@ public class RealmSpeakOptionPanel extends JDialog {
 		});
 		group.add(systemLookAndFeelOption);
 		panel.add(systemLookAndFeelOption);
+		nimbusLookAndFeelOption = new JRadioButton("Nimbus");
+		nimbusLookAndFeelOption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+			}
+		});
+		group.add(nimbusLookAndFeelOption);
+		panel.add(nimbusLookAndFeelOption);
 		return panel;
 	}
 	private JPanel getResponsiveOption() {

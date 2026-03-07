@@ -27,6 +27,7 @@ public class RealmSpeakOptions {
 	public static final String LAST_EXPORT_LOCATION = "lastExportLocation";
 	
 	public static final String METAL_LNF = "metalLnf";
+	public static final String NIMBUS_LNF = "nimbusLnf";
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
 	public static final String CHIT_DISPLAY_ARMOR = "chitDisplayArmor";
@@ -131,6 +132,9 @@ public class RealmSpeakOptions {
 		SoundCache.setSoundEnabled(options.getBoolean(ENABLE_SOUND,true));
 		if (options.getBoolean(RealmSpeakOptions.METAL_LNF)) {
 			ComponentTools.setMetalLookAndFeel();
+		}
+		else if (options.getBoolean(RealmSpeakOptions.NIMBUS_LNF)) {
+			ComponentTools.setNimbusLookAndFeel();
 		}
 		else {
 			ComponentTools.setSystemLookAndFeel();
