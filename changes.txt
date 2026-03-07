@@ -8,6 +8,7 @@ NEW FEATURES:
 # Optional rule: Scattered Horses
 # Optional rule: Protected Leaders
 # Look and Feel option: Nimbus
+# Seasonal tile graphics for Expansion 1 tiles
 BUGS/ISSUES:
 # Maze (Expansion 1 ) only affecting Characters and Hired Leaders
 
