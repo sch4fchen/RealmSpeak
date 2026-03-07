@@ -2343,6 +2343,23 @@ public class CombatFrame extends JFrame {
 			chooser.setVisible(true);
 			if (chooser.getSelectedText()!=null) {
 				RealmComponent theTarget = chooser.getFirstSelectedComponent();
+				
+				if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING)) {
+					if (theTarget.isNativeLeader()) {
+						String groupName = theTarget.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase();
+						BattleGroup group = currentBattleModel.getDenizenBattleGroup();
+						for (RealmComponent member : group.getBattleParticipants()) {
+							if (!member.isNativeLeader() && member.isNative() && member.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase().matches(groupName) && !member.isHiredOrControlled()) {
+								CombatWrapper combatWrapper = new CombatWrapper(member.getGameObject());
+								if (combatWrapper.getAttackerCount()==0) {
+									JOptionPane.showMessageDialog(this,"Cannot attack Native Leader unless all other unhired natives of the same group are also targeted.","Protected Leader",JOptionPane.INFORMATION_MESSAGE);
+									return null;
+								}
+							}
+						}
+					}
+				}
+				
 				String append = "";
 				append = aimingForHorseOrRider(attacker, theTarget, append);
 				if (attacker.getTarget()==null) {

@@ -5,13 +5,18 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Hashtable;
 
+import javax.swing.JOptionPane;
+
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.RealmBattle.BattleGroup;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.RealmBattle.CombatSheet;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -78,6 +83,26 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 		String selText = chooser.getSelectedText();
 		if (selText!=null) {
 			RealmComponent theTarget = chooser.getLastSelectedComponent();
+			
+			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING)) {
+				if (theTarget.isNativeLeader() && !theTarget.getGameObject().hasThisAttribute(Constants.DEAD)) {
+					CombatWrapper combatWrapperTarget = new CombatWrapper(theTarget.getGameObject());
+					if (combatWrapperTarget.getKilledBy()==null) {
+						String groupName = theTarget.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase();
+						BattleGroup group = combatFrame.getBattleModel().getDenizenBattleGroup();
+						for (RealmComponent member : group.getBattleParticipants()) {
+							if (!member.isNativeLeader() && member.isNative() && member.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase().matches(groupName) && !member.isHiredOrControlled()) {
+								CombatWrapper combatWrapper = new CombatWrapper(member.getGameObject());
+								if (combatWrapper.getAttackerCount()==0) {
+									JOptionPane.showMessageDialog(combatFrame,"Cannot attack Native Leader unless all other unhired natives of the same group are also targeted.","Protected Leader",JOptionPane.INFORMATION_MESSAGE);
+									return false;
+								}
+							}
+						}
+					}
+				}
+			}
+			
 			updateSecondaryTargetsAfterSelection(activeCharacter.getCurrentLocation(), theTarget);
 			if (theTarget==null) {
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Targets the "+selText+" with "+spell.getGameObject().getName());

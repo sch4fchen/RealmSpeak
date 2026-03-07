@@ -2,8 +2,11 @@ package com.robin.magic_realm.RealmBattle.targeting;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.RealmBattle.BattleGroup;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -61,6 +64,28 @@ public abstract class SpellTargetingMultiple extends SpellTargeting {
 					if (doubleChooser.getSelectedText()!=null) {
 						RealmComponent rc = doubleChooser.getFirstSelectedComponent();
 						chosen.add(rc.getGameObject());
+					}
+				}
+			}
+			
+			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING)) {
+				for (GameObject target : chosen) {
+					RealmComponent theTarget = RealmComponent.getRealmComponent(target);
+					if (theTarget.isNativeLeader() && !theTarget.getGameObject().hasThisAttribute(Constants.DEAD)) {
+						CombatWrapper combatWrapperTarget = new CombatWrapper(theTarget.getGameObject());
+						if (combatWrapperTarget.getKilledBy()==null) {
+							String groupName = theTarget.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase();
+							BattleGroup group = combatFrame.getBattleModel().getDenizenBattleGroup();
+							for (RealmComponent member : group.getBattleParticipants()) {
+								if (!member.isNativeLeader() && member.isNative() && member.getGameObject().getThisAttribute(RealmComponent.NATIVE).toLowerCase().matches(groupName) && !member.isHiredOrControlled()) {
+									CombatWrapper combatWrapper = new CombatWrapper(member.getGameObject());
+									if (combatWrapper.getAttackerCount()==0 && !chosen.contains(member.getGameObject())) {
+										JOptionPane.showMessageDialog(combatFrame,"Cannot attack Native Leader unless all other unhired natives of the same group are also targeted.","Protected Leader",JOptionPane.INFORMATION_MESSAGE);
+										return false;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
