@@ -389,7 +389,7 @@ public class RealmUtility {
 			rc.getGameObject().removeThisAttribute(Constants.SPOILS_INVENTORY_SETUP);
 		}
 		else {
-			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS) && rc.isNativeLeader()) {
+			if (hostPrefs.hasPref(Constants.SR_ADV_PROTECTED_LEADERS_CACHING) && rc.isNativeLeader()) {
 				CacheChitComponent cache;
 				int num = (new CharacterWrapper(rc.getGameObject())).getNextCacheNumber();
 				GameObject go = rc.getGameObject().getGameData().createNewObject();
