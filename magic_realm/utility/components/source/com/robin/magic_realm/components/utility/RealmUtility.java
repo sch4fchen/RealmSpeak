@@ -412,6 +412,7 @@ public class RealmUtility {
 				cache.setOwner(RealmComponent.getRealmComponent(rc.getGameObject()));
 				cache.setFaceUp();
 				rcLocation.clearing.add(go,null);
+				moveInventoryIncludingSpells(rc.getGameObject(),cache.getGameObject());
 				GameObject holder = SetupCardUtility.getDenizenHolder(rc.getGameObject());
 				moveInventoryIncludingSpells(holder,cache.getGameObject());
 				RealmUtility.sortGameObjectsHold(cache.getGameObject(), false);
