@@ -160,25 +160,27 @@ public class QuestLocation extends GameObjectWrapper {
 		LocationClearingType clearingType = getLocationClearingType();
 		LocationTileSideType tileSideType = getLocationTileSideType();
 		
-		if (clearingType!=LocationClearingType.Any && !clearingType.matches(current.clearing)) return false;
-		if (tileSideType!=LocationTileSideType.Any && !tileSideType.matches(current.tile)) return false;
+		if (clearingType!=LocationClearingType.Any && (current==null || !clearingType.matches(current.clearing))) return false;
+		if (tileSideType!=LocationTileSideType.Any && (current==null || !tileSideType.matches(current.tile))) return false;
 		
 		if (addressesToTest.isEmpty()) return true; // If there are NO addresses, then anything is allowed
 		
-		ArrayList<RealmComponent> clearingComponents;
+		ArrayList<RealmComponent> clearingComponents = new ArrayList<>();
 		if (specificObject!=null) {
 			clearingComponents= new ArrayList<>();
 			clearingComponents.add(RealmComponent.getRealmComponent(specificObject));
 		}
 		else {
-			if (isSameTile()) {
-				clearingComponents = current.tile.getAllClearingComponents();
-				clearingComponents.addAll(current.tile.getOffroadRealmComponents());
-			}
-			else {
-				clearingComponents = current.tile.getOffroadRealmComponents();
-				if (current.clearing != null) {
-					clearingComponents.addAll(current.clearing.getClearingComponents());
+			if (current!=null && current.tile !=null) {
+				if (isSameTile()) {
+					clearingComponents = current.tile.getAllClearingComponents();
+					clearingComponents.addAll(current.tile.getOffroadRealmComponents());
+				}
+				else {
+					clearingComponents = current.tile.getOffroadRealmComponents();
+					if (current.clearing != null) {
+						clearingComponents.addAll(current.clearing.getClearingComponents());
+					}
 				}
 			}
 			for(GameObject go:character.getInventory()) {
@@ -191,7 +193,7 @@ public class QuestLocation extends GameObjectWrapper {
 		String matchingAddress = null;
 		for(String address:addressesToTest) {
 			TileLocation tl = fetchTileLocation(getGameData(),address);
-			if (tl!=null) {
+			if (tl!=null && current!=null) {
 				if ((isSameTile() && tl.tile.equals(current.tile))
 					|| tl.equals(current)) {
 						matchingAddress = address;

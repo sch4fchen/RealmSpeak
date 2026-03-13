@@ -9,6 +9,7 @@ NEW FEATURES:
 # Updates to the seasonal tile graphics for Expansion 1 tiles
 BUGS/ISSUES:
 # Fix moving in seasons with mountain costs of 3 phases
+# Fix crash for quest locations if character is not on the board
 
 Version 1.2.4.8
 NEW FEATURES:
