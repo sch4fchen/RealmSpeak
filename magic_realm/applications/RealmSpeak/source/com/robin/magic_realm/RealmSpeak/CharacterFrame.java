@@ -243,7 +243,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	
 	public ArrayList<RealmComponent> getPossibleBlockees() {
 		ArrayList<RealmComponent> list = null;
-		if (blockButton.isSelected()) {
+		if (blockButton.isSelected() && !character.isFamiliar()) {
 			TileLocation current = getCharacter().getCurrentLocation();
 			if (current!=null && current.isInClearing()) {
 				list = new ArrayList<>();
@@ -416,7 +416,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		
 		// Check for blocking state
 		blockees = null;
-		if (blockButton.isSelected() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
+		if (blockButton.isSelected() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !character.isFamiliar()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees();
 		}
@@ -1624,6 +1624,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		});
 		box.add(blockButton);
+		if (character.isFamiliar()) {
+			blockButton.setEnabled(false);
+		}
+		
 		
 		unhideButton = new JButton(IconFactory.findIcon("images/interface/unhide.gif"));
 		ComponentTools.lockComponentSize(unhideButton,39,39);

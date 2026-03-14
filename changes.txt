@@ -10,6 +10,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix moving in seasons with mountain costs of 3 phases
 # Fix crash for quest locations if character is not on the board
+# Familiars should not be able to block
 
 Version 1.2.4.8
 NEW FEATURES:
