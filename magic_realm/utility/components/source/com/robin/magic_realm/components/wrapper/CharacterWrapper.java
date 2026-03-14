@@ -392,6 +392,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			list.remove(go.getStringId());
 		}
 	}
+	public void removeAllBlockDecisions() {
+		setBoolean(BLOCK_DECISION,false);
+	}
 	public boolean isSleep() {
 		return getBoolean(IS_SLEEP);
 	}

@@ -545,6 +545,12 @@ public class ActionRow {
 			}
 		
 			character.addActionPerformedToday(action,getActionState(),result,roller);
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
+				for (GameObject character : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+					new CharacterWrapper(character).removeAllBlockDecisions();
+				}
+			}
 		}
 	}
 	public void updateBlocked(HostPrefWrapper hostPrefs) {
