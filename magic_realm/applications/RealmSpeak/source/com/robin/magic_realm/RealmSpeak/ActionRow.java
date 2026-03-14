@@ -3,6 +3,7 @@ package com.robin.magic_realm.RealmSpeak;
 import java.util.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -547,8 +548,9 @@ public class ActionRow {
 			character.addActionPerformedToday(action,getActionState(),result,roller);
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-				for (GameObject character : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-					new CharacterWrapper(character).removeAllBlockDecisions();
+				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+					gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 				}
 			}
 		}
