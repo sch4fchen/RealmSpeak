@@ -61,12 +61,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	
 	protected JButton viewChitsButton;
 	protected JToggleButton blockButton;
-	protected JToggleButton keepBlockButton;
 	protected JButton shoutButton;
 	protected JButton unhideButton;
 	protected JButton tradeButton;
 	protected JCheckBox dailyCombatCheckbox;
 	protected JCheckBox dayEndRearrangmentCheckbox;
+	protected JCheckBox keepBlockingCheckbox;
 	protected JLabel characterVulnerability;
 
 	protected JPanel characterDetailPanel;
@@ -344,6 +344,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		setTitle(character.getCharacterName() + " - Month " + character.getCurrentMonth() + ", Day " + character.getCurrentDay()+" - "+phaseName);
 		dailyCombatCheckbox.setSelected(character.getWantsCombat());
 		dayEndRearrangmentCheckbox.setSelected(character.getWantsDayEndTrades());
+		keepBlockingCheckbox.setSelected(character.keepsBlocking());
 		
 		// Update mountain move icon (might change with seasons/weather)
 		mountainMoveIcon.setCost(getCharacter().getMountainMoveCost()+(character.addsOneToMoveExceptCaves()?1:0));
@@ -474,16 +475,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		boolean recordingActions = character.isDoRecord() && actionPanel.getActionControlManager().getCurrentlyRecordingAction() == null;
 		boolean canTrade = getCharacter().isCharacter() || getCharacter().isHiredLeader() || getCharacter().isControlledMonster();
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
-		if (character.keepsBlocking()) {
-			keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockon.gif"));
-			keepBlockButton.setToolTipText("Keep Blocking ON");
-			keepBlockButton.setSelected(true);
-		}
-		else {
-			keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockoff.gif"));
-			keepBlockButton.setToolTipText("Keep Blocking OFF");
-			keepBlockButton.setSelected(false);
-		}
 		if (character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			blockButton.setToolTipText("Block ON");
@@ -1137,7 +1128,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			});
 			tokenPanel.add(charLabel, "West");
-			JPanel sideControls = new JPanel(new GridLayout(3, 1));
+			JPanel sideControls = new JPanel(new GridLayout(4, 1));
 			showCharCardButton = new JButton("Show Card");
 			showCharCardButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
@@ -1173,6 +1164,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			});
 			sideControls.add(dayEndRearrangmentCheckbox);
+			
+			keepBlockingCheckbox = new JCheckBox("Keep Blocking");
+			keepBlockingCheckbox.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					character.setKeepBlocking(keepBlockingCheckbox.isSelected());
+				}
+			});
+			sideControls.add(keepBlockingCheckbox);
 
 			tokenPanel.add(sideControls, "East");
 		}
@@ -1623,40 +1622,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		});
 		box.add(viewChitsButton);
 		
-		keepBlockButton = new JToggleButton(IconFactory.findIcon("images/interface/keepblockoff.gif"),false);
-		keepBlockButton.setToolTipText("Keep Blocking OFF");
-		ComponentTools.lockComponentSize(keepBlockButton,39,39);
-		if (character.keepsBlocking()) {
-			keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockon.gif"));
-			keepBlockButton.setToolTipText("Keep Blocking ON");
-			keepBlockButton.setSelected(true);
-		}
-		keepBlockButton.setFocusable(false);
-		keepBlockButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				if (keepBlockButton.isSelected()) {
-					keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockon.gif"));
-					keepBlockButton.setToolTipText("Keep Blocking ON");
-					character.setBlocking(true);
-					character.setKeepBlocking(true);
-					blockButton.setSelected(true);
-					blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-					blockButton.setToolTipText("Block ON");
-				}
-				else {
-					keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockoff.gif"));
-					keepBlockButton.setToolTipText("Keep Blocking OFF");
-					character.setKeepBlocking(false);
-				}
-				gameHandler.submitChanges();
-				gameHandler.updateCharacterList();
-			}
-		});
-		box.add(keepBlockButton);
-		if (character.isFamiliar()) {
-			keepBlockButton.setEnabled(false);
-		}
-		
 		blockButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
 		blockButton.setToolTipText("Block OFF");
 		ComponentTools.lockComponentSize(blockButton,39,39);
@@ -1677,10 +1642,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
 					blockButton.setToolTipText("Block OFF");
 					character.setBlocking(false);
-					character.setKeepBlocking(false);
-					keepBlockButton.setSelected(false);
-					keepBlockButton.setIcon(IconFactory.findIcon("images/interface/keepblockoff.gif"));
-					keepBlockButton.setToolTipText("Keep Blocking OFF");
 				}
 				gameHandler.submitChanges();
 				gameHandler.updateCharacterList();
