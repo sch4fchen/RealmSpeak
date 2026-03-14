@@ -118,7 +118,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					"Sleeping",JOptionPane.INFORMATION_MESSAGE);
 		}
 		
-		if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
+		if (getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
 			String clientName = getGameHandler().getClient().getClientName();
 			if (!game.isClientTakenTurn(clientName)) {
 				game.addClientTakenTurn(clientName);
@@ -1137,7 +1137,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				SetupCardUtility.summonMonsters(hostPrefs,summoned,getCharacter(),monsterDieRoller,nativeDieRoller);
 			}
 			
-			if (getMainFrame().getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
+			if (getGameHandler().isOption(RealmSpeakOptions.TURN_END_RESULTS)) {
 				if (!summoned.isEmpty()) {
 					RealmObjectPanel panel = new RealmObjectPanel();
 					panel.addObjects(summoned);

@@ -81,6 +81,7 @@ public class CharacterActionControlManager {
 			flyIcon,
 			remoteSpellIcon,
 			cacheIcon,
+			stealIcon,
 			healIcon,
 			repairIcon,
 			fortifyIcon,

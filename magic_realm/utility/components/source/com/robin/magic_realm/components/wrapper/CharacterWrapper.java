@@ -107,6 +107,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 
 	public static final String BLOCKING = "bkkng_"; // indicates the character is blocking everything in the clearing
 	public static final String BLOCK_DECISION = "bkkng_dec"; // the blocking character has decided what to do
+	public static final String KEEP_BLOCKING = "keep_bkkng_";
 	
 	public static final String COMBAT_STATUS = "cmb_st__";
 	public static final String COMBAT_PLAY_ORDER = "cmb_ord__";
@@ -377,6 +378,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean isBlocking() {
 		return getBoolean(BLOCKING);
+	}
+	public boolean keepsBlocking() {
+		return getBoolean(KEEP_BLOCKING);
 	}
 	public boolean hasBlockDecision(GameObject go) {
 		ArrayList<String> list = getList(BLOCK_DECISION);
@@ -1958,7 +1962,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		logger.fine("applyMidnight");
 //		setHidden(false); // This doesn't happen at midnight:  happens at the start of the player turn (rule 8.3)
 		setBlocked(false);
-		setBlocking(false);
+		if (!keepsBlocking()) {
+			setBlocking(false);
+		}
 		setNoSummon(false);
 		setPeerAny(false);
 		setStormed(false);
@@ -3675,6 +3681,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void addBlockDecision(GameObject go) {
 		addListItem(BLOCK_DECISION,go.getStringId());
+	}
+	public void setKeepBlocking(boolean val) {
+		setBoolean(KEEP_BLOCKING,val);
 	}
 	public void setSleep(boolean val) {
 		setBoolean(IS_SLEEP,val);
