@@ -552,9 +552,8 @@ public class ActionRow {
 				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
 				}
-				gameHandler.updateCharacterList();
-				gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 			}
+			gameHandler.updateCharacterFramesWithoutMap();
 		}
 	}
 	public void updateBlocked(HostPrefWrapper hostPrefs) {

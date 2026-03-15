@@ -2056,8 +2056,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 			if (frame != null) {
 				if (!character.isDead() && !character.getPlayerName().equals(client.getClientName())) {
-					// The frame was probably transferred, and needs to be
-					// removed!
+					// The frame was probably transferred, and needs to be removed!
 					characterTable.clearSelection();
 					String id = character.getGameObject().getStringId();
 					characterFrames.remove(id);
@@ -2248,7 +2247,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		getInspector().redrawMap();
 	}
 	
-	private void updateCharacterFramesWithoutMap() {
+	public void updateCharacterFramesWithoutMap() {
 		for (CharacterFrame frame : characterFrames.values()) {
 			if (frame.getCharacter().isActive()) {
 				frame.updateCharacter();

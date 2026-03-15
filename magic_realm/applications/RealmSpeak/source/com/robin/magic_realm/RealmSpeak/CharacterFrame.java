@@ -241,45 +241,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			box.add(label);
 		}
 	}
-	
-	public ArrayList<RealmComponent> getPossibleBlockees() {
-		ArrayList<RealmComponent> list = null;
-		if (character.isBlocking() && !character.isFamiliar()) {
-			TileLocation current = getCharacter().getCurrentLocation();
-			if (current!=null && current.isInClearing()) {
-				list = new ArrayList<>();
-				boolean takingTurn = getCharacter().isPlayingTurn() && getCharacter().hasDoneActionsToday();
-				for (RealmComponent rc : current.clearing.getClearingComponents()) {
-					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
-					// (Yeah, you could block unhired natives, but what's the point?)
-					if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
-						if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
-							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							boolean targetPlayingTurn = target.isPlayingTurn() && target.hasDoneActionsToday();
-							// Make sure that either the blocking character is taking a turn, or the target is
-							if (takingTurn || targetPlayingTurn) {
-								if (!target.isHidden() || getCharacter().foundHiddenEnemy(rc.getGameObject())) {
-									if (!target.isBlocked() && !getCharacter().hasBlockDecision(target.getGameObject())) {
-										// Jeese, ENOUGH conditions to get here!!!!!  :)
-										list.add(rc);
-									}
-								}
-							}
-						}
-						else if (rc.isMonster()) {
-							MonsterChitComponent monster = (MonsterChitComponent)rc;
-							if (!monster.isBlocked()) {
-								list.add(monster);
-							}
-						}
-					}
-				}
-			}
-			
-			
-		}
-		return list;
-	}
 	private void doBlockNow() {
 		if (blockees!=null && !blockees.isEmpty()) {
 			for (RealmComponent target:blockees) {
@@ -288,7 +249,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			blockees = null;
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
-			gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 		}
 		updateControls();
 	}
@@ -417,11 +377,16 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		revalidate();
 		repaint();
 		
+		checkForBlockingState();
+		updateControls();
+	}
+	
+	public void checkForBlockingState() {
 		// Check for blocking state
 		blockees = null;
 		if (getCharacter().isBlocking() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !character.isFamiliar()) {
 			// Look for characters in the clearing
-			blockees = getPossibleBlockees();
+			blockees = getCharacter().getPossibleBlockees();
 			if (blockees!=null && !blockees.isEmpty()) {
 				getCharacter().setNeedsBlockDecision(true);
 			}
@@ -518,6 +483,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 	public boolean isWaitingForSingleButton() {
 		return singleButtonManager.hasMandatoryShowing();
+	}
+	
+	public void updateSingleButton() {
+		if (singleButtonManager!=null) {
+			singleButtonManager.updateButtonVisibility();
+		}
 	}
 
 	private void setupVPs() {
@@ -1498,7 +1469,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		// Block Now Button
 		blockNowButton = new SingleButton("Block Now?!",true) {
 			public boolean needsShow() {
-				return blockees!=null && blockees.size()>0;
+				return getCharacter().getNeedsBlockDecision();
 			}
 		};
 		blockNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));

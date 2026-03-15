@@ -7703,7 +7703,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return false;
 	}
 	public boolean isPlayingTurn() {
-		return getGameStatus().endsWith("Playing Turn");
+		return getGameStatus().contains("Playing Turn");
 	}
 	public void setPonyLock(boolean val) {
 		setBoolean(Constants.PONY_LOCK,val);
@@ -8323,4 +8323,40 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
     }
+    public ArrayList<RealmComponent> getPossibleBlockees() {
+		ArrayList<RealmComponent> list = null;
+		if (isBlocking() && !isFamiliar()) {
+			TileLocation current = getCurrentLocation();
+			if (current!=null && current.isInClearing()) {
+				list = new ArrayList<>();
+				boolean takingTurn = isPlayingTurn() && hasDoneActionsToday();
+				for (RealmComponent rc : current.clearing.getClearingComponents()) {
+					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
+					// (Yeah, you could block unhired natives, but what's the point?)
+					if (!rc.getGameObject().equals(getGameObject())) {
+						if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+							boolean targetPlayingTurn = target.isPlayingTurn() && target.hasDoneActionsToday();
+							// Make sure that either the blocking character is taking a turn, or the target is
+							if (takingTurn || targetPlayingTurn) {
+								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
+									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
+										// Jeese, ENOUGH conditions to get here!!!!!  :)
+										list.add(rc);
+									}
+								}
+							}
+						}
+						else if (rc.isMonster()) {
+							MonsterChitComponent monster = (MonsterChitComponent)rc;
+							if (!monster.isBlocked()) {
+								list.add(monster);
+							}
+						}
+					}
+				}
+			}
+		}
+		return list;
+	}
 }
