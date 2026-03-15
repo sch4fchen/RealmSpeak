@@ -1976,7 +1976,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		logger.fine("applyMidnight");
 //		setHidden(false); // This doesn't happen at midnight:  happens at the start of the player turn (rule 8.3)
 		setBlocked(false);
-		if (!keepsBlocking()) {
+		if (keepsBlocking()) {
+			setBlocking(true);
+		}
+		else {
 			setBlocking(false);
 		}
 		setNoSummon(false);

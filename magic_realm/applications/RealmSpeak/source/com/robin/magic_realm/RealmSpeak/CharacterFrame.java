@@ -1498,7 +1498,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		box.add(woundButton);
 		
 		// Block Now Button
-		blockNowButton = new SingleButton("Block Now!!",true) {
+		blockNowButton = new SingleButton("Block Now??",true) {
 			public boolean needsShow() {
 				return blockees!=null && blockees.size()>0;
 			}
