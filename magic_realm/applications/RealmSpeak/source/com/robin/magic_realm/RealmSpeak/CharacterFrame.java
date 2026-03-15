@@ -288,9 +288,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			blockees = null;
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
-			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-				gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
-			}
+			gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 		}
 		updateControls();
 	}
@@ -1498,7 +1496,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		box.add(woundButton);
 		
 		// Block Now Button
-		blockNowButton = new SingleButton("Block Now??",true) {
+		blockNowButton = new SingleButton("Block Now?!",true) {
 			public boolean needsShow() {
 				return blockees!=null && blockees.size()>0;
 			}
