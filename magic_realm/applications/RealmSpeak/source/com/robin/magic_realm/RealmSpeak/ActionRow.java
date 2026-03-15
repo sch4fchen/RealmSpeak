@@ -400,7 +400,7 @@ public class ActionRow {
 	 * 
 	 * Mmmmmm.  ACTION MEAT!!!!
 	 */
-	public void process() {	
+	public void process() {
 		if (!isFollowing) {
 			if (character.isBlocked()) {
 				gameHandler.broadcast(character.getGameObject().getName(),"BLOCKED - Cannot perform action "+action);
@@ -546,12 +546,14 @@ public class ActionRow {
 			}
 		
 			character.addActionPerformedToday(action,getActionState(),result,roller);
+			
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
 				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
-					gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 				}
+				gameHandler.updateCharacterList();
+				gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
 			}
 		}
 	}

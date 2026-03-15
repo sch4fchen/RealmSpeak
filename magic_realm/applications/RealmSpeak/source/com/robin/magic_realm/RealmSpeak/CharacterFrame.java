@@ -288,6 +288,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			blockees = null;
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
+			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
+				gameHandler.getUpdateFrameListener().stateChanged(new ChangeEvent(character));
+			}
 		}
 		updateControls();
 	}
@@ -421,6 +424,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (getCharacter().isBlocking() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !character.isFamiliar()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees();
+			if (blockees!=null && !blockees.isEmpty()) {
+				getCharacter().setNeedsBlockDecision(true);
+			}
+			else {
+				getCharacter().setNeedsBlockDecision(false);
+			}
 		}
 	}
 	

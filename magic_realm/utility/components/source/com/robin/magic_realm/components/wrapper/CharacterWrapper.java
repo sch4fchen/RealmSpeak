@@ -101,6 +101,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String FOLLOW_SPELL = "_flls_";
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
+	public static final String NEEDS_BLOCK_DECISION = "_bckdc_";
 	
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
@@ -392,6 +393,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			list.remove(go.getStringId());
 		}
 	}
+	public  ArrayList<String> getAllBlockDecisions() {
+		return getList(BLOCK_DECISION);
+	}
 	public void removeAllBlockDecisions() {
 		setBoolean(BLOCK_DECISION,false);
 	}
@@ -565,6 +569,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean getNeedsActionPanelUpdate() {
 		return getBoolean(NEEDS_ACTION_PANEL_UPDATE);
 	}
+	public boolean getNeedsBlockDecision() {
+		return getBoolean(NEEDS_BLOCK_DECISION);
+	}
 	
 	// Other getters
 	public int getNextCacheNumber() {
@@ -645,6 +652,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
  		else if (isSleep()) {
 			result = result + " (Asleep)";
+ 		}
+ 		
+ 		if (isBlocking() && getNeedsBlockDecision()) {
+ 			result = result + " (BLOCKING?!)";
  		}
 		
 		return prefix+result;
@@ -1985,6 +1996,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.DRINKS_BOUGHT);
 		getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
 		getGameObject().removeThisAttribute(Constants.STEAL_ATTEMPTS);
+		removeAllBlockDecisions();
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
@@ -3899,6 +3911,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setNeedsActionPanelUpdate(boolean val) {
 		setBoolean(NEEDS_ACTION_PANEL_UPDATE,val);
+	}
+	public void setNeedsBlockDecision(boolean val) {
+		setBoolean(NEEDS_BLOCK_DECISION,val);
 	}
 	
 	// Adders

@@ -100,7 +100,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	// Update listener
 	protected ChangeListener updateFrameListener = new ChangeListener() {
 		public void stateChanged(ChangeEvent ev) {
-			updateCharacterFrames();
+			updateCharacterFramesWithoutMap();
 			if (tilePickFrame != null) {
 				tilePickFrame.updateFrame();
 			}
@@ -2237,8 +2237,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	/**
-	 * A convenient way to update all the player's character frames (like when
-	 * an item is picked up)
+	 * A convenient way to update all the player's character frames (like when an item is picked up)
 	 */
 	public void updateCharacterFrames() {
 		for (CharacterFrame frame : characterFrames.values()) {
@@ -2247,6 +2246,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		getInspector().redrawMap();
+	}
+	
+	private void updateCharacterFramesWithoutMap() {
+		for (CharacterFrame frame : characterFrames.values()) {
+			if (frame.getCharacter().isActive()) {
+				frame.updateCharacter();
+			}
+		}
 	}
 
 	private static final ImageIcon LOCK_ICON = IconFactory.findIcon("icons/lock.gif");
