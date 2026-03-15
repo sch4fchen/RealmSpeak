@@ -227,8 +227,8 @@ public class PhaseManager {
 		}
 		for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 			String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
-			free.replace("SP", "E");
 			if (free!=null) {
+				free.replace("SP", "E");
 				addFreeAction(free,rc.getGameObject(),tl,false);
 			}
 		}
