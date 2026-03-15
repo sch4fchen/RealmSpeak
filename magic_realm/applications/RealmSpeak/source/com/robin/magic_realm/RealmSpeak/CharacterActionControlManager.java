@@ -54,7 +54,7 @@ public class CharacterActionControlManager {
 	public ActionIcon alertIcon = new ActionIcon("alert","Alert",DayAction.ALERT_ACTION.getCode());
 	public ActionIcon hireIcon = new ActionIcon("hire","Hire",DayAction.HIRE_ACTION.getCode());
 	public ActionIcon followIcon = new ActionIcon("follow","Follow",DayAction.FOLLOW_ACTION.getCode());
-	public ActionIcon spellIcon = new ActionIcon("spell","Spell",DayAction.SPELL_ACTION.getCode());
+	public ActionIcon spellIcon = new ActionIcon("spell","Enchant",DayAction.SPELL_ACTION.getCode());
 	public ActionIcon peerIcon = new ActionIcon("peer","Peer",DayAction.ENH_PEER_ACTION.getCode());
 	public ActionIcon flyIcon = new ActionIcon("fly","Fly",DayAction.FLY_ACTION.getCode());
 	public ActionIcon remoteSpellIcon = new ActionIcon("remotespell","Remote SP",DayAction.REMOTE_SPELL_ACTION.getCode());

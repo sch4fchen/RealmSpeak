@@ -276,10 +276,10 @@ public class ActionRow {
 			description = "Follow";
 		}
 		else if (ActionId.Spell==id) {
-			description = "Spell";
+			description = "Enchant";
 		}
 		else if (ActionId.SpellPrep==id) {
-			description = "Spell Prep";
+			description = "Enchant Meditating";
 		}
 		else if (ActionId.EnhPeer==id) {
 			description = "Enhanced Peer";

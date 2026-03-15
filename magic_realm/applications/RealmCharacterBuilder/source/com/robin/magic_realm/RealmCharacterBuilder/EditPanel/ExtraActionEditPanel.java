@@ -27,7 +27,7 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		addOption("REST","R");
 		addOption("ALERT","A");
 		addOption("HIRE","HR");
-		addOption("SPELL","SP");
+		addOption("ENCHANT","E");
 		addOption("PEER","P");
 		addOption("FLY","FLY");
 		addOption("REMOTE SP","RS");

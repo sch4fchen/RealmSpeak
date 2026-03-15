@@ -2504,6 +2504,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
 				if (free!=null) {
+					free.replace("SP", "E");
 					list.add(rc.getGameObject());
 				}
 			}
@@ -2572,6 +2573,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<String> extra = getGameObject().getThisAttributeList(Constants.EXTRA_ACTIONS);
 		if (extra!=null) {
 			for (String extraAction : extra) {
+				extraAction.replace("SP", "E");
 				pm.addFreeAction(extraAction,getGameObject(),null,true); // force character actions on the phase manager
 			}
 		}

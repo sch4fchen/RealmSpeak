@@ -112,6 +112,7 @@ public class PhaseManager {
 			ArrayList<String> free = thing.getThisAttributeList(Constants.EXTRA_ACTIONS);
 			if (free!=null) {
 				for (String freeAction : free) {
+					freeAction.replace("SP", "E");
 					addFreeAction(freeAction,thing);
 				}
 			}
@@ -226,6 +227,7 @@ public class PhaseManager {
 		}
 		for (RealmComponent rc : tl.clearing.getClearingComponents()) {
 			String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
+			free.replace("SP", "E");
 			if (free!=null) {
 				addFreeAction(free,rc.getGameObject(),tl,false);
 			}
@@ -530,8 +532,8 @@ public class PhaseManager {
 		if (action.indexOf('!')==1) {
 			simple = simple + "!";
 		}
-		if (simple.equals("SPX")) {
-			simple = "SP";
+		if (simple.equals("EM")) {
+			simple = "E";
 		}
 		return simple;
 	}
