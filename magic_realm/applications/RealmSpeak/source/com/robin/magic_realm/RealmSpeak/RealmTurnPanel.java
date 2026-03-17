@@ -276,11 +276,19 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		return false;
 	}
-	private boolean isAwaitingBlockDecision() {
+	public boolean isAwaitingBlockDecision() {
+		return isAwaitingBlockDecision(false,null);
+	}
+	public boolean isAwaitingBlockDecision(boolean interruptMovement, TileLocation loc) {
 		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
-			if (!getCharacter().isBlocked() && getCharacter().hasDoneActionsToday()) {
-				TileLocation current = getCharacter().getCurrentLocation();
+			if (!getCharacter().isBlocked() && (interruptMovement || getCharacter().hasDoneActionsToday())) {
+				TileLocation current;
+				if (loc!=null) {
+					current = loc;
+				} else {
+					current = getCharacter().getCurrentLocation();
+				}
 				if (current!=null && current.isInClearing()) {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject())

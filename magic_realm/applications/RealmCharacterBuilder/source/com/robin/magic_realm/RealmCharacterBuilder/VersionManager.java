@@ -46,7 +46,7 @@ public class VersionManager {
 				String extraActions = character.getAttribute(levelKey,Constants.EXTRA_ACTIONS);
 				//	- extra_actions changes from a string attribute, to an attributeList
 				if (extraActions!=null) {
-					extraActions.replace("SP", "E");
+					extraActions = extraActions.replace("SP", "E");
 					ArrayList<String> list = new ArrayList<>();
 					list.add(extraActions);
 					character.setAttributeList(levelKey,Constants.EXTRA_ACTIONS,list);

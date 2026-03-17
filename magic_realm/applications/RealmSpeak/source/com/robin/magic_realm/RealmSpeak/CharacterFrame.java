@@ -377,23 +377,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		revalidate();
 		repaint();
 		
-		checkForBlockingState();
+		blockees = getCharacter().checkForBlockingState();
 		updateControls();
-	}
-	
-	public void checkForBlockingState() {
-		// Check for blocking state
-		blockees = null;
-		if (getCharacter().isBlocking() && !getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !character.isFamiliar()) {
-			// Look for characters in the clearing
-			blockees = getCharacter().getPossibleBlockees();
-			if (blockees!=null && !blockees.isEmpty()) {
-				getCharacter().setNeedsBlockDecision(true);
-			}
-			else {
-				getCharacter().setNeedsBlockDecision(false);
-			}
-		}
 	}
 	
 	public void toFront() {

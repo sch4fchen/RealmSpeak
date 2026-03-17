@@ -102,6 +102,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
 	public static final String NEEDS_BLOCK_DECISION = "_bckdc_";
+	public static final String INTERRUPT_MOVEMENT_DECISION = "_imdc_";
 	
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
@@ -571,6 +572,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean getNeedsBlockDecision() {
 		return getBoolean(NEEDS_BLOCK_DECISION);
+	}
+	public boolean getNeedsInterruptMovementDecision() {
+		return getBoolean(INTERRUPT_MOVEMENT_DECISION);
 	}
 	
 	// Other getters
@@ -2504,7 +2508,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				String free = rc.getGameObject().getThisAttribute(Constants.EXTRA_ACTIONS_CLEARING);
 				if (free!=null) {
-					free.replace("SP", "E");
+					free = free.replace("SP", "E");
 					list.add(rc.getGameObject());
 				}
 			}
@@ -2573,7 +2577,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<String> extra = getGameObject().getThisAttributeList(Constants.EXTRA_ACTIONS);
 		if (extra!=null) {
 			for (String extraAction : extra) {
-				extraAction.replace("SP", "E");
+				extraAction = extraAction.replace("SP", "E");
 				pm.addFreeAction(extraAction,getGameObject(),null,true); // force character actions on the phase manager
 			}
 		}
@@ -3919,6 +3923,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setNeedsBlockDecision(boolean val) {
 		setBoolean(NEEDS_BLOCK_DECISION,val);
+	}
+	public void setInterruptMovementDecision(boolean val) {
+		setBoolean(INTERRUPT_MOVEMENT_DECISION,val);
 	}
 	
 	// Adders
@@ -8324,19 +8331,27 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
     }
     public ArrayList<RealmComponent> getPossibleBlockees() {
+    	return getPossibleBlockees(false,null);
+    }
+    public ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		ArrayList<RealmComponent> list = null;
 		if (isBlocking() && !isFamiliar()) {
-			TileLocation current = getCurrentLocation();
+			TileLocation current;
+			if (loc!=null) {
+				current = loc;
+			} else {
+				current = getCurrentLocation();
+			}
 			if (current!=null && current.isInClearing()) {
 				list = new ArrayList<>();
-				boolean takingTurn = isPlayingTurn() && hasDoneActionsToday();
+				boolean takingTurn = isPlayingTurn() && (interruptMovement || hasDoneActionsToday());
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
 					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
 					// (Yeah, you could block unhired natives, but what's the point?)
 					if (!rc.getGameObject().equals(getGameObject())) {
 						if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							boolean targetPlayingTurn = target.isPlayingTurn() && target.hasDoneActionsToday();
+							boolean targetPlayingTurn = target.isPlayingTurn() && (interruptMovement || target.hasDoneActionsToday());
 							// Make sure that either the blocking character is taking a turn, or the target is
 							if (takingTurn || targetPlayingTurn) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
@@ -8358,5 +8373,33 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return list;
+	}
+    
+    public ArrayList<RealmComponent> checkForBlockingState() {
+    	return checkForBlockingState(false,null);
+    }
+    
+	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptMovement,TileLocation loc) {
+		ArrayList<RealmComponent> blockees = null;
+		// Check for blocking state
+		if (isBlocking() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isFamiliar()) {
+			// Look for characters in the clearing
+			blockees = getPossibleBlockees(interruptMovement,loc);
+			if (blockees!=null && !blockees.isEmpty()) {
+				if (interruptMovement) {
+					setInterruptMovementDecision(true);
+				} else {
+					setNeedsBlockDecision(true);
+				}
+			}
+			else {
+				if (interruptMovement) {
+					setInterruptMovementDecision(false);
+				} else {
+					setNeedsBlockDecision(false);
+				}
+			}
+		}
+		return blockees;
 	}
 }

@@ -548,10 +548,11 @@ public class ActionRow {
 			character.addActionPerformedToday(action,getActionState(),result,roller);
 			
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-			if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
 					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
 				}
+				new CharacterWrapper(livingCharacter).setInterruptMovementDecision(false);
 			}
 			gameHandler.updateCharacterFramesWithoutMap();
 		}
@@ -960,6 +961,17 @@ public class ActionRow {
 						cancelled = true;
 						result = "BLOCKED";
 						return;
+					}
+					if (location.clearing.moveCost(character,current)>1) {
+						for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+							new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
+						}
+						gameHandler.updateCharacterFramesWithoutMap();
+						if (turnPanel.isAwaitingBlockDecision(true,current)) {							
+							result = "AWAITING BLOCK DECISIONS";
+							completed = false;
+							return;
+						}
 					}
 					
 					// Move followers - FIXME Not totally right... but close!

@@ -35,7 +35,7 @@ public class StealTablesCommon {
 				chooser.addRealmComponent(RealmComponent.getRealmComponent(item),item.getName());
 			}
 		}
-		if (chooser.getComponentCount()==0) {
+		if (!chooser.hasOptions()) {
 			String itemType = "";
 			if (allItems) {
 				itemType = "Nothing";
