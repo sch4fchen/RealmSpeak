@@ -251,7 +251,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 		}
 		else if (getCharacter().getNeedsInterruptMovementDecision()){
-			for (RealmComponent target:getCharacter().checkForBlockingState(true,getCharacter().getCurrentLocation())) {
+			for (RealmComponent target:getCharacter().checkForBlockingState(true,null)) {
 				handleBlockCharacter(target);
 			}
 			getCharacter().setInterruptMovementDecision(false);
