@@ -658,7 +658,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			result = result + " (Asleep)";
  		}
  		
- 		if (isBlocking() && getNeedsBlockDecision()) {
+ 		if (isBlocking() && (getNeedsBlockDecision() || getNeedsInterruptMovementDecision())) {
  			result = result + " (BLOCKING?!)";
  		}
 		
