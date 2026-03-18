@@ -2003,7 +2003,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.DRINKS_BOUGHT);
 		getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
 		getGameObject().removeThisAttribute(Constants.STEAL_ATTEMPTS);
-		removeAllBlockDecisions();
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();

@@ -216,7 +216,9 @@ public class GameHost {
 			logger.fine("Host apply changes: DONE.");
 			
 			// Update all servers (except the originating server) with the changes
-			for (GameServer server:servers) {
+			ArrayList<GameServer> serversToUpdate = new ArrayList<>();
+			serversToUpdate.addAll(servers);
+			for (GameServer server:serversToUpdate) {
 				logger.fine("activeServer="+activeServer);
 				logger.fine("server="+server);
 				if (activeServer==null || !server.equals(activeServer)) {
