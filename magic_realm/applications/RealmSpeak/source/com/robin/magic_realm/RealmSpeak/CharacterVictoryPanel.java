@@ -440,7 +440,7 @@ public class CharacterVictoryPanel extends CharacterFramePanel {
 		}
 	}
 	private class ScoreHeaderRenderer extends DefaultTableCellRenderer {
-		private Border border = UIManager.getBorder("TableHeader.cellBorder");
+		private Border border = UIManager.getBorder("TitledBorder.border");
 		public ScoreHeaderRenderer() {
 			setFont(UIManager.getFont("TableHeader.font"));
 		}
