@@ -92,6 +92,6 @@ public class VictoryConditionButton extends JPanel {
 		setBorder(selected?BorderFactory.createLoweredBevelBorder():BorderFactory.createRaisedBevelBorder());
 		setBackground(selected? UIManager.getColor("Tree.selectionBackground"): UIManager.getColor("Panel.background"));
 		titleLabel.setForeground(selected? UIManager.getColor("Tree.selectionForeground"): UIManager.getColor("Label.foreground"));
-		descriptionField.setForeground(selected? UIManager.getColor("Tree.selectionForeground"): UIManager.getColor("Label.foreground"));
+		descriptionField.setForeground(selected? UIManager.getColor("Label.foreground"): UIManager.getColor("Label.foreground"));
 	}
 }
