@@ -15,7 +15,8 @@ public class FlashingButton extends JButton {
 	}
 	private static final Color DEFAULT_FLASH_COLOR = Color.red;
 	private static final int DEFAULT_FLASH_DELAY = 500; // milliseconds
-	private static final int DEFAULT_BORDER_THICKNESS = 3;
+	private static final int DEFAULT_BORDER_THICKNESS = 0;
+	private static final int DEFAULT_FLASH_BORDER_THICKNESS = 3;
 	private static final int DEFAULT_INITIAL_DELAY = 15000; // milliseconds (15 seconds)
 	
 	private int flashDelay;
@@ -52,17 +53,18 @@ public class FlashingButton extends JButton {
 		init();
 	}
 	private void init() {
-		init(DEFAULT_FLASH_COLOR,DEFAULT_BORDER_THICKNESS,DEFAULT_INITIAL_DELAY,DEFAULT_FLASH_DELAY);
+		init(DEFAULT_FLASH_COLOR,DEFAULT_FLASH_BORDER_THICKNESS,DEFAULT_BORDER_THICKNESS,DEFAULT_INITIAL_DELAY,DEFAULT_FLASH_DELAY);
 		addActionListener(new ActionListener() { // This guarantees that when the button is pressed, it stops the flashing timer.
 			public void actionPerformed(ActionEvent ev) {
 				setFlashing(false);
 			}
 		});
 	}
-	private void init(Color flashColor,int thickness,int initDelay,int delay) {
+	private void init(Color flashColor,int flashThickness,int thickness,int initDelay,int delay) {
 		this.initialDelay = initDelay;
 		this.flashDelay = delay;
-		Border FLASH_ON = BorderFactory.createLineBorder(flashColor,thickness);
+		
+		Border FLASH_ON = BorderFactory.createLineBorder(flashColor,flashThickness);
 		Border FLASH_OFF = BorderFactory.createLineBorder(UIManager.getColor("Panel.background"),thickness);
 		
 		defaultBorder = BorderFactory.createCompoundBorder(FLASH_OFF,getBorder());
