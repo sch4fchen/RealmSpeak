@@ -285,8 +285,13 @@ public class PhaseManager {
 		if (basic<=0 && sheltered<=0) {
 			// Convert detail action into plain action (M-CV3 becomes M)
 			phase = simplifyAction(phase);
-			ArrayList list = freeActions.getListAsNew(trimmedPhase(phase));
-			return list==null || list.isEmpty();
+			ArrayList<GameObject> list = freeActions.getListAsNew(trimmedPhase(phase));
+			ArrayList<GameObject> nonMoveActions = null;
+			boolean movePhase = "M".equals(phase) || "M!".equals(phase);
+			if (!movePhase) {
+				nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
+			}
+			return (list==null || list.isEmpty()) && (nonMoveActions==null || nonMoveActions.isEmpty());
 		}
 		return false;
 	}
@@ -322,7 +327,18 @@ public class PhaseManager {
 		if (phase.endsWith("!")) {
 			phase = phase.substring(0,phase.length()-1);
 		}
+		boolean movePhase = "M".equals(phase) || "M!".equals(phase);
 		list = freeActions.getListAsNew(trimmedPhase(phase));
+		ArrayList nonMoveActions;
+		if (!movePhase) {
+			nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
+			if (list!=null) {
+				list.addAll(nonMoveActions);
+			}
+			else {
+				list = nonMoveActions;
+			}
+		}
 		if (list!=null) {
 			if (ponyLock && ponyObject!=null) {
 				list.remove(ponyObject);
@@ -466,13 +482,28 @@ public class PhaseManager {
 		}
 		else {
 			ArrayList list = freeActions.getList(trimmedPhase(phase));
-			list.remove(new Requirement(go));
+			ArrayList nonMoveActions = null;
+			if (!movePhase) {
+				nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
+				if (list!=null) {
+					list.addAll(nonMoveActions);
+				}
+				else {
+					list = nonMoveActions;
+				}
+			}
+			list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
 			usedObjects.add(go);
 			if (go==ponyObject) {
 				ponyMoves--;
 			}
 			if (list.isEmpty()) {
-				freeActions.remove(trimmedPhase(phase));
+				if (freeActions.containsKey(trimmedPhase(phase))) {
+					freeActions.remove(trimmedPhase(phase));
+				}
+				else if (!movePhase) {
+					freeActions.removeKeyValue(trimmedPhase("!M"),new Requirement(go));
+				}
 			}
 		}
 		
