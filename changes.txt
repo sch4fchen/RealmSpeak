@@ -3,6 +3,9 @@ Super Realm: icons for site chits, sound and warning chits
 Quest: option for adding an icon for minor characters; option to make it an item and/or treasure (including properties e.g. base_price etc.Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
 
 
+Version 1.2.5.1
+
+
 Version 1.2.5.0
 NEW FEATURES:
 # Blocking of double move actions
