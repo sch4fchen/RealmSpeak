@@ -332,7 +332,7 @@ public class PhaseManager {
 		ArrayList nonMoveActions;
 		if (!movePhase) {
 			nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
-			if (list!=null) {
+			if (list!=null && nonMoveActions!=null) {
 				list.addAll(nonMoveActions);
 			}
 			else {
@@ -485,7 +485,7 @@ public class PhaseManager {
 			ArrayList nonMoveActions = null;
 			if (!movePhase) {
 				nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
-				if (list!=null) {
+				if (list!=null && nonMoveActions!=null) {
 					list.addAll(nonMoveActions);
 				}
 				else {
