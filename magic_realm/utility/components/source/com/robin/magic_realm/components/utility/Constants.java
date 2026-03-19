@@ -255,7 +255,7 @@ public class Constants {
 	public static final String SEAFARING = "seafaring";
 	public static final String FIT = "fit";
 	public static final String CRAGSMAN = "cragsman";
-	public static final String MOVE_ACTIONS_PER_TURN = "move_actions_per_turn";
+	public static final String EXTRA_ACTIONS_SUNLIGHT = "extra_actions_sunlight";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";

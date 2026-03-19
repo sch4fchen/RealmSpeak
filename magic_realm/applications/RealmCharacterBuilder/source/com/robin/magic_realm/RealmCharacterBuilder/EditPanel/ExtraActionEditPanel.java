@@ -32,6 +32,7 @@ public class ExtraActionEditPanel extends AdvantageEditPanel {
 		addOption("FLY","FLY");
 		addOption("REMOTE SP","RS");
 		addOption("CACHE","C");
+		addOption("not-MOVE","!M");
 		
 		// Initialize, if you can
 		ArrayList<String> extra = getAttributeList(Constants.EXTRA_ACTIONS);
