@@ -2574,6 +2574,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}		
 		
 		ArrayList<String> extra = getGameObject().getThisAttributeList(Constants.EXTRA_ACTIONS);
+		if (getGameObject().hasAttribute(Constants.OPTIONAL_BLOCK,Constants.EXTRA_ACTIONS)) {
+			if (extra==null) {
+				extra = new ArrayList<>();
+			}
+			extra.addAll(getGameObject().getAttributeList(Constants.OPTIONAL_BLOCK,Constants.EXTRA_ACTIONS));
+		}
 		if (extra!=null) {
 			for (String extraAction : extra) {
 				extraAction = extraAction.replace("SP", "E");

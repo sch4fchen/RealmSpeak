@@ -11,6 +11,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Fix stealing if there is no item to steal
 # Improvements to Nimbus Look and Feel
+# Fix extra action for Paladin's optional rule
 
 Version 1.2.4.9
 NEW FEATURES:
