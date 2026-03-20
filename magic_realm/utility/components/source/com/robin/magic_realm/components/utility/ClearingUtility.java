@@ -600,7 +600,7 @@ public class ClearingUtility {
 
 	public static Collection<RealmComponent> getCombatantsInClearing(TileLocation location, GameData data) {
 		ArrayList<RealmComponent> list = new ArrayList<>();
-		if (location.isInClearing()) {
+		if (location!=null && location.isInClearing()) {
 			for (RealmComponent rc:location.clearing.getClearingComponents()) {
 				if (rc.isCharacter() || rc.isMonster() || rc.isNative() || rc.isCombativeTraveler() || rc.isCompanion() || rc instanceof EventSpellCardComponent) {
 					if (rc.isNative() && !rc.isHiredOrControlled() && HostPrefWrapper.findHostPrefs(data).hasPref(Constants.HOUSE2_NO_NATIVES_BATTLING)) continue;
