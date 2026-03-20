@@ -499,7 +499,7 @@ public class PhaseManager {
 			}
 			if (list.isEmpty()) {
 				if (freeActions.containsKey(trimmedPhase(phase))) {
-					freeActions.remove(trimmedPhase(phase));
+					freeActions.removeKeyValue(trimmedPhase(phase),new Requirement(go));
 				}
 				else if (!movePhase) {
 					freeActions.removeKeyValue(trimmedPhase("!M"),new Requirement(go));
