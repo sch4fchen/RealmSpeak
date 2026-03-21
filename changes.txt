@@ -1,5 +1,3 @@
----Additional and new features---
-Super Realm: icons for site chits, sound and warning chits
 Quest: treasure editor
 Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
 

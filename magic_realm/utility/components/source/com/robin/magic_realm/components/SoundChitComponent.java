@@ -23,10 +23,14 @@ public class SoundChitComponent extends StateChitComponent {
 		
 		if (getGameObject().hasThisAttribute(Constants.ALWAYS_VISIBLE) || isFaceUp()) {
 			int y = 12;
-			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE+"_sr");
-			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER+"_sr");
+			String iconName = gameObject.getThisAttribute(Constants.ICON_TYPE);
+			String iconFolder = gameObject.getThisAttribute(Constants.ICON_FOLDER);
+			Double size = 0.4;
+			if (gameObject.hasThisAttribute(Constants.ICON_SIZE)) {
+				size = Double.parseDouble(gameObject.getThisAttribute(Constants.ICON_SIZE));
+			}
 			if (iconName!=null && iconFolder!=null) {
-				drawIcon(g,iconFolder,iconName,0.4,0,-20,null);
+				drawIcon(g,iconFolder,iconName,size,0,-20,null);
 				y = 20;
 			}
 			
