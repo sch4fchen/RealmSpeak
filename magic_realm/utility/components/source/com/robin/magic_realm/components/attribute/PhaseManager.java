@@ -332,11 +332,13 @@ public class PhaseManager {
 		ArrayList nonMoveActions;
 		if (!movePhase) {
 			nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
-			if (list!=null && nonMoveActions!=null) {
-				list.addAll(nonMoveActions);
-			}
-			else {
-				list = nonMoveActions;
+			if (nonMoveActions!=null) {
+				if (list!=null) {
+					list.addAll(nonMoveActions);
+				}
+				else {
+					list = nonMoveActions;
+				}
 			}
 		}
 		if (list!=null) {
@@ -485,11 +487,13 @@ public class PhaseManager {
 			ArrayList nonMoveActions = null;
 			if (!movePhase) {
 				nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
-				if (list!=null && nonMoveActions!=null) {
-					list.addAll(nonMoveActions);
-				}
-				else {
-					list = nonMoveActions;
+				if (nonMoveActions!=null) {
+					if (list!=null) {
+						list.addAll(nonMoveActions);
+					}
+					else {
+						list = nonMoveActions;
+					}
 				}
 			}
 			list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
