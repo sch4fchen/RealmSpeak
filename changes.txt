@@ -1,11 +1,6 @@
 Quest: treasure editor (rewards: add, remove, moveToLocation)
 Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
 
-1250 played. Two chars that I've played (Blood Witch and Sorcerer) do not get their extra phases...either H or SPX.
-New game. Witch king doesn't get his extra E (SP) phase.
-v1.2.5.0 Maybe others since I haven't ever tried this before...I cannot cast an enchanted artifacts spell. It doesn't show up as castable in melee casting or Enchant (SPX, SP). Any ideas?
-Incantation (spell added) isn't attaching. I tried a couple different spells to make sure it wasn't a color magic issue....Small Blessing, Dark Favor, etc.
-
 Version 1.2.5.1
 BUGS/ISSUES:
 # Fix extra actions
