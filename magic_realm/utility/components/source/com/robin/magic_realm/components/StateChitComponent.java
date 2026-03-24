@@ -12,6 +12,7 @@ public abstract class StateChitComponent extends SquareChitComponent {
 
 	public static final String FACE_UP = DARK_SIDE_UP;
 	public static final String FACE_DOWN = LIGHT_SIDE_UP;
+	public static final String _CHIT = "_chit";
 	
 	protected StateChitComponent(GameObject obj) {
 		super(obj);
