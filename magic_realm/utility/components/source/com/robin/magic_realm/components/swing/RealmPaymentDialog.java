@@ -277,7 +277,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		RealmComponent mc = RealmComponent.getRealmComponent(merchandise);
 		// Some treasures have special value to native groups...
 		int fame = TreasureUtility.getFamePrice(merchandise,tradeInfo.getGameObject());
-		if (fame>0 && hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE)) {
+		if (fame>0 && (hostPrefs.hasPref(Constants.OPT_GRUDGES)||hostPrefs.hasPref(Constants.SR_ADV_SENTIMENTAL_VALUE))) {
 			// Decrease friendship
 			character.changeRelationship(tradeInfo.getGameObject(), -1);
 			RealmLogging.logMessage(character.getGameObject().getName(),"Loses a level of friendliness with "+tradeInfo.getGameObject().getName()+".");

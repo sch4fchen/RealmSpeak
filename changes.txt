@@ -4,6 +4,7 @@ Native, Monster, Steeds, Weapons, Character chits: Change color for altered move
 Version 1.2.5.1
 BUGS/ISSUES:
 # Fix extra actions
+# Fix selling for optional rule Sentimental Value
 
 Version 1.2.5.0
 NEW FEATURES:
