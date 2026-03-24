@@ -1135,6 +1135,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			});
 			sideControls.add(dayEndRearrangmentCheckbox);
+			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion());
 			
 			keepBlockingCheckbox = new JCheckBox("Keep Blocking");
 			keepBlockingCheckbox.addActionListener(new ActionListener() {
@@ -1143,6 +1144,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			});
 			sideControls.add(keepBlockingCheckbox);
+			keepBlockingCheckbox.setEnabled(!character.isMinion());
 
 			tokenPanel.add(sideControls, "East");
 		}
