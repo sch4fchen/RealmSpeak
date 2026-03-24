@@ -1,6 +1,8 @@
 Quest: treasure editor (rewards: add, remove, moveToLocation)
 Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length
 
+Version 1.2.5.2
+
 Version 1.2.5.1
 BUGS/ISSUES:
 # Fix extra actions
