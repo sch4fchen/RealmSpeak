@@ -119,6 +119,7 @@ public class CenteredMapView extends JComponent {
 	
 	private ArrayList<ChangeListener> changeListeners = null;
 	private ArrayList<ActionListener> actionListeners = null;
+	private boolean hasClearingSelectionInProgess = false;
 	
 	private boolean mapReady = false;
 	private String anchorTileName = "Borderland";
@@ -363,6 +364,12 @@ public class CenteredMapView extends JComponent {
 				listener.actionPerformed(ev);
 			}
 		}
+	}
+	public void setClearingSelectionInProgress(boolean val) {
+		hasClearingSelectionInProgess = val;
+	}
+	public boolean hasClearingSelectionInProgress() {
+		return hasClearingSelectionInProgess;
 	}
 	public boolean isMapReady() {
 		return mapReady;

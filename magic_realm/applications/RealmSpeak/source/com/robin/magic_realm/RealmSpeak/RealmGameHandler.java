@@ -1243,14 +1243,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				inspector.repaint();
 				inspector.getMap().addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent aev) {
-						if (aev.getID() == CenteredMapView.CLICK_CLEARING_ACTION) {
-							TileLocation tl = TileLocation.parseTileLocation(client.getGameData(), aev.getActionCommand());
-							handleClearingClick(tl);
-						}
-						else if (aev.getID() == CenteredMapView.CLICK_SEASON_ACTION) {
-							RealmCalendarViewer view = new RealmCalendarViewer(client.getGameData());
-							view.setLocationRelativeTo(getMainFrame());
-							view.showSeasonDetail();
+						if (!inspector.getMap().hasClearingSelectionInProgress()) {
+							if (aev.getID() == CenteredMapView.CLICK_CLEARING_ACTION) {
+								TileLocation tl = TileLocation.parseTileLocation(client.getGameData(), aev.getActionCommand());
+								handleClearingClick(tl);
+							}
+							else if (aev.getID() == CenteredMapView.CLICK_SEASON_ACTION) {
+								RealmCalendarViewer view = new RealmCalendarViewer(client.getGameData());
+								view.setLocationRelativeTo(getMainFrame());
+								view.showSeasonDetail();
+							}
 						}
 					}
 				});

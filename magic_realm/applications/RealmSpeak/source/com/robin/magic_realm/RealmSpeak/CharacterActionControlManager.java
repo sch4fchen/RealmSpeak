@@ -326,6 +326,7 @@ public class CharacterActionControlManager {
 			getGameHandler().getInspector().setIcon(false);
 			getGameHandler().getInspector().toFront();
 			getGameHandler().getInspector().getMap().setMarkClearingAlertText(text);
+			getGameHandler().getInspector().getMap().setClearingSelectionInProgress(true);
 			getGameHandler().getInspector().getMap().addMouseListener(recordMapClickListener);
 			getGameHandler().getInspector().setSelected(true);
 		}
@@ -337,6 +338,7 @@ public class CharacterActionControlManager {
 	private void finishMapSelect(TileLocation tl) {
 		String theAction = currentlyRecordingAction;
 		currentlyRecordingAction = null;
+		getGameHandler().getInspector().getMap().setClearingSelectionInProgress(false);
 		getGameHandler().getInspector().getMap().removeMouseListener(recordMapClickListener);
 		if (!tl.hasClearing() || !tl.clearing.getMarkColor().equals(Color.red)) { // only record if not a "cancel" clearing
 			if (DayAction.MOVE_ACTION.getCode().equals(theAction) || DayAction.FLY_ACTION.getCode().equals(theAction)) {
