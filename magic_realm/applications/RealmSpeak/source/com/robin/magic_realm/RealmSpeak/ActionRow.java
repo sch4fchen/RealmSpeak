@@ -552,7 +552,7 @@ public class ActionRow {
 				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
 					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
 				}
-				new CharacterWrapper(livingCharacter).setInterruptMovementDecision(false);
+				new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
 			}
 			gameHandler.updateCharacterFramesWithoutMap();
 		}
@@ -2003,9 +2003,28 @@ public class ActionRow {
 		else {
 			ArrayList<CharacterActionChitComponent> restChoices = character.getRestableChits();
 			if (!restChoices.isEmpty()) { // has to be chits to rest!
+				boolean blockRestAction = false;
 				if (RealmUtility.willBeBlocked(character,isFollowing,false)) {
-					// Block after the first phase!
-					
+					blockRestAction = true;
+				}
+				else if (count > 1) {
+					TileLocation current = character.getCurrentLocation();
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+					boolean blockingPhases = hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES);
+					for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+						if (blockingPhases) {
+							new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+						}
+						new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
+					}
+					gameHandler.updateCharacterFramesWithoutMap();
+					if (turnPanel.isAwaitingBlockDecision(true,current)) {
+						blockRestAction = true;
+					}
+				}
+				
+				// Block after the first phase!
+				if (blockRestAction) {	
 					// Make this one 1 phase, and then split any remaining count into a new action row
 					int newCount = count-1;
 					count = 1;
@@ -2014,6 +2033,7 @@ public class ActionRow {
 						newAction.setCount(newCount);
 					}
 				}
+				
 				bonusCount = character.getRestBonus(count);
 				ChitRestManager rester = new ChitRestManager(gameHandler.getMainFrame(),character,count+bonusCount);
 				rester.setVisible(true);

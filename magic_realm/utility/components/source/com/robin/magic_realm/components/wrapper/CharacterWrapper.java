@@ -102,7 +102,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
 	public static final String NEEDS_BLOCK_DECISION = "_bckdc_";
-	public static final String INTERRUPT_MOVEMENT_DECISION = "_imdc_";
+	public static final String INTERRUPT_PHASE_DECISION = "_ipdc_";
 	
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
@@ -573,8 +573,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean getNeedsBlockDecision() {
 		return getBoolean(NEEDS_BLOCK_DECISION);
 	}
-	public boolean getNeedsInterruptMovementDecision() {
-		return getBoolean(INTERRUPT_MOVEMENT_DECISION);
+	public boolean getNeedsInterruptPhaseDecision() {
+		return getBoolean(INTERRUPT_PHASE_DECISION);
 	}
 	
 	// Other getters
@@ -658,7 +658,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			result = result + " (Asleep)";
  		}
  		
- 		if (isBlocking() && (getNeedsBlockDecision() || getNeedsInterruptMovementDecision())) {
+ 		if (isBlocking() && (getNeedsBlockDecision() || getNeedsInterruptPhaseDecision())) {
  			result = result + " (BLOCKING?!)";
  		}
 		
@@ -3929,8 +3929,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNeedsBlockDecision(boolean val) {
 		setBoolean(NEEDS_BLOCK_DECISION,val);
 	}
-	public void setInterruptMovementDecision(boolean val) {
-		setBoolean(INTERRUPT_MOVEMENT_DECISION,val);
+	public void setInterruptPhaseDecision(boolean val) {
+		setBoolean(INTERRUPT_PHASE_DECISION,val);
 	}
 	
 	// Adders
@@ -8384,22 +8384,22 @@ public class CharacterWrapper extends GameObjectWrapper {
     	return checkForBlockingState(false,null);
     }
     
-	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptMovement,TileLocation loc) {
+	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;
 		// Check for blocking state
 		if (isBlocking() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isFamiliar()) {
 			// Look for characters in the clearing
-			blockees = getPossibleBlockees(interruptMovement,loc);
+			blockees = getPossibleBlockees(interruptPhase,loc);
 			if (blockees!=null && !blockees.isEmpty()) {
-				if (interruptMovement) {
-					setInterruptMovementDecision(true);
+				if (interruptPhase) {
+					setInterruptPhaseDecision(true);
 				} else {
 					setNeedsBlockDecision(true);
 				}
 			}
 			else {
-				if (interruptMovement) {
-					setInterruptMovementDecision(false);
+				if (interruptPhase) {
+					setInterruptPhaseDecision(false);
 				} else {
 					setNeedsBlockDecision(false);
 				}

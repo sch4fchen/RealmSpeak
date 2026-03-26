@@ -2,6 +2,8 @@ Quest Editor: custom icon for minor charcter, weapon editor, treasure editor (re
 Realm Option: Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red)
 
 Version 1.2.5.3
+NEW FEATURES:
+# Blocking of multi rest actions
 BUGS/ISSUES:
 # Fix recording move action for familiar/hireling and character at the same time
 

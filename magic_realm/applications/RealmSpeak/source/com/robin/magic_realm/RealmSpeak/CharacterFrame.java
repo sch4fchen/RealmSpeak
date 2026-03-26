@@ -250,11 +250,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 		}
-		else if (getCharacter().getNeedsInterruptMovementDecision()){
+		else if (getCharacter().getNeedsInterruptPhaseDecision()){
 			for (RealmComponent target:getCharacter().checkForBlockingState(true,null)) {
 				handleBlockCharacter(target);
 			}
-			getCharacter().setInterruptMovementDecision(false);
+			getCharacter().setInterruptPhaseDecision(false);
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 		}
@@ -1464,7 +1464,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		// Block Now Button
 		blockNowButton = new SingleButton("Block Now?!",true) {
 			public boolean needsShow() {
-				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptMovementDecision();
+				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptPhaseDecision();
 			}
 		};
 		blockNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
