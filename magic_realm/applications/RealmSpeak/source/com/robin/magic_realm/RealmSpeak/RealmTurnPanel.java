@@ -802,7 +802,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		//CJM -- check to see if the character failed a hide while Blend Into Background X is active
 		if(ar.getActionId() == ActionId.Hide && !getCharacter().isHidden()){
-			endConditionalPermanentSpells("blending");
+			endConditionalPermanentSpells(Constants.BLENDING);
 		}
 		
 		//CJM -- did you search and find something awesome?

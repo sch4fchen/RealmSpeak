@@ -7501,6 +7501,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				setList(SPELL_EXTRA_ACTIONS,list);
 				
 				list = getList(SPELL_EXTRA_ACTION_SOURCE);
+				list = new ArrayList<>(list);
 				list.remove(n);
 				setList(SPELL_EXTRA_ACTION_SOURCE,list);
 			}

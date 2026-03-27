@@ -6,6 +6,7 @@ NEW FEATURES:
 # Blocking of multi rest actions
 BUGS/ISSUES:
 # Fix recording move action for familiar/hireling and character at the same time
+# Fix displaying correct spell for extra actions of upgraded day spells
 
 Version 1.2.5.2
 BUGS/ISSUES:
