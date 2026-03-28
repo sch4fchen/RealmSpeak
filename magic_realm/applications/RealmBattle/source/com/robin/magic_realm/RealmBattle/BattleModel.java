@@ -3008,9 +3008,16 @@ public class BattleModel {
 				// Dead - remove from wherever, and deal with whatever inventory
 				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getNameWithNumber());
 				
+				RealmComponent killer = RealmComponent.getRealmComponent(combat.getKilledBy());
+				if (killer!=null && rc.isMonster()) {
+					if (killer.getGameObject().hasThisAttribute(Constants.KILL_MONSTERS_PERMANENTLY) ||
+							killer.isCharacter() && (new CharacterWrapper(killer.getGameObject()).affectedByKey(Constants.KILL_MONSTERS_PERMANENTLY))) {
+						rc.getGameObject().setThisAttribute(Constants.DEAD_PERMANENT);
+					}
+				}
+				
 				// Test for Grudges/Gratitudes
 				if (rc.isNative() && rc.getOwner()==null && (hostPrefs.hasPref(Constants.OPT_GRUDGES) || hostPrefs.hasPref(Constants.SR_DAMAGED_RELATIONS))) {
-					RealmComponent killer = RealmComponent.getRealmComponent(combat.getKilledBy());
 					if (killer.isSpell()) {
 						SpellWrapper spell = new SpellWrapper(killer.getGameObject());
 						if (!"clearing".equals(spell.getGameObject().getThisAttribute("target"))) {
@@ -3062,12 +3069,6 @@ public class BattleModel {
 						}
 						if (hostPrefs.hasPref(Constants.SR_DAMAGED_RELATIONS)) {
 							doDamagedRelations(killer,responsibleCharacter,rc);
-						}
-					}
-					if (killer!=null) {
-						if (killer.getGameObject().hasThisAttribute(Constants.KILL_MONSTERS_PERMANENTLY) ||
-								killer.isCharacter() && (new CharacterWrapper(killer.getGameObject()).affectedByKey(Constants.KILL_MONSTERS_PERMANENTLY))) {
-							rc.getGameObject().setThisAttribute(Constants.DEAD_PERMANENT);
 						}
 					}
 				}
