@@ -4,7 +4,7 @@ Realm Option: Native, Monster, Steeds, Weapons, Character chits: Change color fo
 
 Version 1.2.5.4
 NEW FEATURES:
-# Characters of T or X weight use the Fight chit’s strength as the force of damage
+# Characters of T or X weight use the Fight chit's strength as the force of damage
 BUGS/ISSUES:
 # Improve weapon weight calculation
 
