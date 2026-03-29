@@ -806,9 +806,11 @@ public class SetupCardUtility {
 		if (rc.isNative()) {
 			NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();
 			if (horse!=null) {
-				horse.setLightSideUp();
-				CombatWrapper.clearAllCombatInfo(horse.getGameObject());
-				horse.getGameObject().removeThisAttribute(Constants.DEAD);
+				if (!horse.getGameObject().hasThisAttribute(Constants.DEAD_PERMANENT)) {
+					horse.setLightSideUp();
+					CombatWrapper.clearAllCombatInfo(horse.getGameObject());
+					horse.getGameObject().removeThisAttribute(Constants.DEAD);
+				}
 			}
 		}
 		
@@ -821,9 +823,11 @@ public class SetupCardUtility {
 			}
 			NativeSteedChitComponent horse = (NativeSteedChitComponent)rc.getHorseIncludeDead();
 			if (horse!=null) {
-				horse.setLightSideUp();
-				CombatWrapper.clearAllCombatInfo(horse.getGameObject());
-				horse.getGameObject().removeThisAttribute(Constants.DEAD);
+				if (!horse.getGameObject().hasThisAttribute(Constants.DEAD_PERMANENT)) {
+					horse.setLightSideUp();
+					CombatWrapper.clearAllCombatInfo(horse.getGameObject());
+					horse.getGameObject().removeThisAttribute(Constants.DEAD);
+				}
 			}
 		}
 		
