@@ -46,10 +46,29 @@ public class WeaponChitComponent extends RoundChitComponent {
 		return 75;
 	}
 	public Strength getWeight() {
-		Strength strength = super.getWeight();
+		int mod = 0;
+		if (gameObject.hasThisAttribute(Constants.WEIGHT_NEGLIGIBLE)) return new Strength("N");
 		TileLocation tl = ClearingUtility.getTileLocation(getGameObject());
 		if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.HEAVIED)) {
-			strength.modify(1);
+			mod++;
+		}
+		if (!affectedByKey(Constants.ENCHANTED_WEAPON)) {
+			if (affectedByKey(Constants.NO_WEIGHT)) return new Strength();
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) mod++;
+			if (gameObject.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) mod--;
+			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
+				return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+			}
+		}
+		
+		Strength strength = new Strength();
+		if(getGameObject().hasThisAttribute(Constants.WEIGHT)) {
+			strength = new Strength(getGameObject().getThisAttribute(Constants.WEIGHT),mod);
+		} else {
+			String val = getFaceAttributeString("strength");
+			if (val!=null && val.trim().length()>0) {
+				strength = new Strength(val,mod);
+			}
 		}
 		return strength;
 	}
@@ -70,7 +89,11 @@ public class WeaponChitComponent extends RoundChitComponent {
 		int mod = 0;
 		int length = gameObject.getThisInt("length");
 		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			String baseWeight = gameObject.getThisAttribute(Constants.WEIGHT);
+			if (baseWeight==null) {
+				baseWeight = getFaceAttributeString("strength");
+			}
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((baseWeight))).getLevels();
 			mod = mod + difference;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
@@ -109,7 +132,11 @@ public class WeaponChitComponent extends RoundChitComponent {
 		}
 		if (val!=null && val.trim().length()>0) {
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getFaceAttributeString("speed").matches(Constants.WEIGHT)) {
-				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+				String baseWeight = gameObject.getThisAttribute(Constants.WEIGHT);
+				if (baseWeight==null) {
+					baseWeight = getFaceAttributeString("strength");
+				}
+				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((baseWeight))).getLevels();
 				int baseSpeed = Integer.parseInt(val);
 				if (!isMissile()) {
 					if (baseSpeed+difference<2) {
@@ -152,7 +179,11 @@ public class WeaponChitComponent extends RoundChitComponent {
 			mod++;
 		}
 		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute(Constants.WEIGHT)))).getLevels();
+			String baseWeight = gameObject.getThisAttribute(Constants.WEIGHT);
+			if (baseWeight==null) {
+				baseWeight = getFaceAttributeString("strength");
+			}
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((baseWeight))).getLevels();
 			mod = mod+difference;
 		}
 		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {

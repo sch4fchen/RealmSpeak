@@ -3,6 +3,8 @@ Realm Option: Native, Monster, Steeds, Weapons, Character chits: Change color fo
 
 
 Version 1.2.5.4
+BUGS/ISSUES:
+# Improve weapon weight calculation
 
 Version 1.2.5.3
 NEW FEATURES:

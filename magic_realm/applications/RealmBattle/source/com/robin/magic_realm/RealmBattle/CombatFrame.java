@@ -2981,7 +2981,7 @@ public class CombatFrame extends JFrame {
 				}
 				if (weaponCard!=null) {
 					if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
-					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(weaponCard.getWeight())) continue;
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(TreasureUtility.getWeightForTreasure(weaponCard.getGameObject()))) continue;
 					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);

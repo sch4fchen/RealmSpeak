@@ -1535,7 +1535,19 @@ public class TreasureUtility {
 		companion.copyAttributeBlockFrom(item,Constants.COMPANION+"_dark");
 		companion.renameAttributeBlock(Constants.COMPANION+"_dark","dark");
 		return companion;
-	}	public static Strength getStrengthForTreasure(GameObject tw) {
+	}
+	public static Strength getWeightForTreasure(GameObject tw) {
+		RealmComponent rc = RealmComponent.getRealmComponent(tw);
+		Strength strength = rc.getWeight();
+		if (tw.hasThisAttribute("attack") && !tw.hasThisAttribute(Constants.POTION)) {
+			TileLocation tl = ClearingUtility.getTileLocation(tw);
+			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.HEAVIED)) {
+				strength.modify(1);
+			}
+		}
+		return strength;
+	}
+	public static Strength getStrengthForTreasure(GameObject tw) {
 		Strength strength = new Strength(tw.getThisAttribute("strength"));
 		int mod = 0;
 		if (tw.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
@@ -1544,8 +1556,14 @@ public class TreasureUtility {
 		if (tw.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
 			mod--;
 		}
+		if (tw.hasThisAttribute("attack") && !tw.hasThisAttribute(Constants.POTION)) {
+			TileLocation tl = ClearingUtility.getTileLocation(tw);
+			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.HEAVIED)) {
+				mod++;
+			}
+		}
 		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
+			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("weight")))).getLevels();
 			mod = mod+difference;
 		}
 		strength.modify(mod);
@@ -1560,7 +1578,7 @@ public class TreasureUtility {
 			mod--;
 		}
 		if (tw.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("strength")))).getLevels();
+			int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute("weight")))).getLevels();
 			mod = mod+difference;
 		}
 		int length = tw.getThisInt("length")+mod;

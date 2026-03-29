@@ -490,6 +490,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			return harm;
 		}
 		Strength weaponStrength = new Strength(); // negligible strength (dagger) to start
+		Strength weaponWeight = new Strength();
 		int sharpness = 1; // default of a dagger
 		sharpness += getGameObject().getThisInt(Constants.ADD_SHARPNESS); // in case poison is applied to a dagger
 		boolean ignoreArmor = getGameObject().hasThisAttribute(Constants.IGNORE_ARMOR); // false, unless penetrating grease was applied to dagger
@@ -516,6 +517,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							hasWeapon = true;
 							missileWeapon = weapon.isMissile();
 							weaponStrength = weapon.getStrength();
+							weaponWeight = weapon.getWeight();
 							sharpness = weapon.getSharpness();
 							enchantedWeapon = weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_WEAPON);
 						}
@@ -534,6 +536,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							hasWeapon = true;
 							missileWeapon = tw.hasThisAttribute("missile");
 							weaponStrength = TreasureUtility.getStrengthForTreasure(tw);
+							weaponWeight = TreasureUtility.getWeightForTreasure(tw);
 							sharpness = tw.getThisInt("sharpness");
 							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
 							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
@@ -546,7 +549,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				weaponStrength = baseHarm.getStrength();
 				sharpness = 0;
 			}
-			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponStrength) && !enchantedWeapon) {
+			if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
 				weaponStrength.bumpUp();
 			}
 			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {

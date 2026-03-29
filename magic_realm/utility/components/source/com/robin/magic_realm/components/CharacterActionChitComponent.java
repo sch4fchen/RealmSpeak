@@ -264,7 +264,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (character!=null) { // Might be null in the character builder app
 				int mod = 0;
 				if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) {
-					int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute("strength")))).getLevels();
+					int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 					mod = mod+difference;
 				}
 				
@@ -579,7 +579,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			if (this.isMagicMove()) return new Speed(0,mod);
 
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches(Constants.WEIGHT)) {
-				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute("strength")))).getLevels();
+				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 				mod = mod+difference;
 			}
 			if (!gameObject.hasAttribute(ALTERNATE_ATTRIBUTES, "speed")) {
@@ -630,7 +630,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		if (this.isMagicMove()) return new Speed(0,mod);
 		
 		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches(Constants.WEIGHT)) {
-			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute("strength")))).getLevels();
+			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 			mod = mod+difference;
 		}
 		if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
@@ -665,7 +665,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				mod--;
 			}
 			if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT) && !getChitAttribute("speed").matches(Constants.WEIGHT)) {
-				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((gameObject.getThisAttribute("strength")))).getLevels();
+				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 				mod = mod+difference;
 			}
 			if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
