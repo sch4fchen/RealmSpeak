@@ -3009,7 +3009,7 @@ public class BattleModel {
 				logBattleInfo(rc+" is dead.  Killed by "+combat.getKilledBy().getNameWithNumber());
 				
 				RealmComponent killer = RealmComponent.getRealmComponent(combat.getKilledBy());
-				if (killer!=null && rc.isMonster()) {
+				if (killer!=null && (rc.isMonster() || (rc.isHorse() && rc.getGameObject().hasThisAttribute(RealmComponent.MONSTER_STEED)))) {
 					if (killer.getGameObject().hasThisAttribute(Constants.KILL_MONSTERS_PERMANENTLY) ||
 							killer.isCharacter() && (new CharacterWrapper(killer.getGameObject()).affectedByKey(Constants.KILL_MONSTERS_PERMANENTLY))) {
 						rc.getGameObject().setThisAttribute(Constants.DEAD_PERMANENT);
