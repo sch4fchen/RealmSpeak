@@ -1,4 +1,4 @@
-Quest Editor: custom icon for minor charcter, weapon editor, treasure editor (rewards: add, remove, moveToLocation)
+Quest Editor: treasure editor (rewards: add, remove, moveToLocation)
 Realm Option: Native, Monster, Steeds, Weapons, Character chits: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red)
 
 
