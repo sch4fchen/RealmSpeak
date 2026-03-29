@@ -2736,10 +2736,17 @@ public class CombatFrame extends JFrame {
 				if (chit.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
+				Strength chitStrength = null;
+				if (chit instanceof CharacterActionChitComponent) {
+					chitStrength = ((CharacterActionChitComponent) chit).getStrength();
+				} else if (chit.getGameObject().hasThisAttribute("gloves")) {
+					chitStrength = RealmUtility.getGlovesStrength(chit.getGameObject());
+				}
 				for (WeaponChitComponent weapon : weapons) {
 					if (weapon.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(weapon.getWeight())) continue;
 					key = "P"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
@@ -2942,7 +2949,14 @@ public class CombatFrame extends JFrame {
 			for (RealmComponent chit : fightOptions) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
-						
+				
+				Strength chitStrength = null;
+				if (chit instanceof CharacterActionChitComponent) {
+					chitStrength = ((CharacterActionChitComponent) chit).getStrength();
+				} else if (chit.getGameObject().hasThisAttribute("gloves")) {
+					chitStrength = RealmUtility.getGlovesStrength(chit.getGameObject());
+				}
+				
 				if (weapons==null || weapons.isEmpty()) {
 					// Dagger
 					String key = "N"+(keyN++);
@@ -2952,7 +2966,7 @@ public class CombatFrame extends JFrame {
 				else {
 					for (WeaponChitComponent weapon : weapons) {
 						if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
-						
+						if (chitStrength !=null && !chitStrength.strongerOrEqualTo(weapon.getWeight())) continue;
 						String key = "N"+(keyN++);
 						chooser.addOption(key,"");
 						chooser.addRealmComponentToOption(key,chit);
@@ -2967,7 +2981,7 @@ public class CombatFrame extends JFrame {
 				}
 				if (weaponCard!=null) {
 					if (CombatWrapper.hasCombatInfo(weaponCard.getGameObject())) continue;
-					
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(weaponCard.getWeight())) continue;
 					String key = "N"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
@@ -3088,6 +3102,14 @@ public class CombatFrame extends JFrame {
 					if (weapon.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 					if (CombatWrapper.hasCombatInfo(weapon.getGameObject())) continue;
 					if (weapon.isMissile() && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
+					Strength chitStrength = null;
+					if (chit instanceof CharacterActionChitComponent) {
+						chitStrength = ((CharacterActionChitComponent) chit).getStrength();
+					} else if (chit.getGameObject().hasThisAttribute("gloves")) {
+						chitStrength = RealmUtility.getGlovesStrength(chit.getGameObject());
+					}
+					
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(weapon.getWeight())) continue;
 					key = "W"+(keyN++);
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
