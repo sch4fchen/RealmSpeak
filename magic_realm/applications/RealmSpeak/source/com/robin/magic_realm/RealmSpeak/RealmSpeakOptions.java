@@ -30,6 +30,7 @@ public class RealmSpeakOptions {
 	public static final String NIMBUS_LNF = "nimbusLnf";
 	public static final String ACTION_ICONS = "actionIcons";
 	public static final String CHIT_DISPLAY_STYLE = "chitDisplayStyle";
+	public static final String CHIT_DISPLAY_COLORED_STATS = "chitDisplayColoredStats";
 	public static final String CHIT_DISPLAY_ARMOR = "chitDisplayArmor";
 	public static final String CHIT_DISPLAY_SUBLINE = "chitDisplaySubline";
 	public static final String CHARACTER_CHIT_DISPLAY_STYLE = "characterChitDisplayStyle";
@@ -82,6 +83,7 @@ public class RealmSpeakOptions {
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;
 				break;
 		}
+		RealmComponent.displayColoredStats = options.getBoolean(RealmSpeakOptions.CHIT_DISPLAY_COLORED_STATS);
 		RealmComponent.displayArmor = options.getBoolean(RealmSpeakOptions.CHIT_DISPLAY_ARMOR);
 		RealmComponent.displaySubline = options.getBoolean(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE);
 		
