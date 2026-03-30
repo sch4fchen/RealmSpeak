@@ -917,7 +917,7 @@ public class TreasureUtility {
 				}
 				return false;
 			}
-			if (thing.hasThisAttribute("weapon")) {
+			if (thing.hasThisAttribute("weapon") && !thing.hasThisAttribute("treasure")) {
 				WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
 				if (weapon.isAlerted()) {
 					if (frame!=null) {
@@ -930,7 +930,7 @@ public class TreasureUtility {
 				}
 			}
 		}
-		else if(thing.hasThisAttribute("weapon")) {
+		else if(thing.hasThisAttribute("weapon") && !thing.hasThisAttribute("treasure")) {
 			WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(thing);
 			weapon.setAlerted(false);
 		}
