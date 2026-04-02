@@ -9,6 +9,7 @@ BUGS/ISSUES:
 # Improve weapon weight calculation
 # Fix deactivation of treasure weapon
 # Fix prowling hirelings
+# Fix Animate spell targeting monsters killed by Dark Sword
 
 Version 1.2.5.3
 NEW FEATURES:

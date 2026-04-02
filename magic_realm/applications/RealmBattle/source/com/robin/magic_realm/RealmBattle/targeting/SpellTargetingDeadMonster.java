@@ -4,6 +4,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
@@ -18,7 +19,7 @@ public class SpellTargetingDeadMonster extends SpellTargetingSingle {
 			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 			for (GameObject go:character.getKills(character.getCurrentDayKey())) {
 				RealmComponent kill = RealmComponent.getRealmComponent(go);
-				if (kill.isMonster()) {
+				if (kill.isMonster() && !go.hasThisAttribute(Constants.DEAD_PERMANENT)) {
 					gameObjects.add(go);
 				}
 			}
