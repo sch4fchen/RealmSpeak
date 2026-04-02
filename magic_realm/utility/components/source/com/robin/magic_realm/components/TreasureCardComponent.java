@@ -9,6 +9,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.*;
 import com.robin.general.graphics.TextType.Alignment;
 import com.robin.magic_realm.components.attribute.ColorMagic;
+import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.SpellWrapper;
@@ -213,10 +214,11 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				
 				// If attack card (Alchemists Mixture), show damage
 				if (getGameObject().hasThisAttribute("attack")) {
-					String strength = TreasureUtility.getStrengthForTreasure(gameObject).toString();
-					String speed = TreasureUtility.getAttackSpeedForTreasure(gameObject).toString();
-					if (speed==null) speed="";
-					tt = new TextType(strength+speed,PRINT_WIDTH,"CLOSED_RED");
+					String strength = TreasureUtility.getStrengthForTreasure(gameObject).toShortString();
+					String speedString = "";
+					Speed speed = TreasureUtility.getAttackSpeedForTreasure(gameObject);
+					if (speed!=null) speedString=speed.toString();
+					tt = new TextType(strength+speedString,PRINT_WIDTH,"CLOSED_RED");
 					pos -= tt.getHeight(g);
 					int sharpness = TreasureUtility.getSharpnessForTreasure(gameObject);
 					int x = PRINT_MARGIN+20;
