@@ -232,15 +232,15 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public boolean isHiredLeader() {
-		return isNativeLeader() && CharacterWrapper.hasPlayerBlock(getGameObject());
+		return isNativeLeader() && (CharacterWrapper.hasPlayerBlock(getGameObject()) || getOwnerId()!=null);
 	}
 
 	public boolean isControlledMonster() {
-		return isMonster() && CharacterWrapper.hasPlayerBlock(getGameObject());
+		return isMonster() && (CharacterWrapper.hasPlayerBlock(getGameObject()) || getOwnerId()!=null);
 	}
 	
 	public boolean isControlledNative() {
-		return isNative() && CharacterWrapper.hasPlayerBlock(getGameObject());
+		return isNative() && (CharacterWrapper.hasPlayerBlock(getGameObject()) || getOwnerId()!=null);
 	}
 	
 	public boolean isAnyLeader() {
