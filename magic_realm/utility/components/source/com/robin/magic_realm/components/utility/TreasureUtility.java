@@ -239,17 +239,20 @@ public class TreasureUtility {
 						}
 						else {
 							if (otherThing.hasThisAttribute("weapon")) {
-								WeaponChitComponent weapon = (WeaponChitComponent)RealmComponent.getRealmComponent(otherThing);
-								if (weapon.isAlerted() && !weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON) && !weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_ALERTED_WEAPON)) {
-									CharacterChitComponent chit = (CharacterChitComponent)RealmComponent.getRealmComponent(character.getGameObject());
-									if (!chit.activeWeaponStaysAlerted(weapon)) {
-										int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate an alerted weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-										if (ret==JOptionPane.NO_OPTION) {
-											return false;
+								RealmComponent otherThingRc = RealmComponent.getRealmComponent(otherThing);
+								if (otherThingRc instanceof WeaponChitComponent) {
+									WeaponChitComponent weapon = (WeaponChitComponent)otherThingRc;
+									if (weapon.isAlerted() && !weapon.getGameObject().hasThisAttribute(Constants.ALERTED_WEAPON) && !weapon.getGameObject().hasThisAttribute(Constants.ENCHANTED_ALERTED_WEAPON)) {
+										CharacterChitComponent chit = (CharacterChitComponent)RealmComponent.getRealmComponent(character.getGameObject());
+										if (!chit.activeWeaponStaysAlerted(weapon)) {
+											int ret = JOptionPane.showConfirmDialog(parentFrame,"You are about to deactivate an alerted weapon.  Are you sure?","",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+											if (ret==JOptionPane.NO_OPTION) {
+												return false;
+											}
+											weapon.setAlerted(false);
 										}
-										weapon.setAlerted(false);
 									}
-								}	
+								}
 							}
 							otherThing.removeThisAttribute(Constants.ACTIVATED);
 						}
