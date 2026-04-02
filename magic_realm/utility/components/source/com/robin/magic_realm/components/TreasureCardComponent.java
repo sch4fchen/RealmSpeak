@@ -213,13 +213,12 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				
 				// If attack card (Alchemists Mixture), show damage
 				if (getGameObject().hasThisAttribute("attack")) {
-					String strength = gameObject.getThisAttribute("strength");
-					String speed = gameObject.getThisAttribute("attack_speed");
+					String strength = TreasureUtility.getStrengthForTreasure(gameObject).toString();
+					String speed = TreasureUtility.getAttackSpeedForTreasure(gameObject).toString();
 					if (speed==null) speed="";
 					tt = new TextType(strength+speed,PRINT_WIDTH,"CLOSED_RED");
 					pos -= tt.getHeight(g);
-					int sharpness = gameObject.getThisInt("sharpness");
-					sharpness += gameObject.getThisInt(Constants.ADD_SHARPNESS);
+					int sharpness = TreasureUtility.getSharpnessForTreasure(gameObject);
 					int x = PRINT_MARGIN+20;
 					x += (3-sharpness)*5;
 					tt.draw(g,x,pos,Alignment.Left);

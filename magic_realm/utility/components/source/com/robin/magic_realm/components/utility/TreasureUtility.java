@@ -1589,4 +1589,92 @@ public class TreasureUtility {
 		if (length>=18) return 18;
 		return length;
 	}
+	public static int getSharpnessForTreasure(GameObject tw) {
+		if (tw.hasThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS)) {
+			RealmComponent wielder = RealmComponent.getRealmComponent(getWielderOfTreasure(tw).getGameObject());
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
+				return Integer.parseInt(tw.getThisAttribute(Constants.ENCHANTED_WEAPON_SHARPNESS));
+			}
+		}
+		int sharpness = tw.getThisInt("sharpness");
+		sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+		
+		if (tw.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
+			sharpness += tw.getThisInt(Constants.MAGIC_COLOR_BONUS_SHARPNESS);
+		}
+		
+		RealmComponent wielder = getWielderOfTreasure(tw);
+		if (wielder!=null && (new CharacterWrapper(wielder.getGameObject())).hasActiveInventoryThisKey(Constants.INCREASE_SHARP)) {
+			sharpness++;
+		}
+		
+		if (sharpness>0 && tw.hasThisAttribute(Constants.BLUNT) && !tw.hasThisAttribute(Constants.ENCHANTED_WEAPON)) {
+			sharpness--;
+		}
+		
+		if (sharpness>0) {
+			TileLocation tl = ClearingUtility.getTileLocation(tw);
+			if (tl!=null && tl.isInClearing() && tl.clearing.hasSpellEffect(Constants.BLUNTED)) {
+				sharpness--;
+			}
+		}
+		return sharpness;
+	}
+	public static Speed getAttackSpeedForTreasure(GameObject tw) {
+		RealmComponent wielder = getWielderOfTreasure(tw);
+		if (tw.hasThisAttribute(Constants.ENCHANTED_WEAPON_SPEED) && wielder!=null) {
+			if ((wielder.getTarget() == null || !wielder.getTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))
+					&& (wielder.get2ndTarget() == null || !wielder.get2ndTarget().getGameObject().hasThisAttribute(Constants.IGNORE_ENCHANTED_WEAPONS))) {
+				return new Speed(tw.getThisAttribute(Constants.ENCHANTED_WEAPON_SPEED),0);
+			}
+		}
+		String val = tw.getThisAttribute("attack_speed");
+		int mod = 0;
+		if (wielder!=null && new CombatWrapper(getWielderOfTreasure(tw).getGameObject()).isFreezed()) {
+			mod = 1;
+		}
+		if (tw.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
+			String magicSpeed = tw.getThisAttribute(Constants.MAGIC_COLOR_BONUS_SPEED);
+			if (magicSpeed!=null && magicSpeed.trim().length()>0) return new Speed(magicSpeed,mod);
+		}
+		if (val!=null && val.trim().length()>0) {
+			if (tw.hasThisAttribute(Constants.ALTER_WEIGHT) && !tw.getThisAttribute("speed").matches(Constants.WEIGHT)) {
+				int difference = (new Strength(tw.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((tw.getThisAttribute(Constants.WEIGHT)))).getLevels();
+				int baseSpeed = Integer.parseInt(val);
+				if (!isTreasureMissile(tw)) {
+					if (baseSpeed+difference<2) {
+						difference = 2-baseSpeed;
+					}
+				}
+				else {
+					if (baseSpeed+difference<1) {
+						difference = 1-baseSpeed;
+					}
+				}
+				mod = mod+difference;
+			}
+			if (tw.hasThisAttribute(Constants.ALTER_SIZE_DECREASED_WEIGHT)) {
+				mod--;
+			}
+			if (tw.hasThisAttribute(Constants.ALTER_SIZE_INCREASED_WEIGHT)) {
+				mod++;
+			}
+			return new Speed(val,mod);
+		}
+		return null;
+	}
+	private static RealmComponent getWielderOfTreasure(GameObject tw) {
+		GameObject go = tw.getHeldBy();
+		if (go!=null) {
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc!=null && rc.isCharacter()) {
+				return rc;
+			}
+		}
+		return null;
+	}
+	private static boolean isTreasureMissile(GameObject tw) {
+		return tw.hasThisAttribute("missile") && !tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
+	}
 }

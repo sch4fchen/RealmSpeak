@@ -103,6 +103,17 @@ public class Strength {
 		}
 		return "Negligible";  // NEGLIGIBLE
 	}
+	public String toShortString() {
+		switch(strengthId) {
+			case LIGHT:				return "L";
+			case MEDIUM:			return "M";
+			case HEAVY:				return "H";
+			case TREMENDOUS:		return "T";
+			case MAXIMUM:			return "X";
+			case RED:				return "RED";
+		}
+		return "N";  // NEGLIGIBLE
+	}
 	public boolean isNegligible() {
 		return strengthId == NEGLIGIBLE;
 	}
