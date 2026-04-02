@@ -2499,6 +2499,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return null;
 	}
+	public ArrayList<GameObject> getActiveTreasureWeaponObjects() {
+		ArrayList<GameObject> items = new ArrayList<>();
+		CharacterWrapper character = new CharacterWrapper(getGameObject());
+		for (GameObject item : character.getActiveInventory()) {
+			if (item.hasThisAttribute("attack")) {
+				items.add(item);
+			}
+		}
+		return items;
+	}
 	public Collection<GameObject> getCurrentClearingExtraActionObjects() {
 		ArrayList<GameObject> list = new ArrayList<>();
 		TileLocation current = getCurrentLocation(); // must be in the same clearing when recording

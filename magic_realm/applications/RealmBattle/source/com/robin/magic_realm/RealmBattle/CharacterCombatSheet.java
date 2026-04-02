@@ -339,10 +339,12 @@ public class CharacterCombatSheet extends CombatSheet {
 				}
 				break;
 			case Constants.COMBAT_ASSIGN:
-				ArrayList<WeaponChitComponent> weapons = (new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject())).getActiveWeapons();
+				CharacterWrapper activeParticipantCharacter = new CharacterWrapper(combatFrame.getActiveParticipant().getGameObject());
+				ArrayList<WeaponChitComponent> weapons = activeParticipantCharacter.getActiveWeapons();
 				if ((spell==null || battleMage)
 						&& (combatFrame.getActiveParticipant().getTarget()==null
-						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter() && weapons!=null && weapons.size() > 1))) {
+						|| (combatFrame.getActiveParticipant().get2ndTarget()==null && combatFrame.getActiveParticipant().isCharacter()
+							&& ((weapons!=null && weapons.size()+activeParticipantCharacter.getActiveTreasureWeaponObjects().size()>1) || (activeParticipantCharacter.getActiveTreasureWeaponObjects().size()>1))))) {
 					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(Integer.valueOf(POS_TARGET)))) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),combatFrame.getActiveParticipant().getGameObject().getName()+" Target");
 					}

@@ -1,6 +1,7 @@
-Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation)
+Dark Sword affected by certain spells
+Parry and Parry like Shield with Dark Sword
 Realm Option: Native, Monster, Steeds, Weapons, Character chits, character: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red) (movement: if blue no circle), only for Remodeled Chits and Legendary Chits
-
+Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation)
 
 Version 1.2.5.4
 NEW FEATURES:
@@ -11,6 +12,7 @@ BUGS/ISSUES:
 # Fix prowling hirelings
 # Fix Animate spell targeting monsters killed by Dark Sword
 # Fix Phantasm cannot block or be blocked
+# Fix dual wielding treasure weapons
 
 Version 1.2.5.3
 NEW FEATURES:
