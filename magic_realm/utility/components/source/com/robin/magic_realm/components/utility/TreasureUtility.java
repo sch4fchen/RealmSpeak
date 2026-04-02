@@ -760,9 +760,9 @@ public class TreasureUtility {
 			weaponObject = weapon.getGameObject();
 		}
 		else {
-			// Check for Treasure Weapons (Alchemists Mixture)
+			// Check for Treasure Weapons
 			for (GameObject item : character.getActiveInventory()) {
-				if (item.hasThisAttribute("attack")) { // ONLY the Alchemists Mixture has this, for now!
+				if (item.hasThisAttribute("attack")) {
 					weaponObject = item;
 					break;
 				}
@@ -1674,7 +1674,7 @@ public class TreasureUtility {
 		}
 		return null;
 	}
-	private static boolean isTreasureMissile(GameObject tw) {
+	public static boolean isTreasureMissile(GameObject tw) {
 		return tw.hasThisAttribute("missile") && !tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 	}
 }

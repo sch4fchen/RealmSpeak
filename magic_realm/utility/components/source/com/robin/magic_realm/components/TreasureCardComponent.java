@@ -212,7 +212,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					}
 				}
 				
-				// If attack card (Alchemists Mixture), show damage
+				// If attack card, show damage
 				if (getGameObject().hasThisAttribute("attack")) {
 					String strength = TreasureUtility.getStrengthForTreasure(gameObject).toShortString();
 					String speedString = "";

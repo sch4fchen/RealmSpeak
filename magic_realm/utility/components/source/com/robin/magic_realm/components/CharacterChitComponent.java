@@ -448,7 +448,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 	}
 	
 	/**
-	 * Returns a GameObject that is either a WeaponChitComponent, or a TreasureCardComponent with an attack attribute (Alchemists's Mixture)
+	 * Returns a GameObject that is either a WeaponChitComponent, or a TreasureCardComponent with an attack attribute
 	 */
 	public ArrayList<GameObject> getActiveWeaponsObjects() {
 		CharacterWrapper character = new CharacterWrapper(getGameObject());
@@ -534,11 +534,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 								ignoreArmor = true;
 							}
 							hasWeapon = true;
-							missileWeapon = tw.hasThisAttribute("missile");
+							missileWeapon = TreasureUtility.isTreasureMissile(tw);
 							weaponStrength = TreasureUtility.getStrengthForTreasure(tw);
 							weaponWeight = TreasureUtility.getWeightForTreasure(tw);
-							sharpness = tw.getThisInt("sharpness");
-							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+							sharpness = TreasureUtility.getSharpnessForTreasure(tw);
 							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 							break;
 						}
@@ -1230,12 +1229,27 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		ArrayList<GameObject> weapons = getActiveWeaponsObjects();
 		RealmComponent rc = getAttackChit();
 		CombatWrapper combatChit = new CombatWrapper(rc.getGameObject());
+		boolean hasWeapon = false;
 		if (weapons != null) {
 			for (GameObject weapon : weapons) {
 				if (combatChit.getWeaponId().equals(weapon.getStringId())) {
 					CombatWrapper wCombat = new CombatWrapper(weapon);
 					if (wCombat.hasCombatBox()) {
+						hasWeapon = true;
 						if (weapon.hasThisAttribute(Constants.HIT_TIE)) {
+							weaponHitsOnTie = true;
+						}
+					}
+				}
+			}
+		}
+		if (!hasWeapon) {
+			for (GameObject tw : getTreasureWeaponObjects()) {
+				if(!tw.hasThisAttribute("attack")) continue;
+				if (combatChit.getWeaponId().equals(tw.getStringId())) {
+					CombatWrapper twCombat = new CombatWrapper(tw);
+					if (twCombat.hasCombatBox()) {
+						if (tw.hasThisAttribute(Constants.HIT_TIE)) {
 							weaponHitsOnTie = true;
 						}
 					}

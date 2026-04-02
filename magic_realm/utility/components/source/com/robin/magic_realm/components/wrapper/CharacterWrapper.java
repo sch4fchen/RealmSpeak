@@ -3290,10 +3290,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 								ignoreArmor = true;
 							}
 							hasWeapon = true;
-							missileWeapon = tw.hasThisAttribute("missile");
+							missileWeapon = TreasureUtility.isTreasureMissile(tw);
 							weaponStrength = TreasureUtility.getStrengthForTreasure(tw);
-							sharpness = tw.getThisInt("sharpness");
-							sharpness += tw.getThisInt(Constants.ADD_SHARPNESS);
+							sharpness = TreasureUtility.getSharpnessForTreasure(tw);
 							enchantedWeapon = tw.hasThisAttribute(Constants.ENCHANTED_WEAPON);
 							break;
 						}
