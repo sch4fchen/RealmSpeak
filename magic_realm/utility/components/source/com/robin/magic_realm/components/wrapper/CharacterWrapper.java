@@ -8341,7 +8341,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     public ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isFamiliar()) {
+		if (isBlocking() && !isMinion()) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8388,7 +8388,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;
 		// Check for blocking state
-		if (isBlocking() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isFamiliar()) {
+		if (isBlocking() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees(interruptPhase,loc);
 			if (blockees!=null && !blockees.isEmpty()) {

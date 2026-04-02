@@ -668,7 +668,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 							for (GameObject livingCharacter : livingCharacters) {
 								if (livingCharacter.getStringId().matches(character.getGameObject().getStringId())) continue;
 								CharacterWrapper livingCharacterWrapper = new CharacterWrapper(livingCharacter);
-								if (livingCharacterWrapper.isHiredLeader() || livingCharacterWrapper.isFamiliar()) continue;
+								if (livingCharacterWrapper.isHiredLeader() || livingCharacterWrapper.isMinion()) continue;
 								ArrayList<String> enemyClans = new ArrayList<>();
 								ArrayList<String> notEnemyClans = new ArrayList<>();
 								for (GameObject nativeLeader : nativeLeaders) {
@@ -1621,7 +1621,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		});
 		box.add(blockButton);
-		if (character.isFamiliar()) {
+		if (character.isMinion()) {
 			blockButton.setEnabled(false);
 		}
 		

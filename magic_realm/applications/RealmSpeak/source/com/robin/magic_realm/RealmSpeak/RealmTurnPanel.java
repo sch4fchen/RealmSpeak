@@ -294,7 +294,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject())
 								&& (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							if (target.isBlocking() && !target.isFamiliar()) {
+							if (target.isBlocking() && !target.isMinion()) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
 									if (!target.hasBlockDecision(getCharacter().getGameObject())) {
 										blockWarningLabel.setText(target.getGameObject().getName()+" is blocking.  Awaiting decision...");
