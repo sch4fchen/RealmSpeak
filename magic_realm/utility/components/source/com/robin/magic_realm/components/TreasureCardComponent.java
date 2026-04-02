@@ -170,7 +170,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				}
 				else {
 					// Weight
-					Strength weight = getWeight();
+					Strength weight = TreasureUtility.getWeightForTreasure(gameObject);
 					tt = new TextType(weight.getChar(),PRINT_WIDTH,"BOLD");
 					tt.draw(g,PRINT_MARGIN+5,pos,Alignment.Left);
 					
