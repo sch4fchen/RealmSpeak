@@ -5783,7 +5783,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 	}
 	private void fetchStartingWeapon(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource,HostPrefWrapper hostPrefs) {
-		String weapon = getGameObject().getAttribute(levelKey,"weapon");
+		String weapon = getGameObject().getAttribute(levelKey,RealmComponent.WEAPON);
 		if (weapon==null) { //e.g. levelKey = level_4_1
 			return;
 		}
@@ -5807,7 +5807,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	private void fetchStartingArmor(JFrame frame,String levelKey,GamePool pool,String hostKeyVals,boolean chooseSource,HostPrefWrapper hostPrefs) {
 		boolean custom = getGameObject().hasThisAttribute(Constants.CUSTOM_CHARACTER);
-		String armor = getGameObject().getAttribute(levelKey,"armor");
+		String armor = getGameObject().getAttribute(levelKey,RealmComponent.ARMOR);
 		if (armor!=null) {
 			StringTokenizer st = new StringTokenizer(armor,",");
 			boolean twoHandedWeaponResctriction = hostPrefs.hasPref(Constants.OPT_TWO_HANDED_WEAPONS) && !this.affectedByKey(Constants.STRONG);

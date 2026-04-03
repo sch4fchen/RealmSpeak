@@ -12,9 +12,11 @@ public class AlertWeaponEffect implements ISpellEffect {
 			context.Spell.cancelSpell();
 			RealmLogging.logMessage(context.Spell.getName(),"Spell canceled, item already affected by Enchant Weapon spell.");
 		}
-		WeaponChitComponent weapon = (WeaponChitComponent)context.Target;
-		if (!weapon.isAlerted()) {
-			weapon.setAlerted(true);
+		if (!context.Target.isTreasure()) {
+			WeaponChitComponent weapon = (WeaponChitComponent)context.Target;
+			if (!weapon.isAlerted()) {
+				weapon.setAlerted(true);
+			}
 		}
 	}
 

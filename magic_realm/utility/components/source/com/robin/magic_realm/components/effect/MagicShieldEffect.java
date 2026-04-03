@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.effect;
 
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.TreasureUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -25,7 +26,7 @@ public class MagicShieldEffect implements ISpellEffect {
 		magicShield.setThisAttribute(Constants.SPELL_ID, spell.getStringId());
 		magicShield.setThisAttribute("item");
 		magicShield.setThisAttribute(Constants.SHIELD);
-		magicShield.setThisAttribute("armor");
+		magicShield.setThisAttribute(RealmComponent.ARMOR);
 		magicShield.setThisAttribute("armor_choice");
 		magicShield.setAttribute("intact", "chit_color", "blue");
 		magicShield.setAttribute("intact", "base_price", "0");

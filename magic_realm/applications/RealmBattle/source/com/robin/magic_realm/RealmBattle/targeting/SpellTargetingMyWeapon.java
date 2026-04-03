@@ -10,6 +10,6 @@ public class SpellTargetingMyWeapon extends SpellTargetingMyItem {
 		super(combatFrame, spell,false,true);
 	}
 	public boolean isAddable(RealmComponent item) {
-		return item.isWeapon();
+		return item.isWeapon() || (item.isTreasure() && item.getGameObject().hasThisAttribute(RealmComponent.WEAPON) && !spell.getGameObject().hasThisAttribute(TARGETS_NO_TREASURE_WEAPONS));
 	}
 }

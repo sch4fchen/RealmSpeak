@@ -102,7 +102,7 @@ public class QuestRewardItem extends QuestReward {
 		}
 		
 		if (isGain()) {
-			if (damagedItem() && selected.hasThisAttribute("armor")) {
+			if (damagedItem() && selected.hasThisAttribute(RealmComponent.ARMOR)) {
 				ArmorChitComponent selectedItem = (ArmorChitComponent) RealmComponent.getRealmComponent(selected);
 				selectedItem.setLightSideUp();
 			}

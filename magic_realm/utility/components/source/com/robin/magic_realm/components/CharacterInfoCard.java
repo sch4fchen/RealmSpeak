@@ -167,11 +167,11 @@ public class CharacterInfoCard {
 			g.drawString(character.getCharacterLevelName(level+1).toUpperCase(), 15, i);
 			i += 15;
 			String levelKey = "level_"+(level+1);
-			String armor = character.getGameObject().getAttribute(levelKey,"armor");
+			String armor = character.getGameObject().getAttribute(levelKey,RealmComponent.ARMOR);
 			if (armor!=null && armor.trim().length()==0) {
 				armor = null;
 			}
-			String weapon = character.getGameObject().getAttribute(levelKey,"weapon");
+			String weapon = character.getGameObject().getAttribute(levelKey,RealmComponent.WEAPON);
 			startingEquipment = new StringBuffer();
 			startingEquipment.append((armor==null?"":armor.toUpperCase()) + (weapon==null?"":(armor==null?"":",")+weapon.toUpperCase()));
 			

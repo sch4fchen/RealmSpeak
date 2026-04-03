@@ -16644,6 +16644,7 @@
         <attribute author="Expansion 1" />
         <attribute benevolent="" />
         <attribute learnable="" />
+        <attribute targets_no_treasure_weapon="" />
       </AttributeBlock>
       <AttributeBlock blockName="attribute_add">
         <attribute alerted_weapon="" />

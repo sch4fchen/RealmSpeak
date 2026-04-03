@@ -25,7 +25,7 @@ public class SpellTargetingWeaponNativeMonster extends SpellTargetingSingle {
 			}
 			if (rc.isCharacter()) {
 				for (GameObject go : rc.getHold()) {
-					if (RealmComponent.getRealmComponent(go).isWeapon()) {
+					if (RealmComponent.getRealmComponent(go).isWeapon() || (RealmComponent.getRealmComponent(go).isTreasure() && go.hasThisAttribute(RealmComponent.WEAPON) && !spell.getGameObject().hasThisAttribute(TARGETS_NO_TREASURE_WEAPONS))) {
 						gameObjects.add(go);
 					}
 				}

@@ -11,6 +11,6 @@ public class SpellTargetingActiveWeaponType extends SpellTargetingMyItem {
 		this.keyword = keyword;
 	}
 	public boolean isAddable(RealmComponent item) {
-		return item.isWeapon() && item.getGameObject().getName().toLowerCase().indexOf(keyword)>=0;
+		return (item.isWeapon() || (item.isTreasure() && item.getGameObject().hasThisAttribute(RealmComponent.WEAPON) && !spell.getGameObject().hasThisAttribute(TARGETS_NO_TREASURE_WEAPONS))) && item.getGameObject().getName().toLowerCase().indexOf(keyword)>=0;
 	}
 }

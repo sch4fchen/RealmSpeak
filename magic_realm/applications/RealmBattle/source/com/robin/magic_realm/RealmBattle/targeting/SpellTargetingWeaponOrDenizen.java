@@ -21,7 +21,7 @@ public class SpellTargetingWeaponOrDenizen extends SpellTargetingSingle {
 		Collection<RealmComponent> realmComponents = loc.clearing.getDeepClearingComponents();
 		realmComponents = CombatSheet.filterNativeFriendly(activeParticipant, realmComponents);
 		for (RealmComponent rc : realmComponents) {
-			if (rc.isWeapon()) {
+			if (rc.isWeapon() || (rc.isTreasure() && rc.getGameObject().hasThisAttribute(RealmComponent.WEAPON) && !spell.getGameObject().hasThisAttribute(TARGETS_NO_TREASURE_WEAPONS))) {
 				gameObjects.add(rc.getGameObject());
 				identifiers.add(rc.getGameObject().getHeldBy().getName());
 			}

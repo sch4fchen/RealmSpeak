@@ -1799,7 +1799,7 @@ public class BattleModel {
 				if (!ignoresMistLike) {
 					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
 					for (GameObject item : character.getActiveInventory()) {
-						if (item.hasThisAttribute(Constants.IGNORE_MIST_LIKE) && !item.hasThisAttribute("attack") && !item.hasThisAttribute("weapon")) {
+						if (item.hasThisAttribute(Constants.IGNORE_MIST_LIKE) && !item.hasThisAttribute("attack") && !item.hasThisAttribute(RealmComponent.WEAPON)) {
 							ignoresMistLike = true;
 						}
 					}

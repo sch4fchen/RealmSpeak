@@ -1875,8 +1875,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		for (GameObject leader : leaders) {
 			GameObject dwelling = SetupCardUtility.getDenizenHolder(leader);
 			for (GameObject item : dwelling.getHold()) {
-				if (!item.hasThisAttribute("treasure")) {
-					if (item.hasThisAttribute("weapon") || item.hasThisAttribute("armor")) {
+				if (!item.hasThisAttribute(RealmComponent.TREASURE)) {
+					if (item.hasThisAttribute(RealmComponent.WEAPON) || item.hasThisAttribute(RealmComponent.ARMOR)) {
 						counters.add(item);
 					}
 				}
