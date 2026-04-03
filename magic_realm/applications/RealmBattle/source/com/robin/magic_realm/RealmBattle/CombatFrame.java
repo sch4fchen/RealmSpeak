@@ -2758,6 +2758,16 @@ public class CombatFrame extends JFrame {
 					chooser.addRealmComponentToOption(key,chit);
 					chooser.addRealmComponentToOption(key,weapon);
 				}
+				for (GameObject treasure : activeCharacter.getActiveTreasureWeaponObjects()) {
+					if (treasure.hasThisAttribute(Constants.NO_PARRY)) continue;
+					if (CombatWrapper.hasCombatInfo(treasure)) continue;
+					if (TreasureUtility.isTreasureMissile(treasure) && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(TreasureUtility.getWeightForTreasure(treasure))) continue;
+					key = "P"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
+					chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(treasure));
+				}
 			}
 		}
 		chooser.addOption("Reset", "Reset");
@@ -3126,6 +3136,23 @@ public class CombatFrame extends JFrame {
 					chooser.addOption(key,"");
 					chooser.addRealmComponentToOption(key,chit);
 					chooser.addRealmComponentToOption(key,weapon);
+				}
+				for (GameObject treasure : activeCharacter.getActiveTreasureWeaponObjects()) {
+					if (treasure.hasThisAttribute(Constants.NO_PARRY)) continue;
+					if (CombatWrapper.hasCombatInfo(treasure)) continue;
+					if (TreasureUtility.isTreasureMissile(treasure) && !activeCharacter.affectedByKey(Constants.PARRY_WITH_MISSILE) && !hostPrefs.hasPref(Constants.PARRY_WITH_MISSILE)) continue;
+					Strength chitStrength = null;
+					if (chit instanceof CharacterActionChitComponent) {
+						chitStrength = ((CharacterActionChitComponent) chit).getStrength();
+					} else if (chit.getGameObject().hasThisAttribute("gloves")) {
+						chitStrength = RealmUtility.getGlovesStrength(chit.getGameObject());
+					}
+					
+					if (chitStrength !=null && !chitStrength.strongerOrEqualTo(TreasureUtility.getWeightForTreasure(treasure))) continue;
+					key = "W"+(keyN++);
+					chooser.addOption(key,"");
+					chooser.addRealmComponentToOption(key,chit);
+					chooser.addRealmComponentToOption(key,RealmComponent.getRealmComponent(treasure));
 				}
 			}
 		}
