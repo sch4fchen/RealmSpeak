@@ -848,8 +848,13 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 									}
 								}
 								if (!test.isArmor()) {
-									if (test.isWeapon()) armorVulnerability = test.getWeight(); // parrying with weapon
-									if (test instanceof CharacterActionChitComponent) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
+									if (test.isWeapon()) {
+										armorVulnerability = new Strength(((WeaponChitComponent)test).getWeight()); // parrying with weapon
+									}
+									else if (test.isTreasure() && test.getGameObject().hasThisAttribute(RealmComponent.WEAPON)) {
+										armorVulnerability = new Strength(TreasureUtility.getWeightForTreasure(test.getGameObject()));
+									}
+									else if (test instanceof CharacterActionChitComponent) armorVulnerability = new Strength(test.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
 								}
 								if (armorVulnerability.strongerThan(harm.getAppliedStrength())) {
 									harm = new Harm(new Strength(),0); // negate harm!
@@ -935,8 +940,13 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 				if (!armor.isArmor()) {
-					if (armor.isWeapon()) armorVulnerability = new Strength(armor.getGameObject().getThisAttribute(Constants.WEIGHT)); // parrying with weapon
-					if (armor instanceof CharacterActionChitComponent) {
+					if (armor.isWeapon()) {
+						armorVulnerability = new Strength(((WeaponChitComponent)armor).getWeight()); // parrying with weapon
+					}
+					else if (armor.isTreasure() && armor.getGameObject().hasThisAttribute(RealmComponent.WEAPON)) {
+						armorVulnerability = new Strength(TreasureUtility.getWeightForTreasure(armor.getGameObject()));
+					}
+					else if (armor instanceof CharacterActionChitComponent) {
 						armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("strength")); // parrying with FIGHT chit
 						minForWound = new Strength(armorVulnerability);
 					}
