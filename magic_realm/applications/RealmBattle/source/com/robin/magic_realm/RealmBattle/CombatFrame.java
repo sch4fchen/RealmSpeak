@@ -2707,7 +2707,13 @@ public class CombatFrame extends JFrame {
 				for (WeaponChitComponent weapon : weapons) {
 					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
 				}
-			}			
+			}
+			for (GameObject treasure : activeCharacter.getActiveTreasureWeaponObjects()) {
+				CombatWrapper combatTreasure = new CombatWrapper(treasure);
+				if (combatTreasure.getPlacedAsParry()) {
+					treasure.removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
+			}
 		}
 		
 		if (weapons == null || weapons.isEmpty()) {
@@ -3069,7 +3075,13 @@ public class CombatFrame extends JFrame {
 				for (WeaponChitComponent weapon : weapons) {
 					weapon.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
 				}
-			}			
+			}
+			for (GameObject treasure : activeCharacter.getActiveTreasureWeaponObjects()) {
+				CombatWrapper combatTreasure = new CombatWrapper(treasure);
+				if (combatTreasure.getPlacedAsParryShield()) {
+					treasure.removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
+				}
+			}
 		}
 		
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
