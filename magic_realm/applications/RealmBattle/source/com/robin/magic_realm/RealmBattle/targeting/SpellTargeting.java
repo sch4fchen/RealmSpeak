@@ -12,7 +12,7 @@ import com.robin.magic_realm.components.wrapper.*;
 
 public abstract class SpellTargeting {
 	
-	public static final String TARGETS_NO_TREASURE_WEAPONS = "targets_no_treasure_weapons";
+	public static final String NON_TREASURE_WEAPON = "non_treasure_weapon";
 	protected CombatFrame combatFrame;
 	protected SpellWrapper spell;
 	
