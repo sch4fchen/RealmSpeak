@@ -165,6 +165,7 @@ public class CombatFrame extends JFrame {
 	private JButton useMagicMoveButton;
 	
 	private CombatSuggestionAi suggestionAi;
+	private static boolean combatNextPhaseWarning = true;
 	
 	// These are needed to differentiate all the players during results
 	private String playerName;
@@ -1390,6 +1391,70 @@ public class CombatFrame extends JFrame {
 		}
 	}
 	private void doNext() {
+		if (combatNextPhaseWarning) {
+			String warning = null;
+			String warningTitle = null;
+			CharacterWrapper character = getActiveCharacter();
+			CombatWrapper characterCombat = new CombatWrapper(character.getGameObject());
+			TileLocation loc = character.getCurrentLocation();
+			boolean hasEnemies = character.getBattlingNativeGroups().size()>0 || characterCombat.getAttackerCount()>0;
+			if (!hasEnemies) {
+				for (RealmComponent hireling : character.getAllHirelings()) {
+					if (loc == hireling.getCurrentLocation()) {
+						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
+							hasEnemies = true;
+							break;
+						}
+					}
+				}
+			}
+		
+			if (actionState==Constants.COMBAT_DEPLOY) {
+				boolean hidden = character.isHidden();
+				boolean attackingEnemies = true;
+				for (RealmComponent hireling : character.getAllHirelings()) {
+					if (loc == hireling.getCurrentLocation()) {
+						if (!hireling.isHidden()) {
+							hidden = false;
+						}
+						if (!character.isBattling(hireling.getTarget().getGameObject())) {
+							attackingEnemies = false;
+							break;
+						}
+					}
+				}
+				if (hasEnemies && !hidden && !attackingEnemies && character.getAllHirelings().size()>0) {
+					warning = "Some of your hirelings are not attacking your enemies. Do you really want to proceed?";
+					warningTitle = "Hirelings not attacking";
+				}
+			} else if (actionState==Constants.COMBAT_ACTIONS) {
+				if (hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
+					warning = "You are being attacked and have taken no action (e.g. casting a spell). Do you really want to proceed?";
+					warningTitle = "No action taken";
+				}
+			} else if (actionState==Constants.COMBAT_ASSIGN) {
+				if (hasEnemies && !character.isHidden() && !characterCombat.hasCastSpell() && RealmComponent.getRealmComponent(character.getGameObject()).getTarget()==null) {
+					warning = "You are being attacked but you are not attacking or casting any spell. Do you really want to proceed?";
+					warningTitle = "No attack or spell";
+				}
+			} else if (actionState==Constants.COMBAT_POSITIONING) {
+				if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlacedAsMove()) {
+					warning = "You haven't placed any move chit on a defense box on your own sheet. Do you really want to proceed?";
+					warningTitle = "No maneuver chit placed";
+				}
+				else if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlayedAttack()) {
+					warning = "You haven't placed any attack chit on your target's sheet. Do you really want to proceed?";
+					warningTitle = "No attack chit placed";
+				}
+			}
+			if (warning!=null && warningTitle!=null) {
+				int ret = JOptionPane.showConfirmDialog(this,warning,warningTitle,JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,activeCharacter.getIcon());
+				if (ret!=JOptionPane.YES_OPTION) {
+					return;
+				}
+			}
+		}
+		
 		if (activeCharacterIsHere) activeCharacter.testQuestRequirements(this);
 		if (okayToContinue()) {
 			if (ambushRollAtEndOfCombatRound && actionState==Constants.COMBAT_RESOLVING) {
@@ -4679,6 +4744,7 @@ public class CombatFrame extends JFrame {
 		GameObject.showNumbers = gamePrefMan.getBoolean("monsterNumbers",true);
 		ChitComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		CardComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
+		combatNextPhaseWarning = gamePrefMan.getBoolean("combatNextPhaseWarning",true);
 		switch(gamePrefMan.getInt("chitDisplayStyle")) {
 			case RealmComponent.DISPLAY_STYLE_CLASSIC:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;

@@ -51,6 +51,7 @@ public class RealmSpeakOptions {
 	public static final String MOVE_AFTER_HIRE_WARNING = "moveAfterHireWarning";
 	public static final String UNASSIGNED_HIRELINGS_WARNING = "unassignedHirelingsWarning";
 	public static final String TURN_END_RESULTS = "turnEndResultsOption";
+	public static final String COMBAT_NEXT_PHASE_WARNING = "combatNextPhaseWarning";
 	public static final String ENABLE_SOUND = "enableSound";
 	
 	PreferenceManager options;

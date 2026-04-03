@@ -73,6 +73,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JCheckBox showMoveAfterHireWarningOption;
 	protected JCheckBox showUnassignedHirelingsWarningOption;
 	protected JCheckBox showTurnEndResultsOption;
+	protected JCheckBox showCombatNextWarningOption;
 	
 	protected JRadioButton dailyCombatOffOption;
 	protected JRadioButton dailyCombatOnOption;
@@ -232,6 +233,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		showMoveAfterHireWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MOVE_AFTER_HIRE_WARNING,true));
 		showUnassignedHirelingsWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.UNASSIGNED_HIRELINGS_WARNING,true));
 		showTurnEndResultsOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.TURN_END_RESULTS,false));
+		showCombatNextWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,true));
 		
 		boolean sound = options.getOptions().getBoolean(RealmSpeakOptions.ENABLE_SOUND,true);
 		enableSoundItem.setSelected(sound);
@@ -273,6 +275,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.MOVE_AFTER_HIRE_WARNING,showMoveAfterHireWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.UNASSIGNED_HIRELINGS_WARNING,showUnassignedHirelingsWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.TURN_END_RESULTS,showTurnEndResultsOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,showCombatNextWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.ENABLE_SOUND,enableSoundItem.isSelected());
 		mainFrame.saveFramePreferences();
 	}
@@ -630,7 +633,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getPopupWindowOptions() {
-		JPanel panel = new JPanel(new GridLayout(6,1));
+		JPanel panel = new JPanel(new GridLayout(7,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Notifications"));
 		showHeavyInvWarningOption = new JCheckBox("Show Heavy Inventory Warning");
 		panel.add(showHeavyInvWarningOption);
@@ -644,6 +647,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(showUnassignedHirelingsWarningOption);
 		showTurnEndResultsOption = new JCheckBox("Show Turn End Results");
 		panel.add(showTurnEndResultsOption);
+		showCombatNextWarningOption = new JCheckBox("Show Combat Next Phase Warning");
+		panel.add(showCombatNextWarningOption);
 		return panel;
 	}
 	private JPanel getDailyCombatOptionPanel() {
