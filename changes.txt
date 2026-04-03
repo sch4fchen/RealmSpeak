@@ -1,4 +1,3 @@
-Next Battle Phase Warnings
 Realm Option: Native, Monster, Steeds, Weapons, Character chits, character, treasures: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red) (movement: if blue no circle), only for Remodeled Chits and Legendary Chits
 Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation)
 
