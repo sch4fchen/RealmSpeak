@@ -619,21 +619,26 @@ public class CharacterCombatSheet extends CombatSheet {
 								}
 							}
 						}
+						ArrayList<RealmComponent> allWeapons = new ArrayList<>();
 						ArrayList<WeaponChitComponent> weapons = character.getActiveWeapons();
 						if (weapons!=null) {
-							for (WeaponChitComponent weapon : weapons) {
-								CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
-								int box = combat.getCombatBoxDefense();
-								if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
-									if (combat.getPlacedAsParry()) {
-										if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
-											layoutHash.put(Integer.valueOf(POS_PARRY1+box-1),weapon);
-										} else {
-											layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
-										}
-									} else if (combat.getPlacedAsParryShield()) {
-										layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),weapon);
+							allWeapons.addAll(weapons);
+						}
+						for (GameObject treasure : character.getActiveTreasureWeaponObjects()) {
+							allWeapons.add(RealmComponent.getRealmComponent(treasure));
+						}
+						for (RealmComponent weapon : allWeapons) {
+							CombatWrapper combat = new CombatWrapper(weapon.getGameObject());
+							int box = combat.getCombatBoxDefense();
+							if (box>0 && this.sheetOwner.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
+								if (combat.getPlacedAsParry()) {
+									if (hostPrefs.hasPref(Constants.SR_COMBAT)) {
+										layoutHash.put(Integer.valueOf(POS_PARRY1+box-1),weapon);
+									} else {
+										layoutHash.put(Integer.valueOf(POS_MOVE_BOX1+box-1),weapon);
 									}
+								} else if (combat.getPlacedAsParryShield()) {
+									layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),weapon);
 								}
 							}
 						}
