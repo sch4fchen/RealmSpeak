@@ -603,6 +603,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 		ArrayList<RealmComponent> armors = new ArrayList<>();
 		
 		ArrayList<WeaponChitComponent> activeWeapons = character.getActiveWeapons();
+		ArrayList<GameObject> treasures = character.getActiveTreasureWeaponObjects();
 		for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
 			CombatWrapper combatChit = new CombatWrapper(chit.getGameObject());
 			if(!combatChit.getPlacedAsParryShield()) continue;
@@ -611,9 +612,17 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					armors.add(chit);
 					continue;
 				}
-				for (WeaponChitComponent weapon : activeWeapons) {
-					if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
-						armors.add(weapon);
+				if (activeWeapons!=null) {
+					for (WeaponChitComponent weapon : activeWeapons) {
+						if (combatChit.getWeaponId().equals(weapon.getGameObject().getStringId())) {
+							armors.add(weapon);
+							break;
+						}
+					}
+				}
+				for (GameObject treasure : treasures) {
+					if (combatChit.getWeaponId().equals(treasure.getStringId())) {
+						armors.add(RealmComponent.getRealmComponent(treasure));
 						break;
 					}
 				}
@@ -670,8 +679,8 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					// Sort first by armor row (row 1 is the shield row); parrying weapon is in shield row
 					int armorRow1 = r1.getGameObject().getThisInt("armor_row");
 					int armorRow2 = r2.getGameObject().getThisInt("armor_row");
-					if (r1.isWeapon()) armorRow1 = 1;
-					if (r2.isWeapon()) armorRow2 = 1;
+					if (r1.isWeapon() || (r1.isTreasure() && r1.getGameObject().hasThisAttribute(RealmComponent.WEAPON))) armorRow1 = 1;
+					if (r2.isWeapon() || (r2.isTreasure() && r2.getGameObject().hasThisAttribute(RealmComponent.WEAPON))) armorRow2 = 1;
 					ret = armorRow1 - armorRow2;
 					if (ret == 0) {
 						// handle Ointment of Steel + suit of armor cases (roundabout way to determine if r2 is ointment of steel) */

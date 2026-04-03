@@ -929,7 +929,7 @@ public class CombatWrapper extends GameObjectWrapper {
 		go.removeThisAttribute(Constants.SPIDER_WEB_BOXES_DEFENSE);
 	}
 	public static boolean hasCombatInfo(GameObject test) {
-		return test.hasAttributeBlock(COMBAT_BLOCK) || affectedBySpiderWeb(test);
+		return (test.hasAttributeBlock(COMBAT_BLOCK) && !test.getAttributeBlock(COMBAT_BLOCK).isEmpty()) || affectedBySpiderWeb(test);
 	}
 	
 	private static boolean affectedBySpiderWeb(GameObject test) {
