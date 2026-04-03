@@ -1531,7 +1531,7 @@ public class BattleModel {
 		CombatWrapper attackerCombat = new CombatWrapper(attacker.getGameObject());
 		String attackerName = attacker.getGameObject().getNameWithNumber();
 		String attackCancelled = null;
-		CharacterChitComponent characterChit = (CharacterChitComponent) attacker;
+		CharacterChitComponent characterChit = (CharacterChitComponent)attacker;
 		
 		GameObject killer = attackerCombat.getKilledBy();
 		int killLength = attackerCombat.getKilledLength();
@@ -1555,7 +1555,7 @@ public class BattleModel {
 			}
 		}
 		
-		if (attacker.isCharacter() && ((CharacterChitComponent)attacker).hasAnParry()) {
+		if (attacker.isCharacter() && !characterChit.hasAnParry()) {
 			logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
 			return;
 		}
@@ -2206,7 +2206,7 @@ public class BattleModel {
 			return;
 		}
 		if (parry) {
-			if (attacker.isCharacter() && ((CharacterChitComponent)attacker).hasAnParry()) {
+			if (attacker.isCharacter() && !((CharacterChitComponent)attacker).hasAnParry()) {
 				logBattleInfo(attacker.getGameObject().getNameWithNumber()+" didn't parry, and thus does not prevent an attack.");
 				return;
 			}
