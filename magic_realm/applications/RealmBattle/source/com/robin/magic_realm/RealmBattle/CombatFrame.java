@@ -1398,10 +1398,12 @@ public class CombatFrame extends JFrame {
 			CombatWrapper characterCombat = new CombatWrapper(character.getGameObject());
 			TileLocation loc = character.getCurrentLocation();
 			boolean hasEnemies = character.getBattlingNativeGroups().size()>0 || characterCombat.getAttackerCount()>0;
+			ArrayList<GameObject> attackers = characterCombat.getAttackers();
 			if (!hasEnemies) {
 				for (RealmComponent hireling : character.getAllHirelings()) {
 					if (loc == hireling.getCurrentLocation()) {
 						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
+							attackers.addAll(new CombatWrapper(hireling.getGameObject()).getAttackers());
 							hasEnemies = true;
 							break;
 						}
@@ -1462,9 +1464,33 @@ public class CombatFrame extends JFrame {
 					warning = "You haven't placed any move chit on a defense box on your own sheet. Do you really want to proceed?";
 					warningTitle = "No maneuver chit placed";
 				}
-				else if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlayedAttack()) {
-					warning = "You haven't placed any attack chit on your target's sheet. Do you really want to proceed?";
-					warningTitle = "No attack chit placed";
+				else if (RealmComponent.getRealmComponent(character.getGameObject()).getTarget()!=null) {
+					RealmComponent target1 = RealmComponent.getRealmComponent(character.getGameObject()).getTarget();
+					RealmComponent target2 = RealmComponent.getRealmComponent(character.getGameObject()).get2ndTarget();
+					boolean showAttackWarning = false;
+					if (!characterCombat.getPlayedAttack()) {
+						showAttackWarning = true;
+					}
+					if (!showAttackWarning) {
+						boolean attacksTarget1 = false;
+						boolean attacksTarget2 = false;
+						for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
+							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+							if (combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target1.getGameObject().getStringId())) {
+								attacksTarget1 = true;
+							}
+							if (target2!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target2.getGameObject().getStringId())) {
+								attacksTarget1 = true;
+							}
+						}
+						if (!attacksTarget1 || (target2!=null && !attacksTarget2)) {
+							showAttackWarning = true;
+						}
+					}
+					if (showAttackWarning) {
+						warning = "You haven't placed any attack chit on your target's sheet. Do you really want to proceed?";
+						warningTitle = "No attack chit placed";
+					}
 				}
 			}
 			if (warning!=null && warningTitle!=null) {
