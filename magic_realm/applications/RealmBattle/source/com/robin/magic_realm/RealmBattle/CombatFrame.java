@@ -1438,7 +1438,27 @@ public class CombatFrame extends JFrame {
 					warningTitle = "No attack or spell";
 				}
 			} else if (actionState==Constants.COMBAT_POSITIONING) {
-				if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlacedAsMove()) {
+				boolean placedManeuver = false;
+				Collection<RealmComponent> c = character.getActiveMoveChitsAsRealmComponents();
+				c.addAll(character.getFlyChits());
+				for (RealmComponent chit : c) {
+					CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+					if (combat.getPlacedAsMove()) {
+						placedManeuver = true;
+						break;
+					}
+				}
+				if (!placedManeuver) {
+					for (GameObject item : character.getActiveInventory()) {
+						CombatWrapper combat = new CombatWrapper(item);
+						if (combat.getPlacedAsMove()) {
+							placedManeuver = true;
+							break;
+						}
+					}
+				}
+				
+				if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlacedAsMove() && !placedManeuver) {
 					warning = "You haven't placed any move chit on a defense box on your own sheet. Do you really want to proceed?";
 					warningTitle = "No maneuver chit placed";
 				}
