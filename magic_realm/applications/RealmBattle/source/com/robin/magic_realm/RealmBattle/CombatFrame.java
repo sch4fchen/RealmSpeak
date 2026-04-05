@@ -1401,7 +1401,7 @@ public class CombatFrame extends JFrame {
 			ArrayList<GameObject> attackers = characterCombat.getAttackers();
 			if (!hasEnemies) {
 				for (RealmComponent hireling : character.getAllHirelings()) {
-					if (loc == hireling.getCurrentLocation()) {
+					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
 						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
 							attackers.addAll(new CombatWrapper(hireling.getGameObject()).getAttackers());
 							hasEnemies = true;
@@ -1415,11 +1415,12 @@ public class CombatFrame extends JFrame {
 				boolean hidden = character.isHidden();
 				boolean attackingEnemies = true;
 				for (RealmComponent hireling : character.getAllHirelings()) {
-					if (loc == hireling.getCurrentLocation()) {
+					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
 						if (!hireling.isHidden()) {
 							hidden = false;
 						}
-						if (!character.isBattling(hireling.getTarget().getGameObject())) {
+						RealmComponent hirelingTarget = hireling.getTarget();
+						if (hirelingTarget==null || (hirelingTarget.isNative() && !character.isBattling(hirelingTarget.getGameObject()))) {
 							attackingEnemies = false;
 							break;
 						}
@@ -1431,12 +1432,12 @@ public class CombatFrame extends JFrame {
 				}
 			} else if (actionState==Constants.COMBAT_ACTIONS) {
 				if (hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
-					warning = "You are being attacked and have taken no action (e.g. casting a spell). Do you really want to proceed?";
+					warning = "You or your hirelings are being attacked and you have taken no action (e.g. casting a spell). Do you really want to proceed?";
 					warningTitle = "No action taken";
 				}
 			} else if (actionState==Constants.COMBAT_ASSIGN) {
 				if (hasEnemies && !character.isHidden() && !characterCombat.hasCastSpell() && RealmComponent.getRealmComponent(character.getGameObject()).getTarget()==null) {
-					warning = "You are being attacked but you are not attacking or casting any spell. Do you really want to proceed?";
+					warning = "You or your hirelings are being attacked but you are not attacking or casting any spell. Do you really want to proceed?";
 					warningTitle = "No attack or spell";
 				}
 			} else if (actionState==Constants.COMBAT_POSITIONING) {
@@ -1480,7 +1481,7 @@ public class CombatFrame extends JFrame {
 								attacksTarget1 = true;
 							}
 							if (target2!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target2.getGameObject().getStringId())) {
-								attacksTarget1 = true;
+								attacksTarget2 = true;
 							}
 						}
 						if (!attacksTarget1 || (target2!=null && !attacksTarget2)) {
