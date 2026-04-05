@@ -1174,6 +1174,13 @@ public class CharacterCombatSheet extends CombatSheet {
 			repaint();
 		}
 	}
+	public void autoPositioningForAttackers() {
+		int swingConstant = SwingConstants.LEFT;
+		if (!hostPrefs.hasPref(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX)) {
+			swingConstant = SwingConstants.RIGHT;
+		}
+		autoPositioning(swingConstant);
+	}
 	/**
 	 * Testing only
 	 */

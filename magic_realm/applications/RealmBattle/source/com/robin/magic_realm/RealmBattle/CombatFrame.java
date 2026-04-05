@@ -166,6 +166,7 @@ public class CombatFrame extends JFrame {
 	
 	private CombatSuggestionAi suggestionAi;
 	private static boolean combatNextPhaseWarning = true;
+	private static boolean autoPositioningAttackers = false;
 	
 	// These are needed to differentiate all the players during results
 	private String playerName;
@@ -4792,6 +4793,7 @@ public class CombatFrame extends JFrame {
 		ChitComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		CardComponent.killedByOption = gamePrefMan.getBoolean("killedBy",true);
 		combatNextPhaseWarning = gamePrefMan.getBoolean("combatNextPhaseWarning",true);
+		autoPositioningAttackers = gamePrefMan.getBoolean("autoPositioningAttackers",false);
 		switch(gamePrefMan.getInt("chitDisplayStyle")) {
 			case RealmComponent.DISPLAY_STYLE_CLASSIC:
 				RealmComponent.displayStyle = RealmComponent.DISPLAY_STYLE_CLASSIC;

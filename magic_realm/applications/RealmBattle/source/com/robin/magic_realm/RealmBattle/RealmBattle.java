@@ -297,6 +297,7 @@ public class RealmBattle {
 							// need to energize spells here
 							energizeSpells(currentCombatLocation,data);
 							fixSheetOwners(currentCombatLocation,data);
+							autoPositionAttackers(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_TACTICS:
 							endAttacksIfPeaceful(currentCombatLocation,data);
@@ -841,5 +842,10 @@ public class RealmBattle {
 				SetupCardUtility.resetDenizen(rc.getGameObject());
 			}
 		}
+	}
+	
+	public static void autoPositionAttackers(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		model.autoPositioningForAttackers();
 	}
 }

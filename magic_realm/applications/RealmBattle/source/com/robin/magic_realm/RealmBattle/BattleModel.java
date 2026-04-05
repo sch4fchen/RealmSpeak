@@ -3627,4 +3627,12 @@ public class BattleModel {
 		CombatWrapper cw = new CombatWrapper(battleLocation.tile.getGameObject());
 		cw.setTremendousMonsterFlippedRedSideUp(true);
 	}
+	public void autoPositioningForAttackers() {
+		for (RealmComponent rc : getAllBattleParticipants(false)) {
+			if (rc.isCharacter()) {
+				CharacterCombatSheet sheet = new CharacterCombatSheet(CombatFrame.getSingleton(),this,rc,false, hostPrefs);
+				sheet.autoPositioningForAttackers();
+			}
+		}
+	}
 }

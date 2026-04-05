@@ -6,6 +6,7 @@ NEW FEATURES:
 # Characters of T or X weight use the Fight chit's strength as the force of damage
 # Treasure Weapons can parry
 # Option: Next Battle Phase Warnings
+# Option: Auto-positioning of attackers
 BUGS/ISSUES:
 # Improve weapon weight calculation
 # Fix deactivation of treasure weapon
