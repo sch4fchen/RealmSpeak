@@ -1049,8 +1049,14 @@ public class ActionRow {
 						}
 					}
 					
+					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 					// First and foremost, make sure character can carry everything
 					if (!character.canMove() && current.isInClearing()) {
+						if (character.getWeight().isMaximum() || character.mustFly() || (hostPrefs.hasPref(Constants.SR_OPT_MOVEMENT_RESTRICTION) && !character.hasMoveChit(true,false))) {
+							JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You cannot move.  Move action cancelled.");
+							cancelled = true;
+							return;
+						}
 						JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You cannot move with your current inventory.  Drop something first.");
 						completed = false;
 						return;
@@ -1068,7 +1074,6 @@ public class ActionRow {
 						}
 					}
 					
-					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 					if (hostPrefs.hasPref(Constants.SR_NO_HORSES_IN_CAVES) && location.hasClearing() && location.clearing.isCave()) {
 						for (GameObject item : character.getInventory()) {
 							abandonHorse(item,character);

@@ -843,6 +843,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (mustFly()) { // If you MUST fly, you can't MOVE
 			return false;
 		}
+		if (isMinion()) return true;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 		if (hostPrefs.hasPref(Constants.SR_OPT_MOVEMENT_RESTRICTION) && !hasMoveChit(true,false)) {
 			return false;
