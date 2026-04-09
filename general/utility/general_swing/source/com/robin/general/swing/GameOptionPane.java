@@ -154,7 +154,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 					pane.setOpaque(true);
 					pane.setBackground(new Color(220,220,255));
 					pane.setMinimumSize(new Dimension(50,25));
-					pane.setPreferredSize(new Dimension(50,25));
+					pane.setPreferredSize(new Dimension(50,35));
 				hbox.add(pane);
 				tabPanel.add(hbox,"North");
 			}

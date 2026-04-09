@@ -410,7 +410,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,1040);
+		setSize(1080,1080);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -1059,7 +1059,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE - Characters with Blocking ON can choose to block visible characters after every phase.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
 		
 		newOptionPane.setTabHtmlDescription(DENIZEN_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Denizen Rules</font></body></html>");
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS B.1.1-1.4 (Magic Realm Optional) - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
@@ -1079,7 +1079,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_PROTECTED_LEADERS_TARGETING,"PROTECTED LEADERS (Super Realm Advanced) - Native Leaders are more difficult to kill. Unhired native leaders cannot be targeted unless all other unhired natives of the same group who are in the same clearing are also targeted.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_THEMATIC_ROVING_NATIVES,"THEMATIC ROVING NATIVES (Super Realm Advanced) - Roving native leaders operate as any other native leader and have abilities.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_ADV_SENTIMENTAL_VALUE,"SENTIMENTAL VALUE (Super Realm Advanced) - Selling/Buying items with special FAME prices affect friendliness with certain native groups (identical to optional rule Grudges and Gratitudes).",false));
-		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_OPT_REGROUPING,"REGROUPING (Super Realm Optional 1) - Natives who become unhired automatically return to their home.",false));
+		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.SR_OPT_REGROUPING,"REGROUPING (Super Realm Optional) - Natives who become unhired automatically return to their home.",false));
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.EXP_STEALING,"STEALING (Expansion 1) - Characters who feel the establishment owes them a living, can try their hand at stealing.",false));
 		
 		newOptionPane.setTabHtmlDescription(ADVANCED_MAGIC_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Advanced Magic Rules</font></body></html>");
@@ -1121,7 +1121,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS,"SURVIVAL TACTICS (Super Realm Advanced) - This rule makes it a little easier to survive in combat, and increases odds of killing denizens. It also makes combat more involved with decisions players have to make.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_SURVIVAL_TACTICS_PARRY_NOT_ALERTING,"SURVIVAL TACTICS - PARRYING DOES NOT ALERT (Super Realm Advanced) - Weapon counters cannot become alerted as a result of doing a Parry and missing their target.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_CORNERED,"CORNERED (Super Realm Optional) - It is now possible to flip a red-side-up tremendous monster red-side-down in the middle of combat.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_STEALING,"STEALING (Super Realm Optional) - Allows hidden character in the same clearing as other characters and minions to steal from their belongings during evening.",false));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_STEALING,"STEALING (Super Realm Optional) - Allows hidden characters in the same clearing as other characters and minions to steal from their belongings during evening.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX,"HORSE/WEAPON SAME BOX - Allows monster weapons and horses to be placed in the same combat box.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
@@ -1146,7 +1146,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS,"NO CHARACTER QUEST CARDS (Questing the Realm/Super Realm) - Characters cannot draw any quest cards (these quests are not added to the game).",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QTR_AND_SR_QUEST_CARDS,"ADD ALL QUEST CARDS (Questing the Realm/Super Realm) - Add both, Questing the Realm and Super Realm quest cards, if playing Questing the Realm or Super Realm.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS,"EXCHANGE QtR and SR QUEST CARDS (Questing the Realm/Super Realm) - Add only the other quest card deck to the game (SR quest cards for QtR game, and QtR quest cards for SR game).",false));
-		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE,"QUEST CARDS HAND SIZE PLUST ONE - Increase the hand size limit for quests by one.",false));
+		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE,"QUEST CARDS HAND SIZE PLUS ONE - Increase the hand size limit for quests by one.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_DEDUCT_VPS,"DEDUCTING VPS (Super Realm Basic) - Deduct VPs for discovering site chits and TWT or for completing tasks, missions, campaigns and quests. Calculating score as in Super Realm.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_SETUP_TWO_QUESTS,"TWO QUESTS PER NATIVE (Super Realm Optional) - During setup, two instead of one quest card is added to every native HQ and traveler (requires Super Realm).",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_COMPLETE_GOLD_SPECIAL_ONLY_ONCE,"COMPLETE CAMPAIGNS, MISSIONS, TASKS only once (Super Realm Basic) - Each Campaign, Mission and Task can only completed once by every character.",false));
@@ -1299,6 +1299,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		for (String key : optionPane.getGameOptionKeys()) {
 			optionPane.setOption(key,false);
 		}
+		optionPane.setOption(Constants.OPT_BLOCKING_PHASES,true);
 		
 		updateWarnings();
 		loadingPrefs = false;
@@ -1319,6 +1320,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.ADV_DROPPING,true);
 		optionPane.setOption(Constants.TE_WATCHFUL_NATIVES,true);
 		optionPane.setOption(Constants.SR_NATIVE_BLOCKING,true);
+		optionPane.setOption(Constants.SR_DAMAGED_RELATIONS,true);
 		optionPane.setOption(Constants.SR_ADV_THEMATIC_ROVING_NATIVES,true);
 		optionPane.setOption(Constants.TE_EXTENDED_TREACHERY,true);
 		optionPane.setOption(Constants.OPT_GRUDGES,true);
@@ -1356,6 +1358,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		optionPane.setOption(Constants.RANDOM_ON_THE_FLY,true);
 		optionPane.setOption(Constants.MAP_BUILDING_INCREASED_PRIO_TILE_PLACEMENT,true);
 		optionPane.setOption(Constants.SR_EVENTS,true);
+		optionPane.setOption(Constants.EXP_ASSASSIN_THIEF,true);
+		optionPane.setOption(Constants.EXP_STEALING,true);
 		
 		updateWarnings();
 	}
