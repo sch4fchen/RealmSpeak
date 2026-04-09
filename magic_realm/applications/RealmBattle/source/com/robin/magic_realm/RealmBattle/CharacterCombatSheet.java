@@ -925,7 +925,8 @@ public class CharacterCombatSheet extends CombatSheet {
 	}
 	private void autoPositioning(int swingConstant) {
 		// auto-position
-		ArrayList<RealmComponent> list = new ArrayList<>(layoutHash.getList(Integer.valueOf(POS_TARGET)));
+		ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(POS_TARGET));
+		if (list==null) return;
 		Collections.sort(list);
 		int n=0;
 		int m=0;
