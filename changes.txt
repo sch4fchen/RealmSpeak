@@ -3,6 +3,8 @@ Playing color chit at the beginning of any phase of any character (3rd ed) / at 
 	if blocked, phasing is over. no phase start to play color chit
 Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation); make all treasure abilities and character abilities available for characters and treasures 
 
+Version 1.2.5.5
+
 Version 1.2.5.4
 NEW FEATURES:
 # Characters of T or X weight use the Fight chit's strength as the force of damage
@@ -11,7 +13,7 @@ NEW FEATURES:
 # Option: Auto-positioning of attackers
 BUGS/ISSUES:
 # Improve weapon weight calculation
-# Fix deactivation of treasure weapon
+# Fix deactivation of treasure weapons
 # Fix prowling hirelings
 # Fix Animate spell targeting monsters killed by Dark Sword
 # Fix Phantasm cannot block or be blocked
