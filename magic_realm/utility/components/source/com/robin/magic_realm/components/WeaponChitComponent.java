@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -123,7 +124,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 		}
 		String val = getFaceAttributeString("attack_speed");
 		int mod = 0;
-		if (new CombatWrapper(getWielder().getGameObject()).isFreezed()) {
+		if (getWielder()!=null && new CombatWrapper(getWielder().getGameObject()).isFreezed()) {
 			mod = 1;
 		}
 		if (gameObject.hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE)) {
@@ -273,22 +274,40 @@ public class WeaponChitComponent extends RoundChitComponent {
 		String statSide = isAlerted()?"alerted":"unalerted";
 		String asterisk = isAlerted()?"*":"";
 		
-		String speed = getAttribute(statSide,"attack_speed");
-		String strength = getStrength().getChitString();
+		Speed speed = getSpeed();
+		String speedString = speed==null?"":speed.getSpeedString();
+		Strength strength = getStrength();
 		int sharpness = getSharpness();
 		
 		// Draw attack
-		TextType tt = new TextType(strength,getChitSize(),"BIG_BOLD");
+		TextType tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD");
+		if (RealmComponent.displayColoredStats) {
+			Strength defaultStrength = new Strength(getAttribute(statSide,"strength"));
+			if (strength.strongerThan(defaultStrength)) {
+				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_BLUE");
+			} else if(defaultStrength.strongerThan(strength)) {
+				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_RED");
+			}			
+		}
+		int deafaultSharpness = getFaceAttributeInt("sharpness");
 		int x = (getChitSize()>>1)-(getChitSize()>>3)-(5*sharpness);
 		int y = getChitSize()-15-tt.getHeight(g)+5;
 		tt.draw(g,x,y,Alignment.Left);
 		x += tt.getWidth(g)+5;
 		y += tt.getHeight(g)-8;
+		g.setColor(new Color(0,0,0));
+		if (deafaultSharpness>sharpness) {
+			g.setColor(Color.RED);
+		}
 		for (int i=0;i<sharpness;i++) {
+			if (RealmComponent.displayColoredStats && i==deafaultSharpness) {
+				g.setColor(Color.BLUE);
+			}
 			StarShape star = new StarShape(x,y,5,8);
 			g.fill(star);
 			x += 12;
 		}
+		g.setColor(new Color(0,0,0));
 		
 		// Draw alert asterisk
 		tt = new TextType(asterisk,getChitSize(),"BIG_BOLD");
@@ -297,7 +316,17 @@ public class WeaponChitComponent extends RoundChitComponent {
 		// Draw speed
 		x = 15;
 		y = 5;
-		tt = new TextType(speed,getChitSize(),"BIG_BOLD");
+		tt = new TextType(speedString,getChitSize(),"BIG_BOLD");
+		if (RealmComponent.displayColoredStats) {
+			String defaultSpeed = getAttribute(statSide,"attack_speed");
+			if ((defaultSpeed==null || defaultSpeed.isEmpty()) && speed!=null) {
+				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_BLUE");
+			} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()<Integer.parseInt(defaultSpeed)) {
+				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_BLUE");
+			} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()>Integer.parseInt(defaultSpeed)) {
+				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_RED");
+			}
+		}
 		tt.draw(g,x,y,Alignment.Left);
 		
 		// If magic, draw name

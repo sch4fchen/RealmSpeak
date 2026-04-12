@@ -26,7 +26,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public static final int DISPLAY_STYLE_LEGENDARY = 3;
 	public static final int DISPLAY_STYLE_ALTERNATIVE = 4;
 	public static int displayStyle = DISPLAY_STYLE_COLOR;
-	public static boolean displayColoredStats = false;
+	public static boolean displayColoredStats = true;
 	public static boolean displayArmor = false;
 	public static boolean displaySubline = false;
 
