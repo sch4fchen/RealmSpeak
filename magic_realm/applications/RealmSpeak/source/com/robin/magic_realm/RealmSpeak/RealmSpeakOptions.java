@@ -53,6 +53,7 @@ public class RealmSpeakOptions {
 	public static final String TURN_END_RESULTS = "turnEndResultsOption";
 	public static final String COMBAT_NEXT_PHASE_WARNING = "combatNextPhaseWarning";
 	public static final String AUTO_POSITIONING_ATTACKERS = "autoPositioningAttackers";
+	public static final String CHARACTERLIST_SORTING_BY_PLAY_ORDER = "characterlistSortingByPlayOrder";
 	public static final String ENABLE_SOUND = "enableSound";
 	
 	PreferenceManager options;

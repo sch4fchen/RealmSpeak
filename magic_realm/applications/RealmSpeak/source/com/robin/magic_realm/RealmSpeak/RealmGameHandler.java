@@ -2278,9 +2278,32 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					}
 				}
 			}
-			fireTableDataChanged();
+			if (RealmUtility.getRealmSpeakPrefs().getBoolean("characterlistSortingByPlayOrder",true)) {
+				sort();
+			}
+			else {
+				fireTableDataChanged();
+			}
 		}
 
+		public void sort() {
+			if (list!=null) {
+				Collections.sort(list,new Comparator<CharacterWrapper>() {
+					public int compare(CharacterWrapper c1,CharacterWrapper c2) {
+						return c1.getPlayOrder()-c2.getPlayOrder();
+					}
+				});
+			}
+			if (characterList!=null) {
+				Collections.sort(characterList,new Comparator<CharacterWrapper>() {
+					public int compare(CharacterWrapper c1,CharacterWrapper c2) {
+						return c1.getPlayOrder()-c2.getPlayOrder();
+					}
+				});
+			}
+			fireTableDataChanged();
+		}
+		
 		public CharacterWrapper getCharacter(int row) {
 			if (row >= 0 && row < list.size()) {
 				return list.get(row);

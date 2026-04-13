@@ -75,6 +75,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JCheckBox showTurnEndResultsOption;
 	protected JCheckBox showCombatNextWarningOption;
 	protected JCheckBox autoPositioningAttackersOption;
+	protected JCheckBox characterlistSortingByPlayOrder;
 	
 	protected JRadioButton dailyCombatOffOption;
 	protected JRadioButton dailyCombatOnOption;
@@ -236,6 +237,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		showTurnEndResultsOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.TURN_END_RESULTS,false));
 		showCombatNextWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,true));
 		autoPositioningAttackersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.AUTO_POSITIONING_ATTACKERS,false));
+		characterlistSortingByPlayOrder.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHARACTERLIST_SORTING_BY_PLAY_ORDER,true));
 		
 		boolean sound = options.getOptions().getBoolean(RealmSpeakOptions.ENABLE_SOUND,true);
 		enableSoundItem.setSelected(sound);
@@ -279,6 +281,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.TURN_END_RESULTS,showTurnEndResultsOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,showCombatNextWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.AUTO_POSITIONING_ATTACKERS,autoPositioningAttackersOption.isSelected());
+		options.getOptions().set(RealmSpeakOptions.CHARACTERLIST_SORTING_BY_PLAY_ORDER,characterlistSortingByPlayOrder.isSelected());
 		options.getOptions().set(RealmSpeakOptions.ENABLE_SOUND,enableSoundItem.isSelected());
 		mainFrame.saveFramePreferences();
 	}
@@ -636,7 +639,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getPopupWindowOptions() {
-		JPanel panel = new JPanel(new GridLayout(8,1));
+		JPanel panel = new JPanel(new GridLayout(9,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Notifications"));
 		showHeavyInvWarningOption = new JCheckBox("Show Heavy Inventory Warning");
 		panel.add(showHeavyInvWarningOption);
@@ -654,6 +657,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(showCombatNextWarningOption);
 		autoPositioningAttackersOption = new JCheckBox("Auto-positioning character's attackers");
 		panel.add(autoPositioningAttackersOption);
+		characterlistSortingByPlayOrder = new JCheckBox("Sort character list by play order");
+		panel.add(characterlistSortingByPlayOrder);
 		return panel;
 	}
 	private JPanel getDailyCombatOptionPanel() {
