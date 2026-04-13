@@ -8346,9 +8346,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
     }
-    public ArrayList<RealmComponent> getPossibleBlockees() {
-    	return getPossibleBlockees(false,null);
-    }
     public ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		ArrayList<RealmComponent> list = null;
 		if (isBlocking() && !isMinion()) {

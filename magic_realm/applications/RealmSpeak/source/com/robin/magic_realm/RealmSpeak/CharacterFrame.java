@@ -263,7 +263,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void handleBlockCharacter(RealmComponent rc) {
 		int ret = JOptionPane.showConfirmDialog(
 				this,
-				"Did you want to block the "+rc.getGameObject().getName()+" ?",
+				"Do you want to block the "+rc.getGameObject().getName()+" ?",
 				getCharacter().getGameObject().getName()+" Blocking",
 				JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,rc.getIcon());
 		getCharacter().addBlockDecision(rc.getGameObject());

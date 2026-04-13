@@ -1,7 +1,10 @@
-Realm Option: Native, Monster, Steeds, Character chits, character, treasures: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red) (movement: if blue no circle), only for Remodeled Chits and Legendary Chits
+Monsters dialog for blocking?!
+CharacterListRefreshButton?
+Length on WeaponCounter?! on MonsterCounters?
+Realm Option: Native, Monster, Steeds, Character chits, treasures: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red) (movement: if blue no circle), only for Remodeled Chits and Legendary Chits
 Playing color chit at the beginning of any phase of any character (3rd ed) / at the end of the active character's phase or at the end of the target's spell phase (1st ed) (option: cannot target hidden enemies if not have found hidden enemies)
 	if blocked, phasing is over. no phase start to play color chit
-Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation); make all treasure abilities and character abilities available for characters and treasures 
+Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation); make all treasure abilities and character abilities available for characters and treasures
 
 Version 1.2.5.5
 
