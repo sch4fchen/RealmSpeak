@@ -8359,7 +8359,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				list = new ArrayList<>();
 				boolean takingTurn = isPlayingTurn() && (interruptMovement || hasDoneActionsToday());
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
-					// Check to see that this component is not yourself, and one of:  character, hired leader, or ANY monster
+					// Check to see that this component is not yourself, and one of:  character, hired leader
 					// (Yeah, you could block unhired natives, but what's the point?)
 					if (!rc.getGameObject().equals(getGameObject())) {
 						if (rc.isPlayerControlledLeader() && !rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
@@ -8373,12 +8373,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 										list.add(rc);
 									}
 								}
-							}
-						}
-						else if (rc.isMonster()) {
-							MonsterChitComponent monster = (MonsterChitComponent)rc;
-							if (!monster.isBlocked()) {
-								list.add(monster);
 							}
 						}
 					}
