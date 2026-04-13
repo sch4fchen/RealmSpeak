@@ -49,8 +49,12 @@ public class RealmUtility {
 		TextType.addType("TITLE",new Font("Dialog",Font.BOLD,11),Color.blue);
 		TextType.addType("TITLE_RED",new Font("Dialog",Font.BOLD,11),Color.red);
 		TextType.addType("MINI_RED",new Font("Dialog",Font.PLAIN,9),Color.red);
+		TextType.addType("MINI_BLUE",new Font("Dialog",Font.PLAIN,9),Color.blue);
+		TextType.addType("MINI_ORANGE",new Font("Dialog",Font.PLAIN,9),Color.orange);
 		TextType.addType("NOTREADY",new Font("Dialog",Font.BOLD,13),MagicRealmColor.FORESTGREEN);
 		TextType.addType("CLOSED_RED",new Font("Dialog",Font.BOLD,16),Color.red);
+		TextType.addType("CLOSED_BLUE",new Font("Dialog",Font.BOLD,16),Color.blue);
+		TextType.addType("CLOSED_ORANGE",new Font("Dialog",Font.BOLD,16),Color.orange);
 		TextType.addType("YELLOW_BOLD",new Font("Dialog",Font.BOLD,11),Color.yellow);
 		TextType.addType("CLEARING_FONT",new Font("Dialog",Font.BOLD,18),MagicRealmColor.YELLOW);
 		TextType.addType("NORMAL",new Font("Dialog",Font.PLAIN,10),Color.black);

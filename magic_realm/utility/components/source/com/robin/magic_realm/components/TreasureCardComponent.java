@@ -173,6 +173,17 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					// Weight
 					Strength weight = TreasureUtility.getWeightForTreasure(gameObject);
 					tt = new TextType(weight.getChar(),PRINT_WIDTH,"BOLD");
+					if (RealmComponent.displayColoredStats) {
+						Strength defaultWeight = new Strength();
+						 if(getGameObject().hasThisAttribute(Constants.WEIGHT)) {
+							defaultWeight = new Strength(getGameObject().getThisAttribute(Constants.WEIGHT));
+						 }
+						 if (weight.strongerThan(defaultWeight)) {
+							 tt = new TextType(weight.getChar(),PRINT_WIDTH,"TITLE_RED");
+						 } else if (defaultWeight.strongerThan(weight)) {
+							 tt = new TextType(weight.getChar(),PRINT_WIDTH,"BOLD_BLUE");
+						 }
+					}
 					tt.draw(g,PRINT_MARGIN+5,pos,Alignment.Left);
 					
 					// Gold
@@ -214,26 +225,67 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				
 				// If attack card, show damage
 				if (getGameObject().hasThisAttribute("attack")) {
-					String strength = TreasureUtility.getStrengthForTreasure(gameObject).toShortString();
+					Strength strength = TreasureUtility.getStrengthForTreasure(gameObject);
+					String strengthString = strength.toShortString();
 					String speedString = "";
 					Speed speed = TreasureUtility.getAttackSpeedForTreasure(gameObject);
-					if (speed!=null) speedString=speed.toString();
-					tt = new TextType(strength+speedString,PRINT_WIDTH,"CLOSED_RED");
+					if (speed!=null) speedString=speed.getSpeedString();
+					tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_RED");
+					TextType tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_RED");
+					if (RealmComponent.displayColoredStats) {
+						Strength defaultStrength = new Strength();
+						if (gameObject.hasThisAttribute("strength")) {
+							defaultStrength = new Strength(gameObject.getThisAttribute("strength"));
+						}
+						if (strength.strongerThan(defaultStrength)) {
+							tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_BLUE");
+						} else if(defaultStrength.strongerThan(strength)) {
+							tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_ORANGE");
+						}
+						if (!speedString.isEmpty()) {
+							String defaultSpeed = gameObject.getThisAttribute("attack_speed");
+							if ((defaultSpeed==null || defaultSpeed.isEmpty()) && speed!=null) {
+								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_BLUE");
+							} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()<Integer.parseInt(defaultSpeed)) {
+								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_BLUE");
+							} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()>Integer.parseInt(defaultSpeed)) {
+								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_ORANGE");
+							}
+						}
+					}
 					pos -= tt.getHeight(g);
 					int sharpness = TreasureUtility.getSharpnessForTreasure(gameObject);
+					int deafaultSharpness = gameObject.getThisInt("sharpness");
 					int x = PRINT_MARGIN+20;
 					x += (3-sharpness)*5;
 					tt.draw(g,x,pos,Alignment.Left);
-					x += tt.getWidth(g)+5;
+					tt2.draw(g,x+tt.getWidth(g),pos,Alignment.Left);
+					x += tt.getWidth(g)+tt2.getWidth(g)+5;
 					int y = pos+tt.getHeight(g)-8;
+					g.setColor(Color.red);
+					if (RealmComponent.displayColoredStats && deafaultSharpness>sharpness) {
+						g.setColor(Color.orange);
+					}
 					for (int i=0;i<sharpness;i++) {
+						if (RealmComponent.displayColoredStats && i==deafaultSharpness) {
+							g.setColor(Color.blue);
+						}
 						StarShape star = new StarShape(x,y,5,7);
 						g.fill(star);
 						x += 10;
 					}
+					g.setColor(Color.red);					
 					if (gameObject.hasThisAttribute("length")) {
 						int length = TreasureUtility.getLengthForTreasure(gameObject);
 						tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_RED");
+						if (RealmComponent.displayColoredStats) {
+							int defaultLength = gameObject.getThisInt("length");
+							if (length>defaultLength) {
+								tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_BLUE");
+							} else if(defaultLength>length) {
+								tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_ORANGE");
+							}
+						}
 						tt.draw(g,x-4,pos+6,Alignment.Left);
 					}
 				}

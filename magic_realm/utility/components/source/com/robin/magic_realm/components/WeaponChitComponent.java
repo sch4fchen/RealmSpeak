@@ -295,8 +295,8 @@ public class WeaponChitComponent extends RoundChitComponent {
 		tt.draw(g,x,y,Alignment.Left);
 		x += tt.getWidth(g)+5;
 		y += tt.getHeight(g)-8;
-		g.setColor(new Color(0,0,0));
-		if (deafaultSharpness>sharpness) {
+		g.setColor(Color.black);
+		if (RealmComponent.displayColoredStats && deafaultSharpness>sharpness) {
 			g.setColor(Color.RED);
 		}
 		for (int i=0;i<sharpness;i++) {
@@ -307,7 +307,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 			g.fill(star);
 			x += 12;
 		}
-		g.setColor(new Color(0,0,0));
+		g.setColor(Color.black);
 		
 		// Draw alert asterisk
 		tt = new TextType(asterisk,getChitSize(),"BIG_BOLD");
@@ -334,10 +334,10 @@ public class WeaponChitComponent extends RoundChitComponent {
 		String lengthString = String.valueOf(length);
 		tt = new TextType(lengthString,getChitSize(),"BOLD");
 		if (RealmComponent.displayColoredStats) {
-			int defautlLength = gameObject.getThisInt("length");
-			if (length>defautlLength) {
+			int defaultLength = gameObject.getThisInt("length");
+			if (length>defaultLength) {
 				tt = new TextType(lengthString,getChitSize(),"BOLD_BLUE");
-			} else if(defautlLength>length) {
+			} else if(defaultLength>length) {
 				tt = new TextType(lengthString,getChitSize(),"BOLD_RED");
 			}
 		}
