@@ -1,4 +1,3 @@
-Length on WeaponCounter?! on MonsterCounters?
 Realm Option: Native, Monster, Steeds, Character chits, treasures: Change color for altered move, attack strength, attack speed, length (better=dark blue, worse=dark red) (movement: if blue no circle), only for Remodeled Chits and Legendary Chits
 Playing color chit at the beginning of any phase of any character (3rd ed) / at the end of the active character's phase or at the end of the target's spell phase (1st ed) (option: cannot target hidden enemies if not have found hidden enemies)
 	if blocked, phasing is over. no phase start to play color chit
@@ -6,6 +5,7 @@ Quest Editor/Character editor: custom treasure (quest rewards: add, remove, move
 
 Version 1.2.5.5
 NEW FEATURES:
+# Weapon length on weapon counters and treasure weapons
 # Option: Caracterlist sorting by play order
 BUGS/ISSUES:
 # Fix asking characters to block a monster

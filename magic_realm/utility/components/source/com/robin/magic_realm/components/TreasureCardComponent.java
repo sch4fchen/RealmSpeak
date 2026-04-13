@@ -231,6 +231,11 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 						g.fill(star);
 						x += 10;
 					}
+					if (gameObject.hasThisAttribute("length")) {
+						int length = TreasureUtility.getLengthForTreasure(gameObject);
+						tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_RED");
+						tt.draw(g,x-4,pos+6,Alignment.Left);
+					}
 				}
 				
 				if (gameObject.hasThisAttribute(Constants.NEEDS_OPEN)) {
