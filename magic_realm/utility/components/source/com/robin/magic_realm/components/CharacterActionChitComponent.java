@@ -289,6 +289,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 						}
 					}
 				}
+				if (mod!=0) {
+					usingAlteredAttributes = true;
+				}
 				strength.modify(mod);
 			}
 		}
@@ -462,7 +465,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		else {
 			mod = getStrength().toString();
 		}
-		//  Need to look at usingAlteredAttributes to determine what color to show the attributes
+		// Need to look at usingAlteredAttributes to determine what color to show the attributes
 		// I'd like them to be blue, or red, or something that indicates they are "modified"
 		if (usingAlteredAttributes) {
 			textTypeName = "BOLD_BLUE"; // indicates an altered state
@@ -590,6 +593,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 					return new Speed(speedChange,mod);
 				}
 			}
+			if (mod!=0) {
+				usingAlteredAttributes = true;
+			}
 			if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 				if (owner==null) return new Speed(8,mod);
 				return new Speed(character.getWeight().getLevels()+1,mod);
@@ -633,6 +639,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 			mod = mod+difference;
 		}
+		if (mod!=0) {
+			usingAlteredAttributes = true;
+		}
 		if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 			if (owner==null) return new Speed(8,mod);
 			return new Speed(character.getWeight().getLevels()+1,mod);
@@ -668,6 +677,9 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				int difference = (new Strength(gameObject.getThisAttribute(Constants.ALTER_WEIGHT))).getLevels()-(new Strength((getChitAttribute("strength")))).getLevels();
 				mod = mod+difference;
 			}
+			if (mod!=0) {
+				usingAlteredAttributes = true;
+			}
 			if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 				if (owner==null) return new Speed(8,mod);
 				return new Speed(character.getWeight().getLevels()+1,mod);
@@ -694,8 +706,10 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if ((new CharacterWrapper(owner)).hasMesmerizeEffect(Constants.INTOXICATED)) {
 				mod++;
+			}			
+			if (mod!=0) {
+				usingAlteredAttributes = true;
 			}
-
 			return new Speed(getChitAttribute("speed"),mod);
 		}
 		return null;
