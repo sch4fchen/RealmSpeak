@@ -52,6 +52,7 @@ public class GameConnector extends Thread {
 						connection.setSoTimeout(GameNet.DEFAULT_TIMEOUT_MS);
 						connection.setTcpNoDelay(true); // Data will be sent earlier, at the cost of an increase in bandwidth consumption.
 														// See http://www.davidreilly.com/java/java_network_programming/#3.3
+						connection.setKeepAlive(true);
 						host.addConnection(connection);
 					}
 					catch(SocketException ex) {
