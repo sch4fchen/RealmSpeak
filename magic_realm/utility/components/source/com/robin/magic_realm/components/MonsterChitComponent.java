@@ -252,14 +252,15 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			g.fillOval(x - 6, y + 1, rad, rad);
 			g.setColor(attackBack);
 			g.fillOval(x - 4, y + 3, rad - 4, rad - 4);
+			tt.draw(g, x, y, Alignment.Left);
 		}
 		else {
 			String string = (strength + magic_type + attack_speed);
 			tt = new TextType(string, cs,statColor);
 			x = ox + 6;
 			y = oy - tt.getHeight(g);
+			tt.draw(g, x, y, Alignment.Left);
 		}
-		tt.draw(g, x, y, Alignment.Left);
 		x += tt.getWidth(g) + 4;
 		y += tt.getHeight(g) - 6;
 		int deafaultSharpness = getFaceAttributeInt("sharpness");

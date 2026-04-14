@@ -317,17 +317,18 @@ public class WeaponChitComponent extends RoundChitComponent {
 		// Draw speed
 		x = 15;
 		y = 5;
-		tt = new TextType(speedString,getChitSize(),"BIG_BOLD");
+		textType = "BIG_BOLD";
 		if (RealmComponent.displayColoredStats) {
 			String defaultSpeed = getAttribute(statSide,"attack_speed");
 			if ((defaultSpeed==null || defaultSpeed.isEmpty()) && speed!=null) {
-				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_BLUE");
+				textType = "BIG_BOLD_BLUE";
 			} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()<Integer.parseInt(defaultSpeed)) {
-				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_BLUE");
+				textType = "BIG_BOLD_BLUE";
 			} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()>Integer.parseInt(defaultSpeed)) {
-				tt = new TextType(speedString,getChitSize(),"BIG_BOLD_RED");
+				textType = "BIG_BOLD_RED";
 			}
 		}
+		tt = new TextType(speedString,getChitSize(),textType);
 		tt.draw(g,x,y,Alignment.Left);
 		
 		// Draw length
@@ -342,7 +343,7 @@ public class WeaponChitComponent extends RoundChitComponent {
 				textType = "BOLD_RED";
 			}
 		}
-		tt = new TextType(lengthString,getChitSize(),"BOLD");
+		tt = new TextType(lengthString,getChitSize(),textType);
 		tt.draw(g,x+13,y+7,Alignment.Left);
 		
 		// If magic, draw name
