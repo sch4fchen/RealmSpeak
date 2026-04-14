@@ -314,7 +314,14 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		tt.draw(g, x, y, Alignment.Left);
 		x += tt.getWidth(g) + 4;
 		y += tt.getHeight(g) - 6;
+		int deafaultSharpness = getFaceAttributeInt("sharpness");
+		if (RealmComponent.displayColoredStats && deafaultSharpness>sharpness) {
+			g.setColor(Color.RED);
+		}
 		for (int i = 0; i < sharpness; i++) {
+			if (RealmComponent.displayColoredStats && i==deafaultSharpness) {
+				g.setColor(Color.BLUE);
+			}
 			StarShape star = new StarShape(x, y, 5, 7);
 			g.fill(star);
 			x += 10;
