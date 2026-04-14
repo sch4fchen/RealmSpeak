@@ -259,7 +259,30 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			tt = new TextType(string, cs,statColor);
 			x = ox + 6;
 			y = oy - tt.getHeight(g);
-			tt.draw(g, x, y, Alignment.Left);
+			if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && RealmComponent.displayColoredStats) {
+				String textTypeStrength = statColor;
+				Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
+				if (strength_value.strongerThan(defaultStrength)) {
+					textTypeStrength = "STAT_BLUE";
+				} else if (defaultStrength.strongerThan(strength_value)) {
+					textTypeStrength = "STAT_RED";
+				}
+				String textTypeAttackSpeed = statColor;
+				Speed defaultAttackSpeed = new Speed(getFaceAttributeInteger("attack_speed"));
+				if (attack_speed_value.fasterThan(defaultAttackSpeed)) {
+					textTypeAttackSpeed = "STAT_BLUE";
+				} else if (defaultAttackSpeed.fasterThan(attack_speed_value)) {
+					textTypeAttackSpeed = "STAT_RED";
+				}
+				TextType ttStrength = new TextType(strength, cs,textTypeStrength);
+				TextType ttMagicType = new TextType(magic_type, cs,statColor);
+				TextType ttAttackSpeed = new TextType(attack_speed, cs,textTypeAttackSpeed);
+				ttStrength.draw(g, x, y, Alignment.Left);
+				ttMagicType.draw(g, x+ttStrength.getWidth(g), y, Alignment.Left);
+				ttAttackSpeed.draw(g, x+ttStrength.getWidth(g)+ttMagicType.getWidth(g), y, Alignment.Left);
+			} else {
+				tt.draw(g, x, y, Alignment.Left);
+			}
 		}
 		x += tt.getWidth(g) + 4;
 		y += tt.getHeight(g) - 6;

@@ -311,7 +311,30 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		tt = new TextType(strength + magic_type + attack_speed, getChitSize(), statColor);
 		x = 5;
 		y = cs - 5 - tt.getHeight(g);
-		tt.draw(g, x, y, Alignment.Left);
+		if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && RealmComponent.displayColoredStats) {
+			String textTypeStrength = statColor;
+			Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
+			if (strength_value.strongerThan(defaultStrength)) {
+				textTypeStrength = "STAT_BLUE";
+			} else if (defaultStrength.strongerThan(strength_value)) {
+				textTypeStrength = "STAT_RED";
+			}
+			String textTypeAttackSpeed = statColor;
+			Speed defaultAttackSpeed = new Speed(getFaceAttributeInteger("attack_speed"));
+			if (attack_speed_value.fasterThan(defaultAttackSpeed)) {
+				textTypeAttackSpeed = "STAT_BLUE";
+			} else if (defaultAttackSpeed.fasterThan(attack_speed_value)) {
+				textTypeAttackSpeed = "STAT_RED";
+			}
+			TextType ttStrength = new TextType(strength, getChitSize(), textTypeStrength);
+			TextType ttMagicType = new TextType(magic_type, getChitSize(), statColor);
+			TextType ttAttackSpeed = new TextType(attack_speed, getChitSize(), textTypeAttackSpeed);
+			ttStrength.draw(g, x, y, Alignment.Left);
+			ttMagicType.draw(g, x+ttStrength.getWidth(g), y, Alignment.Left);
+			ttAttackSpeed.draw(g, x+ttStrength.getWidth(g)+ttMagicType.getWidth(g), y, Alignment.Left);
+		} else {
+			tt.draw(g, x, y, Alignment.Left);
+		}
 		x += tt.getWidth(g) + 4;
 		y += tt.getHeight(g) - 6;
 		int deafaultSharpness = getFaceAttributeInt("sharpness");
