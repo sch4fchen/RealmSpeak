@@ -113,29 +113,30 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		Strength strength = getStrength();
 		String strengthString = strength.getChitString();
 		
-		TextType tt = new TextType(strengthString,getChitSize(),"BIG_BOLD");
+		String textType = "BIG_BOLD";
 		if (RealmComponent.displayColoredStats) {
 			Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
 			if (strength.strongerThan(defaultStrength)) {
-				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_BLUE");
+				textType ="BIG_BOLD_BLUE";
 			} else if(defaultStrength.strongerThan(strength)) {
-				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_RED");
+				textType = "BIG_BOLD_RED";
 			}			
 		}
+		TextType tt = new TextType(strengthString,getChitSize(),textType);
 		tt.draw(g,10,(getChitSize()>>1)-tt.getHeight(g),Alignment.Left);
 		
 		if (RealmComponent.displayColoredStats) {
-			String textType = "BIG_BOLD";
+			textType = "BIG_BOLD";
 			if (isTrotting()) {
-				if (getTrotSpeed().getNum()>getAttributeInt("trot","move_speed")) {
+				if (getTrotSpeed().getNum()<getAttributeInt("trot","move_speed")) {
 					textType = "BIG_BOLD_BLUE";
-				} else if (getTrotSpeed().getNum()<getAttributeInt("trot","move_speed")) {
+				} else if (getTrotSpeed().getNum()>getAttributeInt("trot","move_speed")) {
 					textType = "BIG_BOLD_RED";
 				}
 			} else {
-				if (getGallopSpeed().getNum()>getAttributeInt("gallop","move_speed")) {
+				if (getGallopSpeed().getNum()<getAttributeInt("gallop","move_speed")) {
 					textType = "BIG_BOLD_BLUE";
-				} else if (getGallopSpeed().getNum()<getAttributeInt("gallop","move_speed")) {
+				} else if (getGallopSpeed().getNum()>getAttributeInt("gallop","move_speed")) {
 					textType = "BIG_BOLD_RED";
 				}
 			}

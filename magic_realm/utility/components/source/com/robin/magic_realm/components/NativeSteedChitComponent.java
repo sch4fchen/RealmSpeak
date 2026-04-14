@@ -280,13 +280,32 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		// Draw Stats
 		String asterisk = isTrotting()?"":"*";
 		
-		String speed = getMoveSpeed().getSpeedString();
-		String strength = getStrength().getChitString();
+		Speed speed = getMoveSpeed();
+		String speedString = speed.getSpeedString();
+		Strength strength = getStrength();
+		String strengthString = strength.getChitString();
 		
-		tt = new TextType(strength,getChitSize(),"BIG_BOLD");
+		String textType = "BIG_BOLD";
+		if (RealmComponent.displayColoredStats) {
+			Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
+			if (strength.strongerOrEqualTo(defaultStrength)) {
+				textType = "BIG_BOLD_BLUE";
+			} else if (defaultStrength.strongerOrEqualTo(strength)) {
+				textType = "BIG_BOLD_RED";
+			}
+		}
+		tt = new TextType(strengthString,getChitSize(),textType);
 		tt.draw(g,10,(getChitSize()>>1)-tt.getHeight(g),Alignment.Left);
 		
-		tt = new TextType(speed+asterisk,getChitSize(),"BIG_BOLD");
+		textType = "BIG_BOLD";
+		if (RealmComponent.displayColoredStats) {
+			if (speed.getNum()<getFaceAttributeInteger("move_speed")) {
+				textType = "BIG_BOLD_BLUE";
+			} else if (speed.getNum()>getFaceAttributeInteger("move_speed")) {
+				textType = "BIG_BOLD_RED";
+			}
+		}
+		tt = new TextType(speedString+asterisk,getChitSize(),textType);
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
 		
 		if (RealmComponent.displayArmor && isArmored()) {

@@ -172,18 +172,19 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 				else {
 					// Weight
 					Strength weight = TreasureUtility.getWeightForTreasure(gameObject);
-					tt = new TextType(weight.getChar(),PRINT_WIDTH,"BOLD");
+					String textTpye = "BOLD";
 					if (RealmComponent.displayColoredStats) {
 						Strength defaultWeight = new Strength();
 						 if(getGameObject().hasThisAttribute(Constants.WEIGHT)) {
 							defaultWeight = new Strength(getGameObject().getThisAttribute(Constants.WEIGHT));
 						 }
 						 if (weight.strongerThan(defaultWeight)) {
-							 tt = new TextType(weight.getChar(),PRINT_WIDTH,"TITLE_RED");
+							 textTpye = "TITLE_RED";
 						 } else if (defaultWeight.strongerThan(weight)) {
-							 tt = new TextType(weight.getChar(),PRINT_WIDTH,"BOLD_BLUE");
+							 textTpye = "BOLD_BLUE";
 						 }
 					}
+					tt = new TextType(weight.getChar(),PRINT_WIDTH,textTpye);
 					tt.draw(g,PRINT_MARGIN+5,pos,Alignment.Left);
 					
 					// Gold
@@ -230,29 +231,31 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					String speedString = "";
 					Speed speed = TreasureUtility.getAttackSpeedForTreasure(gameObject);
 					if (speed!=null) speedString=speed.getSpeedString();
-					tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_RED");
-					TextType tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_RED");
+					String textTpye = "CLOSED_RED";
+					String textTpye2 = "CLOSED_RED";
 					if (RealmComponent.displayColoredStats) {
 						Strength defaultStrength = new Strength();
 						if (gameObject.hasThisAttribute("strength")) {
 							defaultStrength = new Strength(gameObject.getThisAttribute("strength"));
 						}
 						if (strength.strongerThan(defaultStrength)) {
-							tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_BLUE");
+							textTpye = "CLOSED_BLUE";
 						} else if(defaultStrength.strongerThan(strength)) {
-							tt = new TextType(strengthString,PRINT_WIDTH,"CLOSED_ORANGE");
+							textTpye = "CLOSED_ORANGE";
 						}
 						if (!speedString.isEmpty()) {
 							String defaultSpeed = gameObject.getThisAttribute("attack_speed");
 							if ((defaultSpeed==null || defaultSpeed.isEmpty()) && speed!=null) {
-								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_BLUE");
+								textTpye2 = "CLOSED_BLUE";
 							} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()<Integer.parseInt(defaultSpeed)) {
-								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_BLUE");
+								textTpye2 = "CLOSED_BLUE";
 							} else if(speed!=null && defaultSpeed!=null && !defaultSpeed.isEmpty() && speed.getNum()>Integer.parseInt(defaultSpeed)) {
-								tt2 = new TextType(speedString,PRINT_WIDTH,"CLOSED_ORANGE");
+								textTpye2 = "CLOSED_ORANGE";
 							}
 						}
 					}
+					tt = new TextType(strengthString,PRINT_WIDTH,textTpye);
+					TextType tt2 = new TextType(speedString,PRINT_WIDTH,textTpye2);
 					pos -= tt.getHeight(g);
 					int sharpness = TreasureUtility.getSharpnessForTreasure(gameObject);
 					int deafaultSharpness = gameObject.getThisInt("sharpness");
@@ -277,15 +280,16 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 					g.setColor(Color.red);					
 					if (gameObject.hasThisAttribute("length")) {
 						int length = TreasureUtility.getLengthForTreasure(gameObject);
-						tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_RED");
+						String textType = "MINI_RED";
 						if (RealmComponent.displayColoredStats) {
 							int defaultLength = gameObject.getThisInt("length");
 							if (length>defaultLength) {
-								tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_BLUE");
+								textType = "MINI_BLUE";
 							} else if(defaultLength>length) {
-								tt = new TextType(String.valueOf(length),PRINT_WIDTH,"MINI_ORANGE");
+								textType = "MINI_ORANGE";
 							}
 						}
+						tt = new TextType(String.valueOf(length),PRINT_WIDTH,textType);
 						tt.draw(g,x-4,pos+6,Alignment.Left);
 					}
 				}

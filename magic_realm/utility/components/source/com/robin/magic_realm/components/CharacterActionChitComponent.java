@@ -434,6 +434,8 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			textTypeName = getGameObject().getThisAttribute("chit_color");
 		}
 
+		String defaultTextTypeName = textTypeName;
+		
 		// Draw Information
 		int y = 12;
 		String action = getAction();
@@ -486,24 +488,26 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		if (!"neg".equals(mod)) {
 			if (RealmComponent.displayColoredStats) {
+				String textTypeNameMod = defaultTextTypeName;
 				if (changedMagicType || heavierStrength) {
-					textTypeName = "BOLD_BLUE";
+					textTypeNameMod = "BOLD_BLUE";
 				}
 				else if (weakerStrength) {
-					textTypeName = "BOLD_RED";
+					textTypeNameMod = "BOLD_RED";
 				}
-				TextType ttMod = new TextType(mod, getChitSize() - 4, textTypeName);
-				TextType ttSpeed = new TextType(speed, getChitSize() - 4, textTypeName);
-				TextType ttEffort = new TextType(effort, getChitSize() - 4, textTypeName);
+				String textTypeNameSpeed = defaultTextTypeName;
+				if (fasterSpeed) {
+					textTypeNameSpeed = "BOLD_BLUE";
+				}
+				else if (slowerSpeed) {
+					textTypeNameSpeed = "BOLD_RED";
+				}
+				TextType ttMod = new TextType(mod, getChitSize() - 4, textTypeNameMod);
+				TextType ttSpeed = new TextType(speed, getChitSize() - 4, textTypeNameSpeed);
+				TextType ttEffort = new TextType(effort, getChitSize() - 4, defaultTextTypeName);
 				
 				int x = 21-(ttMod.getWidth(g)+ttSpeed.getWidth(g)+ttEffort.getWidth(g))/4;
 				ttMod.draw(g, x, y, Alignment.Left);
-				if (fasterSpeed) {
-					textTypeName = "BOLD_BLUE";
-				}
-				else if (slowerSpeed) {
-					textTypeName = "BOLD_RED";
-				}
 				x += ttMod.getWidth(g);
 				ttSpeed.draw(g, x, y, Alignment.Left);
 				x += ttSpeed.getWidth(g);
