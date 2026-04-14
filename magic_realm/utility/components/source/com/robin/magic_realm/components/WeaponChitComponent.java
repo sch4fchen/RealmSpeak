@@ -280,15 +280,16 @@ public class WeaponChitComponent extends RoundChitComponent {
 		int sharpness = getSharpness();
 		
 		// Draw attack
-		TextType tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD");
+		String textType = "BIG_BOLD";
 		if (RealmComponent.displayColoredStats) {
 			Strength defaultStrength = new Strength(getAttribute(statSide,"strength"));
 			if (strength.strongerThan(defaultStrength)) {
-				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_BLUE");
+				textType = "BIG_BOLD_BLUE";
 			} else if(defaultStrength.strongerThan(strength)) {
-				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_RED");
+				textType = "BIG_BOLD_RED";
 			}			
 		}
+		TextType tt = new TextType(strength.getChitString(),getChitSize(),textType);
 		int deafaultSharpness = getFaceAttributeInt("sharpness");
 		int x = (getChitSize()>>1)-(getChitSize()>>3)-(5*sharpness);
 		int y = getChitSize()-15-tt.getHeight(g)+5;

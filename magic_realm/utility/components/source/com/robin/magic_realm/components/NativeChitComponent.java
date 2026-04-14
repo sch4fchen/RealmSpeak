@@ -139,9 +139,19 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		boolean armored = isArmored();
 		int x = cs - 18;
 		int y = 5;
-		String vul = getVulnerability().getChar();
+		Strength vul_value = getVulnerability();
+		String vul = vul_value.getChar();
 		if (vul!=null) {
-			tt = new TextType(vul, cs, "STAT_BLACK");
+			String textType = "STAT_BLACK";
+			if (RealmComponent.displayColoredStats) {
+				Strength defaultVul = new Strength(getThisAttribute( "vulnerability"));
+				if (vul_value.strongerThan(defaultVul)) {
+					textType = "BIG_BOLD_BLUE";
+				} else if(defaultVul.strongerThan(vul_value)) {
+					textType = "BIG_BOLD_RED";
+				}			
+			}
+			tt = new TextType(vul, cs, textType);
 			int rad = Math.max(tt.getWidth(g), tt.getHeight(g)) + 4;
 			g.setColor(armored?Color.lightGray:Color.yellow);
 			g.fillOval(x - 4, y + 1, rad, rad);
