@@ -550,7 +550,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		alternativeChitsOption = new JRadioButton("Alternative Chits");
 		group.add(alternativeChitsOption);
 		panel.add(alternativeChitsOption);
-		coloredStatsOption = new JCheckBox("Modified stats colored (remodeld/alternative chits)");
+		coloredStatsOption = new JCheckBox("Color modified stats");
 		panel.add(coloredStatsOption);
 		chitArmorOption = new JCheckBox("Display Armor Border");
 		panel.add(chitArmorOption);

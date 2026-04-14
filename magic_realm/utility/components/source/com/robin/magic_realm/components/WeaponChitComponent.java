@@ -333,15 +333,16 @@ public class WeaponChitComponent extends RoundChitComponent {
 		// Draw length
 		int length = getLength();
 		String lengthString = String.valueOf(length);
-		tt = new TextType(lengthString,getChitSize(),"BOLD");
+		textType = "BOLD";
 		if (RealmComponent.displayColoredStats) {
 			int defaultLength = gameObject.getThisInt("length");
 			if (length>defaultLength) {
-				tt = new TextType(lengthString,getChitSize(),"BOLD_BLUE");
+				textType = "BOLD_BLUE";
 			} else if(defaultLength>length) {
-				tt = new TextType(lengthString,getChitSize(),"BOLD_RED");
+				textType = "BOLD_RED";
 			}
 		}
+		tt = new TextType(lengthString,getChitSize(),"BOLD");
 		tt.draw(g,x+13,y+7,Alignment.Left);
 		
 		// If magic, draw name

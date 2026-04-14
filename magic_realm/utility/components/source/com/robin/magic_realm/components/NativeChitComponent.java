@@ -279,9 +279,12 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 
 		// Draw Stats
 		alteredMoveSpeed = false;
-		String move_speed = String.valueOf(getMoveSpeed(false).getNum());
-		String attack_speed = getAttackSpeed().getSpeedString();
-		String strength = getStrength().getChitString();
+		Speed move_speed_value = getMoveSpeed(false);
+		String move_speed = String.valueOf(move_speed_value.getNum());
+		Speed attack_speed_value = getAttackSpeed();
+		String attack_speed = attack_speed_value.getSpeedString();
+		Strength strength_value = getStrength();
+		String strength = strength_value.getChitString();
 		String magic_type = getFaceAttributeString("magic_type");
 		int sharpness = getSharpness();
 		int x;
@@ -291,7 +294,16 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			statColor = isLightSideUp()?"STAT_ORANGE":"STAT_BRIGHT_ORANGE";
 			Integer length = getLength();
-			tt = new TextType("("+length+")", cs,statColor);
+			String textTypeLength = statColor;
+			if (RealmComponent.displayColoredStats) {
+				int defaultLength = getFaceAttributeInteger("length");
+				if (length>defaultLength) {
+					textTypeLength = "BOLD_BLUE";
+				} else if(defaultLength>length) {
+					textTypeLength = "BOLD_RED";
+				}
+			}
+			tt = new TextType("("+length+")", cs,textTypeLength);
 			tt.draw(g,cs>>1,cs - tt.getHeight(g) - 5,Alignment.Left);
 		}
 		

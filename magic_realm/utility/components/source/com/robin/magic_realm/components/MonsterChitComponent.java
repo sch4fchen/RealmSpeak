@@ -213,7 +213,16 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			if (!pins) {
 				statColor = isLightSideUp()?"STAT_ORANGE":"STAT_BRIGHT_ORANGE";
 				Integer length = getLength();
-				tt = new TextType("("+length+")", cs,statColor);
+				String textTypeLength = statColor;
+				if (RealmComponent.displayColoredStats) {
+					int defaultLength = getFaceAttributeInteger("length");
+					if (length>defaultLength) {
+						textTypeLength = "BOLD_BLUE";
+					} else if(defaultLength>length) {
+						textTypeLength = "BOLD_RED";
+					}
+				}
+				tt = new TextType("("+length+")", cs,textTypeLength);
 				int offset = 0;
 				if (this.isAbsorbed()) {
 					offset = 12;
