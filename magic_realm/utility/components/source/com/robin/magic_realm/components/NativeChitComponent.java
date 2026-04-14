@@ -296,7 +296,8 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 			Integer length = getLength();
 			String textTypeLength = statColor;
 			if (RealmComponent.displayColoredStats) {
-				int defaultLength = getFaceAttributeInteger("length");
+				Integer defaultLength = getFaceAttributeInteger("length");
+				if (defaultLength==null) defaultLength = 0;
 				if (length>defaultLength) {
 					textTypeLength = "BOLD_BLUE";
 				} else if(defaultLength>length) {
