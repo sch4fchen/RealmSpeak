@@ -288,9 +288,9 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		String textType = "BIG_BOLD";
 		if (RealmComponent.displayColoredStats) {
 			Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
-			if (strength.strongerOrEqualTo(defaultStrength)) {
+			if (strength.strongerThan(defaultStrength)) {
 				textType = "BIG_BOLD_BLUE";
-			} else if (defaultStrength.strongerOrEqualTo(strength)) {
+			} else if (defaultStrength.strongerThan(strength)) {
 				textType = "BIG_BOLD_RED";
 			}
 		}
