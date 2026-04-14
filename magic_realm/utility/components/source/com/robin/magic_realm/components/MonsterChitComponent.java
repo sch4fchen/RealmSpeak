@@ -218,9 +218,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 					Integer defaultLength = getFaceAttributeInteger("length");
 					if (defaultLength==null) defaultLength = 0;
 					if (length>defaultLength) {
-						textTypeLength = "BOLD_BLUE";
+						textTypeLength = "STAT_BLUE";
 					} else if(defaultLength>length) {
-						textTypeLength = "BOLD_RED";
+						textTypeLength = "STAT_RED";
 					}
 				}
 				tt = new TextType("("+length+")", cs,textTypeLength);
@@ -235,7 +235,17 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		int x;
 		int y;
 		if (red) {
-			tt = new TextType(attack_speed, cs,statColor);
+			String attack_speed_color = statColor;
+			if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && RealmComponent.displayColoredStats) {
+				Speed defaultAttackSpeed = new Speed(getFaceAttributeInteger("attack_speed"));
+				if (attack_speed_value.fasterThan(defaultAttackSpeed)) {
+					attack_speed_color = "STAT_BLUE";
+				}
+				else if (defaultAttackSpeed.fasterThan(attack_speed_value)) {
+					attack_speed_color = "STAT_RED";
+				}
+			}
+			tt = new TextType(attack_speed, cs,attack_speed_color);
 			x = ox + 8;
 			y = oy - 2 - tt.getHeight(g);
 			int rad = Math.max(tt.getWidth(g), tt.getHeight(g)) + 4;
@@ -253,11 +263,11 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		x += tt.getWidth(g) + 4;
 		y += tt.getHeight(g) - 6;
 		int deafaultSharpness = getFaceAttributeInt("sharpness");
-		if (RealmComponent.displayColoredStats && deafaultSharpness>sharpness) {
+		if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && RealmComponent.displayColoredStats && deafaultSharpness>sharpness) {
 			g.setColor(Color.RED);
 		}
 		for (int i = 0; i < sharpness; i++) {
-			if (RealmComponent.displayColoredStats && i==deafaultSharpness) {
+			if ((isDisplayStyleFrenzel() || isDisplayStyleAlternative()) && RealmComponent.displayColoredStats && i==deafaultSharpness) {
 				g.setColor(Color.BLUE);
 			}
 			StarShape star = new StarShape(x, y, 5, 7);
@@ -271,21 +281,20 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Speed move_speed = getMoveSpeed();
 		if (move_speed!=null) {
 			String string = String.valueOf(move_speed.getNum())+(alteredMoveSpeed?"!":"");
-			String textTypeSpeed = null;
 			boolean coloredSpeed = false;
-			if (RealmComponent.displayColoredStats) {
-				Speed defaultMoveSpeed = new Speed(getFaceAttributeInteger("move_speed"));
-				if (move_speed.fasterThan(defaultMoveSpeed)) {
-					textTypeSpeed = "BIG_BOLD_BLUE";
-					coloredSpeed = true;
-				} else if (defaultMoveSpeed.fasterThan(move_speed)) {
-					textTypeSpeed = "BIG_BOLD_RED";
-					coloredSpeed = true;
-				}
-			}
 			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
+				String textTypeSpeed = "STAT_WHITE";
+				if (RealmComponent.displayColoredStats) {
+					Speed defaultMoveSpeed = new Speed(getFaceAttributeInteger("move_speed"));
+					if (move_speed.fasterThan(defaultMoveSpeed)) {
+						textTypeSpeed = "STAT_BLUE";
+						coloredSpeed = true;
+					} else if (defaultMoveSpeed.fasterThan(move_speed)) {
+						textTypeSpeed = "STAT_RED";
+						coloredSpeed = true;
+					}
+				}
 				int x,y;
-				if (textTypeSpeed==null) textTypeSpeed = "STAT_WHITE";
 				TextType tt = new TextType(string, cs, textTypeSpeed);
 				x = ox - tt.getWidth(g)-4;
 				y = oy - tt.getHeight(g)-2;
@@ -300,8 +309,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			}
 			else {
 				int x,y;
-				if (textTypeSpeed==null) textTypeSpeed = "STAT_BLACK";
-				TextType tt = new TextType(string, cs, textTypeSpeed);
+				TextType tt = new TextType(string, cs, "STAT_BLACK");
 				x = ox - tt.getWidth(g);
 				y = oy - tt.getHeight(g);
 				tt.draw(g, x, y, Alignment.Left);
@@ -334,9 +342,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 			if (RealmComponent.displayColoredStats) {
 				Strength defaultVul = new Strength(getThisAttribute( "vulnerability"));
 				if (vul_value.strongerThan(defaultVul)) {
-					textType = "BIG_BOLD_BLUE";
+					textType = "STAT_BLUE";
 				} else if(defaultVul.strongerThan(vul_value)) {
-					textType = "BIG_BOLD_RED";
+					textType = "STAT_RED";
 				}			
 			}
 			tt = new TextType(vul, cs, textType);

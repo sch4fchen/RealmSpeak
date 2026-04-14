@@ -66,6 +66,8 @@ public class RealmUtility {
 		TextType.addType("BIG_BOLD_RED",new Font("Dialog",Font.BOLD,22),Color.red);
 		TextType.addType("ITALIC",new Font("Dialog",Font.ITALIC,11),Color.black);
 		TextType.addType("TITLE_GRAY",new Font("Dialog",Font.BOLD,11),Color.gray);
+		TextType.addType("STAT_BLUE",new Font("Dialog",Font.BOLD,14),Color.blue);
+		TextType.addType("STAT_RED",new Font("Dialog",Font.BOLD,14),Color.red);
 		TextType.addType("STAT_BLACK",new Font("Dialog",Font.BOLD,14),Color.black);
 		TextType.addType("STAT_WHITE",new Font("Dialog",Font.BOLD,14),Color.white);
 		TextType.addType("STAT_BRIGHT_ORANGE",new Font("Dialog",Font.BOLD,14),Color.orange);
