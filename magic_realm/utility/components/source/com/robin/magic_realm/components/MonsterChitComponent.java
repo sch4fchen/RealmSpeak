@@ -490,12 +490,16 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 				return horse.getMoveSpeed();
 			}
 		}
+		int mod = speedModifier();
+		if (mod!=0) {
+			alteredMoveSpeed = true;
+		}
 		int otherSpeed = getGameObject().getThisInt("move_speed_change");
 		if (otherSpeed>0) {
 			alteredMoveSpeed = true;
-			Speed speed = new Speed(otherSpeed,speedModifier());
+			Speed speed = new Speed(otherSpeed,mod);
 			if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-				speed = new Speed(otherSpeed,speedModifier()-1);
+				speed = new Speed(otherSpeed,mod-1);
 			}
 			return speed;
 		}
@@ -503,9 +507,9 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		if (hasFaceAttribute("move_speed")) {
 			baseMoveSpeed = getFaceAttributeInteger("move_speed");
 		}
-		Speed speed = new Speed(baseMoveSpeed,speedModifier());
+		Speed speed = new Speed(baseMoveSpeed,mod);
 		if (getGameObject().hasThisAttribute(Constants.GROW_WINGS) && (new Speed(Constants.GROW_WINGS_SPEED)).fasterThan(speed)) {
-			speed = new Speed(baseMoveSpeed,speedModifier()-1);
+			speed = new Speed(baseMoveSpeed,mod-1);
 		}
 		return speed;
 	}
