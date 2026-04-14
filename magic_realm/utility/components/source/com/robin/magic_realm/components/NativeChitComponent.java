@@ -280,11 +280,7 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		String statColor = "BOLD";
 		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			statColor = isLightSideUp()?"STAT_ORANGE":"STAT_BRIGHT_ORANGE";
-			
-			String length = getFaceAttributeString("length");
-			if (length.trim().length()==0) {
-				length="0";
-			}
+			Integer length = getLength();
 			tt = new TextType("("+length+")", cs,statColor);
 			tt.draw(g,cs>>1,cs - tt.getHeight(g) - 5,Alignment.Left);
 		}

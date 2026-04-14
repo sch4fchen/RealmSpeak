@@ -198,8 +198,10 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 	public void paintAttackValues(Graphics2D g,int ox,int oy,Color attackBack) {
 		int cs = getChitSize();
 		TextType tt;
-		String attack_speed = getAttackSpeed().getSpeedString();
-		String strength = getStrength().getChitString();
+		Speed attack_speed_value = getAttackSpeed();
+		String attack_speed = attack_speed_value.getSpeedString();
+		Strength strength_value = getStrength();
+		String strength = strength_value.getChitString();
 		String magic_type = getFaceAttributeString("magic_type");
 		int sharpness = getSharpness();
 		
@@ -209,17 +211,8 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		g.setColor(Color.black);
 		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 			if (!pins) {
-				if (isLightSideUp()) {
-					statColor = "STAT_ORANGE";
-				}
-				else {
-					statColor = "STAT_BRIGHT_ORANGE";
-				}
-				
-				String length = getFaceAttributeString("length");
-				if (length.trim().length()==0) {
-					length="0";
-				}
+				statColor = isLightSideUp()?"STAT_ORANGE":"STAT_BRIGHT_ORANGE";
+				Integer length = getLength();
 				tt = new TextType("("+length+")", cs,statColor);
 				int offset = 0;
 				if (this.isAbsorbed()) {
