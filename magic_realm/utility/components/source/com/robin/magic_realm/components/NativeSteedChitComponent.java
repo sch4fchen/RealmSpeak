@@ -299,9 +299,10 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 		
 		textType = "BIG_BOLD";
 		if (RealmComponent.displayColoredStats) {
-			if (speed.getNum()<getFaceAttributeInteger("move_speed")) {
+			Speed defaultSpeed = new Speed(getFaceAttributeInteger("move_speed"));
+			if (speed.fasterThan(defaultSpeed)) {
 				textType = "BIG_BOLD_BLUE";
-			} else if (speed.getNum()>getFaceAttributeInteger("move_speed")) {
+			} else if (defaultSpeed.fasterThan(speed)) {
 				textType = "BIG_BOLD_RED";
 			}
 		}

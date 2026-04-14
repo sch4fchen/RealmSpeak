@@ -128,15 +128,17 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		if (RealmComponent.displayColoredStats) {
 			textType = "BIG_BOLD";
 			if (isTrotting()) {
-				if (getTrotSpeed().getNum()<getAttributeInt("trot","move_speed")) {
+				Speed defaultSpeed = new Speed(getAttributeInt("trot","move_speed"));
+				if (getTrotSpeed().fasterThan(defaultSpeed)) {
 					textType = "BIG_BOLD_BLUE";
-				} else if (getTrotSpeed().getNum()>getAttributeInt("trot","move_speed")) {
+				} else if (defaultSpeed.fasterThan(getTrotSpeed())) {
 					textType = "BIG_BOLD_RED";
 				}
 			} else {
-				if (getGallopSpeed().getNum()<getAttributeInt("gallop","move_speed")) {
+				Speed defaultSpeed = new Speed(getAttributeInt("gallop","move_speed"));
+				if (getGallopSpeed().fasterThan(defaultSpeed)) {
 					textType = "BIG_BOLD_BLUE";
-				} else if (getGallopSpeed().getNum()>getAttributeInt("gallop","move_speed")) {
+				} else if (defaultSpeed.fasterThan(getGallopSpeed())) {
 					textType = "BIG_BOLD_RED";
 				}
 			}
