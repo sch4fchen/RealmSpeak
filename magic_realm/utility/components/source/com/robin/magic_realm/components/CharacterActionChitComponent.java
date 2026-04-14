@@ -50,6 +50,11 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 	public static final int OUT_OF_PLAY_ID = 11;
 
 	private boolean usingAlteredAttributes; // a local variable ONLY (no need to persist this value)
+	private boolean changedMagicType = false;
+	private boolean heavierStrength = false;
+	private boolean weakerStrength = false;
+	private boolean slowerSpeed = false;
+	private boolean fasterSpeed = false;
 	
 	public CharacterActionChitComponent(GameObject obj) {
 		super(obj);
@@ -291,6 +296,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 				}
 				if (mod!=0) {
 					usingAlteredAttributes = true;
+					if (RealmComponent.displayColoredStats) {
+						if (mod>0) {
+							heavierStrength = true;
+							weakerStrength = false;
+						} else {
+							weakerStrength = true;
+							heavierStrength = false;
+						}
+					}
 				}
 				strength.modify(mod);
 			}
@@ -467,12 +481,37 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		// Need to look at usingAlteredAttributes to determine what color to show the attributes
 		// I'd like them to be blue, or red, or something that indicates they are "modified"
-		if (usingAlteredAttributes) {
+		if (usingAlteredAttributes && !RealmComponent.displayColoredStats) {
 			textTypeName = "BOLD_BLUE"; // indicates an altered state
 		}
 		if (!"neg".equals(mod)) {
-			tt = new TextType(mod + speed + effort, getChitSize() - 4, textTypeName);
-			tt.draw(g, 2, y, Alignment.Center);
+			if (RealmComponent.displayColoredStats) {
+				if (changedMagicType || heavierStrength) {
+					textTypeName = "BOLD_BLUE";
+				}
+				else if (weakerStrength) {
+					textTypeName = "BOLD_RED";
+				}
+				TextType ttMod = new TextType(mod, getChitSize() - 4, textTypeName);
+				TextType ttSpeed = new TextType(speed, getChitSize() - 4, textTypeName);
+				TextType ttEffort = new TextType(effort, getChitSize() - 4, textTypeName);
+				
+				int x = 21-(ttMod.getWidth(g)+ttSpeed.getWidth(g)+ttEffort.getWidth(g))/4;
+				ttMod.draw(g, x, y, Alignment.Left);
+				if (fasterSpeed) {
+					textTypeName = "BOLD_BLUE";
+				}
+				else if (slowerSpeed) {
+					textTypeName = "BOLD_RED";
+				}
+				x += ttMod.getWidth(g);
+				ttSpeed.draw(g, x, y, Alignment.Left);
+				x += ttSpeed.getWidth(g);
+				ttEffort.draw(g, x, y, Alignment.Left);
+			} else {
+				tt = new TextType(mod + speed + effort, getChitSize() - 4, textTypeName);
+				tt.draw(g, 2, y, Alignment.Center);
+			}
 		}
 		else {
 			tt = new TextType(effort, getChitSize() - 4, textTypeName);
@@ -595,6 +634,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if (mod!=0) {
 				usingAlteredAttributes = true;
+				if (RealmComponent.displayColoredStats) {
+					if (mod>0) {
+						slowerSpeed = true;
+						fasterSpeed = false;
+					} else {
+						fasterSpeed = true;
+						slowerSpeed = false;
+					}
+				}
 			}
 			if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 				if (owner==null) return new Speed(8,mod);
@@ -641,6 +689,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 		}
 		if (mod!=0) {
 			usingAlteredAttributes = true;
+			if (RealmComponent.displayColoredStats) {
+				if (mod>0) {
+					slowerSpeed = true;
+					fasterSpeed = false;
+				} else {
+					fasterSpeed = true;
+					slowerSpeed = false;
+				}
+			}
 		}
 		if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 			if (owner==null) return new Speed(8,mod);
@@ -679,6 +736,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}
 			if (mod!=0) {
 				usingAlteredAttributes = true;
+				if (RealmComponent.displayColoredStats) {
+					if (mod>0) {
+						slowerSpeed = true;
+						fasterSpeed = false;
+					} else {
+						fasterSpeed = true;
+						slowerSpeed = false;
+					}
+				}
 			}
 			if (getChitAttribute("speed").matches(Constants.WEIGHT)) {
 				if (owner==null) return new Speed(8,mod);
@@ -709,6 +775,15 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			}			
 			if (mod!=0) {
 				usingAlteredAttributes = true;
+				if (RealmComponent.displayColoredStats) {
+					if (mod>0) {
+						slowerSpeed = true;
+						fasterSpeed = false;
+					} else {
+						fasterSpeed = true;
+						slowerSpeed = false;
+					}
+				}
 			}
 			return new Speed(getChitAttribute("speed"),mod);
 		}
@@ -722,6 +797,7 @@ public class CharacterActionChitComponent extends StateChitComponent implements 
 			return getChitAttribute("magic");
 		}
 		usingAlteredAttributes = true;
+		changedMagicType = true;
 		if (changeType2!=null) return changeType2;
 		return changeType;
 	}
