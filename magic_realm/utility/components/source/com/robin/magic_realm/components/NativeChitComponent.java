@@ -328,16 +328,34 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 		}
 
 		String moveString = move_speed+(alteredMoveSpeed?"!":"");
+		String textTypeSpeed = null;
+		boolean coloredSpeed = false;
+		if (RealmComponent.displayColoredStats) {
+			Speed defaultMoveSpeed = new Speed(getFaceAttributeInteger("move_speed"));
+			if (move_speed_value.fasterThan(defaultMoveSpeed)) {
+				textTypeSpeed = "BIG_BOLD_BLUE";
+				coloredSpeed = true;
+			} else if (defaultMoveSpeed.fasterThan(move_speed_value)) {
+				textTypeSpeed = "BIG_BOLD_RED";
+				coloredSpeed = true;
+			}
+		}
 		if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
-			tt = new TextType(moveString, cs, "STAT_WHITE");
+			if (textTypeSpeed==null) textTypeSpeed = "STAT_WHITE";
+			tt = new TextType(moveString, cs, textTypeSpeed);
 			x = cs - tt.getWidth(g) - 9;
 			y = cs - tt.getHeight(g) - 6;
 			int rad = Math.max(tt.getWidth(g), tt.getHeight(g)) + 2;
-			g.setColor(Color.blue);
+			if (coloredSpeed) {
+				g.setColor(Color.green);
+			} else {
+				g.setColor(Color.blue);
+			}
 			g.fillOval(x - 5, y + 2, rad, rad);
 			tt.draw(g, x, y, Alignment.Left);
 		}
 		else {
+			if (textTypeSpeed==null) textTypeSpeed = statColor;
 			tt = new TextType(moveString, getChitSize(), statColor);
 			x = cs - 5 - tt.getWidth(g);
 			y = cs - 5 - tt.getHeight(g);

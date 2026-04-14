@@ -271,19 +271,37 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		Speed move_speed = getMoveSpeed();
 		if (move_speed!=null) {
 			String string = String.valueOf(move_speed.getNum())+(alteredMoveSpeed?"!":"");
+			String textTypeSpeed = null;
+			boolean coloredSpeed = false;
+			if (RealmComponent.displayColoredStats) {
+				Speed defaultMoveSpeed = new Speed(getFaceAttributeInteger("move_speed"));
+				if (move_speed.fasterThan(defaultMoveSpeed)) {
+					textTypeSpeed = "BIG_BOLD_BLUE";
+					coloredSpeed = true;
+				} else if (defaultMoveSpeed.fasterThan(move_speed)) {
+					textTypeSpeed = "BIG_BOLD_RED";
+					coloredSpeed = true;
+				}
+			}
 			if (isDisplayStyleFrenzel() || isDisplayStyleAlternative()) {
 				int x,y;
-				TextType tt = new TextType(string, cs, "STAT_WHITE");
+				if (textTypeSpeed==null) textTypeSpeed = "STAT_WHITE";
+				TextType tt = new TextType(string, cs, textTypeSpeed);
 				x = ox - tt.getWidth(g)-4;
 				y = oy - tt.getHeight(g)-2;
 				int rad = Math.max(tt.getWidth(g), tt.getHeight(g)) + 2;
-				g.setColor(Color.blue);
+				if (coloredSpeed) {
+					g.setColor(Color.green);
+				} else {
+					g.setColor(Color.blue);
+				}
 				g.fillOval(x - 5, y + 2, rad, rad);
 				tt.draw(g, x, y, Alignment.Left);
 			}
 			else {
 				int x,y;
-				TextType tt = new TextType(string, cs, "STAT_BLACK");
+				if (textTypeSpeed==null) textTypeSpeed = "STAT_BLACK";
+				TextType tt = new TextType(string, cs, textTypeSpeed);
 				x = ox - tt.getWidth(g);
 				y = oy - tt.getHeight(g);
 				tt.draw(g, x, y, Alignment.Left);
