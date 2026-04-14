@@ -107,16 +107,42 @@ public class SteedChitComponent extends RoundChitComponent implements BattleHors
 		
 		// Draw Stats
 		alteredMoveSpeed = false;
-		String statSide = isTrotting()?"trot":"gallop";
 		String asterisk = isTrotting()?"":"*";
 		
 		Speed speed = isTrotting()?getTrotSpeed():getGallopSpeed();
-		String strength = gameObject.getAttribute(statSide,"strength");
+		Strength strength = getStrength();
+		String strengthString = strength.getChitString();
 		
-		TextType tt = new TextType(strength,getChitSize(),"BIG_BOLD");
+		TextType tt = new TextType(strengthString,getChitSize(),"BIG_BOLD");
+		if (RealmComponent.displayColoredStats) {
+			Strength defaultStrength = new Strength(getFaceAttributeString("strength"));
+			if (strength.strongerThan(defaultStrength)) {
+				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_BLUE");
+			} else if(defaultStrength.strongerThan(strength)) {
+				tt = new TextType(strength.getChitString(),getChitSize(),"BIG_BOLD_RED");
+			}			
+		}
 		tt.draw(g,10,(getChitSize()>>1)-tt.getHeight(g),Alignment.Left);
 		
-		tt = new TextType(speed.getSpeedString()+asterisk,getChitSize(),alteredMoveSpeed?"BIG_BOLD_BLUE":"BIG_BOLD");
+		if (RealmComponent.displayColoredStats) {
+			String textType = "BIG_BOLD";
+			if (isTrotting()) {
+				if (getTrotSpeed().getNum()>getAttributeInt("trot","move_speed")) {
+					textType = "BIG_BOLD_BLUE";
+				} else if (getTrotSpeed().getNum()<getAttributeInt("trot","move_speed")) {
+					textType = "BIG_BOLD_RED";
+				}
+			} else {
+				if (getGallopSpeed().getNum()>getAttributeInt("gallop","move_speed")) {
+					textType = "BIG_BOLD_BLUE";
+				} else if (getGallopSpeed().getNum()<getAttributeInt("gallop","move_speed")) {
+					textType = "BIG_BOLD_RED";
+				}
+			}
+			tt = new TextType(speed.getSpeedString()+asterisk,getChitSize(),textType);
+		} else {
+			tt = new TextType(speed.getSpeedString()+asterisk,getChitSize(),alteredMoveSpeed?"BIG_BOLD_BLUE":"BIG_BOLD");
+		}
 		tt.draw(g,getChitSize()>>1,getChitSize()-(getChitSize()>>2)-(getChitSize()>>3),Alignment.Left);
 		
 		if (RealmComponent.displayArmor && isArmored()) {
