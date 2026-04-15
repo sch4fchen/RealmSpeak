@@ -499,6 +499,7 @@ public class BattleModel {
 		for(RealmComponent rc:randomOrder) {
 			CharacterWrapper owner = new CharacterWrapper(rc.getGameObject());
 			owner.setMeleePlayOrder(n++);
+			owner.setPlayerOrdering(n++);
 		}
 	}
 	

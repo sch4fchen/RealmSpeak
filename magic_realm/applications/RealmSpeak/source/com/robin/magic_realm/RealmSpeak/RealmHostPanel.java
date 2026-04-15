@@ -606,9 +606,13 @@ public class RealmHostPanel extends JPanel {
 								// The character has a familiar that is not following anyone, so it goes right
 								// before the character.
 								minChar.setPlayOrder(order++);
+								if (minChar.getPlayerOrdering()==0) {
+									minChar.setPlayerOrdering(order++);
+								}
 							}
 							else {
 								minChar.setPlayOrder(0);
+								minChar.setPlayerOrdering(0);
 								minChar.setDoRecord(false);
 								minChar.clearCurrentActions();
 							}
@@ -618,6 +622,7 @@ public class RealmHostPanel extends JPanel {
 				
 				int playOrder = order++;
 				character.setPlayOrder(playOrder);
+				character.setPlayerOrdering(playOrder);
 				character.setLastPlayer(!i.hasNext());
 				// Followers get their "turns" directly AFTER the guide
 				boolean first = true;
@@ -850,6 +855,8 @@ public class RealmHostPanel extends JPanel {
 			character.getGameObject().removeThisAttribute(Constants.NO_PROWLING);
 			character.getGameObject().removeThisAttribute(Constants.NO_UNHIDE);
 			character.getGameObject().removeThisAttribute(Constants.SEARCHED_PIT);
+			character.setPlayerOrderingLastRound(character.getPlayerOrdering());
+			character.setPlayerOrdering(0);
 			if (character.isDayEndTradingActive()) {
 				doneTrading = false;
 			}

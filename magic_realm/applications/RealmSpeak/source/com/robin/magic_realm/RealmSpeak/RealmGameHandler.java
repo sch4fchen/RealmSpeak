@@ -1996,7 +1996,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		spellMaster.energizePermanentSpells(getMainFrame(), game);
 
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(client.getGameData()).getPlayerCharacterObjects());
-		Collection<GameObject> characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
+		ArrayList<GameObject> characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
+		Collections.sort(characterGameObjects,new Comparator<GameObject>() {
+			public int compare(GameObject g1,GameObject g2) {
+				return new CharacterWrapper(g1).getPlayerOrdering()-new CharacterWrapper(g2).getPlayerOrdering();
+			}
+		});
 		ArrayList<GameObject> charactersAndMinions = new ArrayList<>();
 		for (GameObject go : characterGameObjects) {
 			CharacterWrapper character = new CharacterWrapper(go);
@@ -2290,14 +2295,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			if (list!=null) {
 				Collections.sort(list,new Comparator<CharacterWrapper>() {
 					public int compare(CharacterWrapper c1,CharacterWrapper c2) {
-						return c1.getPlayOrder()-c2.getPlayOrder();
+						return c1.getPlayerOrdering()-c2.getPlayerOrdering();
 					}
 				});
 			}
 			if (characterList!=null) {
 				Collections.sort(characterList,new Comparator<CharacterWrapper>() {
 					public int compare(CharacterWrapper c1,CharacterWrapper c2) {
-						return c1.getPlayOrder()-c2.getPlayOrder();
+						return c1.getPlayerOrdering()-c2.getPlayerOrdering();
 					}
 				});
 			}

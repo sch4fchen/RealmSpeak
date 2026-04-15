@@ -62,6 +62,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String MONSTER_ROLL = "m_rlll";
 	public static final String DO_RECORD = "d_rec__"; // tells character to record actions
 	public static final String PLAY_ORDER = "p_ord__";
+	public static final String PLAYER_ORDERING = "player_ordering__";
+	public static final String PLAYER_ORDERING_LAST_ROUND = "player_ordering_last_round__";
 	public static final String GAME_OVER = "gm_over__";
 	public static final String ACTION_FOLLOWER = "foll_";
 	public static final String NO_SUMMON = "_no_sum_"; // Used by FOLLOW logic to determine which followers summon monsters normally (when following as a group, only one summon occurs)
@@ -487,6 +489,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public int getPlayOrder() {
 		return getInt(PLAY_ORDER);
+	}
+	public int getPlayerOrdering() {
+		if (getInt(PLAYER_ORDERING)!=0) return getInt(PLAYER_ORDERING);
+		return getInt(PLAYER_ORDERING_LAST_ROUND);
 	}
 	public boolean isLastPlayer() {
 		return getBoolean(LAST_PLAYER);
@@ -3785,6 +3791,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setPlayOrder(int val) {
 		setInt(PLAY_ORDER,val);
+	}
+	public void setPlayerOrdering(int val) {
+		setInt(PLAYER_ORDERING,val);
+	}
+	public void setPlayerOrderingLastRound(int val) {
+		setInt(PLAYER_ORDERING_LAST_ROUND,val);
 	}
 	public void setLastPlayer(boolean val) {
 		setBoolean(LAST_PLAYER,val);
