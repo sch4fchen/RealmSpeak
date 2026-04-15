@@ -1478,14 +1478,22 @@ public class CombatFrame extends JFrame {
 						boolean attacksTarget2 = false;
 						for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
 							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
-							if (combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target1.getGameObject().getStringId())) {
+							if (target1!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target1.getGameObject().getStringId())) {
 								attacksTarget1 = true;
 							}
 							if (target2!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target2.getGameObject().getStringId())) {
 								attacksTarget2 = true;
 							}
+							if (combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(character.getGameObject().getStringId())) {
+								if (target1!=null && !(new CombatWrapper(target1.getGameObject())).isSheetOwner()) {
+									attacksTarget1 = true;
+								}
+								if (target2!=null && !(new CombatWrapper(target2.getGameObject())).isSheetOwner()) {
+									attacksTarget2 = true;
+								}
+							}
 						}
-						if (!attacksTarget1 || (target2!=null && !attacksTarget2)) {
+						if ((target1!=null && !attacksTarget1) || (target2!=null && !attacksTarget2)) {
 							showAttackWarning = true;
 						}
 					}
