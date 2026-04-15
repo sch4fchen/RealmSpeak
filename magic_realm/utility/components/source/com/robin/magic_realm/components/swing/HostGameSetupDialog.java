@@ -24,7 +24,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
 	private static final String DENIZEN_RULES_TAB = "Denizen Rules";
 	private static final String ADVANCED_MAGIC_RULES_TAB = "Advanced Magic";
-	private static final String COMBAT_RULES_TAB = "Combat Rules";	
+	private static final String COMBAT_RULES_TAB = "Combat Rules";
+	private static final String COMBAT_RULES2_TAB = "Combat Weapon Rules";	
 	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
 	private static final String QUESTS_AND_VP = "Quests and VPs";
 	
@@ -410,7 +411,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	}
 	private void initComponents() {
 		setIconImage(IconFactory.findIcon("images/interface/options.gif").getImage());
-		setSize(1080,1080);
+		setSize(1080,1020);
 		setLocationRelativeTo(null);
 		setModal(true);
 		
@@ -1039,7 +1040,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm Basic) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm Basic) - All denizen regenerate at the end of the month.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_HORSES_REGENERATION,"HORSES REGENERATION (Super Realm Basic) - Horses are regenerated.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_SPYING,"NO SPYING (Super Realm Basic) - Spying is not possible (for looting or discovering paths).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_INFORMATION_SHARING,"NO INFORMATION SHARING (Super Realm Basic) - Information about the location of secret passages, hidden paths, treasure sites and TWT is not transferable. This information is not transferable and can only be learned by following.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_FOLLOWERS_ONLY_DISCOVER_WITH_MAGIC_SIGHT,"FOLLOWERS ONLY DISCOVER WITH MAGIC SIGHT (Super Realm Basic) - If the guide is using Magic Sight, followers only discover a site the guide uses if they also use Magic Sight.",false));
@@ -1102,17 +1102,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE D.3.4 (Magic Realm Optional) - Roll on stumble table when running.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 (Magic Realm Optional) - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,requiresFumbleRules));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PENETRATING_ARMOR,"PENETRATING ARMOR D.3.5 (Magic Realm Optional) - When a missile attack hits a character's armor, the harm is inflicted on the character but the armor reduces the harm.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character's ability to use a shield for defense.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_STRONG,"DUAL WIELDING ALL WEAPONS - Heavier and two-handed weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm) - A character can parry target's attack with a weapon.",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
-		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ADV_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Advanced) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_ENDING_COMBAT,"ENDING COMBAT (Super Realm Basic) - Combat ends, even if denizens are killed or armor is destroyed.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_PHASE_CHIT_ACTIVATION,"PHASE CHIT ACTIVATION (Super Realm Basic) - Activating a phase chit in combat does not count as an action.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_COMBAT,"SUPER REALM COMBAT (Super Realm Basic) - 3x3 combat grid",false));
@@ -1123,6 +1112,19 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_CORNERED,"CORNERED (Super Realm Optional) - It is now possible to flip a red-side-up tremendous monster red-side-down in the middle of combat.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.SR_OPT_STEALING,"STEALING (Super Realm Optional) - Allows hidden characters in the same clearing as other characters and minions to steal from their belongings during evening.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.HOUSE3_HORSE_WEAPON_SAME_BOX,"HORSE/WEAPON SAME BOX - Allows monster weapons and horses to be placed in the same combat box.",false));
+		
+		newOptionPane.setTabHtmlDescription(COMBAT_RULES2_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Combat Rules</font></body></html>");
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_TWO_HANDED_WEAPONS,"TWO HANDED WEAPONS (Book of Quests variant) - The use of a two-handed weapon limits a character's ability to use a shield for defense.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_DUAL_WIELDING,"DUAL WIELDING (Expansion 1) - Characters can use two weapons, one in each hand.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_STRONG,"DUAL WIELDING ALL WEAPONS - Heavier and two-handed weapons can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_HEAVY,"DUAL WIELDING HEAVY WEAPONS - Heavier weapons can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_DUAL_WIELDING_TWO_HANDED,"DUAL WIELDING TWO-HANDED WEAPONS - Two-handed weapons can be dual wielded without an additional ability.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_THROWING_WEAPONS,"THROWING WEAPONS (Expansion 1) - A character can throw corresponding weapons.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_PARRY_LIKE_SHIELD,"PARRYING LIKE A SHIELD (Expansion 1) - A character can parry like with a shield other attacks with a weapon.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_PARRY,"PARRYING (1st Ed. and Super Realm) - A character can parry target's attack with a weapon.",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_PARRY_MISSILE,"PARRYING MISSILE ATTACKS - Parrying missile attacks is possible (requires parrying rule or ability of 1st Ed./Super Realm).",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.OPT_PARRY_WITH_MISSILE,"PARRYING WITH MISSILE WEAPONS - Parrying with missile weapons is possible (requires one of the parrying rules or abilities).",false));
+		newOptionPane.addOption(COMBAT_RULES2_TAB,new GameOption(Constants.SR_ADV_STEEL_AGAINST_MAGIC,"STEEL AGAINST MAGIC (Super Realm Advanced) - A character with no active armor counters casting a spell may also use his staff to make a separate attack.",false));
 		
 		newOptionPane.setTabHtmlDescription(EXPANDING_REALM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Expanding the Realm</font></body></html>");
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_CUSTOM_CHARS,"CUSTOM CHARACTERS - Allow players to choose from custom characters.",true,null,requiresDevelopmentRules));
@@ -1155,6 +1157,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_EVENTS,"EVENTS (Super Realm Advanced) - Every day an event is drawn.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_BOUNTY_HUNTER,"BOUNTY HUNTER (Super Realm Advanced) - Every campaign has an alternate campaign that can be claimed instead of the one listed on the chit. It makes an entire clan a partner, and a character a foe.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS,"GROUNDED MISSIONS AND TASKS (Super Realm Advanced) - Individuals can no longer run away, Fly or walk the woods for easily completing missions and tasks.",false));
+		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
