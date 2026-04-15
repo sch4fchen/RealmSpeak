@@ -705,7 +705,7 @@ public class SetupCardUtility {
 			String locBoardNum = loc.getThisAttribute(Constants.BOARD_NUMBER);
 			if ((boardNum==null && locBoardNum==null) || (boardNum!=null && boardNum.equals(locBoardNum))) {
 				if (loc.getHoldCount()>0) {
-					String section = loc.getThisAttribute("ts_section"); // TODO Maybe this should be an AttributeList...
+					String section = loc.getThisAttribute("ts_section");
 					if (section!=null && section.matches(name)) {
 							return loc;
 					}

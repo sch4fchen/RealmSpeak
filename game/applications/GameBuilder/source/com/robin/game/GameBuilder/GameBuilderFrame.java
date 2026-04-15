@@ -186,8 +186,16 @@ public class GameBuilderFrame extends JFrame {
 						if (setup==null) return;
 						StringBuffer result = new StringBuffer();
 						ArrayList<String> keyVals = new ArrayList<>();
-						//keyVals.add("original_game");
-						//keyVals.add("rw_expansion_1"); // TODO These keyVals need to be available with each setup somehow
+						String game = (String)JOptionPane.showInputDialog(
+								GameBuilderFrame.this,
+								"Game Name",
+								"Test Setup",
+								JOptionPane.QUESTION_MESSAGE,
+								null,
+								new String[] { "", "original_game", "rw_expansion_1", "super_realm"},
+								"");
+						if (game==null) return;
+						if (!game.isEmpty()) keyVals.add(game);
 						GameObjectTreeView view = new GameObjectTreeView(data.doSetup(result,setup,keyVals));
 						view.setTitle("Test Setup");
 						view.setVisible(true);

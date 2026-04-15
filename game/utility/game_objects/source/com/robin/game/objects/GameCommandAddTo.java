@@ -28,10 +28,13 @@ public class GameCommandAddTo extends GameCommand {
 		
 		// Now, populate the contains of the copy
 		ArrayList<GameObject> picked = fromPool.pick(count,transferType);
-		for (GameObject obj : picked) {
-			targetObjectCopy.add(obj);
+		if (picked!=null && targetObjectCopy!=null) {
+			for (GameObject obj : picked) {
+				targetObjectCopy.add(obj);
+			}
+			return "Picked:  "+picked.size()+":  "+from+"="+fromPool.size()+"\n";
 		}
-		return "Picked:  "+picked.size()+":  "+from+"="+fromPool.size()+"\n";
+		return "Picked nothing";
 	}
 	public boolean usesFrom() {
 		return true;

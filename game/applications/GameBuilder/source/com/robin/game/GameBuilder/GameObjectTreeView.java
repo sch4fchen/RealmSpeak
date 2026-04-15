@@ -33,7 +33,9 @@ public class GameObjectTreeView extends JFrame {
 				DefaultMutableTreeNode node = hash.get(object.toString());
 				for (GameObject heldObject : object.getHold()) {
 					DefaultMutableTreeNode child = hash.get(heldObject.toString());
-					node.add(child);
+					if (child!=null) {
+						node.add(child);
+					}
 				}
 			}
 			
