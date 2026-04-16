@@ -2322,7 +2322,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	/**
-	 * Returns all the clearings that are available assuming a future discovery is made (hidden path or passage)
+	 * Returns all the clearings that are available assuming a future discovery is made (hidden path or passage),
+	 * only checking for abilities for hidden paths/passages (Road Knowledge), not general ones, e.g. walking woods
+	 * flying characters are in the air, and thus have no possible clearings
 	 */
 	public ArrayList<ClearingDetail> findPossibleClearingMoves() {
 		ArrayList<ClearingDetail> ret = new ArrayList<>();
@@ -2341,9 +2343,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 				}
 			}
 		}
-		else {
-			// FIXME Handle characters that are walking woods
-		} // flying characters are in the air, and thus have no possible clearings
 		return ret;
 	}
 	/**
