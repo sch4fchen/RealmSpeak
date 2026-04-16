@@ -198,7 +198,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 				String dayKey = allDays.get(row);
 				switch(column) {
 					case TURN:
-						return Integer.valueOf(row+1); // FIXME this isn't exactly right - doesn't reflect the game turn, only the turn of this character
+						return Integer.valueOf(row+1);
 					case MONTH:
 						return Integer.valueOf(DayKey.getMonth(dayKey));
 					case DAY:
@@ -266,8 +266,7 @@ public class CharacterActionPanel extends CharacterFramePanel {
 						sb.append(",");
 					}
 					if (today) {
-						// FIXME Need to recognize the situation where the character enters
-						// a move to an invalid clearing!  Low priority though.
+						// FIXME Need to recognize the situation where the character enters a move to an invalid clearing!  Low priority though.
 						String test = vai.next().toString();
 						boolean validAction = test.equals("T");
 						if (validAction) {

@@ -1421,6 +1421,14 @@ public class CombatFrame extends JFrame {
 							hidden = false;
 						}
 						RealmComponent hirelingTarget = hireling.getTarget();
+						CombatWrapper combatH = new CombatWrapper(hireling.getGameObject());
+						if (hirelingTarget==null && combatH.isSheetOwner() && combatH.getAttackers().size()>0) {
+							for (GameObject attacker : combatH.getAttackers()) {
+								if (RealmComponent.getRealmComponent(attacker).isDenizen()) {
+									hirelingTarget=RealmComponent.getRealmComponent(attacker);
+								}
+							}
+						}
 						if (hirelingTarget==null || (hirelingTarget.isNative() && !character.isBattling(hirelingTarget.getGameObject()))) {
 							attackingEnemies = false;
 							break;

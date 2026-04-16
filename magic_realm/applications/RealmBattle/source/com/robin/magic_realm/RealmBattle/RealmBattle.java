@@ -88,7 +88,7 @@ public class RealmBattle {
 				if (tl!=null && tl.hasClearing()) {
 					BattleModel battleModel = buildBattleModel(tl,data);
 					boolean combatIsOn = false;
-					if (battleModel.getGroupCount(true)>1 || character.getWantsCombat()) { // has to be more than one group to have a fight! FIXME (ignores treachery for now)
+					if (battleModel.getGroupCount(true)>1 || character.getWantsCombat()) {
 						combatIsOn = true;
 						if (battleModel.getDenizenBattleGroup()==null && !character.getWantsCombat()) {
 							// make sure there is at least one character battling another (might all be friendly)
