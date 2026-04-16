@@ -133,7 +133,7 @@ public abstract class SpellTargetingSingle extends SpellTargeting {
 					}
 					for (GameObject st : list) {
 						String name = st.getName();
-						chooser.addOption(name,name); // FIXME This assumes names only here
+						chooser.addOption(name,name);
 						hash.put(name,st);
 					}
 					chooser.setVisible(true);

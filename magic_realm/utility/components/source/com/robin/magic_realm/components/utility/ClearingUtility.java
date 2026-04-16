@@ -306,7 +306,7 @@ public class ClearingUtility {
 		TileComponent tile = location.tile;
 		if (toMove.getHeldBy()==null || !toMove.getHeldBy().equals(tile.getGameObject())) {
 			// Add Character to new tile, but make sure both come from same GameData parent (defer to toMove object)
-			// FIXME Not sure this is necessary anymore with the change I made to RealmComponent - should remove this code, and see if moving from tile to tile still works.
+			// Not sure this is necessary anymore with the change I made to RealmComponent - should remove this code, and see if moving from tile to tile still works.
 			GameObject tileObject = toMove.getGameData().getGameObject(tile.getGameObject().getId());
 			
 			// This line, however, IS required!

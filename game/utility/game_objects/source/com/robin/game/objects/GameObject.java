@@ -47,13 +47,8 @@ public class GameObject extends ModifyableObject implements Serializable {
 		id = assign_id;
 		version = 0;
 
-		if (parent != null) { // FIXME I'm not sure I WANT this all the time!
+		if (parent != null) {
 			addChangeListener(parent.getModifyListener());
-//			addChangeListener(new ChangeListener() {
-//				public void stateChanged(ChangeEvent ev) {
-//					parent.setModified(true);
-//				}
-//			});
 		}
 		attributeBlocks = new OrderedHashtable<>();
 		heldBy = null;

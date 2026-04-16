@@ -69,6 +69,9 @@ public class Loot extends RealmTable {
 	public String getTableKey() {
 		return "Loot";
 	}
+	public GameObject getTreasureLocation() {
+		return treasureLocation;
+	}
 	public String apply(CharacterWrapper character, DieRoller inRoller) {
 		// Other characters in the clearing discover the treasureLocation when being looted (if found hidden enemies)
 		if (tileLocation==null) {

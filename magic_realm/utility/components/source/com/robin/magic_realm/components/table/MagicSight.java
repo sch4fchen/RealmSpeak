@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.util.StringBufferedList;
@@ -102,7 +103,7 @@ public class MagicSight extends Search {
 					lootResult = loot.characterFindsItem(character,topmostCounter);
 				}
 				else {
-					// FIXME How to handle magic sight looting where prerequisites are NOT met?
+					JOptionPane.showMessageDialog(getParentFrame(),"As you don't fulfill the prerequisitions, you cannot loot "+loot.getTreasureLocation().getName()+".","Loot - Prerequisitions not met",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}
@@ -198,7 +199,7 @@ public class MagicSight extends Search {
 					}
 				}
 				else {
-					// FIXME How to handle magic sight looting where prerequisites are NOT met?
+					JOptionPane.showMessageDialog(getParentFrame(),"As you don't fulfill the prerequisitions, you cannot loot "+loot.getTreasureLocation().getName()+".","Loot - Prerequisitions not met",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}

@@ -57,15 +57,6 @@ public abstract class GameObjectChange implements Serializable {
 	public String toString() {
 		return name+" (#"+id+" version "+version+")";//+(dead?" - dead":"");
 	}
-	public boolean testVersion(GameData data) {
-//		GameObject go = data.getGameObject(id); // FIXME For now, accept all versions
-//		if (go!=null && go.getVersion()!=version) {
-//System.err.println(go.getName()+" version "+go.getVersion()+" != change version "+version);// XXX DEBUG
-//System.err.println(toString()+" will not happen");
-//			return false;
-//		}
-		return true; // null or matching version are valid
-	}
 	public GameObject getGameObject(GameData data) {
 		GameObject go = data.getGameObject(id);
 		if (go==null) {

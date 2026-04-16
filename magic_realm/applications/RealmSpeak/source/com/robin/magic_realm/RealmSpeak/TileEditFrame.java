@@ -751,8 +751,6 @@ public class TileEditFrame extends JFrame {
 			chooser.setVisible(true);
 			if (chooser.getSelectedObject()!=null) {
 				ClearingDetail c1 = (ClearingDetail)chooser.getSelectedObject();
-				
-				// FIXME Should eliminate paths that are already there!
 				chooser = new ButtonOptionDialog(this,null,"To which clearing/edge?","");
 				list.add("N");
 				list.add("NE");

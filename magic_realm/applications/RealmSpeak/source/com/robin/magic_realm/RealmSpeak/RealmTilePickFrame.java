@@ -219,7 +219,6 @@ public class RealmTilePickFrame extends RealmSpeakInternalFrame implements Chang
 					}
 				}
 				if (canPlace) {
-//if (placeableIndices.size()<8) placeableIndices.clear(); // FIXME force a problem
 					if (placeableIndices.isEmpty()) {
 						// We got a problem here!!  Gotta start over somehow...
 						JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"There are no more legal tile placements!  Starting the process over.","No Tile Placements",JOptionPane.ERROR_MESSAGE);

@@ -94,6 +94,7 @@ public class RealmBattle {
 							// make sure there is at least one character battling another (might all be friendly)
 							boolean battlingChars = false;
 							ArrayList<RealmComponent> leaders = battleModel.getAllLeaders();
+							leaders.addAll(battleModel.getAllOwningCharacters());
 							for (RealmComponent rc1 : leaders) {
 								CharacterWrapper char1 = new CharacterWrapper(rc1.getGameObject());
 								if (char1.getWantsCombat()) {
