@@ -249,12 +249,9 @@ public class MRCBuilder extends JFrame implements ActionListener {
 					stringbuffer.append(", ");
 				stringbuffer.append((String) vector.elementAt(i));
 			}
-
 			return stringbuffer.toString();
 		}
-		else {
-			return "";
-		}
+		return "";
 	}
 
 	public int addAdvantagesToImage(Graphics g, String s, Vector vector, int i) {
@@ -413,9 +410,7 @@ public class MRCBuilder extends JFrame implements ActionListener {
 			Image image = Toolkit.getDefaultToolkit().getImage(url);
 			return new ImageIcon(image);
 		}
-		else {
-			return new ImageIcon(s);
-		}
+		return new ImageIcon(s);
 	}
 
 	public void loadSymbolIcon() {

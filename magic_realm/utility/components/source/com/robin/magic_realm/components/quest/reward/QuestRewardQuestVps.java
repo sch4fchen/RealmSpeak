@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.QuestConstants;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardQuestVps extends QuestReward {	

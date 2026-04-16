@@ -212,15 +212,13 @@ public class MRCharacter {
 	public int specialAdvantagesCount() {
 		if (specialAdvantages != null)
 			return specialAdvantages.size();
-		else
-			return 0;
+		return 0;
 	}
 
 	public OutlineEntry getSpecialAdvantage(int i) {
 		if (specialAdvantages != null && i < specialAdvantages.size())
 			return specialAdvantages.elementAt(i);
-		else
-			return null;
+		return null;
 	}
 
 	public Vector getSpecialAdvantages() {
@@ -230,15 +228,13 @@ public class MRCharacter {
 	public int optionalAdvantagesCount() {
 		if (optionalAdvantages != null)
 			return optionalAdvantages.size();
-		else
-			return 0;
+		return 0;
 	}
 
 	public OutlineEntry getOptionalAdvantage(int i) {
 		if (optionalAdvantages != null && i < optionalAdvantages.size())
 			return optionalAdvantages.elementAt(i);
-		else
-			return null;
+		return null;
 	}
 
 	public Vector getOptionalAdvantages() {
@@ -248,15 +244,13 @@ public class MRCharacter {
 	public String getDevName(int i) {
 		if (devName[i] != null && devName[i].length() > 0)
 			return devName[i];
-		else
-			return "";
+		return "";
 	}
 
 	public String getDevAdd(int i) {
 		if (devAdd[i] != null && devAdd[i].length() > 0)
 			return devAdd[i];
-		else
-			return null;
+		return null;
 	}
 
 	public Chit getChit(int i) {

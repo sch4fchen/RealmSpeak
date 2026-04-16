@@ -27,7 +27,7 @@ public class GameObjectBlockManagerTest {
 	public void tearDown() {
 	}
 	
-	private GameObject createTestGameObject() {
+	private static GameObject createTestGameObject() {
 		GameObject go = GameObject.createEmptyGameObject();
 		go.setThisAttribute("foo",1);
 		go.setThisAttribute("asdf",2);

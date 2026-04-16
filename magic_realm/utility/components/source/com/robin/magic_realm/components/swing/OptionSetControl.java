@@ -107,7 +107,7 @@ public class OptionSetControl extends JPanel {
 		currentOptionSetName = prefMan.get(CURRENT_OPTION_SET);
 		rebuildOptionSetComboBox();
 	}
-	private ArrayList<String> findOptionFiles() {
+	private static ArrayList<String> findOptionFiles() {
 		ArrayList<String> list = new ArrayList<String>();
 		String[] files = PreferenceManager.getPreferenceFilesAt(OPTION_SET_PATH);
 		for(String file:files) {

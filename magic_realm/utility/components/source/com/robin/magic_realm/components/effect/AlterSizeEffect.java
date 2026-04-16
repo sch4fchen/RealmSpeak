@@ -2,7 +2,6 @@ package com.robin.magic_realm.components.effect;
 
 import com.robin.magic_realm.components.table.AlterSize;
 import com.robin.magic_realm.components.utility.Constants;
-import com.robin.magic_realm.components.utility.RealmLogging;
 
 public class AlterSizeEffect implements ISpellEffect {
 	

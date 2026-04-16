@@ -101,7 +101,7 @@ public class MemTest {
 			showMem("After Commit");
 		}
 	}
-	private void doGameObjectChangeTest() {
+	private static void doGameObjectChangeTest() {
 		GameObject go = GameObject.createEmptyGameObject();
 
 		//Stupid stupid = new Stupid();

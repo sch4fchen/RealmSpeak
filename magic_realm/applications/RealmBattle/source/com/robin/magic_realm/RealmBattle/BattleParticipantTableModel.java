@@ -73,7 +73,7 @@ public class BattleParticipantTableModel extends AbstractTableModel {
 		}
 		return null;
 	}
-	private ImageIcon getAttackersIcon(CombatWrapper combat) {
+	private static ImageIcon getAttackersIcon(CombatWrapper combat) {
 		int attackerCount = combat.getAttackerCount();
 		if (attackerCount==1) {
 			return combat.getAttackersAsComponents().get(0).getMediumIcon();

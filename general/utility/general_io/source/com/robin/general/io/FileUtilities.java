@@ -47,13 +47,9 @@ public class FileUtilities {
 			if (withExtension) {
 				return piece[PATH]+piece[FILENAME]+piece[EXTENSION];
 			}
-			else {
-				return piece[PATH]+piece[FILENAME];
-			}
+			return piece[PATH]+piece[FILENAME];
 		}
-		else {
-			return piece[PATH];
-		}
+		return piece[PATH];
 	}
 	public static File fixFileExtension(File file,String extension) {
 		if (!extension.startsWith(".")) {

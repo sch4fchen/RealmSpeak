@@ -40,9 +40,7 @@ public class OutlineEntry {
 
 			return s;
 		}
-		else {
-			return "";
-		}
+		return "";
 	}
 
 	String header;

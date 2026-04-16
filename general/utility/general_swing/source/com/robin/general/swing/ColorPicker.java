@@ -130,7 +130,7 @@ public class ColorPicker extends JComponent {
 				break;
 		}
 	}
-	private Point fixPoint(Point p,int x,int y,int w,int h) {
+	private static Point fixPoint(Point p,int x,int y,int w,int h) {
 		int a = p.x;
 		int b = p.y;
 		

@@ -205,6 +205,8 @@ public class QuestDeckViewer extends AggressiveDialog {
 							case GQ:
 							case BoQ:
 								return quest.isEvent()?check:null;
+							default:
+								return null;
 						}
 					case 3:			return quest.isActivateable()?plus:null;
 					case 4:			return quest.getName();

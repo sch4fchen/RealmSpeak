@@ -10,7 +10,6 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TradeType;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementTrade extends QuestRequirement {

@@ -1,6 +1,5 @@
 package com.robin.magic_realm.components.effect;
 import com.robin.magic_realm.components.TileComponent;
-import com.robin.magic_realm.components.utility.ClearingUtility;
 import com.robin.magic_realm.components.utility.Constants;
 
 public class FrozenWaterEffect implements ISpellEffect {	

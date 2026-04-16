@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.TreasureCardComponent;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;

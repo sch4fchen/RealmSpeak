@@ -3,7 +3,6 @@ package com.robin.magic_realm.components;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.TextType;

@@ -18,7 +18,6 @@ import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.CombatWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
-import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class BattlesWrapper extends GameObjectWrapper {
 	

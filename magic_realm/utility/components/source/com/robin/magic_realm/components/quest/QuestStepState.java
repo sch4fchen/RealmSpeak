@@ -33,6 +33,8 @@ public enum QuestStepState {
 			case Ready:			return "READY - Meet requirements to get reward, and move to next step.";
 			case Finished:		return "FINISHED - Step has been completed.";
 			case Failed:		return "FAILED - Step was failed.";
+			case None:			break;
+			default:			break;
 		}
 		return null;
 	}

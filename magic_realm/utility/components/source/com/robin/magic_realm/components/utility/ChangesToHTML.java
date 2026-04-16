@@ -76,7 +76,7 @@ public class ChangesToHTML extends JFrame {
 		box.add(finishButton);
 		getContentPane().add(box,"South");
 	}
-	private String convertText(String in) {
+	private static String convertText(String in) {
 		StringBuffer sb = new StringBuffer();
 		StringTokenizer lines = new StringTokenizer(in,"\n");
 		int currentLevel = 0;
@@ -143,7 +143,7 @@ public class ChangesToHTML extends JFrame {
 		}
 		return in;
 	}
-	private void closeListTags(StringBuffer sb,int level,int currentLevel) {
+	private static void closeListTags(StringBuffer sb,int level,int currentLevel) {
 		int levelDiff = level-currentLevel;
 		if (levelDiff>0) {
 			sb.append("\n");

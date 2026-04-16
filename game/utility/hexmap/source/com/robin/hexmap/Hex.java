@@ -54,7 +54,7 @@ public class Hex {
 		keywords = new ArrayList<>();
 		resetWalls();
 	}
-	private long _newHexId() {
+	private static long _newHexId() {
 		return (unique_hex_id_sequence++);
 	}
 	public void setName(String name) {

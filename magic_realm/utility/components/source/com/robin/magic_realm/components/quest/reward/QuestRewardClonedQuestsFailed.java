@@ -4,13 +4,8 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
-import com.robin.magic_realm.components.quest.QuestCounter;
 import com.robin.magic_realm.components.quest.QuestState;
-import com.robin.magic_realm.components.quest.reward.QuestReward.RewardType;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
-import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class QuestRewardClonedQuestsFailed extends QuestReward {
 
