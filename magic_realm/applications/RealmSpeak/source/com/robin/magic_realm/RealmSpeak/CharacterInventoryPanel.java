@@ -192,11 +192,9 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 			}
 		}
 	}
-	private static boolean actionLocked(GameObject thing) {
-		// FIXME This isn't exactly right.  Just because an item is in the PhaseManager, doesn't mean it was necessarily used...
-//		RealmTurnPanel turnPanel = getCharacterFrame().getTurnPanel();
-//		return (turnPanel!=null && turnPanel.getPhaseManager().getAllGameObjects().contains(thing));
-		return false; // for now
+	private boolean actionLocked(GameObject thing) {
+		RealmTurnPanel turnPanel = getCharacterFrame().getTurnPanel();
+		return (turnPanel!=null && turnPanel.getPhaseManager().getAllObjects().contains(thing) && !turnPanel.getPhaseManager().getUsedObjects().contains(thing));
 	}
 	private void doDistribute() {
 		// Find all characters in the clearing
@@ -399,7 +397,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 	private void doDeactivate() {
 		boolean daytimeRecord = getCharacter().canDoDaytimeRecord();
 		GameObject thing = activeInventoryObjectPanel.getSelectedGameObject();
-		if (actionLocked(thing)) { // NOT USED
+		if (actionLocked(thing)) {
 			JOptionPane.showMessageDialog(
 					getGameHandler().getMainFrame(),
 					"You cannot deactivate the "+thing.getName()+

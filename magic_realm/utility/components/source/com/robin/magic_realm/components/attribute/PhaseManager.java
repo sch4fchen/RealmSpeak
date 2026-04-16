@@ -85,6 +85,12 @@ public class PhaseManager {
 		sb.append(extraDwellingPhase);
 		return sb.toString();
 	}
+	public ArrayList<GameObject> getUsedObjects() {
+		return usedObjects;
+	}
+	public ArrayList<GameObject> getAllObjects() {
+		return allObjects;
+	}
 	/**
 	 * Returns false only when the thing is a horse, and you have already used a horse!
 	 */
@@ -101,7 +107,6 @@ public class PhaseManager {
 				}
 			}
 		}
-		
 		return true;
 	}
 	/**
