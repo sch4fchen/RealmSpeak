@@ -1164,7 +1164,6 @@ public class ActionRow {
 						}
 					}
 					
-					// Move the action followers too (FIXME What happens to followers following a character leaving a map?)
 					for (CharacterWrapper follower :  actionFollowers) {
 						if (!overridePath || path!=null) {
 							if (follower.canFollow()) {
@@ -1175,6 +1174,9 @@ public class ActionRow {
 									if (reverse!=null) {
 										follower.updatePathKnowledge(reverse);
 									}
+								}
+								if (location.hasClearing() && location.clearing.isEdge()) {
+									follower.makeGone();
 								}
 							}
 							else {

@@ -764,7 +764,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// Find all players
 		ArrayList<String> playerNames = parent.realmHostFrame.getPlayerNames();
 
-		if (playerNames.size() > 0) { // FIXME for now
+		if (playerNames.size() > 0) {
 			// Randomize playerNames here
 			Collections.shuffle(playerNames);
 
@@ -1087,7 +1087,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		else if (Constants.BROADCAST_SUMMARY_ACTION.equals(key) && isHostPlayer()) {
-			// FIXME for now:
 			handleSummaryMessage(message);
 		}
 		else if (key.startsWith(Constants.BROADCAST_PRIVATE_MESSAGE)) {

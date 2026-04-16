@@ -193,8 +193,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		}
 	}
 	private static boolean actionLocked(GameObject thing) {
-		// FIXME This isn't exactly right.  Just because an item is in the PhaseManager, doesn't mean it was
-		// necessarily used...
+		// FIXME This isn't exactly right.  Just because an item is in the PhaseManager, doesn't mean it was necessarily used...
 //		RealmTurnPanel turnPanel = getCharacterFrame().getTurnPanel();
 //		return (turnPanel!=null && turnPanel.getPhaseManager().getAllGameObjects().contains(thing));
 		return false; // for now
