@@ -48,7 +48,7 @@ public class LoggingFormatter extends Formatter {
 		sb.append(System.lineSeparator());
 		return sb.toString();
 	}
-	private String truncateClassName(String className) {
+	private static String truncateClassName(String className) {
 		int lastDot = className.lastIndexOf(".");
 		if (lastDot>=0 && (lastDot+1)<className.length()) {
 			className = className.substring(lastDot+1);

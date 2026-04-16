@@ -52,7 +52,7 @@ public class ItemRestrictionsEditPanel extends AdvantageEditPanel {
 		}
 		add(main,"Center");
 		
-		JLabel description = new JLabel("Items that cannot be activated:",JLabel.LEFT);
+		JLabel description = new JLabel("Items that cannot be activated:",SwingConstants.LEFT);
 		description.setFont(new Font("Dialog",Font.BOLD,16));
 		add(description,"North");
 		

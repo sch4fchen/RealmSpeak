@@ -82,7 +82,7 @@ public class TableCopy {
 			throw new IllegalArgumentException("Copy Action has not been added to the JTable specified. Invoke TableCopy.addCopyActionToTable on table.");
 		}
 
-		((TableCopyAction)action).actionPerformed(new ActionEvent(table,ActionEvent.ACTION_PERFORMED,COPY));
+		action.actionPerformed(new ActionEvent(table,ActionEvent.ACTION_PERFORMED,COPY));
 	}
 
 	/**

@@ -869,9 +869,6 @@ public class TileComponent extends ChitComponent {
 		Collections.sort(componentsToDraw);
 
 		for (RealmComponent rc : componentsToDraw) {
-			if (rc == null || rc.getSize() == null) {
-				int sdf = 0;
-			}
 			int w = rc.getSize().width;
 			int h = rc.getSize().height;
 

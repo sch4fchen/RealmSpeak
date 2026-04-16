@@ -2,6 +2,7 @@ package com.robin.general.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -13,7 +14,7 @@ public class DateUtility {
 	 * Returns the time as is currently set on your computer.
 	 */
 	public static Date getNow() {
-		GregorianCalendar cal = (GregorianCalendar)GregorianCalendar.getInstance();
+		GregorianCalendar cal = (GregorianCalendar)Calendar.getInstance();
 		Date date = cal.getTime();
 		return date;
 	}

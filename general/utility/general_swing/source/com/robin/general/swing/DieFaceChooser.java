@@ -53,7 +53,7 @@ public class DieFaceChooser extends AggressiveDialog {
 		
 		getContentPane().add(mainPane,"Center");
 		setResizable(false);
-		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		pack();
 	}
 	public int getChosenFace() {

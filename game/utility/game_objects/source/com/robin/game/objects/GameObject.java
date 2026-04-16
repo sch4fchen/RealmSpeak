@@ -1469,7 +1469,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	// Serializable interface
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+	private static void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		out.defaultWriteObject();
 	}
 	

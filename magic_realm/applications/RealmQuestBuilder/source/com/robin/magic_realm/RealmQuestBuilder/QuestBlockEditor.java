@@ -94,7 +94,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 					break;
 				case CompanionSelector:
 					go.setString(QuestConstants.KEY_PREFIX+block.getKeyName(),((JLabel)block.getComponent()).getText());
-					go.setString(QuestConstants.VALUE_PREFIX+block.getKeyName(),((JLabel)block.getComponent()).getToolTipText());
+					go.setString(QuestConstants.VALUE_PREFIX+block.getKeyName(),block.getComponent().getToolTipText());
 					break;
 			}
 		}

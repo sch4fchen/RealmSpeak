@@ -57,7 +57,7 @@ public class PhaseManagerIcon extends ImageIcon {
 		}
 		return null;
 	}
-	private String getNonNegString(int val) {
+	private static String getNonNegString(int val) {
 		if (val>0) {
 			return String.valueOf(val);
 		}

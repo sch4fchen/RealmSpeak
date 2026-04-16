@@ -47,7 +47,7 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 		hirelingTable = new JTable(tableModel);
 		hirelingTable.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-		renderer.setHorizontalAlignment(JLabel.CENTER);
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
 //		renderer.setFont(new Font("Dialog",Font.BOLD,20));
 		hirelingTable.setFont(new Font("Dialog",Font.BOLD,20));
 		hirelingTable.setDefaultRenderer(Integer.class,renderer);

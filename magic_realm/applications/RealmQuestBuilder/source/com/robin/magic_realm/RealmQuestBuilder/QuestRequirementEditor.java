@@ -373,7 +373,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		return choices.toArray(new String[list.size()]);
 	}
 	
-	private ArrayList<String> getCurseStrings() {
+	private static ArrayList<String> getCurseStrings() {
 		ArrayList<String> list = new ArrayList<>();
 		list.add(Constants.ASHES);
 		list.add(Constants.DISGUST);

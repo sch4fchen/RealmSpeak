@@ -154,7 +154,7 @@ public class OptionSetControl extends JPanel {
 		}
 		updatingItems = false;
 	}
-	private boolean validOptionName(String optionName) {
+	private static boolean validOptionName(String optionName) {
 		if (optionName==null) return false;
 		if (optionName.trim().length()==0) return false;
 		Pattern pattern = Pattern.compile("^[a-zA-Z0-9 ]+$");

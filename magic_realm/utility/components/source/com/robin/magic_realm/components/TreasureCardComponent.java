@@ -454,7 +454,7 @@ public class TreasureCardComponent extends CardComponent implements MagicChit {
 		
 		// Finally, remove any tied magic types
 		ArrayList<String> tiedMagicTypes = readTiedMagicTypes(treasure);
-		for (String tiedMagicType : readTiedMagicTypes(treasure)) {
+		for (String tiedMagicType : tiedMagicTypes) {
 			if (possMagicTypes.contains(tiedMagicType)) {
 				possMagicTypes.remove(tiedMagicType);
 			}

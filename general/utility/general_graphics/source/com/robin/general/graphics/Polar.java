@@ -86,7 +86,7 @@ public class Polar {
 		return normalAngle((int)((rad * 180)/Math.PI));
 	}
 	
-	private void init() {
+	private static void init() {
 		if (cos==null) {
 			cos = new double[MAX_DEGREES];
 			for (int i=0;i<MAX_DEGREES;i++) {

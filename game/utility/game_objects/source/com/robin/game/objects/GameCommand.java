@@ -292,10 +292,10 @@ public abstract class GameCommand extends ModifyableObject implements Serializab
 		return sb.toString();
 	}
 	// Serializable interface
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+	private static void writeObject(java.io.ObjectOutputStream out) throws IOException {
 		out.defaultWriteObject();
 	}
-	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+	private static void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 		in.defaultReadObject();
 	}
 }

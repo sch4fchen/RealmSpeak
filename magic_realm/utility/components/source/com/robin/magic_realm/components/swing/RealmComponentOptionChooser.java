@@ -213,7 +213,7 @@ public class RealmComponentOptionChooser extends AggressiveDialog {
 			else if (rc.isChit() && displayOption==DisplayOption.Darkside) {
 				ChitComponent chit = (ChitComponent)rc;
 				if (chit.isDarkSideUp()) {
-					icon = ((ChitComponent)rc).getIcon(); // already darkside up, so don't flip it
+					icon = rc.getIcon(); // already darkside up, so don't flip it
 				}
 				else {
 					icon = ((ChitComponent)rc).getFlipSideIcon();

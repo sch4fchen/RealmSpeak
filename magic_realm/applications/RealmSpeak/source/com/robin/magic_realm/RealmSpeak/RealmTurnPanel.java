@@ -160,7 +160,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			box.add(line);
 			for (CharacterWrapper follower:actionFollowers) {
 				RealmComponent rc = RealmComponent.getRealmComponent(follower.getGameObject());
-				label = new JLabel("The "+follower.getGameObject().getName(),rc.getSmallIcon(),JLabel.LEADING);
+				label = new JLabel("The "+follower.getGameObject().getName(),rc.getSmallIcon(),SwingConstants.LEADING);
 				label.setFont(followFont);
 				line = Box.createHorizontalBox();
 				line.add(Box.createHorizontalStrut(20));
