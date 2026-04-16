@@ -930,15 +930,15 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 		
 		AffectThread at = new AffectThread(parent,theGame,expireImmediately,includeNullifyEffects);
 		if (SwingUtilities.isEventDispatchThread() || getGameObject().hasThisAttribute(Constants.SPELL_DENIZEN)) {
-//System.out.println("Already EDT");
+			//System.out.println("Already EDT");
 			// NON threaded
 			return at.doAffect(simultaneousSpells);
 		}
-//System.out.println("Non EDT - invoke and wait");
+		//System.out.println("Non EDT - invoke and wait");
 			// Run on event dispatch thread!
 			//SwingUtilities.invokeLater(at); // THIS is NOT the solution:  this breaks other things.
 		try {
-			SwingUtilities.invokeAndWait(at); // FIXME This causes a deadlock when WISH/CONTROLBATS are cast at the same time!!!
+			SwingUtilities.invokeAndWait(at);
 		}
 		catch(InvocationTargetException e) {
 			e.printStackTrace();
