@@ -1000,7 +1000,7 @@ public class HexMap extends JComponent implements Scrollable {
 		}
 		return false;
 	}
-	public boolean isFocusTraversable() {
+	public boolean isFocusable() {
 		return true;
 	}
 	/**

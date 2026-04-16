@@ -346,7 +346,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 		text.append("</font></body></html>");
 		
 		JEditorPane pane = new JEditorPane("text/html",text.toString()) {
-			public boolean isFocusTraversable() {
+			public boolean isFocusable() {
 				return false;
 			}
 		};

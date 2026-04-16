@@ -581,7 +581,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	private void showHtmlWindow(String title,String text,boolean scrollable) {
 		JPanel panel = new JPanel(new BorderLayout());
 		JEditorPane pane = new JEditorPane("text/html",text) {
-			public boolean isFocusTraversable() {
+			public boolean isFocusable() {
 				return false;
 			}
 		};

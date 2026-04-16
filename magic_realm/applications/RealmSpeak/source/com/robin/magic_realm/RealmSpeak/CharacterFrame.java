@@ -633,7 +633,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				GoldSpecialChitComponent gsrc = (GoldSpecialChitComponent) chosenGS;
 				// Chit has been chosen, now verify this is what they want!
 				JEditorPane pane = new JEditorPane("text/html", gsrc.generateHTML(character)) {
-					public boolean isFocusTraversable() {
+					public boolean isFocusable() {
 						return false;
 					}
 				};

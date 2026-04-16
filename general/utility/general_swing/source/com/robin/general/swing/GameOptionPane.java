@@ -146,7 +146,7 @@ public class GameOptionPane extends JPanel implements ActionListener {
 			if (html!=null) {
 				Box hbox = Box.createHorizontalBox();
 					JEditorPane pane = new JEditorPane("text/html",html.toUpperCase()) {
-						public boolean isFocusTraversable() {
+						public boolean isFocusable() {
 							return false;
 						}
 					};

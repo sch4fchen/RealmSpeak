@@ -114,7 +114,7 @@ public class ChitPickerButton extends JButton {
 		chit = new Chit(s);
 	}
 
-	public boolean isFocusTraversable() {
+	public boolean isFocusable() {
 		return false;
 	}
 

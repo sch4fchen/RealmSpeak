@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -117,12 +118,12 @@ public class ListChooser extends AggressiveDialog implements ActionListener {
 
 	public Vector getSelectedItems() {
 		if (!list.isSelectionEmpty()) {
-			Object[] items = list.getSelectedValues();
+			List items = list.getSelectedValuesList();
 			Vector itemsVector = null;
 			if (items != null) {
-				itemsVector = new Vector(items.length);
-				for (int i = 0; i < items.length; i++) {
-					itemsVector.addElement(items[i]);
+				itemsVector = new Vector(items.size());
+				for (int i = 0; i < items.size(); i++) {
+					itemsVector.addElement(items.get(i));
 				}
 			}
 			return itemsVector;

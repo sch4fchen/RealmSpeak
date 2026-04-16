@@ -689,7 +689,7 @@ public class GoldSpecialChitComponent extends SquareChitComponent {
 	}
 	public void display(JFrame frame,CharacterWrapper character) {
 		JEditorPane pane = new JEditorPane("text/html",generateHTML(character)) {
-			public boolean isFocusTraversable() {
+			public boolean isFocusable() {
 				return false;
 			}
 		};
