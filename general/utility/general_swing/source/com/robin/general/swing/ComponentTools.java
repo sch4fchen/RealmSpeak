@@ -28,6 +28,9 @@ public class ComponentTools {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 		        if ("Nimbus".equals(info.getName())) {
 		            UIManager.setLookAndFeel(info.getClassName());
+		            UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+		            defaults.put("Table.showGrid", true);
+		            defaults.put("Table.gridColor", new Color (214,217,223));
 		            break;
 		        }
 		    }
