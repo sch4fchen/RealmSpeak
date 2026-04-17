@@ -29,6 +29,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	protected RealmGameHandler gameHandler;
 	protected ArrayList<RealmComponent> blockees;
+	protected ArrayList<RealmComponent> interrupters;
 
 	protected JPanel tokenPanel;
 	protected JLabel charLabel;
@@ -52,6 +53,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton fatigueButton;
 	protected SingleButton woundButton;
 	protected SingleButton energizeChoiceButton;
+	protected SingleButton playColorChitNowButton;
 	protected SingleButton blockNowButton;
 	protected SingleButton doneTradingButton;
 	protected SingleButton stopFollowingButton;
@@ -260,6 +262,27 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		updateControls();
 	}
+	private void doPlayColorChitNow() {
+		if (interrupters!=null && !interrupters.isEmpty()) {
+			for (RealmComponent target:interrupters) {
+				RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+				getCharacter().addColorChitInterruptDecision(target.getGameObject());
+			}
+			interrupters = null;
+			gameHandler.submitChanges();
+			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
+		}
+		else if (getCharacter().getNeedsPlayColorChitInterruptPhaseDecision()){
+			for (RealmComponent target:getCharacter().checkForBlockingState(true,null)) {
+				RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+				getCharacter().addColorChitInterruptDecision(target.getGameObject());
+			}
+			getCharacter().setNeedsPlayColorChitInterruptPhaseDecision(false);
+			gameHandler.submitChanges();
+			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
+		}
+		updateControls();
+	}
 	private void handleBlockCharacter(RealmComponent rc) {
 		int ret = JOptionPane.showConfirmDialog(
 				this,
@@ -386,6 +409,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		repaint();
 		
 		blockees = getCharacter().checkForBlockingState();
+		interrupters = getCharacter().checkForColorChitInterruptionState();
 		updateControls();
 	}
 	
@@ -1460,6 +1484,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(woundButton, new Dimension(150, 25));
 		singleButtonManager.addButton(woundButton);
 		box.add(woundButton);
+		
+		// Play Color Chit Now Button
+		playColorChitNowButton = new SingleButton("Play Color Chit Now?!",true) {
+			public boolean needsShow() {
+				return getCharacter().getNeedsPlayColorChitInterruptPhaseDecision();
+			}
+		};
+		playColorChitNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		playColorChitNowButton.setVisible(false);
+		ComponentTools.lockComponentSize(playColorChitNowButton, new Dimension(150, 25));
+		playColorChitNowButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				doPlayColorChitNow();
+			}
+		});
+		singleButtonManager.addButton(playColorChitNowButton);
+		box.add(playColorChitNowButton);
 		
 		// Block Now Button
 		blockNowButton = new SingleButton("Block Now?!",true) {

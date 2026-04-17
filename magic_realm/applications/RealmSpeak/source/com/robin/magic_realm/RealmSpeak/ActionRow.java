@@ -415,6 +415,22 @@ public class ActionRow {
 			}
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+		if (hostPrefs.hasPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT)) {
+			TileLocation current = character.getCurrentLocation();
+			int actionsTaken = character.getNumberOfPerformedActionsToday();
+			boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseBeginning() == actionsTaken;
+			character.setColorChitInterruptionActionCountPhaseBeginning(actionsTaken);
+			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptDecisions();
+				new CharacterWrapper(livingCharacter).checkForColorChitInterruptionState(current);
+			}
+			gameHandler.updateCharacterFramesWithoutMap();
+			if (character.getNeedsPlayColorChitInterruptPhaseDecision()) {
+				return;
+			}
+		}
+		
 		completed = true; // the default - can be modified if there are problems
 		
 		if (blankReason==null && !invalid) {
@@ -546,7 +562,18 @@ public class ActionRow {
 		
 			character.addActionPerformedToday(action,getActionState(),result,roller);
 			
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+			if (hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT)) {
+				TileLocation current = character.getCurrentLocation();
+				int actionsTaken = character.getNumberOfPerformedActionsToday();
+				boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseEnd() == actionsTaken;
+				character.setColorChitInterruptionActionCountPhaseEnd(actionsTaken);
+				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+					if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptDecisions();
+					new CharacterWrapper(livingCharacter).checkForColorChitInterruptionState(current);
+				}
+				gameHandler.updateCharacterFramesWithoutMap();
+			}
+			
 			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
 					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();

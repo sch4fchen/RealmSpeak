@@ -291,8 +291,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 				if (current!=null && current.isInClearing()) {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
-						if (!rc.getGameObject().equals(getCharacter().getGameObject())
-								&& (rc.isPlayerControlledLeader())) {
+						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							if (target.isBlocking() && !target.isMinion()) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
@@ -310,11 +309,32 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 	
+	public boolean isAwaitingInterruptionDecision() {
+		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+			blockWarningLabel.setText("");
+			TileLocation current = getCharacter().getCurrentLocation();
+			if (current!=null && current.isInClearing()) {
+				for (RealmComponent rc:current.clearing.getClearingComponents()) {
+					if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
+						CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+						if (target.isBlocking() && !target.isMinion()) {
+							if (!target.hasColorChitInterruptDecision(getCharacter().getGameObject())) {
+								blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
 	public void updateControls() {
 		TileLocation current = getCharacter().getCurrentLocation();
 		
 		boolean waitingForSingleButton = getCharacterFrame().isWaitingForSingleButton();
-		boolean controlsLocked = isAwaitingBlockDecision() || waitingForSingleButton;
+		boolean controlsLocked = isAwaitingBlockDecision() || waitingForSingleButton || isAwaitingInterruptionDecision();
 		
 		boolean playedAnAction = actionRows.size()>0 && !(actionRows.get(0)).isPending();
 		
@@ -418,7 +438,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		};
 		playNextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (!isAwaitingBlockDecision()) {
+				if (!isAwaitingBlockDecision() && !isAwaitingInterruptionDecision()) {
 					playNext(false);
 					getGameHandler().getInspector().redrawMap();
 					updateControls();
@@ -667,10 +687,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (!getCharacter().hasDoneActionsToday() && !getCharacter().getGameObject().hasThisAttribute(Constants.NO_UNHIDE)) {
 			getCharacter().setHidden(false);
 			getCharacter().unhideAllCharacterFollowers();
-		}
-		
-		if (hostPrefs.hasPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT)) {
-			
 		}
 		
 		ar.landCharacterIfNeeded();
@@ -954,7 +970,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue()) {
+		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue() && !isAwaitingInterruptionDecision()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;
