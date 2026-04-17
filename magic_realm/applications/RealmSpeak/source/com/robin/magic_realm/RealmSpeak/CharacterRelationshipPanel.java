@@ -56,6 +56,30 @@ public class CharacterRelationshipPanel extends CharacterFramePanel {
 		panelHeader.setOpaque(true);
 		enemyPanel.add(panelHeader);
 		ComponentTools.lockComponentSize(enemyPanel,100,allChars.size()*18);
+		JButton noneButton = new JButton("none");
+		noneButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				for (GameObject otherCharacter : charNameObjectHash.values()) {
+					if(!otherCharacter.equals(getCharacter().getGameObject())) {
+						getCharacter().setEnemyCharacter(otherCharacter,false);
+					}
+				}
+				updatePanel();
+			}
+		});
+		enemyPanel.add(noneButton);
+		JButton allButton = new JButton("all");
+		allButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				for (GameObject otherCharacter : charNameObjectHash.values()) {
+					if(!otherCharacter.equals(getCharacter().getGameObject())) {
+						getCharacter().setEnemyCharacter(otherCharacter,true);
+					}
+				}
+				updatePanel();
+			}
+		});
+		enemyPanel.add(allButton);
 		for (GameObject aChar : allChars) {
 			if (!aChar.equals(getCharacter().getGameObject())) { // no checkbox option for self
 				if (aChar.hasThisAttribute(Constants.CUSTOM_CHARACTER) && !customCharacters) {

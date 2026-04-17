@@ -1060,6 +1060,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE BEGIN (Magic Realm Basic) - Characters can play a color chit at the beginning of the phase of any character in the same clearing.",false));
 		
 		newOptionPane.setTabHtmlDescription(DENIZEN_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Denizen Rules</font></body></html>");
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS B.1.1-1.4 (Magic Realm Optional) - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));
@@ -1186,6 +1187,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_HIRED_CAPTAINS,"HIRED CAPTAINS (Super Realm Basic) - Hired native leaders record own fame and notoriety.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm Basic) - Pony moves cannot be used for climbing mountains.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,"NO DUPLICATE SPELL RECORDING SPELLS (Super Realm Basic) - Characters cannot record the same spell multiple times.",false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE END - Characters can play a color chit at the end of the phase of any character in the same clearing.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
@@ -1303,6 +1305,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			optionPane.setOption(key,false);
 		}
 		optionPane.setOption(Constants.OPT_BLOCKING_PHASES,true);
+		optionPane.setOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,true);
 		
 		updateWarnings();
 		loadingPrefs = false;

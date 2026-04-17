@@ -669,6 +669,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			getCharacter().unhideAllCharacterFollowers();
 		}
 		
+		if (hostPrefs.hasPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT)) {
+			
+		}
+		
 		ar.landCharacterIfNeeded();
 		
 		GameObject requiredObject = null; // Get this BEFORE doing the action, in case an item is sold during the action
