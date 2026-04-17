@@ -5,6 +5,8 @@ Quest Editor: item editor (from Character editor)
 Quest Editor/Character editor: custom treasure (quest rewards: add, remove, moveToLocation); make all treasure abilities and character abilities available for characters and treasures
 
 Version 1.2.5.6
+NEW FEATURES:
+# Option: Map focus at turn start 
 
 Version 1.2.5.5
 NEW FEATURES:

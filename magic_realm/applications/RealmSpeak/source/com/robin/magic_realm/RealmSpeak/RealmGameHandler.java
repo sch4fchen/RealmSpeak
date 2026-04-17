@@ -2036,7 +2036,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						needSubmit = true;
 						// character.setWantsCombat(getMainFrame().dailyCombatOn(character));
 						frame = new CharacterFrame(this, character, iconSize);
-						frame.centerOnToken();
+						if (isOption(RealmSpeakOptions.MAP_CENTER_ON_CHARACTER)) {
+							frame.centerOnToken();
+						}
 						parent.addFrameToDesktop(frame);
 						String id = character.getGameObject().getStringId();
 						characterFrames.put(id, frame);
@@ -2122,7 +2124,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 							RealmTurnPanel turn = new RealmTurnPanel(frame, game, hostPrefs);
 							needSubmit = true;
 							frame.showYourTurn(turn);
-							getInspector().getMap().centerOn(loc);
+							if(isOption(RealmSpeakOptions.MAP_CENTER_ON_CHARACTER)) {
+								getInspector().getMap().centerOn(loc);
+							}
 							frame.toFront();
 							String id = character.getGameObject().getStringId();
 							characterFrameOrder.remove(id);
@@ -2209,7 +2213,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			CharacterWrapper test = frame.getCharacter();
 			if (test.getGameObject().equals(character.getGameObject())) {
 				frame.toFront();
-				frame.centerOnToken();
+				if (isOption(RealmSpeakOptions.MAP_CENTER_ON_CHARACTER)) {
+					frame.centerOnToken();
+				}
 				String id = character.getGameObject().getStringId();
 				characterFrameOrder.remove(id);
 				characterFrameOrder.add(0, id);
