@@ -9,6 +9,7 @@ NEW FEATURES:
 # Option: Map focus at turn start
 BUGS/ISSUES:
 # Improve Nimbus design
+# Fix assigning guide to underling
 
 Version 1.2.5.5
 NEW FEATURES:

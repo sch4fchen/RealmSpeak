@@ -222,6 +222,9 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 			else {
 				guides.addAll(allGuides);
 			}
+			for (RealmComponent hireling : selectedUnderlings) {
+				guides.remove(hireling);
+			}
 			if (!guides.isEmpty()) {
 				wasQueried = true;
 				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
@@ -333,10 +336,11 @@ public class CharacterHirelingPanel extends CharacterFramePanel {
 					RealmComponent h = RealmComponent.getRealmComponent(heldBy);
 					if (h!=null && h.isPlayerControlledLeader()) {
 						following = h.getMediumIcon();
+					} else {
+						following = IconFactory.findIcon("icons/minus.gif");
 					}
 				}
-				if (realmComponent.isAnyLeader()) {
-					// Leaders never have follow assignments
+				else {
 					following = IconFactory.findIcon("icons/minus.gif");
 				}
 				
