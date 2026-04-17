@@ -1,5 +1,3 @@
-Grid lines (in native relationship frame) disappear when changing to Nimbus theme.
-
 Playing color chit at the beginning of any phase of any character (3rd ed) / at the end of the active character's phase or at the end of the target's spell phase (1st ed) (option: cannot target hidden enemies if not have found hidden enemies)
 	if blocked, phasing is over. no phase start to play color chit
 Quest Editor: custom icons for minor character
