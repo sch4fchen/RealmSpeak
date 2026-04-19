@@ -270,7 +270,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				for (RealmComponent target:interruptions) {
 					getCharacter().addColorChitInterruptPhaseBeginningDecision(target.getGameObject());
 				}
-				RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+				while(true) {
+					MagicChit playedChit = RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+					if (playedChit!=null) {
+						int ret = JOptionPane.showConfirmDialog(this,
+								"Do you want to play another color chit?",
+								getCharacter().getGameObject().getName()+" - Playing Color Chit",
+								JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+						if (ret != JOptionPane.YES_NO_OPTION) {
+							break;
+						}
+					}
+				}
 				character.setNeedsPlayColorChitInterruptPhaseDecision(false,phaseBeginning,phaseEnd);
 				gameHandler.submitChanges();
 				gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
