@@ -833,6 +833,7 @@ public class RealmHostPanel extends JPanel {
 			// First, see if ANY character is day end trading
 			for (GameObject go:activeCharacters) {
 				CharacterWrapper character = new CharacterWrapper(go);
+				if (hostPrefs.hasPref(Constants.OPT_NO_TRADING_FOR_BLOCKED_CHARACTERS) && character.isBlocked()) continue;
 				if (character.getWantsDayEndTrades()) {
 					character.setBlocked(false);
 					character.setDayEndTradingActive(true);

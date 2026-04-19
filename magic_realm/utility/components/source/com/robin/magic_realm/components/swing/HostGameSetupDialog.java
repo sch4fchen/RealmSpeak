@@ -22,6 +22,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String MAIN_TAB = "Game";
 	
 	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
+	private static final String TRADING_TAB = "TRADING";
 	private static final String DENIZEN_RULES_TAB = "Denizen Rules";
 	private static final String ADVANCED_MAGIC_RULES_TAB = "Advanced Magic";
 	private static final String COMBAT_RULES_TAB = "Combat Rules";
@@ -1033,9 +1034,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		String[] exclusiveRandomGen = {Constants.RANDOM_R250_521,Constants.RANDOM_MERSENNE_TWISTER,Constants.RANDOM_ON_THE_FLY};
 		
 		newOptionPane.setTabHtmlDescription(EXTENDING_GAME_SYSTEM_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Extended Game System</font></body></html>");
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ADV_SELLING,"SELLING (Super Realm Advanced) - This includes changes in native trading prices based on the group and using the selling (instead of commerce) table for selling goods.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ADV_CREDIT,"CREDIT (Super Realm Advanced) - This allows for alternative ways to pay for goods and services, utilizing Notoriety and Fame in unique ways beyond just victory requirements.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_NO_7TH_DAY_REGENERATION,"NO 7TH DAY REGENERATION (Super Realm Basic) - Denizens do NOT regenerate at the 7th day of the week.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ALTERNATING_7TH_DAY_MAGIC,"ALTERNATING 7TH DAY MAGIC (Super Realm Basic) - White is supplied on the odd numbered months on Day 7, black magic on the even numbered months of Day 7.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_END_OF_MONTH_REGENERATION,"END OF MONTH REGENERATION (Super Realm Basic) - All denizen regenerate at the end of the month.",false));
@@ -1061,6 +1059,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE BEGIN (Magic Realm Basic) - Characters can play a color chit at the beginning of the phase of any character in the same clearing.",false));
+		
+		newOptionPane.setTabHtmlDescription(TRADING_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Trading</font></body></html>");
+		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
+		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.SR_ADV_SELLING,"SELLING (Super Realm Advanced) - This includes changes in native trading prices based on the group and using the selling (instead of commerce) table for selling goods.",false));
+		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.SR_ADV_CREDIT,"CREDIT (Super Realm Advanced) - This allows for alternative ways to pay for goods and services, utilizing Notoriety and Fame in unique ways beyond just victory requirements.",false));
+		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_NO_TRADING_FOR_BLOCKED_CHARACTERS,"NO TRADING FOR BLOCKED CHARACTERS - Blocked characters cannot trade (at the end of the day).",false));
 		
 		newOptionPane.setTabHtmlDescription(DENIZEN_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Denizen Rules</font></body></html>");
 		newOptionPane.addOption(DENIZEN_RULES_TAB,new GameOption(Constants.OPT_QUIET_MONSTERS,"QUIET MONSTERS B.1.1-1.4 (Magic Realm Optional) - Hidden characters and hirelings do not cause chits to flip, or monsters to be summoned.",false));

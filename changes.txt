@@ -13,6 +13,7 @@ NEW FEATURES:
 # Weapon length on weapon counters and treasure weapons
 # Option: Caracterlist sorting by play order
 # Option: Colored modified stats
+# Option: Blocked characters cannot do end of day trading
 # Followers can leave the map with the guide
 BUGS/ISSUES:
 # Fix asking characters to block a monster
