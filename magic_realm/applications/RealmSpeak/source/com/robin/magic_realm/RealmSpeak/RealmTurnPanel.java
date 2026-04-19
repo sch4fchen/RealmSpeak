@@ -310,18 +310,18 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean isAwaitingInterruptionDecision() {
-		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
 			TileLocation current = getCharacter().getCurrentLocation();
 			if (current!=null && current.isInClearing()) {
 				for (RealmComponent rc:current.clearing.getClearingComponents()) {
 					if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 						CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-						if (target.isBlocking() && !target.isMinion()) {
-							if (!target.hasColorChitInterruptDecision(getCharacter().getGameObject())) {
-								blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
-								return true;
-							}
+						if (target.isBlocking() && !target.isMinion()
+								&& (target.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !target.hasColorChitInterruptPhaseBeginningDecision(getCharacter().getGameObject())
+								|| target.getNeedsPlayColorChitInterruptPhaseEndDecision() && !target.hasColorChitInterruptPhaseEndDecision(getCharacter().getGameObject()))) {
+							blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
+							return true;
 						}
 					}
 				}
@@ -773,7 +773,6 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		TileLocation locationBeforeAction = getCharacter().getCurrentLocation();
 		
 		ar.process();
-		
 		
 		if (fromPlayAll && ar.isCancelled() && ar.getActionId()==ActionId.Move) {
 			// This undoes an invalid move action (sort of)

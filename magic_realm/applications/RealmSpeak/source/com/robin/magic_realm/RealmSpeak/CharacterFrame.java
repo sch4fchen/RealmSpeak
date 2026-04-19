@@ -29,7 +29,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	protected RealmGameHandler gameHandler;
 	protected ArrayList<RealmComponent> blockees;
-	protected ArrayList<RealmComponent> interrupters;
 
 	protected JPanel tokenPanel;
 	protected JLabel charLabel;
@@ -263,25 +262,21 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		updateControls();
 	}
 	private void doPlayColorChitNow() {
-		if (interrupters!=null && !interrupters.isEmpty()) {
-			for (RealmComponent target:interrupters) {
+		boolean phaseBeginning = getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision();
+		boolean phaseEnd = getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
+		if (phaseBeginning||phaseEnd) {
+			ArrayList<RealmComponent> interruptions = character.checkForColorChitInterruptionState(null,phaseBeginning,phaseEnd);
+			if (interruptions!=null && !interruptions.isEmpty()) {
+				for (RealmComponent target:interruptions) {
+					getCharacter().addColorChitInterruptPhaseBeginningDecision(target.getGameObject());
+				}
 				RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
-				getCharacter().addColorChitInterruptDecision(target.getGameObject());
+				character.setNeedsPlayColorChitInterruptPhaseDecision(false,phaseBeginning,phaseEnd);
+				gameHandler.submitChanges();
+				gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 			}
-			interrupters = null;
-			gameHandler.submitChanges();
-			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
+			updateControls();
 		}
-		else if (getCharacter().getNeedsPlayColorChitInterruptPhaseDecision()){
-			for (RealmComponent target:getCharacter().checkForBlockingState(true,null)) {
-				RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
-				getCharacter().addColorChitInterruptDecision(target.getGameObject());
-			}
-			getCharacter().setNeedsPlayColorChitInterruptPhaseDecision(false);
-			gameHandler.submitChanges();
-			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
-		}
-		updateControls();
 	}
 	private void handleBlockCharacter(RealmComponent rc) {
 		int ret = JOptionPane.showConfirmDialog(
@@ -409,7 +404,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		repaint();
 		
 		blockees = getCharacter().checkForBlockingState();
-		interrupters = getCharacter().checkForColorChitInterruptionState();
 		updateControls();
 	}
 	
@@ -1488,7 +1482,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		// Play Color Chit Now Button
 		playColorChitNowButton = new SingleButton("Play Color Chit Now?!",true) {
 			public boolean needsShow() {
-				return getCharacter().getNeedsPlayColorChitInterruptPhaseDecision();
+				return getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
 			}
 		};
 		playColorChitNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));

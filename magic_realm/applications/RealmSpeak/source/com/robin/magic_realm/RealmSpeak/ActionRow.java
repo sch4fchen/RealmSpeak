@@ -422,11 +422,18 @@ public class ActionRow {
 			boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseBeginning() == actionsTaken;
 			character.setColorChitInterruptionActionCountPhaseBeginning(actionsTaken);
 			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-				if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptDecisions();
-				new CharacterWrapper(livingCharacter).checkForColorChitInterruptionState(current);
+				if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptPhaseBeginningDecisions();
+			}
+			if (current.isInClearing()) {
+				for (RealmComponent rc :current.clearing.getClearingComponents()) {
+					if (rc.isPlayerControlledLeader()) {
+						new CharacterWrapper(rc.getGameObject()).checkForColorChitInterruptionState(current,true,false);
+					}
+				}
 			}
 			gameHandler.updateCharacterFramesWithoutMap();
-			if (character.getNeedsPlayColorChitInterruptPhaseDecision()) {
+			ArrayList<RealmComponent> interrupters = character.getPossibleColorChitInterrupters(current,true,false);
+			if (interrupters!=null && !interrupters.isEmpty()) {
 				return;
 			}
 		}
@@ -568,8 +575,14 @@ public class ActionRow {
 				boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseEnd() == actionsTaken;
 				character.setColorChitInterruptionActionCountPhaseEnd(actionsTaken);
 				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-					if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptDecisions();
-					new CharacterWrapper(livingCharacter).checkForColorChitInterruptionState(current);
+					if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptPhaseEndDecisions();
+				}
+				if (current.isInClearing()) {
+					for (RealmComponent rc :current.clearing.getClearingComponents()) {
+						if (rc.isPlayerControlledLeader()) {
+							new CharacterWrapper(rc.getGameObject()).checkForColorChitInterruptionState(current,false,true);
+						}
+					}
 				}
 				gameHandler.updateCharacterFramesWithoutMap();
 			}
