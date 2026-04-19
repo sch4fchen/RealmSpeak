@@ -16,7 +16,9 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.swing.ChitStateViewer;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class CharacterChitPanel extends CharacterFramePanel {
 	protected RealmObjectPanel chitHolderPanel;
@@ -70,14 +72,17 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		boolean followingActive = getCharacter().isFollowingCharacterPlayingTurn();
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
 		if ((playingTurn || followingActive) && !getCharacter().isGone() && getGameHandler().getGame().isDaylight()) {
-			TileLocation tl = getCharacter().getCurrentLocation();
-			if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
-				RealmComponent rc = chitHolderPanel.getSelectedComponent();
-				if (rc!=null && rc.isMagicChit()) {
-					onlyColorMagicChits = true;
-					MagicChit chit = (MagicChit)rc;
-					if (!chit.isColor()) {
-						onlyColorMagicChits = false;
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
+			if (!getCharacter().isBlocked() && !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS)) {
+				TileLocation tl = getCharacter().getCurrentLocation();
+				if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
+					RealmComponent rc = chitHolderPanel.getSelectedComponent();
+					if (rc!=null && rc.isMagicChit()) {
+						onlyColorMagicChits = true;
+						MagicChit chit = (MagicChit)rc;
+						if (!chit.isColor()) {
+							onlyColorMagicChits = false;
+						}
 					}
 				}
 			}

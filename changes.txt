@@ -4,6 +4,8 @@ Version 1.2.5.6
 NEW FEATURES:
 # Option: Map focus at turn start
 # Option: Playing color chit at the beginning or end of another character's turn
+# Option: Blocked characters cannot play color chits at the start of a turn
+# Option: No end of day trading for blocked characters
 BUGS/ISSUES:
 # Improve Nimbus design
 # Fix assigning guide to underling
