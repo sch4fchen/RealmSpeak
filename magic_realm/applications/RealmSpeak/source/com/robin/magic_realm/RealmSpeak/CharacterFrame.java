@@ -280,6 +280,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						if (ret != JOptionPane.YES_NO_OPTION) {
 							break;
 						}
+					} else {
+						break;
 					}
 				}
 				character.setNeedsPlayColorChitInterruptPhaseDecision(false,phaseBeginning,phaseEnd);
