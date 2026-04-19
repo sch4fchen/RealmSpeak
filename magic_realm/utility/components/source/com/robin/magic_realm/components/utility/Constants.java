@@ -891,7 +891,7 @@ public class Constants {
 	public static final String FE_GLORY = "Glory";
 	public static final String FE_HIRED_CAPTAINS = "HiredCaptains";
 	public static final String FE_NO_DUPLICATE_SPELL_RECORDING = "NoDuplicateSpellRecording";
-	public static final String FE_PHASE_END_PLAYING_COLOR_CHIT = "OptPhaseEndPlayingColorChit";
+	public static final String FE_PHASE_END_PLAYING_COLOR_CHIT = "PhaseEndPlayingColorChit";
 	
 	// My House Rules
 	public static final String HOUSE1_DWARF_ACTION = "DwarfActions";

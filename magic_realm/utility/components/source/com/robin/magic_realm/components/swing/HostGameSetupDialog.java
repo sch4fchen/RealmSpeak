@@ -22,7 +22,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String MAIN_TAB = "Game";
 	
 	private static final String EXTENDING_GAME_SYSTEM_TAB = "Game System";
-	private static final String TRADING_TAB = "TRADING";
+	private static final String TRADING_TAB = "Trading";
 	private static final String DENIZEN_RULES_TAB = "Denizen Rules";
 	private static final String ADVANCED_MAGIC_RULES_TAB = "Advanced Magic";
 	private static final String COMBAT_RULES_TAB = "Combat Rules";
