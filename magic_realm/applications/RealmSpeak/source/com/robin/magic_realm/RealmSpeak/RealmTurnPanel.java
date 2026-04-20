@@ -280,6 +280,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return isAwaitingBlockDecision(false,null);
 	}
 	public boolean isAwaitingBlockDecision(boolean interruptMovement, TileLocation loc) {
+		if (getCharacter().getNeedsBlockEvaluation()) return false;
 		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
 			if (!getCharacter().isBlocked() && (interruptMovement || getCharacter().hasDoneActionsToday())) {
@@ -325,6 +326,17 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						}
 					}
 				}
+			}
+		}
+		if (getCharacter().getNeedsBlockEvaluation()) {
+			ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(getCharacter().getGameData());
+			getCharacter().setNeedsBlockEvaluation(false);
+			for (GameObject livingCharacter : livingCharacters) {
+				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
+					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+				}
+				new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
+				getGameHandler().updateCharacterFramesWithoutMap();
 			}
 		}
 		return false;

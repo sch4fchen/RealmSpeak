@@ -104,6 +104,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
 	public static final String NEEDS_BLOCK_DECISION = "_bckdc_";
+	public static final String NEEDS_BLOCK_EVALUATION = "_bckevl_";
 	public static final String INTERRUPT_PHASE_DECISION = "_ipdc_";
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION = "_ccipbdc_";
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipedc_";
@@ -618,6 +619,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean getNeedsBlockDecision() {
 		return getBoolean(NEEDS_BLOCK_DECISION);
+	}
+	public boolean getNeedsBlockEvaluation() {
+		return getBoolean(NEEDS_BLOCK_EVALUATION);
 	}
 	public boolean getNeedsInterruptPhaseDecision() {
 		return getBoolean(INTERRUPT_PHASE_DECISION);
@@ -4012,6 +4016,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setNeedsBlockDecision(boolean val) {
 		setBoolean(NEEDS_BLOCK_DECISION,val);
+	}
+	public void setNeedsBlockEvaluation(boolean val) {
+		setBoolean(NEEDS_BLOCK_EVALUATION,val);
 	}
 	public void setInterruptPhaseDecision(boolean val) {
 		setBoolean(INTERRUPT_PHASE_DECISION,val);
@@ -8442,8 +8449,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
     }
-    public ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
-		ArrayList<RealmComponent> list = null;
+    private ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
+		if (getNeedsBlockEvaluation()) return null;
+    	ArrayList<RealmComponent> list = null;
 		if (isBlocking() && !isMinion()) {
 			TileLocation current;
 			if (loc!=null) {
@@ -8462,7 +8470,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							boolean targetPlayingTurn = target.isPlayingTurn() && (interruptMovement || target.hasDoneActionsToday());
 							// Make sure that either the blocking character is taking a turn, or the target is
-							if (takingTurn || targetPlayingTurn) {
+							if (!target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
 									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
 										// Jeese, ENOUGH conditions to get here!!!!!  :)
@@ -8477,7 +8485,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-    
+
     public ArrayList<RealmComponent> checkForBlockingState() {
     	return checkForBlockingState(false,null);
     }
@@ -8509,7 +8517,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> checkForColorChitInterruptionState(TileLocation loc,boolean phaseBeginnig, boolean phaseEnd) {
 		ArrayList<RealmComponent> interruptions = null;
 		// Check for blocking state
-		if (isBlocking() && !isMinion() && !this.isPlayingTurn()) {
+		if (this.isPlayingTurn() || !isBlocking()) {
+			setNeedsPlayColorChitInterruptPhaseDecision(false,phaseBeginnig,phaseEnd);
+			return null;
+		}
+		if (!isMinion() && !this.isPlayingTurn()) {
 			// Look for characters in the clearing
 			interruptions = getPossibleColorChitInterruptions(loc,phaseBeginnig,phaseEnd);
 			if (interruptions!=null && !interruptions.isEmpty()) {
@@ -8560,7 +8572,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
 					CharacterWrapper otherCharacter = new CharacterWrapper(rc.getGameObject());
-					if (otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+					if (otherCharacter.isBlocking() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
 						if ((phaseBeginnig && !otherCharacter.hasColorChitInterruptPhaseBeginningDecision(getGameObject())) || (phaseEnd && !otherCharacter.hasColorChitInterruptPhaseEndDecision(getGameObject()))) {
 							list.add(rc);
 						}

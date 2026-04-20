@@ -569,12 +569,14 @@ public class ActionRow {
 		
 			character.addActionPerformedToday(action,getActionState(),result,roller);
 			
+			boolean blockEvaluation = true;
 			if (hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT)) {
 				TileLocation current = character.getCurrentLocation();
 				int actionsTaken = character.getNumberOfPerformedActionsToday();
 				boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseEnd() == actionsTaken;
 				character.setColorChitInterruptionActionCountPhaseEnd(actionsTaken);
-				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData());
+				for (GameObject livingCharacter : livingCharacters) {
 					if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptPhaseEndDecisions();
 				}
 				if (current.isInClearing()) {
@@ -585,15 +587,25 @@ public class ActionRow {
 					}
 				}
 				gameHandler.updateCharacterFramesWithoutMap();
+				ArrayList<RealmComponent> interrupters = character.getPossibleColorChitInterrupters(current,false,true);
+				if (interrupters!=null && !interrupters.isEmpty()) {
+					character.setNeedsBlockEvaluation(true);
+					blockEvaluation = false;
+					for (GameObject livingCharacter : livingCharacters) {
+						new CharacterWrapper(livingCharacter).setNeedsBlockDecision(false);
+					}
+				}
 			}
 			
-			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+			if (blockEvaluation) {
+				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+					if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
+						new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+					}
+					new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
 				}
-				new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
+				gameHandler.updateCharacterFramesWithoutMap();
 			}
-			gameHandler.updateCharacterFramesWithoutMap();
 		}
 	}
 	public void updateBlocked(HostPrefWrapper hostPrefs) {
