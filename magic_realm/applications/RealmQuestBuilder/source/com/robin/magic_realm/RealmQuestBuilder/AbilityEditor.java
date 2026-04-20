@@ -16,6 +16,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class AbilityEditor extends GenericEditor {
 	public enum AbilityType {
+		ColorBlocking,
 		ColorSource,
 		DieModification,
 		ExtraAction,
@@ -73,6 +74,9 @@ public class AbilityEditor extends GenericEditor {
 		editPanel = null;
 		JDialog frame = new JDialog();
 		switch(type) {
+			case ColorBlocking:
+				editPanel = new ColorBlockingEditPanel(template,TEMPLATE_ABILITY_BLOCK);
+				break;
 			case ColorSource:
 				editPanel = new ColorSourceEditPanel(template,TEMPLATE_ABILITY_BLOCK);
 				break;

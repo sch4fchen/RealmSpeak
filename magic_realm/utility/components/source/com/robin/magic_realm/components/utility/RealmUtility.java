@@ -1094,12 +1094,28 @@ public class RealmUtility {
 						}
 					}
 				}
-				if (magic && character.getGameObject().hasThisAttribute(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+				if (magic) {
 					ArrayList<ColorMagic> colors = tl.clearing.getAllSourcesOfColor(true);
-					for (String blockingColor : character.getGameObject().getThisAttributeList(Constants.BLOCKED_BY_MAGIC_COLOR)) {
-						for (ColorMagic availableColors : colors) {
-							if (availableColors.getColorName().toLowerCase().matches(blockingColor.toLowerCase())) {
-								blockers.add(RealmComponent.getRealmComponent(character.getGameObject()));
+					if (character.getGameObject().hasThisAttribute(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+						for (String blockingColor : character.getGameObject().getThisAttributeList(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+							for (ColorMagic availableColors : colors) {
+								if (availableColors.getColorName().toLowerCase().matches(blockingColor.toLowerCase())) {
+									blockers.add(RealmComponent.getRealmComponent(character.getGameObject()));
+								}
+							}
+						}
+					}
+					else {
+						ArrayList<GameObject> items = character.getAllActiveInventoryThisKeyAndValue(Constants.BLOCKED_BY_MAGIC_COLOR, null);
+						if (items!=null && !items.isEmpty()) {
+							for (GameObject item : items) {
+								for (String blockingColor : item.getThisAttributeList(Constants.BLOCKED_BY_MAGIC_COLOR)) {
+									for (ColorMagic availableColors : colors) {
+										if (availableColors.getColorName().toLowerCase().matches(blockingColor.toLowerCase())) {
+											blockers.add(RealmComponent.getRealmComponent(item));
+										}
+									}
+								}
 							}
 						}
 					}
