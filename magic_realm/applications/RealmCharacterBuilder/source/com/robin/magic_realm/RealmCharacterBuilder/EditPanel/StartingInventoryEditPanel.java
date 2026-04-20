@@ -162,7 +162,7 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 				remove.add(go);
 			}
 			else {
-				if (!go.hasThisAttribute("weapon")) {
+				if (!go.hasThisAttribute("weapon") || go.hasThisAttribute("treasure")) {
 					go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
 				}
 			}
@@ -198,7 +198,7 @@ public class StartingInventoryEditPanel extends AdvantageEditPanel {
 			go.removeThisAttribute("activated");
 			go.removeThisAttribute("native");
 			go.setThisAttribute(Constants.LEVEL_KEY_TAG,getLevelKey());
-			if (!go.hasThisAttribute("weapon")) {
+			if (!go.hasThisAttribute("weapon") || go.hasThisAttribute("treasure")) {
 				go.setThisAttribute(Constants.FACING_KEY,CardComponent.FACE_UP);
 			}
 			pick = go;
