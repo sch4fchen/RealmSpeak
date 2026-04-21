@@ -73,7 +73,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
 		if ((playingTurn || followingActive) && !getCharacter().isGone() && getGameHandler().getGame().isDaylight()) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
-			if (!getCharacter().isBlocked() && !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS)) {
+			if (!getCharacter().isBlocked() || !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS)) {
 				TileLocation tl = getCharacter().getCurrentLocation();
 				if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
 					RealmComponent rc = chitHolderPanel.getSelectedComponent();
