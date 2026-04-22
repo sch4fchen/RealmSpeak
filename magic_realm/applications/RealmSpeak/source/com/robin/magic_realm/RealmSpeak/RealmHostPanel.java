@@ -144,6 +144,27 @@ public class RealmHostPanel extends JPanel {
 			public void hostModified(GameHostEvent ev) {
 				logger.finer("hostModified");
 				rebuildConnectionList();
+				if (ev.getNotice()==GameHostEvent.NOTICE_PLAYER_LOGIN) {
+					// Clear MIA for the reconnecting player before broadcasting so all clients
+					// immediately see them as online rather than showing (Offline) until their submit arrives
+					String reconnectingPlayer = ev.getServer().getClientName();
+					GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getPlayerCharacterObjects());
+					ArrayList<String> keyVals = new ArrayList<>();
+					keyVals.add(CharacterWrapper.NAME_KEY + "=" + reconnectingPlayer);
+					ArrayList<GameObject> chars = pool.find(keyVals);
+					if (chars != null) {
+						for (GameObject aChar : chars) {
+							CharacterWrapper reconnectedChar = new CharacterWrapper(aChar);
+							reconnectedChar.setMissingInAction(false);
+							ArrayList<GameObject> minions = reconnectedChar.getMinions();
+							if (minions != null) {
+								for (GameObject minion : minions) {
+									new CharacterWrapper(minion).setMissingInAction(false);
+								}
+							}
+						}
+					}
+				}
 				updateGame(); // This should be the only call to this method.
 				if (ev.getNotice()==GameHostEvent.NOTICE_NEW_CONNECTION) {
 					RealmDirectInfoHolder holder;
