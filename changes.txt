@@ -1,4 +1,6 @@
 Version 1.2.5.7
+BUGS/ISSUES:
+# Melt into Mist: cannot block or be blocked by other characters
 
 Version 1.2.5.6
 NEW FEATURES:
