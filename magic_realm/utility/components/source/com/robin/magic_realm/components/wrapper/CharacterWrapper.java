@@ -8550,7 +8550,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 				list = new ArrayList<>();
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
 					if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
-						if (new CharacterWrapper(rc.getGameObject()).isPlayingTurn() && (phaseBeginnig && !hasColorChitInterruptPhaseBeginningDecision(rc.getGameObject())) || (phaseEnd && !hasColorChitInterruptPhaseEndDecision(rc.getGameObject()))) {
+						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
+						if (character.isPlayingTurn() && (phaseBeginnig && !hasColorChitInterruptPhaseBeginningDecision(rc.getGameObject())) || (phaseEnd && !hasColorChitInterruptPhaseEndDecision(rc.getGameObject()))) {
 							list.add(rc);
 						}
 					}
@@ -8570,10 +8571,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			current = getCurrentLocation();
 		}
 		if (current!=null && current.isInClearing()) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 			list = new ArrayList<>();
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
 					CharacterWrapper otherCharacter = new CharacterWrapper(rc.getGameObject());
+					if (otherCharacter.isSleep() && hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) continue;
 					if (otherCharacter.isBlocking() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
 						if ((phaseBeginnig && !otherCharacter.hasColorChitInterruptPhaseBeginningDecision(getGameObject())) || (phaseEnd && !otherCharacter.hasColorChitInterruptPhaseEndDecision(getGameObject()))) {
 							list.add(rc);
