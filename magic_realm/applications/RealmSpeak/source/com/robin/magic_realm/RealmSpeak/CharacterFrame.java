@@ -292,6 +292,19 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 	}
 	private void handleBlockCharacter(RealmComponent rc) {
+		if (getCharacter().isSleep()) {
+			JOptionPane.showMessageDialog(this,"Cannot block if sleeping (affected by Flowers of Rest).","Cannot block",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+			JOptionPane.showMessageDialog(this,"Cannot block characters affected by Blinding Light.","Cannot block",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+		if (getCharacter().isMistLike() || target.isMistLike()) {
+			JOptionPane.showMessageDialog(this,"Cannot block as Melt-into-Mist character or other Melt-into-Mist characters.","Cannot block",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		int ret = JOptionPane.showConfirmDialog(
 				this,
 				"Do you want to block the "+rc.getGameObject().getName()+" ?",
@@ -300,7 +313,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		getCharacter().addBlockDecision(rc.getGameObject());
 		if (ret == JOptionPane.YES_OPTION) {
 			if (rc.isPlayerControlledLeader()) {
-				CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 				target.setBlocked(true);
 				if (target.isHidden()) { // Getting blocked brings them out of hiding
 					target.setHidden(false);

@@ -8452,7 +8452,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     private ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		if (getNeedsBlockEvaluation()) return null;
     	ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isMistLike() && !isMinion()) {
+		if (isBlocking() && !isMistLike() && !isMinion() && !isSleep()) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8470,7 +8470,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							boolean targetPlayingTurn = target.isPlayingTurn() && (interruptMovement || target.hasDoneActionsToday());
 							// Make sure that either the blocking character is taking a turn, or the target is
-							if (!target.isMistLike() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)) {
+							if (!target.isMistLike() && !target.isSleep() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
 									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
 										// Jeese, ENOUGH conditions to get here!!!!!  :)
@@ -8493,7 +8493,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;
 		// Check for blocking state
-		if (isBlocking() && !isMistLike() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
+		if (isBlocking() && !isMistLike() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees(interruptPhase,loc);
 			if (blockees!=null && !blockees.isEmpty()) {

@@ -281,7 +281,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	public boolean isAwaitingBlockDecision(boolean interruptMovement, TileLocation loc) {
 		if (getCharacter().getNeedsBlockEvaluation()) return false;
-		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().isMistLike() && !getCharacter().isMinion() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().isMistLike() && !getCharacter().isMinion() && !getCharacter().isSleep() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
 			if (!getCharacter().isBlocked() && (interruptMovement || getCharacter().hasDoneActionsToday())) {
 				TileLocation current;
@@ -294,7 +294,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							if (target.isBlocking() && !target.isMistLike() && !target.isMinion()) {
+							if (target.isBlocking() && !target.isMistLike() && !target.isMinion() && !target.isSleep()) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
 									if (!target.hasBlockDecision(getCharacter().getGameObject())) {
 										blockWarningLabel.setText(target.getGameObject().getName()+" is blocking.  Awaiting decision...");

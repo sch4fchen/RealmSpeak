@@ -1,3 +1,8 @@
+Optional rule: play color chit, energize only spells on unhidden or found targets
+Optional rule: sleeping character cannot play a color chit (block button and interruption)
+Optional rule: disable buttons if awaiting interrupt decisions
+
+
 Version 1.2.5.7
 BUGS/ISSUES:
 # Melt into Mist: cannot block or be blocked by other characters
