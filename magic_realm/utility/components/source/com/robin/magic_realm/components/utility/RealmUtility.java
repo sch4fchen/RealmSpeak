@@ -733,15 +733,15 @@ public class RealmUtility {
 			System.exit(0);
 		}
 	}
-	public static MagicChit burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character) {
+	public static MagicChit burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character,boolean filterSpellsAimingAtHiddenTargets) {
 		MagicChit colorChit = selectColorMagicChitToFatigue(parent, character);
 		if (colorChit != null) {
-			burnColorChit(parent,game,character,colorChit);
+			burnColorChit(parent,game,character,colorChit,filterSpellsAimingAtHiddenTargets);
 			return colorChit;
 		}
 		return null;
 	}
-	public static void burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character,MagicChit colorChit) {
+	public static void burnColorChit(JFrame parent,GameWrapper game,CharacterWrapper character,MagicChit colorChit,boolean filterSpellsAimingAtHiddenTargets) {
 		// See if we can energize a permanent spell
 		ColorMagic chitColor = colorChit.getColorMagic();
 		ArrayList<SpellWrapper> possSpells = new ArrayList<>();
@@ -751,7 +751,22 @@ public class RealmUtility {
 			if (spell.isInert()) { // only inert spells can be reenergized
 				ColorMagic spellColor = spell.getRequiredColorMagic();
 				if (spellColor==null || spellColor.sameColorAs(chitColor)) {
-					possSpells.add(spell);
+					if (filterSpellsAimingAtHiddenTargets) {
+						boolean canTarget = false;
+						if (spell.getTargets()!=null) {
+							for (RealmComponent target : spell.getTargets()) {
+								if (!target.isHidden() || character.foundHiddenEnemy(target.getGameObject())) {
+									canTarget = true;
+									break;
+								}
+							}
+						}
+						if (spell.getTargets()==null || canTarget) {
+							possSpells.add(spell);
+						}
+					} else {
+						possSpells.add(spell);
+					}
 				}
 			}
 		}

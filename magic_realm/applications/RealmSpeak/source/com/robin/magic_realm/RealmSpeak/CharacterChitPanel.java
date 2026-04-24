@@ -118,7 +118,8 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		ArrayList<String> se = getCharacter().getSpellExtras();
 		int seBefore = se==null?0:se.size();
 		
-		RealmUtility.burnColorChit(getGameHandler().getMainFrame(),getGameHandler().getGame(),getCharacter(),chit);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
+		RealmUtility.burnColorChit(getGameHandler().getMainFrame(),getGameHandler().getGame(),getCharacter(),chit,hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS));
 		
 		if (getCharacterFrame().getTurnPanel()!=null) { // only worry about this if playing a turn
 			se = getCharacter().getSpellExtras();

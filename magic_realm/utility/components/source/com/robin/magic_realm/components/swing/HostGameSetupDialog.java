@@ -1061,6 +1061,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE BEGIN (Magic Realm Basic) - Characters can play a color chit at the beginning of the phase of any character in the same clearing.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS,"NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS - Blocked characters cannot play color chits.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS,"NO COLOR CHIT PLAY FOR SLEEPING CHARACTERS - Sleeping characters cannot play color chits.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS,"NO COLOR CHIT PLAY CANNOT AIM AT HIDDEN TARGETS - When burning a color chit you cannot energize a spell which targets a hidden characters.",false));
 		
 		newOptionPane.setTabHtmlDescription(TRADING_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Trading</font></body></html>");
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));

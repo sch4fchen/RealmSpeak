@@ -271,7 +271,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					getCharacter().addColorChitInterruptPhaseBeginningDecision(target.getGameObject());
 				}
 				while(true) {
-					MagicChit playedChit = RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+					MagicChit playedChit = RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter(),hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS));
 					if (playedChit!=null) {
 						int ret = JOptionPane.showConfirmDialog(this,
 								"Do you want to play another color chit?",
