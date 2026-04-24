@@ -8452,7 +8452,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     private ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		if (getNeedsBlockEvaluation()) return null;
     	ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isMistLike() && !isMinion() && !isSleep()) {
+		if (isBlocking() && !isMistLike() && !isMinion() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8460,6 +8460,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				current = getCurrentLocation();
 			}
 			if (current!=null && current.isInClearing()) {
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 				list = new ArrayList<>();
 				boolean takingTurn = isPlayingTurn() && (interruptMovement || hasDoneActionsToday());
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
@@ -8470,7 +8471,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							boolean targetPlayingTurn = target.isPlayingTurn() && (interruptMovement || target.hasDoneActionsToday());
 							// Make sure that either the blocking character is taking a turn, or the target is
-							if (!target.isMistLike() && !target.isSleep() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)) {
+							if ((!target.isMistLike() || !getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isSleep() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)
+									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
 									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
 										// Jeese, ENOUGH conditions to get here!!!!!  :)

@@ -292,17 +292,25 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 	}
 	private void handleBlockCharacter(RealmComponent rc) {
+		if (((getCharacter().getTransmorph()==null && getCharacter().getGameObject().hasThisAttribute(Constants.SMALL)) || (getCharacter().getTransmorph()!=null && getCharacter().getTransmorph().hasThisAttribute(Constants.SMALL))) && hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+			JOptionPane.showMessageDialog(this,"Small individuals cannot block.","Cannot block - Small",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		if (getCharacter().isSleep()) {
-			JOptionPane.showMessageDialog(this,"Cannot block if sleeping (affected by Flowers of Rest).","Cannot block",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"Cannot block if sleeping (affected by Flowers of Rest).","Cannot block - Flowers of Rest",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
-			JOptionPane.showMessageDialog(this,"Cannot block characters affected by Blinding Light.","Cannot block",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this,"Cannot block characters affected by Blinding Light.","Cannot block - Blinding Light",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-		if (getCharacter().isMistLike() || target.isMistLike()) {
-			JOptionPane.showMessageDialog(this,"Cannot block as Melt-into-Mist character or other Melt-into-Mist characters.","Cannot block",JOptionPane.ERROR_MESSAGE);
+		if (getCharacter().isMistLike() || (target.isMistLike() && !getCharacter().getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
+			JOptionPane.showMessageDialog(this,"Cannot block as Melt-into-Mist character or block other Melt-into-Mist characters.","Cannot block - Melt into Mist",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if (getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) || target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
+			JOptionPane.showMessageDialog(this,"You are affected by the Meditate effect or your target is affected by the Medidate effect.","Cannot block - Medidate effect",JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		int ret = JOptionPane.showConfirmDialog(

@@ -1087,7 +1087,10 @@ public class RealmUtility {
 										}
 									}
 									else if (rc.isNative()) {
-										blockers.add(rc);
+										NativeChitComponent nativeChit = (NativeChitComponent)rc;
+										if (!nativeChit.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+											blockers.add(rc);
+										}
 									}
 								}
 							}
