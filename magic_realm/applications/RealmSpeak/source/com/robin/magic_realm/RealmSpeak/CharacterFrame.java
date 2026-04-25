@@ -493,12 +493,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
 		if (character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block ON");
+			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);
 		}
 		else {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-			blockButton.setToolTipText("Block OFF");
+			blockButton.setToolTipText("Block/Reactions OFF");
 			blockButton.setSelected(false);
 		}
 		unhideButton.setEnabled(character.isHidden());
@@ -1196,7 +1196,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			sideControls.add(dayEndRearrangmentCheckbox);
 			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion());
 			
-			keepBlockingCheckbox = new JCheckBox("Keep Blocking");
+			keepBlockingCheckbox = new JCheckBox("DayStart: Reactions ON");
 			keepBlockingCheckbox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					character.setKeepBlocking(keepBlockingCheckbox.isSelected());
@@ -1672,11 +1672,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		box.add(viewChitsButton);
 		
 		blockButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
-		blockButton.setToolTipText("Block OFF");
+		blockButton.setToolTipText("Block/Reactions OFF");
 		ComponentTools.lockComponentSize(blockButton,39,39);
 		if (character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block ON");
+			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);
 		}
 		blockButton.setFocusable(false);
@@ -1684,12 +1684,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			public void actionPerformed(ActionEvent ev) {
 				if (blockButton.isSelected()) {
 					blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-					blockButton.setToolTipText("Block ON");
+					blockButton.setToolTipText("Block/Reactions ON");
 					character.setBlocking(true);
 				}
 				else {
 					blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-					blockButton.setToolTipText("Block OFF");
+					blockButton.setToolTipText("Block/Reactions OFF");
 					character.setBlocking(false);
 				}
 				gameHandler.submitChanges();
