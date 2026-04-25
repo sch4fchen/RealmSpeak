@@ -508,10 +508,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (!gameHandler.isLocal() && singleButtonManager.hasMandatoryShowing()) SoundUtility.playAttention();
 		actionPanel.updateControls(recordingActions && gameHandler.getGame().getGameStarted() && (!gameHandler.getGame().isGameOver() && !gameHandler.game.getGameEnded()) && !singleButtonManager.hasMandatoryShowing());
 		if (chitPanel != null) {
-			chitPanel.updateControls();
+			if (turnPanel != null && hostPrefs.hasPref(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS)) {
+				chitPanel.updateControls(turnPanel.isAwaitingReactions());
+			} else {
+				chitPanel.updateControls(false);
+			}
 		}
 		if (inventoryPanel != null) {
-			inventoryPanel.updateControls(recordingActions);
+			if (turnPanel != null && hostPrefs.hasPref(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS)) {
+				inventoryPanel.updateControls(recordingActions,turnPanel.isAwaitingReactions());
+			} else {
+				inventoryPanel.updateControls(recordingActions,false);
+			}
 		}
 		if (turnPanel != null) {
 			turnPanel.updateControls();

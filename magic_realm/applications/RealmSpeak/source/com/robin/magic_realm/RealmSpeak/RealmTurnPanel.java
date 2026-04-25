@@ -312,6 +312,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean isAwaitingInterruptionDecision() {
+		return isAwaitingInterruptionDecision(true);
+	}
+	
+	public boolean isAwaitingInterruptionDecision(boolean evaluateBlockingReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
 			TileLocation current = getCharacter().getCurrentLocation();
@@ -329,7 +333,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 		}
-		if (getCharacter().getNeedsBlockEvaluation()) {
+		if (evaluateBlockingReactions && getCharacter().getNeedsBlockEvaluation()) {
 			ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(getCharacter().getGameData());
 			getCharacter().setNeedsBlockEvaluation(false);
 			for (GameObject livingCharacter : livingCharacters) {
@@ -341,6 +345,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		return false;
+	}
+	
+	public boolean isAwaitingReactions() {
+		return isAwaitingBlockDecision(true,null) || isAwaitingInterruptionDecision(false);
 	}
 	
 	public void updateControls() {

@@ -1,9 +1,8 @@
-Optional rule: disable buttons if awaiting interrupt decisions
-
 Version 1.2.5.7
 NEW FEATURES:
 # Option: Played color chit can only energize spells on unhidden or found targets
 # Option: Sleeping character cannot play a color chit
+# Option: Disable inventory actions and color chit play if awaiting reactions
 BUGS/ISSUES:
 # Melt into Mist: cannot block or be blocked by other characters
 # Improve blocking for Melt-into-Mist characters and other effects

@@ -67,7 +67,11 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			box.add(Box.createHorizontalGlue());
 		add(box,"South");
 	}
-	public void updateControls() {
+	public void updateControls(boolean isAwaitingReactions) {
+		if (isAwaitingReactions) {
+			fatigueChitButton.setEnabled(false);
+			return;
+		}
 		boolean onlyColorMagicChits = false;
 		boolean followingActive = getCharacter().isFollowingCharacterPlayingTurn();
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
