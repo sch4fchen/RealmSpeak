@@ -8452,7 +8452,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     private ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		if (getNeedsBlockEvaluation()) return null;
     	ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isMinion()) {
+		if (isBlocking() && !isMistLike() && !isMinion() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8460,6 +8460,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				current = getCurrentLocation();
 			}
 			if (current!=null && current.isInClearing()) {
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 				list = new ArrayList<>();
 				boolean takingTurn = isPlayingTurn() && (interruptMovement || hasDoneActionsToday());
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
@@ -8470,7 +8471,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 							boolean targetPlayingTurn = target.isPlayingTurn() && (interruptMovement || target.hasDoneActionsToday());
 							// Make sure that either the blocking character is taking a turn, or the target is
-							if (!target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)) {
+							if ((!target.isMistLike() || !getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isSleep() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)
+									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
 									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
 										// Jeese, ENOUGH conditions to get here!!!!!  :)
@@ -8493,7 +8495,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;
 		// Check for blocking state
-		if (isBlocking() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
+		if (isBlocking() && !isMistLike() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees(interruptPhase,loc);
 			if (blockees!=null && !blockees.isEmpty()) {
@@ -8548,7 +8550,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 				list = new ArrayList<>();
 				for (RealmComponent rc : current.clearing.getClearingComponents()) {
 					if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
-						if (new CharacterWrapper(rc.getGameObject()).isPlayingTurn() && (phaseBeginnig && !hasColorChitInterruptPhaseBeginningDecision(rc.getGameObject())) || (phaseEnd && !hasColorChitInterruptPhaseEndDecision(rc.getGameObject()))) {
+						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
+						if (character.isPlayingTurn() && (phaseBeginnig && !hasColorChitInterruptPhaseBeginningDecision(rc.getGameObject())) || (phaseEnd && !hasColorChitInterruptPhaseEndDecision(rc.getGameObject()))) {
 							list.add(rc);
 						}
 					}
@@ -8568,10 +8571,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			current = getCurrentLocation();
 		}
 		if (current!=null && current.isInClearing()) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
 			list = new ArrayList<>();
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
 				if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
 					CharacterWrapper otherCharacter = new CharacterWrapper(rc.getGameObject());
+					if (otherCharacter.isSleep() && hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) continue;
 					if (otherCharacter.isBlocking() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
 						if ((phaseBeginnig && !otherCharacter.hasColorChitInterruptPhaseBeginningDecision(getGameObject())) || (phaseEnd && !otherCharacter.hasColorChitInterruptPhaseEndDecision(getGameObject()))) {
 							list.add(rc);

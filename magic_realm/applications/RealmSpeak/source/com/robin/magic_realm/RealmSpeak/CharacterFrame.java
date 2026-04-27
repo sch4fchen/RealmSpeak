@@ -271,7 +271,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					getCharacter().addColorChitInterruptPhaseBeginningDecision(target.getGameObject());
 				}
 				while(true) {
-					MagicChit playedChit = RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter());
+					MagicChit playedChit = RealmUtility.burnColorChit(gameHandler.getMainFrame(),gameHandler.getGame(),getCharacter(),hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS));
 					if (playedChit!=null) {
 						int ret = JOptionPane.showConfirmDialog(this,
 								"Do you want to play another color chit?",
@@ -292,6 +292,27 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 	}
 	private void handleBlockCharacter(RealmComponent rc) {
+		if (((getCharacter().getTransmorph()==null && getCharacter().getGameObject().hasThisAttribute(Constants.SMALL)) || (getCharacter().getTransmorph()!=null && getCharacter().getTransmorph().hasThisAttribute(Constants.SMALL))) && hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
+			JOptionPane.showMessageDialog(this,"Small individuals cannot block.","Cannot block - Small",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if (getCharacter().isSleep()) {
+			JOptionPane.showMessageDialog(this,"Cannot block if sleeping (affected by Flowers of Rest).","Cannot block - Flowers of Rest",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+			JOptionPane.showMessageDialog(this,"Cannot block characters affected by Blinding Light.","Cannot block - Blinding Light",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+		if (getCharacter().isMistLike() || (target.isMistLike() && !getCharacter().getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
+			JOptionPane.showMessageDialog(this,"Cannot block as Melt-into-Mist character or block other Melt-into-Mist characters.","Cannot block - Melt into Mist",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		if (getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) || target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
+			JOptionPane.showMessageDialog(this,"You are affected by the Meditate effect or your target is affected by the Medidate effect.","Cannot block - Medidate effect",JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 		int ret = JOptionPane.showConfirmDialog(
 				this,
 				"Do you want to block the "+rc.getGameObject().getName()+" ?",
@@ -300,7 +321,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		getCharacter().addBlockDecision(rc.getGameObject());
 		if (ret == JOptionPane.YES_OPTION) {
 			if (rc.isPlayerControlledLeader()) {
-				CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 				target.setBlocked(true);
 				if (target.isHidden()) { // Getting blocked brings them out of hiding
 					target.setHidden(false);
@@ -473,12 +493,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
 		if (character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block ON");
+			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);
 		}
 		else {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-			blockButton.setToolTipText("Block OFF");
+			blockButton.setToolTipText("Block/Reactions OFF");
 			blockButton.setSelected(false);
 		}
 		unhideButton.setEnabled(character.isHidden());
@@ -488,10 +508,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (!gameHandler.isLocal() && singleButtonManager.hasMandatoryShowing()) SoundUtility.playAttention();
 		actionPanel.updateControls(recordingActions && gameHandler.getGame().getGameStarted() && (!gameHandler.getGame().isGameOver() && !gameHandler.game.getGameEnded()) && !singleButtonManager.hasMandatoryShowing());
 		if (chitPanel != null) {
-			chitPanel.updateControls();
+			if (turnPanel != null && hostPrefs.hasPref(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS)) {
+				chitPanel.updateControls(turnPanel.isAwaitingReactions());
+			} else {
+				chitPanel.updateControls(false);
+			}
 		}
 		if (inventoryPanel != null) {
-			inventoryPanel.updateControls(recordingActions);
+			if (turnPanel != null && hostPrefs.hasPref(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS)) {
+				inventoryPanel.updateControls(recordingActions,turnPanel.isAwaitingReactions());
+			} else {
+				inventoryPanel.updateControls(recordingActions,false);
+			}
 		}
 		if (turnPanel != null) {
 			turnPanel.updateControls();
@@ -1168,7 +1196,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			sideControls.add(dayEndRearrangmentCheckbox);
 			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion());
 			
-			keepBlockingCheckbox = new JCheckBox("Keep Blocking");
+			keepBlockingCheckbox = new JCheckBox("DayStart: Reactions ON");
 			keepBlockingCheckbox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					character.setKeepBlocking(keepBlockingCheckbox.isSelected());
@@ -1644,11 +1672,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		box.add(viewChitsButton);
 		
 		blockButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
-		blockButton.setToolTipText("Block OFF");
+		blockButton.setToolTipText("Block/Reactions OFF");
 		ComponentTools.lockComponentSize(blockButton,39,39);
 		if (character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block ON");
+			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);
 		}
 		blockButton.setFocusable(false);
@@ -1656,12 +1684,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			public void actionPerformed(ActionEvent ev) {
 				if (blockButton.isSelected()) {
 					blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-					blockButton.setToolTipText("Block ON");
+					blockButton.setToolTipText("Block/Reactions ON");
 					character.setBlocking(true);
 				}
 				else {
 					blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-					blockButton.setToolTipText("Block OFF");
+					blockButton.setToolTipText("Block/Reactions OFF");
 					character.setBlocking(false);
 				}
 				gameHandler.submitChanges();

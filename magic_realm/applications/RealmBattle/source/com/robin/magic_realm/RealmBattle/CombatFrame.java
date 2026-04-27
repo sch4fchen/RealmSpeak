@@ -939,7 +939,7 @@ public class CombatFrame extends JFrame {
 			useColorChitButton = new JButton("Play Color Chit");
 			useColorChitButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					MagicChit colorChit = RealmUtility.burnColorChit(CombatFrame.this,theGame,activeCharacter);
+					MagicChit colorChit = RealmUtility.burnColorChit(CombatFrame.this,theGame,activeCharacter,hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS));
 					if (colorChit!=null) {
 						CombatWrapper combat = new CombatWrapper(activeCharacter.getGameObject());
 						combat.addUsedChit(colorChit.getGameObject());

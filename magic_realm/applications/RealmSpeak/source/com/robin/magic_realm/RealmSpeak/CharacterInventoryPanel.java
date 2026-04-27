@@ -539,7 +539,7 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		}
 		return null;
 	}
-	public void updateControls(boolean recordingActions) {
+	public void updateControls(boolean recordingActions,boolean isAwaitingReactions) {
 		TileLocation current = getCharacter().getCurrentLocation();
 		boolean blocked = getCharacter().isBlocked();
 		boolean partway = current!=null && (current.isBetweenClearings() || current.isBetweenTiles());
@@ -553,13 +553,13 @@ public class CharacterInventoryPanel extends CharacterFramePanel {
 		boolean achar = getCharacter().isCharacter() && getCharacter().isActive();
 		
 		if (dropInventoryButton!=null) {
-			dropInventoryButton.setEnabled(!blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
+			dropInventoryButton.setEnabled(!isAwaitingReactions && !blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
 		}
-		abandonInventoryButton.setEnabled(!blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
-		activateInventoryButton.setEnabled(!blocked && achar && selInv!=null && selInv.canActivate() && rearrangementAllowed && !transmorphed && !partway);
-		deactivateInventoryButton.setEnabled(!blocked && achar && selInv!=null && selInv.canDeactivate() && rearrangementAllowed && !partway);
+		abandonInventoryButton.setEnabled(!isAwaitingReactions && !blocked && selInv!=null && selInv.canDrop() && (playingTurn || birdsongHouseRule || selInv.isNew()) && !partway && !selInv.getRealmComponent().isNativeHorse());
+		activateInventoryButton.setEnabled(!isAwaitingReactions && !blocked && achar && selInv!=null && selInv.canActivate() && rearrangementAllowed && !transmorphed && !partway);
+		deactivateInventoryButton.setEnabled(!isAwaitingReactions && !blocked && achar && selInv!=null && selInv.canDeactivate() && rearrangementAllowed && !partway);
 		if (distributeInventoryButton!=null) {
-			distributeInventoryButton.setEnabled(!blocked && rearrangementAllowed && !partway);
+			distributeInventoryButton.setEnabled(!isAwaitingReactions && !blocked && rearrangementAllowed && !partway);
 		}
 		if (selInv!=null && selInv.getGameObject().hasThisAttribute(RealmComponent.CREDIT)) {
 			activateInventoryButton.setText("Pay Credit");

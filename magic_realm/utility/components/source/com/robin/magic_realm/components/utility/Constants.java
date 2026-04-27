@@ -854,6 +854,9 @@ public class Constants {
 	public static final String OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT = "OptPhaseBeginPlayingColorChit";
 	public static final String OPT_NO_TRADING_FOR_BLOCKED_CHARACTERS = "OptNoTradingForBlockedCharacters";
 	public static final String OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS = "OptNoColorChitForBlockedCharacters";
+	public static final String OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS = "OptNoColorChitForSleepingCharacters";
+	public static final String OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS = "OptColorChitTargetingNoHiddenCharacters";
+	public static final String OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS = "OptDisableActionsWhenAwaitingReactions";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

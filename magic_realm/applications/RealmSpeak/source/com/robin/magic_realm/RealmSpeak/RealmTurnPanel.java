@@ -280,8 +280,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return isAwaitingBlockDecision(false,null);
 	}
 	public boolean isAwaitingBlockDecision(boolean interruptMovement, TileLocation loc) {
-		if (getCharacter().getNeedsBlockEvaluation()) return false;
-		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
+		if (getCharacter().getNeedsBlockEvaluation() || getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return false;
+		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().isMinion() && !getCharacter().isSleep() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
 			if (!getCharacter().isBlocked() && (interruptMovement || getCharacter().hasDoneActionsToday())) {
 				TileLocation current;
@@ -294,7 +294,8 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							if (target.isBlocking() && !target.isMinion()) {
+							if (target.isBlocking() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
+									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
 									if (!target.hasBlockDecision(getCharacter().getGameObject())) {
 										blockWarningLabel.setText(target.getGameObject().getName()+" is blocking.  Awaiting decision...");
@@ -311,6 +312,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean isAwaitingInterruptionDecision() {
+		return isAwaitingInterruptionDecision(true);
+	}
+	
+	public boolean isAwaitingInterruptionDecision(boolean evaluateBlockingReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
 			TileLocation current = getCharacter().getCurrentLocation();
@@ -328,7 +333,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 		}
-		if (getCharacter().getNeedsBlockEvaluation()) {
+		if (evaluateBlockingReactions && getCharacter().getNeedsBlockEvaluation()) {
 			ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(getCharacter().getGameData());
 			getCharacter().setNeedsBlockEvaluation(false);
 			for (GameObject livingCharacter : livingCharacters) {
@@ -340,6 +345,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		}
 		return false;
+	}
+	
+	public boolean isAwaitingReactions() {
+		return isAwaitingBlockDecision(true,null) || isAwaitingInterruptionDecision(false);
 	}
 	
 	public void updateControls() {

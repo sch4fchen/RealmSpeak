@@ -67,21 +67,27 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			box.add(Box.createHorizontalGlue());
 		add(box,"South");
 	}
-	public void updateControls() {
+	public void updateControls(boolean isAwaitingReactions) {
+		if (isAwaitingReactions) {
+			fatigueChitButton.setEnabled(false);
+			return;
+		}
 		boolean onlyColorMagicChits = false;
 		boolean followingActive = getCharacter().isFollowingCharacterPlayingTurn();
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
 		if ((playingTurn || followingActive) && !getCharacter().isGone() && getGameHandler().getGame().isDaylight()) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
 			if (!getCharacter().isBlocked() || !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS)) {
-				TileLocation tl = getCharacter().getCurrentLocation();
-				if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
-					RealmComponent rc = chitHolderPanel.getSelectedComponent();
-					if (rc!=null && rc.isMagicChit()) {
-						onlyColorMagicChits = true;
-						MagicChit chit = (MagicChit)rc;
-						if (!chit.isColor()) {
-							onlyColorMagicChits = false;
+				if (!getCharacter().isSleep() || !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) {
+					TileLocation tl = getCharacter().getCurrentLocation();
+					if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
+						RealmComponent rc = chitHolderPanel.getSelectedComponent();
+						if (rc!=null && rc.isMagicChit()) {
+							onlyColorMagicChits = true;
+							MagicChit chit = (MagicChit)rc;
+							if (!chit.isColor()) {
+								onlyColorMagicChits = false;
+							}
 						}
 					}
 				}
@@ -116,7 +122,8 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		ArrayList<String> se = getCharacter().getSpellExtras();
 		int seBefore = se==null?0:se.size();
 		
-		RealmUtility.burnColorChit(getGameHandler().getMainFrame(),getGameHandler().getGame(),getCharacter(),chit);
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
+		RealmUtility.burnColorChit(getGameHandler().getMainFrame(),getGameHandler().getGame(),getCharacter(),chit,hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS));
 		
 		if (getCharacterFrame().getTurnPanel()!=null) { // only worry about this if playing a turn
 			se = getCharacter().getSpellExtras();

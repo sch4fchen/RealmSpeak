@@ -729,6 +729,9 @@ public class NativeChitComponent extends SquareChitComponent implements BattleCh
 	public boolean isMistLike() {
 		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
+	public boolean isSmall() {
+		return getGameObject().hasThisAttribute(Constants.SMALL);
+	}
 	protected int speedModifier() {
 		int mod = 0;
 		if (getGameObject().hasThisAttribute(Constants.SLOWED)) {
