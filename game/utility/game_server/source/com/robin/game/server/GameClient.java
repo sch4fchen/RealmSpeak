@@ -24,6 +24,11 @@ public abstract class GameClient extends GameNet {
 
 	public enum DisconnectAction { RECONNECT, RESTART, EXIT }
 
+	// PROMOTE-TO-DEFAULT: remove this flag and the setReconnectEnabled/isReconnectEnabled methods,
+	// remove the guard in onDisconnected(), and remove RECONNECT_ON_DISCONNECT from RealmSpeakOptions,
+	// RealmSpeakOptionPanel, and RealmGameHandler when reconnect is stable enough to always be on.
+	private boolean reconnectEnabled = false;
+
 	private static Logger logger = Logger.getLogger(GameClient.class.getName());
 	
 	// Client messages
@@ -146,6 +151,14 @@ public abstract class GameClient extends GameNet {
 	}
 	public boolean isHosting() {
 		return hosting;
+	}
+
+	public void setReconnectEnabled(boolean enabled) {
+		reconnectEnabled = enabled;
+	}
+
+	public boolean isReconnectEnabled() {
+		return reconnectEnabled;
 	}
 
 	public void addChangeListener(ChangeListener listener) {
@@ -418,6 +431,7 @@ public abstract class GameClient extends GameNet {
 	}
 
 	private boolean onDisconnected() {
+		if (!reconnectEnabled) return false;
 		switch (handleDisconnect()) {
 			case RECONNECT:
 				resetForReconnect();
