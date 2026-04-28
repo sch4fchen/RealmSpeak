@@ -157,6 +157,19 @@ public class GameHost {
 		servers.add(server);
 		fireHostModified(new GameHostEvent(this,server,GameHostEvent.NOTICE_NEW_CONNECTION));
 	}
+	public void kickServerForName(String name) {
+		GameServer toKick = null;
+		for (GameServer server : servers) {
+			if (name.equals(server.getClientName())) {
+				toKick = server;
+				break;
+			}
+		}
+		if (toKick != null) {
+			removeServer(toKick);
+			try { toKick.connection.close(); } catch(Exception ex) { }
+		}
+	}
 	public void removeServer(GameServer server) {
 		if (servers.remove(server)) {
 			logger.info("Removing server for client "+server.getClientName());

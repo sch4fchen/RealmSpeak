@@ -28,6 +28,7 @@ public abstract class GameClient extends GameNet {
 	// remove the guard in onDisconnected(), and remove RECONNECT_ON_DISCONNECT from RealmSpeakOptions,
 	// RealmSpeakOptionPanel, and RealmGameHandler when reconnect is stable enough to always be on.
 	private boolean reconnectEnabled = false;
+	private boolean reconnecting = false;
 
 	private static Logger logger = Logger.getLogger(GameClient.class.getName());
 	
@@ -278,6 +279,7 @@ public abstract class GameClient extends GameNet {
 				case SUBMIT_LOGIN:
 					getOutputStream().writeObject(clientName);
 					getOutputStream().writeObject(myIpAddress);
+					getOutputStream().writeBoolean(reconnecting);
 					flush();
 					response = getInputStream().readInt();
 					switch(response) {
@@ -347,6 +349,7 @@ public abstract class GameClient extends GameNet {
 					logger.info("GameClient "+clientName+": logged in");
 					doRequest(new RequestObject(SUBMIT_LOGIN));
 					connected = true;
+					reconnecting = false;
 					fireStateChanged();
 
 					logger.info("GameClient "+clientName+": main loop started");
@@ -425,27 +428,31 @@ public abstract class GameClient extends GameNet {
 
 	private boolean onDisconnected() {
 		if (!reconnectEnabled) return false;
-		switch (handleDisconnect()) {
-			case RECONNECT:
-				resetForReconnect();
-				if (ipAddress != null && !connectSocket()) {
-					JOptionPane.showMessageDialog(null,"Unable to reach server at "+ipAddress+".","Reconnect Failed",JOptionPane.ERROR_MESSAGE);
+		if (!reconnecting) {
+			switch (handleDisconnect()) {
+				case RECONNECT:
+					break;
+				case RESTART:
 					leave = true;
 					connected = false;
 					fireStateChanged();
 					return false;
-				}
-				return true;
-			case RESTART:
-				leave = true;
-				connected = false;
-				fireStateChanged();
-				return false;
-			case EXIT:
-			default:
-				System.exit(0);
-				return false;
+				case EXIT:
+				default:
+					System.exit(0);
+					return false;
+			}
 		}
+		resetForReconnect();
+		if (ipAddress != null && !connectSocket()) {
+			reconnecting = false;
+			JOptionPane.showMessageDialog(null,"Unable to reach server at "+ipAddress+".","Reconnect Failed",JOptionPane.ERROR_MESSAGE);
+			leave = true;
+			connected = false;
+			fireStateChanged();
+			return false;
+		}
+		return true;
 	}
 
 	protected DisconnectAction handleDisconnect() {
@@ -474,6 +481,7 @@ public abstract class GameClient extends GameNet {
 
 	protected void onBeforeReconnect() {}
 	private void resetForReconnect() {
+		reconnecting = true;
 		onBeforeReconnect();
 		in = null;
 		out = null;

@@ -133,10 +133,16 @@ public class GameServer extends GameNet {
 				flush();
 				break;
 			case GameClient.SUBMIT_LOGIN:
-				// expecting a name and an ip
+				// expecting a name, an ip, and a reconnecting flag
 				clientName = (String)getInputStream().readObject();
 				clientIP = (String)getInputStream().readObject();
-				if (host.isNameUnique(this,clientName)) {
+				boolean isReconnecting = getInputStream().readBoolean();
+				boolean nameUnique = host.isNameUnique(this,clientName);
+				if (!nameUnique && isReconnecting) {
+					host.kickServerForName(clientName);
+					nameUnique = true;
+				}
+				if (nameUnique) {
 					hosting = clientName.equals(clientHostName);
 					getOutputStream().writeInt(RESPOND_ACCEPTED);
 					getOutputStream().writeBoolean(hosting);
