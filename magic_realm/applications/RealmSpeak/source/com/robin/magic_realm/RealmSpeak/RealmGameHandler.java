@@ -1159,6 +1159,21 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			public void receiveBroadcast(String key, String message) {
 				handleBroadcast(key, message);
 			}
+
+			public void onBeforeReconnect() {
+				try {
+					SwingUtilities.invokeAndWait(() -> {
+						removeAllCharacterFrames();
+						if (inspector != null) {
+							parent.removeFrameFromDesktop(inspector);
+							inspector = null;
+						}
+					});
+				}
+				catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}
 		};
 		// PROMOTE-TO-DEFAULT: remove this line when reconnect is stable enough to always be on.
 		client.setReconnectEnabled(parent.getRealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.RECONNECT_ON_DISCONNECT, false));

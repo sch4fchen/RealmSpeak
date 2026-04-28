@@ -185,6 +185,11 @@ public class GameData extends ModifyableObject implements Serializable {
 	public boolean getScenarioShuffleQuestDeck() {
 		return scenarioShuffleQuestDeck;
 	}
+	public void clearGameObjects() {
+		gameObjects.clear();
+		gameObjectIDHash.clear();
+		gameObjectNameHash.clear();
+	}
 	public GameObject getGameObject(long id) {
 		return getGameObject(Long.valueOf(id));
 	}

@@ -472,7 +472,9 @@ public abstract class GameClient extends GameNet {
 		return result[0];
 	}
 
+	protected void onBeforeReconnect() {}
 	private void resetForReconnect() {
+		onBeforeReconnect();
 		in = null;
 		out = null;
 		connection = null;
@@ -480,6 +482,7 @@ public abstract class GameClient extends GameNet {
 		dataLoaded = false;
 		requestQueue.clear();
 		waitingSubmit = false;
+		gameData.clearGameObjects();
 		gameData.rebuildChanges();
 		gameData.setTracksChanges(true);
 	}
