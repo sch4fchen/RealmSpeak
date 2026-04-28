@@ -166,7 +166,7 @@ public class GameHost {
 			}
 		}
 		if (toKick != null) {
-			removeServer(toKick);
+			servers.remove(toKick);
 			try { toKick.connection.close(); } catch(Exception ex) { }
 		}
 	}

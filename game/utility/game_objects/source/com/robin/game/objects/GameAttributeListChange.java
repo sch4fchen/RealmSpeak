@@ -101,7 +101,11 @@ public class GameAttributeListChange extends GameObjectChange {
 				}
 				list = new ArrayList<>(list);
 				logger.finer("applyChange to data "+data.getDataId()+":  adding "+addList+" to list "+list);
-				list.addAll(addList);
+				for (String item : addList) {
+					if (!list.contains(item)) {
+						list.add(item);
+					}
+				}
 				logger.finer("applyChange to data "+data.getDataId()+":  resulting list is "+list);
 				go._setAttributeList(blockName,attributeName,list);
 			}
