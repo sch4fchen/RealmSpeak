@@ -15,6 +15,9 @@ public class ZipUtilities {
 	 * @return				An array of File objects, describing what was unzipped
 	 */
 	public static File[] unzip(File zipFile) {
+		return unzip(zipFile, new File(FileUtilities.getFilePathString(zipFile, false, false)));
+	}
+	public static File[] unzip(File zipFile, File destDir) {
 		lastError = null;
 		File[] files = null;
 		try {
@@ -27,9 +30,8 @@ public class ZipUtilities {
 //				System.out.println("Extracting: " + entry);
 				int count;
 				byte data[] = new byte[BUFFER];
-				
-				// write the file to disk, in the same directory as zipFile
-				String filePath = FileUtilities.getFilePathString(zipFile,false,false)+entry.getName();
+
+				String filePath = destDir.getAbsolutePath() + File.separator + entry.getName();
 				fileList.add(new File(filePath));
 				FileOutputStream fos = new FileOutputStream(filePath);
 				dest = new BufferedOutputStream(fos, BUFFER);

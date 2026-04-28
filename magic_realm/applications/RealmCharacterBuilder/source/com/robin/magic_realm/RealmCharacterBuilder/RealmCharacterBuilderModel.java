@@ -2,6 +2,7 @@ package com.robin.magic_realm.RealmCharacterBuilder;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 import javax.imageio.ImageIO;
@@ -540,16 +541,23 @@ public class RealmCharacterBuilderModel {
 		return gameData;
 	}
 	public static RealmCharacterBuilderModel createFromFile(File file) {
-		// load it
-		File[] files = ZipUtilities.unzip(file);
+		// Extract to a unique temp dir so concurrent instances don't collide on shared filenames
+		File tempDir;
+		try {
+			tempDir = Files.createTempDirectory("rschar_").toFile();
+		} catch (IOException ex) {
+			throw new RealmCharacterException("Unable to create temp dir for "+file.getAbsolutePath()+": "+ex);
+		}
+		File[] files = ZipUtilities.unzip(file, tempDir);
 		if (files==null) {
 			throw new RealmCharacterException("Unable to open "+file.getAbsolutePath()+":  "+ZipUtilities.lastError);
 		}
-		
+
 		// Make sure all the files will be deleted no matter what happens
 		for (int i=0;i<files.length;i++) {
 			files[i].deleteOnExit();
 		}
+		tempDir.deleteOnExit();
 		
 		RealmCharacterBuilderModel model = null;
 		// First, get the XML file, so the model can be created
