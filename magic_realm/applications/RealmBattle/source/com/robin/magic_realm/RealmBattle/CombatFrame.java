@@ -1400,9 +1400,11 @@ public class CombatFrame extends JFrame {
 			TileLocation loc = character.getCurrentLocation();
 			boolean hasEnemies = character.getBattlingNativeGroups().size()>0 || characterCombat.getAttackerCount()>0;
 			ArrayList<GameObject> attackers = characterCombat.getAttackers();
+			boolean hasHirelings = false;
 			if (!hasEnemies) {
 				for (RealmComponent hireling : character.getAllHirelings()) {
 					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
+						hasHirelings = true;
 						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
 							attackers.addAll(new CombatWrapper(hireling.getGameObject()).getAttackers());
 							hasEnemies = true;
@@ -1435,12 +1437,12 @@ public class CombatFrame extends JFrame {
 						}
 					}
 				}
-				if (hasEnemies && !hidden && !attackingEnemies && character.getAllHirelings().size()>0) {
+				if (hasHirelings && hasEnemies && !hidden && !attackingEnemies && character.getAllHirelings().size()>0) {
 					warning = "Some of your hirelings are not attacking your enemies. Do you really want to proceed?";
 					warningTitle = "Hirelings not attacking";
 				}
 			} else if (actionState==Constants.COMBAT_ACTIONS) {
-				if (hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
+				if (hasHirelings && hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
 					warning = "You or your hirelings are being attacked and you have taken no action (e.g. casting a spell). Do you really want to proceed?";
 					warningTitle = "No action taken";
 				}
