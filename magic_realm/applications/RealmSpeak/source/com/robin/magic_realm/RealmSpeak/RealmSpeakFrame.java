@@ -2128,8 +2128,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		// Launch a game connection frame
 		realmHostFrame = new RealmHostPanel(host,netConnect);
 		
-		setTitle("Realm Speak"+(netConnect?" (Hosting)":" (Local)"));
-	
 		// This works well, even though it technically doubles the resources on the host machine.
 		// Probably not worth the effort to change, unless memory becomes an issue.
 		String ip = null;
@@ -2208,10 +2206,16 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		if (ip==null) {
 			// Non-network game (local)
 			gameHandler = new RealmGameHandler(this,host,name,pass,ppass,email);
+			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false)) {
+				setTitle(Constants.APPLICATION_NAME+" - "+name+" (Local)");
+			}
 		}
 		else {
 			// Network game (hosting)
 			gameHandler = new RealmGameHandler(this,ip,port,name,pass,ppass,email,hostPlayer);
+			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false)) {
+				setTitle(Constants.APPLICATION_NAME+" - "+name+" @ "+ip+":"+port);
+			}
 		}
 		gameHandler.updateToolbarOptions(realmSpeakOptions.getActionIconState());
 		addFrameToDesktop(gameHandler);

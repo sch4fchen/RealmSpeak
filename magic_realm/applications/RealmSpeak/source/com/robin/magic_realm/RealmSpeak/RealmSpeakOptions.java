@@ -56,6 +56,7 @@ public class RealmSpeakOptions {
 	public static final String AUTO_POSITIONING_ATTACKERS = "autoPositioningAttackers";
 	public static final String CHARACTERLIST_SORTING_BY_PLAY_ORDER = "characterlistSortingByPlayOrder";
 	public static final String ENABLE_SOUND = "enableSound";
+	public static final String SHOW_CONNECTION_INFO = "showConnectionInfo";
 	
 	PreferenceManager options;
 	
