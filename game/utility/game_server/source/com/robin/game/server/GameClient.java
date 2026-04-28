@@ -233,8 +233,7 @@ public abstract class GameClient extends GameNet {
 		ArrayList<GameObjectChange> list;
 		if (!ro.isIdle()) logger.fine("handleResponse "+ro);
 		int response;
-		try {
-			switch(ro.getRequest()) {
+		switch(ro.getRequest()) {
 				case REQUEST_IDLE: // this is the default, if the requestQueue is empty
 					response = getInputStream().readInt();
 					// This is where the client is subverted by the server
@@ -327,12 +326,6 @@ public abstract class GameClient extends GameNet {
 					break;
 			}
 			if (!ro.isIdle()) logger.fine("finished "+ro);
-		}
-		catch(SocketException ex) {
-			leave = true;
-			fireStateChanged();
-			JOptionPane.showMessageDialog(null,"The server was shut down.  Game over!!");
-		}
 	}
 	public void run() {
 		if (connection == null) {
