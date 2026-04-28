@@ -1400,9 +1400,11 @@ public class CombatFrame extends JFrame {
 			TileLocation loc = character.getCurrentLocation();
 			boolean hasEnemies = character.getBattlingNativeGroups().size()>0 || characterCombat.getAttackerCount()>0;
 			ArrayList<GameObject> attackers = characterCombat.getAttackers();
+			boolean hasHirelings = false;
 			if (!hasEnemies) {
 				for (RealmComponent hireling : character.getAllHirelings()) {
 					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
+						hasHirelings = true;
 						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
 							attackers.addAll(new CombatWrapper(hireling.getGameObject()).getAttackers());
 							hasEnemies = true;
@@ -1435,18 +1437,18 @@ public class CombatFrame extends JFrame {
 						}
 					}
 				}
-				if (hasEnemies && !hidden && !attackingEnemies && character.getAllHirelings().size()>0) {
-					warning = "Some of your hirelings are not attacking your enemies. Do you really want to proceed?";
+				if (hasHirelings && hasEnemies && !hidden && !attackingEnemies && character.getAllHirelings().size()>0) {
+					warning = "Some of your hirelings are not attacking your enemies.";
 					warningTitle = "Hirelings not attacking";
 				}
 			} else if (actionState==Constants.COMBAT_ACTIONS) {
-				if (hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
-					warning = "You or your hirelings are being attacked and you have taken no action (e.g. casting a spell). Do you really want to proceed?";
+				if (hasHirelings && hasEnemies && !character.isHidden() && character.isMagicUser() && !changes && castSpellButton.isEnabled()) {
+					warning = "You or your hirelings are being attacked and you have taken no action (e.g. casting a spell).";
 					warningTitle = "No action taken";
 				}
 			} else if (actionState==Constants.COMBAT_ASSIGN) {
 				if (hasEnemies && !character.isHidden() && !characterCombat.hasCastSpell() && RealmComponent.getRealmComponent(character.getGameObject()).getTarget()==null) {
-					warning = "You or your hirelings are being attacked but you are not attacking or casting any spell. Do you really want to proceed?";
+					warning = "You or your hirelings are being attacked but you are not attacking or casting any spell.";
 					warningTitle = "No attack or spell";
 				}
 			} else if (actionState==Constants.COMBAT_POSITIONING) {
@@ -1471,10 +1473,10 @@ public class CombatFrame extends JFrame {
 				}
 				
 				if (characterCombat.getAttackerCount()>0 && !characterCombat.getPlacedAsMove() && !placedManeuver) {
-					warning = "You haven't placed any move chit on a defense box on your own sheet. Do you really want to proceed?";
+					warning = "You haven't placed any move chit on a defense box on your own sheet.";
 					warningTitle = "No maneuver chit placed";
 				}
-				else if (RealmComponent.getRealmComponent(character.getGameObject()).getTarget()!=null) {
+				if (RealmComponent.getRealmComponent(character.getGameObject()).getTarget()!=null) {
 					RealmComponent target1 = RealmComponent.getRealmComponent(character.getGameObject()).getTarget();
 					RealmComponent target2 = RealmComponent.getRealmComponent(character.getGameObject()).get2ndTarget();
 					boolean showAttackWarning = false;
@@ -1484,8 +1486,16 @@ public class CombatFrame extends JFrame {
 					if (!showAttackWarning) {
 						boolean attacksTarget1 = false;
 						boolean attacksTarget2 = false;
+						ArrayList<CombatWrapper> combatChits = new ArrayList<>();
 						for (CharacterActionChitComponent chit : character.getActiveFightChits()) {
 							CombatWrapper combat = new CombatWrapper(chit.getGameObject());
+							combatChits.add(combat);
+						}
+						if (character.getTransmorph()!=null) {
+							CombatWrapper monsterCombat = new CombatWrapper(character.getTransmorph());
+							combatChits.add(monsterCombat);
+						}
+						for (CombatWrapper combat : combatChits) {
 							if (target1!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target1.getGameObject().getStringId())) {
 								attacksTarget1 = true;
 							}
@@ -1506,12 +1516,20 @@ public class CombatFrame extends JFrame {
 						}
 					}
 					if (showAttackWarning) {
-						warning = "You haven't placed any attack chit on your target's sheet. Do you really want to proceed?";
-						warningTitle = "No attack chit placed";
+						String warningAttackChit = "You haven't placed any attack chit on your target's sheet.";
+						String warningTitleAttackChit = "No attack chit placed";
+						if (warning!=null && warningTitle!=null) {
+							warning = warning + " " +warningAttackChit;
+							warningTitle = warningTitle + " AND " + warningTitleAttackChit;
+						} else {
+							warning = warningAttackChit;
+							warningTitle = warningTitleAttackChit;
+						}
 					}
 				}
 			}
 			if (warning!=null && warningTitle!=null) {
+				warning = warning + "  Do you really want to proceed?";
 				int ret = JOptionPane.showConfirmDialog(this,warning,warningTitle,JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,activeCharacter.getIcon());
 				if (ret!=JOptionPane.YES_OPTION) {
 					return;
