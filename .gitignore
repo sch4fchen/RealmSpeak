@@ -222,6 +222,8 @@ game/applications/GameBuilder/ant_build/ant_products/GameBuilder.jar
 magic_realm/applications/RealmSpeak/ant_build/classes/com/robin/magic_realm/RealmSpeak/TileEditFrame$19.class
 *.class
 *.jar
+!products/mail.jar
+!products/activation.jar
 products/RealmSpeak/OptionSets/test1.cfg
 *.hof
 products/RealmSpeak/frame.cfg
