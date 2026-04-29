@@ -148,6 +148,7 @@ public class RealmSpeakOptions {
 		}
 		CustomUiUtility.initColors();
 		SwingUtilities.updateComponentTreeUI(frame);
+		frame.updateConnectionTitle();
 	}
 	private void readFramePreferences() {
 		options = RealmUtility.getRealmSpeakPrefs();

@@ -85,8 +85,12 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	protected GameHost host = null;
 	protected RealmHostPanel realmHostFrame = null;
 	protected RealmGameHandler gameHandler = null;
-	
+
 	protected File lastSaveGame = null;
+
+	private String connectedName = null;
+	private String connectedIp = null;
+	private int connectedPort = 0;
 	
 	protected ArrayList<RealmSpeakInternalFrame> gameControlFrames;
 	protected ArrayList<CharacterFrame> characterFrames;
@@ -2203,23 +2207,37 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	}
 	
 	public void startRealmGameHandler(String ip,int port,String name,String pass,String ppass,String email,boolean hostPlayer) {
+		connectedName = name;
+		connectedIp = ip;
+		connectedPort = port;
 		if (ip==null) {
 			// Non-network game (local)
 			gameHandler = new RealmGameHandler(this,host,name,pass,ppass,email);
-			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false)) {
-				setTitle(Constants.APPLICATION_NAME+" - "+name+" (Local)");
-			}
 		}
 		else {
-			// Network game (hosting)
+			// Network game (remote)
 			gameHandler = new RealmGameHandler(this,ip,port,name,pass,ppass,email,hostPlayer);
-			if (realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false)) {
-				setTitle(Constants.APPLICATION_NAME+" - "+name+" @ "+ip+":"+port);
-			}
 		}
+		updateConnectionTitle();
 		gameHandler.updateToolbarOptions(realmSpeakOptions.getActionIconState());
 		addFrameToDesktop(gameHandler);
 		updateControls();
+	}
+	public void updateConnectionTitle() {
+		boolean showInfo = connectedName != null && realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false);
+		if (showInfo) {
+			if (connectedIp == null) {
+				setTitle(Constants.APPLICATION_NAME+" - "+connectedName+" (Local)");
+			} else {
+				setTitle(Constants.APPLICATION_NAME+" - "+connectedName+" @ "+connectedIp+":"+connectedPort);
+			}
+		} else {
+			setTitle(Constants.APPLICATION_NAME);
+		}
+		CombatFrame combatFrame = CombatFrame.getSingleton();
+		if (combatFrame != null) {
+			combatFrame.updateConnectionTitle(showInfo, connectedIp, connectedPort);
+		}
 	}
 	public void showStatus(String val) {
 		status.setText(val);
@@ -2242,8 +2260,11 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			if (ret!=JOptionPane.YES_OPTION) {
 				return false;
 			}
-			setTitle("Realm Speak");
-			
+			connectedName = null;
+			connectedIp = null;
+			connectedPort = 0;
+			setTitle(Constants.APPLICATION_NAME);
+
 			// Now to kill the game
 			RealmUtility.resetGame();
 			CombatFrame.resetSingleton();
