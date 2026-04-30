@@ -3,6 +3,7 @@ NEW FEATURES:
 # Option: Played color chit can only energize spells on unhidden or found targets
 # Option: Sleeping character cannot play a color chit
 # Option: Disable inventory actions and color chit play if awaiting reactions
+# Changed option: No end of day trading allowed
 BUGS/ISSUES:
 # Melt into Mist: cannot block or be blocked by other characters
 # Improve blocking for Melt-into-Mist characters and other effects
@@ -13,7 +14,6 @@ NEW FEATURES:
 # Option: Map focus at turn start
 # Option: Playing color chit at the beginning or end of another character's turn
 # Option: Blocked characters cannot play color chits at the start of a turn
-# Option: No end of day trading for blocked characters
 BUGS/ISSUES:
 # Improve Nimbus design
 # Fix assigning guide to underling

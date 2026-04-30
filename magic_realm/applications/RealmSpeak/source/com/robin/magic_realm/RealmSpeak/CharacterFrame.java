@@ -1199,7 +1199,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			});
 			sideControls.add(dayEndRearrangmentCheckbox);
-			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion());
+			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion() && !hostPrefs.hasPref(Constants.FE_NO_END_OF_DAY_TRADING));
 			
 			keepBlockingCheckbox = new JCheckBox("DayStart: Reactions ON");
 			keepBlockingCheckbox.addActionListener(new ActionListener() {

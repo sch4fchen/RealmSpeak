@@ -1063,7 +1063,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.SR_ADV_SELLING,"SELLING (Super Realm Advanced) - This includes changes in native trading prices based on the group and using the selling (instead of commerce) table for selling goods.",false));
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.SR_ADV_CREDIT,"CREDIT (Super Realm Advanced) - This allows for alternative ways to pay for goods and services, utilizing Notoriety and Fame in unique ways beyond just victory requirements.",false));
-		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_NO_TRADING_FOR_BLOCKED_CHARACTERS,"NO TRADING FOR BLOCKED CHARACTERS - Blocked characters cannot trade (at the end of the day).",false));
 		
 		newOptionPane.setTabHtmlDescription(REACTIONS_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Reactions</font></body></html>");
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
@@ -1199,6 +1198,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PONY_NO_MOUNTAINS,"PONY NO MOUNTAINS (Super Realm Basic) - Pony moves cannot be used for climbing mountains.", false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_NO_DUPLICATE_SPELL_RECORDING,"NO DUPLICATE SPELL RECORDING SPELLS (Super Realm Basic) - Characters cannot record the same spell multiple times.",false));
 		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE END - Characters can play a color chit at the end of the phase of any character in the same clearing.",false));
+		newOptionPane.addOption(FIRST_EDITION_RULES_TAB,new GameOption(Constants.FE_NO_END_OF_DAY_TRADING,"NO END OF DAY TRADING - Characters cannot trade at the end of the day.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
