@@ -1,6 +1,8 @@
 package com.robin.magic_realm.components.wrapper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Optional;
 
 import javax.swing.JFrame;
@@ -351,6 +353,7 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 	public void deenergizePermanentSpells() {
 		// Make each permanent spell "inert", one at a time
 		boolean didDeenergize = false;
+		ArrayList<SpellWrapper> denergizeSpells = new ArrayList<>();
 		for (SpellWrapper spell:getSpells(PERMANENT_SPELLS)) {
 			if (!spell.isInert()) { // If spell is already inert, then don't deenergize it!
 				// Don't deenergize spells that have an automatic supply of color magic
@@ -359,17 +362,28 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 				}
 				
 				if(!spell.isAlwaysActive()){
-					if (spell.getGameObject().hasThisAttribute(Constants.BREAK_IF_INERT)) {
-						spell.expireSpell();
-					} else {
-						spell.unaffectTargets();
-						spell.makeInert();
-					}
-
+					denergizeSpells.add(spell);
 					didDeenergize = true;
 				}
 			}
 		}
+		Collections.sort(denergizeSpells,new Comparator<SpellWrapper>() {
+			public int compare(SpellWrapper s1,SpellWrapper s2) {				
+				int pos1 = s1.getGameObject().getThisInt("spell_strength");
+				int pos2 = s2.getGameObject().getThisInt("spell_strength");
+				
+				return pos1-pos2;
+			}
+		});
+		for (SpellWrapper spell : denergizeSpells) {
+			if (spell.getGameObject().hasThisAttribute(Constants.BREAK_IF_INERT)) {
+				spell.expireSpell();
+			} else {
+				spell.unaffectTargets();
+				spell.makeInert();
+			}
+		}
+		
 		if (didDeenergize) {
 			// Yes, this is a dangerous recursion, but necessary I think.  If you Absorb Essence, and then activate a Transform
 			// spell, you end up two layers deep in spell wizardry, and this is the only way to guarantee that both are deenergized.
