@@ -6665,7 +6665,20 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return ret;
 	}
 	public ArrayList<MagicChit> getEnchantedArtifacts() {
+		ArrayList<GameObject> itemsToCheck = new ArrayList<>();
+		if (getTransmorph()!=null) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS_TRANSMORPHED)) {
+				SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getGameObject().getGameData());
+				for (SpellWrapper spell:sm.getAffectingSpells(getGameObject())) {
+					if (spell.getGameObject().hasThisAttribute("transmorph")) {
+						itemsToCheck.addAll(spell.getGameObject().getHold());
+					}	
+				}
+			}
+		}
 		ArrayList<MagicChit> ret = new ArrayList<>();
+		itemsToCheck.addAll(getInventory());
 		for(GameObject go:getInventory()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isMagicChit()) {

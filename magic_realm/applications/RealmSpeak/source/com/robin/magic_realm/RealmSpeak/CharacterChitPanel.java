@@ -19,6 +19,8 @@ import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
+import com.robin.magic_realm.components.wrapper.SpellMasterWrapper;
+import com.robin.magic_realm.components.wrapper.SpellWrapper;
 
 public class CharacterChitPanel extends CharacterFramePanel {
 	protected RealmObjectPanel chitHolderPanel;
@@ -96,6 +98,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		fatigueChitButton.setEnabled(onlyColorMagicChits);
 	}
 	public void updatePanel() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
 		// Refresh the chit panel
 		chitHolderPanel.removeAll();
 		ArrayList<StateChitComponent> allChits = getCharacter().getCompleteChitList();
@@ -106,6 +109,19 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			RealmComponent item = RealmComponent.getRealmComponent(go);
 			if (item.isEnchanted()) {
 				chitHolderPanel.add(item);
+			}
+		}
+		if (hostPrefs.hasPref(Constants.OPT_ENHANCED_ARTIFACTS_TRANSMORPHED)) {
+			SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(getCharacter().getGameObject().getGameData());
+			for (SpellWrapper spell:sm.getAffectingSpells(getCharacter().getGameObject())) {
+				if (spell.getGameObject().hasThisAttribute("transmorph")) {
+					for (GameObject go : spell.getGameObject().getHold()) {
+						RealmComponent item = RealmComponent.getRealmComponent(go);
+						if (item.isEnchanted()) {
+							chitHolderPanel.add(item);
+						}
+					}
+				}	
 			}
 		}
 		getCharacterFrame().updateControls();

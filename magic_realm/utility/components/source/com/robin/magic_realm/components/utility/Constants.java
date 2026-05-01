@@ -846,6 +846,7 @@ public class Constants {
 	public static final String OPT_AUTOMATIC_ENCHANTING = "OptAutomaticEnchanting";
 	public static final String OPT_ENHANCED_MAGIC = "OptEnhancedMagic";
 	public static final String OPT_ENHANCED_ARTIFACTS = "OptEnhancedArtifacts";
+	public static final String OPT_ENHANCED_ARTIFACTS_TRANSMORPHED = "OptEnhancedArtifactsTransmorphed";
 	public static final String OPT_POWER_OF_THE_PIT_ATTACK = "OptPowerOfThePitAttack";
 	public static final String OPT_POWER_OF_THE_PIT_DEMON = "OptPowerOfThePitDemon";
 	public static final String OPT_NATIVES_FRIENDLY = "OptNativeFriendly";
