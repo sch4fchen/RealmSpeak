@@ -846,7 +846,9 @@ public class RealmBattle {
 	}
 	
 	public static void autoPositionAttackers(TileLocation location,GameData data) {
-		BattleModel model = buildBattleModel(location,data);
-		model.autoPositioningForAttackers();
+		if (CombatFrame.hasAutoPositioningAttackers()) {
+			BattleModel model = buildBattleModel(location,data);
+			model.autoPositioningForAttackers();
+		}
 	}
 }

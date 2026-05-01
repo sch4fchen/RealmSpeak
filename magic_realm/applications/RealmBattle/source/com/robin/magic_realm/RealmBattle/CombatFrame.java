@@ -192,6 +192,10 @@ public class CombatFrame extends JFrame {
 		return interactiveFrame;
 	}
 	
+	public static boolean hasAutoPositioningAttackers() {
+		return autoPositioningAttackers;
+	}
+	
 	protected static DieRoller ambushRoll = null;
 	protected static RealmComponent ambusher = null;
 	protected static boolean ambushRollAtEndOfCombatRound = false;
