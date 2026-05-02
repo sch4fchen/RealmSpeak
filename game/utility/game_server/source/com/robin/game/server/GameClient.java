@@ -22,8 +22,6 @@ public abstract class GameClient extends GameNet {
 	
 	private static GameClient mostRecentClient = null;
 
-	public enum DisconnectAction { RECONNECT, RESTART, EXIT }
-
 	private static Logger logger = Logger.getLogger(GameClient.class.getName());
 	
 	// Client messages
@@ -45,6 +43,7 @@ public abstract class GameClient extends GameNet {
 	protected ArrayList<RequestObject> requestQueue = new ArrayList<RequestObject>();
 	
 	boolean clientDead = false;
+	boolean unexpectedDisconnect = false;
 
 	protected String clientName;
 	protected String clientPass;
@@ -134,6 +133,18 @@ public abstract class GameClient extends GameNet {
 	}
 	public boolean isConnected() {
 		return connected;
+	}
+	public boolean isClientDead() {
+		return clientDead;
+	}
+	public boolean isUnexpectedDisconnect() {
+		return unexpectedDisconnect;
+	}
+	public void clearUnexpectedDisconnect() {
+		unexpectedDisconnect = false;
+	}
+	public String getIpAddress() {
+		return ipAddress;
 	}
 	public boolean isLeave() {
 		return leave;
@@ -257,8 +268,8 @@ public abstract class GameClient extends GameNet {
 							break;
 						case GameServer.RESPOND_GOODBYE:
 							leave=true;
+							unexpectedDisconnect=true;
 							fireStateChanged();
-							JOptionPane.showMessageDialog(null,"The server was shut down.  Game over!!");
 							logger.fine("Client received goodbye from server");
 							break;
 					}
@@ -317,8 +328,8 @@ public abstract class GameClient extends GameNet {
 		}
 		catch(SocketException ex) {
 			leave = true;
+			unexpectedDisconnect = true;
 			fireStateChanged();
-			JOptionPane.showMessageDialog(null,"The server was shut down.  Game over!!");
 		}
 	}
 	public void run() {
@@ -373,19 +384,27 @@ public abstract class GameClient extends GameNet {
 			catch(SocketTimeoutException ex) {
 				System.err.println("Timed out!");
 				ex.printStackTrace();
-				running = onDisconnected();
+				unexpectedDisconnect = true;
+				connected = false;
+				fireStateChanged();
 			}
 			catch(IOException ex) {
 				ex.printStackTrace();
-				running = onDisconnected();
+				unexpectedDisconnect = true;
+				connected = false;
+				fireStateChanged();
 			}
 			catch(Exception ex) {
 				ex.printStackTrace();
-				running = onDisconnected();
+				unexpectedDisconnect = true;
+				connected = false;
+				fireStateChanged();
 			}
 		}
 
 		clientDead = true;
+
+		 // This ends the thread
 		mostRecentClient = null;
 	}
 
@@ -417,65 +436,6 @@ public abstract class GameClient extends GameNet {
 		return connection != null;
 	}
 
-	private boolean onDisconnected() {
-		switch (handleDisconnect()) {
-			case RECONNECT:
-				resetForReconnect();
-				if (ipAddress != null && !connectSocket()) {
-					JOptionPane.showMessageDialog(null,"Unable to reach server at "+ipAddress+".","Reconnect Failed",JOptionPane.ERROR_MESSAGE);
-					leave = true;
-					connected = false;
-					fireStateChanged();
-					return false;
-				}
-				return true;
-			case RESTART:
-				leave = true;
-				connected = false;
-				fireStateChanged();
-				return false;
-			case EXIT:
-			default:
-				System.exit(0);
-				return false;
-		}
-	}
-
-	protected DisconnectAction handleDisconnect() {
-		final DisconnectAction[] result = {DisconnectAction.EXIT};
-		try {
-			SwingUtilities.invokeAndWait(() -> {
-				Object[] options = {"Reconnect","Restart","Exit"};
-				int choice = JOptionPane.showOptionDialog(
-					null,
-					"Lost connection to server" + (ipAddress != null ? " ("+ipAddress+")" : "") + ".",
-					"Disconnected",
-					JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.WARNING_MESSAGE,
-					null,
-					options,
-					options[0]);
-				if (choice == 0) result[0] = DisconnectAction.RECONNECT;
-				else if (choice == 1) result[0] = DisconnectAction.RESTART;
-			});
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return result[0];
-	}
-
-	private void resetForReconnect() {
-		in = null;
-		out = null;
-		connection = null;
-		connected = false;
-		dataLoaded = false;
-		requestQueue.clear();
-		waitingSubmit = false;
-		gameData.rebuildChanges();
-		gameData.setTracksChanges(true);
-	}
 	private void doRequest(RequestObject ro) throws SocketTimeoutException,Exception {
 		send(ro.getRequest());
 		handleResponse(ro);
