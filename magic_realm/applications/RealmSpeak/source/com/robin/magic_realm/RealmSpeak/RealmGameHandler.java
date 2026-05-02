@@ -94,6 +94,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	protected String lastWeather = null;
 	private String clientPlayerPass;
 	private String clientEmail;
+	private String reconnectIp;
+	private int reconnectPort;
+	private String reconnectName;
+	private String reconnectPass;
 	private ArrayList<String> playerWarned = new ArrayList<>();
 	private boolean addCharacterButtonEnabled = true;
 
@@ -132,6 +136,33 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		setup(null, ip, port, name, pass, RealmLoader.DATA_PATH);
 	}
 
+	public void reconnect() {
+		removeAllCharacterFrames();
+		if (inspector != null) {
+			parent.removeFrameFromDesktop(inspector);
+			inspector = null;
+		}
+		game = null;
+		client = new GameClient(RealmLoader.DATA_PATH, reconnectIp, reconnectName, reconnectPass, reconnectPort) {
+			public void receiveInfoDirect(ArrayList inList) {
+				RealmDirectInfoHolder info = new RealmDirectInfoHolder(client.getGameData(), inList);
+				handleDirectInfo(info);
+			}
+			public void receiveBroadcast(String key, String message) {
+				handleBroadcast(key, message);
+			}
+		};
+		client.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent ev) {
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						updateGameHandler();
+					}
+				});
+			}
+		});
+		client.start();
+	}
 	public void removeAllCharacterFrames() {
 		for (CharacterFrame frame : characterFrames.values()) {
 			parent.removeFrameFromDesktop(frame);
@@ -1150,6 +1181,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	public void setup(GameHost host, String ip, int port, String name, String pass, String dataPath) {
+		this.reconnectIp = ip;
+		this.reconnectPort = port;
+		this.reconnectName = name;
+		this.reconnectPass = pass;
 		client = new GameClient(dataPath, ip, name, pass, port) {
 			public void receiveInfoDirect(ArrayList inList) {
 				RealmDirectInfoHolder info = new RealmDirectInfoHolder(client.getGameData(), inList);
@@ -1196,9 +1231,15 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// }
 
 		if (!client.isConnected()) {
+			if (client.isUnexpectedDisconnect()) {
+				client.clearUnexpectedDisconnect();
+				getMainFrame().setClientDisconnectedUnexpectedly();
+				getMainFrame().showStatus("Disconnected from server — use Network > Reconnect to reconnect.");
+				JOptionPane.showMessageDialog(getMainFrame(), "Disconnected from server.", "Disconnected", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
 			parent.killHandler();
 			if (!client.isLeave()) {
-				// This is bad - need to shut down the game handler
 				JOptionPane.showMessageDialog(getMainFrame(), "No Connection!  Server might be down.  Check that you are using the correct IP Address, and port.", "Server Down", JOptionPane.ERROR_MESSAGE);
 			}
 			return;
