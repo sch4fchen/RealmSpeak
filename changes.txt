@@ -1,4 +1,6 @@
 Version 1.2.5.8
+BUGS/ISSUES:
+# Fix quest information dialog for nimbus design
 
 Version 1.2.5.7
 NEW FEATURES:

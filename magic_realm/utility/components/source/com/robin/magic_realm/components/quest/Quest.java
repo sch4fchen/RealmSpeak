@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import com.robin.game.objects.*;
 import com.robin.general.swing.IconGroup;
+import com.robin.magic_realm.components.CardComponent;
 import com.robin.magic_realm.components.QuestCardComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.requirement.*;
@@ -837,7 +838,7 @@ public class Quest extends GameObjectWrapper {
 		area.setLineWrap(true);
 		area.setEditable(false);
 		area.setOpaque(false);
-		area.setSize(600, 1);
+		area.setSize(600, CardComponent.CARD_HEIGHT);
 		QuestCardComponent card = (QuestCardComponent)RealmComponent.getRealmComponent(quest.getGameObject());
 		ImageIcon icon = null;
 		if (rc==null) {
