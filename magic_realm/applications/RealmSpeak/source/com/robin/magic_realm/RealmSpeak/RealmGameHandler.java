@@ -1278,6 +1278,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 			parent.killHandler();
 			if (!client.isLeave()) {
+				// This is bad - need to shut down the game handler
 				JOptionPane.showMessageDialog(getMainFrame(), "No Connection!  Server might be down.  Check that you are using the correct IP Address, and port.", "Server Down", JOptionPane.ERROR_MESSAGE);
 			}
 			return;
