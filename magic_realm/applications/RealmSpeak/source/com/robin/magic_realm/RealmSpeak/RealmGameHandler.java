@@ -100,6 +100,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	private String reconnectPass;
 	private ArrayList<String> playerWarned = new ArrayList<>();
 	private boolean addCharacterButtonEnabled = true;
+	private boolean disconnectDialogShowing = false;
 
 	// Update listener
 	protected ChangeListener updateFrameListener = new ChangeListener() {
@@ -152,10 +153,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				handleBroadcast(key, message);
 			}
 		};
+		final GameClient reconnectClient = client;
 		client.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
+						if (client != reconnectClient) return;
 						updateGameHandler();
 					}
 				});
@@ -1195,10 +1198,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				handleBroadcast(key, message);
 			}
 		};
+		final GameClient setupClient = client;
 		client.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
+						if (client != setupClient) return;
 						updateGameHandler();
 					}
 				});
@@ -1230,12 +1235,45 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// // empty
 		// }
 
+		if (disconnectDialogShowing) return;
 		if (!client.isConnected()) {
 			if (client.isUnexpectedDisconnect()) {
 				client.clearUnexpectedDisconnect();
-				getMainFrame().setClientDisconnectedUnexpectedly();
+				if (hostPlayer) {
+					return; // host's own client connection broke; game continues, serverLost() handles cleanup
+				}
+				for (CharacterFrame frame : characterFrames.values()) {
+					frame.getCharacter().setMissingInAction(true);
+					frame.repaint();
+				}
+				characterTableModel.rebuild();
+				characterTable.repaint();
 				getMainFrame().showStatus("Disconnected from server — use Network > Reconnect to reconnect.");
-				JOptionPane.showMessageDialog(getMainFrame(), "Disconnected from server.", "Disconnected", JOptionPane.INFORMATION_MESSAGE);
+				Object[] options = {"Reconnect", "Restart", "Exit", "Ok"};
+				disconnectDialogShowing = true;
+				int choice;
+				try {
+					choice = JOptionPane.showOptionDialog(getMainFrame(),
+							"Disconnected from server.",
+							"Disconnected",
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.INFORMATION_MESSAGE,
+							null, options, options[3]);
+				} finally {
+					disconnectDialogShowing = false;
+				}
+				if (choice == 0) {
+					reconnect();
+				} else if (choice == 1) {
+					parent.killHandler();
+				} else if (choice == 2) {
+					System.exit(0);
+				} else {
+					getMainFrame().setClientDisconnectedUnexpectedly();
+				}
+				return;
+			}
+			if (hostPlayer) {
 				return;
 			}
 			parent.killHandler();
