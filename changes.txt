@@ -1,6 +1,8 @@
 Version 1.2.5.8
+NEW FEATURES:
+# Option: Reconnect - enable client reconnect when connection to server has been lost
 BUGS/ISSUES:
-# Fix quest information dialog for nimbus design
+# Fix quest information dialog for Nimbus design
 
 Version 1.2.5.7
 NEW FEATURES:
