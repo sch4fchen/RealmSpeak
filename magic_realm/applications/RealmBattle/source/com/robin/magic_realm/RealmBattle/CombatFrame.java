@@ -227,6 +227,17 @@ public class CombatFrame extends JFrame {
 	public static boolean isSingletonShowing() {
 		return singleton!=null && singleton.isVisible();
 	}
+	public void updateConnectionTitle(boolean showInfo, String ip, int port) {
+		if (showInfo) {
+			if (ip == null) {
+				setTitle("RealmSpeak Combat Frame for " + playerName + " (Local)");
+			} else {
+				setTitle("RealmSpeak Combat Frame for " + playerName + " @ " + ip + ":" + port);
+			}
+		} else {
+			setTitle("RealmSpeak Combat Frame for " + playerName);
+		}
+	}
 	public static CombatFrame getSingleton() {
 		return singleton;
 	}

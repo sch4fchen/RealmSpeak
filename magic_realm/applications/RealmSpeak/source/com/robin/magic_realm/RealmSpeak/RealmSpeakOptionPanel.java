@@ -83,6 +83,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton dailyCombatOnSpellcastersOption;
 	
 	protected JCheckBox enableSoundItem;
+	protected JCheckBox showConnectionInfoOption;
 	protected JSlider adjustVolumeItem;
 	
 	private RealmSpeakFrame mainFrame;
@@ -240,7 +241,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		showCombatNextWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,true));
 		autoPositioningAttackersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.AUTO_POSITIONING_ATTACKERS,false));
 		characterlistSortingByPlayOrder.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHARACTERLIST_SORTING_BY_PLAY_ORDER,true));
-		
+		showConnectionInfoOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false));
+
 		boolean sound = options.getOptions().getBoolean(RealmSpeakOptions.ENABLE_SOUND,true);
 		enableSoundItem.setSelected(sound);
 		adjustVolumeItem.setEnabled(sound);
@@ -285,6 +287,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		options.getOptions().set(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,showCombatNextWarningOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.AUTO_POSITIONING_ATTACKERS,autoPositioningAttackersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.CHARACTERLIST_SORTING_BY_PLAY_ORDER,characterlistSortingByPlayOrder.isSelected());
+		options.getOptions().set(RealmSpeakOptions.SHOW_CONNECTION_INFO,showConnectionInfoOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.ENABLE_SOUND,enableSoundItem.isSelected());
 		mainFrame.saveFramePreferences();
 	}
@@ -644,8 +647,10 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getPopupWindowOptions() {
-		JPanel panel = new JPanel(new GridLayout(9,1));
+		JPanel panel = new JPanel(new GridLayout(10,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Notifications"));
+		showConnectionInfoOption = new JCheckBox("Show connection info in window title");
+		panel.add(showConnectionInfoOption);
 		showHeavyInvWarningOption = new JCheckBox("Show Heavy Inventory Warning");
 		panel.add(showHeavyInvWarningOption);
 		showIncompleteRecordWarningOption = new JCheckBox("Show Incomplete Recording Warning");
