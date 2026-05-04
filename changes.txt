@@ -1,4 +1,6 @@
 Version 1.2.5.8
+NEW FEATURES:
+# Option: Displaying IP address and port in window title
 BUGS/ISSUES:
 # Fix quest information dialog for nimbus design
 

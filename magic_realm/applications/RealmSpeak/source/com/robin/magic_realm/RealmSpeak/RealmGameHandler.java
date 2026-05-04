@@ -2169,7 +2169,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			if (interactiveCharacter != null) {
 				showCharacterFrame(interactiveCharacter);
 				boolean did = CombatFrame.doDisplayInteractive(getMainFrame(), client.getGameData(), client.getClientName(), clientSubmitter, local, isHostPlayer());
-				getMainFrame().updateConnectionTitle();
 				if (!did) {
 					needSubmit = true;
 				}
@@ -2177,7 +2176,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			else {
 				// Observation only mode!
 				CombatFrame.doDisplayObserving(getMainFrame(), client.getGameData(), client.getClientName(), clientSubmitter, local, isHostPlayer());
-				getMainFrame().updateConnectionTitle();
 			}
 		}
 		else {
