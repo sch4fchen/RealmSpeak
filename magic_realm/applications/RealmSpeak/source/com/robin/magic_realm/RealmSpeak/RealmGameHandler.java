@@ -94,8 +94,13 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	protected String lastWeather = null;
 	private String clientPlayerPass;
 	private String clientEmail;
+	private String reconnectIp;
+	private int reconnectPort;
+	private String reconnectName;
+	private String reconnectPass;
 	private ArrayList<String> playerWarned = new ArrayList<>();
 	private boolean addCharacterButtonEnabled = true;
+	private boolean disconnectDialogShowing = false;
 
 	// Update listener
 	protected ChangeListener updateFrameListener = new ChangeListener() {
@@ -132,6 +137,35 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		setup(null, ip, port, name, pass, RealmLoader.DATA_PATH);
 	}
 
+	public void reconnect() {
+		removeAllCharacterFrames();
+		if (inspector != null) {
+			parent.removeFrameFromDesktop(inspector);
+			inspector = null;
+		}
+		game = null;
+		client = new GameClient(RealmLoader.DATA_PATH, reconnectIp, reconnectName, reconnectPass, reconnectPort) {
+			public void receiveInfoDirect(ArrayList inList) {
+				RealmDirectInfoHolder info = new RealmDirectInfoHolder(client.getGameData(), inList);
+				handleDirectInfo(info);
+			}
+			public void receiveBroadcast(String key, String message) {
+				handleBroadcast(key, message);
+			}
+		};
+		final GameClient reconnectClient = client;
+		client.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent ev) {
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						if (client != reconnectClient) return;
+						updateGameHandler();
+					}
+				});
+			}
+		});
+		client.start();
+	}
 	public void removeAllCharacterFrames() {
 		for (CharacterFrame frame : characterFrames.values()) {
 			parent.removeFrameFromDesktop(frame);
@@ -1150,6 +1184,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	}
 
 	public void setup(GameHost host, String ip, int port, String name, String pass, String dataPath) {
+		this.reconnectIp = ip;
+		this.reconnectPort = port;
+		this.reconnectName = name;
+		this.reconnectPass = pass;
 		client = new GameClient(dataPath, ip, name, pass, port) {
 			public void receiveInfoDirect(ArrayList inList) {
 				RealmDirectInfoHolder info = new RealmDirectInfoHolder(client.getGameData(), inList);
@@ -1160,10 +1198,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				handleBroadcast(key, message);
 			}
 		};
+		final GameClient setupClient = client;
 		client.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
+						if (client != setupClient) return;
 						updateGameHandler();
 					}
 				});
@@ -1195,7 +1235,47 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		// // empty
 		// }
 
+		if (disconnectDialogShowing) return;
 		if (!client.isConnected()) {
+			if (client.isUnexpectedDisconnect()) {
+				client.clearUnexpectedDisconnect();
+				if (hostPlayer) {
+					return; // host's own client connection broke; game continues, serverLost() handles cleanup
+				}
+				for (CharacterFrame frame : characterFrames.values()) {
+					frame.getCharacter().setMissingInAction(true);
+					frame.repaint();
+				}
+				characterTableModel.rebuild();
+				characterTable.repaint();
+				getMainFrame().showStatus("Disconnected from server — use Network > Reconnect to reconnect.");
+				Object[] options = {"Reconnect", "Restart", "Exit", "Ok"};
+				disconnectDialogShowing = true;
+				int choice;
+				try {
+					choice = JOptionPane.showOptionDialog(getMainFrame(),
+							"Disconnected from server.",
+							"Disconnected",
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.INFORMATION_MESSAGE,
+							null, options, options[3]);
+				} finally {
+					disconnectDialogShowing = false;
+				}
+				if (choice == 0) {
+					reconnect();
+				} else if (choice == 1) {
+					parent.killHandler();
+				} else if (choice == 2) {
+					System.exit(0);
+				} else {
+					getMainFrame().setClientDisconnectedUnexpectedly();
+				}
+				return;
+			}
+			if (hostPlayer) {
+				return;
+			}
 			parent.killHandler();
 			if (!client.isLeave()) {
 				// This is bad - need to shut down the game handler

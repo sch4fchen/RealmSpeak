@@ -85,6 +85,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	protected GameHost host = null;
 	protected RealmHostPanel realmHostFrame = null;
 	protected RealmGameHandler gameHandler = null;
+	private boolean clientDisconnectedUnexpectedly = false;
 
 	protected File lastSaveGame = null;
 
@@ -124,6 +125,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		protected JMenu networkMenu;
 			protected JCheckBoxMenuItem networkingOption;
 			protected JMenuItem joinNetworkGame;
+			protected JMenuItem reconnectGame;
 			protected JMenuItem dropAllConnections;
 		protected JMenu actionMenu;
 			protected JMenuItem finishActionItem;
@@ -662,6 +664,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		launchRealmViewer.setEnabled(!joinedGame && !gameInProgress);
 		
 		joinNetworkGame.setEnabled(!joinedGame);
+		reconnectGame.setEnabled(clientDisconnectedUnexpectedly && !CombatFrame.isSingletonShowing());
 	}
 	public void updateMenuActions() {
 		CharacterActionControlManager acm = getFrontActionControlManager();
@@ -885,6 +888,20 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 					}
 				});
 			networkMenu.add(joinNetworkGame);
+				reconnectGame = new JMenuItem("Reconnect");
+				reconnectGame.setMnemonic(KeyEvent.VK_R);
+				reconnectGame.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ev) {
+						clientDisconnectedUnexpectedly = false;
+						updateControls();
+						SwingUtilities.invokeLater(new Runnable() {
+							public void run() {
+								gameHandler.reconnect();
+							}
+						});
+					}
+				});
+			networkMenu.add(reconnectGame);
 				dropAllConnections = new JMenuItem("Drop all connections");
 				dropAllConnections.setMnemonic(KeyEvent.VK_D);
 				dropAllConnections.addActionListener(new ActionListener() {
@@ -1988,6 +2005,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		updateWindowMenu();
 		repaint();
 	}
+	public void setClientDisconnectedUnexpectedly() {
+		clientDisconnectedUnexpectedly = true;
+		updateControls();
+	}
 	public void killHandler() {
 		if (gameHandler!=null) {
 			// Remove all character frames
@@ -2207,6 +2228,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	}
 	
 	public void startRealmGameHandler(String ip,int port,String name,String pass,String ppass,String email,boolean hostPlayer) {
+		clientDisconnectedUnexpectedly = false;
 		connectedName = name;
 		connectedIp = ip;
 		connectedPort = port;
@@ -2260,6 +2282,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			if (ret!=JOptionPane.YES_OPTION) {
 				return false;
 			}
+			clientDisconnectedUnexpectedly = false;
 			connectedName = null;
 			connectedIp = null;
 			connectedPort = 0;

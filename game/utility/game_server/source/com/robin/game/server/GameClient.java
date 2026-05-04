@@ -43,6 +43,7 @@ public abstract class GameClient extends GameNet {
 	protected ArrayList<RequestObject> requestQueue = new ArrayList<RequestObject>();
 	
 	boolean clientDead = false;
+	boolean unexpectedDisconnect = false;
 
 	protected String clientName;
 	protected String clientPass;
@@ -132,6 +133,18 @@ public abstract class GameClient extends GameNet {
 	}
 	public boolean isConnected() {
 		return connected;
+	}
+	public boolean isClientDead() {
+		return clientDead;
+	}
+	public boolean isUnexpectedDisconnect() {
+		return unexpectedDisconnect;
+	}
+	public void clearUnexpectedDisconnect() {
+		unexpectedDisconnect = false;
+	}
+	public String getIpAddress() {
+		return ipAddress;
 	}
 	public boolean isLeave() {
 		return leave;
@@ -255,8 +268,8 @@ public abstract class GameClient extends GameNet {
 							break;
 						case GameServer.RESPOND_GOODBYE:
 							leave=true;
+							unexpectedDisconnect=true;
 							fireStateChanged();
-							JOptionPane.showMessageDialog(null,"The server was shut down.  Game over!!");
 							logger.fine("Client received goodbye from server");
 							break;
 					}
@@ -315,8 +328,8 @@ public abstract class GameClient extends GameNet {
 		}
 		catch(SocketException ex) {
 			leave = true;
+			unexpectedDisconnect = true;
 			fireStateChanged();
-			JOptionPane.showMessageDialog(null,"The server was shut down.  Game over!!");
 		}
 	}
 	public void run() {
@@ -400,11 +413,17 @@ public abstract class GameClient extends GameNet {
 		catch(SocketTimeoutException ex) {
 			System.err.println("Timed out!");
 			ex.printStackTrace();
+			unexpectedDisconnect = true;
+			connected = false;
+			fireStateChanged();
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
+			unexpectedDisconnect = true;
+			connected = false;
+			fireStateChanged();
 		}
-		
+
 		clientDead = true;
 		
 		 // This ends the thread
