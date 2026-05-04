@@ -88,6 +88,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	private boolean clientDisconnectedUnexpectedly = false;
 
 	protected File lastSaveGame = null;
+
+	private String connectedName = null;
+	private String connectedIp = null;
+	private int connectedPort = 0;
 	
 	protected ArrayList<RealmSpeakInternalFrame> gameControlFrames;
 	protected ArrayList<CharacterFrame> characterFrames;
@@ -2149,8 +2153,6 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		// Launch a game connection frame
 		realmHostFrame = new RealmHostPanel(host,netConnect);
 		
-		setTitle("Realm Speak"+(netConnect?" (Hosting)":" (Local)"));
-	
 		// This works well, even though it technically doubles the resources on the host machine.
 		// Probably not worth the effort to change, unless memory becomes an issue.
 		String ip = null;
@@ -2227,17 +2229,37 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	
 	public void startRealmGameHandler(String ip,int port,String name,String pass,String ppass,String email,boolean hostPlayer) {
 		clientDisconnectedUnexpectedly = false;
+		connectedName = name;
+		connectedIp = ip;
+		connectedPort = port;
 		if (ip==null) {
 			// Non-network game (local)
 			gameHandler = new RealmGameHandler(this,host,name,pass,ppass,email);
 		}
 		else {
-			// Network game (hosting)
+			// Network game (remote)
 			gameHandler = new RealmGameHandler(this,ip,port,name,pass,ppass,email,hostPlayer);
 		}
+		updateConnectionTitle();
 		gameHandler.updateToolbarOptions(realmSpeakOptions.getActionIconState());
 		addFrameToDesktop(gameHandler);
 		updateControls();
+	}
+	public void updateConnectionTitle() {
+		boolean showInfo = connectedName != null && realmSpeakOptions.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false);
+		if (showInfo) {
+			if (connectedIp == null) {
+				setTitle(Constants.APPLICATION_NAME+" - "+connectedName+" (Local)");
+			} else {
+				setTitle(Constants.APPLICATION_NAME+" - "+connectedName+" @ "+connectedIp+":"+connectedPort);
+			}
+		} else {
+			setTitle(Constants.APPLICATION_NAME);
+		}
+		CombatFrame combatFrame = CombatFrame.getSingleton();
+		if (combatFrame != null) {
+			combatFrame.updateConnectionTitle(showInfo, connectedIp, connectedPort);
+		}
 	}
 	public void showStatus(String val) {
 		status.setText(val);
@@ -2261,7 +2283,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				return false;
 			}
 			clientDisconnectedUnexpectedly = false;
-			setTitle("Realm Speak");
+			connectedName = null;
+			connectedIp = null;
+			connectedPort = 0;
+			setTitle(Constants.APPLICATION_NAME);
 
 			// Now to kill the game
 			RealmUtility.resetGame();
