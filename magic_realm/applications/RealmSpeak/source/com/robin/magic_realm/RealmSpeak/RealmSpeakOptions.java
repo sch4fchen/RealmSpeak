@@ -46,6 +46,7 @@ public class RealmSpeakOptions {
 	public static final String MONSTER_NUMBERS = "monsterNumbers";
 	public static final String CHIT_KILLED_BY = "killedBy";
 	public static final String SETUP_CARD_LAYOUT = "setupCardLayout";
+	public static final String SHOW_CONNECTION_INFO = "showConnectionInfo";
 	public static final String HEAVY_INV_WARNING = "heavyInvWarning";
 	public static final String INCOMPLETE_PHASE_WARNING = "incompletePhaseWarning";
 	public static final String INVALID_PHASE_WARNING = "invalidPhaseWarning";
@@ -56,7 +57,6 @@ public class RealmSpeakOptions {
 	public static final String AUTO_POSITIONING_ATTACKERS = "autoPositioningAttackers";
 	public static final String CHARACTERLIST_SORTING_BY_PLAY_ORDER = "characterlistSortingByPlayOrder";
 	public static final String ENABLE_SOUND = "enableSound";
-	public static final String SHOW_CONNECTION_INFO = "showConnectionInfo";
 	
 	PreferenceManager options;
 	

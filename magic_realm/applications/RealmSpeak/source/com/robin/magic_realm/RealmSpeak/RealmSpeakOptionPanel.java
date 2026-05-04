@@ -68,6 +68,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton showChatLineHeaderPlayerNameOption; 
 	protected JRadioButton showChatLineHeaderBothNameOption; 
 	
+	protected JCheckBox showConnectionInfoOption;
 	protected JCheckBox showHeavyInvWarningOption;
 	protected JCheckBox showIncompleteRecordWarningOption;
 	protected JCheckBox showInvalidRecordWarningOption;
@@ -83,7 +84,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JRadioButton dailyCombatOnSpellcastersOption;
 	
 	protected JCheckBox enableSoundItem;
-	protected JCheckBox showConnectionInfoOption;
 	protected JSlider adjustVolumeItem;
 	
 	private RealmSpeakFrame mainFrame;
@@ -232,6 +232,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		killedByOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_KILLED_BY,false));
 		setupCardLayoutOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT,false));
 		
+		showConnectionInfoOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false));
 		showHeavyInvWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.HEAVY_INV_WARNING,true));
 		showIncompleteRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INCOMPLETE_PHASE_WARNING,true));
 		showInvalidRecordWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.INVALID_PHASE_WARNING,true));
@@ -241,7 +242,6 @@ public class RealmSpeakOptionPanel extends JDialog {
 		showCombatNextWarningOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.COMBAT_NEXT_PHASE_WARNING,true));
 		autoPositioningAttackersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.AUTO_POSITIONING_ATTACKERS,false));
 		characterlistSortingByPlayOrder.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHARACTERLIST_SORTING_BY_PLAY_ORDER,true));
-		showConnectionInfoOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SHOW_CONNECTION_INFO,false));
 
 		boolean sound = options.getOptions().getBoolean(RealmSpeakOptions.ENABLE_SOUND,true);
 		enableSoundItem.setSelected(sound);

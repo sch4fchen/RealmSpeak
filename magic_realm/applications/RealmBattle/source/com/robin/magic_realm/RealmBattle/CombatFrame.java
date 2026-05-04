@@ -230,12 +230,12 @@ public class CombatFrame extends JFrame {
 	public void updateConnectionTitle(boolean showInfo, String ip, int port) {
 		if (showInfo) {
 			if (ip == null) {
-				setTitle("RealmSpeak Combat Frame for " + playerName + " (Local)");
+				setTitle(Constants.APPLICATION_NAME+" Combat Frame for " + playerName + " (Local)");
 			} else {
-				setTitle("RealmSpeak Combat Frame for " + playerName + " @ " + ip + ":" + port);
+				setTitle(Constants.APPLICATION_NAME+" Combat Frame for " + playerName + " @ " + ip + ":" + port);
 			}
 		} else {
-			setTitle("RealmSpeak Combat Frame for " + playerName);
+			setTitle(Constants.APPLICATION_NAME+" Combat Frame for " + playerName);
 		}
 	}
 	public static CombatFrame getSingleton() {
@@ -288,7 +288,7 @@ public class CombatFrame extends JFrame {
 	 * @see #getSingleton(String, ActionListener)
 	 */
 	private CombatFrame(String playerName,ActionListener listener) {
-		super("RealmSpeak Combat Frame for "+playerName);
+		super(Constants.APPLICATION_NAME+" Combat Frame for "+playerName);
 		setIconImage(IconFactory.findIcon("images/combat/combatsummary.gif").getImage());
 		
 		// this will guarantee no lockup... but then dialogs are lying around??
