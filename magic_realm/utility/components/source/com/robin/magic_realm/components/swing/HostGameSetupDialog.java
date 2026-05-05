@@ -3,8 +3,6 @@ package com.robin.magic_realm.components.swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.*;
 
 import javax.swing.*;
@@ -1002,42 +1000,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(optionalWeatherWarning);
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
-			gamePlayBox.add(new JSeparator(JSeparator.HORIZONTAL));
-			Box strictDaylightBox = Box.createHorizontalBox();
-			JButton strictDaylightButton = new JButton("Init Strict Character Interaction Opts");
-			strictDaylightButton.setToolTipText("<html> # Initializes several game settings according to strict 3rd ed Character vs Character interaction rules. #<br>"
-				+ "[Each of the following items may be subsequently overridden in the Reactions Tab before game start.]<br>"
-				+ " * CHECK BLOCKING EACH PHASE: ON<br>"
-				+ " * COLOR CHIT AT PHASE BEGIN: ON<br>"
-				+ " * NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS: ON<br>"
-				+ "<br>"
-				+ "[Each of the following items may be subsequently overridden in Character Windows during play.]<br>"
-				+ " - All characters are set as enemies to all others (so 2+ chars in clearing in Evening will auto-initiate battle.)<br>"
-				+ " - Daily Combat Checkbox: CHECKED<br>"
-				+ " - Day End Trades Checkbox: CHECKED<br>"
-				+ " - DayStart: Reactions ON Checkbox: CHECKED<br>"
-				+ " - Block/Reactions Button: ON</html>");
-			strictDaylightButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent ev) {
-					optionPane.setOption(Constants.OPT_SUSPICIOUS_CHARACTERS, true);
-					optionPane.setOption(Constants.OPT_BLOCKING_PHASES, true);
-					optionPane.setOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT, true);
-					optionPane.setOption(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS, true);
-					madeChanges();
-				}
-			});
-			strictDaylightButton.addMouseListener(new MouseAdapter() {
-				public void mouseEntered(MouseEvent e) {
-					ToolTipManager.sharedInstance().setDismissDelay(30000);
-				}
-				public void mouseExited(MouseEvent e) {
-					ToolTipManager.sharedInstance().setDismissDelay(4000);
-				}
-			});
-			strictDaylightBox.add(Box.createHorizontalGlue());
-			strictDaylightBox.add(strictDaylightButton);
-			strictDaylightBox.add(Box.createHorizontalGlue());
-			gamePlayBox.add(strictDaylightBox);
 		gamePlayBox.setBorder(BorderFactory.createTitledBorder("Game Play Options"));
 		return gamePlayBox;
 	}
@@ -1095,8 +1057,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"(hidden)",false));
-		newOptionPane.getGameOption(Constants.OPT_SUSPICIOUS_CHARACTERS).getPanel().setVisible(false);
 
 		newOptionPane.setTabHtmlDescription(TRADING_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Trading</font></body></html>");
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
@@ -1107,6 +1067,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE BEGIN (Magic Realm Basic) - Characters can play a color chit at the beginning of the phase of any character in the same clearing.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS,"NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS - Blocked characters cannot play color chits.",false));
+		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"SUSPICIOUS CHARACTERS - At game start and when each character joins: All characters set as Enemies to each other (2+ Enemies in a clearing at Evening auto-initiates battle), Daily Combat [CHECK], Day End Trades [CHECK], DayStart Reactions: ON [CHECK], Block/Reactions Button [ON].  [NOTE: This option plus the three above enable strict 3rd edition rules character interactions during Daylight.  Also, these settings can still be contolled in the Character Windows as usual during play.]",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS,"NO COLOR CHIT PLAY FOR SLEEPING CHARACTERS - Sleeping characters cannot play color chits.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS,"NO COLOR CHIT PLAY CANNOT AIM AT HIDDEN TARGETS - When burning a color chit you cannot energize a spell which targets a hidden characters.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS,"DISABLE ACTIONS WHEN AWAITING REACTIONS - Cannot play color chits, activate, deactivate items etc. when waiting for another character to block or playing a color chit.",false));
