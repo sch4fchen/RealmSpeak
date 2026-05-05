@@ -804,9 +804,6 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		game.setPlaceGoldSpecials(false);
 		game.setGameStarted(true);
 		if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS)) {
-			hostPrefs.setPref(Constants.OPT_BLOCKING_PHASES, true);
-			hostPrefs.setPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT, true);
-			hostPrefs.setPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS, true);
 			GamePool pool = getGamePool();
 			ArrayList<GameObject> allChars = pool.find("character");
 			for (int i = 0; i < allChars.size(); i++) {
