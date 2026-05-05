@@ -803,6 +803,23 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		broadcastAttention();
 		game.setPlaceGoldSpecials(false);
 		game.setGameStarted(true);
+		if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS)) {
+			hostPrefs.setPref(Constants.OPT_BLOCKING_PHASES, true);
+			hostPrefs.setPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT, true);
+			hostPrefs.setPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS, true);
+			GamePool pool = getGamePool();
+			ArrayList<GameObject> allChars = pool.find("character");
+			for (int i = 0; i < allChars.size(); i++) {
+				CharacterWrapper cw1 = new CharacterWrapper(allChars.get(i));
+				cw1.setBlocking(true);
+				cw1.setKeepBlocking(true);
+				for (int j = i + 1; j < allChars.size(); j++) {
+					CharacterWrapper cw2 = new CharacterWrapper(allChars.get(j));
+					cw1.setEnemyCharacter(allChars.get(j), true);
+					cw2.setEnemyCharacter(allChars.get(i), true);
+				}
+			}
+		}
 		submitChanges();
 		inspector.getMap().setShowEmbellishments(true);
 		inspector.redrawMap();
@@ -1711,6 +1728,18 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					// No need to send again - it'll get sent quickly enough
 
 					// Done
+					if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS)) {
+						character.setBlocking(true);
+						character.setKeepBlocking(true);
+						ArrayList<GameObject> existingChars = pool.find("character");
+						for (GameObject existing : existingChars) {
+							if (!existing.equals(character.getGameObject())) {
+								CharacterWrapper existingWrapper = new CharacterWrapper(existing);
+								character.setEnemyCharacter(existing, true);
+								existingWrapper.setEnemyCharacter(character.getGameObject(), true);
+							}
+						}
+					}
 					broadcast(character.getGameObject().getName(), "Joins the game.");
 					broadcastSummaryMessage(character.getGameObject().getName() + " joins the game.");
 				}
