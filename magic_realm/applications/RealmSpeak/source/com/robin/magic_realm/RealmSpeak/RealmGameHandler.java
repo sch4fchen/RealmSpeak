@@ -810,8 +810,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			for (int i = 0; i < allChars.size(); i++) {
 				CharacterWrapper cw1 = new CharacterWrapper(allChars.get(i));
 				if (cw1.isMinion()) continue;
-				cw1.setBlocking(true);
-				cw1.setKeepBlocking(true);
+				cw1.setReacting(true);
+				cw1.setKeepReacting(true);
 				cw1.setWantsCombat(true);
 				cw1.setWantsDayEndTrades(true);
 				for (int j = i + 1; j < allChars.size(); j++) {
@@ -1759,8 +1759,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 					// Done
 					if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS) && !character.isMinion()) {
-						character.setBlocking(true);
-						character.setKeepBlocking(true);
+						character.setReacting(true);
+						character.setKeepReacting(true);
 						character.setWantsCombat(true);
 						character.setWantsDayEndTrades(true);
 						ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(client.getGameData());
