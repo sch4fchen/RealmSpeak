@@ -3,6 +3,8 @@ package com.robin.magic_realm.components.swing;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 
 import javax.swing.*;
@@ -1000,7 +1002,42 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			box.add(optionalWeatherWarning);
 			box.add(Box.createHorizontalGlue());
 		gamePlayBox.add(box);
-		
+			gamePlayBox.add(new JSeparator(JSeparator.HORIZONTAL));
+			Box strictDaylightBox = Box.createHorizontalBox();
+			JButton strictDaylightButton = new JButton("Init Strict Character Interaction Opts");
+			strictDaylightButton.setToolTipText("<html> # Initializes several game settings according to strict 3rd ed Character vs Character interaction rules. #<br>"
+				+ "[Each of the following items may be subsequently overridden in the Reactions Tab before game start.]<br>"
+				+ " * CHECK BLOCKING EACH PHASE: ON<br>"
+				+ " * COLOR CHIT AT PHASE BEGIN: ON<br>"
+				+ " * NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS: ON<br>"
+				+ "<br>"
+				+ "[Each of the following items may be subsequently overridden in Character Windows during play.]<br>"
+				+ " - All characters are set as enemies to all others (so 2+ chars in clearing in Evening will auto-initiate battle.)<br>"
+				+ " - Daily Combat Checkbox: CHECKED<br>"
+				+ " - Day End Trades Checkbox: CHECKED<br>"
+				+ " - DayStart: Reactions ON Checkbox: CHECKED<br>"
+				+ " - Block/Reactions Button: ON</html>");
+			strictDaylightButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					optionPane.setOption(Constants.OPT_SUSPICIOUS_CHARACTERS, true);
+					optionPane.setOption(Constants.OPT_BLOCKING_PHASES, true);
+					optionPane.setOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT, true);
+					optionPane.setOption(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS, true);
+					madeChanges();
+				}
+			});
+			strictDaylightButton.addMouseListener(new MouseAdapter() {
+				public void mouseEntered(MouseEvent e) {
+					ToolTipManager.sharedInstance().setDismissDelay(30000);
+				}
+				public void mouseExited(MouseEvent e) {
+					ToolTipManager.sharedInstance().setDismissDelay(4000);
+				}
+			});
+			strictDaylightBox.add(Box.createHorizontalGlue());
+			strictDaylightBox.add(strictDaylightButton);
+			strictDaylightBox.add(Box.createHorizontalGlue());
+			gamePlayBox.add(strictDaylightBox);
 		gamePlayBox.setBorder(BorderFactory.createTitledBorder("Game Play Options"));
 		return gamePlayBox;
 	}
@@ -1058,7 +1095,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.ADV_DROPPING,"DROPPING AND LOSING BELONGINGS A.5 (Magic Realm Advanced) - With this rule, characters have a choice of dropping an item in plain sight (where anyone can find it), or throwing it away (so it can only be found by searching).",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
-		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"STRICT DAYLIGHT INTERACTIONS INIT- Initializes a variety of game settings according to strict 3rd ed Reading of Rules: (1) All chars are set as enemies to all (2+ chars in clearing at evening auto-inits battle.)  (2) Daily Combat, Day End Trades, DayStart: Reactions ON all enabled.  (3) Block/Reactions set ON.  (4) CHECK BLOCKING EACH PHASE: ON.  (5) COLOR CHIT AT PHASE BEGIN: ON.  (6) NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS: ON.  [NOTE: Any of these options may still then be individually set to OFF if desired.]",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"(hidden)",false));
+		newOptionPane.getGameOption(Constants.OPT_SUSPICIOUS_CHARACTERS).getPanel().setVisible(false);
 
 		newOptionPane.setTabHtmlDescription(TRADING_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Trading</font></body></html>");
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
