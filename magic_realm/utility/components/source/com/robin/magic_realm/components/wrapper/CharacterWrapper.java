@@ -112,6 +112,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipedc_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_BEGINNING = "_cciacpa_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_END = "_cciacpe_";
+	// Pre-phase activity flags: NEEDS_PRE_PHASE_ACTIVITY_DECISION marks that a character must resolve their
+	// pre-phase dialog before the phasing character's next action executes. PRE_PHASE_ACTIVITY_ACTION_COUNT
+	// records how many actions the phasing character had performed when the interrupt was triggered, so that
+	// the same action does not trigger a second interrupt if process() is called again while the dialog is open.
+	// Both flags are cleared at day end via clearDaylight() to avoid stale state carrying across days.
 	public static final String NEEDS_PRE_PHASE_ACTIVITY_DECISION = "_ppdc_";
 	public static final String PRE_PHASE_ACTIVITY_ACTION_COUNT = "_ppac_";
 	public static final String PRE_PHASE_NON_PHASING_ACTION_COUNT = "_ppnpac_";

@@ -316,6 +316,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return isAwaitingInterruptionDecision(true);
 	}
 	
+	// isAwaitingPrePhaseDecision() drives the wasAwaitingPrePhase falling-edge auto-advance: it returns true
+	// if any player-controlled leader in the phasing character's clearing still has an unresolved pre-phase
+	// flag. When updateControls() detects a true→false transition (all dialogs resolved), it fires playNext()
+	// via invokeLater so the action executes automatically without requiring the user to click Play Next again.
+	// Only meaningful for the phasing character; non-phasing chars return false immediately.
 	private boolean isAwaitingPrePhaseDecision() {
 		if (!getCharacter().isPlayingTurn()) return false;
 		TileLocation current = getCharacter().getCurrentLocation();
@@ -336,6 +341,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				for (RealmComponent rc:current.clearing.getClearingComponents()) {
 					if (rc.isPlayerControlledLeader()) {
 						CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+						// Pre-phase pending check: if any character in the clearing has an unresolved pre-phase
+						// flag, show a waiting message on the phasing character's frame and treat it as a
+						// locked interruption so Play All is disabled until all dialogs have been dismissed.
 						if (target.getNeedsPrePhaseActivityDecision()) {
 							blockWarningLabel.setText(target.getGameObject().getName()+" - Pre-Phase Activities pending...");
 							return true;
@@ -374,7 +382,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		TileLocation current = getCharacter().getCurrentLocation();
 		
 		boolean waitingForSingleButton = getCharacterFrame().isWaitingForSingleButton();
-		boolean awaitingInterruption = isAwaitingInterruptionDecision(); // always evaluate so blockWarningLabel is updated
+		// isAwaitingInterruptionDecision() is pre-evaluated (not short-circuited by ||) so that blockWarningLabel
+		// is always refreshed on every updateControls() call. If left inside the || expression, a true
+		// waitingForSingleButton would short-circuit the call entirely and the "pending..." label would never
+		// update while a mandatory SingleButton is also active (e.g. during the phasing char's Done button).
+		boolean awaitingInterruption = isAwaitingInterruptionDecision();
+		// REMOVED: isAwaitingBlockDecision() gating — this call and its sister occurrences in isAwaitingReactions(),
+		// the wasAwaitingPrePhase auto-advance guard, the playNextButton listener, and the playAll() loop are all
+		// commented out inline (/*isAwaitingBlockDecision()*/). The method detected pending block decisions set by
+		// the old Block Now button flow. Since blocking is being reimplemented as part of the post-phase dialog
+		// system, all gates on block decisions are disabled until that work is complete.
 		boolean controlsLocked = /*isAwaitingBlockDecision() ||*/ waitingForSingleButton || awaitingInterruption;
 		
 		boolean playedAnAction = actionRows.size()>0 && !(actionRows.get(0)).isPending();
@@ -426,6 +443,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (playNextButton.isEnabled()) makeDefault(playNextButton);
 		if (finishedPlayButton.isEnabled()) makeDefault(finishedPlayButton);
 		
+//		// REMOVED: Follower wait timer — when a character was being followed by another player, Play Next
+//		// was disabled and relabelled "Wait...." for 5 seconds to give the follower's Stop Following button
+//		// time to appear and be clicked before the leader's action executed. This artificial delay is
+//		// replaced by the pre-phase dialog system, which explicitly notifies followers and waits for their
+//		// dialog to be resolved before the action proceeds. The timer and activatePlayNextListener are kept
+//		// in the class but this activation block is commented out.
 //		if (playNextButton.isEnabled() && beingFollowedByOtherPlayers) {
 //			playNextButton.setText("Wait....");
 //			playNextButton.setEnabled(false);

@@ -264,6 +264,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		updateControls();
 	}
+	// doPrePhaseActivities() is the shared resolution point for both phasing and non-phasing characters.
+	// For non-phasing characters it shows a modal dialog (they can only click OK for now; future content
+	// will add stop-following and color-chit-play controls). For the phasing character there is no dialog
+	// here — they use the non-modal prePhaseActivityDoneButton instead and call this directly on click.
+	// After clearing the caller's own flag, if the caller is the phasing character, it walks the clearing
+	// and sets the flag on each qualifying non-phasing character, triggering their dialogs in sequence.
 	private void doPrePhaseActivities() {
 		if (!getCharacter().isPlayingTurn()) {
 			JOptionPane.showMessageDialog(this,
@@ -472,6 +478,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		
 		blockees = getCharacter().checkForBlockingState();
 		updateControls();
+		// Auto-show hook for non-phasing characters: when a non-phasing character's flag is set by the
+		// phasing character's doPrePhaseActivities(), updateCharacter() detects it here and queues a modal
+		// dialog via invokeLater so the current call stack (process()) can return first. The prePhaseDialogShowing
+		// guard prevents stacking multiple invokeLater callbacks if updateCharacter() fires again before the
+		// dialog closes. Phasing characters are excluded (isPlayingTurn() check) — they use the button instead.
 		if (getCharacter().getNeedsPrePhaseActivityDecision() && !getCharacter().isPlayingTurn() && !prePhaseDialogShowing) {
 			prePhaseDialogShowing = true;
 			SwingUtilities.invokeLater(() -> {
@@ -1584,7 +1595,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		singleButtonManager.addButton(woundButton);
 		box.add(woundButton);
 		
-//		// Play Color Chit Now Button
+//		// REMOVED: Play Color Chit Now Button — was triggered by the old per-character color-chit interrupt
+//		// mechanism (OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT / FE_PHASE_END_PLAYING_COLOR_CHIT). It showed when
+//		// getNeedsPlayColorChitInterruptPhaseBeginningDecision() or ...PhaseEnd...() was true and let the
+//		// player burn a color chit mid-phase. Now that pre-phase color chit play is handled by the new
+//		// pre-phase dialog system, this button is superseded. Re-enable if the old interrupt path is restored.
 //		playColorChitNowButton = new SingleButton("Play Color Chit Now?!",true) {
 //			public boolean needsShow() {
 //				return getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
@@ -1602,6 +1617,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 //		box.add(playColorChitNowButton);
 
 //		// Block Now Button
+//		// REMOVED: Block Now Button — was shown when getNeedsBlockDecision() or getNeedsInterruptPhaseDecision()
+//		// was true, allowing a character with Blocking ON to declare a block after any phase in their clearing.
+//		// The old system set those flags in RealmTurnPanel.isAwaitingBlockDecision() and cleared them via
+//		// removeAllBlockDecisions(). Blocking is being reimplemented as part of the post-phase dialog system;
+//		// this button and its isAwaitingBlockDecision() gate calls are all commented out pending that work.
 //		blockNowButton = new SingleButton("Block Now?!",true) {
 //			public boolean needsShow() {
 //				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptPhaseDecision();
@@ -1618,7 +1638,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 //		singleButtonManager.addButton(blockNowButton);
 //		box.add(blockNowButton);
 
-		// Pre-Phase Activity Done Button (phasing character only)
+		// Pre-Phase Activity Done Button (phasing character only): appears in place of a modal dialog so the
+		// phasing player can freely trade, rearrange items, and interact with their character frame while
+		// deciding. It is a mandatory SingleButton (locks other controls) and is visible only when this
+		// character is the one playing their turn and has an unresolved pre-phase decision. Clicking it
+		// calls doPrePhaseActivities(), which clears the flag and then notifies qualifying non-phasing chars.
 		prePhaseActivityDoneButton = new SingleButton("Done: Pre-Phase",true) {
 			public boolean needsShow() {
 				return getCharacter().isPlayingTurn() && getCharacter().getNeedsPrePhaseActivityDecision();
@@ -1672,6 +1696,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		singleButtonManager.addButton(doneTradingButton);
 		box.add(doneTradingButton);
 
+//		// REMOVED: Stop Following Button — was shown (non-mandatory) to a follower just before the leader's
+//		// next action, allowing them to break from the follow chain before that action executed. needsShow()
+//		// checked that the character is actively following and the leader has a pending action. Stop-following
+//		// is being reimplemented as an option inside the non-phasing character's pre-phase dialog; this
+//		// standalone button is commented out pending that work.
 //		stopFollowingButton = new SingleButton("Stop Following",false) {
 //			public boolean needsShow() {
 //				if (!character.isDoRecord() && character.getFollowStringId()!=null && !character.isStopFollowing() && !hostPrefs.hasPref(Constants.SR_NO_STOPPING_FOLLOWING)) {

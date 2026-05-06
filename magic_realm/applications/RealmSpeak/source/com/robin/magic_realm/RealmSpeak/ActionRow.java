@@ -420,6 +420,14 @@ public class ActionRow {
 				result = SLEEPING;
 				return;
 			}
+			// Pre-phase activity interrupt: before executing each action the phasing character checks whether
+			// any co-located characters need to be notified. Qualifying non-phasing characters have Blocking/
+			// Reactions ON and are either following the phasing character or (in 3rd edition) hold color chits.
+			// Only the phasing character's flag is set here; non-phasing flags are set later inside
+			// CharacterFrame.doPrePhaseActivities() once the phasing character signals they are done.
+			// The action count guard (alreadyOccurred) prevents re-triggering if process() is called again
+			// while the dialog is still open. process() returns early if any character in the clearing still
+			// has the flag set, holding the action until all dialogs are resolved.
 			TileLocation prePhaseLoc = character.getCurrentLocation();
 			if (prePhaseLoc != null && prePhaseLoc.isInClearing()) {
 				int actionsTaken = character.getNumberOfPerformedActionsToday();
@@ -453,8 +461,12 @@ public class ActionRow {
 			}
 		}
 
-//		// Pre-phase color chit play (3rd edition) is now handled by the pre-phase dialog system above.
-//		// Post-phase color chit play (1st edition, FE_PHASE_END_PLAYING_COLOR_CHIT) is handled below after the action.
+		// REMOVED: old per-character color-chit interrupt mechanism (formerly OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT).
+		// That option gate was removed and pre-phase color chit play is now the 3rd edition default, handled
+		// entirely by the pre-phase dialog system above. The old mechanism used checkForColorChitInterruptionState()
+		// to set NeedsPlayColorChitInterruptPhaseBeginningDecision on each character and then showed the
+		// "Play Color Chit Now?!" button. That button is also commented out. The 1st edition equivalent
+		// (FE_PHASE_END_PLAYING_COLOR_CHIT, post-phase) remains intact further below after the action executes.
 		
 		completed = true; // the default - can be modified if there are problems
 		
