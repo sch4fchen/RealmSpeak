@@ -74,6 +74,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	private HostPrefWrapper hostPrefs;
 	
 	private Timer activatePlayNextTimer = null;
+	private boolean wasAwaitingPrePhase = false;
 	private ActionListener activatePlayNextListener = new ActionListener() {
 		public void actionPerformed(ActionEvent ev) {
 			activatePlayNextTimer = (Timer)ev.getSource();
@@ -315,19 +316,37 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return isAwaitingInterruptionDecision(true);
 	}
 	
+	private boolean isAwaitingPrePhaseDecision() {
+		if (!getCharacter().isPlayingTurn()) return false;
+		TileLocation current = getCharacter().getCurrentLocation();
+		if (current == null || !current.isInClearing()) return false;
+		for (RealmComponent rc : current.clearing.getClearingComponents()) {
+			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean isAwaitingInterruptionDecision(boolean evaluateBlockingReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
 			TileLocation current = getCharacter().getCurrentLocation();
 			if (current!=null && current.isInClearing()) {
 				for (RealmComponent rc:current.clearing.getClearingComponents()) {
-					if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
+					if (rc.isPlayerControlledLeader()) {
 						CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-						if (target.isBlocking() && !target.isMinion()
-								&& (target.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !target.hasColorChitInterruptPhaseBeginningDecision(getCharacter().getGameObject())
-								|| target.getNeedsPlayColorChitInterruptPhaseEndDecision() && !target.hasColorChitInterruptPhaseEndDecision(getCharacter().getGameObject()))) {
-							blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
+						if (target.getNeedsPrePhaseActivityDecision()) {
+							blockWarningLabel.setText(target.getGameObject().getName()+" - Pre-Phase Activities pending...");
 							return true;
+						}
+						if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
+							if (target.isBlocking() && !target.isMinion()
+									&& (target.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !target.hasColorChitInterruptPhaseBeginningDecision(getCharacter().getGameObject())
+									|| target.getNeedsPlayColorChitInterruptPhaseEndDecision() && !target.hasColorChitInterruptPhaseEndDecision(getCharacter().getGameObject()))) {
+								blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
+								return true;
+							}
 						}
 					}
 				}
@@ -348,14 +367,15 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean isAwaitingReactions() {
-		return isAwaitingBlockDecision(true,null) || isAwaitingInterruptionDecision(false);
+		return /*isAwaitingBlockDecision(true,null) ||*/ isAwaitingInterruptionDecision(false);
 	}
 	
 	public void updateControls() {
 		TileLocation current = getCharacter().getCurrentLocation();
 		
 		boolean waitingForSingleButton = getCharacterFrame().isWaitingForSingleButton();
-		boolean controlsLocked = isAwaitingBlockDecision() || waitingForSingleButton || isAwaitingInterruptionDecision();
+		boolean awaitingInterruption = isAwaitingInterruptionDecision(); // always evaluate so blockWarningLabel is updated
+		boolean controlsLocked = /*isAwaitingBlockDecision() ||*/ waitingForSingleButton || awaitingInterruption;
 		
 		boolean playedAnAction = actionRows.size()>0 && !(actionRows.get(0)).isPending();
 		
@@ -386,22 +406,33 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		playNextButton.setText(haveFollowersThatHaveWeatherFatigue?"Followers Exhausting...":PLAY_NEXT);
 		
 		boolean actionsLeft = isNextAction();
+
+		boolean nowAwaitingPrePhase = isAwaitingPrePhaseDecision();
+		if (wasAwaitingPrePhase && !nowAwaitingPrePhase && getCharacter().isPlayingTurn()
+				&& actionsLeft && !waitingForSingleButton && activatePlayNextTimer == null
+				/*&& !isAwaitingBlockDecision()*/) {
+			wasAwaitingPrePhase = false;
+			SwingUtilities.invokeLater(() -> playNext(false));
+		} else {
+			wasAwaitingPrePhase = nowAwaitingPrePhase;
+		}
+
 		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions && !haveFollowersThatHaveWeatherFatigue);
 		playNextButton.setFlashing(playNextButton.isEnabled());
-		playAllButton.setEnabled(!controlsLocked && actionsLeft && !beingFollowedByOtherPlayers);
+		playAllButton.setEnabled(!controlsLocked && actionsLeft);
 		finishedPlayButton.setEnabled(!controlsLocked && !actionsLeft && (current==null || (!current.isBetweenClearings() && !current.isBetweenTiles())));
 		finishedPlayButton.setFlashing(finishedPlayButton.isEnabled());
 		
 		if (playNextButton.isEnabled()) makeDefault(playNextButton);
 		if (finishedPlayButton.isEnabled()) makeDefault(finishedPlayButton);
 		
-		if (playNextButton.isEnabled() && beingFollowedByOtherPlayers) {
-			playNextButton.setText("Wait....");
-			playNextButton.setEnabled(false);
-			playNextButton.setFlashing(false);
-			activatePlayNextTimer = new Timer(5000,activatePlayNextListener);
-			activatePlayNextTimer.start();
-		}
+//		if (playNextButton.isEnabled() && beingFollowedByOtherPlayers) {
+//			playNextButton.setText("Wait....");
+//			playNextButton.setEnabled(false);
+//			playNextButton.setFlashing(false);
+//			activatePlayNextTimer = new Timer(5000,activatePlayNextListener);
+//			activatePlayNextTimer.start();
+//		}
 			
 		boolean canPostpone = getCharacter().affectedByKey(Constants.CHOOSE_TURN)
 							&& !getCharacter().isLastPlayer()
@@ -459,7 +490,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		};
 		playNextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (!isAwaitingBlockDecision() && !isAwaitingInterruptionDecision()) {
+				if (/*!isAwaitingBlockDecision() &&*/ !isAwaitingInterruptionDecision()) {
 					playNext(false);
 					getGameHandler().getInspector().redrawMap();
 					updateControls();
@@ -990,7 +1021,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && !isAwaitingBlockDecision() && !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue() && !isAwaitingInterruptionDecision()) {
+		while(nextAction()!=null && /*!isAwaitingBlockDecision() &&*/ !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue() && !isAwaitingInterruptionDecision()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;

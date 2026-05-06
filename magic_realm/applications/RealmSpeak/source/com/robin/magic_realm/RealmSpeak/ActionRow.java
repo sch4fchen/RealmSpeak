@@ -406,6 +406,7 @@ public class ActionRow {
 	 * Mmmmmm.  ACTION MEAT!!!!
 	 */
 	public void process() {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 		if (!isFollowing) {
 			if (character.isBlocked()) {
 				gameHandler.broadcast(character.getGameObject().getName(),"BLOCKED - Cannot perform action "+action);
@@ -419,30 +420,41 @@ public class ActionRow {
 				result = SLEEPING;
 				return;
 			}
-		}
-		
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-		if (hostPrefs.hasPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT)) {
-			TileLocation current = character.getCurrentLocation();
-			int actionsTaken = character.getNumberOfPerformedActionsToday();
-			boolean interruptionAlreadyOccured = character.getColorChitInterruptionActionCountPhaseBeginning() == actionsTaken;
-			character.setColorChitInterruptionActionCountPhaseBeginning(actionsTaken);
-			for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-				if (!interruptionAlreadyOccured) new CharacterWrapper(livingCharacter).removeAllColorChitInterruptPhaseBeginningDecisions();
-			}
-			if (current.isInClearing()) {
-				for (RealmComponent rc :current.clearing.getClearingComponents()) {
+			TileLocation prePhaseLoc = character.getCurrentLocation();
+			if (prePhaseLoc != null && prePhaseLoc.isInClearing()) {
+				int actionsTaken = character.getNumberOfPerformedActionsToday();
+				boolean alreadyOccurred = character.getPrePhaseActivityActionCount() == actionsTaken;
+				if (!alreadyOccurred) {
+					boolean colorChitPrePhase = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+					ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
+					ArrayList<CharacterWrapper> nonPhasingToNotify = new ArrayList<>();
+					for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
+						if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
+							CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+							boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
+							if (cw.isBlocking() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
+								nonPhasingToNotify.add(cw);
+							}
+						}
+					}
+					if (!nonPhasingToNotify.isEmpty()) {
+						character.setPrePhaseActivityActionCount(actionsTaken);
+						character.setNeedsPrePhaseActivityDecision(true);
+						gameHandler.updateCharacterFramesWithoutMap();
+					}
+				}
+				for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
 					if (rc.isPlayerControlledLeader()) {
-						new CharacterWrapper(rc.getGameObject()).checkForColorChitInterruptionState(current,true,false);
+						if (new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
+							return;
+						}
 					}
 				}
 			}
-			gameHandler.updateCharacterFramesWithoutMap();
-			ArrayList<RealmComponent> interrupters = character.getPossibleColorChitInterrupters(current,true,false);
-			if (interrupters!=null && !interrupters.isEmpty()) {
-				return;
-			}
 		}
+
+//		// Pre-phase color chit play (3rd edition) is now handled by the pre-phase dialog system above.
+//		// Post-phase color chit play (1st edition, FE_PHASE_END_PLAYING_COLOR_CHIT) is handled below after the action.
 		
 		completed = true; // the default - can be modified if there are problems
 		

@@ -54,6 +54,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton energizeChoiceButton;
 	protected SingleButton playColorChitNowButton;
 	protected SingleButton blockNowButton;
+	protected SingleButton prePhaseActivityDoneButton;
+	private boolean prePhaseDialogShowing = false;
 	protected SingleButton doneTradingButton;
 	protected SingleButton stopFollowingButton;
 	protected SingleButton approveInventoryButton;
@@ -262,6 +264,32 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		updateControls();
 	}
+	private void doPrePhaseActivities() {
+		if (!getCharacter().isPlayingTurn()) {
+			JOptionPane.showMessageDialog(this,
+				getCharacter().getGameObject().getName() + " - Pre-Phase Activities",
+				"Pre-Phase Activities",
+				JOptionPane.PLAIN_MESSAGE);
+		}
+		getCharacter().setNeedsPrePhaseActivityDecision(false);
+		if (getCharacter().isPlayingTurn()) {
+			TileLocation loc = getCharacter().getCurrentLocation();
+			if (loc != null && loc.isInClearing()) {
+				ArrayList<CharacterWrapper> followers = getCharacter().getActionFollowers();
+				for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+					if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
+						CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+						boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
+						if (cw.isBlocking() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
+							cw.setNeedsPrePhaseActivityDecision(true);
+						}
+					}
+				}
+			}
+		}
+		gameHandler.submitChanges();
+		gameHandler.updateCharacterFramesWithoutMap();
+	}
 	private void doPlayColorChitNow() {
 		boolean phaseBeginning = getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision();
 		boolean phaseEnd = getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
@@ -444,8 +472,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		
 		blockees = getCharacter().checkForBlockingState();
 		updateControls();
+		if (getCharacter().getNeedsPrePhaseActivityDecision() && !getCharacter().isPlayingTurn() && !prePhaseDialogShowing) {
+			prePhaseDialogShowing = true;
+			SwingUtilities.invokeLater(() -> {
+				doPrePhaseActivities();
+				prePhaseDialogShowing = false;
+			});
+		}
 	}
-	
+
 	public void toFront() {
 		super.toFront();
 		updateControls();
@@ -1549,40 +1584,57 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		singleButtonManager.addButton(woundButton);
 		box.add(woundButton);
 		
-		// Play Color Chit Now Button
-		playColorChitNowButton = new SingleButton("Play Color Chit Now?!",true) {
+//		// Play Color Chit Now Button
+//		playColorChitNowButton = new SingleButton("Play Color Chit Now?!",true) {
+//			public boolean needsShow() {
+//				return getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
+//			}
+//		};
+//		playColorChitNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+//		playColorChitNowButton.setVisible(false);
+//		ComponentTools.lockComponentSize(playColorChitNowButton, new Dimension(150, 25));
+//		playColorChitNowButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent ev) {
+//				doPlayColorChitNow();
+//			}
+//		});
+//		singleButtonManager.addButton(playColorChitNowButton);
+//		box.add(playColorChitNowButton);
+
+//		// Block Now Button
+//		blockNowButton = new SingleButton("Block Now?!",true) {
+//			public boolean needsShow() {
+//				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptPhaseDecision();
+//			}
+//		};
+//		blockNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+//		blockNowButton.setVisible(false);
+//		ComponentTools.lockComponentSize(blockNowButton, new Dimension(150, 25));
+//		blockNowButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent ev) {
+//				doBlockNow();
+//			}
+//		});
+//		singleButtonManager.addButton(blockNowButton);
+//		box.add(blockNowButton);
+
+		// Pre-Phase Activity Done Button (phasing character only)
+		prePhaseActivityDoneButton = new SingleButton("Done: Pre-Phase",true) {
 			public boolean needsShow() {
-				return getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getCharacter().getNeedsPlayColorChitInterruptPhaseEndDecision();
+				return getCharacter().isPlayingTurn() && getCharacter().getNeedsPrePhaseActivityDecision();
 			}
 		};
-		playColorChitNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
-		playColorChitNowButton.setVisible(false);
-		ComponentTools.lockComponentSize(playColorChitNowButton, new Dimension(150, 25));
-		playColorChitNowButton.addActionListener(new ActionListener() {
+		prePhaseActivityDoneButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		prePhaseActivityDoneButton.setVisible(false);
+		ComponentTools.lockComponentSize(prePhaseActivityDoneButton, new Dimension(150, 25));
+		prePhaseActivityDoneButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				doPlayColorChitNow();
+				doPrePhaseActivities();
 			}
 		});
-		singleButtonManager.addButton(playColorChitNowButton);
-		box.add(playColorChitNowButton);
-		
-		// Block Now Button
-		blockNowButton = new SingleButton("Block Now?!",true) {
-			public boolean needsShow() {
-				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptPhaseDecision();
-			}
-		};
-		blockNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
-		blockNowButton.setVisible(false);
-		ComponentTools.lockComponentSize(blockNowButton, new Dimension(150, 25));
-		blockNowButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				doBlockNow();
-			}
-		});
-		singleButtonManager.addButton(blockNowButton);
-		box.add(blockNowButton);
-		
+		singleButtonManager.addButton(prePhaseActivityDoneButton);
+		box.add(prePhaseActivityDoneButton);
+
 		// Energize Choice Button
 		energizeChoiceButton = new SingleButton("Energize Spells",true) {
 			public boolean needsShow() {
@@ -1620,32 +1672,32 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		singleButtonManager.addButton(doneTradingButton);
 		box.add(doneTradingButton);
 
-		stopFollowingButton = new SingleButton("Stop Following",false) {
-			public boolean needsShow() {
-				if (!character.isDoRecord() && character.getFollowStringId()!=null && !character.isStopFollowing() && !hostPrefs.hasPref(Constants.SR_NO_STOPPING_FOLLOWING)) {
-					CharacterWrapper followed = character.getCharacterImFollowing();
-					String npa = followed.getNextPendingAction();
-					if (npa!=null) {
-						stopFollowingButton.setText("Stop Following: "+npa);
-						return true;
-					}
-				}
-				return false;
-			}
-		};
-		stopFollowingButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				character.setStopFollowing(true);
-				gameHandler.submitChanges();
-				gameHandler.updateCharacterFrames();
-				showActionPanel();
-			}
-		});
-		stopFollowingButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
-		stopFollowingButton.setVisible(false);
-		ComponentTools.lockComponentSize(stopFollowingButton, new Dimension(150, 25));
-		singleButtonManager.addButton(stopFollowingButton);
-		box.add(stopFollowingButton);
+//		stopFollowingButton = new SingleButton("Stop Following",false) {
+//			public boolean needsShow() {
+//				if (!character.isDoRecord() && character.getFollowStringId()!=null && !character.isStopFollowing() && !hostPrefs.hasPref(Constants.SR_NO_STOPPING_FOLLOWING)) {
+//					CharacterWrapper followed = character.getCharacterImFollowing();
+//					String npa = followed.getNextPendingAction();
+//					if (npa!=null) {
+//						stopFollowingButton.setText("Stop Following: "+npa);
+//						return true;
+//					}
+//				}
+//				return false;
+//			}
+//		};
+//		stopFollowingButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent ev) {
+//				character.setStopFollowing(true);
+//				gameHandler.submitChanges();
+//				gameHandler.updateCharacterFrames();
+//				showActionPanel();
+//			}
+//		});
+//		stopFollowingButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+//		stopFollowingButton.setVisible(false);
+//		ComponentTools.lockComponentSize(stopFollowingButton, new Dimension(150, 25));
+//		singleButtonManager.addButton(stopFollowingButton);
+//		box.add(stopFollowingButton);
 		
 		// Approve Inventory Button
 		approveInventoryButton = new SingleButton("Approve Inventory",true) {
