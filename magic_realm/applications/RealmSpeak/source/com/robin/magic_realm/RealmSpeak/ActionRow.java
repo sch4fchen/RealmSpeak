@@ -445,7 +445,13 @@ public class ActionRow {
 							}
 						}
 					}
-					if (!nonPhasingToNotify.isEmpty()) {
+					// A hidden guide whose followers cannot detect them also triggers pre-phase so
+					// the guide can handle the situation (e.g. reveal, drop followers, etc.).
+					// Uses the same per-enemy detection check as the post-phase detection logic.
+					boolean hiddenGuideWithUnawareFollowers = character.isHidden()
+						&& !phasingFollowers.isEmpty()
+						&& phasingFollowers.stream().anyMatch(f -> !f.foundHiddenEnemy(character.getGameObject()));
+					if (!nonPhasingToNotify.isEmpty() || hiddenGuideWithUnawareFollowers) {
 						character.setPrePhaseActivityActionCount(actionsTaken);
 						character.setNeedsPrePhaseActivityDecision(true);
 						gameHandler.updateCharacterFramesWithoutMap();
@@ -454,6 +460,18 @@ public class ActionRow {
 				for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
 					if (rc.isPlayerControlledLeader()) {
 						if (new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
+							return;
+						}
+					}
+				}
+
+				// Post-phase pending check: if the previous action triggered post-phase dialogs that are still
+				// unresolved, block the current action from starting. The action count match (post-phase count
+				// equals actions performed so far, before this action runs) identifies the pending-from-last-action
+				// window. Once all dialogs are resolved the flags are cleared and this check passes through.
+				if (character.getPostPhaseActivityActionCount() == character.getNumberOfPerformedActionsToday()) {
+					for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
+						if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPostPhaseActivityDecision()) {
 							return;
 						}
 					}
@@ -638,6 +656,96 @@ public class ActionRow {
 					new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
 				}
 				gameHandler.updateCharacterFramesWithoutMap();
+			}
+
+			// Last-phase follower release: on the phasing character's final scheduled action for the day,
+			// all active followers automatically stop following and remain in the final clearing as free
+			// individuals. They are then eligible for post-phase activities in that clearing.
+			// setStopFollowing is set BEFORE removeActionFollower so the follower's isStopFollowing flag
+			// is already true when monster-summon logic inside removeActionFollower runs (preserving
+			// the standard "stopped-follower summon" behavior). The snapshot from getActionFollowers()
+			// is safe to iterate while the underlying list is mutated by removeActionFollower.
+			if (character.getNumberOfPerformedActionsToday() == character.getCurrentActionCount()) {
+				for (CharacterWrapper follower : character.getActionFollowers()) {
+					follower.setStopFollowing(true);
+					character.removeActionFollower(follower, gameHandler.getGame().getMonsterDie(), gameHandler.getGame().getNativeDie());
+				}
+			}
+
+			// Post-phase activity trigger: after the action completes, notify all individuals with Blocking/
+			// Reactions ON who are in the clearing the phasing individual now occupies (which may differ from
+			// the starting clearing if the action was a move). Both phasing and non-phasing individuals receive
+			// the same dialog simultaneously. The action count stored here is always one higher than the pre-phase
+			// count, so the two counts never collide. Actual post-phase content (blocking, etc.) is added later.
+			TileLocation postPhaseLoc = character.getCurrentLocation();
+			if (postPhaseLoc != null && postPhaseLoc.isInClearing()) {
+				int actionsTakenNow = character.getNumberOfPerformedActionsToday();
+				boolean alreadyOccurred = character.getPostPhaseActivityActionCount() == actionsTakenNow;
+				if (!alreadyOccurred) {
+					// Collect non-following individuals separately so we can check whether there is more
+					// than one present. A character with only followers in the clearing has no one
+					// to block (followers are excluded from blocking interactions), so they must not
+					// receive a post-phase dialog even if their Blocking option is ON.
+					// Stopped followers (isStopFollowing) have just been released by the last-phase logic
+					// above and are treated as non-followers so they qualify for post-phase dialogs.
+					ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
+					for (RealmComponent rc : postPhaseLoc.clearing.getClearingComponents()) {
+						if (rc.isPlayerControlledLeader()) {
+							CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+							if (cw.getFollowStringId() == null || cw.isStopFollowing()) {
+								nonFollowers.add(cw);
+							}
+						}
+					}
+					// Check whether the clearing contains monsters a character could choose to block.
+					// willBeBlocked() skips hidden characters, so we scan directly here — a hidden
+					// character can still elect to block monsters even though monsters won't block them.
+					// Owner==null means unhired; mist-like monsters are excluded per standard rules.
+					boolean monstersPresent = false;
+					for (RealmComponent rc : postPhaseLoc.clearing.getClearingComponents()) {
+						if (rc instanceof MonsterChitComponent && rc.getOwner() == null && !rc.isMistLike()) {
+							monstersPresent = true;
+							break;
+						}
+					}
+					// Post-phase participant rules — detection is symmetric:
+					// - A non-phasing character can detect the phasing character only if the phasing
+					//   character is not hidden, or the observer has found hidden enemies today.
+					// - The phasing character can detect a non-phasing individual only if that
+					//   individual is not hidden, or the phasing character has found hidden enemies today.
+					// Both directions use foundHiddenEnemy so that hidden ex-followers released by the
+					// last-phase logic above are not spuriously counted as detectable partners.
+					boolean phasingCharHidden = character.isHidden();
+					int detectableOthers = 0;
+					for (CharacterWrapper other : nonFollowers) {
+						if (other.getGameObject().equals(character.getGameObject())) continue;
+						if (!other.isHidden() || character.foundHiddenEnemy(other.getGameObject())) {
+							detectableOthers++;
+						}
+					}
+					ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
+					for (CharacterWrapper cw : nonFollowers) {
+						if (!cw.isBlocking()) continue;
+						boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
+						if (isPhasingChar) {
+							if (detectableOthers >= 1 || monstersPresent) {
+								postPhaseParticipants.add(cw);
+							}
+						} else {
+							boolean canDetectPhasingChar = !phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject());
+							if (canDetectPhasingChar) {
+								postPhaseParticipants.add(cw);
+							}
+						}
+					}
+					if (!postPhaseParticipants.isEmpty()) {
+						character.setPostPhaseActivityActionCount(actionsTakenNow);
+						for (CharacterWrapper cw : postPhaseParticipants) {
+							cw.setNeedsPostPhaseActivityDecision(true);
+						}
+						gameHandler.updateCharacterFramesWithoutMap();
+					}
+				}
 			}
 		}
 	}
@@ -1154,34 +1262,21 @@ public class ActionRow {
 								return;
 							}
 						}
-						if (character.isHidden()) {
-							int totalCanLeaveBehind = canLeaveBehind.size();
-							if (askAboutAbandoningFollowers && totalCanLeaveBehind>0) {
-								// Opportunity to leave followers behind here!  Rule 27.6/1a
-								StringBuffer message = new StringBuffer();
-								message.append("There ");
-								message.append(totalCanLeaveBehind==1?"is ":"are ");
-								message.append(totalCanLeaveBehind);
-								message.append(" follower");
-								message.append(totalCanLeaveBehind==1?"":"s");
-								message.append(" following that haven't found hidden enemies.");
-								message.append("\nDo you want to leave ");
-								message.append(totalCanLeaveBehind==1?"that follower":"one or more of them");
-								message.append(" behind?");
-								
-								int ret = QuietOptionPane.showConfirmDialog(
-											gameHandler.getMainFrame(),
-											message.toString(),
-											"Unwanted Followers?",
-											JOptionPane.YES_NO_OPTION,
-											"Don't ask again this turn",true);
-								askAboutAbandoningFollowers = !QuietOptionPane.isLastWasSilenced();
-								if (ret==JOptionPane.YES_OPTION) {
-									turnPanel.doAbandonActionFollowers();
-									actionFollowers = character.getActionFollowers();
-								}
-							}
-						}
+						// REMOVED: "Unwanted Followers?" dialog — Rule 27.6/1a gave the phasing guide a chance
+						// during each Move action to leave behind followers who hadn't found hidden enemies.
+						// This decision is now handled in the pre-phase activity dialog system: a hidden guide
+						// with unaware followers triggers a pre-phase dialog before each action, where the
+						// guide can choose to ditch followers. The mid-move popup is redundant and removed.
+						//if (character.isHidden()) {
+						//	int totalCanLeaveBehind = canLeaveBehind.size();
+						//	if (askAboutAbandoningFollowers && totalCanLeaveBehind>0) {
+						//		...QuietOptionPane "Unwanted Followers?" dialog...
+						//		if (ret==JOptionPane.YES_OPTION) {
+						//			turnPanel.doAbandonActionFollowers();
+						//			actionFollowers = character.getActionFollowers();
+						//		}
+						//	}
+						//}
 					}
 					
 					HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());

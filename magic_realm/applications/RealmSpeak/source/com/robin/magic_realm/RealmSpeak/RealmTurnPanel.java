@@ -333,6 +333,22 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 
+	// isAwaitingPostPhaseDecision() drives the wasAwaitingPostPhase falling-edge auto-advance. Scans the
+	// phasing character's current clearing (which is the post-action clearing — the same location checked
+	// by the post-phase pending guard in ActionRow.process()) for any individual whose post-phase dialog
+	// is still unresolved. When all flags clear, the falling-edge fires playNext() for the next action.
+	private boolean isAwaitingPostPhaseDecision() {
+		if (!getCharacter().isPlayingTurn()) return false;
+		TileLocation current = getCharacter().getCurrentLocation();
+		if (current == null || !current.isInClearing()) return false;
+		for (RealmComponent rc : current.clearing.getClearingComponents()) {
+			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPostPhaseActivityDecision()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean isAwaitingInterruptionDecision(boolean evaluateBlockingReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
@@ -346,6 +362,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						// locked interruption so Play All is disabled until all dialogs have been dismissed.
 						if (target.getNeedsPrePhaseActivityDecision()) {
 							blockWarningLabel.setText(target.getGameObject().getName()+" - Pre-Phase Activities pending...");
+							return true;
+						}
+						if (target.getNeedsPostPhaseActivityDecision()) {
+							blockWarningLabel.setText(target.getGameObject().getName()+" - Post-Phase Activities pending...");
 							return true;
 						}
 						if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
@@ -434,6 +454,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			wasAwaitingPrePhase = nowAwaitingPrePhase;
 		}
 
+		// POST-PHASE AUTO-ADVANCE REMOVED: Unlike pre-phase (which auto-advances to the next action once all
+		// pre-phase dialogs are resolved), post-phase does NOT auto-advance. After the phasing character's
+		// action executes and any post-phase dialogs are shown, the user must explicitly click Play Next.
+		// Auto-advancing here caused "Play Next acting like Play All" — every post-phase dialog resolve
+		// immediately triggered the next action without user intent. The pending check at the top of
+		// ActionRow.process() already blocks the next action until post-phase is cleared.
+
 		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions && !haveFollowersThatHaveWeatherFatigue);
 		playNextButton.setFlashing(playNextButton.isEnabled());
 		playAllButton.setEnabled(!controlsLocked && actionsLeft);
@@ -478,7 +505,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		abandonInventoryButton.setEnabled(current!=null && !current.isBetweenClearings() && !getCharacter().isBlocked());
 		
-		ditchFollowersButton.setEnabled(areActionFollowersToLeaveBehind);
+		// Ditch Follower is only useful during the phasing guide's pre-phase window: the guide is hidden,
+		// has followers who haven't found them, and the pre-phase decision is pending. Outside that window
+		// (before hiding, between actions, after the last action) ditching has no effect because followers
+		// either already know the guide's location or will be released automatically at end-of-last-phase.
+		ditchFollowersButton.setEnabled(areActionFollowersToLeaveBehind && getCharacter().getNeedsPrePhaseActivityDecision());
 		
 		if (acm!=null) {
 			acm.updateControls(phaseManager,!isFollowing,false);
@@ -1341,37 +1372,15 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			return null;
 		}
 	}
+	// verifyAbandonActionFollowers() is called by the Ditch Follower button. The old "Unwanted Followers?"
+	// confirm dialog has been removed — the guide's click on the button is already a deliberate action.
+	// When a hidden guide has unaware followers, the pre-phase activity system fires (via the
+	// hiddenGuideWithUnawareFollowers trigger in ActionRow) and the "Done: Pre-Phase" button appears.
+	// The guide uses the existing Ditch Follower button to invoke doAbandonActionFollowers() and drop
+	// whichever followers they choose, then clicks "Done: Pre-Phase" to proceed. No modal dialog needed.
 	public void verifyAbandonActionFollowers() {
-		ArrayList<CharacterWrapper> canLeaveBehind = new ArrayList<>();
-		for (CharacterWrapper follower:actionFollowers) {
-			if (!follower.foundHiddenEnemy(getCharacter().getGameObject())) {
-				canLeaveBehind.add(follower);
-			}
-		}
-		int totalCanLeaveBehind = canLeaveBehind.size();
-		if (totalCanLeaveBehind>0) {
-			// Opportunity to leave followers behind here!  Rule 27.6/1a
-			StringBuffer message = new StringBuffer();
-			message.append("There ");
-			message.append(totalCanLeaveBehind==1?"is ":"are ");
-			message.append(totalCanLeaveBehind);
-			message.append(" follower");
-			message.append(totalCanLeaveBehind==1?"":"s");
-			message.append(" following that haven't found hidden enemies.");
-			message.append("\nDo you want to leave ");
-			message.append(totalCanLeaveBehind==1?"that follower":"one or more of them");
-			message.append(" behind?");
-			
-			int ret = JOptionPane.showConfirmDialog(
-						getGameHandler().getMainFrame(),
-						message.toString(),
-						"Unwanted Followers?",
-						JOptionPane.YES_NO_OPTION);
-			if (ret==JOptionPane.YES_OPTION) {
-				doAbandonActionFollowers();
-				actionFollowers = getCharacter().getActionFollowers();
-			}
-		}
+		doAbandonActionFollowers();
+		updateControls();
 	}
 	public void doAbandonActionFollowers() {
 		ArrayList<CharacterWrapper> toRemove = new ArrayList<>();

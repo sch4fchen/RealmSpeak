@@ -56,6 +56,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton blockNowButton;
 	protected SingleButton prePhaseActivityDoneButton;
 	private boolean prePhaseDialogShowing = false;
+	private boolean postPhaseDialogShowing = false;
 	protected SingleButton doneTradingButton;
 	protected SingleButton stopFollowingButton;
 	protected SingleButton approveInventoryButton;
@@ -266,12 +267,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 	// doPrePhaseActivities() is the shared resolution point for both phasing and non-phasing characters.
 	// For non-phasing characters it shows a modal dialog (they can only click OK for now; future content
-	// will add stop-following and color-chit-play controls). For the phasing character there is no dialog
-	// here — they use the non-modal prePhaseActivityDoneButton instead and call this directly on click.
-	// After clearing the caller's own flag, if the caller is the phasing character, it walks the clearing
-	// and sets the flag on each qualifying non-phasing character, triggering their dialogs in sequence.
+	// will add stop-following and color-chit-play controls). The main JFrame is brought to front before
+	// the dialog so it is never obscured by other OS windows — same reasoning as doPostPhaseActivities().
+	// For the phasing character there is no dialog here — they use the non-modal prePhaseActivityDoneButton
+	// instead and call this directly on click. After clearing the caller's own flag, if the caller is the
+	// phasing character, it walks the clearing and sets the flag on each qualifying non-phasing character,
+	// triggering their dialogs in sequence.
 	private void doPrePhaseActivities() {
 		if (!getCharacter().isPlayingTurn()) {
+			gameHandler.getMainFrame().toFront();
 			JOptionPane.showMessageDialog(this,
 				getCharacter().getGameObject().getName() + " - Pre-Phase Activities",
 				"Pre-Phase Activities",
@@ -293,6 +297,24 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				}
 			}
 		}
+		gameHandler.submitChanges();
+		gameHandler.updateCharacterFramesWithoutMap();
+	}
+	// doPostPhaseActivities() is the resolution point for post-phase dialogs. Unlike pre-phase, both the
+	// phasing and non-phasing characters receive the same modal dialog simultaneously — there is no distinction
+	// between them here. All qualifying individuals in the clearing after the action have their flag set at
+	// once by ActionRow.process(); each character's updateCharacter() detects the flag and auto-shows this
+	// dialog via invokeLater. The main JFrame is brought to front first so the JOptionPane dialog (which is
+	// parented to that JFrame) is never obscured by other OS windows — calling toFront() on a JInternalFrame
+	// only raises it within the desktop pane and does not affect the host JFrame's OS-level z-order.
+	private void doPostPhaseActivities() {
+		gameHandler.getMainFrame().toFront();
+		this.toFront();
+		JOptionPane.showMessageDialog(this,
+			getCharacter().getGameObject().getName() + " - Post-Phase Activities",
+			"Post-Phase Activities",
+			JOptionPane.PLAIN_MESSAGE);
+		getCharacter().setNeedsPostPhaseActivityDecision(false);
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
 	}
@@ -488,6 +510,19 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			SwingUtilities.invokeLater(() -> {
 				doPrePhaseActivities();
 				prePhaseDialogShowing = false;
+			});
+		}
+		// Auto-show hook for post-phase: all qualifying individuals have their flag set simultaneously by
+		// ActionRow.process(). Only the LOCAL player's characters show a dialog here — every client has
+		// CharacterFrames for all players, so without this guard the phasing client would fire dialogs for
+		// remote characters, clearing their flags before those players' machines can react. The check mirrors
+		// the "nameMatch" pattern used elsewhere in RealmGameHandler to identify local characters.
+		boolean isLocalCharacter = gameHandler.getClient().getClientName().equals(getCharacter().getPlayerName());
+		if (getCharacter().getNeedsPostPhaseActivityDecision() && isLocalCharacter && !postPhaseDialogShowing) {
+			postPhaseDialogShowing = true;
+			SwingUtilities.invokeLater(() -> {
+				doPostPhaseActivities();
+				postPhaseDialogShowing = false;
 			});
 		}
 	}

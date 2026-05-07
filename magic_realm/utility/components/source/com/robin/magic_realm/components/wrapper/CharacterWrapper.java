@@ -120,6 +120,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEEDS_PRE_PHASE_ACTIVITY_DECISION = "_ppdc_";
 	public static final String PRE_PHASE_ACTIVITY_ACTION_COUNT = "_ppac_";
 	public static final String PRE_PHASE_NON_PHASING_ACTION_COUNT = "_ppnpac_";
+	// Post-phase activity flags: symmetric counterpart to the pre-phase flags. NEEDS_POST_PHASE_ACTIVITY_DECISION
+	// marks that a character must resolve their post-phase dialog before the phasing character's next action
+	// executes. POST_PHASE_ACTIVITY_ACTION_COUNT records the action count AFTER the triggering action completed,
+	// which is always one higher than the corresponding pre-phase count, ensuring no collision between the two.
+	// Participants are all individuals in the clearing the phasing individual occupies AFTER the action.
+	public static final String NEEDS_POST_PHASE_ACTIVITY_DECISION = "_poPdc_";
+	public static final String POST_PHASE_ACTIVITY_ACTION_COUNT = "_poPac_";
 	
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
@@ -2109,6 +2116,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		removeColorChitInterruptionActionCountPhaseBeginning();
 		removeColorChitInterruptionActionCountPhaseEnd();
 		removePrePhaseActivityActionCount();
+		removePostPhaseActivityActionCount();
 		
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
@@ -4104,6 +4112,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setPrePhaseActivityActionCount(int val) {
 		setInt(PRE_PHASE_ACTIVITY_ACTION_COUNT, val);
+	}
+	public boolean getNeedsPostPhaseActivityDecision() {
+		return getBoolean(NEEDS_POST_PHASE_ACTIVITY_DECISION);
+	}
+	public int getPostPhaseActivityActionCount() {
+		if (getBoolean(POST_PHASE_ACTIVITY_ACTION_COUNT) == false) return -1;
+		return getInt(POST_PHASE_ACTIVITY_ACTION_COUNT);
+	}
+	public void setNeedsPostPhaseActivityDecision(boolean val) {
+		setBoolean(NEEDS_POST_PHASE_ACTIVITY_DECISION, val);
+	}
+	public void setPostPhaseActivityActionCount(int val) {
+		setInt(POST_PHASE_ACTIVITY_ACTION_COUNT, val);
+	}
+	public void removePostPhaseActivityActionCount() {
+		removeAttribute(POST_PHASE_ACTIVITY_ACTION_COUNT);
 	}
 	public void removePrePhaseActivityActionCount() {
 		removeAttribute(PRE_PHASE_ACTIVITY_ACTION_COUNT);
