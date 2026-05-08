@@ -420,63 +420,8 @@ public class ActionRow {
 				result = SLEEPING;
 				return;
 			}
-			// Pre-phase activity interrupt: before executing each action the phasing character checks whether
-			// any co-located characters need to be notified. Qualifying non-phasing characters have Blocking/
-			// Reactions ON and are either following the phasing character or (in 3rd edition) hold color chits.
-			// Only the phasing character's flag is set here; non-phasing flags are set later inside
-			// CharacterFrame.doPrePhaseActivities() once the phasing character signals they are done.
-			// The action count guard (alreadyOccurred) prevents re-triggering if process() is called again
-			// while the dialog is still open. process() returns early if any character in the clearing still
-			// has the flag set, holding the action until all dialogs are resolved.
-			TileLocation prePhaseLoc = character.getCurrentLocation();
-			if (prePhaseLoc != null && prePhaseLoc.isInClearing()) {
-				int actionsTaken = character.getNumberOfPerformedActionsToday();
-				boolean alreadyOccurred = character.getPrePhaseActivityActionCount() == actionsTaken;
-				if (!alreadyOccurred) {
-					boolean colorChitPrePhase = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
-					ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
-					ArrayList<CharacterWrapper> nonPhasingToNotify = new ArrayList<>();
-					for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
-						if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
-							CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-							boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-							if (cw.isBlocking() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
-								nonPhasingToNotify.add(cw);
-							}
-						}
-					}
-					// A hidden guide whose followers cannot detect them also triggers pre-phase so
-					// the guide can handle the situation (e.g. reveal, drop followers, etc.).
-					// Uses the same per-enemy detection check as the post-phase detection logic.
-					boolean hiddenGuideWithUnawareFollowers = character.isHidden()
-						&& !phasingFollowers.isEmpty()
-						&& phasingFollowers.stream().anyMatch(f -> !f.foundHiddenEnemy(character.getGameObject()));
-					if (!nonPhasingToNotify.isEmpty() || hiddenGuideWithUnawareFollowers) {
-						character.setPrePhaseActivityActionCount(actionsTaken);
-						character.setNeedsPrePhaseActivityDecision(true);
-						gameHandler.updateCharacterFramesWithoutMap();
-					}
-				}
-				for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
-					if (rc.isPlayerControlledLeader()) {
-						if (new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
-							return;
-						}
-					}
-				}
-
-				// Post-phase pending check: if the previous action triggered post-phase dialogs that are still
-				// unresolved, block the current action from starting. The action count match (post-phase count
-				// equals actions performed so far, before this action runs) identifies the pending-from-last-action
-				// window. Once all dialogs are resolved the flags are cleared and this check passes through.
-				if (character.getPostPhaseActivityActionCount() == character.getNumberOfPerformedActionsToday()) {
-					for (RealmComponent rc : prePhaseLoc.clearing.getClearingComponents()) {
-						if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPostPhaseActivityDecision()) {
-							return;
-						}
-					}
-				}
-			}
+			if (handlePrePhase(hostPrefs)) return;
+			if (isPostPhasePending()) return;
 		}
 
 		// REMOVED: old per-character color-chit interrupt mechanism (formerly OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT).
@@ -658,97 +603,217 @@ public class ActionRow {
 				gameHandler.updateCharacterFramesWithoutMap();
 			}
 
-			// Last-phase follower release: on the phasing character's final scheduled action for the day,
-			// all active followers automatically stop following and remain in the final clearing as free
-			// individuals. They are then eligible for post-phase activities in that clearing.
-			// setStopFollowing is set BEFORE removeActionFollower so the follower's isStopFollowing flag
-			// is already true when monster-summon logic inside removeActionFollower runs (preserving
-			// the standard "stopped-follower summon" behavior). The snapshot from getActionFollowers()
-			// is safe to iterate while the underlying list is mutated by removeActionFollower.
-			if (character.getNumberOfPerformedActionsToday() == character.getCurrentActionCount()) {
-				for (CharacterWrapper follower : character.getActionFollowers()) {
-					follower.setStopFollowing(true);
-					character.removeActionFollower(follower, gameHandler.getGame().getMonsterDie(), gameHandler.getGame().getNativeDie());
-				}
-			}
-
-			// Post-phase activity trigger: after the action completes, notify all individuals with Blocking/
-			// Reactions ON who are in the clearing the phasing individual now occupies (which may differ from
-			// the starting clearing if the action was a move). Both phasing and non-phasing individuals receive
-			// the same dialog simultaneously. The action count stored here is always one higher than the pre-phase
-			// count, so the two counts never collide. Actual post-phase content (blocking, etc.) is added later.
-			TileLocation postPhaseLoc = character.getCurrentLocation();
-			if (postPhaseLoc != null && postPhaseLoc.isInClearing()) {
-				int actionsTakenNow = character.getNumberOfPerformedActionsToday();
-				boolean alreadyOccurred = character.getPostPhaseActivityActionCount() == actionsTakenNow;
-				if (!alreadyOccurred) {
-					// Collect non-following individuals separately so we can check whether there is more
-					// than one present. A character with only followers in the clearing has no one
-					// to block (followers are excluded from blocking interactions), so they must not
-					// receive a post-phase dialog even if their Blocking option is ON.
-					// Stopped followers (isStopFollowing) have just been released by the last-phase logic
-					// above and are treated as non-followers so they qualify for post-phase dialogs.
-					ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
-					for (RealmComponent rc : postPhaseLoc.clearing.getClearingComponents()) {
-						if (rc.isPlayerControlledLeader()) {
-							CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-							if (cw.getFollowStringId() == null || cw.isStopFollowing()) {
-								nonFollowers.add(cw);
-							}
-						}
-					}
-					// Check whether the clearing contains monsters a character could choose to block.
-					// willBeBlocked() skips hidden characters, so we scan directly here — a hidden
-					// character can still elect to block monsters even though monsters won't block them.
-					// Owner==null means unhired; mist-like monsters are excluded per standard rules.
-					boolean monstersPresent = false;
-					for (RealmComponent rc : postPhaseLoc.clearing.getClearingComponents()) {
-						if (rc instanceof MonsterChitComponent && rc.getOwner() == null && !rc.isMistLike()) {
-							monstersPresent = true;
-							break;
-						}
-					}
-					// Post-phase participant rules — detection is symmetric:
-					// - A non-phasing character can detect the phasing character only if the phasing
-					//   character is not hidden, or the observer has found hidden enemies today.
-					// - The phasing character can detect a non-phasing individual only if that
-					//   individual is not hidden, or the phasing character has found hidden enemies today.
-					// Both directions use foundHiddenEnemy so that hidden ex-followers released by the
-					// last-phase logic above are not spuriously counted as detectable partners.
-					boolean phasingCharHidden = character.isHidden();
-					int detectableOthers = 0;
-					for (CharacterWrapper other : nonFollowers) {
-						if (other.getGameObject().equals(character.getGameObject())) continue;
-						if (!other.isHidden() || character.foundHiddenEnemy(other.getGameObject())) {
-							detectableOthers++;
-						}
-					}
-					ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
-					for (CharacterWrapper cw : nonFollowers) {
-						if (!cw.isBlocking()) continue;
-						boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
-						if (isPhasingChar) {
-							if (detectableOthers >= 1 || monstersPresent) {
-								postPhaseParticipants.add(cw);
-							}
-						} else {
-							boolean canDetectPhasingChar = !phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject());
-							if (canDetectPhasingChar) {
-								postPhaseParticipants.add(cw);
-							}
-						}
-					}
-					if (!postPhaseParticipants.isEmpty()) {
-						character.setPostPhaseActivityActionCount(actionsTakenNow);
-						for (CharacterWrapper cw : postPhaseParticipants) {
-							cw.setNeedsPostPhaseActivityDecision(true);
-						}
-						gameHandler.updateCharacterFramesWithoutMap();
-					}
-				}
+			if (!isFollowing) {
+				releaseLastPhaseFollowers();
+				triggerPostPhase();
 			}
 		}
 	}
+	/**
+	 * Evaluates whether a pre-phase activity window is needed before the current action executes,
+	 * sets the appropriate flags if so, and reports whether the action must be deferred.
+	 * <p>
+	 * Two independent conditions trigger the pre-phase window:
+	 * <ul>
+	 *   <li><b>Non-phasing notification:</b> a player-controlled leader in the same clearing has
+	 *       Blocking/Reactions ON and is either an active follower of the phasing character or
+	 *       holds color chits (3rd-edition color-chit pre-phase play).</li>
+	 *   <li><b>Hidden guide:</b> the phasing character is hidden and has at least one active
+	 *       follower who has not yet found hidden enemies this turn. The guide needs the
+	 *       pre-phase window to reveal, ditch the follower, or accept the situation.</li>
+	 * </ul>
+	 * When either condition is met and the window has not already been opened for this action
+	 * (action-count guard via {@code getPrePhaseActivityActionCount()}), the phasing
+	 * character's {@code NeedsPrePhaseActivityDecision} flag is set and
+	 * {@code updateCharacterFramesWithoutMap()} is called so the CharacterFrame can display the
+	 * "Done: Pre-Phase" button. The method then scans the clearing a second time: if any
+	 * player-controlled leader still has the flag set (including flags set by earlier calls),
+	 * it returns {@code true} so the caller defers the action.
+	 *
+	 * @param hostPrefs game-wide host preferences; consulted to determine whether pre-phase
+	 *                  color-chit play is active ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} absent
+	 *                  = 3rd-edition default = color chits trigger pre-phase)
+	 * @return {@code true} if any player-controlled leader in the current clearing has an
+	 *         unresolved pre-phase decision and the action must not yet execute;
+	 *         {@code false} if the action may proceed
+	 */
+	private boolean handlePrePhase(HostPrefWrapper hostPrefs) {
+		TileLocation loc = character.getCurrentLocation();
+		if (loc == null || !loc.isInClearing()) return false;
+
+		int actionsTaken = character.getNumberOfPerformedActionsToday();
+		boolean alreadyOccurred = character.getPrePhaseActivityActionCount() == actionsTaken;
+		if (!alreadyOccurred) {
+			boolean colorChitPrePhase = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
+			boolean anyNonPhasingNeedNotice = false;
+			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
+					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+					boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
+					if (cw.isBlocking() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
+						anyNonPhasingNeedNotice = true;
+						break;
+					}
+				}
+			}
+			// A hidden guide whose followers haven't found them triggers pre-phase independently
+			// of the non-phasing notification check above — even with no other blocking characters
+			// in the clearing, the guide needs a chance to handle the follower situation.
+			boolean hiddenGuideWithUnawareFollowers = character.isHidden()
+				&& !phasingFollowers.isEmpty()
+				&& phasingFollowers.stream().anyMatch(f -> !f.foundHiddenEnemy(character.getGameObject()));
+			if (anyNonPhasingNeedNotice || hiddenGuideWithUnawareFollowers) {
+				character.setPrePhaseActivityActionCount(actionsTaken);
+				character.setNeedsPrePhaseActivityDecision(true);
+				gameHandler.updateCharacterFramesWithoutMap();
+			}
+		}
+		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Reports whether post-phase dialogs from the previous action are still outstanding.
+	 * <p>
+	 * The action-count match ({@code postPhaseActionCount == actionsPerformedToday}) identifies
+	 * the pending window: the count is stamped after the triggering action completes and therefore
+	 * equals the current pre-action total only while that action's post-phase is unresolved. Once
+	 * all participants dismiss their dialogs and their flags clear, this method returns
+	 * {@code false} and the action may proceed.
+	 * <p>
+	 * Only the phasing character's current clearing is scanned. Post-phase activity from an
+	 * earlier clearing is irrelevant once the character has moved on — those participants were
+	 * already notified and resolved their dialogs before the character could move.
+	 *
+	 * @return {@code true} if any player-controlled leader in the current clearing still has an
+	 *         unresolved post-phase decision stamped at the current action count, meaning the
+	 *         next action must not yet execute; {@code false} if the action may proceed
+	 */
+	private boolean isPostPhasePending() {
+		TileLocation loc = character.getCurrentLocation();
+		if (loc == null || !loc.isInClearing()) return false;
+		if (character.getPostPhaseActivityActionCount() != character.getNumberOfPerformedActionsToday()) return false;
+		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPostPhaseActivityDecision()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Releases all active followers at the end of the phasing character's last scheduled action.
+	 * <p>
+	 * Called only when {@code actionsPerformedToday == currentActionCount} (the final action of
+	 * the day). Every active follower is stopped in place and removed from the phasing
+	 * character's follower list. The followers remain in the same clearing as free individuals
+	 * and become eligible for post-phase dialogs via {@link #triggerPostPhase()}.
+	 * <p>
+	 * {@link CharacterWrapper#setStopFollowing(boolean)} is called <em>before</em>
+	 * {@link CharacterWrapper#removeActionFollower} so the follower's flag is already set when
+	 * the monster-summon logic inside {@code removeActionFollower} runs, preserving the standard
+	 * stopped-follower summoning behavior. The snapshot returned by
+	 * {@link CharacterWrapper#getActionFollowers()} is safe to iterate while the underlying list
+	 * is mutated by each {@code removeActionFollower} call.
+	 */
+	private void releaseLastPhaseFollowers() {
+		if (character.getNumberOfPerformedActionsToday() != character.getCurrentActionCount()) return;
+		for (CharacterWrapper follower : character.getActionFollowers()) {
+			follower.setStopFollowing(true);
+			character.removeActionFollower(follower, gameHandler.getGame().getMonsterDie(), gameHandler.getGame().getNativeDie());
+		}
+	}
+
+	/**
+	 * Notifies qualifying individuals in the phasing character's current clearing that
+	 * post-phase activities are available after the action just completed.
+	 * <p>
+	 * The clearing is scanned once to collect two things simultaneously: the list of
+	 * non-following player-controlled leaders (including ex-followers just released by
+	 * {@link #releaseLastPhaseFollowers()}, identified by {@code isStopFollowing()}), and
+	 * whether any unhired, non-mist-like monsters are present. A character qualifies as a
+	 * post-phase participant if all of the following are true:
+	 * <ul>
+	 *   <li>They have Blocking/Reactions ON ({@code isBlocking()}).</li>
+	 *   <li>If they are the <em>phasing</em> character: at least one other individual in the
+	 *       clearing is detectable, or unhired monsters are present.</li>
+	 *   <li>If they are a <em>non-phasing</em> character: they can detect the phasing character
+	 *       (phasing character is not hidden, or this observer has found hidden enemies today
+	 *       via {@code foundHiddenEnemy()}).</li>
+	 * </ul>
+	 * Detection is symmetric: the same {@code foundHiddenEnemy()} check applies in both
+	 * directions, so hidden ex-followers are not spuriously counted as detectable partners when
+	 * the phasing character evaluates its own eligibility.
+	 * <p>
+	 * When at least one participant is found, the post-phase action count is stamped (preventing
+	 * re-triggering via {@link #isPostPhasePending()}), each participant's
+	 * {@code NeedsPostPhaseActivityDecision} flag is set, and
+	 * {@code updateCharacterFramesWithoutMap()} is called so each participant's CharacterFrame
+	 * auto-shows the dialog via {@code SwingUtilities.invokeLater}.
+	 */
+	private void triggerPostPhase() {
+		TileLocation loc = character.getCurrentLocation();
+		if (loc == null || !loc.isInClearing()) return;
+
+		int actionsTakenNow = character.getNumberOfPerformedActionsToday();
+		if (character.getPostPhaseActivityActionCount() == actionsTakenNow) return;
+
+		// Single pass: collect non-following individuals and detect monster presence together.
+		// Stopped followers (isStopFollowing) were just released by releaseLastPhaseFollowers()
+		// and are treated as non-followers so they qualify for post-phase participation.
+		// willBeBlocked() skips hidden characters, so monster presence is checked directly —
+		// a hidden character can still elect to block monsters even though monsters won't block them.
+		ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
+		boolean monstersPresent = false;
+		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+			if (rc.isPlayerControlledLeader()) {
+				CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+				if (cw.getFollowStringId() == null || cw.isStopFollowing()) {
+					nonFollowers.add(cw);
+				}
+			} else if (rc instanceof MonsterChitComponent && rc.getOwner() == null && !rc.isMistLike()) {
+				monstersPresent = true;
+			}
+		}
+
+		boolean phasingCharHidden = character.isHidden();
+		int detectableOthers = 0;
+		for (CharacterWrapper other : nonFollowers) {
+			if (other.getGameObject().equals(character.getGameObject())) continue;
+			if (!other.isHidden() || character.foundHiddenEnemy(other.getGameObject())) {
+				detectableOthers++;
+			}
+		}
+
+		ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
+		for (CharacterWrapper cw : nonFollowers) {
+			if (!cw.isBlocking()) continue;
+			boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
+			if (isPhasingChar) {
+				if (detectableOthers >= 1 || monstersPresent) {
+					postPhaseParticipants.add(cw);
+				}
+			} else {
+				if (!phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject())) {
+					postPhaseParticipants.add(cw);
+				}
+			}
+		}
+
+		if (!postPhaseParticipants.isEmpty()) {
+			character.setPostPhaseActivityActionCount(actionsTakenNow);
+			for (CharacterWrapper cw : postPhaseParticipants) {
+				cw.setNeedsPostPhaseActivityDecision(true);
+			}
+			gameHandler.updateCharacterFramesWithoutMap();
+		}
+	}
+
 	public void updateBlocked(HostPrefWrapper hostPrefs) {
 		if (!character.isBlocked() && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 			character.setBlocked(true);
