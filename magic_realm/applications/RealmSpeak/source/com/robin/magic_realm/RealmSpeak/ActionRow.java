@@ -712,7 +712,9 @@ public class ActionRow {
 	 * Called only when {@code actionsPerformedToday == currentActionCount} (the final action of
 	 * the day). Every active follower is stopped in place and removed from the phasing
 	 * character's follower list. The followers remain in the same clearing as free individuals
-	 * and become eligible for post-phase dialogs via {@link #triggerPostPhase()}.
+	 * but do not participate in post-phase dialogs — {@link #triggerPostPhase()} is called
+	 * before this method so the follower list is still intact when the clearing is scanned,
+	 * ensuring released followers are excluded.
 	 * <p>
 	 * {@link CharacterWrapper#setStopFollowing(boolean)} is called <em>before</em>
 	 * {@link CharacterWrapper#removeActionFollower} so the follower's flag is already set when
@@ -733,12 +735,19 @@ public class ActionRow {
 	 * Notifies qualifying individuals in the phasing character's current clearing that
 	 * post-phase activities are available after the action just completed.
 	 * <p>
-	 * The clearing is scanned once to collect two things simultaneously: the list of
-	 * non-following player-controlled leaders (including ex-followers just released by
-	 * {@link #releaseLastPhaseFollowers()}, identified by {@code isStopFollowing()}), and
-	 * whether any unhired, non-mist-like monsters are present. A character qualifies as a
-	 * post-phase participant if all of the following are true:
+	 * This is called <em>before</em> {@link #releaseLastPhaseFollowers()}, so
+	 * {@code character.getActionFollowers()} still contains any followers who are about to be
+	 * released at end-of-turn. Those followers — and any follower still actively following —
+	 * are excluded from post-phase participation. Followers who voluntarily stopped following
+	 * during pre-phase are already absent from {@code actionFollowers} and are treated as
+	 * independent individuals eligible to participate.
+	 * <p>
+	 * The clearing is scanned once to collect two things simultaneously: the list of eligible
+	 * non-following player-controlled leaders, and whether any unhired, non-mist-like monsters
+	 * are present. A character qualifies as a post-phase participant if all of the following
+	 * are true:
 	 * <ul>
+	 *   <li>They are not an active follower of the phasing character.</li>
 	 *   <li>They have Blocking/Reactions ON ({@code isBlocking()}).</li>
 	 *   <li>If they are the <em>phasing</em> character: at least one other individual in the
 	 *       clearing is detectable, or unhired monsters are present.</li>
@@ -746,10 +755,6 @@ public class ActionRow {
 	 *       (phasing character is not hidden, or this observer has found hidden enemies today
 	 *       via {@code foundHiddenEnemy()}).</li>
 	 * </ul>
-	 * Detection is symmetric: the same {@code foundHiddenEnemy()} check applies in both
-	 * directions, so hidden ex-followers are not spuriously counted as detectable partners when
-	 * the phasing character evaluates its own eligibility.
-	 * <p>
 	 * When at least one participant is found, the post-phase action count is stamped (preventing
 	 * re-triggering via {@link #isPostPhasePending()}), each participant's
 	 * {@code NeedsPostPhaseActivityDecision} flag is set, and
@@ -763,17 +768,22 @@ public class ActionRow {
 		int actionsTakenNow = character.getNumberOfPerformedActionsToday();
 		if (character.getPostPhaseActivityActionCount() == actionsTakenNow) return;
 
-		// Single pass: collect non-following individuals and detect monster presence together.
-		// Stopped followers (isStopFollowing) were just released by releaseLastPhaseFollowers()
-		// and are treated as non-followers so they qualify for post-phase participation.
+		// Build identity set of active followers so they can be excluded from the clearing scan.
+		// Voluntarily-stopped followers are already absent from this list (removed during pre-phase)
+		// and are therefore treated as independent individuals eligible for post-phase.
 		// willBeBlocked() skips hidden characters, so monster presence is checked directly —
 		// a hidden character can still elect to block monsters even though monsters won't block them.
+		Set<GameObject> activeFollowerObjects = new HashSet<>();
+		for (CharacterWrapper f : character.getActionFollowers()) {
+			activeFollowerObjects.add(f.getGameObject());
+		}
+
 		ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
 		boolean monstersPresent = false;
 		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 			if (rc.isPlayerControlledLeader()) {
 				CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-				if (cw.getFollowStringId() == null || cw.isStopFollowing()) {
+				if (!activeFollowerObjects.contains(cw.getGameObject())) {
 					nonFollowers.add(cw);
 				}
 			} else if (rc instanceof MonsterChitComponent && rc.getOwner() == null && !rc.isMistLike()) {
