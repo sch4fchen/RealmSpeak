@@ -65,13 +65,13 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButtonManager singleButtonManager;
 	
 	protected JButton viewChitsButton;
-	protected JToggleButton blockButton;
+	protected JToggleButton reactButton;
 	protected JButton shoutButton;
 	protected JButton unhideButton;
 	protected JButton tradeButton;
 	protected JCheckBox dailyCombatCheckbox;
 	protected JCheckBox dayEndRearrangmentCheckbox;
-	protected JCheckBox keepBlockingCheckbox;
+	protected JCheckBox keepReactingCheckbox;
 	protected JLabel characterVulnerability;
 
 	protected JPanel characterDetailPanel;
@@ -290,7 +290,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
 						CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 						boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-						if (cw.isBlocking() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
+						if (cw.isInterPhaseReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
 							cw.setNeedsPrePhaseActivityDecision(true);
 						}
 					}
@@ -351,28 +351,28 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void handleBlockCharacter(RealmComponent rc) {
 		if (getCharacter().isSleep()) {
 			JOptionPane.showMessageDialog(this,"Cannot block if sleeping (affected by Flowers of Rest).","Cannot block - Flowers of Rest",JOptionPane.ERROR_MESSAGE);
-			getCharacter().addBlockDecision(rc.getGameObject());
+			getCharacter().addReactDecision(rc.getGameObject());
 			return;
 		}
 		if (((getCharacter().getTransmorph()==null && getCharacter().getGameObject().hasThisAttribute(Constants.SMALL)) || (getCharacter().getTransmorph()!=null && getCharacter().getTransmorph().hasThisAttribute(Constants.SMALL))) && hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {
 			JOptionPane.showMessageDialog(this,"Small individuals cannot block.","Cannot block - Small",JOptionPane.ERROR_MESSAGE);
-			getCharacter().addBlockDecision(rc.getGameObject());
+			getCharacter().addReactDecision(rc.getGameObject());
 			return;
 		}
 		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			JOptionPane.showMessageDialog(this,"Cannot block characters affected by Blinding Light.","Cannot block - Blinding Light",JOptionPane.ERROR_MESSAGE);
-			getCharacter().addBlockDecision(rc.getGameObject());
+			getCharacter().addReactDecision(rc.getGameObject());
 			return;
 		}
 		CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
 		if (getCharacter().isMistLike() || (target.isMistLike() && !getCharacter().getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
 			JOptionPane.showMessageDialog(this,"Cannot block as Melt-into-Mist character or block other Melt-into-Mist characters.","Cannot block - Melt into Mist",JOptionPane.ERROR_MESSAGE);
-			getCharacter().addBlockDecision(rc.getGameObject());
+			getCharacter().addReactDecision(rc.getGameObject());
 			return;
 		}
 		if (getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) || target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
 			JOptionPane.showMessageDialog(this,"You are affected by the Meditate effect or your target is affected by the Medidate effect.","Cannot block - Medidate effect",JOptionPane.ERROR_MESSAGE);
-			getCharacter().addBlockDecision(rc.getGameObject());
+			getCharacter().addReactDecision(rc.getGameObject());
 			return;
 		}
 		int ret = JOptionPane.showConfirmDialog(
@@ -380,7 +380,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				"Do you want to block the "+rc.getGameObject().getName()+" ?",
 				getCharacter().getGameObject().getName()+" Blocking",
 				JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,rc.getIcon());
-		getCharacter().addBlockDecision(rc.getGameObject());
+		getCharacter().addReactDecision(rc.getGameObject());
 		if (ret == JOptionPane.YES_OPTION) {
 			if (rc.isPlayerControlledLeader()) {
 				target.setBlocked(true);
@@ -426,7 +426,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		setTitle(character.getCharacterName() + " - Month " + character.getCurrentMonth() + ", Day " + character.getCurrentDay()+" - "+phaseName);
 		dailyCombatCheckbox.setSelected(character.getWantsCombat());
 		dayEndRearrangmentCheckbox.setSelected(character.getWantsDayEndTrades());
-		keepBlockingCheckbox.setSelected(character.keepsBlocking());
+		keepReactingCheckbox.setSelected(character.keepsReacting());
 		
 		// Update mountain move icon (might change with seasons/weather)
 		mountainMoveIcon.setCost(getCharacter().getMountainMoveCost()+(character.addsOneToMoveExceptCaves()?1:0));
@@ -578,15 +578,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		boolean recordingActions = character.isDoRecord() && actionPanel.getActionControlManager().getCurrentlyRecordingAction() == null;
 		boolean canTrade = getCharacter().isCharacter() || getCharacter().isHiredLeader() || getCharacter().isControlledMonster();
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
-		if (!character.isMinion() && character.isBlocking()) {
-			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block/Reactions ON");
-			blockButton.setSelected(true);
+		if (character.isInterPhaseReacting()) {
+			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
+			reactButton.setToolTipText("PvP Reactions ON");
+			reactButton.setSelected(true);
 		}
 		else {
-			blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-			blockButton.setToolTipText("Block/Reactions OFF");
-			blockButton.setSelected(false);
+			reactButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
+			reactButton.setToolTipText("PvP Reactions OFF");
+			reactButton.setSelected(false);
 		}
 		unhideButton.setEnabled(character.isHidden());
 		tradeButton.setEnabled(active && canTrade && !partway && !character.isSleep() && !gameHandler.getGame().getCharacterPoolLock());
@@ -1306,14 +1306,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			sideControls.add(dayEndRearrangmentCheckbox);
 			dayEndRearrangmentCheckbox.setEnabled(!character.isMinion() && !hostPrefs.hasPref(Constants.FE_NO_END_OF_DAY_TRADING));
 			
-			keepBlockingCheckbox = new JCheckBox("DayStart: Reactions ON");
-			keepBlockingCheckbox.addActionListener(new ActionListener() {
+			keepReactingCheckbox = new JCheckBox("DayStart: PvP Reactions ON");
+			keepReactingCheckbox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
-					character.setKeepBlocking(keepBlockingCheckbox.isSelected());
+					character.setKeepReacting(keepReactingCheckbox.isSelected());
 				}
 			});
-			sideControls.add(keepBlockingCheckbox);
-			keepBlockingCheckbox.setEnabled(!character.isMinion());
+			sideControls.add(keepReactingCheckbox);
+			keepReactingCheckbox.setEnabled(!character.isMinion());
 
 			tokenPanel.add(sideControls, "East");
 		}
@@ -1652,14 +1652,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 //		box.add(playColorChitNowButton);
 
 //		// Block Now Button
-//		// REMOVED: Block Now Button — was shown when getNeedsBlockDecision() or getNeedsInterruptPhaseDecision()
+//		// REMOVED: Block Now Button — was shown when getNeedsReactDecision() or getNeedsInterruptPhaseDecision()
 //		// was true, allowing a character with Blocking ON to declare a block after any phase in their clearing.
-//		// The old system set those flags in RealmTurnPanel.isAwaitingBlockDecision() and cleared them via
-//		// removeAllBlockDecisions(). Blocking is being reimplemented as part of the post-phase dialog system;
-//		// this button and its isAwaitingBlockDecision() gate calls are all commented out pending that work.
+//		// The old system set those flags in RealmTurnPanel.isAwaitingReactDecision() and cleared them via
+//		// removeAllReactDecisions(). Blocking is being reimplemented as part of the post-phase dialog system;
+//		// this button and its isAwaitingReactDecision() gate calls are all commented out pending that work.
 //		blockNowButton = new SingleButton("Block Now?!",true) {
 //			public boolean needsShow() {
-//				return getCharacter().getNeedsBlockDecision() || getCharacter().getNeedsInterruptPhaseDecision();
+//				return getCharacter().getNeedsReactDecision() || getCharacter().getNeedsInterruptPhaseDecision();
 //			}
 //		};
 //		blockNowButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
@@ -1836,34 +1836,34 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		});
 		box.add(viewChitsButton);
 		
-		blockButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
-		blockButton.setToolTipText("Block/Reactions OFF");
-		ComponentTools.lockComponentSize(blockButton,39,39);
-		if (!character.isMinion() && character.isBlocking()) {
-			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-			blockButton.setToolTipText("Block/Reactions ON");
-			blockButton.setSelected(true);
+		reactButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
+		reactButton.setToolTipText("PvP Reactions OFF");
+		ComponentTools.lockComponentSize(reactButton,39,39);
+		if (character.isInterPhaseReacting()) {
+			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
+			reactButton.setToolTipText("PvP Reactions ON");
+			reactButton.setSelected(true);
 		}
-		blockButton.setFocusable(false);
-		blockButton.addActionListener(new ActionListener() {
+		reactButton.setFocusable(false);
+		reactButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (blockButton.isSelected()) {
-					blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
-					blockButton.setToolTipText("Block/Reactions ON");
-					character.setBlocking(true);
+				if (reactButton.isSelected()) {
+					reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
+					reactButton.setToolTipText("PvP Reactions ON");
+					character.setReacting(true);
 				}
 				else {
-					blockButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
-					blockButton.setToolTipText("Block/Reactions OFF");
-					character.setBlocking(false);
+					reactButton.setIcon(IconFactory.findIcon("images/interface/blockoff.gif"));
+					reactButton.setToolTipText("PvP Reactions OFF");
+					character.setReacting(false);
 				}
 				gameHandler.submitChanges();
 				gameHandler.updateCharacterList();
 			}
 		});
-		box.add(blockButton);
+		box.add(reactButton);
 		if (character.isMinion()) {
-			blockButton.setEnabled(false);
+			reactButton.setEnabled(false);
 		}
 		
 		unhideButton = new JButton(IconFactory.findIcon("images/interface/unhide.gif"));

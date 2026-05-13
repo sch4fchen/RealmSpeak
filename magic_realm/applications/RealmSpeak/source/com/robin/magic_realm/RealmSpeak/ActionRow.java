@@ -407,6 +407,37 @@ public class ActionRow {
 	 */
 	public void process() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+
+		// ── BLOCK 1: PRE-ACTION GATES (skipped entirely for followers) ──────────────────────────────
+		//
+		// Followers execute their guide's action record mechanically — they cannot be blocked, sleep-
+		// cancelled, or interrupted by pre/post-phase dialogs. All of the checks below only apply to
+		// the phasing character itself (the leader whose RealmTurnPanel owns this ActionRow).
+		//
+		// BLOCKED check: a character becomes blocked when an enemy enters its clearing during daylight
+		// (see Constants.BLOCKED). The blocked flag is set by combat resolution; it prevents any further
+		// daylight action. We broadcast the blocked message to all clients (so the game log updates) and
+		// return early with cancelled=true so RealmTurnPanel can stop the turn sequence. This fires BEFORE
+		// the pre-phase segment so a character cannot start pre-phase activities when already blocked.
+		//
+		// SLEEP check: checkSleep() inspects the character's chit states and their SLEEP attribute to
+		// determine whether they must sleep this phase (e.g. exhausted all action chits, or a spell
+		// put them to sleep). If they are asleep this action is cancelled and the turn ends.
+		//
+		// PRE-PHASE SEGMENT: handlePrePhase() evaluates whether any other player in the same clearing
+		// qualifies for a pre-phase activity. Two things currently trigger a non-phasing character's
+		// pre-phase dialog: (1) color-chit play (3rd-edition default; the character holds color magic
+		// chits and FE_PHASE_END_PLAYING_COLOR_CHIT is off), and (2) follower stop-following decision
+		// (the character is an active follower of the phasing character). Both require that character's
+		// InterPhaseReacting mode to be ON — isInterPhaseReacting() is a participation gate, not a trigger; no
+		// blocking decision is made during pre-phase. If the segment is needed and hasn't been resolved
+		// yet, NeedsPrePhaseActivityDecision is set on the phasing character and we return true here,
+		// deferring the action. RealmTurnPanel calls process() again after all dialogs are dismissed.
+		//
+		// POST-PHASE PENDING guard: isPostPhasePending() returns true when the PREVIOUS action's
+		// post-phase dialogs haven't been cleared yet (another player in the clearing is still deciding).
+		// This prevents Play All from racing ahead and executing the next action before everyone has
+		// finished responding to the last one.
 		if (!isFollowing) {
 			if (character.isBlocked()) {
 				gameHandler.broadcast(character.getGameObject().getName(),"BLOCKED - Cannot perform action "+action);
@@ -430,9 +461,51 @@ public class ActionRow {
 		// to set NeedsPlayColorChitInterruptPhaseBeginningDecision on each character and then showed the
 		// "Play Color Chit Now?!" button. That button is also commented out. The 1st edition equivalent
 		// (FE_PHASE_END_PLAYING_COLOR_CHIT, post-phase) remains intact further below after the action executes.
-		
+
+		// ── BLOCK 2: FORESIGHT SNAPSHOT + ACTION DISPATCH ────────────────────────────────────────────
+		//
+		// completed=true is the optimistic default. Individual doXxxAction() methods set it to false if
+		// the action fails or is interrupted mid-execution (e.g. a move into a blocked road, a search
+		// that finds nothing, a hire that the native refuses). RealmTurnPanel checks completed after
+		// process() returns to decide whether to advance the turn or stay on this row.
+		//
+		// BLANK / INVALID guard: blankReason!=null means this row was deliberately replaced with a
+		// blank phase (e.g. illegal sunlight use in a cave — see RealmTurnPanel.playNext). invalid
+		// means the action was never legal. Both skip the dispatch block entirely; the row is still
+		// marked completed so the turn sequence advances past it.
+		//
+		// FORESIGHT: if the character has the Foresight advantage and hasn't used it this phase, we
+		// snapshot the character's current wish-strength and all chit states into FORESIGHT_SAVED_STATS
+		// before the action mutates anything. If the action goes badly, Foresight allows the player
+		// to roll back to this snapshot (the rollback logic lives elsewhere).
+		//
+		// autoMarkInventory: most actions don't require the player to select which item they used, so
+		// we default to marking all inventory as "not new" after the action. Trade, Search, Cache, and
+		// Repair set this to false because they manage inventory visibility themselves.
+		//
+		// ACTION DISPATCH: a simple if/else chain maps the action's ActionId enum to a private
+		// doXxxAction() method. Each method is responsible for the full resolution of that action type:
+		//   - doMoveAction():   moves the character token to the target clearing; triggers road blocks,
+		//                       hidden-path discovery, and follower movement.
+		//   - doHideAction():   rolls to set the character hidden; result depends on chit strength.
+		//   - doSearchAction(): rolls on the appropriate search table for the clearing type.
+		//   - doTradeAction():  opens the trade dialog with the native group in the clearing.
+		//   - doRestAction():   recovers one fatigued or wounded chit.
+		//   - doAlertAction():  readies an alerted weapon or armor chit.
+		//   - doHireAction():   attempts to hire a native leader.
+		//   - doSpellAction():  casts the readied spell; consumes the spell energy.
+		//   - (Follow is intentionally excluded — followers are set up during birdsong, not here.)
+		//   - doEnhancedPeerAction(), doFlyAction(), doRemoteSpellAction(), doCacheAction(),
+		//     doHealAction(), doRepairAction(), doFortifyAction(): less common actions.
+		//
+		// logAction() records the action result to the game log after dispatch so all paths
+		// (completed, blank, or invalid) produce a log entry.
+		//
+		// The final isActive() check covers the rare case where an action kills the character mid-
+		// execution (e.g. a fatigue/wound from a fly chit). If the character died during their own
+		// action, there is nothing left to post-process.
 		completed = true; // the default - can be modified if there are problems
-		
+
 		if (blankReason==null && !invalid) {
 			
 			if (character.affectedByKey(Constants.FORESIGHT) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
@@ -525,6 +598,28 @@ public class ActionRow {
 			}
 		}
 		
+		// ── BLOCK 3: POST-ACTION CLEANUP ─────────────────────────────────────────────────────────────
+		//
+		// Runs unconditionally after the dispatch block (whether the action was blank, invalid, or
+		// fully executed). The one exception is the isActive() early-return above — a dead character
+		// skips everything from here on.
+		//
+		// SECOND SLEEP CHECK: checkSleep() is called again because some actions can exhaust chits
+		// (e.g. a fly chit fatiguing, a wound from a fall) that push the character into sleep. If
+		// the character fell asleep during the action itself we need to know before evaluating blocking.
+		//
+		// NO_HIDE ITEM: some clearings contain items or effects with the NO_HIDE key (e.g. certain
+		// dwellings or map cards). If one is present in the character's current clearing, the character
+		// — and every other character in that clearing — is forcibly revealed. This check runs after
+		// movement so it fires correctly when a character just moved into a NO_HIDE clearing.
+		//
+		// PER-PHASE ATTRIBUTE CLEANUP: three attributes are cleared after every action:
+		//   - DRINKS_BOUGHT: native goodwill bonus from buying drinks lasts only one phase.
+		//   - FORESIGHT_USED: prevents Foresight from snapshotting more than once per phase.
+		//   - FORESIGHT_SAVED_STATS: the snapshot itself; cleared so stale data can't be replayed.
+		//   - MEDITATE_DISCOVER_SITES: if the character performed a meditation action, they
+		//     automatically discover all treasure location chits in their current clearing. This runs
+		//     here (after the action) so the clearing reflects the post-move location.
 		checkSleep(); // check again, in case something changed during the action
 
 		GameObject noHideItem = ClearingUtility.getItemInClearingWithKey(location,Constants.NO_HIDE);
@@ -588,7 +683,7 @@ public class ActionRow {
 					character.setNeedsBlockEvaluation(true);
 					blockEvaluation = false;
 					for (GameObject livingCharacter : livingCharacters) {
-						new CharacterWrapper(livingCharacter).setNeedsBlockDecision(false);
+						new CharacterWrapper(livingCharacter).setNeedsReactDecision(false);
 					}
 				}
 			}
@@ -596,7 +691,7 @@ public class ActionRow {
 			if (blockEvaluation) {
 				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 					if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-						new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+						new CharacterWrapper(livingCharacter).removeAllReactDecisions();
 					}
 					new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
 				}
@@ -604,27 +699,21 @@ public class ActionRow {
 			}
 
 			if (!isFollowing) {
-				releaseLastPhaseFollowers();
 				triggerPostPhase();
+				releaseLastPhaseFollowers();
 			}
 		}
 	}
 	/**
-	 * Evaluates whether a pre-phase activity window is needed before the current action executes,
+	 * Evaluates whether a pre-phase segment is needed before the current action executes,
 	 * sets the appropriate flags if so, and reports whether the action must be deferred.
 	 * <p>
-	 * Two independent conditions trigger the pre-phase window:
-	 * <ul>
-	 *   <li><b>Non-phasing notification:</b> a player-controlled leader in the same clearing has
-	 *       Blocking/Reactions ON and is either an active follower of the phasing character or
-	 *       holds color chits (3rd-edition color-chit pre-phase play).</li>
-	 *   <li><b>Hidden guide:</b> the phasing character is hidden and has at least one active
-	 *       follower who has not yet found hidden enemies this turn. The guide needs the
-	 *       pre-phase window to reveal, ditch the follower, or accept the situation.</li>
-	 * </ul>
-	 * When either condition is met and the window has not already been opened for this action
-	 * (action-count guard via {@code getPrePhaseActivityActionCount()}), the phasing
-	 * character's {@code NeedsPrePhaseActivityDecision} flag is set and
+	 * The pre-phase segment triggers when a player-controlled leader in the same clearing has
+	 * InterPhaseReacting ON and is either an active follower of the phasing character or holds
+	 * color chits (3rd-edition color-chit pre-phase play). When that condition is met and the
+	 * segment has not already been opened for this action (action-count guard via
+	 * {@code getPrePhaseActivityActionCount()}), the phasing character's
+	 * {@code NeedsPrePhaseActivityDecision} flag is set and
 	 * {@code updateCharacterFramesWithoutMap()} is called so the CharacterFrame can display the
 	 * "Done: Pre-Phase" button. The method then scans the clearing a second time: if any
 	 * player-controlled leader still has the flag set (including flags set by earlier calls),
@@ -651,19 +740,13 @@ public class ActionRow {
 				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
 					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 					boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-					if (cw.isBlocking() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
+					if (cw.isInterPhaseReacting() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
 						anyNonPhasingNeedNotice = true;
 						break;
 					}
 				}
 			}
-			// A hidden guide whose followers haven't found them triggers pre-phase independently
-			// of the non-phasing notification check above — even with no other blocking characters
-			// in the clearing, the guide needs a chance to handle the follower situation.
-			boolean hiddenGuideWithUnawareFollowers = character.isHidden()
-				&& !phasingFollowers.isEmpty()
-				&& phasingFollowers.stream().anyMatch(f -> !f.foundHiddenEnemy(character.getGameObject()));
-			if (anyNonPhasingNeedNotice || hiddenGuideWithUnawareFollowers) {
+			if (anyNonPhasingNeedNotice) {
 				character.setPrePhaseActivityActionCount(actionsTaken);
 				character.setNeedsPrePhaseActivityDecision(true);
 				gameHandler.updateCharacterFramesWithoutMap();
@@ -737,10 +820,18 @@ public class ActionRow {
 	 * <p>
 	 * This is called <em>before</em> {@link #releaseLastPhaseFollowers()}, so
 	 * {@code character.getActionFollowers()} still contains any followers who are about to be
-	 * released at end-of-turn. Those followers — and any follower still actively following —
-	 * are excluded from post-phase participation. Followers who voluntarily stopped following
-	 * during pre-phase are already absent from {@code actionFollowers} and are treated as
-	 * independent individuals eligible to participate.
+	 * released at end-of-turn.
+	 * <p>
+	 * In 3rd-edition case ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} OFF), followers of <em>any</em>
+	 * guide are excluded from post-phase — they have no independent post-phase reactions while
+	 * following (pre-phase reactions via {@code isInterPhaseReacting()} still apply normally).
+	 * Followers who voluntarily stopped during pre-phase are already off every guide's follower
+	 * list and are eligible as independent individuals.
+	 * <p>
+	 * In 1st-edition case ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} ON), no characters are
+	 * excluded by follower status — all characters in the clearing (including followers of any
+	 * guide) who have PvP Reactions ON and hold color chits are eligible for the phase-end
+	 * color-chit dialog.
 	 * <p>
 	 * The clearing is scanned once to collect two things simultaneously: the list of eligible
 	 * non-following player-controlled leaders, and whether any unhired, non-mist-like monsters
@@ -748,7 +839,7 @@ public class ActionRow {
 	 * are true:
 	 * <ul>
 	 *   <li>They are not an active follower of the phasing character.</li>
-	 *   <li>They have Blocking/Reactions ON ({@code isBlocking()}).</li>
+	 *   <li>They have InterPhaseReacting ON ({@code isInterPhaseReacting()}).</li>
 	 *   <li>If they are the <em>phasing</em> character: at least one other individual in the
 	 *       clearing is detectable, or unhired monsters are present.</li>
 	 *   <li>If they are a <em>non-phasing</em> character: they can detect the phasing character
@@ -768,22 +859,39 @@ public class ActionRow {
 		int actionsTakenNow = character.getNumberOfPerformedActionsToday();
 		if (character.getPostPhaseActivityActionCount() == actionsTakenNow) return;
 
-		// Build identity set of active followers so they can be excluded from the clearing scan.
-		// Voluntarily-stopped followers are already absent from this list (removed during pre-phase)
-		// and are therefore treated as independent individuals eligible for post-phase.
+		// Build the follower exclusion set.
+		//
+		// In 3rd-edition case (FE_PHASE_END_PLAYING_COLOR_CHIT OFF), followers of ANY guide are
+		// excluded from post-phase entirely — they are operating under their guide's turn and have
+		// no independent inter-phase reactions until they stop following.
+		//
+		// In 1st-edition case (FE_PHASE_END_PLAYING_COLOR_CHIT ON), followers may play color chits
+		// at phase-end, so we restrict exclusion only to the phasing character's active followers
+		// (same rule as before this change — voluntarily-stopped followers are already off the list).
+		//
 		// willBeBlocked() skips hidden characters, so monster presence is checked directly —
-		// a hidden character can still elect to block monsters even though monsters won't block them.
-		Set<GameObject> activeFollowerObjects = new HashSet<>();
-		for (CharacterWrapper f : character.getActionFollowers()) {
-			activeFollowerObjects.add(f.getGameObject());
+		// a hidden character can still elect to react to monsters even though monsters won't block them.
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
+		boolean colorChitPostPhase = hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+
+		Set<GameObject> excludedFollowers = new HashSet<>();
+		if (!colorChitPostPhase) {
+			// 3rd edition: exclude followers of ANY guide — they have no independent post-phase reactions.
+			for (GameObject living : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				for (CharacterWrapper f : new CharacterWrapper(living).getActionFollowers()) {
+					excludedFollowers.add(f.getGameObject());
+				}
+			}
 		}
+		// 1st edition: no follower exclusion — all characters (including followers) who hold
+		// color chits and have PvP Reactions ON are eligible for the phase-end color-chit dialog.
 
 		ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
 		boolean monstersPresent = false;
 		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 			if (rc.isPlayerControlledLeader()) {
 				CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-				if (!activeFollowerObjects.contains(cw.getGameObject())) {
+				if (!excludedFollowers.contains(cw.getGameObject())) {
 					nonFollowers.add(cw);
 				}
 			} else if (rc instanceof MonsterChitComponent && rc.getOwner() == null && !rc.isMistLike()) {
@@ -802,7 +910,7 @@ public class ActionRow {
 
 		ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
 		for (CharacterWrapper cw : nonFollowers) {
-			if (!cw.isBlocking()) continue;
+			if (!cw.isInterPhaseReacting()) continue;
 			boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
 			if (isPhasingChar) {
 				if (detectableOthers >= 1 || monstersPresent) {
@@ -1285,7 +1393,7 @@ public class ActionRow {
 							new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
 						}
 						gameHandler.updateCharacterFramesWithoutMap();
-						if (turnPanel.isAwaitingBlockDecision(true,current)) {							
+						if (turnPanel.isAwaitingReactDecision(true,current)) {							
 							result = "AWAITING BLOCK DECISIONS";
 							completed = false;
 							return;
@@ -2340,12 +2448,12 @@ public class ActionRow {
 					boolean blockingPhases = hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES);
 					for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 						if (blockingPhases) {
-							new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+							new CharacterWrapper(livingCharacter).removeAllReactDecisions();
 						}
 						new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
 					}
 					gameHandler.updateCharacterFramesWithoutMap();
-					if (turnPanel.isAwaitingBlockDecision(true,current)) {
+					if (turnPanel.isAwaitingReactDecision(true,current)) {
 						blockRestAction = true;
 					}
 				}

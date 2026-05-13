@@ -277,10 +277,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		return false;
 	}
-	public boolean isAwaitingBlockDecision() {
-		return isAwaitingBlockDecision(false,null);
+	public boolean isAwaitingReactDecision() {
+		return isAwaitingReactDecision(false,null);
 	}
-	public boolean isAwaitingBlockDecision(boolean interruptMovement, TileLocation loc) {
+	public boolean isAwaitingReactDecision(boolean interruptMovement, TileLocation loc) {
 		if (getCharacter().getNeedsBlockEvaluation() || getCharacter().getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return false;
 		if (getRealmComponent().isPlayerControlledLeader() && !getCharacter().isMinion() && !getCharacter().isSleep() && !getCharacter().getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) {
 			blockWarningLabel.setText("");
@@ -295,10 +295,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							if (target.isBlocking() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
+							if (target.isInterPhaseReacting() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
 									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
-									if (!target.hasBlockDecision(getCharacter().getGameObject())) {
+									if (!target.hasReactDecision(getCharacter().getGameObject())) {
 										blockWarningLabel.setText(target.getGameObject().getName()+" is blocking.  Awaiting decision...");
 										return true;
 									}
@@ -349,7 +349,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 
-	public boolean isAwaitingInterruptionDecision(boolean evaluateBlockingReactions) {
+	public boolean isAwaitingInterruptionDecision(boolean evaluateReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
 			TileLocation current = getCharacter().getCurrentLocation();
@@ -369,7 +369,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 							return true;
 						}
 						if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
-							if (target.isBlocking() && !target.isMinion()
+							if (target.isInterPhaseReacting() && !target.isMinion()
 									&& (target.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !target.hasColorChitInterruptPhaseBeginningDecision(getCharacter().getGameObject())
 									|| target.getNeedsPlayColorChitInterruptPhaseEndDecision() && !target.hasColorChitInterruptPhaseEndDecision(getCharacter().getGameObject()))) {
 								blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");
@@ -380,12 +380,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 			}
 		}
-		if (evaluateBlockingReactions && getCharacter().getNeedsBlockEvaluation()) {
+		if (evaluateReactions && getCharacter().getNeedsBlockEvaluation()) {
 			ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(getCharacter().getGameData());
 			getCharacter().setNeedsBlockEvaluation(false);
 			for (GameObject livingCharacter : livingCharacters) {
 				if (hostPrefs.hasPref(Constants.OPT_BLOCKING_PHASES)) {
-					new CharacterWrapper(livingCharacter).removeAllBlockDecisions();
+					new CharacterWrapper(livingCharacter).removeAllReactDecisions();
 				}
 				new CharacterWrapper(livingCharacter).setInterruptPhaseDecision(false);
 				getGameHandler().updateCharacterFramesWithoutMap();
@@ -395,7 +395,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	public boolean isAwaitingReactions() {
-		return /*isAwaitingBlockDecision(true,null) ||*/ isAwaitingInterruptionDecision(false);
+		return /*isAwaitingReactDecision(true,null) ||*/ isAwaitingInterruptionDecision(false);
 	}
 	
 	public void updateControls() {
@@ -407,12 +407,12 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		// waitingForSingleButton would short-circuit the call entirely and the "pending..." label would never
 		// update while a mandatory SingleButton is also active (e.g. during the phasing char's Done button).
 		boolean awaitingInterruption = isAwaitingInterruptionDecision();
-		// REMOVED: isAwaitingBlockDecision() gating — this call and its sister occurrences in isAwaitingReactions(),
+		// REMOVED: isAwaitingReactDecision() gating — this call and its sister occurrences in isAwaitingReactions(),
 		// the wasAwaitingPrePhase auto-advance guard, the playNextButton listener, and the playAll() loop are all
-		// commented out inline (/*isAwaitingBlockDecision()*/). The method detected pending block decisions set by
+		// commented out inline (/*isAwaitingReactDecision()*/). The method detected pending block decisions set by
 		// the old Block Now button flow. Since blocking is being reimplemented as part of the post-phase dialog
 		// system, all gates on block decisions are disabled until that work is complete.
-		boolean controlsLocked = /*isAwaitingBlockDecision() ||*/ waitingForSingleButton || awaitingInterruption;
+		boolean controlsLocked = /*isAwaitingReactDecision() ||*/ waitingForSingleButton || awaitingInterruption;
 		
 		boolean playedAnAction = actionRows.size()>0 && !(actionRows.get(0)).isPending();
 		
@@ -447,7 +447,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		boolean nowAwaitingPrePhase = isAwaitingPrePhaseDecision();
 		if (wasAwaitingPrePhase && !nowAwaitingPrePhase && getCharacter().isPlayingTurn()
 				&& actionsLeft && !waitingForSingleButton && activatePlayNextTimer == null
-				/*&& !isAwaitingBlockDecision()*/) {
+				/*&& !isAwaitingReactDecision()*/) {
 			wasAwaitingPrePhase = false;
 			SwingUtilities.invokeLater(() -> playNext(false));
 		} else {
@@ -505,11 +505,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		abandonInventoryButton.setEnabled(current!=null && !current.isBetweenClearings() && !getCharacter().isBlocked());
 		
-		// Ditch Follower is only useful during the phasing guide's pre-phase window: the guide is hidden,
-		// has followers who haven't found them, and the pre-phase decision is pending. Outside that window
-		// (before hiding, between actions, after the last action) ditching has no effect because followers
-		// either already know the guide's location or will be released automatically at end-of-last-phase.
-		ditchFollowersButton.setEnabled(areActionFollowersToLeaveBehind && getCharacter().getNeedsPrePhaseActivityDecision());
+		// Ditch Follower: only enabled during the pre-phase segment (phasing char has NeedsPrePhaseActivityDecision),
+		// and only when the upcoming action is a Move, the guide is hidden, and there are followers who haven't
+		// found hidden enemies. All three conditions must hold — ditching is meaningless for non-Move actions
+		// (followers don't move) and irrelevant once the guide is visible or all followers are aware.
+		String nextPendingAction = null;
+		for (ActionRow ar : actionRows) {
+			if (ar.isPending()) { nextPendingAction = ar.getAction(); break; }
+		}
+		boolean nextIsMove = nextPendingAction != null && nextPendingAction.startsWith("M");
+		ditchFollowersButton.setEnabled(getCharacter().getNeedsPrePhaseActivityDecision() && nextIsMove && areActionFollowersToLeaveBehind);
 		
 		if (acm!=null) {
 			acm.updateControls(phaseManager,!isFollowing,false);
@@ -544,7 +549,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		};
 		playNextButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (/*!isAwaitingBlockDecision() &&*/ !isAwaitingInterruptionDecision()) {
+				if (/*!isAwaitingReactDecision() &&*/ !isAwaitingInterruptionDecision()) {
 					playNext(false);
 					getGameHandler().getInspector().redrawMap();
 					updateControls();
@@ -1075,7 +1080,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	}
 	
 	private void playAll() {
-		while(nextAction()!=null && /*!isAwaitingBlockDecision() &&*/ !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue() && !isAwaitingInterruptionDecision()) {
+		while(nextAction()!=null && /*!isAwaitingReactDecision() &&*/ !isAwaitingFollowersResting() && !isAwaitingFollowersAlerting() &!isAwaitingFollowersSpellActions() &!isAwaitingFollowersWeatherFatigue() && !isAwaitingInterruptionDecision()) {
 			if (!playNext(true)) {
 				// player cancelled action, or awaiting input (like transport to caves result in TableLoot)
 				break;

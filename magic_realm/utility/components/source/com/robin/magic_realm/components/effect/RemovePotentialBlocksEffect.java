@@ -16,8 +16,8 @@ public class RemovePotentialBlocksEffect implements ISpellEffect {
 		for (RealmComponent rc : cl.getClearingComponents()) {
 			if (!rc.isAnyLeader()) continue;
 			CharacterWrapper leader = new CharacterWrapper(rc.getGameObject());
-			if (leader.hasBlockDecision(context.Target.getGameObject())) {
-				leader.removeBlockDecision(context.Target.getGameObject());
+			if (leader.hasReactDecision(context.Target.getGameObject())) {
+				leader.removeReactDecision(context.Target.getGameObject());
 			}
 		}
 	}
