@@ -838,8 +838,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		game.setPlaceGoldSpecials(false);
 		game.setGameStarted(true);
 		if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS)) {
-			GamePool pool = getGamePool();
-			ArrayList<GameObject> allChars = pool.find("character");
+			ArrayList<GameObject> allChars = RealmUtility.getLivingCharacters(client.getGameData());
 			for (int i = 0; i < allChars.size(); i++) {
 				CharacterWrapper cw1 = new CharacterWrapper(allChars.get(i));
 				cw1.setBlocking(true);
@@ -1812,8 +1811,8 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						character.setKeepBlocking(true);
 						character.setWantsCombat(true);
 						character.setWantsDayEndTrades(true);
-						ArrayList<GameObject> existingChars = pool.find("character");
-						for (GameObject existing : existingChars) {
+						ArrayList<GameObject> livingCharacters = RealmUtility.getLivingCharacters(client.getGameData());
+						for (GameObject existing : livingCharacters) {
 							if (!existing.equals(character.getGameObject())) {
 								CharacterWrapper existingWrapper = new CharacterWrapper(existing);
 								character.setEnemyCharacter(existing, true);
