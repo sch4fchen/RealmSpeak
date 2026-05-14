@@ -290,7 +290,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 					if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
 						CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 						boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-						if (cw.isInterPhaseReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
+						if (cw.isReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
 							cw.setNeedsPrePhaseActivityDecision(true);
 						}
 					}
@@ -578,7 +578,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		boolean recordingActions = character.isDoRecord() && actionPanel.getActionControlManager().getCurrentlyRecordingAction() == null;
 		boolean canTrade = getCharacter().isCharacter() || getCharacter().isHiredLeader() || getCharacter().isControlledMonster();
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
-		if (character.isInterPhaseReacting()) {
+		if (character.isReacting()) {
 			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			reactButton.setToolTipText("PvP Reactions ON");
 			reactButton.setSelected(true);
@@ -1839,7 +1839,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		reactButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
 		reactButton.setToolTipText("PvP Reactions OFF");
 		ComponentTools.lockComponentSize(reactButton,39,39);
-		if (character.isInterPhaseReacting()) {
+		if (character.isReacting()) {
 			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			reactButton.setToolTipText("PvP Reactions ON");
 			reactButton.setSelected(true);

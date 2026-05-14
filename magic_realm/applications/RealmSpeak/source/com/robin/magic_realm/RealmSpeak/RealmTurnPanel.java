@@ -295,7 +295,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
-							if (target.isInterPhaseReacting() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
+							if (target.isReacting() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
 									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
 									if (!target.hasReactDecision(getCharacter().getGameObject())) {
@@ -369,7 +369,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 							return true;
 						}
 						if (!rc.getGameObject().equals(getCharacter().getGameObject())) {
-							if (target.isInterPhaseReacting() && !target.isMinion()
+							if (target.isReacting() && !target.isMinion()
 									&& (target.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !target.hasColorChitInterruptPhaseBeginningDecision(getCharacter().getGameObject())
 									|| target.getNeedsPlayColorChitInterruptPhaseEndDecision() && !target.hasColorChitInterruptPhaseEndDecision(getCharacter().getGameObject()))) {
 								blockWarningLabel.setText(target.getGameObject().getName()+" is reacting.  Awaiting decision...");

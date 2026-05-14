@@ -408,30 +408,49 @@ public class ActionRow {
 	public void process() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 
-		// ── BLOCK 1: PRE-ACTION GATES (skipped entirely for followers) ──────────────────────────────
+		// NOTE: "character" herein means a character, hired leader, or controlled monster.  If something
+		//       applies to characters only and not hired leaders or monsters, it will say "character-only".
 		//
-		// Followers execute their guide's action record mechanically — they cannot be blocked, sleep-
-		// cancelled, or interrupted by pre/post-phase dialogs. All of the checks below only apply to
-		// the phasing character itself (the leader whose RealmTurnPanel owns this ActionRow).
+		// Followers check: Followers will skip the following block, but instead will be processed together
+		// with their phasing guide while the guide is being processed through the block.
 		//
-		// BLOCKED check: a character becomes blocked when an enemy enters its clearing during daylight
-		// (see Constants.BLOCKED). The blocked flag is set by combat resolution; it prevents any further
-		// daylight action. We broadcast the blocked message to all clients (so the game log updates) and
-		// return early with cancelled=true so RealmTurnPanel can stop the turn sequence. This fires BEFORE
-		// the pre-phase segment so a character cannot start pre-phase activities when already blocked.
+		// isBlocked check: while phasing, a character may become blocked by a non-phasing monster or character
+		// in their clearing during post-phase (or may become blocked by initiating blocking of such a character
+		// themselves).  In either case, the phasing character is blocked and will short-circuit any further
+		// phases which call process() to be resolved.
 		//
 		// SLEEP check: checkSleep() inspects the character's chit states and their SLEEP attribute to
 		// determine whether they must sleep this phase (e.g. exhausted all action chits, or a spell
-		// put them to sleep). If they are asleep this action is cancelled and the turn ends.
+		// put them to sleep).  If so, the action is cancelled and the result is set to "Sleeping".
 		//
-		// PRE-PHASE SEGMENT: handlePrePhase() evaluates whether any other player in the same clearing
-		// qualifies for a pre-phase activity. Two things currently trigger a non-phasing character's
-		// pre-phase dialog: (1) color-chit play (3rd-edition default; the character holds color magic
-		// chits and FE_PHASE_END_PLAYING_COLOR_CHIT is off), and (2) follower stop-following decision
-		// (the character is an active follower of the phasing character). Both require that character's
-		// InterPhaseReacting mode to be ON — isInterPhaseReacting() is a participation gate, not a trigger; no
-		// blocking decision is made during pre-phase. If the segment is needed and hasn't been resolved
-		// yet, NeedsPrePhaseActivityDecision is set on the phasing character and we return true here,
+		// PRE-PHASE SEGMENT: handlePrePhase() evaluates whether any non-phasing character in the
+		// clearing qualifies for pre-phase activities. There is a gate, and if passed, two 
+		// independent triggers.
+		//
+		//   GATE: Reacting=ON is a hard requirement for any non-phasing character pre-phase activity.
+		//
+		//   Subsequent qualification for a pre-phase segment is determined by two independent triggers:
+		//
+		//     (A) Followers of a phasing guide always qualify.  Followers can use the pre-phase segment
+		//         to: rearrange belongings, trade with anyone in the clearing, play color chits, pick up
+		//         mission chits, or choose to stop following.
+		//
+		//     (B) Non-followers with Reacting ON who hold color chits — qualify only in
+		//         3rd-edition mode (FE_PHASE_END_PLAYING_COLOR_CHIT is off). In 1st-edition, color chit
+		//         play shifts to post-phase, so non-followers have nothing to do pre-phase unless they
+		//         are followers of this guide (see A).
+		//
+		// Phasing characters always qualify for pre-phase activities: trading, rearranging items, color
+		// chit play, and mission chit pickup.  There is no special dialog needed for phasing characters
+		// to do these things, but if any non-phasing character qualifies for pre-phase activities, the
+		// phasing character must resolve their pre-phase segment before the non-phasing characters will
+		// be presented with their pre-phase activies dialog.
+		//
+		// Phasing guides who are hidden may drop followers who cannot detect them during the pre-phase if
+		// the phase action will be a move.
+		//
+		// If any qualifying character exists and the segment hasn't fired for this action yet,
+		// NeedsPrePhaseActivityDecision is set on the phasing character and we return true here,
 		// deferring the action. RealmTurnPanel calls process() again after all dialogs are dismissed.
 		//
 		// POST-PHASE PENDING guard: isPostPhasePending() returns true when the PREVIOUS action's
@@ -708,11 +727,18 @@ public class ActionRow {
 	 * Evaluates whether a pre-phase segment is needed before the current action executes,
 	 * sets the appropriate flags if so, and reports whether the action must be deferred.
 	 * <p>
-	 * The pre-phase segment triggers when a player-controlled leader in the same clearing has
-	 * InterPhaseReacting ON and is either an active follower of the phasing character or holds
-	 * color chits (3rd-edition color-chit pre-phase play). When that condition is met and the
-	 * segment has not already been opened for this action (action-count guard via
-	 * {@code getPrePhaseActivityActionCount()}), the phasing character's
+	 * Two independent conditions trigger a non-phasing character's pre-phase segment:
+	 * <ul>
+	 *   <li><b>Active followers of the phasing guide</b> with Reacting ON always qualify.
+	 *       Followers may use the pre-phase segment to rearrange belongings, trade with anyone in
+	 *       the clearing, play color chits, pick up mission chits, or choose to stop following —
+	 *       all of these are available every phase, so followers are unconditionally eligible.</li>
+	 *   <li><b>Non-followers</b> with Reacting ON who hold color chits qualify only in
+	 *       3rd-edition mode ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} absent). In 1st-edition, color
+	 *       chit play shifts to post-phase, leaving non-followers nothing to do pre-phase.</li>
+	 * </ul>
+	 * When any qualifying character exists and the segment has not already fired for this action
+	 * (action-count guard via {@code getPrePhaseActivityActionCount()}), the phasing character's
 	 * {@code NeedsPrePhaseActivityDecision} flag is set and
 	 * {@code updateCharacterFramesWithoutMap()} is called so the CharacterFrame can display the
 	 * "Done: Pre-Phase" button. The method then scans the clearing a second time: if any
@@ -726,6 +752,36 @@ public class ActionRow {
 	 *         unresolved pre-phase decision and the action must not yet execute;
 	 *         {@code false} if the action may proceed
 	 */
+
+	// PRE-PHASE SEGMENT: handlePrePhase() evaluates whether any non-phasing character in the
+	// clearing qualifies for pre-phase activities. There is a gate, and if passed, two 
+	// independent triggers.
+	//
+	//   GATE: Reacting=ON is a hard requirement for any non-phasing character pre-phase activity.
+	//
+	//   Subsequent qualification for a pre-phase segment is determined by two independent triggers:
+	//
+	//     (A) Followers of a phasing guide always qualify.  Followers can use the pre-phase segment
+	//         to: rearrange belongings, trade with anyone in the clearing, play color chits, pick up
+	//         mission chits, or choose to stop following.
+	//
+	//     (B) Non-followers with Reacting ON who hold color chits — qualify only in
+	//         3rd-edition mode (FE_PHASE_END_PLAYING_COLOR_CHIT is off). In 1st-edition, color chit
+	//         play shifts to post-phase, so non-followers have nothing to do pre-phase unless they
+	//         are followers of this guide (see A).
+	//
+	// Phasing characters always qualify for pre-phase activities: trading, rearranging items, color
+	// chit play, and mission chit pickup.  There is no special dialog needed for phasing characters
+	// to do these things, but if any non-phasing character qualifies for pre-phase activities, the
+	// phasing character must resolve their pre-phase segment before the non-phasing characters will
+	// be presented with their pre-phase activies dialog.
+	//
+	// Phasing guides who are hidden may drop followers who cannot detect them during the pre-phase if
+	// the phase action will be a move.
+	//
+	// If any qualifying character exists and the segment hasn't fired for this action yet,
+	// NeedsPrePhaseActivityDecision is set on the phasing character and we return true here,
+
 	private boolean handlePrePhase(HostPrefWrapper hostPrefs) {
 		TileLocation loc = character.getCurrentLocation();
 		if (loc == null || !loc.isInClearing()) return false;
@@ -733,14 +789,17 @@ public class ActionRow {
 		int actionsTaken = character.getNumberOfPerformedActionsToday();
 		boolean alreadyOccurred = character.getPrePhaseActivityActionCount() == actionsTaken;
 		if (!alreadyOccurred) {
-			boolean colorChitPrePhase = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+			// true for 3rd edition (pre-phase color chit play), false for 1st edition (post-phase color chit play)
+			boolean prePhaseColorChitPlay = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
 			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
 			boolean anyNonPhasingNeedNotice = false;
 			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
 					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+					boolean isReacting = cw.isReacting();
 					boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-					if (cw.isInterPhaseReacting() && (isFollower || (colorChitPrePhase && !cw.getColorMagicChits().isEmpty()))) {
+					boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && prePhaseColorChitPlay;
+					if (isReacting && (isFollower || canPlayColorChits)) {
 						anyNonPhasingNeedNotice = true;
 						break;
 					}
@@ -824,7 +883,7 @@ public class ActionRow {
 	 * <p>
 	 * In 3rd-edition case ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} OFF), followers of <em>any</em>
 	 * guide are excluded from post-phase — they have no independent post-phase reactions while
-	 * following (pre-phase reactions via {@code isInterPhaseReacting()} still apply normally).
+	 * following (pre-phase reactions via {@code isReacting()} still apply normally).
 	 * Followers who voluntarily stopped during pre-phase are already off every guide's follower
 	 * list and are eligible as independent individuals.
 	 * <p>
@@ -839,7 +898,7 @@ public class ActionRow {
 	 * are true:
 	 * <ul>
 	 *   <li>They are not an active follower of the phasing character.</li>
-	 *   <li>They have InterPhaseReacting ON ({@code isInterPhaseReacting()}).</li>
+	 *   <li>They have Reacting ON ({@code isReacting()}).</li>
 	 *   <li>If they are the <em>phasing</em> character: at least one other individual in the
 	 *       clearing is detectable, or unhired monsters are present.</li>
 	 *   <li>If they are a <em>non-phasing</em> character: they can detect the phasing character
@@ -910,7 +969,7 @@ public class ActionRow {
 
 		ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
 		for (CharacterWrapper cw : nonFollowers) {
-			if (!cw.isInterPhaseReacting()) continue;
+			if (!cw.isReacting()) continue;
 			boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
 			if (isPhasingChar) {
 				if (detectableOthers >= 1 || monstersPresent) {
