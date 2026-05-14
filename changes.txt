@@ -2,6 +2,7 @@ Version 1.2.5.8
 NEW FEATURES:
 # Option: Reconnect - enable client reconnect when connection to server has been lost
 # Option: Displaying IP address and port in window title
+# Option: Suspicious characters
 BUGS/ISSUES:
 # Fix quest information dialog for Nimbus design
 
