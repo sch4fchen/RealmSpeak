@@ -546,6 +546,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	public int getNewWounds() {
 		return getInt(NEW_WOUNDS);
 	}
+	public void clearNewWounds() {
+		getGameObject().removeAttribute(COMBAT_BLOCK,NEW_WOUNDS);
+	}
 	public void setKilledByWounds(boolean val) {
 		setBoolean(KILLED_BY_WOUNDS,val);
 	}
@@ -558,6 +561,9 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public int getHealing() {
 		return getInt(HEALING);
+	}
+	public void clearHealing() {
+		getGameObject().removeAttribute(COMBAT_BLOCK,HEALING);
 	}
 	public void setWasFatigue(boolean val) {
 		setBoolean(WAS_FATIGUE,val); // only used by tile to track fatigue by characters running away this round

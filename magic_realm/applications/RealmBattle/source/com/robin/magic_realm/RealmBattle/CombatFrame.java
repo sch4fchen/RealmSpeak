@@ -4634,14 +4634,29 @@ public class CombatFrame extends JFrame {
 	}
 	private synchronized static void doFatigueWounds(JFrame parent,CharacterWrapper character) {
 		CombatWrapper combat = new CombatWrapper(character.getGameObject());
-		
+
+		// Read and immediately clear HEALING and NEW_WOUNDS before showing any dialogs.
+		//
+		// This method is synchronized, so concurrent callers queue up rather than being
+		// skipped. Without clearing first, a queued second caller (e.g. checkRunAway()
+		// followed by the static doDisplay() COMBAT_FATIGUE path, or two clients racing in
+		// multiplayer) would read the same non-zero values and re-show all the dialogs,
+		// causing the player to fill out fatigue/wound assignments multiple times for the
+		// same hit. Clearing on entry means the second caller sees zero for both and exits
+		// each dialog block immediately.
+		//
+		// weatherFatigue is already cleared inside doFatigueWeather() after its dialog,
+		// and effortUsed is derived fresh from chit state, so neither needs clearing here.
 		int healing = combat.getHealing(); // i.e., Drain Life
+		combat.clearHealing();
+		int newWounds = combat.getNewWounds();
+		combat.clearNewWounds();
+
 		if (healing>0) {
 			broadcastMessage(character.getGameObject().getName(),"Healing "+healing+" asterisk"+(healing==1?"":"s")+".");
 			ChitRestManager rester = new ChitRestManager(parent,character,healing);
 			rester.setVisible(true);
 		}
-		int newWounds = combat.getNewWounds();
 		Effort effortUsed = BattleUtility.getEffortUsed(character);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
