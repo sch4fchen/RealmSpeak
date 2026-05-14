@@ -90,28 +90,40 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	private void startUncommitted() {
-		// Builds the uncommitted object to look just like this object in every respect
-		uncommitted = new GameObject();
-		uncommitted.id = this.id;
-		uncommitted.setName(name); // so that keyval searches with name actually work!!
-		uncommitted._setVersion(version);
+		// Builds the uncommitted object to look just like this object in every respect.
+		//
+		// THREADING: this.uncommitted is read by stopUncommitted() on whatever thread calls
+		// commit() or rollback(), which can race with this method running on a different thread
+		// (e.g. the GameServer thread calling serverLost() -> setMissingInAction() while the
+		// EDT or another server thread is mid-commit). The original code assigned
+		// "uncommitted = new GameObject()" on the first line and then read the field throughout
+		// the setup loop; a concurrent stopUncommitted() call setting "uncommitted = null" between
+		// those two points produced a NullPointerException at the getAttributeBlock() calls.
+		//
+		// Fix: build the snapshot entirely via a local variable and publish it to the field only
+		// once, at the very end. Concurrent stopUncommitted() calls that null this.uncommitted
+		// during the loop are harmless — we are not reading the field, only writing it once done.
+		GameObject local = new GameObject();
+		local.id = this.id;
+		local.setName(name); // so that keyval searches with name actually work!!
+		local._setVersion(version);
 		for (String blockName : attributeBlocks.keySet()) {
 			OrderedHashtable<String,OrderedHashtable> attributes = attributeBlocks.get(blockName);
 			for (String attributeKey : attributes.keySet()) {
 				Object value = attributes.get(attributeKey);
 				if (value instanceof String) {
-					uncommitted.getAttributeBlock(blockName).put(attributeKey, value);
+					local.getAttributeBlock(blockName).put(attributeKey, value);
 				}
 				else {
-					uncommitted.getAttributeBlock(blockName).put(attributeKey, new ArrayList((Collection) value));
+					local.getAttributeBlock(blockName).put(attributeKey, new ArrayList((Collection) value));
 				}
 			}
 		}
-		uncommitted.heldBy = heldBy;
-		uncommitted.hold.addAll(hold);
-		uncommitted.holdIds.addAll(holdIds);
-		
-		uncommitted.copyChangeListeners(this);
+		local.heldBy = heldBy;
+		local.hold.addAll(hold);
+		local.holdIds.addAll(holdIds);
+		local.copyChangeListeners(this);
+		uncommitted = local;
 	}
 
 	public void rollback() {
