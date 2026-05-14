@@ -187,6 +187,12 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
+# IDE and AI assistant files
+.vscode/
+.claude/
+memory/
+CLAUDE.md
+
 
 #############
 ## Python
