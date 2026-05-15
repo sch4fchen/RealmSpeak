@@ -195,42 +195,61 @@ public class GameHost {
 		return gameData.getGameObject(id);
 	}
 	
-	public synchronized boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes) {
+	public boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes) {
 		return applyChanges(activeServer,changes,true);
 	}
-	public synchronized boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes,boolean fireChange) {
-		if (changes!=null && !changes.isEmpty()) {
-//			for (Iterator i=changes.iterator();i.hasNext();) {
-//				GameObjectChange change = (GameObjectChange)i.next();
-//				if (!change.testVersion(gameData)) {
-//					// Version inconsistency
-//					return false;
+	public boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes,boolean fireChange) {
+		// Apply changes and distribute to peer servers while holding the GameHost lock,
+		// then release the lock before calling fireHostModified().
+		//
+		// WHY: fireHostModified() calls updateGame() on RealmHostPanel, which runs
+		// updateGameState() (full game-state machine) and may trigger autosave (zipToFile).
+		// Both can take seconds. While that work ran inside a synchronized method, every
+		// other GameServer thread trying to respond to REQUEST_IDLE was blocked on
+		// getMasterToGameChanges() waiting for the same lock. After 10 s the clients'
+		// SO_TIMEOUT fired, disconnecting them and leaving combat permanently frozen.
+		//
+		// Releasing the lock before the notification means getMasterToGameChanges() is
+		// never blocked by slow host-panel work, so the 10 s timeout is never hit.
+		boolean shouldFire = false;
+		synchronized(this) {
+			if (changes!=null && !changes.isEmpty()) {
+//				for (Iterator i=changes.iterator();i.hasNext();) {
+//					GameObjectChange change = (GameObjectChange)i.next();
+//					if (!change.testVersion(gameData)) {
+//						// Version inconsistency
+//						return false;
+//					}
 //				}
-//			}
-			logger.fine("Host apply changes: "+changes.size()+" changes.");
-			for (GameObjectChange action : changes) {
-				logger.finer("--> "+action);
-				action.applyChange(gameData);
-			}
-//			gameData.rebuildChanges(); // This breaks things fairly badly!
-			logger.fine("Host apply changes: DONE.");
-			
-			// Update all servers (except the originating server) with the changes
-			ArrayList<GameServer> serversToUpdate = new ArrayList<>();
-			serversToUpdate.addAll(servers);
-			for (GameServer server:serversToUpdate) {
-				logger.fine("activeServer="+activeServer);
-				logger.fine("server="+server);
-				if (activeServer==null || !server.equals(activeServer)) {
-					logger.fine("updating a server with "+changes.size());
-					server.addObjectChanges(changes);
+				logger.fine("Host apply changes: "+changes.size()+" changes.");
+				for (GameObjectChange action : changes) {
+					logger.finer("--> "+action);
+					action.applyChange(gameData);
+				}
+//				gameData.rebuildChanges(); // This breaks things fairly badly!
+				logger.fine("Host apply changes: DONE.");
+
+				// Update all servers (except the originating server) with the changes
+				ArrayList<GameServer> serversToUpdate = new ArrayList<>();
+				serversToUpdate.addAll(servers);
+				for (GameServer server:serversToUpdate) {
+					logger.fine("activeServer="+activeServer);
+					logger.fine("server="+server);
+					if (activeServer==null || !server.equals(activeServer)) {
+						logger.fine("updating a server with "+changes.size());
+						server.addObjectChanges(changes);
+					}
+				}
+
+				if (activeServer!=null && fireChange) {
+					shouldFire = true;
 				}
 			}
-			
-			if (activeServer!=null && fireChange) {
-				// only fire this event if the changes came from another server
-				fireHostModified();
-			}
+		}
+		// GameHost lock is released — fireHostModified/updateGame may be slow but will
+		// no longer block other GameServer threads from servicing REQUEST_IDLE.
+		if (shouldFire) {
+			fireHostModified();
 		}
 		return true;
 	}

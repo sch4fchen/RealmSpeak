@@ -1023,16 +1023,31 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		else if (RealmDirectInfoHolder.QUERY_YN.equals(command)) {
+			// THREADING: this branch runs on the GameClient thread (via receiveInfoDirect ->
+			// handleDirectInfo). The original code called JOptionPane.showConfirmDialog()
+			// directly here, which blocked the GameClient thread for as long as the user took
+			// to respond. While blocked, no REQUEST_IDLE messages were sent to the server.
+			// After 10 s the server-side SO_TIMEOUT fired, the GameServer for this client
+			// called removeServer() -> "The server was shut down. Game over!!" was broadcast
+			// to everyone, and the End Combat flow was permanently broken.
+			//
+			// Fix: dispatch the dialog to the EDT via invokeLater so handleDirectInfo()
+			// returns immediately, unblocking the GameClient thread. The GameClient continues
+			// polling normally while the user thinks. When the user clicks Yes/No the EDT
+			// callback sends the response via sendInfoDirect(), which queues it on the
+			// GameClient's requestQueue for delivery on the next loop iteration.
 			String string = info.getString();
 			int colon = string.indexOf(":");
-			long id = Long.valueOf(string.substring(0, colon)).longValue();
-			string = string.substring(colon + 1);
-			int ret = JOptionPane.showConfirmDialog(CombatFrame.getSingleton(), string, "End Combat?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-			RealmDirectInfoHolder infoResponse = new RealmDirectInfoHolder(getClient().getGameData(), getClient().getClientName());
-			infoResponse.setCommand(RealmDirectInfoHolder.QUERY_RESPONSE);
-			infoResponse.setString(id + ":" + (ret == JOptionPane.YES_OPTION ? RealmDirectInfoHolder.QUERY_RESPONSE_YES : RealmDirectInfoHolder.QUERY_RESPONSE_NO));
-			getClient().sendInfoDirect(info.getPlayerName(), infoResponse.getInfo());
+			final long id = Long.valueOf(string.substring(0, colon)).longValue();
+			final String message = string.substring(colon + 1);
+			final String playerName = info.getPlayerName();
+			SwingUtilities.invokeLater(() -> {
+				int ret = JOptionPane.showConfirmDialog(CombatFrame.getSingleton(), message, "End Combat?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				RealmDirectInfoHolder infoResponse = new RealmDirectInfoHolder(getClient().getGameData(), getClient().getClientName());
+				infoResponse.setCommand(RealmDirectInfoHolder.QUERY_RESPONSE);
+				infoResponse.setString(id + ":" + (ret == JOptionPane.YES_OPTION ? RealmDirectInfoHolder.QUERY_RESPONSE_YES : RealmDirectInfoHolder.QUERY_RESPONSE_NO));
+				getClient().sendInfoDirect(playerName, infoResponse.getInfo());
+			});
 		}
 		else if (RealmDirectInfoHolder.POPUP_MESSAGE.equals(command)) {
 			RealmUtility.popupMessage(CombatFrame.getSingleton(), info);
