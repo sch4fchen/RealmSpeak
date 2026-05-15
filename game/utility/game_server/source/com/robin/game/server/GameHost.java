@@ -201,9 +201,16 @@ public class GameHost {
 	public boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes,boolean fireChange) {
 		// Apply changes and distribute to peer servers while holding the GameHost lock,
 		// then release the lock before calling fireHostModified().
-		// Releasing the lock before fireHostModified() means concurrent applyChanges() calls
-		// and getMasterToGameChanges() calls are never held up by slow host-panel work
-		// (e.g. RealmHostPanel updateGameState() and may trigger autosave (zipToFile)
+		//
+		// WHY: fireHostModified() calls updateGame() on RealmHostPanel, which runs
+		// updateGameState() (full game-state machine) and may trigger autosave (zipToFile).
+		// Both can take seconds. While that work ran inside a synchronized method, every
+		// other GameServer thread trying to respond to REQUEST_IDLE was blocked on
+		// getMasterToGameChanges() waiting for the same lock. After 10 s the clients'
+		// SO_TIMEOUT fired, disconnecting them and leaving combat permanently frozen.
+		//
+		// Releasing the lock before the notification means getMasterToGameChanges() is
+		// never blocked by slow host-panel work, so the 10 s timeout is never hit.
 		boolean shouldFire = false;
 		synchronized(this) {
 			if (changes!=null && !changes.isEmpty()) {
@@ -239,8 +246,8 @@ public class GameHost {
 				}
 			}
 		}
-		// GameHost lock is released - fireHostModified/updateGame may be slow but will
-		// no longer block concurrent applyChanges() or getMasterToGameChanges() calls.
+		// GameHost lock is released — fireHostModified/updateGame may be slow but will
+		// no longer block other GameServer threads from servicing REQUEST_IDLE.
 		if (shouldFire) {
 			fireHostModified();
 		}
