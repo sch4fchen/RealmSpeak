@@ -204,13 +204,15 @@ public class GameHost {
 		//
 		// WHY: fireHostModified() calls updateGame() on RealmHostPanel, which runs
 		// updateGameState() (full game-state machine) and may trigger autosave (zipToFile).
-		// Both can take seconds. While that work ran inside a synchronized method, every
-		// other GameServer thread trying to respond to REQUEST_IDLE was blocked on
-		// getMasterToGameChanges() waiting for the same lock. After 10 s the clients'
-		// SO_TIMEOUT fired, disconnecting them and leaving combat permanently frozen.
+		// Both can take seconds. While that work ran inside a synchronized method, any
+		// concurrent call to applyChanges() from another GameServer thread (servicing a
+		// SUBMIT_CHANGES from its client) would block on the GameHost lock until the slow
+		// host-panel update finished. Similarly, a newly connecting client whose REQUEST_IDLE
+		// triggers getMasterToGameChanges() (also synchronized on GameHost) would block
+		// during that window.
 		//
-		// Releasing the lock before the notification means getMasterToGameChanges() is
-		// never blocked by slow host-panel work, so the 10 s timeout is never hit.
+		// Releasing the lock before fireHostModified() means concurrent applyChanges() calls
+		// and getMasterToGameChanges() calls are never held up by slow host-panel work.
 		boolean shouldFire = false;
 		synchronized(this) {
 			if (changes!=null && !changes.isEmpty()) {
@@ -247,7 +249,7 @@ public class GameHost {
 			}
 		}
 		// GameHost lock is released — fireHostModified/updateGame may be slow but will
-		// no longer block other GameServer threads from servicing REQUEST_IDLE.
+		// no longer block concurrent applyChanges() or getMasterToGameChanges() calls.
 		if (shouldFire) {
 			fireHostModified();
 		}
