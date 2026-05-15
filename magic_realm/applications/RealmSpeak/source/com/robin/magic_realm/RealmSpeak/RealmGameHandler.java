@@ -1213,12 +1213,18 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				handleBroadcast(key, message);
 			}
 		};
+		// Capture the current client instance so the listener below can detect staleness.
+		// On reconnect a new GameClient is created and the 'client' field is reassigned,
+		// but any invokeLater runnables queued by the OLD client's listener are still in
+		// the EDT queue. When they fire, 'client != setupClient' (field points to the new
+		// client, captured local still points to the old one), so they return immediately
+		// rather than calling updateGameHandler() on a session that has already moved on.
 		final GameClient setupClient = client;
 		client.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						if (client != setupClient) return;
+						if (client != setupClient) return; // stale runnable from a replaced client — discard
 						updateGameHandler();
 					}
 				});
