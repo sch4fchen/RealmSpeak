@@ -2232,6 +2232,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		connectedName = name;
 		connectedIp = ip;
 		connectedPort = port;
+		clientDisconnectedUnexpectedly = false;
 		if (ip==null) {
 			// Non-network game (local)
 			gameHandler = new RealmGameHandler(this,host,name,pass,ppass,email);
@@ -2286,6 +2287,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			connectedName = null;
 			connectedIp = null;
 			connectedPort = 0;
+			clientDisconnectedUnexpectedly = false;
 			setTitle(Constants.APPLICATION_NAME);
 
 			// Now to kill the game
