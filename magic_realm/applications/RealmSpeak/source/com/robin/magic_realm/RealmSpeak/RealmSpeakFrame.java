@@ -2228,6 +2228,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 	}
 	
 	public void startRealmGameHandler(String ip,int port,String name,String pass,String ppass,String email,boolean hostPlayer) {
+		clientDisconnectedUnexpectedly = false;
 		connectedName = name;
 		connectedIp = ip;
 		connectedPort = port;
@@ -2282,6 +2283,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			if (ret!=JOptionPane.YES_OPTION) {
 				return false;
 			}
+			clientDisconnectedUnexpectedly = false;
 			connectedName = null;
 			connectedIp = null;
 			connectedPort = 0;
