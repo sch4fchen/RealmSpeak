@@ -8714,8 +8714,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
 					CharacterWrapper otherCharacter = new CharacterWrapper(rc.getGameObject());
 					if (otherCharacter.isSleep() && hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) continue;
-					if (otherCharacter.isReacting() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
-						if ((phaseBeginnig && !otherCharacter.hasColorChitInterruptPhaseBeginningDecision(getGameObject())) || (phaseEnd && !otherCharacter.hasColorChitInterruptPhaseEndDecision(getGameObject()))) {
+				if (otherCharacter.isReacting() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+						// Only count a blocker as an interrupter if checkForColorChitInterruptionState actually
+						// determined they need to play (i.e., the phasing character is a valid interrupt target).
+						// Familiars are not PlayerControlledLeaders, so blocking characters correctly set
+						// NeedsPlayColorChit...=false for them; without this guard those blockers still appeared
+						// as interrupters, permanently freezing the familiar's action processing.
+						if ((phaseBeginnig && otherCharacter.getNeedsPlayColorChitInterruptPhaseBeginningDecision() && !otherCharacter.hasColorChitInterruptPhaseBeginningDecision(getGameObject())) || (phaseEnd && otherCharacter.getNeedsPlayColorChitInterruptPhaseEndDecision() && !otherCharacter.hasColorChitInterruptPhaseEndDecision(getGameObject()))) {
 							list.add(rc);
 						}
 					}
