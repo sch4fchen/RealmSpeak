@@ -367,9 +367,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			phaseName = "MIDNIGHT";
 		}
 		setTitle(character.getCharacterName() + " - Month " + character.getCurrentMonth() + ", Day " + character.getCurrentDay()+" - "+phaseName);
-		dailyCombatCheckbox.setSelected(character.getWantsCombat());
-		dayEndRearrangmentCheckbox.setSelected(character.getWantsDayEndTrades());
-		keepBlockingCheckbox.setSelected(character.keepsBlocking());
+		dailyCombatCheckbox.setSelected(!character.isMinion() && character.getWantsCombat());
+		dayEndRearrangmentCheckbox.setSelected(!character.isMinion() && character.getWantsDayEndTrades());
+		keepBlockingCheckbox.setSelected(!character.isMinion() && character.keepsBlocking());
 		
 		// Update mountain move icon (might change with seasons/weather)
 		mountainMoveIcon.setCost(getCharacter().getMountainMoveCost()+(character.addsOneToMoveExceptCaves()?1:0));
@@ -1172,7 +1172,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			});
 			showCharCardButton.setEnabled(character.isCharacter());
 			sideControls.add(showCharCardButton);
-			dailyCombatCheckbox = new JCheckBox("Daily Combat",character.getWantsCombat());
+			dailyCombatCheckbox = new JCheckBox("Daily Combat",!character.isMinion() && character.getWantsCombat());
 			dailyCombatCheckbox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					character.setWantsCombat(dailyCombatCheckbox.isSelected());
