@@ -424,9 +424,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			phaseName = "MIDNIGHT";
 		}
 		setTitle(character.getCharacterName() + " - Month " + character.getCurrentMonth() + ", Day " + character.getCurrentDay()+" - "+phaseName);
-		dailyCombatCheckbox.setSelected(character.getWantsCombat());
-		dayEndRearrangmentCheckbox.setSelected(character.getWantsDayEndTrades());
-		keepReactingCheckbox.setSelected(character.keepsReacting());
+		dailyCombatCheckbox.setSelected(!character.isMinion() && character.getWantsCombat());
+		dayEndRearrangmentCheckbox.setSelected(!character.isMinion() && character.getWantsDayEndTrades());
+		keepReactingCheckbox.setSelected(!character.isMinion() && character.keepsReacting());
 		
 		// Update mountain move icon (might change with seasons/weather)
 		mountainMoveIcon.setCost(getCharacter().getMountainMoveCost()+(character.addsOneToMoveExceptCaves()?1:0));
@@ -578,7 +578,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		boolean recordingActions = character.isDoRecord() && actionPanel.getActionControlManager().getCurrentlyRecordingAction() == null;
 		boolean canTrade = getCharacter().isCharacter() || getCharacter().isHiredLeader() || getCharacter().isControlledMonster();
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
-		if (character.isReacting()) {
+		if (!character.isMinion() && character.isReacting()) {
 			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			reactButton.setToolTipText("PvP Reactions ON");
 			reactButton.setSelected(true);
@@ -1839,7 +1839,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		reactButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
 		reactButton.setToolTipText("PvP Reactions OFF");
 		ComponentTools.lockComponentSize(reactButton,39,39);
-		if (character.isReacting()) {
+		if (!character.isMinion() && character.isReacting()) {
 			reactButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			reactButton.setToolTipText("PvP Reactions ON");
 			reactButton.setSelected(true);
