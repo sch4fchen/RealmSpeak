@@ -745,14 +745,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			result = result + " (Asleep)";
  		}
  		
- 		if (isReacting() && (getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getNeedsPlayColorChitInterruptPhaseEndDecision())) {
- 			result = result + " (REACTING?!)";
- 		}
-
- 		if (isReacting() && (getNeedsReactDecision() || getNeedsInterruptPhaseDecision())) {
- 			result = result + " (REACTING?!)";
- 		}
-		
 		return prefix+result;
 	}
 	public Strength getVulnerability() {

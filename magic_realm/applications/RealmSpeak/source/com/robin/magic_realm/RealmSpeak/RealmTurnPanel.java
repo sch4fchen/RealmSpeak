@@ -470,7 +470,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 
 		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions && !haveFollowersThatHaveWeatherFatigue);
 		playNextButton.setFlashing(playNextButton.isEnabled());
-		playAllButton.setEnabled(!controlsLocked && actionsLeft);
+		playAllButton.setEnabled(false);
 		finishedPlayButton.setEnabled(!controlsLocked && !actionsLeft && (current==null || (!current.isBetweenClearings() && !current.isBetweenTiles())));
 		finishedPlayButton.setFlashing(finishedPlayButton.isEnabled());
 		
@@ -572,6 +572,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				updateControls();
 			}
 		});
+		playAllButton.setEnabled(false);
 		panel.add(playAllButton);
 		JPanel specialButtons = new JPanel(new GridLayout(1,2));
 		postponeTurnButton = new JButton("Postpone");

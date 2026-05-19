@@ -480,12 +480,12 @@ public class ActionRow {
 			if (isPostPhasePending()) return;
 		}
 
-		// MULTI-PHASE SPLIT: a comma in the action string (e.g. "M-B14,M-B14" for a mountain move) means
-		// multiple phases are required. Split at the first comma so each sub-phase gets its own full
-		// pre/post-phase cycle. Phase 1 consumes the first phase in the starting clearing (dispatch is
-		// skipped — see isFirstPhaseOfMultiPhaseMove guard below); a continuation ActionRow for the
-		// remaining phases is queued via newAction for playNext() to insert.
-		if (!isContinuation && action != null && action.indexOf(',') >= 0) {
+		// MULTI-PHASE SPLIT: a comma in the action string (e.g. "M-B14,M-B14" for a mountain move,
+		// "M-B14,M-B14,M-B14" for a 3-phase weather move) means multiple phases are required. Split
+		// at the first comma so each sub-phase gets its own full pre/post-phase cycle. Intermediate
+		// phases skip dispatch (isFirstPhaseOfMultiPhaseMove); only the final phase executes the action.
+		// Continuations are split the same way — this handles N phases for any N.
+		if (action != null && action.indexOf(',') >= 0) {
 			splitMultiPhaseAction();
 		}
 
