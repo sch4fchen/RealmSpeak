@@ -273,6 +273,16 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	// instead and call this directly on click. After clearing the caller's own flag, if the caller is the
 	// phasing character, it walks the clearing and sets the flag on each qualifying non-phasing character,
 	// triggering their dialogs in sequence.
+	private void bringPhasingCharacterToFront() {
+		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			CharacterWrapper cw = new CharacterWrapper(go);
+			if (cw.isPlayingTurn()) {
+				gameHandler.showCharacterFrame(cw);
+				return;
+			}
+		}
+	}
+
 	private void doPrePhaseActivities() {
 		if (!getCharacter().isPlayingTurn()) {
 			gameHandler.getMainFrame().toFront();
@@ -299,6 +309,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
+		if (!getCharacter().isPlayingTurn()) {
+			bringPhasingCharacterToFront();
+		}
 	}
 	// doPostPhaseActivities() is the resolution point for post-phase dialogs. Unlike pre-phase, both the
 	// phasing and non-phasing characters receive the same modal dialog simultaneously — there is no distinction
@@ -317,6 +330,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		getCharacter().setNeedsPostPhaseActivityDecision(false);
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
+		bringPhasingCharacterToFront();
 	}
 	private void doPlayColorChitNow() {
 		boolean phaseBeginning = getCharacter().getNeedsPlayColorChitInterruptPhaseBeginningDecision();

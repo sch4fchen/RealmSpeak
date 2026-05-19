@@ -62,9 +62,12 @@ public class ActionRow {
 	private int bonusCount=0; // The number of "bonus" phases that don't apply towards the phase manager
 	
 	private ActionRow newAction = null;
-	
+
+	private boolean isContinuation = false;        // true when this row is the 2nd+ sub-phase of a split multi-phase action
+	private boolean isFirstPhaseOfMultiPhaseMove = false; // true on phase 1 of a split — skips dispatch so char stays in starting clearing
+
 	private RealmTable realmTable = null;
-	
+
 	private boolean isFollowing;
 	
 	private boolean ponyLock = false;
@@ -372,6 +375,9 @@ public class ActionRow {
 	public boolean isCancelled() {
 		return cancelled;
 	}
+	public boolean isContinuation() {
+		return isContinuation;
+	}
 
 	public void setCancelled(boolean cancelled) {
 		this.cancelled = cancelled;
@@ -474,6 +480,15 @@ public class ActionRow {
 			if (isPostPhasePending()) return;
 		}
 
+		// MULTI-PHASE SPLIT: a comma in the action string (e.g. "M-B14,M-B14" for a mountain move) means
+		// multiple phases are required. Split at the first comma so each sub-phase gets its own full
+		// pre/post-phase cycle. Phase 1 consumes the first phase in the starting clearing (dispatch is
+		// skipped — see isFirstPhaseOfMultiPhaseMove guard below); a continuation ActionRow for the
+		// remaining phases is queued via newAction for playNext() to insert.
+		if (!isContinuation && action != null && action.indexOf(',') >= 0) {
+			splitMultiPhaseAction();
+		}
+
 		// REMOVED: old per-character color-chit interrupt mechanism (formerly OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT).
 		// That option gate was removed and pre-phase color chit play is now the 3rd edition default, handled
 		// entirely by the pre-phase dialog system above. The old mechanism used checkForColorChitInterruptionState()
@@ -525,7 +540,7 @@ public class ActionRow {
 		// action, there is nothing left to post-process.
 		completed = true; // the default - can be modified if there are problems
 
-		if (blankReason==null && !invalid) {
+		if (blankReason==null && !invalid && !isFirstPhaseOfMultiPhaseMove) {
 			
 			if (character.affectedByKey(Constants.FORESIGHT) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
 				Strength wishStrength = character.getWishStrength();
@@ -865,8 +880,21 @@ public class ActionRow {
 	 * {@link CharacterWrapper#getActionFollowers()} is safe to iterate while the underlying list
 	 * is mutated by each {@code removeActionFollower} call.
 	 */
+	private void splitMultiPhaseAction() {
+		int commaIdx = action.indexOf(',');
+		String firstPhase = action.substring(0, commaIdx);
+		String restPhases = action.substring(commaIdx + 1);
+		action = firstPhase;
+		isFirstPhaseOfMultiPhaseMove = true;
+		ActionRow continuation = new ActionRow(turnPanel, character, restPhases, actionTypeCode, isFollowing);
+		continuation.isContinuation = true;
+		continuation.location = this.location;
+		newAction = continuation;
+	}
+
 	private void releaseLastPhaseFollowers() {
-		if (character.getNumberOfPerformedActionsToday() != character.getCurrentActionCount()) return;
+		if (newAction != null) return; // continuation pending — don't release until the final phase
+		if (turnPanel.hasPendingActionsAfterCurrent()) return;
 		for (CharacterWrapper follower : character.getActionFollowers()) {
 			follower.setStopFollowing(true);
 			character.removeActionFollower(follower, gameHandler.getGame().getMonsterDie(), gameHandler.getGame().getNativeDie());
@@ -1447,18 +1475,6 @@ public class ActionRow {
 						result = "BLOCKED";
 						return;
 					}
-					if (location.clearing.moveCost(character,current)>1 || offroadTravel) {
-						for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-							new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
-						}
-						gameHandler.updateCharacterFramesWithoutMap();
-						if (turnPanel.isAwaitingReactDecision(true,current)) {							
-							result = "AWAITING BLOCK DECISIONS";
-							completed = false;
-							return;
-						}
-					}
-					
 					// Move followers - FIXME Not totally right... but close!
 					ArrayList<CharacterWrapper> actionFollowers = character.getActionFollowers();
 					

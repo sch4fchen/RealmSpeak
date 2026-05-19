@@ -349,6 +349,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return false;
 	}
 
+	public boolean hasPendingActionsAfterCurrent() {
+		for (int i = currentActionRow + 1; i < actionRows.size(); i++) {
+			if (actionRows.get(i).isPending()) return true;
+		}
+		return false;
+	}
+
 	public boolean isAwaitingInterruptionDecision(boolean evaluateReactions) {
 		if (getRealmComponent().isPlayerControlledLeader() && getCharacter().isPlayingTurn()) {
 			blockWarningLabel.setText("");
@@ -964,12 +971,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				getCharacter().removeActionFollower(follower,monsterDieRoller,nativeDieRoller);
 			}
 		
-			// Collect any newActions that may have spawned (ie., Curse as the result of a search)
+			// Collect any newActions that may have spawned (ie., Curse as the result of a search).
+			// Continuation rows (split multi-phase actions) are NOT marked spawned and do NOT get an
+			// immediate logAction() — they process normally as independent phases on the next playNext().
 			ArrayList<ActionRow> newActions = new ArrayList<>();
 			ActionRow newAction = ar.getNewAction();
 			while(newAction!=null) {
-				newAction.setSpawned(true);
-				newAction.logAction(); // new actions wont have been processed directly, so need a log (I think)
+				if (!newAction.isContinuation()) {
+					newAction.setSpawned(true);
+					newAction.logAction(); // new actions wont have been processed directly, so need a log (I think)
+				}
 				newActions.add(newAction);
 				newAction = newAction.getNewAction();
 			}
