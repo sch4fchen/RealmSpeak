@@ -8611,6 +8611,15 @@ public class CharacterWrapper extends GameObjectWrapper {
     public ArrayList<RealmComponent> checkForBlockingState() {
     	return checkForBlockingState(false,null);
     }
+
+	public ArrayList<RealmComponent> getBlockableCandidates(TileLocation loc) {
+		if (!isReacting() || isMistLike() || isSleep()
+				|| getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) || isMinion()) {
+			return new ArrayList<>();
+		}
+		ArrayList<RealmComponent> result = getPossibleBlockees(true, loc);
+		return result != null ? result : new ArrayList<>();
+	}
     
 	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;

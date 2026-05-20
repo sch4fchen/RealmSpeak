@@ -63,6 +63,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private JDialog postPhaseActivityDialog = null;
 	private final ArrayList<ChitSelection> currentChitSelections = new ArrayList<>();
 	private JCheckBox stopFollowingCheckbox = null;
+	private Map<JToggleButton, RealmComponent> blockingButtonMap = null;
 
 	private static class ChitSelection {
 		final MagicChit chit;
@@ -644,27 +645,193 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void showPostPhaseActivityDialog() {
 		if (postPhaseActivityDialog == null) {
 			postPhaseActivityDialog = new JDialog(gameHandler.getMainFrame(), "Post-Phase Activities", false);
-			JPanel content = new JPanel(new BorderLayout(8, 8));
-			content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
-			content.add(new JLabel(getCharacter().getGameObject().getName() + " – Post-Phase Activities"), BorderLayout.CENTER);
-			JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
-			JButton hideButton = new JButton("Hide");
-			hideButton.addActionListener(e -> postPhaseActivityDialog.setVisible(false));
-			JButton submitButton = new JButton("SUBMIT");
-			submitButton.addActionListener(e -> submitPostPhaseActivities());
-			buttons.add(hideButton);
-			buttons.add(submitButton);
-			content.add(buttons, BorderLayout.SOUTH);
-			postPhaseActivityDialog.setContentPane(content);
-			postPhaseActivityDialog.pack();
-			postPhaseActivityDialog.setLocationRelativeTo(this);
 		}
+		// Rebuild each time — blockable candidates change each action.
+		blockingButtonMap = new LinkedHashMap<>();
+		JPanel content = new JPanel(new BorderLayout(8, 8));
+		content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
+
+		JPanel northArea = new JPanel();
+		northArea.setLayout(new BoxLayout(northArea, BoxLayout.Y_AXIS));
+		northArea.add(buildPostPhaseDialogHeader());
+		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
+		content.add(northArea, BorderLayout.NORTH);
+
+		content.add(buildBlockingPanel(), BorderLayout.CENTER);
+
+		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
+		JButton hideButton = new JButton("Hide");
+		hideButton.addActionListener(e -> postPhaseActivityDialog.setVisible(false));
+		JButton submitButton = new JButton("SUBMIT");
+		submitButton.addActionListener(e -> submitPostPhaseActivities());
+		buttons.add(hideButton);
+		buttons.add(submitButton);
+		JPanel southArea = new JPanel();
+		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
+		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
+		southArea.add(Box.createVerticalStrut(6));
+		southArea.add(buttons);
+		content.add(southArea, BorderLayout.SOUTH);
+
+		postPhaseActivityDialog.setContentPane(content);
+		postPhaseActivityDialog.pack();
+		postPhaseActivityDialog.setLocationRelativeTo(this);
 		postPhaseActivityDialog.setVisible(true);
 		postPhaseActivityDialog.toFront();
 	}
 
+	private JPanel buildPostPhaseDialogHeader() {
+		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
+		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
+		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
+		header.add(new JLabel(selfRc.getMediumIcon()));
+		JLabel label = new JLabel("Phase End Activities for");
+		label.setFont(headerFont);
+		header.add(label);
+		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			CharacterWrapper cw = new CharacterWrapper(go);
+			if (cw.isPlayingTurn()) {
+				header.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
+				String nextAction = cw.getNextPendingAction();
+				if (nextAction != null) {
+					ImageIcon actionIcon = CharacterWrapper.getIconForAction(nextAction);
+					if (actionIcon != null) {
+						Image scaled = actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+						header.add(new JLabel(new ImageIcon(scaled)));
+					}
+				}
+				JLabel actionLabel = new JLabel("Action");
+				actionLabel.setFont(headerFont);
+				header.add(actionLabel);
+				break;
+			}
+		}
+		return header;
+	}
+
+	private ArrayList<RealmComponent> getPostPhaseBlockCandidates() {
+		ArrayList<RealmComponent> candidates = new ArrayList<>();
+		TileLocation loc = getCharacter().getCurrentLocation();
+		if (loc == null || !loc.isInClearing()) return candidates;
+
+		if (getCharacter().isPlayingTurn()) {
+			// Phasing character: can block all detectable characters, denizens, and monsters
+			// in the clearing except own current followers.
+			Set<GameObject> ownFollowers = new HashSet<>();
+			for (CharacterWrapper f : getCharacter().getActionFollowers()) {
+				ownFollowers.add(f.getGameObject());
+			}
+			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+				if (rc.getGameObject().equals(getCharacter().getGameObject())) continue;
+				if (ownFollowers.contains(rc.getGameObject())) continue;
+				if (rc.isPlayerControlledLeader()) {
+					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+					if (!cw.isHidden() || getCharacter().foundHiddenEnemy(rc.getGameObject())) {
+						candidates.add(rc);
+					}
+				} else if (rc.isDenizen() || rc.isMonster()) {
+					if (!rc.isMonsterPart() && (rc.getOwner() == null || rc.isDenizen())) {
+						candidates.add(rc);
+					}
+				}
+			}
+		} else {
+			// Non-phasing character: can only block the phasing character if detectable.
+			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				CharacterWrapper cw = new CharacterWrapper(go);
+				if (cw.isPlayingTurn()) {
+					boolean detectable = !cw.isHidden() || getCharacter().foundHiddenEnemy(go);
+					if (detectable) candidates.add(RealmComponent.getRealmComponent(go));
+					break;
+				}
+			}
+		}
+		return candidates;
+	}
+
+	private JCheckBox blockCheckbox = null;
+
+	private JPanel buildBlockingPanel() {
+		ArrayList<RealmComponent> candidates = getPostPhaseBlockCandidates();
+		blockCheckbox = null;
+
+		JPanel wrapper = new JPanel();
+		wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
+		if (candidates.isEmpty()) return wrapper;
+
+		if (!getCharacter().isPlayingTurn()) {
+			// Non-phasing: at most one candidate (the phasing char) — simple section like Stop Following.
+			RealmComponent target = candidates.get(0);
+			JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 2));
+			titleRow.add(new JLabel(RealmComponent.getRealmComponent(getCharacter().getGameObject()).getMediumIcon()));
+			titleRow.add(new JLabel("can block"));
+			titleRow.add(new JLabel(target.getMediumIcon()));
+			wrapper.add(titleRow);
+			blockCheckbox = new JCheckBox("Block");
+			JPanel checkRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 2));
+			checkRow.add(blockCheckbox);
+			wrapper.add(checkRow);
+		} else {
+			// Phasing character: N×M toggle-button table.
+			// Use BorderLayout so the title is left-aligned at top and the grid is centered below.
+			wrapper.setLayout(new BorderLayout(0, 4));
+			JLabel title = new JLabel("Block:");
+			wrapper.add(title, BorderLayout.NORTH);
+			int X = candidates.size();
+			int N = 1;
+			for (; N <= 10; N++) { if (X <= N * N) break; }
+			int M = 1;
+			for (; M <= 10; M++) { if (X <= N * M) break; }
+			Color gridColor = Color.GRAY;
+			JPanel grid = new JPanel(new GridLayout(M, N, 0, 0));
+			grid.setBorder(BorderFactory.createMatteBorder(1, 1, 0, 0, gridColor));
+			for (RealmComponent rc : candidates) {
+				JToggleButton btn = new JToggleButton(rc.getMediumIcon());
+				btn.setToolTipText(rc.getGameObject().getName());
+				styleChitToggleButton(btn);
+				blockingButtonMap.put(btn, rc);
+				grid.add(chitCell(btn, gridColor));
+			}
+			for (int i = X; i < N * M; i++) {
+				grid.add(chitCell(new JPanel(), gridColor));
+			}
+			JPanel gridHolder = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+			gridHolder.add(grid);
+			wrapper.add(gridHolder, BorderLayout.CENTER);
+		}
+		return wrapper;
+	}
+
+	private void applyBlock(RealmComponent rc) {
+		getCharacter().addReactDecision(rc.getGameObject());
+		if (rc.isPlayerControlledLeader()) {
+			CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+			target.setBlocked(true);
+			if (target.isHidden()) target.setHidden(false);
+		} else if (rc.isMonster()) {
+			MonsterChitComponent monster = (MonsterChitComponent) rc;
+			if (!monster.isBlocked()) monster.setBlocked(true);
+		}
+		if (getCharacter().isHidden()) getCharacter().setHidden(false);
+		if (!getCharacter().isBlocked()) getCharacter().setBlocked(true);
+		gameHandler.broadcast(getCharacter().getGameObject().getName(), "Blocks the " + rc.getGameObject().getName());
+		RealmLogging.logMessage(getCharacter().getGameObject().getName(), "Blocks " + rc.getGameObject().getName());
+	}
+
 	private void submitPostPhaseActivities() {
 		if (postPhaseActivityDialog != null) postPhaseActivityDialog.setVisible(false);
+		if (blockCheckbox != null && blockCheckbox.isSelected()) {
+			// Non-phasing path: single candidate (the phasing char).
+			ArrayList<RealmComponent> candidates = getPostPhaseBlockCandidates();
+			if (!candidates.isEmpty()) applyBlock(candidates.get(0));
+			blockCheckbox = null;
+		}
+		if (blockingButtonMap != null) {
+			for (Map.Entry<JToggleButton, RealmComponent> entry : blockingButtonMap.entrySet()) {
+				if (entry.getKey().isSelected()) applyBlock(entry.getValue());
+			}
+			blockingButtonMap = null;
+		}
 		getCharacter().setNeedsPostPhaseActivityDecision(false);
 		postPhaseDialogShowing = false;
 		gameHandler.submitChanges();
