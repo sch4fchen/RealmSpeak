@@ -55,6 +55,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton playColorChitNowButton;
 	protected SingleButton blockNowButton;
 	protected SingleButton prePhaseActivityDoneButton;
+	protected SingleButton showPrePhaseDialogButton;
+	protected SingleButton showPostPhaseDialogButton;
+	private JDialog prePhaseActivityDialog = null;
+	private JDialog postPhaseActivityDialog = null;
 	private boolean prePhaseDialogShowing = false;
 	private boolean postPhaseDialogShowing = false;
 	protected SingleButton doneTradingButton;
@@ -285,49 +289,91 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	private void doPrePhaseActivities() {
 		if (!getCharacter().isPlayingTurn()) {
-			gameHandler.getMainFrame().toFront();
-			JOptionPane.showMessageDialog(this,
-				getCharacter().getGameObject().getName() + " - Pre-Phase Activities",
-				"Pre-Phase Activities",
-				JOptionPane.PLAIN_MESSAGE);
+			// Non-phasing character: show the non-modal dialog and return. Resolution
+			// happens when the player clicks SUBMIT in the dialog.
+			showPrePhaseActivityDialog();
+			return;
 		}
+		// Phasing character: clear own flag, then notify each qualifying non-phasing
+		// character so their dialog auto-shows on their machine.
 		getCharacter().setNeedsPrePhaseActivityDecision(false);
-		if (getCharacter().isPlayingTurn()) {
-			TileLocation loc = getCharacter().getCurrentLocation();
-			if (loc != null && loc.isInClearing()) {
-				ArrayList<CharacterWrapper> followers = getCharacter().getActionFollowers();
-				for (RealmComponent rc : loc.clearing.getClearingComponents()) {
-					if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
-						CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-						boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-						if (cw.isReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
-							cw.setNeedsPrePhaseActivityDecision(true);
-						}
+		TileLocation loc = getCharacter().getCurrentLocation();
+		if (loc != null && loc.isInClearing()) {
+			ArrayList<CharacterWrapper> followers = getCharacter().getActionFollowers();
+			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
+					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+					boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
+					if (cw.isReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
+						cw.setNeedsPrePhaseActivityDecision(true);
 					}
 				}
 			}
 		}
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
-		if (!getCharacter().isPlayingTurn()) {
-			bringPhasingCharacterToFront();
-		}
 	}
-	// doPostPhaseActivities() is the resolution point for post-phase dialogs. Unlike pre-phase, both the
-	// phasing and non-phasing characters receive the same modal dialog simultaneously — there is no distinction
-	// between them here. All qualifying individuals in the clearing after the action have their flag set at
-	// once by ActionRow.process(); each character's updateCharacter() detects the flag and auto-shows this
-	// dialog via invokeLater. The main JFrame is brought to front first so the JOptionPane dialog (which is
-	// parented to that JFrame) is never obscured by other OS windows — calling toFront() on a JInternalFrame
-	// only raises it within the desktop pane and does not affect the host JFrame's OS-level z-order.
+
+	private void showPrePhaseActivityDialog() {
+		if (prePhaseActivityDialog == null) {
+			prePhaseActivityDialog = new JDialog(gameHandler.getMainFrame(), "Pre-Phase Activities", false);
+			JPanel content = new JPanel(new BorderLayout(8, 8));
+			content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
+			content.add(new JLabel(getCharacter().getGameObject().getName() + " – Pre-Phase Activities"), BorderLayout.CENTER);
+			JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
+			JButton hideButton = new JButton("Hide");
+			hideButton.addActionListener(e -> prePhaseActivityDialog.setVisible(false));
+			JButton submitButton = new JButton("SUBMIT");
+			submitButton.addActionListener(e -> submitPrePhaseActivities());
+			buttons.add(hideButton);
+			buttons.add(submitButton);
+			content.add(buttons, BorderLayout.SOUTH);
+			prePhaseActivityDialog.setContentPane(content);
+			prePhaseActivityDialog.pack();
+			prePhaseActivityDialog.setLocationRelativeTo(this);
+		}
+		prePhaseActivityDialog.setVisible(true);
+		prePhaseActivityDialog.toFront();
+	}
+
+	private void submitPrePhaseActivities() {
+		if (prePhaseActivityDialog != null) prePhaseActivityDialog.setVisible(false);
+		getCharacter().setNeedsPrePhaseActivityDecision(false);
+		prePhaseDialogShowing = false;
+		gameHandler.submitChanges();
+		gameHandler.updateCharacterFramesWithoutMap();
+		bringPhasingCharacterToFront();
+	}
 	private void doPostPhaseActivities() {
-		gameHandler.getMainFrame().toFront();
-		this.toFront();
-		JOptionPane.showMessageDialog(this,
-			getCharacter().getGameObject().getName() + " - Post-Phase Activities",
-			"Post-Phase Activities",
-			JOptionPane.PLAIN_MESSAGE);
+		showPostPhaseActivityDialog();
+	}
+
+	private void showPostPhaseActivityDialog() {
+		if (postPhaseActivityDialog == null) {
+			postPhaseActivityDialog = new JDialog(gameHandler.getMainFrame(), "Post-Phase Activities", false);
+			JPanel content = new JPanel(new BorderLayout(8, 8));
+			content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
+			content.add(new JLabel(getCharacter().getGameObject().getName() + " – Post-Phase Activities"), BorderLayout.CENTER);
+			JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
+			JButton hideButton = new JButton("Hide");
+			hideButton.addActionListener(e -> postPhaseActivityDialog.setVisible(false));
+			JButton submitButton = new JButton("SUBMIT");
+			submitButton.addActionListener(e -> submitPostPhaseActivities());
+			buttons.add(hideButton);
+			buttons.add(submitButton);
+			content.add(buttons, BorderLayout.SOUTH);
+			postPhaseActivityDialog.setContentPane(content);
+			postPhaseActivityDialog.pack();
+			postPhaseActivityDialog.setLocationRelativeTo(this);
+		}
+		postPhaseActivityDialog.setVisible(true);
+		postPhaseActivityDialog.toFront();
+	}
+
+	private void submitPostPhaseActivities() {
+		if (postPhaseActivityDialog != null) postPhaseActivityDialog.setVisible(false);
 		getCharacter().setNeedsPostPhaseActivityDecision(false);
+		postPhaseDialogShowing = false;
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
 		bringPhasingCharacterToFront();
@@ -514,30 +560,24 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		
 		blockees = getCharacter().checkForBlockingState();
 		updateControls();
-		// Auto-show hook for non-phasing characters: when a non-phasing character's flag is set by the
-		// phasing character's doPrePhaseActivities(), updateCharacter() detects it here and queues a modal
-		// dialog via invokeLater so the current call stack (process()) can return first. The prePhaseDialogShowing
-		// guard prevents stacking multiple invokeLater callbacks if updateCharacter() fires again before the
-		// dialog closes. Phasing characters are excluded (isPlayingTurn() check) — they use the button instead.
-		if (getCharacter().getNeedsPrePhaseActivityDecision() && !getCharacter().isPlayingTurn() && !prePhaseDialogShowing) {
+		boolean isLocalCharacter = gameHandler.getClient().getClientName().equals(getCharacter().getPlayerName());
+		// Auto-show hook for non-phasing characters: when the flag is set, queue a non-modal dialog
+		// via invokeLater so the current call stack (process()) can return first. prePhaseDialogShowing
+		// stays true until SUBMIT is clicked (submitPrePhaseActivities() resets it), preventing the
+		// auto-show from firing again while the dialog is open or hidden. isLocalCharacter guard ensures
+		// only this client's own character shows a dialog — without it the phasing client would fire
+		// dialogs for remote characters before those players' machines can react.
+		if (getCharacter().getNeedsPrePhaseActivityDecision() && !getCharacter().isPlayingTurn() && isLocalCharacter && !prePhaseDialogShowing) {
 			prePhaseDialogShowing = true;
-			SwingUtilities.invokeLater(() -> {
-				doPrePhaseActivities();
-				prePhaseDialogShowing = false;
-			});
+			SwingUtilities.invokeLater(() -> doPrePhaseActivities());
 		}
 		// Auto-show hook for post-phase: all qualifying individuals have their flag set simultaneously by
 		// ActionRow.process(). Only the LOCAL player's characters show a dialog here — every client has
 		// CharacterFrames for all players, so without this guard the phasing client would fire dialogs for
-		// remote characters, clearing their flags before those players' machines can react. The check mirrors
-		// the "nameMatch" pattern used elsewhere in RealmGameHandler to identify local characters.
-		boolean isLocalCharacter = gameHandler.getClient().getClientName().equals(getCharacter().getPlayerName());
+		// remote characters, clearing their flags before those players' machines can react.
 		if (getCharacter().getNeedsPostPhaseActivityDecision() && isLocalCharacter && !postPhaseDialogShowing) {
 			postPhaseDialogShowing = true;
-			SwingUtilities.invokeLater(() -> {
-				doPostPhaseActivities();
-				postPhaseDialogShowing = false;
-			});
+			SwingUtilities.invokeLater(() -> doPostPhaseActivities());
 		}
 	}
 
@@ -1707,6 +1747,34 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		});
 		singleButtonManager.addButton(prePhaseActivityDoneButton);
 		box.add(prePhaseActivityDoneButton);
+
+		// Show Phase-Start Dialog Button (non-phasing characters): re-opens the non-modal pre-phase
+		// dialog if the player dismissed it with Hide. Non-mandatory so it does not lock other controls.
+		showPrePhaseDialogButton = new SingleButton("Show Phase-Start Dialog", false) {
+			public boolean needsShow() {
+				boolean isLocal = gameHandler.getClient().getClientName().equals(getCharacter().getPlayerName());
+				return !getCharacter().isPlayingTurn() && getCharacter().getNeedsPrePhaseActivityDecision() && isLocal;
+			}
+		};
+		showPrePhaseDialogButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		ComponentTools.lockComponentSize(showPrePhaseDialogButton, new Dimension(150, 25));
+		showPrePhaseDialogButton.addActionListener(ev -> showPrePhaseActivityDialog());
+		showPrePhaseDialogButton.setVisible(false);
+		singleButtonManager.addButton(showPrePhaseDialogButton);
+		box.add(showPrePhaseDialogButton);
+
+		showPostPhaseDialogButton = new SingleButton("Show Phase-End Dialog", false) {
+			public boolean needsShow() {
+				boolean isLocal = gameHandler.getClient().getClientName().equals(getCharacter().getPlayerName());
+				return getCharacter().getNeedsPostPhaseActivityDecision() && isLocal;
+			}
+		};
+		showPostPhaseDialogButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		ComponentTools.lockComponentSize(showPostPhaseDialogButton, new Dimension(150, 25));
+		showPostPhaseDialogButton.addActionListener(ev -> showPostPhaseActivityDialog());
+		showPostPhaseDialogButton.setVisible(false);
+		singleButtonManager.addButton(showPostPhaseDialogButton);
+		box.add(showPostPhaseDialogButton);
 
 		// Energize Choice Button
 		energizeChoiceButton = new SingleButton("Energize Spells",true) {
