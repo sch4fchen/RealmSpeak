@@ -1006,7 +1006,9 @@ public class ActionRow {
 					postPhaseParticipants.add(cw);
 				}
 			} else {
-				if (!phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject())) {
+				boolean canDetectPhasing = !phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject());
+				boolean hasColorChitsForPostPhase = colorChitPostPhase && !cw.getColorMagicChits().isEmpty();
+				if (canDetectPhasing || hasColorChitsForPostPhase) {
 					postPhaseParticipants.add(cw);
 				}
 			}

@@ -2,10 +2,12 @@ package com.robin.magic_realm.RealmSpeak;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyVetoException;
 import java.util.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 
 import com.robin.game.objects.GameObject;
@@ -59,6 +61,23 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton showPostPhaseDialogButton;
 	private JDialog prePhaseActivityDialog = null;
 	private JDialog postPhaseActivityDialog = null;
+	private final ArrayList<ChitSelection> currentChitSelections = new ArrayList<>();
+	private JCheckBox stopFollowingCheckbox = null;
+
+	private static class ChitSelection {
+		final MagicChit chit;
+		final JCheckBox checkbox;
+		final ArrayList<JToggleButton> toggles;
+		final Map<JToggleButton, SpellWrapper> spellByButton; // null value = no target
+		ChitSelection(MagicChit chit, JCheckBox checkbox, ArrayList<JToggleButton> toggles, Map<JToggleButton, SpellWrapper> spellByButton) {
+			this.chit = chit; this.checkbox = checkbox; this.toggles = toggles; this.spellByButton = spellByButton;
+		}
+		boolean isPlayed() { return checkbox.isSelected(); }
+		SpellWrapper getSelectedSpell() {
+			for (JToggleButton btn : toggles) { if (btn.isSelected()) return spellByButton.get(btn); }
+			return null;
+		}
+	}
 	private boolean prePhaseDialogShowing = false;
 	private boolean postPhaseDialogShowing = false;
 	protected SingleButton doneTradingButton;
@@ -304,7 +323,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())) {
 					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 					boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-					if (cw.isReacting() && (isFollower || !cw.getColorMagicChits().isEmpty())) {
+					boolean prePhaseColorChits = !cw.getColorMagicChits().isEmpty()
+						&& !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+					if (cw.isReacting() && (isFollower || prePhaseColorChits)) {
 						cw.setNeedsPrePhaseActivityDecision(true);
 					}
 				}
@@ -314,30 +335,302 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		gameHandler.updateCharacterFramesWithoutMap();
 	}
 
+	private JPanel buildPrePhaseDialogHeader() {
+		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
+		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
+		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
+		header.add(new JLabel(selfRc.getMediumIcon()));
+		JLabel forLabel = new JLabel(" -- Phase Start Activities before");
+		forLabel.setFont(headerFont);
+		header.add(forLabel);
+		// Find the phasing character and their current action
+		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			CharacterWrapper cw = new CharacterWrapper(go);
+			if (cw.isPlayingTurn()) {
+				RealmComponent phasingRc = RealmComponent.getRealmComponent(go);
+				header.add(new JLabel(phasingRc.getMediumIcon()));
+				String nextAction = cw.getNextPendingAction();
+				if (nextAction != null) {
+					ImageIcon actionIcon = CharacterWrapper.getIconForAction(nextAction);
+					if (actionIcon != null) {
+						Image scaled = actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+						header.add(new JLabel(new ImageIcon(scaled)));
+					}
+				}
+				JLabel actionLabel = new JLabel("Action");
+				actionLabel.setFont(headerFont);
+				header.add(actionLabel);
+				break;
+			}
+		}
+		return header;
+	}
+
+	private boolean isFollowerOfPhasingChar() {
+		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			CharacterWrapper cw = new CharacterWrapper(go);
+			if (cw.isPlayingTurn()) {
+				for (CharacterWrapper follower : cw.getActionFollowers()) {
+					if (follower.getGameObject().equals(getCharacter().getGameObject())) return true;
+				}
+				break;
+			}
+		}
+		return false;
+	}
+
+	private JPanel buildStopFollowingPanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+		JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 2));
+		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
+		titleRow.add(new JLabel(selfRc.getMediumIcon()));
+		titleRow.add(new JLabel("is following"));
+		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+			CharacterWrapper cw = new CharacterWrapper(go);
+			if (cw.isPlayingTurn()) {
+				titleRow.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
+				break;
+			}
+		}
+		panel.add(titleRow);
+
+		stopFollowingCheckbox = new JCheckBox("Stop Following");
+		JPanel checkRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 2));
+		checkRow.add(stopFollowingCheckbox);
+		panel.add(checkRow);
+		return panel;
+	}
+
 	private void showPrePhaseActivityDialog() {
 		if (prePhaseActivityDialog == null) {
 			prePhaseActivityDialog = new JDialog(gameHandler.getMainFrame(), "Pre-Phase Activities", false);
-			JPanel content = new JPanel(new BorderLayout(8, 8));
-			content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
-			content.add(new JLabel(getCharacter().getGameObject().getName() + " – Pre-Phase Activities"), BorderLayout.CENTER);
-			JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
-			JButton hideButton = new JButton("Hide");
-			hideButton.addActionListener(e -> prePhaseActivityDialog.setVisible(false));
-			JButton submitButton = new JButton("SUBMIT");
-			submitButton.addActionListener(e -> submitPrePhaseActivities());
-			buttons.add(hideButton);
-			buttons.add(submitButton);
-			content.add(buttons, BorderLayout.SOUTH);
-			prePhaseActivityDialog.setContentPane(content);
-			prePhaseActivityDialog.pack();
-			prePhaseActivityDialog.setLocationRelativeTo(this);
 		}
+		// Rebuild content each time — available spells and follower state change each turn.
+		currentChitSelections.clear();
+		stopFollowingCheckbox = null;
+		JPanel content = new JPanel(new BorderLayout(8, 8));
+		content.setBorder(BorderFactory.createEmptyBorder(12, 12, 8, 12));
+		JPanel northArea = new JPanel();
+		northArea.setLayout(new BoxLayout(northArea, BoxLayout.Y_AXIS));
+		northArea.add(buildPrePhaseDialogHeader());
+		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
+		content.add(northArea, BorderLayout.NORTH);
+
+		boolean showColorChits = !getCharacter().getColorMagicChits().isEmpty()
+			&& !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+		boolean showStopFollowing = isFollowerOfPhasingChar();
+
+		JPanel centerPanel = new JPanel();
+		centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+		if (showColorChits) {
+			centerPanel.add(buildColorChitPanel());
+		}
+		if (showColorChits && showStopFollowing) {
+			centerPanel.add(Box.createVerticalStrut(6));
+			centerPanel.add(new JSeparator(JSeparator.HORIZONTAL));
+			centerPanel.add(Box.createVerticalStrut(6));
+		}
+		if (showStopFollowing) {
+			centerPanel.add(buildStopFollowingPanel());
+		}
+		content.add(centerPanel, BorderLayout.CENTER);
+
+		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
+		JButton hideButton = new JButton("Hide");
+		hideButton.addActionListener(e -> prePhaseActivityDialog.setVisible(false));
+		JButton submitButton = new JButton("SUBMIT");
+		submitButton.addActionListener(e -> submitPrePhaseActivities());
+		buttons.add(hideButton);
+		buttons.add(submitButton);
+		JPanel southArea = new JPanel();
+		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
+		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
+		southArea.add(Box.createVerticalStrut(6));
+		southArea.add(buttons);
+		content.add(southArea, BorderLayout.SOUTH);
+
+		prePhaseActivityDialog.setContentPane(content);
+		prePhaseActivityDialog.pack();
+		prePhaseActivityDialog.setLocationRelativeTo(this);
 		prePhaseActivityDialog.setVisible(true);
 		prePhaseActivityDialog.toFront();
 	}
 
+	private static void styleChitToggleButton(JToggleButton btn) {
+		Border selected = BorderFactory.createLineBorder(new Color(80, 130, 255), 3);
+		Border empty    = BorderFactory.createEmptyBorder(3, 3, 3, 3);
+		btn.setBorder(empty);
+		btn.setContentAreaFilled(false);
+		btn.setFocusPainted(false);
+		btn.addChangeListener(e -> btn.setBorder(btn.isSelected() ? selected : empty));
+	}
+
+	private JPanel buildColorChitPanel() {
+		Color gridColor = Color.GRAY;
+		JPanel wrapper = new JPanel();
+		wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
+		ArrayList<MagicChit> colorChits = getCharacter().getColorMagicChits();
+		if (colorChits.isEmpty() || hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT)) return wrapper;
+		JLabel colorChitsLabel = new JLabel("Play Color Chits:");
+		colorChitsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		wrapper.add(colorChitsLabel);
+
+		JPanel grid = new JPanel();
+		grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
+		grid.setAlignmentX(Component.CENTER_ALIGNMENT);
+		grid.setBorder(BorderFactory.createMatteBorder(1, 1, 0, 0, gridColor));
+
+		boolean filterHidden = hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS);
+		for (MagicChit chit : colorChits) {
+			JPanel row = new JPanel();
+			row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
+			RealmComponent chitRc = RealmComponent.getRealmComponent(chit.getGameObject());
+			row.add(chitCell(new JLabel(chitRc.getMediumIcon()), gridColor));
+
+			JCheckBox checkbox = new JCheckBox();
+			checkbox.setEnabled(false);
+			checkbox.setHorizontalAlignment(SwingConstants.CENTER);
+			row.add(chitCell(checkbox, gridColor));
+
+			ArrayList<JToggleButton> toggles = new ArrayList<>();
+			Map<JToggleButton, SpellWrapper> spellByButton = new LinkedHashMap<>();
+
+			for (SpellWrapper spell : getCompatibleInertSpells(chit, filterHidden)) {
+				JToggleButton spellBtn = new JToggleButton(buildSpellIcon(spell));
+				spellBtn.setToolTipText(spell.getName());
+				styleChitToggleButton(spellBtn);
+				toggles.add(spellBtn);
+				spellByButton.put(spellBtn, spell);
+				row.add(chitCell(spellBtn, gridColor));
+			}
+			JToggleButton noTargetBtn = new JToggleButton(chitRc.getMediumIcon());
+			noTargetBtn.setText("Fatigue without Target");
+			noTargetBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+			noTargetBtn.setVerticalTextPosition(SwingConstants.TOP);
+			noTargetBtn.setToolTipText("No target – fatigue chit only");
+			styleChitToggleButton(noTargetBtn);
+			toggles.add(noTargetBtn);
+			spellByButton.put(noTargetBtn, null);
+			row.add(chitCell(noTargetBtn, gridColor));
+
+			// Mutual exclusion + checkbox sync: selecting any toggle deselects others and
+			// enables/checks the checkbox; deselecting the last one disables/unchecks it.
+			for (JToggleButton btn : toggles) {
+				btn.addItemListener(e -> {
+					if (e.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+						for (JToggleButton other : toggles) { if (other != btn) other.setSelected(false); }
+						checkbox.setEnabled(true);
+						checkbox.setSelected(true);
+					} else {
+						if (toggles.stream().noneMatch(JToggleButton::isSelected)) {
+							checkbox.setEnabled(false);
+							checkbox.setSelected(false);
+						}
+					}
+				});
+			}
+			// Unchecking the checkbox deselects whichever toggle is currently selected.
+			checkbox.addItemListener(e -> {
+				if (e.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+					toggles.forEach(b -> b.setSelected(false));
+				}
+			});
+
+			currentChitSelections.add(new ChitSelection(chit, checkbox, toggles, spellByButton));
+			grid.add(row);
+		}
+		wrapper.add(grid);
+		return wrapper;
+	}
+
+	private static JPanel chitCell(JComponent comp, Color gridColor) {
+		JPanel cell = new JPanel(new BorderLayout());
+		cell.setBorder(BorderFactory.createCompoundBorder(
+			BorderFactory.createMatteBorder(0, 0, 1, 1, gridColor),
+			BorderFactory.createEmptyBorder(4, 4, 4, 4)
+		));
+		cell.add(comp, BorderLayout.CENTER);
+		return cell;
+	}
+
+	private ArrayList<SpellWrapper> getCompatibleInertSpells(MagicChit chit, boolean filterHidden) {
+		ArrayList<SpellWrapper> result = new ArrayList<>();
+		ColorMagic chitColor = chit.getColorMagic();
+		TileLocation loc = getCharacter().getCurrentLocation();
+		if (loc == null || !loc.isInClearing()) return result;
+		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+		for (SpellWrapper spell : sm.getAllSpellsInClearing(loc, false)) {
+			if (!spell.isInert()) continue;
+			ColorMagic spellColor = spell.getRequiredColorMagic();
+			if (spellColor != null && !spellColor.sameColorAs(chitColor)) continue;
+			if (filterHidden && spell.getTargets() != null) {
+				boolean canTarget = spell.getTargets().stream()
+					.anyMatch(t -> !t.isHidden() || getCharacter().foundHiddenEnemy(t.getGameObject()));
+				if (!canTarget) continue;
+			}
+			result.add(spell);
+		}
+		return result;
+	}
+
+	private ImageIcon buildSpellIcon(SpellWrapper spell) {
+		int charSz = 50;
+		int gap = 6;
+		int cardW = CardComponent.CARD_WIDTH;
+		int cardH = CardComponent.CARD_HEIGHT;
+		int totalW = charSz + gap + cardW;
+		int totalH = Math.max(charSz, cardH);
+		int charY = (totalH - charSz) / 2;
+		Image targetImg = spell.getAffectedTarget().getMediumImage();
+		Image spellImg = RealmComponent.getRealmComponent(spell.getGameObject()).getImage();
+		BufferedImage combined = new BufferedImage(totalW, totalH, BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics g = combined.getGraphics();
+		g.drawImage(targetImg, 0, charY, charSz, charSz, null);
+		g.drawImage(spellImg, charSz + gap, 0, cardW, cardH, null);
+		g.dispose();
+		return new ImageIcon(combined);
+	}
+
 	private void submitPrePhaseActivities() {
 		if (prePhaseActivityDialog != null) prePhaseActivityDialog.setVisible(false);
+		// Execute any color chit play decisions the player made.
+		GameWrapper game = gameHandler.getGame();
+		for (ChitSelection sel : currentChitSelections) {
+			if (!sel.isPlayed()) continue;
+			SpellWrapper spell = sel.getSelectedSpell();
+			String colorName = sel.chit.getColorMagic().getColorName();
+			if (spell != null) {
+				// Check that no stronger conflicting spell blocks this one.
+				boolean blocked = false;
+				if (spell.canConflict()) {
+					int str = spell.getConflictStrength();
+					SpellMasterWrapper smw = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
+					for (SpellWrapper aff : smw.getAffectingSpells(spell.getAffectedTarget().getGameObject())) {
+						if (!aff.isInert() && aff.canConflict() && !aff.equals(spell) && aff.getConflictStrength() > str) {
+							blocked = true;
+							break;
+						}
+					}
+				}
+				if (!blocked) {
+					RealmLogging.logMessage(getCharacter().getGameObject().getName(), "Burns a " + colorName + " chit to energize " + spell.getName());
+					spell.affectTargets(gameHandler.getMainFrame(), game, false, null);
+					sel.chit.makeFatigued();
+					RealmUtility.reportChitFatigue(getCharacter(), sel.chit, "Fatigued color chit: ");
+				}
+			} else {
+				RealmLogging.logMessage(getCharacter().getGameObject().getName(), "Burns a " + colorName + " chit.");
+				sel.chit.makeFatigued();
+				RealmUtility.reportChitFatigue(getCharacter(), sel.chit, "Fatigued color chit: ");
+			}
+		}
+		if (stopFollowingCheckbox != null && stopFollowingCheckbox.isSelected()) {
+			getCharacter().setStopFollowing(true);
+			RealmLogging.logMessage(getCharacter().getGameObject().getName(), "Stops following.");
+		}
+		stopFollowingCheckbox = null;
 		getCharacter().setNeedsPrePhaseActivityDecision(false);
 		prePhaseDialogShowing = false;
 		gameHandler.submitChanges();
