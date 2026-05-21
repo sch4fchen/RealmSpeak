@@ -178,7 +178,7 @@ public class BattleGroup implements Comparable {
 		// First, search for the character, and return if not hidden.
 		RealmComponent character = getCharacterInBattle();
 		if (character!=null && !character.isHidden()
-				&& (!character.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)|| (attacker.isCharacter() && new CharacterWrapper(attacker.getGameObject()).affectedByKey(Constants.IGNORE_MIST_LIKE)))) {
+				&& (!character.isMistLike() || attacker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE) || (attacker.isCharacter() && new CharacterWrapper(attacker.getGameObject()).affectedByKey(Constants.IGNORE_MIST_LIKE)))) {
 			// Make sure there is not a demon immunity thing
 			if (!character.isImmuneTo(attacker)) {
 				return character;

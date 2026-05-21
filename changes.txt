@@ -6,6 +6,7 @@ BUGS/ISSUES:
 # Fix quest information dialog for nimbus design
 # Fix vulnerability of Magic Shield
 # Fix dagger
+# Fix random assignment for mistlike denizens
 
 Version 1.2.5.7
 NEW FEATURES:
