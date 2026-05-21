@@ -4,6 +4,7 @@ NEW FEATURES:
 # Option: Suspicious characters
 BUGS/ISSUES:
 # Fix quest information dialog for nimbus design
+# Fix vulnerability of Magic Shield
 
 Version 1.2.5.7
 NEW FEATURES:
