@@ -8186,6 +8186,7 @@
         <attribute spell_strength="3" />
         <attribute rw_expansion_1="" />
         <attribute learnable="" />
+        <attribute no_followers="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
         <attribute vulnerability="T" />
