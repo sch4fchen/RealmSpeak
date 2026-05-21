@@ -544,12 +544,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 			}
-			boolean	canFightWithoutWeapon = character.getWeight().strongerOrEqualTo(new Strength("T"));
-			if (!hasWeapon && (getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON) || canFightWithoutWeapon)) {
+			if (!hasWeapon && (getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON) || character.getWeight().strongerOrEqualTo(new Strength("T"))) && baseHarm.getStrength().strongerThan(new Strength())) {
 				weaponStrength = baseHarm.getStrength();
 				sharpness = 0;
 			}
-			if (!missileWeapon && hasWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
+			else if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
 				weaponStrength.bumpUp();
 			}
 			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {
