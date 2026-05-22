@@ -14,6 +14,7 @@ import com.robin.general.util.OrderedHashtable;
 public class GameObject extends ModifyableObject implements Serializable {
 
 	public static final int NO_ID_ASSIGNED = -1;
+	public static boolean showVul = false;
 	public static boolean showNumbers = false;
 
 	protected static XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
@@ -617,10 +618,14 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	public String getNameWithNumber() {
-		if (showNumbers && this.hasThisAttribute("number")) {
-			return name + " (" + this.getThisAttribute("number") + ")";
+		StringBuffer text = new StringBuffer(name);
+		if (showVul && this.hasThisAttribute("vulnerability")) {
+			text.append(" (" + this.getThisAttribute("vulnerability") + ")");
 		}
-		return name;
+		if (showNumbers && this.hasThisAttribute("number")) {
+			text.append(" (" + this.getThisAttribute("number") + ")");
+		}
+		return text.toString();
 	}
 	
 	public String getName() {
