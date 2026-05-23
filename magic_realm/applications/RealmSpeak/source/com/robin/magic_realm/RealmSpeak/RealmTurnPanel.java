@@ -154,7 +154,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		if (actionFollowers.size()>0) {
 			Box box = Box.createVerticalBox();
 			Box line = Box.createHorizontalBox();
-			JLabel label = new JLabel("The "+getCharacter().getGameObject().getName()+" is being followed by:");
+			JLabel label = new JLabel("The "+getCharacter().getGameObject().getName()+" seems to be being followed by:");
 			label.setFont(titleFont);
 			line.add(label);
 			line.add(Box.createHorizontalGlue());

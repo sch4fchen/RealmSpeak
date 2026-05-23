@@ -464,6 +464,22 @@ public class ActionRow {
 		// This prevents Play All from racing ahead and executing the next action before everyone has
 		// finished responding to the last one.
 		if (!isFollowing) {
+			// Auto-release lingering followers whenever the phasing char is mist-like.
+			// TransmorphEffect doesn't re-fire when a permanent spell is re-energized
+			// (e.g. a follower plays a color chit to re-activate the guide's Melt into Mist),
+			// so followers can persist past the point where they should have been released.
+			// Passing null dice skips monster summoning (same as the sleep/mist path).
+			if (character.isMistLike()) {
+				for (CharacterWrapper follower : character.getActionFollowers()) {
+					if (!follower.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) {
+						RealmLogging.logMessage(character.getGameObject().getName(),
+							follower.getGameObject().getName() + " can no longer follow (guide is mist-like).");
+						follower.setStopFollowing(true);
+						character.removeActionFollower(follower, null, null);
+					}
+				}
+				gameHandler.updateCharacterFramesWithoutMap();
+			}
 			if (character.isBlocked()) {
 				gameHandler.broadcast(character.getGameObject().getName(),"BLOCKED - Cannot perform action "+action);
 				cancelled = true;
@@ -989,6 +1005,14 @@ public class ActionRow {
 		}
 
 		boolean phasingCharHidden = character.isHidden();
+		boolean smallHouseRule = hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS);
+		// Whether the phasing character can legally be blocked (blockee guards).
+		boolean phasingCharBlockable = !character.isMistLike()
+			&& !character.isSleep()
+			&& !character.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
+			&& !character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)
+			&& !(character.isSmall() && smallHouseRule);
+
 		int detectableOthers = 0;
 		for (CharacterWrapper other : nonFollowers) {
 			if (other.getGameObject().equals(character.getGameObject())) continue;
@@ -1002,13 +1026,25 @@ public class ActionRow {
 			if (!cw.isReacting()) continue;
 			boolean isPhasingChar = cw.getGameObject().equals(character.getGameObject());
 			if (isPhasingChar) {
-				if (detectableOthers >= 1 || monstersPresent) {
+				// Phasing char qualifies only if they can also block (blocker guards).
+				boolean phasingCanBlock = !cw.isMistLike() && !cw.isSleep()
+					&& !cw.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
+					&& !cw.isMinion()
+					&& !(cw.isSmall() && smallHouseRule);
+				if (phasingCanBlock && (detectableOthers >= 1 || monstersPresent)) {
 					postPhaseParticipants.add(cw);
 				}
 			} else {
 				boolean canDetectPhasing = !phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject());
+				boolean blockerCanBlock = !cw.isMistLike() && !cw.isSleep()
+					&& !cw.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
+					&& !cw.isMinion()
+					&& !(cw.isSmall() && smallHouseRule);
+				boolean ignoreMist = cw.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE);
+				boolean canBlockPhasing = canDetectPhasing && blockerCanBlock
+					&& (phasingCharBlockable || ignoreMist);
 				boolean hasColorChitsForPostPhase = colorChitPostPhase && !cw.getColorMagicChits().isEmpty();
-				if (canDetectPhasing || hasColorChitsForPostPhase) {
+				if (canBlockPhasing || hasColorChitsForPostPhase) {
 					postPhaseParticipants.add(cw);
 				}
 			}

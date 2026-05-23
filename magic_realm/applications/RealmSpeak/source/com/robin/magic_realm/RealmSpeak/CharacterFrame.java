@@ -340,11 +340,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
 		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
 		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
-		header.add(new JLabel(selfRc.getMediumIcon()));
-		JLabel forLabel = new JLabel(" -- Phase Start Activities before");
+		Image largeImage = selfRc.getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT);
+		header.add(new JLabel(new ImageIcon(largeImage)));
+		JLabel forLabel = new JLabel(" - Phase Start Activities before");
 		forLabel.setFont(headerFont);
 		header.add(forLabel);
-		// Find the phasing character and their current action
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
@@ -388,11 +388,32 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
 		titleRow.add(new JLabel(selfRc.getMediumIcon()));
 		titleRow.add(new JLabel("is following"));
+		// Show the character's actual direct guide, not necessarily the phasing character.
+		// In a cascade (Follower 1 → Guide 1 → Guide 2 phasing), all followers end up in
+		// Guide 2's actionFollowers, but each should show their own immediate guide.
+		CharacterWrapper directGuide = getCharacter().getCharacterImFollowing();
+		if (directGuide == null) {
+			// Fallback if follow action not recorded as a single action (e.g. Follow+Alert).
+			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				CharacterWrapper cw = new CharacterWrapper(go);
+				if (cw.isPlayingTurn()) {
+					directGuide = cw;
+					break;
+				}
+			}
+		}
+		CharacterWrapper phasingChar = null;
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 			CharacterWrapper cw = new CharacterWrapper(go);
-			if (cw.isPlayingTurn()) {
-				titleRow.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
-				break;
+			if (cw.isPlayingTurn()) { phasingChar = cw; break; }
+		}
+		if (directGuide != null) {
+			titleRow.add(new JLabel(RealmComponent.getRealmComponent(directGuide.getGameObject()).getMediumIcon()));
+			// If the direct guide is not the phasing character, they are themselves a follower —
+			// append "who seems to be following <phasing char>" regardless of chain depth.
+			if (phasingChar != null && !directGuide.getGameObject().equals(phasingChar.getGameObject())) {
+				titleRow.add(new JLabel("who seems to be following"));
+				titleRow.add(new JLabel(RealmComponent.getRealmComponent(phasingChar.getGameObject()).getMediumIcon()));
 			}
 		}
 		panel.add(titleRow);
@@ -596,6 +617,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	private void submitPrePhaseActivities() {
 		if (prePhaseActivityDialog != null) prePhaseActivityDialog.setVisible(false);
+		// Clear state immediately so the dialog cannot reappear even if later processing throws.
+		getCharacter().setNeedsPrePhaseActivityDecision(false);
+		prePhaseDialogShowing = false;
 		// Execute any color chit play decisions the player made.
 		GameWrapper game = gameHandler.getGame();
 		for (ChitSelection sel : currentChitSelections) {
@@ -630,14 +654,43 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (stopFollowingCheckbox != null && stopFollowingCheckbox.isSelected()) {
 			getCharacter().setStopFollowing(true);
 			RealmLogging.logMessage(getCharacter().getGameObject().getName(), "Stops following.");
+			// Cascade: any characters whose follow chain passes through the stopping character
+			// also stop. The chain is flattened in the phasing char's actionFollowers list, so
+			// we find the phasing char and recursively stop anyone whose direct guide is stopping.
+			CharacterWrapper phasingChar = null;
+			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				CharacterWrapper cw = new CharacterWrapper(go);
+				if (cw.isPlayingTurn()) { phasingChar = cw; break; }
+			}
+			if (phasingChar != null) {
+				cascadeStopFollowing(getCharacter(), phasingChar);
+			}
 		}
 		stopFollowingCheckbox = null;
-		getCharacter().setNeedsPrePhaseActivityDecision(false);
-		prePhaseDialogShowing = false;
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFramesWithoutMap();
 		bringPhasingCharacterToFront();
 	}
+
+	/**
+	 * Recursively marks as stop-following any characters in {@code phasingChar}'s flat
+	 * actionFollowers list whose immediate guide is {@code stopped} (or is itself already
+	 * stopping). Handles arbitrarily deep chains because RealmHostPanel flattens all
+	 * cascade followers into the primary guide's actionFollowers list.
+	 */
+	private void cascadeStopFollowing(CharacterWrapper stopped, CharacterWrapper phasingChar) {
+		for (CharacterWrapper follower : phasingChar.getActionFollowers()) {
+			if (follower.isStopFollowing()) continue;
+			CharacterWrapper guide = follower.getCharacterImFollowing();
+			if (guide != null && guide.getGameObject().equals(stopped.getGameObject())) {
+				follower.setStopFollowing(true);
+				RealmLogging.logMessage(follower.getGameObject().getName(),
+					"Stops following (guide " + stopped.getGameObject().getName() + " stopped following).");
+				cascadeStopFollowing(follower, phasingChar);
+			}
+		}
+	}
+
 	private void doPostPhaseActivities() {
 		showPostPhaseActivityDialog();
 	}
@@ -684,8 +737,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
 		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
 		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
-		header.add(new JLabel(selfRc.getMediumIcon()));
-		JLabel label = new JLabel("Phase End Activities for");
+		Image largeImage = selfRc.getImage().getScaledInstance(75, 75, Image.SCALE_DEFAULT);
+		header.add(new JLabel(new ImageIcon(largeImage)));
+		JLabel label = new JLabel(" - Phase End Activities after");
 		label.setFont(headerFont);
 		header.add(label);
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
@@ -714,39 +768,69 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		TileLocation loc = getCharacter().getCurrentLocation();
 		if (loc == null || !loc.isInClearing()) return candidates;
 
-		if (getCharacter().isPlayingTurn()) {
-			// Phasing character: can block all detectable characters, denizens, and monsters
-			// in the clearing except own current followers.
+		// Blocker guards — if the viewing character cannot block at all, return empty.
+		CharacterWrapper blocker = getCharacter();
+		boolean smallHouseRule = hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS);
+		if (blocker.isMistLike()
+				|| blocker.isSleep()
+				|| blocker.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
+				|| blocker.isMinion()
+				|| (blocker.isSmall() && smallHouseRule)) {
+			return candidates;
+		}
+
+		boolean blockerIgnoresMist = blocker.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE);
+
+		if (blocker.isPlayingTurn()) {
+			// Phasing character: can block all detectable chars, denizens, and monsters
+			// except own current followers (subject to per-target guards).
 			Set<GameObject> ownFollowers = new HashSet<>();
-			for (CharacterWrapper f : getCharacter().getActionFollowers()) {
+			for (CharacterWrapper f : blocker.getActionFollowers()) {
 				ownFollowers.add(f.getGameObject());
 			}
 			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
-				if (rc.getGameObject().equals(getCharacter().getGameObject())) continue;
+				if (rc.getGameObject().equals(blocker.getGameObject())) continue;
 				if (ownFollowers.contains(rc.getGameObject())) continue;
 				if (rc.isPlayerControlledLeader()) {
+					if (!isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) continue;
 					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-					if (!cw.isHidden() || getCharacter().foundHiddenEnemy(rc.getGameObject())) {
+					if (!cw.isHidden() || blocker.foundHiddenEnemy(rc.getGameObject())) {
 						candidates.add(rc);
 					}
-				} else if (rc.isDenizen() || rc.isMonster()) {
-					if (!rc.isMonsterPart() && (rc.getOwner() == null || rc.isDenizen())) {
-						candidates.add(rc);
-					}
+				} else if ((rc.isDenizen() || rc.isMonster()) && !rc.isMonsterPart()
+						&& (rc.getOwner() == null || rc.isDenizen())) {
+					if (!isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) continue;
+					candidates.add(rc);
 				}
 			}
 		} else {
-			// Non-phasing character: can only block the phasing character if detectable.
+			// Non-phasing character: can only block the phasing character if detectable
+			// and the phasing char passes all blockee guards.
 			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 				CharacterWrapper cw = new CharacterWrapper(go);
 				if (cw.isPlayingTurn()) {
-					boolean detectable = !cw.isHidden() || getCharacter().foundHiddenEnemy(go);
-					if (detectable) candidates.add(RealmComponent.getRealmComponent(go));
+					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					if (isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) {
+						boolean detectable = !cw.isHidden() || blocker.foundHiddenEnemy(go);
+						if (detectable) candidates.add(rc);
+					}
 					break;
 				}
 			}
 		}
 		return candidates;
+	}
+
+	private boolean isValidBlockTarget(RealmComponent rc, boolean blockerIgnoresMist, boolean smallHouseRule) {
+		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) return false;
+		if (rc.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return false;
+		CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+		if (cw.isMistLike() && !blockerIgnoresMist) return false;
+		if (cw.isSleep()) return false;
+		if (cw.isBlocked()) return false;
+		if (cw.isSmall() && smallHouseRule) return false;
+		if (getCharacter().hasReactDecision(rc.getGameObject())) return false;
+		return true;
 	}
 
 	private JCheckBox blockCheckbox = null;
@@ -775,8 +859,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			// Phasing character: N×M toggle-button table.
 			// Use BorderLayout so the title is left-aligned at top and the grid is centered below.
 			wrapper.setLayout(new BorderLayout(0, 4));
-			JLabel title = new JLabel("Block:");
-			wrapper.add(title, BorderLayout.NORTH);
+			JPanel titleRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
+			titleRow.add(new JLabel(RealmComponent.getRealmComponent(getCharacter().getGameObject()).getMediumIcon()));
+			String anyOrAll = candidates.size() > 1 ? " can block any or all:" : " can block:";
+			titleRow.add(new JLabel(anyOrAll));
+			wrapper.add(titleRow, BorderLayout.NORTH);
 			int X = candidates.size();
 			int N = 1;
 			for (; N <= 10; N++) { if (X <= N * N) break; }

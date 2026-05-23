@@ -2339,6 +2339,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
 	
+	public boolean isSmall() {
+		GameObject transmorph = getTransmorph();
+		if (transmorph != null) {
+			return transmorph.hasThisAttribute(Constants.SMALL);
+		}
+		return getGameObject().hasThisAttribute(Constants.SMALL);
+	}
+
 	//can walk woods in valley tiles
 	public boolean isValeWalker(){
 		return this.getGameObject().hasThisAttribute(Constants.VALE_WALKER);
