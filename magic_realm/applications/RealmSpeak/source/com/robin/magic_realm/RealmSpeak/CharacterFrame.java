@@ -496,7 +496,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		boolean recordingActions = character.isDoRecord() && actionPanel.getActionControlManager().getCurrentlyRecordingAction() == null;
 		boolean canTrade = getCharacter().isCharacter() || getCharacter().isHiredLeader() || getCharacter().isControlledMonster();
 		viewChitsButton.setVisible(character.isHidden() && hostPrefs.hasPref(Constants.OPT_QUIET_MONSTERS));
-		if (character.isBlocking()) {
+		if (!character.isMinion() && character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);
@@ -1172,7 +1172,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			});
 			showCharCardButton.setEnabled(character.isCharacter());
 			sideControls.add(showCharCardButton);
-			dailyCombatCheckbox = new JCheckBox("Daily Combat",character.getWantsCombat());
+			dailyCombatCheckbox = new JCheckBox("Daily Combat",!character.isMinion() && character.getWantsCombat());
 			dailyCombatCheckbox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					character.setWantsCombat(dailyCombatCheckbox.isSelected());
@@ -1679,7 +1679,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		blockButton = new JToggleButton(IconFactory.findIcon("images/interface/blockoff.gif"),false);
 		blockButton.setToolTipText("Block/Reactions OFF");
 		ComponentTools.lockComponentSize(blockButton,39,39);
-		if (character.isBlocking()) {
+		if (!character.isMinion() && character.isBlocking()) {
 			blockButton.setIcon(IconFactory.findIcon("images/interface/blockon.gif"));
 			blockButton.setToolTipText("Block/Reactions ON");
 			blockButton.setSelected(true);

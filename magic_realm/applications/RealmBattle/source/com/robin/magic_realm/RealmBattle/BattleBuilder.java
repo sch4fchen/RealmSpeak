@@ -532,6 +532,8 @@ public class BattleBuilder extends JFrame {
 			return;
 		}
 		
+		battleClearing = clearingHash.get(clearingName);
+		
 		prefs.set(BATTLE_BUILDER_CLEARING,clearingHash.get(clearingName).getNum());
 		prefs.set(BATTLE_BUILDER_TILE,tileName);
 		prefs.set(BATTLE_BUILDER_TILE_IS_ENCHANTED,enchanted);

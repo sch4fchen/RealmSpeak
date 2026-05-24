@@ -44,6 +44,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 	protected JCheckBox coloredStatsOption;
 	protected JCheckBox chitArmorOption;
 	protected JCheckBox chitSublineOption;
+	protected JCheckBox denizenVulnerabilitiesOption;
 	protected JCheckBox monsterNumbersOption;
 	protected JCheckBox killedByOption;
 	protected JCheckBox setupCardLayoutOption;
@@ -228,6 +229,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		coloredStatsOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_COLORED_STATS,false));
 		chitArmorOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_ARMOR,false));
 		chitSublineOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_DISPLAY_SUBLINE,false));
+		denizenVulnerabilitiesOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.DENIZEN_VULNERABILITIES,false));
 		monsterNumbersOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.MONSTER_NUMBERS,false));
 		killedByOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.CHIT_KILLED_BY,false));
 		setupCardLayoutOption.setSelected(options.getOptions().getBoolean(RealmSpeakOptions.SETUP_CARD_LAYOUT,false));
@@ -275,6 +277,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		else if (dailyCombatOnSpellcastersOption.isSelected()) {
 			options.getOptions().set(RealmSpeakOptions.DAILY_COMBAT,"ON_S");
 		}
+		options.getOptions().set(RealmSpeakOptions.DENIZEN_VULNERABILITIES,denizenVulnerabilitiesOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.MONSTER_NUMBERS,monsterNumbersOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.CHIT_KILLED_BY,killedByOption.isSelected());
 		options.getOptions().set(RealmSpeakOptions.SETUP_CARD_LAYOUT,setupCardLayoutOption.isSelected());
@@ -537,7 +540,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		return panel;
 	}
 	private JPanel getChitsOptionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(11,1));
+		JPanel panel = new JPanel(new GridLayout(12,1));
 		panel.setBorder(BorderFactory.createTitledBorder("Game Chits"));
 		ButtonGroup group = new ButtonGroup();
 		classicChitsOption = new JRadioButton("Classic Chits");
@@ -562,6 +565,8 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(chitArmorOption);
 		chitSublineOption = new JCheckBox("Show Native subline");
 		panel.add(chitSublineOption);
+		denizenVulnerabilitiesOption = new JCheckBox("Show Denizen Vulnerabilities");
+		panel.add(denizenVulnerabilitiesOption);
 		monsterNumbersOption = new JCheckBox("Show Monster Numbers");
 		panel.add(monsterNumbersOption);
 		killedByOption = new JCheckBox("Show 'killed by'");
