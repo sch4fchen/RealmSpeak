@@ -43,6 +43,7 @@ public class RealmSpeakOptions {
 	public static final String NUMBER_OF_CHAT_LINES = "nlChat";
 	public static final String HEADER_CHAT_LINES = "hChatL";
 	public static final String DAILY_COMBAT = "dailyCombat";
+	public static final String DENIZEN_VULNERABILITIES = "denizenVulnerabilities";
 	public static final String MONSTER_NUMBERS = "monsterNumbers";
 	public static final String CHIT_KILLED_BY = "killedBy";
 	public static final String SETUP_CARD_LAYOUT = "setupCardLayout";
@@ -120,6 +121,7 @@ public class RealmSpeakOptions {
 				TileComponent.displayTilesStyle = TileComponent.DISPLAY_TILES_STYLE_CLASSIC;
 				break;
 		}
+		GameObject.showVul = options.getBoolean(DENIZEN_VULNERABILITIES);
 		GameObject.showNumbers = options.getBoolean(MONSTER_NUMBERS);
 		ChitComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
 		CardComponent.killedByOption = options.getBoolean(CHIT_KILLED_BY);
