@@ -103,7 +103,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		//
 		// Fix: build the snapshot entirely via a local variable and publish it to the field only
 		// once, at the very end. Concurrent stopUncommitted() calls that null this.uncommitted
-		// during the loop are harmless — we are not reading the field, only writing it once done.
+		// during the loop are harmless - we are not reading the field, only writing it once done.
 		GameObject local = new GameObject();
 		local.id = this.id;
 		local.setName(name); // so that keyval searches with name actually work!!
