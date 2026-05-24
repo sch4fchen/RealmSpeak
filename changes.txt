@@ -8,6 +8,7 @@ BUGS/ISSUES:
 # Fix vulnerability of Magic Shield
 # Fix dagger
 # Fix random assignment for mistlike denizens
+# Fix familiar/phantasm frozen when blocking character with color chits shares clearing
 
 Version 1.2.5.7
 NEW FEATURES:
