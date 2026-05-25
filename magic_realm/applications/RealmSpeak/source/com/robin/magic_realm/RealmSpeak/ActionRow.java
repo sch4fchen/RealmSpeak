@@ -816,39 +816,76 @@ public class ActionRow {
 	// NeedsPrePhaseActivityDecision is set on the phasing character and we return true here,
 
 	private boolean handlePrePhase(HostPrefWrapper hostPrefs) {
+		if (character.isMinion()) return false;
 		TileLocation loc = character.getCurrentLocation();
 		if (loc == null || !loc.isInClearing()) return false;
 
 		int actionsTaken = character.getNumberOfPerformedActionsToday();
-		boolean alreadyOccurred = character.getPrePhaseActivityActionCount() == actionsTaken;
+		int currentStamp = character.getPrePhaseActivityActionCount();
+		boolean alreadyOccurred = currentStamp == actionsTaken;
+		System.err.println("[IPD] handlePrePhase ENTER: phasingChar=" + character.getGameObject().getName()
+			+ " actionsTaken=" + actionsTaken + " stamp=" + currentStamp + " alreadyOccurred=" + alreadyOccurred);
 		if (!alreadyOccurred) {
 			// true for 3rd edition (pre-phase color chit play), false for 1st edition (post-phase color chit play)
 			boolean prePhaseColorChitPlay = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
 			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
-			boolean anyNonPhasingNeedNotice = false;
+			// Track separately: chars who can receive their flag immediately (combined case) vs those who
+			// still need to wait for the phasing char's "Done: Pre-Phase" acknowledgement.
+			boolean anyNeedsDoneButton = false;
+			boolean anyCombined = false;
 			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
-				if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(character.getGameObject())) {
-					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
-					boolean isReacting = cw.isReacting();
-					boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-					boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && prePhaseColorChitPlay;
-					if (isReacting && (isFollower || canPlayColorChits)) {
-						anyNonPhasingNeedNotice = true;
-						break;
+				if (rc.getGameObject().equals(character.getGameObject())) continue;
+				CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+				if (!rc.isPlayerControlledLeader() && !cw.isMinion()) continue;
+				boolean isReacting = cw.isReacting();
+				boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
+				boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && prePhaseColorChitPlay;
+				System.err.println("[IPD]   checking char=" + cw.getGameObject().getName()
+					+ " isReacting=" + isReacting + " isFollower=" + isFollower + " canColorChits=" + canPlayColorChits
+					+ " preFlag=" + cw.getNeedsPrePhaseActivityDecision()
+					+ " postFlag=" + cw.getNeedsPostPhaseActivityDecision()
+					+ " cwStamp=" + cw.getPrePhaseActivityActionCount());
+				// Followers always qualify (stop-following is independent of reactions).
+				// Non-followers qualify only when reactions are ON and they hold color chits.
+				if (isFollower || (isReacting && canPlayColorChits)) {
+					if (cw.getNeedsPostPhaseActivityDecision()) {
+						// Post-phase still outstanding — set the pre-phase flag directly so CharacterFrame
+						// sees both flags simultaneously and shows the combined dialog.
+						System.err.println("[IPD]     -> COMBINED case for " + cw.getGameObject().getName());
+						cw.setNeedsPrePhaseActivityDecision(true);
+						anyCombined = true;
+					} else {
+						// No outstanding post-phase — must wait for phasing char's "Done: Pre-Phase".
+						// Skip chars already stamped for this action (handled via combined/deferred path).
+						if (cw.getPrePhaseActivityActionCount() != actionsTaken) {
+							System.err.println("[IPD]     -> DONE-BUTTON case for " + cw.getGameObject().getName());
+							anyNeedsDoneButton = true;
+						} else {
+							System.err.println("[IPD]     -> DONE-BUTTON skipped (already stamped) for " + cw.getGameObject().getName());
+						}
 					}
 				}
 			}
-			if (anyNonPhasingNeedNotice) {
+			System.err.println("[IPD]   result: anyCombined=" + anyCombined + " anyNeedsDoneButton=" + anyNeedsDoneButton);
+			if (anyCombined || anyNeedsDoneButton) {
 				character.setPrePhaseActivityActionCount(actionsTaken);
-				character.setNeedsPrePhaseActivityDecision(true);
+				if (anyNeedsDoneButton) {
+					// Phasing char's Done button is only needed when some non-phasing chars don't have
+					// the combined dialog (their pre-phase flag will be set from doPrePhaseActivities()).
+					System.err.println("[IPD]   SETTING Done:Pre-Phase on " + character.getGameObject().getName());
+					character.setNeedsPrePhaseActivityDecision(true);
+				}
 				gameHandler.updateCharacterFramesWithoutMap();
 			}
 		}
 		for (RealmComponent rc : loc.clearing.getClearingComponents()) {
 			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
+				System.err.println("[IPD] handlePrePhase RETURN TRUE (waiting on "
+					+ rc.getGameObject().getName() + ")");
 				return true;
 			}
 		}
+		System.err.println("[IPD] handlePrePhase RETURN FALSE (action may proceed)");
 		return false;
 	}
 
@@ -958,6 +995,7 @@ public class ActionRow {
 	 * auto-shows the dialog via {@code SwingUtilities.invokeLater}.
 	 */
 	private void triggerPostPhase() {
+		if (character.isMinion()) return;
 		TileLocation loc = character.getCurrentLocation();
 		if (loc == null || !loc.isInClearing()) return;
 
@@ -1050,10 +1088,36 @@ public class ActionRow {
 			}
 		}
 
+		System.err.println("[IPD] triggerPostPhase: phasingChar=" + character.getGameObject().getName()
+			+ " actionsTakenNow=" + actionsTakenNow
+			+ " postPhaseParticipants=" + postPhaseParticipants.size());
 		if (!postPhaseParticipants.isEmpty()) {
 			character.setPostPhaseActivityActionCount(actionsTakenNow);
+
+			// Eagerly check if a pre-phase will immediately follow. If the phasing character has
+			// more actions queued and a non-phasing post-phase participant also qualifies for
+			// pre-phase (follower OR holds color chits in 3rd-edition mode), set both flags at
+			// once so CharacterFrame shows a single combined dialog instead of two sequential ones.
+			boolean nextActionExists = (newAction != null) || turnPanel.hasPendingActionsAfterCurrent();
+			System.err.println("[IPD]   nextActionExists=" + nextActionExists);
+			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
 			for (CharacterWrapper cw : postPhaseParticipants) {
+				System.err.println("[IPD]   participant=" + cw.getGameObject().getName()
+					+ " isPhasing=" + cw.getGameObject().equals(character.getGameObject()));
 				cw.setNeedsPostPhaseActivityDecision(true);
+				if (nextActionExists && !cw.getGameObject().equals(character.getGameObject())) {
+					boolean isFollower = phasingFollowers.stream()
+						.anyMatch(f -> f.getGameObject().equals(cw.getGameObject()));
+					boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && !colorChitPostPhase;
+					if (cw.isReacting() && (isFollower || canPlayColorChits)) {
+						cw.setNeedsPrePhaseActivityDecision(true);
+						// Stamp so doPrePhaseActivities() knows this char's pre-phase for this action
+						// is already handled via the combined dialog and must not be re-triggered.
+						cw.setPrePhaseActivityActionCount(actionsTakenNow);
+						System.err.println("[IPD]   eagerly set PRE flag on " + cw.getGameObject().getName()
+							+ " with stamp=" + actionsTakenNow + " isFollower=" + isFollower + " canColorChits=" + canPlayColorChits);
+					}
+				}
 			}
 			gameHandler.updateCharacterFramesWithoutMap();
 		}

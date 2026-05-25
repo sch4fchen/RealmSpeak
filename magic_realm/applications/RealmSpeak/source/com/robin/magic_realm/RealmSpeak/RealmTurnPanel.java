@@ -326,9 +326,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		TileLocation current = getCharacter().getCurrentLocation();
 		if (current == null || !current.isInClearing()) return false;
 		for (RealmComponent rc : current.clearing.getClearingComponents()) {
-			if (rc.isPlayerControlledLeader() && new CharacterWrapper(rc.getGameObject()).getNeedsPrePhaseActivityDecision()) {
-				return true;
-			}
+			CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
+			if (!rc.isPlayerControlledLeader() && !cw.isMinion()) continue;
+			if (cw.getNeedsPrePhaseActivityDecision()) return true;
 		}
 		return false;
 	}
@@ -452,9 +452,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		boolean actionsLeft = isNextAction();
 
 		boolean nowAwaitingPrePhase = isAwaitingPrePhaseDecision();
+		System.err.println("[IPD] RTP.updateControls: wasAwaiting=" + wasAwaitingPrePhase
+			+ " nowAwaiting=" + nowAwaitingPrePhase
+			+ " isPlayingTurn=" + getCharacter().isPlayingTurn()
+			+ " actionsLeft=" + actionsLeft
+			+ " waitingForSingleButton=" + waitingForSingleButton
+			+ " char=" + getCharacter().getGameObject().getName());
 		if (wasAwaitingPrePhase && !nowAwaitingPrePhase && getCharacter().isPlayingTurn()
 				&& actionsLeft && !waitingForSingleButton && activatePlayNextTimer == null
 				/*&& !isAwaitingReactDecision()*/) {
+			System.err.println("[IPD] RTP.updateControls -> AUTO-ADVANCE firing playNext!");
 			wasAwaitingPrePhase = false;
 			SwingUtilities.invokeLater(() -> playNext(false));
 		} else {
