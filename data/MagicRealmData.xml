@@ -57982,7 +57982,6 @@
         <attribute benevolent_for_leaders="" />
         <attribute benevolent_for_monsters="" />
         <attribute only_move="" />
-        <attribute no_followers="" />
         <attribute keep_inventory="" />
       </AttributeBlock>
       <AttributeBlock blockName="mist">
