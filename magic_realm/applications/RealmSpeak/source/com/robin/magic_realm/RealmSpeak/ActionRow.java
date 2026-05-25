@@ -972,7 +972,7 @@ public class ActionRow {
 	 * <p>
 	 * In 1st-edition case ({@code FE_PHASE_END_PLAYING_COLOR_CHIT} ON), no characters are
 	 * excluded by follower status — all characters in the clearing (including followers of any
-	 * guide) who have PvP Reactions ON and hold color chits are eligible for the phase-end
+	 * guide) who have Reactions ON and hold color chits are eligible for the phase-end
 	 * color-chit dialog.
 	 * <p>
 	 * The clearing is scanned once to collect two things simultaneously: the list of eligible
@@ -1027,7 +1027,7 @@ public class ActionRow {
 			}
 		}
 		// 1st edition: no follower exclusion — all characters (including followers) who hold
-		// color chits and have PvP Reactions ON are eligible for the phase-end color-chit dialog.
+		// color chits and have Reactions ON are eligible for the phase-end color-chit dialog.
 
 		ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
 		boolean monstersPresent = false;

@@ -134,6 +134,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String REACTING = "bkkng_"; // indicates the character has inter-phase reactions enabled (blocking, color-chit play, etc.)
 	public static final String REACT_DECISION = "bkkng_dec"; // the reacting character has decided what to do
 	public static final String KEEP_REACTING = "keep_bkkng_";
+	public static final String SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY = "skip_pp_fat_chit_only_";
 	public static final String COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION = "_ccipbdc_dec";
 	public static final String COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipec_dec";
 	
@@ -3842,6 +3843,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setKeepReacting(boolean val) {
 		setBoolean(KEEP_REACTING,val);
+	}
+	public boolean skipsPrePhaseWhenFatigueChitOnly() {
+		return getBoolean(SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY);
+	}
+	public void setSkipPrePhaseWhenFatigueChitOnly(boolean val) {
+		setBoolean(SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY, val);
 	}
 	public void addColorChitInterruptPhaseBeginningDecision(GameObject go) {
 		addListItem(COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION,go.getStringId());
