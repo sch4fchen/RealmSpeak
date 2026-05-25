@@ -1026,18 +1026,11 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 		else if (RealmDirectInfoHolder.QUERY_YN.equals(command)) {
 			// THREADING: this branch runs on the GameClient thread (via receiveInfoDirect ->
-			// handleDirectInfo). The original code called JOptionPane.showConfirmDialog()
-			// directly here, which blocked the GameClient thread for as long as the user took
-			// to respond. While blocked, no REQUEST_IDLE messages were sent to the server.
-			// After 10 s the server-side SO_TIMEOUT fired, the GameServer for this client
-			// called removeServer() -> "The server was shut down. Game over!!" was broadcast
-			// to everyone, and the End Combat flow was permanently broken.
-			//
-			// Fix: dispatch the dialog to the EDT via invokeLater so handleDirectInfo()
-			// returns immediately, unblocking the GameClient thread. The GameClient continues
-			// polling normally while the user thinks. When the user clicks Yes/No the EDT
-			// callback sends the response via sendInfoDirect(), which queues it on the
-			// GameClient's requestQueue for delivery on the next loop iteration.
+			// handleDirectInfo) via invokeLater so handleDirectInfo() returns immediately,
+			// unblocking the GameClient thread. The GameClient continues polling normally
+			// while the user thinks. When the user clicks Yes/No the EDT callback sends
+			// the response via sendInfoDirect(), which queues it on the GameClient's
+			// requestQueue for delivery on the next loop iteration.
 			String string = info.getString();
 			int colon = string.indexOf(":");
 			final long id = Long.valueOf(string.substring(0, colon)).longValue();

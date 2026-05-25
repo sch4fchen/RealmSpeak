@@ -201,18 +201,9 @@ public class GameHost {
 	public boolean applyChanges(GameServer activeServer,ArrayList<GameObjectChange> changes,boolean fireChange) {
 		// Apply changes and distribute to peer servers while holding the GameHost lock,
 		// then release the lock before calling fireHostModified().
-		//
-		// WHY: fireHostModified() calls updateGame() on RealmHostPanel, which runs
-		// updateGameState() (full game-state machine) and may trigger autosave (zipToFile).
-		// Both can take seconds. While that work ran inside a synchronized method, any
-		// concurrent call to applyChanges() from another GameServer thread (servicing a
-		// SUBMIT_CHANGES from its client) would block on the GameHost lock until the slow
-		// host-panel update finished. Similarly, a newly connecting client whose REQUEST_IDLE
-		// triggers getMasterToGameChanges() (also synchronized on GameHost) would block
-		// during that window.
-		//
 		// Releasing the lock before fireHostModified() means concurrent applyChanges() calls
-		// and getMasterToGameChanges() calls are never held up by slow host-panel work.
+		// and getMasterToGameChanges() calls are never held up by slow host-panel work
+		// (e.g. RealmHostPanel updateGameState() and may trigger autosave (zipToFile)
 		boolean shouldFire = false;
 		synchronized(this) {
 			if (changes!=null && !changes.isEmpty()) {
@@ -248,7 +239,7 @@ public class GameHost {
 				}
 			}
 		}
-		// GameHost lock is released — fireHostModified/updateGame may be slow but will
+		// GameHost lock is released - fireHostModified/updateGame may be slow but will
 		// no longer block concurrent applyChanges() or getMasterToGameChanges() calls.
 		if (shouldFire) {
 			fireHostModified();
