@@ -861,9 +861,9 @@ public class ActionRow {
 					+ " preFlag=" + cw.getNeedsPrePhaseActivityDecision()
 					+ " postFlag=" + cw.getNeedsPostPhaseActivityDecision()
 					+ " cwStamp=" + cw.getPrePhaseActivityActionCount());
-				// Followers always qualify (stop-following is independent of reactions).
-				// Non-followers qualify only when reactions are ON and they hold color chits.
-				if (isFollower || (isReacting && canPlayColorChits)) {
+				// Reactions must be ON for any pre-phase dialog — followers for stop-following,
+				// non-followers for color chit play.
+				if (isReacting && (isFollower || canPlayColorChits)) {
 					if (cw.getNeedsPostPhaseActivityDecision()) {
 						// Post-phase still outstanding — set the pre-phase flag directly so CharacterFrame
 						// sees both flags simultaneously and shows the combined dialog.
