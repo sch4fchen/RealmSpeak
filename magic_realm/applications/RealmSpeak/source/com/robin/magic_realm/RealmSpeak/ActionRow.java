@@ -855,14 +855,17 @@ public class ActionRow {
 				if (!rc.isPlayerControlledLeader() && !cw.isMinion()) continue;
 				boolean isReacting = cw.isReacting();
 				boolean isFollower = phasingFollowers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
-				boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && prePhaseColorChitPlay;
+				boolean canDetectPhasing = !character.isHidden() || cw.foundHiddenEnemy(character.getGameObject());
+				boolean canPlayColorChits = !cw.getColorMagicChits().isEmpty() && prePhaseColorChitPlay && canDetectPhasing;
 				System.err.println("[IPD]   checking char=" + cw.getGameObject().getName()
-					+ " isReacting=" + isReacting + " isFollower=" + isFollower + " canColorChits=" + canPlayColorChits
+					+ " isReacting=" + isReacting + " isFollower=" + isFollower + " canDetect=" + canDetectPhasing + " canColorChits=" + canPlayColorChits
 					+ " preFlag=" + cw.getNeedsPrePhaseActivityDecision()
 					+ " postFlag=" + cw.getNeedsPostPhaseActivityDecision()
 					+ " cwStamp=" + cw.getPrePhaseActivityActionCount());
-				// Followers always qualify (stop-following is independent of reactions).
-				// Non-followers qualify only when reactions are ON and they hold color chits.
+				// Followers always qualify (stop-following is independent of detection/reactions).
+				// Non-followers qualify only when reactions are ON, they hold color chits, and they
+				// can detect the phasing char (color chit play targets the phasing group — no detection
+				// means no valid targets).
 				if (isFollower || (isReacting && canPlayColorChits)) {
 					if (cw.getNeedsPostPhaseActivityDecision()) {
 						// Post-phase still outstanding — set the pre-phase flag directly so CharacterFrame
