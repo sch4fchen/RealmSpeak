@@ -619,7 +619,7 @@ public class RealmSpeakOptionPanel extends JDialog {
 		panel.add(showSeasonIconOption);
 		followCharacterOption = new JCheckBox("Map Following Character");
 		panel.add(followCharacterOption);
-		centerOnCharacterOnTurnStartOption = new JCheckBox("Map centering on Character");
+		centerOnCharacterOnTurnStartOption = new JCheckBox("Map Centering on Character");
 		panel.add(centerOnCharacterOnTurnStartOption);
 		return panel;
 	}
