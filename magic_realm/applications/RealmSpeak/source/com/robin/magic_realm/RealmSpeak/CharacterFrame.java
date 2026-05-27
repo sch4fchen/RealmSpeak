@@ -369,7 +369,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				boolean isFollower = followers.stream().anyMatch(f -> f.getGameObject().equals(rc.getGameObject()));
 				boolean prePhaseColorChits = !cw.getColorMagicChits().isEmpty()
 					&& !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
-				if (isFollower || (cw.isReacting() && prePhaseColorChits)) {
+				if (cw.isReacting() && (isFollower || prePhaseColorChits)) {
 					int phasingCount = getCharacter().getNumberOfPerformedActionsToday();
 					System.err.println("[IPD]     notifying char=" + cw.getGameObject().getName()
 						+ " cwStamp=" + cw.getPrePhaseActivityActionCount()
