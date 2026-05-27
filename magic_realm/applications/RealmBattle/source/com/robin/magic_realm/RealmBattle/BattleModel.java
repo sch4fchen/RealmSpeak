@@ -278,7 +278,7 @@ public class BattleModel {
 		if (denizenBattleGroup != null) {
 			for (RealmComponent denizen:denizenBattleGroup.getBattleParticipants()) {
 				CombatWrapper combat = new CombatWrapper(denizen.getGameObject());
-				if (!denizen.isAssigned() && !combat.isPeaceful()  && !combat.isPacified()) {
+				if (!denizen.isAssigned() && !combat.isPeaceful()  && !combat.isPacified() && !denizen.isMistLike()) {
 					ArrayList<BattleGroup> availableGroups = new ArrayList<>();
 					// Find one possibility for each BattleGroup
 					for (BattleGroup bg:characterBattleGroups) {
