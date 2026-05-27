@@ -415,6 +415,12 @@ public abstract class GameClient extends GameNet {
 			ex.printStackTrace();
 			unexpectedDisconnect = true;
 			connected = false;
+			// Close the socket so the server-side thread gets an IOException immediately
+			// rather than waiting for its own SO_TIMEOUT. Without this, isNameUnique()
+			// still sees the old GameServer in the list and rejects a reconnect attempt.
+			try { if (in != null) in.close(); } catch(IOException iex) { }
+			try { if (out != null) out.close(); } catch(IOException iex) { }
+			try { if (connection != null) connection.close(); } catch(IOException iex) { }
 			fireStateChanged();
 		}
 		catch(Exception ex) {
