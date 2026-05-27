@@ -1092,6 +1092,7 @@ public class ActionRow {
 			}
 		}
 
+		ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
 		ArrayList<CharacterWrapper> postPhaseParticipants = new ArrayList<>();
 		for (CharacterWrapper cw : nonFollowers) {
 			if (!cw.isReacting()) continue;
@@ -1106,13 +1107,16 @@ public class ActionRow {
 					postPhaseParticipants.add(cw);
 				}
 			} else {
+				boolean isFollower = phasingFollowers.stream()
+					.anyMatch(f -> f.getGameObject().equals(cw.getGameObject()));
 				boolean canDetectPhasing = !phasingCharHidden || cw.foundHiddenEnemy(character.getGameObject());
 				boolean blockerCanBlock = !cw.isMistLike() && !cw.isSleep()
 					&& !cw.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
 					&& !cw.isMinion()
 					&& !(cw.isSmall() && smallHouseRule);
 				boolean ignoreMist = cw.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE);
-				boolean canBlockPhasing = canDetectPhasing && blockerCanBlock
+				// Followers of the phasing char cannot block anyone — they move under the guide's turn.
+				boolean canBlockPhasing = !isFollower && canDetectPhasing && blockerCanBlock
 					&& (phasingCharBlockable || ignoreMist);
 				boolean hasColorChitsForPostPhase = colorChitPostPhase && !cw.getColorMagicChits().isEmpty();
 				if (canBlockPhasing || hasColorChitsForPostPhase) {
@@ -1133,7 +1137,6 @@ public class ActionRow {
 			// once so CharacterFrame shows a single combined dialog instead of two sequential ones.
 			boolean nextActionExists = (newAction != null) || turnPanel.hasPendingActionsAfterCurrent();
 			System.err.println("[IPD]   nextActionExists=" + nextActionExists);
-			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
 			for (CharacterWrapper cw : postPhaseParticipants) {
 				System.err.println("[IPD]   participant=" + cw.getGameObject().getName()
 					+ " isPhasing=" + cw.getGameObject().equals(character.getGameObject()));

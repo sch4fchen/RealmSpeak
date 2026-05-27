@@ -992,6 +992,8 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		} else {
 			// Non-phasing character: can only block the phasing character if detectable
 			// and the phasing char passes all blockee guards.
+			// Followers of the phasing char cannot block anyone — return empty.
+			if (isFollowerOfPhasingChar()) return candidates;
 			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 				CharacterWrapper cw = new CharacterWrapper(go);
 				if (cw.isPlayingTurn()) {
