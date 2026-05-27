@@ -592,7 +592,7 @@ public class CharacterActionControlManager {
 		for (RealmComponent rc : current.clearing.getClearingComponents()) {
 			// Someone, that isn't yourself
 			if (rc.isPlayerControlledLeader() && !rc.getGameObject().equals(getCharacter().getGameObject())
-					&& !rc.getGameObject().hasThisAttribute(Constants.CAMOUFLAGE) && !rc.isMistLike()) {
+					&& !rc.getGameObject().hasThisAttribute(Constants.CAMOUFLAGE) && (!rc.isMistLike() || getCharacter().getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE))) {
 				list.add(rc);
 			}
 		}

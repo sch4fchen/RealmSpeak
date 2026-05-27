@@ -3782,7 +3782,7 @@ public class CombatFrame extends JFrame {
 		
 		// Pick a clearing to run to
 		if (runToClearingOptions.size()==1) {
-			runToClearing = runToClearingOptions.iterator().next();
+			runToClearing = runToClearingOptions.get(0);
 		}
 		else {
 			CenteredMapView.getSingleton().setMarkClearingAlertText("Run towards which clearing?");

@@ -544,12 +544,11 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					}
 				}
 			}
-			boolean	canFightWithoutWeapon = character.getWeight().strongerOrEqualTo(new Strength("T"));
-			if (!hasWeapon && (getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON) || canFightWithoutWeapon)) {
+			if (!hasWeapon && (getGameObject().hasThisAttribute(Constants.FIGHT_NO_WEAPON) || character.getWeight().strongerOrEqualTo(new Strength("T"))) && baseHarm.getStrength().strongerThan(new Strength())) {
 				weaponStrength = baseHarm.getStrength();
 				sharpness = 0;
 			}
-			if (!missileWeapon && hasWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
+			else if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
 				weaponStrength.bumpUp();
 			}
 			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {
@@ -844,7 +843,9 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 							else {
 								Strength armorVulnerability = new Strength(test.getGameObject().getThisAttribute("vulnerability"));
-								if (test.isArmor()) armorVulnerability = test.getWeight();
+								if (test.isArmor()) {
+									((ArmorChitComponent)test).getVulnerability();
+								}
 								if (test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && test.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
 									String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 									ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);

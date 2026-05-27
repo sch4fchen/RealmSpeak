@@ -1113,7 +1113,7 @@ public class ActionRow {
 						return;
 					}
 					
-					if (character.getGameObject().hasThisAttribute(Constants.NO_FOLLOWERS)) {
+					if (character.isMistLike()) {
 						ArrayList<RealmComponent> followingHirelings = character.getFollowingHirelings();
 						if (!followingHirelings.isEmpty()) {
 							// Drop following hirelings in the clearing

@@ -807,12 +807,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			ArrayList<GameObject> allChars = RealmUtility.getLivingCharacters(client.getGameData());
 			for (int i = 0; i < allChars.size(); i++) {
 				CharacterWrapper cw1 = new CharacterWrapper(allChars.get(i));
+				if (cw1.isMinion()) continue;
 				cw1.setBlocking(true);
 				cw1.setKeepBlocking(true);
 				cw1.setWantsCombat(true);
 				cw1.setWantsDayEndTrades(true);
 				for (int j = i + 1; j < allChars.size(); j++) {
 					CharacterWrapper cw2 = new CharacterWrapper(allChars.get(j));
+					if (cw2.isMinion()) continue;
 					cw1.setEnemyCharacter(allChars.get(j), true);
 					cw2.setEnemyCharacter(allChars.get(i), true);
 				}
@@ -1023,16 +1025,24 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 		}
 		else if (RealmDirectInfoHolder.QUERY_YN.equals(command)) {
+			// THREADING: this branch runs on the GameClient thread (via receiveInfoDirect ->
+			// handleDirectInfo) via invokeLater so handleDirectInfo() returns immediately,
+			// unblocking the GameClient thread. The GameClient continues polling normally
+			// while the user thinks. When the user clicks Yes/No the EDT callback sends
+			// the response via sendInfoDirect(), which queues it on the GameClient's
+			// requestQueue for delivery on the next loop iteration.
 			String string = info.getString();
 			int colon = string.indexOf(":");
-			long id = Long.valueOf(string.substring(0, colon)).longValue();
-			string = string.substring(colon + 1);
-			int ret = JOptionPane.showConfirmDialog(CombatFrame.getSingleton(), string, "End Combat?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-			RealmDirectInfoHolder infoResponse = new RealmDirectInfoHolder(getClient().getGameData(), getClient().getClientName());
-			infoResponse.setCommand(RealmDirectInfoHolder.QUERY_RESPONSE);
-			infoResponse.setString(id + ":" + (ret == JOptionPane.YES_OPTION ? RealmDirectInfoHolder.QUERY_RESPONSE_YES : RealmDirectInfoHolder.QUERY_RESPONSE_NO));
-			getClient().sendInfoDirect(info.getPlayerName(), infoResponse.getInfo());
+			final long id = Long.valueOf(string.substring(0, colon)).longValue();
+			final String message = string.substring(colon + 1);
+			final String playerName = info.getPlayerName();
+			SwingUtilities.invokeLater(() -> {
+				int ret = JOptionPane.showConfirmDialog(CombatFrame.getSingleton(), message, "End Combat?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				RealmDirectInfoHolder infoResponse = new RealmDirectInfoHolder(getClient().getGameData(), getClient().getClientName());
+				infoResponse.setCommand(RealmDirectInfoHolder.QUERY_RESPONSE);
+				infoResponse.setString(id + ":" + (ret == JOptionPane.YES_OPTION ? RealmDirectInfoHolder.QUERY_RESPONSE_YES : RealmDirectInfoHolder.QUERY_RESPONSE_NO));
+				getClient().sendInfoDirect(playerName, infoResponse.getInfo());
+			});
 		}
 		else if (RealmDirectInfoHolder.POPUP_MESSAGE.equals(command)) {
 			RealmUtility.popupMessage(CombatFrame.getSingleton(), info);
@@ -1726,7 +1736,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					// No need to send again - it'll get sent quickly enough
 
 					// Done
-					if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS)) {
+					if (hostPrefs.hasPref(Constants.OPT_SUSPICIOUS_CHARACTERS) && !character.isMinion()) {
 						character.setBlocking(true);
 						character.setKeepBlocking(true);
 						character.setWantsCombat(true);
@@ -1735,6 +1745,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 						for (GameObject existing : livingCharacters) {
 							if (!existing.equals(character.getGameObject())) {
 								CharacterWrapper existingWrapper = new CharacterWrapper(existing);
+								if (existingWrapper.isMinion()) continue;
 								character.setEnemyCharacter(existing, true);
 								existingWrapper.setEnemyCharacter(character.getGameObject(), true);
 							}
