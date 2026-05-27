@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public abstract class GameNet extends Thread {
 	
-	public static int DEFAULT_TIMEOUT_MS = 10000; // a 10 second timeout should be good enough
+	public static int DEFAULT_TIMEOUT_MS = 20000; // 20 seconds — allows for large RESPOND_NEED_UPDATE transfers and GC pauses
 	
 	protected Socket connection;
 	protected ObjectOutputStream out = null;
