@@ -340,11 +340,16 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			// Non-phasing character: show the non-modal dialog and return. Resolution
 			// happens when the player clicks SUBMIT in the dialog.
 			// If the player opted to skip when only color-chit fatiguing is available,
-			// and there is no stop-following option, auto-submit with no selections.
+			// and there is no stop-following option, and no chit has a targetable spell,
+			// auto-submit with no selections.
 			if (getCharacter().skipsPrePhaseWhenFatigueChitOnly() && !isFollowerOfPhasingChar()) {
-				System.err.println("[IPD]   skipping pre-phase dialog (FatigueChitOnly pref, no stop-following)");
-				submitPrePhaseActivities();
-				return;
+				boolean hasTargetableSpell = getCharacter().getColorMagicChits().stream()
+					.anyMatch(chit -> !getCompatibleInertSpells(chit, hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS)).isEmpty());
+				if (!hasTargetableSpell) {
+					System.err.println("[IPD]   skipping pre-phase dialog (FatigueChitOnly pref, no stop-following, no targetable spells)");
+					submitPrePhaseActivities();
+					return;
+				}
 			}
 			System.err.println("[IPD]   showing pre-phase ONLY dialog");
 			showPrePhaseActivityDialog();
@@ -513,6 +518,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
 		preSection.add(northArea);
 
+		// TBD(2): Followers get additional capabilities during phase-start that non-follower
+		// non-phasing chars do not: rearranging belongings, trading with anyone in the clearing,
+		// picking up mission chits, and stop-following. Currently only stop-following and color-chit
+		// play are surfaced here. The rearrange/trade/mission-chit options need their own UI sections
+		// added to this dialog (or a dedicated follower-only pre-phase dialog).
 		boolean showColorChits = !getCharacter().getColorMagicChits().isEmpty()
 			&& !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
 		boolean showStopFollowing = isFollowerOfPhasingChar();
@@ -685,15 +695,41 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ColorMagic chitColor = chit.getColorMagic();
 		TileLocation loc = getCharacter().getCurrentLocation();
 		if (loc == null || !loc.isInClearing()) return result;
+
+		// Non-phasing characters may only energize spells that target the phasing character
+		// or the phasing guide's current followers.
+		Set<GameObject> phasingGroup = null;
+		if (!getCharacter().isPlayingTurn()) {
+			phasingGroup = new HashSet<>();
+			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
+				CharacterWrapper cw = new CharacterWrapper(go);
+				if (cw.isPlayingTurn()) {
+					phasingGroup.add(go);
+					for (CharacterWrapper follower : cw.getActionFollowers()) {
+						phasingGroup.add(follower.getGameObject());
+					}
+					break;
+				}
+			}
+		}
+		final Set<GameObject> allowedTargets = phasingGroup;
+
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
 		for (SpellWrapper spell : sm.getAllSpellsInClearing(loc, false)) {
 			if (!spell.isInert()) continue;
 			ColorMagic spellColor = spell.getRequiredColorMagic();
 			if (spellColor != null && !spellColor.sameColorAs(chitColor)) continue;
-			if (filterHidden && spell.getTargets() != null) {
-				boolean canTarget = spell.getTargets().stream()
-					.anyMatch(t -> !t.isHidden() || getCharacter().foundHiddenEnemy(t.getGameObject()));
-				if (!canTarget) continue;
+			if (spell.getTargets() != null) {
+				if (filterHidden) {
+					boolean canTarget = spell.getTargets().stream()
+						.anyMatch(t -> !t.isHidden() || getCharacter().foundHiddenEnemy(t.getGameObject()));
+					if (!canTarget) continue;
+				}
+				if (allowedTargets != null) {
+					boolean targetsAllowed = spell.getTargets().stream()
+						.anyMatch(t -> allowedTargets.contains(t.getGameObject()));
+					if (!targetsAllowed) continue;
+				}
 			}
 			result.add(spell);
 		}
@@ -1342,11 +1378,18 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		// Phase Start: apply decisions unless deferred or any blocking occurred.
 		// Blocking either direction means no next phase for anyone in this clearing.
-		boolean anyBlocking = blockedPhasingChar || getCharacter().isBlocked();
-		if (!anyBlocking) {
-			for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
-				CharacterWrapper cw = new CharacterWrapper(go);
+		boolean anyBlocking = blockedPhasingChar;
+		// Check the phasing character specifically for blocked state.
+		// Also check every character in the clearing for a still-pending post-phase decision:
+		// any of them may yet apply a Block, so pre-phase must not be applied until all
+		// post-phase dialogs are resolved — order of submission is undefined.
+		TileLocation loc = getCharacter().getCurrentLocation();
+		if (!anyBlocking && loc != null && loc.isInClearing()) {
+			for (RealmComponent rc : loc.clearing.getClearingComponents()) {
+				if (!rc.isPlayerControlledLeader()) continue;
+				CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 				if (cw.isPlayingTurn() && cw.isBlocked()) { anyBlocking = true; break; }
+				if (cw.getNeedsPostPhaseActivityDecision()) { anyBlocking = true; break; }
 			}
 		}
 		boolean deferred = deferPrePhaseCheckbox != null && deferPrePhaseCheckbox.isSelected();
@@ -1508,6 +1551,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 	}
 
+	// TBD(1): While a character is non-phasing (another character is currently taking their turn),
+	// many character window controls allow state changes that should not be permitted mid-phase
+	// (e.g. rearranging inventory, trading, activating items). When the interphase dialog system
+	// is fully gating those interactions, this method should disable the relevant controls when
+	// !character.isPlayingTurn(), and re-enable them once the character becomes the phasing char.
 	public void updateCharacter() {
 		//		if (needsUpdate()) { // This would be nice, but is very problematic, like when an object in the inventory changes, or a chit flips!
 		// Get rid of GameOver panel, if any

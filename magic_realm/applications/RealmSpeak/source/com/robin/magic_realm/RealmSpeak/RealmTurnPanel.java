@@ -295,6 +295,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					for (RealmComponent rc:current.clearing.getClearingComponents()) {
 						if (!rc.getGameObject().equals(getCharacter().getGameObject()) && (rc.isPlayerControlledLeader())) {
 							CharacterWrapper target = new CharacterWrapper(rc.getGameObject());
+							// TBD(5): The gate below should be rewritten using named booleans for each
+							// condition before the if-statement. Example:
+							//   boolean canReact = target.isReacting() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING);
+							//   boolean notMistImmune = !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE));
+							//   boolean notExcluded = !target.isMinion() && !target.isSleep();
+							//   boolean sizeAllows = (target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL))
+							//       || (target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))
+							//       || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS);
+							//   if (canReact && notMistImmune && notExcluded && sizeAllows) { ...
+							// Apply this pattern everywhere similar compound conditions appear in this file and ActionRow.
 							if (target.isReacting() && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isMistLike() && (!getCharacter().isMistLike() || target.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.isMinion() && !target.isSleep()
 									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!getCharacter().isHidden() || target.foundHiddenEnemy(getCharacter().getGameObject())) {
@@ -451,6 +461,13 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		
 		boolean actionsLeft = isNextAction();
 
+		// TBD(8): When the character becomes blocked (getCharacter().isBlocked()), their turn
+		// should auto-complete without requiring the player to click through remaining action rows
+		// or click Done. In updateControls(), detect isBlocked() and call turnDone() automatically
+		// (guarded so it only fires once). All pending action rows should be marked cancelled/blocked
+		// and the Done button should not be shown. This mirrors how sleeping/blocked characters
+		// already have their actions skipped in ActionRow.process() — the turn-end step just needs
+		// to follow automatically rather than waiting for user input.
 		boolean nowAwaitingPrePhase = isAwaitingPrePhaseDecision();
 		System.err.println("[IPD] RTP.updateControls: wasAwaiting=" + wasAwaitingPrePhase
 			+ " nowAwaiting=" + nowAwaitingPrePhase
@@ -1166,6 +1183,11 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		return list;
 	}
 	
+	// TBD(4): Followers' turns should auto-end once all their action rows are processed,
+	// without requiring the player to click Done. When isFollowing is true and all action
+	// rows are completed (no pending rows remain), turnDone() should be called automatically
+	// from updateControls() or playNext() rather than waiting for the button. The Done button
+	// should be hidden or disabled for followers during this period.
 	private void turnDone() {
 		// Assign combat order here
 		getCharacter().setCombatPlayOrder(game.getNextDayTurnCount());
@@ -1407,13 +1429,22 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		updateControls();
 	}
 	public void doAbandonActionFollowers() {
+		TileLocation guideLoc = getCharacter().getCurrentLocation();
+		ArrayList<CharacterWrapper> inClearingFollowers = new ArrayList<>();
+		for (CharacterWrapper aFollower : actionFollowers) {
+			TileLocation followerLoc = aFollower.getCurrentLocation();
+			if (guideLoc != null && guideLoc.equals(followerLoc)) {
+				inClearingFollowers.add(aFollower);
+			}
+		}
+
 		ArrayList<CharacterWrapper> toRemove = new ArrayList<>();
-		if (actionFollowers.size()==1) {
-			toRemove.add(actionFollowers.get(0));
+		if (inClearingFollowers.size()==1) {
+			toRemove.add(inClearingFollowers.get(0));
 		}
 		else {
 			ArrayList<GameObject> list = new ArrayList<>();
-			for (CharacterWrapper aFollower:actionFollowers) {
+			for (CharacterWrapper aFollower : inClearingFollowers) {
 				list.add(aFollower.getGameObject());
 			}
 			RealmObjectChooser chooser = new RealmObjectChooser("Which follower(s) do you want to leave behind?",getCharacter().getGameObject().getGameData(),false);
@@ -1430,11 +1461,28 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		for (CharacterWrapper aFollower : toRemove) {
 			if (!aFollower.hasActiveInventoryThisKey(Constants.LINKS)) {
 				getCharacter().removeActionFollower(aFollower,monsterDieRoller,nativeDieRoller);
+				abandonFollowerChain(aFollower, monsterDieRoller, nativeDieRoller);
 			}
 		}
-		
+
 		// Reset the list
 		actionFollowers = getCharacter().getActionFollowers();
+	}
+
+	private void abandonFollowerChain(CharacterWrapper dropped, DieRoller monsterDieRoller, DieRoller nativeDieRoller) {
+		// TBD(9): Sub-followers continue following the main guide even after their intermediate
+		// guide is ditched. This suggests sub-followers are also registered in the main guide's
+		// ACTION_FOLLOWER list (flattened chain), so removeActionFollower on the dropped guide
+		// alone does not remove them from the main guide's list. The fix: after recursively
+		// clearing dropped's own followers here, also remove each sub-follower from the main
+		// guide's ACTION_FOLLOWER list (getCharacter().removeActionFollower(subFollower, ...)).
+		for (CharacterWrapper subFollower : dropped.getActionFollowers()) {
+			dropped.removeActionFollower(subFollower, monsterDieRoller, nativeDieRoller);
+			subFollower.setStopFollowing(true);
+			RealmLogging.logMessage(subFollower.getGameObject().getName(),
+				"Stops following (guide " + dropped.getGameObject().getName() + " was left behind).");
+			abandonFollowerChain(subFollower, monsterDieRoller, nativeDieRoller);
+		}
 	}
 	public void updatePanel() {
 	}

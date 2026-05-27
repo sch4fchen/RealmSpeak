@@ -429,6 +429,10 @@ public class ActionRow {
 		// determine whether they must sleep this phase (e.g. exhausted all action chits, or a spell
 		// put them to sleep).  If so, the action is cancelled and the result is set to "Sleeping".
 		//
+		// POST-PHASE PENDING guard runs first — if the previous action's post-phase dialogs are
+		// still outstanding, pre-phase must not fire yet (blocking may still occur, which would
+		// cancel the coming action and make the pre-phase moot).
+		//
 		// PRE-PHASE SEGMENT: handlePrePhase() evaluates whether any non-phasing character in the
 		// clearing qualifies for pre-phase activities. There is a gate, and if passed, two 
 		// independent triggers.
@@ -493,8 +497,8 @@ public class ActionRow {
 				return;
 			}
 			if (blankReason == null && !invalid) {
-				if (handlePrePhase(hostPrefs)) return;
 				if (isPostPhasePending()) return;
+				if (handlePrePhase(hostPrefs)) return;
 			}
 		}
 
@@ -513,6 +517,15 @@ public class ActionRow {
 		// to set NeedsPlayColorChitInterruptPhaseBeginningDecision on each character and then showed the
 		// "Play Color Chit Now?!" button. That button is also commented out. The 1st edition equivalent
 		// (FE_PHASE_END_PLAYING_COLOR_CHIT, post-phase) remains intact further below after the action executes.
+
+		// TBD(3): Followers need an additional interphase window that fires DURING certain guide
+		// actions (e.g. while the guide is moving, a follower may need to choose whether to move
+		// with the guide or stay behind, pick up items, etc.). This mid-action dialog is distinct
+		// from the pre-phase dialog: it fires after the guide's action dispatch begins but before
+		// it resolves. The dispatch block below is the natural injection point — a new
+		// handleMidActionFollowerPhase() method would gate execution here and defer via a flag,
+		// similar to handlePrePhase(). Each follower ActionRow would need its own continuation
+		// path once the guide's action completes.
 
 		// ── BLOCK 2: FORESIGHT SNAPSHOT + ACTION DISPATCH ────────────────────────────────────────────
 		//
@@ -823,6 +836,9 @@ public class ActionRow {
 		int actionsTaken = character.getNumberOfPerformedActionsToday();
 		int currentStamp = character.getPrePhaseActivityActionCount();
 		boolean alreadyOccurred = currentStamp == actionsTaken;
+		// TBD(6): Remove all [IPD] triage logging (System.err.println("[IPD]...")) before shipping.
+		// There are 36 occurrences across ActionRow, CharacterFrame, and RealmTurnPanel.
+		// grep -rn 'System.err.println.*\[IPD\]' magic_realm/
 		System.err.println("[IPD] handlePrePhase ENTER: phasingChar=" + character.getGameObject().getName()
 			+ " actionsTaken=" + actionsTaken + " stamp=" + currentStamp + " alreadyOccurred=" + alreadyOccurred);
 		if (!alreadyOccurred) {
@@ -1026,8 +1042,17 @@ public class ActionRow {
 				}
 			}
 		}
-		// 1st edition: no follower exclusion — all characters (including followers) who hold
-		// color chits and have Reactions ON are eligible for the phase-end color-chit dialog.
+		// TBD(10): 1st-edition (FE_PHASE_END_PLAYING_COLOR_CHIT ON) following and color chit play
+		// in interphase dialogs are not fully implemented.
+		//   - Follower exclusion: currently NO followers are excluded, so a follower of any guide
+		//     can receive a post-phase color chit dialog. The original master behavior excluded only
+		//     the phasing character's active followers; that nuance is not yet replicated here.
+		//   - Combined pre+post dialog: canPlayColorChits (below) is false in 1st-edition mode, so
+		//     1st-edition followers who qualify for post-phase never get the eager pre-phase stamp —
+		//     they receive two sequential dialogs instead of one combined dialog.
+		//   - The !isFollowing guard in process() may additionally prevent followers from ever
+		//     reaching triggerPostPhase(), suppressing the dialog entirely.
+		// All three issues require coordinated testing with FE_PHASE_END_PLAYING_COLOR_CHIT enabled.
 
 		ArrayList<CharacterWrapper> nonFollowers = new ArrayList<>();
 		boolean monstersPresent = false;
@@ -1051,9 +1076,17 @@ public class ActionRow {
 			&& !character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)
 			&& !(character.isSmall() && smallHouseRule);
 
+		// Count others that the phasing char could actually block — mirrors isValidBlockTarget() guards.
+		// Misted chars are detectable but not blockable, so counting them would cause a blank dialog.
+		boolean phasingIgnoresMist = character.getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE);
 		int detectableOthers = 0;
 		for (CharacterWrapper other : nonFollowers) {
 			if (other.getGameObject().equals(character.getGameObject())) continue;
+			if (other.isMistLike() && !phasingIgnoresMist) continue;
+			if (other.isSleep() || other.isBlocked()) continue;
+			if (other.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) continue;
+			if (other.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) continue;
+			if (other.isSmall() && smallHouseRule) continue;
 			if (!other.isHidden() || character.foundHiddenEnemy(other.getGameObject())) {
 				detectableOthers++;
 			}
@@ -1512,6 +1545,17 @@ public class ActionRow {
 			}
 		}
 		
+		// TBD(11): A character who is between clearings (TileLocation.isBetweenClearings()) can
+		// record an illegal move if the target TileLocation has a null clearing — the recording-time
+		// guard in CharacterActionControlManager only fires when tl.hasClearing() is true, so a
+		// null-clearing target silently bypasses it. At execution time, every dereference of
+		// location.clearing below (correctSide, getConnectingPath, canWalkWoods, moveCost, etc.)
+		// will NPE because the outer guard only checks location != null, not location.isInClearing().
+		// The same exposure exists on game load: RealmTurnPanel.initActionRow() decodes the action
+		// string via ClearingUtility.deduceLocationFromAction() with no post-decode validation, so
+		// a save file with a between-clearings character and a bad planned move will crash here.
+		// Fix: add isInClearing() guard here and in getDescription(), and re-validate on load.
+
 		// Player is moved to clearing
 		if (location != null) {
 			// clearing might NOT be on the same side, if a tile flipped somewhere, so update it here
