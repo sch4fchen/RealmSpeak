@@ -1070,11 +1070,12 @@ public class ActionRow {
 		boolean phasingCharHidden = character.isHidden();
 		boolean smallHouseRule = hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS);
 		// Whether the phasing character can legally be blocked (blockee guards).
+		// Small monsters being unblockable is NOT a house rule; HOUSE3_SMALL_MONSTERS only
+		// prevents small monsters from being blockers, not from being blocked.
 		boolean phasingCharBlockable = !character.isMistLike()
 			&& !character.isSleep()
 			&& !character.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)
-			&& !character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)
-			&& !(character.isSmall() && smallHouseRule);
+			&& !character.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT);
 
 		// Count others that the phasing char could actually block — mirrors isValidBlockTarget() guards.
 		// Misted chars are detectable but not blockable, so counting them would cause a blank dialog.
@@ -1086,7 +1087,6 @@ public class ActionRow {
 			if (other.isSleep() || other.isBlocked()) continue;
 			if (other.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) continue;
 			if (other.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) continue;
-			if (other.isSmall() && smallHouseRule) continue;
 			if (!other.isHidden() || character.foundHiddenEnemy(other.getGameObject())) {
 				detectableOthers++;
 			}

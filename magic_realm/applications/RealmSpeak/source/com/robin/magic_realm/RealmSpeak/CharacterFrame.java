@@ -343,8 +343,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			// and there is no stop-following option, and no chit has a targetable spell,
 			// auto-submit with no selections.
 			if (getCharacter().skipsPrePhaseWhenFatigueChitOnly() && !isFollowerOfPhasingChar()) {
+				System.err.println("[IPD]   FatigueChitOnly guard: checking " + getCharacter().getColorMagicChits().size() + " color chits");
 				boolean hasTargetableSpell = getCharacter().getColorMagicChits().stream()
 					.anyMatch(chit -> !getCompatibleInertSpells(chit, hostPrefs.hasPref(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS)).isEmpty());
+				System.err.println("[IPD]   hasTargetableSpell=" + hasTargetableSpell);
 				if (!hasTargetableSpell) {
 					System.err.println("[IPD]   skipping pre-phase dialog (FatigueChitOnly pref, no stop-following, no targetable spells)");
 					submitPrePhaseActivities();
@@ -713,26 +715,50 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 		final Set<GameObject> allowedTargets = phasingGroup;
+		System.err.println("[IPD] getCompatibleInertSpells: char=" + getCharacter().getGameObject().getName()
+			+ " chit=" + chit.getColorMagic().getColorName()
+			+ " filterHidden=" + filterHidden
+			+ " allowedTargets=" + (allowedTargets == null ? "null(phasing)" : allowedTargets.stream().map(g -> g.getName()).collect(java.util.stream.Collectors.joining(",","[","]"))));
 
 		SpellMasterWrapper sm = SpellMasterWrapper.getSpellMaster(gameHandler.getClient().getGameData());
-		for (SpellWrapper spell : sm.getAllSpellsInClearing(loc, false)) {
-			if (!spell.isInert()) continue;
+		ArrayList<SpellWrapper> inClearing = sm.getAllSpellsInClearing(loc, false);
+		System.err.println("[IPD]   spells in clearing: " + inClearing.size());
+		for (SpellWrapper spell : inClearing) {
+			if (!spell.isInert()) {
+				System.err.println("[IPD]   SKIP (not inert): " + spell.getName());
+				continue;
+			}
 			ColorMagic spellColor = spell.getRequiredColorMagic();
-			if (spellColor != null && !spellColor.sameColorAs(chitColor)) continue;
-			if (spell.getTargets() != null) {
-				if (filterHidden) {
-					boolean canTarget = spell.getTargets().stream()
-						.anyMatch(t -> !t.isHidden() || getCharacter().foundHiddenEnemy(t.getGameObject()));
-					if (!canTarget) continue;
-				}
-				if (allowedTargets != null) {
-					boolean targetsAllowed = spell.getTargets().stream()
-						.anyMatch(t -> allowedTargets.contains(t.getGameObject()));
-					if (!targetsAllowed) continue;
+			if (spellColor != null && !spellColor.sameColorAs(chitColor)) {
+				System.err.println("[IPD]   SKIP (color mismatch): " + spell.getName() + " needs=" + spellColor.getColorName() + " chit=" + chitColor.getColorName());
+				continue;
+			}
+			ArrayList<RealmComponent> targets = spell.getTargets();
+			System.err.println("[IPD]   spell=" + spell.getName() + " targets=" + targets.stream().map(t -> t.getGameObject().getName()).collect(java.util.stream.Collectors.joining(",","[","]")));
+			if (targets.isEmpty() && allowedTargets != null) {
+				System.err.println("[IPD]   SKIP (no targets, allowedTargets restriction)");
+				continue;
+			}
+			if (filterHidden) {
+				boolean canTarget = targets.stream()
+					.anyMatch(t -> !t.isHidden() || getCharacter().foundHiddenEnemy(t.getGameObject()));
+				if (!canTarget) {
+					System.err.println("[IPD]   SKIP (filterHidden): all targets hidden/unfound");
+					continue;
 				}
 			}
+			if (allowedTargets != null) {
+				boolean targetsAllowed = targets.stream()
+					.anyMatch(t -> allowedTargets.contains(t.getGameObject()));
+				if (!targetsAllowed) {
+					System.err.println("[IPD]   SKIP (allowedTargets): " + spell.getName() + " targets not in phasingGroup");
+					continue;
+				}
+			}
+			System.err.println("[IPD]   INCLUDE: " + spell.getName());
 			result.add(spell);
 		}
+		System.err.println("[IPD]   result size=" + result.size());
 		return result;
 	}
 
@@ -978,14 +1004,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				if (rc.getGameObject().equals(blocker.getGameObject())) continue;
 				if (ownFollowers.contains(rc.getGameObject())) continue;
 				if (rc.isPlayerControlledLeader()) {
-					if (!isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) continue;
+					if (!isValidBlockTarget(rc, blockerIgnoresMist)) continue;
 					CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 					if (!cw.isHidden() || blocker.foundHiddenEnemy(rc.getGameObject())) {
 						candidates.add(rc);
 					}
 				} else if ((rc.isDenizen() || rc.isMonster()) && !rc.isMonsterPart()
 						&& (rc.getOwner() == null || rc.isDenizen())) {
-					if (!isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) continue;
+					if (!isValidBlockTarget(rc, blockerIgnoresMist)) continue;
 					candidates.add(rc);
 				}
 			}
@@ -998,7 +1024,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				CharacterWrapper cw = new CharacterWrapper(go);
 				if (cw.isPlayingTurn()) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					if (isValidBlockTarget(rc, blockerIgnoresMist, smallHouseRule)) {
+					if (isValidBlockTarget(rc, blockerIgnoresMist)) {
 						boolean detectable = !cw.isHidden() || blocker.foundHiddenEnemy(go);
 						if (detectable) candidates.add(rc);
 					}
@@ -1009,14 +1035,14 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		return candidates;
 	}
 
-	private boolean isValidBlockTarget(RealmComponent rc, boolean blockerIgnoresMist, boolean smallHouseRule) {
+	private boolean isValidBlockTarget(RealmComponent rc, boolean blockerIgnoresMist) {
 		if (rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT)) return false;
 		if (rc.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) return false;
 		CharacterWrapper cw = new CharacterWrapper(rc.getGameObject());
 		if (cw.isMistLike() && !blockerIgnoresMist) return false;
 		if (cw.isSleep()) return false;
 		if (cw.isBlocked()) return false;
-		if (cw.isSmall() && smallHouseRule) return false;
+		// HOUSE3_SMALL_MONSTERS prevents small chars from BLOCKING, not from being BLOCKED.
 		if (getCharacter().hasReactDecision(rc.getGameObject())) return false;
 		return true;
 	}
@@ -1439,9 +1465,13 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			System.err.println("[IPD]   DONE branch: clearing pre-phase flag on " + getCharacter().getGameObject().getName());
 			getCharacter().setNeedsPrePhaseActivityDecision(false);
 		} else if (anyBlocking) {
-			// Blocked → no pre-phase will follow; discard and clear.
-			System.err.println("[IPD]   BLOCKED branch: clearing pre-phase flag on " + getCharacter().getGameObject().getName());
+			// Blocked (or another character still has a pending post-phase decision) →
+			// discard this character's pre-phase flag. Reset the stamp so handlePrePhase()
+			// re-evaluates this character for the next action — without the reset the stamp
+			// would match actionsTaken and the character would be permanently skipped.
+			System.err.println("[IPD]   BLOCKED branch: clearing pre-phase flag+stamp on " + getCharacter().getGameObject().getName());
 			getCharacter().setNeedsPrePhaseActivityDecision(false);
+			getCharacter().removePrePhaseActivityActionCount();
 		} else {
 			// Deferred and not blocked: pre-phase flag stays set; ensure phasing char shows Done: Pre-Phase button.
 			System.err.println("[IPD]   DEFERRED branch: keeping pre-phase flag on " + getCharacter().getGameObject().getName()
