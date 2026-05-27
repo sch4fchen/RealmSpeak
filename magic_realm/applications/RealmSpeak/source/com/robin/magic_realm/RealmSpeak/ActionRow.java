@@ -842,8 +842,10 @@ public class ActionRow {
 		System.err.println("[IPD] handlePrePhase ENTER: phasingChar=" + character.getGameObject().getName()
 			+ " actionsTaken=" + actionsTaken + " stamp=" + currentStamp + " alreadyOccurred=" + alreadyOccurred);
 		if (!alreadyOccurred) {
-			// true for 3rd edition (pre-phase color chit play), false for 1st edition (post-phase color chit play)
-			boolean prePhaseColorChitPlay = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
+			// true when pre-phase color chit play is enabled: 3rd edition (FE_PHASE_END_PLAYING_COLOR_CHIT OFF)
+			// AND the host option OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT is checked.
+			boolean prePhaseColorChitPlay = !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT)
+				&& hostPrefs.hasPref(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT);
 			ArrayList<CharacterWrapper> phasingFollowers = character.getActionFollowers();
 			// Track separately: chars who can receive their flag immediately (combined case) vs those who
 			// still need to wait for the phasing char's "Done: Pre-Phase" acknowledgement.
