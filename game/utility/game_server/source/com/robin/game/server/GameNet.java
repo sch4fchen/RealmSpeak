@@ -29,8 +29,8 @@ public abstract class GameNet extends Thread {
 	// Fix (applied in RealmGameHandler.handleDirectInfo, QUERY_YN branch): dispatch the dialog
 	// to the EDT via SwingUtilities.invokeLater(). handleDirectInfo() returns immediately,
 	// the GameClient thread keeps polling normally, and the server timeout is never hit
-	// regardless of how long the player takes. DEFAULT_TIMEOUT_MS is left unchanged.
-	public static int DEFAULT_TIMEOUT_MS = 10000;
+	// regardless of how long the player takes. DEFAULT_TIMEOUT_MS is unchanged at 10s.
+	public static int DEFAULT_TIMEOUT_MS = 20000; // 20 seconds — allows for large RESPOND_NEED_UPDATE transfers and GC pauses
 	
 	protected Socket connection;
 	protected ObjectOutputStream out = null;
