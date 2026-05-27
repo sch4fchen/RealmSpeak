@@ -367,9 +367,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			phaseName = "MIDNIGHT";
 		}
 		setTitle(character.getCharacterName() + " - Month " + character.getCurrentMonth() + ", Day " + character.getCurrentDay()+" - "+phaseName);
-		dailyCombatCheckbox.setSelected(character.getWantsCombat());
-		dayEndRearrangmentCheckbox.setSelected(character.getWantsDayEndTrades());
-		keepBlockingCheckbox.setSelected(character.keepsBlocking());
+		dailyCombatCheckbox.setSelected(!character.isMinion() && character.getWantsCombat());
+		dayEndRearrangmentCheckbox.setSelected(!character.isMinion() && character.getWantsDayEndTrades());
+		keepBlockingCheckbox.setSelected(!character.isMinion() && character.keepsBlocking());
 		
 		// Update mountain move icon (might change with seasons/weather)
 		mountainMoveIcon.setCost(getCharacter().getMountainMoveCost()+(character.addsOneToMoveExceptCaves()?1:0));
