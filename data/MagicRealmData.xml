@@ -31387,7 +31387,7 @@
           <attributeVal N2="3" />
           <attributeVal N3="4" />
         </attributeList>
-        <attributeList keyName="offorad_travel_side_2">
+        <attributeList keyName="offroad_travel_side_2">
           <attributeVal N0="2" />
           <attributeVal N1="5" />
           <attributeVal N2="6" />
@@ -31448,7 +31448,7 @@
           <attributeVal N2="3" />
           <attributeVal N3="4" />
         </attributeList>
-        <attributeList keyName="offorad_travel_side_2">
+        <attributeList keyName="offroad_travel_side_2">
           <attributeVal N0="2" />
           <attributeVal N1="5" />
           <attributeVal N2="6" />
