@@ -973,6 +973,16 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		}
 		
 		updateNextPendingAction();
+		// updateNextPendingAction() scans actionRows for the next pending entry. If the action that
+		// just ran was a multi-phase split (splitMultiPhaseAction()), its continuation row hasn't been
+		// inserted into actionRows yet, so the scan falls through to the action AFTER the continuation
+		// (e.g. Hide) and sets a stale NEXT_PENDING_ACTION. Override it now with the continuation's
+		// action so that submitChanges() sends the correct value — the pre-phase dialog header on
+		// all clients reads this attribute to show the action icon for the coming phase.
+		ActionRow pendingContinuation = ar.getNewAction();
+		if (pendingContinuation != null && pendingContinuation.isContinuation()) {
+			getCharacter().setNextPendingAction(pendingContinuation.getAction());
+		}
 		getCharacterFrame().updateCharacter(); // added this 7/15/2005 - will this be too CPU intensive?
 		
 		
