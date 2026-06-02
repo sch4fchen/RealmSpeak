@@ -372,7 +372,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				boolean prePhaseColorChits = !cw.getColorMagicChits().isEmpty()
 					&& !hostPrefs.hasPref(Constants.FE_PHASE_END_PLAYING_COLOR_CHIT);
 				if (cw.isReacting() && (isFollower || prePhaseColorChits)) {
-					int phasingCount = getCharacter().getNumberOfPerformedActionsToday();
+					int phasingCount = getCharacter().getNumberOfPerformedActionPhasesToday();
 					System.err.println("[IPD]     notifying char=" + cw.getGameObject().getName()
 						+ " cwStamp=" + cw.getPrePhaseActivityActionCount()
 						+ " phasingCount=" + phasingCount
@@ -403,7 +403,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
 				header.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
-				JLabel phaseLabel = new JLabel("Phase " + (cw.getNumberOfPerformedActionsToday() + 1));
+				JLabel phaseLabel = new JLabel("Phase " + (cw.getNumberOfPerformedActionPhasesToday() + 1));
 				phaseLabel.setFont(headerFont);
 				header.add(phaseLabel);
 				String nextAction = cw.getNextPendingAction();
@@ -839,7 +839,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
-				getCharacter().setPrePhaseActivityActionCount(cw.getNumberOfPerformedActionsToday());
+				getCharacter().setPrePhaseActivityActionCount(cw.getNumberOfPerformedActionPhasesToday());
 				break;
 			}
 		}
@@ -952,7 +952,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
 				header.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
-				JLabel phaseLabel = new JLabel("Phase " + cw.getNumberOfPerformedActionsToday());
+				JLabel phaseLabel = new JLabel("Phase " + cw.getNumberOfPerformedActionPhasesToday());
 				phaseLabel.setFont(headerFont);
 				header.add(phaseLabel);
 				String nextAction = cw.getNextPendingAction();

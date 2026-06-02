@@ -1821,7 +1821,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void addCurrentActionValid(boolean val) {
 		addListItem(getCurrentDayKey()+"V",val?"T":"F");
 	}
-	public void addActionPerformedToday(String action,ActionState state,String message,DieRoller roller) {
+	public void addActionPhasePerformedToday(String action,ActionState state,String message,DieRoller roller) {
 		String prefix=" ";
 		switch(state) {
 			case Completed:
@@ -1850,7 +1850,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		return list!=null && list.size()>0;
 	}
-	public int getNumberOfPerformedActionsToday() {
+	public int getNumberOfPerformedActionPhasesToday() {
 		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		if (list==null) return 0;
 		return list.size();

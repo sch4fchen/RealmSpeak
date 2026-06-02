@@ -879,7 +879,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 						requiredObject = phaseManager.getNextRequiredObject(ar.getAction(),pony);
 						int count = ar.getCount(); // The only time this will be >0 is when its a REST phase
 						int allowed = phaseManager.getNumberOfActionsAllowed(ar.getAction(),pony);
-						if (allowed>0 && (ar.willHavePhaseEndUpdates() || calendar.isFatiguePhasesType(month))) {
+						if (allowed>0 && (ar.willHavePostPhaseUpdates() || calendar.isFatiguePhasesType(month))) {
 							allowed = 1;
 						}
 						if (allowed<count) {
