@@ -170,7 +170,7 @@ public class ActionRow {
 	 * sub-table. If {@code foresightPossible} is {@code true} and the character holds the
 	 * Foresight advantage, offers a cancel dialog before committing the result.
 	 */
-	private void handleTable(boolean foresigthPossible) {
+	private void handleTable(boolean foresightPossible) {
 		result = realmTable.getTableName(false); // show the short name!
 		String message = null;
 		if (realmTable.hideRoller()) {
@@ -182,7 +182,7 @@ public class ActionRow {
 			boolean drinksActive = character.getGameObject().hasThisAttribute(Constants.DRINKS_BOUGHT);
 			boolean foresightSpent = character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED);
 			boolean foresightAvailable = hasForesight && !drinksActive && !foresightSpent;
-			if (foresigthPossible && foresightAvailable) {
+			if (foresightPossible && foresightAvailable) {
 				character.getGameObject().setThisAttribute(Constants.FORESIGHT_USED);
 				int ret = JOptionPane.showConfirmDialog(
 						new JFrame(),
@@ -512,10 +512,11 @@ public class ActionRow {
 	 * <ul>
 	 *   <li><b>Blocked</b>: character is already blocked — action is cancelled immediately.</li>
 	 *   <li><b>Sleep</b>: character must sleep this phase — action is cancelled with result "Sleeping".</li>
-	 *   <li><b>Post-phase pending</b> ({@link #isPostPhasePending()}): the previous action's
-	 *       post-phase dialogs are still open; pre-phase must not fire until blocking is resolved.</li>
+	 *   <li><b>Post-phase pending</b> ({@link #isPostPhasePending()}): the previous phase's
+	 *       post-phase dialogs are still open; the coming pre-phase must not fire until last phase's
+	 *       post-phase is resolved.</li>
 	 *   <li><b>Pre-phase</b> ({@link #handlePrePhase}): at least one character in the clearing
-	 *       needs to respond before the action can proceed.</li>
+	 *       needs to respond before the phase's action can proceed.</li>
 	 * </ul>
 	 * Follower rows skip all of the above gates — they are processed implicitly through their
 	 * guide's turn.
@@ -593,8 +594,8 @@ public class ActionRow {
 		}
 
 		// TBD(3): Followers need an additional interphase window that fires DURING certain guide
-		// actions (e.g. while the guide is moving, a follower may need to choose whether to move
-		// with the guide or stay behind, pick up items, etc.). This mid-action dialog is distinct
+		// actions (e.g. while the guide is alerting, a follower may need to choose whether to alert
+		// a weapon, rest, etc.). This mid-action dialog is distinct
 		// from the pre-phase dialog: it fires after the guide's action dispatch begins but before
 		// it resolves. The dispatch block below is the natural injection point — a new
 		// handleMidActionFollowerPhase() method would gate execution here and defer via a flag,
