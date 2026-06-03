@@ -93,6 +93,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String SPELL_CONFLICTS = "_sp_cfct_";
 	public static final String STOP_FOLLOWING = "_st_F";
 	public static final String NEXT_PENDING_ACTION = "_npa_";
+	public static final String CURRENT_ACTION_PHASE_TOTAL = "_capt_";
+	public static final String CURRENT_ACTION_PHASE_INDEX = "_capi_";
 	public static final String DEATH_REASON = "_dxr_";
 	public static final String FORTIFIED = "_frtfid_";
 	public static final String FORT_DAMAGED = "_frtdmg_";
@@ -1738,6 +1740,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNextPendingAction(String val) {
 		setString(NEXT_PENDING_ACTION,val);
 	}
+	public int getCurrentActionPhaseTotal() {
+		String val = getString(CURRENT_ACTION_PHASE_TOTAL);
+		if (val == null) return 1;
+		try { return Integer.parseInt(val); } catch (NumberFormatException e) { return 1; }
+	}
+	public void setCurrentActionPhaseTotal(int total) {
+		setString(CURRENT_ACTION_PHASE_TOTAL, String.valueOf(total));
+	}
+	public void removeCurrentActionPhaseTotal() {
+		getGameObject().removeThisAttribute(CURRENT_ACTION_PHASE_TOTAL);
+	}
+	public int getCurrentActionPhaseIndex() {
+		String val = getString(CURRENT_ACTION_PHASE_INDEX);
+		if (val == null) return 1;
+		try { return Integer.parseInt(val); } catch (NumberFormatException e) { return 1; }
+	}
+	public void setCurrentActionPhaseIndex(int index) {
+		setString(CURRENT_ACTION_PHASE_INDEX, String.valueOf(index));
+	}
 	public boolean hasCurrentAction(String action) {
 		ActionId id = getIdForAction(action);
 		Collection<String> c = getCurrentActions();
@@ -1866,6 +1887,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return null;
+	}
+	public String getLastPerformedAction() {
+		ArrayList<String> list = getList(getCurrentDayKey()+"P");
+		if (list == null || list.isEmpty()) return null;
+		String last = list.get(list.size() - 1);
+		return last.length() > 1 ? last.substring(1) : null;
 	}
 	public ActionState getStateForAction(String action,int index) {
 		ActionState state = ActionState.Pending; // default

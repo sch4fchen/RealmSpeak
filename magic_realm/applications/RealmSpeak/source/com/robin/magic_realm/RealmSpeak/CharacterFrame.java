@@ -393,37 +393,60 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		gameHandler.updateCharacterFramesWithoutMap();
 	}
 
-	private JPanel buildPrePhaseDialogHeader() {
-		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
-		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
-		JLabel beforeLabel = new JLabel("Before");
-		beforeLabel.setFont(headerFont);
-		header.add(beforeLabel);
+	private JPanel buildPrePhaseDialogHeader() { return buildPrePhaseDialogHeader(null); }
+	private JPanel buildPrePhaseDialogHeader(Color bgColor) {
+		JPanel wrapper = new JPanel();
+		wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
+		if (bgColor != null) { wrapper.setBackground(bgColor); wrapper.setOpaque(true); }
+
+		Font headerFont = new JLabel().getFont().deriveFont(Font.BOLD, 16f);
+		Font subFont    = new JLabel().getFont().deriveFont(Font.PLAIN, 11f);
+
+		JPanel topRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
+		if (bgColor != null) { topRow.setBackground(bgColor); topRow.setOpaque(true); }
+		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
+		topRow.add(new JLabel(selfRc.getMediumIcon()));
+		JLabel titleLabel = new JLabel("Phase-Start Reactions  -  Before");
+		titleLabel.setFont(headerFont);
+		topRow.add(titleLabel);
+
+		String subtitle = "";
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
-				header.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
-				JLabel phaseLabel = new JLabel("Phase " + (cw.getNumberOfPerformedActionPhasesToday() + 1));
+				topRow.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
+				int phaseN = cw.getNumberOfPerformedActionPhasesToday() + 1;
+				JLabel phaseLabel = new JLabel("Phase " + phaseN);
 				phaseLabel.setFont(headerFont);
-				header.add(phaseLabel);
+				topRow.add(phaseLabel);
 				String nextAction = cw.getNextPendingAction();
 				if (nextAction != null) {
 					ImageIcon actionIcon = CharacterWrapper.getIconForAction(nextAction);
 					if (actionIcon != null) {
-						Image scaled = actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-						header.add(new JLabel(new ImageIcon(scaled)));
+						topRow.add(new JLabel(new ImageIcon(actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT))));
 					}
+				}
+				JLabel actionLabel = new JLabel("Action");
+				actionLabel.setFont(headerFont);
+				topRow.add(actionLabel);
+				int phaseM = cw.getCurrentActionPhaseTotal();
+				if (phaseM > 1) {
+					int phaseP = cw.getCurrentActionPhaseIndex();
+					subtitle = "(" + ordinal(phaseP) + " of " + phaseM + " phases for this action)";
 				}
 				break;
 			}
 		}
-		JLabel label = new JLabel("Action :");
-		label.setFont(headerFont);
-		header.add(label);
-		JLabel titleLabel = new JLabel("Phase Start Reactions");
-		titleLabel.setFont(headerFont);
-		header.add(titleLabel);
-		return header;
+		wrapper.add(topRow);
+		if (!subtitle.isEmpty()) {
+			JPanel subRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
+			if (bgColor != null) { subRow.setBackground(bgColor); subRow.setOpaque(true); }
+			JLabel subLabel = new JLabel(subtitle);
+			subLabel.setFont(subFont);
+			subRow.add(subLabel);
+			wrapper.add(subRow);
+		}
+		return wrapper;
 	}
 
 	private boolean isFollowerOfPhasingChar() {
@@ -512,8 +535,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		JPanel northArea = new JPanel();
 		northArea.setLayout(new BoxLayout(northArea, BoxLayout.Y_AXIS));
 		northArea.setBackground(PRE_PHASE_COLOR);
-		JPanel preHeader = buildPrePhaseDialogHeader();
-		preHeader.setBackground(PRE_PHASE_COLOR);
+		JPanel preHeader = buildPrePhaseDialogHeader(PRE_PHASE_COLOR);
 		northArea.add(preHeader);
 		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
 		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -540,27 +562,164 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		if (showStopFollowing) {
 			preSection.add(buildStopFollowingPanel(PRE_PHASE_COLOR));
 		}
+		content.add(buildDialogNotePanel(), BorderLayout.NORTH);
 		content.add(preSection, BorderLayout.CENTER);
-
-		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
-		JButton hideButton = new JButton("Hide");
-		hideButton.addActionListener(e -> prePhaseActivityDialog.setVisible(false));
-		JButton submitButton = new JButton("SUBMIT");
-		submitButton.addActionListener(e -> submitPrePhaseActivities());
-		buttons.add(hideButton);
-		buttons.add(submitButton);
-		JPanel southArea = new JPanel();
-		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
-		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
-		southArea.add(Box.createVerticalStrut(6));
-		southArea.add(buttons);
-		content.add(southArea, BorderLayout.SOUTH);
+		content.add(buildSouthArea(prePhaseActivityDialog, e -> showAboutDialog(prePhaseActivityDialog, ABOUT_PHASE_START, PRE_PHASE_COLOR), e -> submitPrePhaseActivities()), BorderLayout.SOUTH);
 
 		prePhaseActivityDialog.setContentPane(content);
 		prePhaseActivityDialog.pack();
 		prePhaseActivityDialog.setLocationRelativeTo(this);
 		prePhaseActivityDialog.setVisible(true);
 		prePhaseActivityDialog.toFront();
+	}
+
+	private static final String ABOUT_PHASE_START =
+		"<html><b>Phase Start Reactions</b><br><br>" +
+		"Every action PHASE of a character's turn has a phase-start segment which allows the active character and others in their clearing to perform certain activities before the PHASE is executed.¹<br><br>" +
+		"The active character is generally allowed to perform Trades, Rearrange Belongings, and Mission Chit pickups before the PHASE begins, and they may also play or fatigue color magic chits.²<br><br>" +
+		"Non-active characters in the same clearing may play or fatigue color magic chits if they have such.²<br><br>" +
+		"The active character first performs their phase-start activities (if any), then other characters in the clearing may perform their allowed phase-start activities (if any).<br><br>" +
+		"FOLLOWERS of an active guide are a special case of non-active characters who get additional phase-start capabilities: they may rearrange belongings, trade with others in the clearing,<br>" +
+		"pick up mission chits, and importantly, they may choose to stop following their guide <i>before</i> the PHASE is executed.<br><br>" +
+		"The content of each Phase-Start dialog depends on the character's capabilities as well as the options the player has enabled/disabled wrt Reactions for the character.<br><br>" +
+		"Click <b>SUBMIT</b> to confirm your choices and allow play to continue.<br>" +
+		"Click <b>Hide</b> to hide the window temporarily — but the game waits until all players have SUBMITed.<br><br><br>" +
+		"¹ A PHASE being executed usually means an ACTION itself is executed, like a Move, Alert, Rest, etc., but there are exceptions for multi-PHASE actions like a mountain-Move<br>" +
+		"where the ACTION is executed only in the final PHASE.<br><br>" +
+		"² As per 3rd edition rules. If using 1st edition rules, color magic chits are played instead at phase-end.</html>";
+
+	private static final String ABOUT_PHASE_END =
+		"<html><b>Phase End Reactions</b><br><br>" +
+		"Every action PHASE of a character's turn has a phase-end segment which allows the active character and others in their clearing to perform certain activities after the PHASE is executed.¹<br><br>" +
+		"Non-active characters in the same clearing may declare Blocking against the active character. Blocking cancels any remaining action phases for both characters.²<br><br>" +
+		"The active character may also block non-active characters in the clearing, or monsters that are present.<br><br>" +
+		"If playing with 1st edition rules, the active character and non-active characters may play or fatigue color magic chits at phase-end.<br><br>" +
+		"The content of each Phase-End dialog depends on the character's capabilities as well as the options the player has enabled/disabled wrt Reactions.<br><br>" +
+		"Click <b>SUBMIT</b> to confirm your choices and allow play to continue.<br>" +
+		"Click <b>Hide</b> to hide the window temporarily — the game waits until all players have submitted.<br><br><br>" +
+		"¹ A PHASE being executed usually means an ACTION itself is executed, like a Move, Alert, Rest, etc., but there are exceptions for multi-PHASE actions like a mountain-Move<br>" +
+		"where the ACTION is executed only in the final PHASE.<br><br>" +
+		"² Both characters are considered Blocking each other — neither can perform any more action phases this turn.</html>";
+
+	private static final String ABOUT_PHASE_COMBINED =
+		"<html><b>Phase End &amp; Start Reactions — Combined Window</b><br><br>" +
+		"This window appears when a character has Phase-End reaction choices pending for the just-completed phase and Phase-Start reaction choices pending for the upcoming phase.<br><br>" +
+		"The upper (red) section covers Phase-End activities for the phase just completed; the lower (green) section covers Phase-Start activities for the action about to begin.<br><br>" +
+		"This combined window is a convenience — it avoids showing two separate dialogs in immediate succession.<br><br>" +
+		"The only thing that technically occurs between the two segments is the active character's own phase-start activities, which a non-active player may wish to see before committing<br>" +
+		"their Phase-Start choices. This is the purpose of the <b>Defer</b> checkbox in the Phase-Start section: checking it skips Phase-Start selections for now, and a standard<br>" +
+		"Phase-Start dialog will be shown <i>after</i> the active character finishes their phase-start activities, if any.<br><br>" +
+		"If Defer is not selected, the Phase-Start choices made here will be processed <i>after</i> the active character finishes their phase-start activities.</html>";
+
+	private static String ordinal(int n) {
+		if (n == 1) return "1st";
+		if (n == 2) return "2nd";
+		if (n == 3) return "3rd";
+		return n + "th";
+	}
+
+	private static JPanel buildDialogNotePanel() {
+		JLabel note = new JLabel("<html><i>This dialog is needed due to complexities inherent in character vs character interactions and reactions.</i></html>");
+		note.setFont(note.getFont().deriveFont(note.getFont().getSize() - 1f));
+		note.setBorder(BorderFactory.createEmptyBorder(2, 4, 2, 4));
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		JPanel noteRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 2));
+		noteRow.add(note);
+		panel.add(noteRow);
+		panel.add(new JSeparator(JSeparator.HORIZONTAL));
+		return panel;
+	}
+
+	private static JPanel makeAboutSection(String htmlText, Color bgColor) {
+		JLabel label = new JLabel(htmlText);
+		label.setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.setBackground(bgColor);
+		panel.setOpaque(true);
+		label.setBackground(bgColor);
+		label.setOpaque(true);
+		panel.add(label, BorderLayout.CENTER);
+		return panel;
+	}
+
+	private static void showAboutDialog(Component parent, String htmlText, Color bgColor) {
+		JDialog dlg = new JDialog(SwingUtilities.getWindowAncestor(parent), "About", Dialog.ModalityType.APPLICATION_MODAL);
+		JPanel content = new JPanel(new BorderLayout());
+		content.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+		content.add(makeAboutSection(htmlText, bgColor != null ? bgColor : UIManager.getColor("Panel.background")), BorderLayout.CENTER);
+		JButton ok = new JButton("OK");
+		ok.addActionListener(e -> dlg.dispose());
+		JPanel south = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		south.add(ok);
+		content.add(south, BorderLayout.SOUTH);
+		dlg.setContentPane(content);
+		dlg.pack();
+		dlg.setLocationRelativeTo(parent);
+		dlg.setVisible(true);
+	}
+
+	private static void showCombinedAboutDialog(Component parent) {
+		JDialog dlg = new JDialog(SwingUtilities.getWindowAncestor(parent), "About", Dialog.ModalityType.APPLICATION_MODAL);
+
+		JPanel endSection   = makeAboutSection(ABOUT_PHASE_END,      POST_PHASE_COLOR);
+		JPanel midSection   = makeAboutSection(ABOUT_PHASE_COMBINED,  Color.LIGHT_GRAY);
+		JPanel startSection = makeAboutSection(ABOUT_PHASE_START,     PRE_PHASE_COLOR);
+
+		JPanel divider1 = new JPanel(); divider1.setBackground(Color.DARK_GRAY); divider1.setPreferredSize(new Dimension(0, 4));
+		JPanel divider2 = new JPanel(); divider2.setBackground(Color.DARK_GRAY); divider2.setPreferredSize(new Dimension(0, 4));
+
+		JPanel main = new JPanel();
+		main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+		main.add(endSection);
+		main.add(divider1);
+		main.add(midSection);
+		main.add(divider2);
+		main.add(startSection);
+
+		JScrollPane scroll = new JScrollPane(main);
+		scroll.setBorder(null);
+
+		JButton ok = new JButton("OK");
+		ok.addActionListener(e -> dlg.dispose());
+		JPanel south = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		south.add(ok);
+
+		JPanel content = new JPanel(new BorderLayout(0, 4));
+		content.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+		content.add(scroll, BorderLayout.CENTER);
+		content.add(south, BorderLayout.SOUTH);
+
+		dlg.setContentPane(content);
+		dlg.setPreferredSize(new Dimension(900, 700));
+		dlg.pack();
+		dlg.setLocationRelativeTo(parent);
+		dlg.setVisible(true);
+	}
+
+	private static JPanel buildSouthArea(JDialog dialog, ActionListener aboutAction, ActionListener submitAction) {
+		JButton aboutButton = new JButton("About");
+		aboutButton.addActionListener(aboutAction);
+		JButton hideButton = new JButton("Hide");
+		hideButton.addActionListener(e -> dialog.setVisible(false));
+		JButton submitButton = new JButton("SUBMIT");
+		submitButton.addActionListener(submitAction);
+
+		JPanel buttonRow = new JPanel(new BorderLayout());
+		JPanel leftButtons = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
+		leftButtons.add(aboutButton);
+		JPanel rightButtons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
+		rightButtons.add(hideButton);
+		rightButtons.add(submitButton);
+		buttonRow.add(leftButtons, BorderLayout.WEST);
+		buttonRow.add(rightButtons, BorderLayout.CENTER);
+
+		JPanel southArea = new JPanel();
+		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
+		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
+		southArea.add(Box.createVerticalStrut(6));
+		southArea.add(buttonRow);
+		return southArea;
 	}
 
 	private static void styleChitToggleButton(JToggleButton btn) {
@@ -909,8 +1068,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		JPanel northArea = new JPanel();
 		northArea.setLayout(new BoxLayout(northArea, BoxLayout.Y_AXIS));
 		northArea.setBackground(POST_PHASE_COLOR);
-		JPanel postHeader = buildPostPhaseDialogHeader();
-		postHeader.setBackground(POST_PHASE_COLOR);
+		JPanel postHeader = buildPostPhaseDialogHeader(POST_PHASE_COLOR);
 		northArea.add(postHeader);
 		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
 		northArea.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -919,21 +1077,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 		JPanel blockPanel = buildBlockingPanel(POST_PHASE_COLOR);
 		postSection.add(blockPanel, BorderLayout.CENTER);
+		content.add(buildDialogNotePanel(), BorderLayout.NORTH);
 		content.add(postSection, BorderLayout.CENTER);
-
-		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
-		JButton hideButton = new JButton("Hide");
-		hideButton.addActionListener(e -> postPhaseActivityDialog.setVisible(false));
-		JButton submitButton = new JButton("SUBMIT");
-		submitButton.addActionListener(e -> submitPostPhaseActivities());
-		buttons.add(hideButton);
-		buttons.add(submitButton);
-		JPanel southArea = new JPanel();
-		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
-		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
-		southArea.add(Box.createVerticalStrut(6));
-		southArea.add(buttons);
-		content.add(southArea, BorderLayout.SOUTH);
+		content.add(buildSouthArea(postPhaseActivityDialog, e -> showAboutDialog(postPhaseActivityDialog, ABOUT_PHASE_END, POST_PHASE_COLOR), e -> submitPostPhaseActivities()), BorderLayout.SOUTH);
 
 		postPhaseActivityDialog.setContentPane(content);
 		postPhaseActivityDialog.pack();
@@ -942,37 +1088,60 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		postPhaseActivityDialog.toFront();
 	}
 
-	private JPanel buildPostPhaseDialogHeader() {
-		JPanel header = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
-		Font headerFont = header.getFont().deriveFont(Font.BOLD, 16f);
-		JLabel afterLabel = new JLabel("After");
-		afterLabel.setFont(headerFont);
-		header.add(afterLabel);
+	private JPanel buildPostPhaseDialogHeader() { return buildPostPhaseDialogHeader(null); }
+	private JPanel buildPostPhaseDialogHeader(Color bgColor) {
+		JPanel wrapper = new JPanel();
+		wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
+		if (bgColor != null) { wrapper.setBackground(bgColor); wrapper.setOpaque(true); }
+
+		Font headerFont = new JLabel().getFont().deriveFont(Font.BOLD, 16f);
+		Font subFont    = new JLabel().getFont().deriveFont(Font.PLAIN, 11f);
+
+		JPanel topRow = new JPanel(new FlowLayout(FlowLayout.CENTER, 6, 4));
+		if (bgColor != null) { topRow.setBackground(bgColor); topRow.setOpaque(true); }
+		RealmComponent selfRc = RealmComponent.getRealmComponent(getCharacter().getGameObject());
+		topRow.add(new JLabel(selfRc.getMediumIcon()));
+		JLabel titleLabel = new JLabel("Phase-End Reactions  -  After");
+		titleLabel.setFont(headerFont);
+		topRow.add(titleLabel);
+
+		String subtitle = "";
 		for (GameObject go : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 			CharacterWrapper cw = new CharacterWrapper(go);
 			if (cw.isPlayingTurn()) {
-				header.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
-				JLabel phaseLabel = new JLabel("Phase " + cw.getNumberOfPerformedActionPhasesToday());
+				topRow.add(new JLabel(RealmComponent.getRealmComponent(go).getMediumIcon()));
+				int phaseN = cw.getNumberOfPerformedActionPhasesToday();
+				JLabel phaseLabel = new JLabel("Phase " + phaseN);
 				phaseLabel.setFont(headerFont);
-				header.add(phaseLabel);
-				String nextAction = cw.getNextPendingAction();
-				if (nextAction != null) {
-					ImageIcon actionIcon = CharacterWrapper.getIconForAction(nextAction);
+				topRow.add(phaseLabel);
+				String lastAction = cw.getLastPerformedAction();
+				if (lastAction != null) {
+					ImageIcon actionIcon = CharacterWrapper.getIconForAction(lastAction);
 					if (actionIcon != null) {
-						Image scaled = actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
-						header.add(new JLabel(new ImageIcon(scaled)));
+						topRow.add(new JLabel(new ImageIcon(actionIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT))));
 					}
+				}
+				JLabel actionLabel = new JLabel("Action");
+				actionLabel.setFont(headerFont);
+				topRow.add(actionLabel);
+				int phaseM = cw.getCurrentActionPhaseTotal();
+				if (phaseM > 1) {
+					int phaseP = cw.getCurrentActionPhaseIndex();
+					subtitle = "(" + ordinal(phaseP) + " of " + phaseM + " phases for this action)";
 				}
 				break;
 			}
 		}
-		JLabel label = new JLabel("Action :");
-		label.setFont(headerFont);
-		header.add(label);
-		JLabel titleLabel = new JLabel("Phase End Reactions");
-		titleLabel.setFont(headerFont);
-		header.add(titleLabel);
-		return header;
+		wrapper.add(topRow);
+		if (!subtitle.isEmpty()) {
+			JPanel subRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
+			if (bgColor != null) { subRow.setBackground(bgColor); subRow.setOpaque(true); }
+			JLabel subLabel = new JLabel(subtitle);
+			subLabel.setFont(subFont);
+			subRow.add(subLabel);
+			wrapper.add(subRow);
+		}
+		return wrapper;
 	}
 
 	private ArrayList<RealmComponent> getPostPhaseBlockCandidates() {
@@ -1185,9 +1354,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		postSection.setBackground(postColor);
 		postSection.setOpaque(true);
 		postSection.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
-		JPanel postHeader = buildPostPhaseDialogHeader();
-		postHeader.setBackground(postColor);
-		postHeader.setOpaque(true);
+		JPanel postHeader = buildPostPhaseDialogHeader(postColor);
 		postSection.add(postHeader);
 		postSection.add(new JSeparator(JSeparator.HORIZONTAL));
 		postSection.add(new JSeparator(JSeparator.HORIZONTAL));
@@ -1213,9 +1380,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		preSection.setBackground(preColor);
 		preSection.setOpaque(true);
 		preSection.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
-		JPanel preHeader = buildPrePhaseDialogHeader();
-		preHeader.setBackground(preColor);
-		preHeader.setOpaque(true);
+		JPanel preHeader = buildPrePhaseDialogHeader(preColor);
 		preSection.add(preHeader);
 		{
 			Font noteFont = new JLabel().getFont().deriveFont(Font.PLAIN, new JLabel().getFont().getSize() - 2f);
@@ -1285,21 +1450,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		mainPanel.add(Box.createVerticalStrut(6));
 		mainPanel.add(preSection);
 
+		content.add(buildDialogNotePanel(), BorderLayout.NORTH);
 		content.add(mainPanel, BorderLayout.CENTER);
-
-		JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
-		JButton hideButton = new JButton("Hide");
-		hideButton.addActionListener(e -> combinedPhaseActivityDialog.setVisible(false));
-		JButton submitButton = new JButton("SUBMIT");
-		submitButton.addActionListener(e -> submitCombinedPhaseActivities());
-		buttons.add(hideButton);
-		buttons.add(submitButton);
-		JPanel southArea = new JPanel();
-		southArea.setLayout(new BoxLayout(southArea, BoxLayout.Y_AXIS));
-		southArea.add(new JSeparator(JSeparator.HORIZONTAL));
-		southArea.add(Box.createVerticalStrut(6));
-		southArea.add(buttons);
-		content.add(southArea, BorderLayout.SOUTH);
+		content.add(buildSouthArea(combinedPhaseActivityDialog, e -> showCombinedAboutDialog(combinedPhaseActivityDialog), e -> submitCombinedPhaseActivities()), BorderLayout.SOUTH);
 
 		wireCombinedDialogExclusion();
 

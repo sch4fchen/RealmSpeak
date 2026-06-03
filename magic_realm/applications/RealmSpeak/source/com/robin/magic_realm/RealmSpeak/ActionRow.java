@@ -579,6 +579,15 @@ public class ActionRow {
 
 			if (isExecutableAction) {
 				if (isPostPhasePending()) return;
+				// Store total phase count and current sub-phase index before handlePrePhase fires so
+				// the dialog header can show ordinal info for multi-phase actions. Non-continuation
+				// rows start a new action (P=1, PTOT=phaseCount); continuation rows increment P.
+				if (!isContinuation) {
+					character.setCurrentActionPhaseTotal(getPhaseCount());
+					character.setCurrentActionPhaseIndex(1);
+				} else {
+					character.setCurrentActionPhaseIndex(character.getCurrentActionPhaseIndex() + 1);
+				}
 				if (handlePrePhase(hostPrefs)) return;
 			}
 		}
@@ -811,6 +820,8 @@ public class ActionRow {
 			// Append this action to the character's persistent daily log (action code, state, result, roll).
 			// The log count drives getNumberOfPerformedActionPhasesToday(), which gates pre/post-phase stamps.
 			character.addActionPhasePerformedToday(action,getActionState(),result,roller);
+			// CURRENT_ACTION_PHASE_TOTAL is intentionally left set here so the post-phase dialog
+			// header can read M. The next non-continuation action overwrites it naturally.
 			
 			// 1st-edition phase-end color chit interruption (FE_PHASE_END_PLAYING_COLOR_CHIT ON only).
 			// In 1st edition, non-phasing characters play color chits at phase-END rather than phase-start.
