@@ -46,7 +46,9 @@ public class MagicShieldEffect implements ISpellEffect {
 					.getGameObject()
 					.getGameData()
 					.getGameObject(Long.valueOf(context.Spell.getGameObject().getThisAttribute(Constants.MAGIC_SHIELD_ID)));
-			magicShield.getHeldBy().remove(magicShield);
+			if (magicShield != null && magicShield.getHeldBy() != null) {
+				magicShield.getHeldBy().remove(magicShield);
+			}
 			context.Spell.getGameObject().removeThisAttribute(Constants.MAGIC_SHIELD_ID);
 		}
 	}
