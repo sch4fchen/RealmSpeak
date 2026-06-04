@@ -27,6 +27,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"+1 Non-Cave MOVE Cost",Constants.NONCAVE_MOVE_DISADVANTAGE,""},
 		{"Can walk woods on the 7th day of every week.",Constants.WALK_WOODS,"7th"},
 		{"Can walk woods on the every day of every week.",Constants.WALK_WOODS,""},
+		{"Can Offroad Travel.",Constants.OFFROAD_TRAVEL,""},
 		{"Can walk the woods when moving to or from a mountain clearing.",Constants.CRAGSMAN,""},
 		{"May choose which clearing to land, immune to Lost.",Constants.REALM_MAP,""},
 		{"Extra phase when being followed.",Constants.COMRADE,""},
