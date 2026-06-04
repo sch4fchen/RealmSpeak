@@ -33015,8 +33015,8 @@
         <attribute author="Expansion 1" />
       </AttributeBlock>
       <AttributeBlock blockName="magic_shield">
-        <attribute vulnerability="T" />
-        <attribute weight="L" />
+        <attribute vulnerability="H" />
+        <attribute weight="H" />
         <attribute magic="" />
         <attribute icon_type="shield" />
         <attribute facing="dark" />
