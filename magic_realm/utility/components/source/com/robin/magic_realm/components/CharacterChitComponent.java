@@ -937,7 +937,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
-				if (armor.isArmor()) armorVulnerability = armor.getWeight();
+				if (armor.isArmor()) armorVulnerability = ((ArmorChitComponent)armor).getVulnerability();
 				if (armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ACTIVE) && armor.getGameObject().hasThisAttribute(Constants.MAGIC_COLOR_BONUS_ARMOR)) {
 					String immunity = attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY);
 					ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(immunity,true);

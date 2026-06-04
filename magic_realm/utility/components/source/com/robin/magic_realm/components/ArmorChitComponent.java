@@ -109,7 +109,14 @@ public class ArmorChitComponent extends RoundChitComponent {
 		drawDamageAssessment(g);
 	}
 	public Strength getVulnerability() {
-		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT));
-		return new Strength(getThisAttribute("vulnerability"));
+		int mod = 0;
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_DECREASED_VULNERABILITY)) {
+			mod--;
+		}
+		if (getGameObject().hasThisAttribute(Constants.ALTER_SIZE_INCREASED_VULNERABILITY)) {
+			mod++;
+		}
+		if (gameObject.hasThisAttribute(Constants.ALTER_WEIGHT)) return new Strength(getGameObject().getThisAttribute(Constants.ALTER_WEIGHT),mod);
+		return new Strength(getThisAttribute("vulnerability"),mod);
 	}
 }
