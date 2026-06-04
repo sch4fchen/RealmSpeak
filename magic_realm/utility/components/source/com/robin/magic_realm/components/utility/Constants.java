@@ -29,7 +29,7 @@ public class Constants {
 	public static final String DIE_ROLL_LOG = "_die_roll_log_";
 	
 	public static final String APPLICATION_NAME = "Realm Speak";
-	public static final String REALM_SPEAK_VERSION = "1.2.5.8";
+	public static final String REALM_SPEAK_VERSION = "1.2.5.9";
 	public static final String REALM_SPEAK_IMAGES_VERSION = "1.2.5.0";
 	
 	public static final String PLAYER_TO_PLACE = "p_2_p";
@@ -256,6 +256,7 @@ public class Constants {
 	public static final String FIT = "fit";
 	public static final String CRAGSMAN = "cragsman";
 	public static final String EXTRA_ACTIONS_SUNLIGHT = "extra_actions_sunlight";
+	public static final String OFFROAD_TRAVEL = "offroad_travel";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
@@ -591,6 +592,7 @@ public class Constants {
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX2 = "move_speed_bonus_combat_box2";
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX3 = "move_speed_bonus_combat_box3";
 	public static final String COLOR_SOURCE = "color_source";
+	public static final String NO_OFFROAD_TRAVEL = "no_offroad_travel";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
@@ -877,6 +879,7 @@ public class Constants {
 	public static final String EXP_SUDDEN_DEATH = "SuddenDeath";
 	public static final String EXP_BOUNTY_POINTS_FOR_DISCOVERIES = "BountyPointsForDiscoeries";
 	public static final String EXP_STEALING = "StealingNatives";
+	public static final String EXP_OFFROAD_TRAVEL = "OffroadTravel";
 	
 	// 3rd edition rules
 	public static final String TE_KNIGHT_ADJUSTMENT = "KnightAdjustment";

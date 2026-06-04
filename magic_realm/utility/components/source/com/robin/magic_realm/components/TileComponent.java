@@ -908,20 +908,9 @@ public class TileComponent extends ChitComponent {
 //					int shift = clearingCount[index] * CHIT_PLACEMENT_OFFSET;
 					Point p = loc.clearing.getAbsolutePosition();
 					if (p == null) {
-						// 1/3/2007 - This is fixed, so this code is probably unnecessary now. It was happening because
-						// the "End Game" option was calling RealmUtility.resetGame(), which in turn was calling
-						// RealmComponent.reset(). If you then pressed No or Cancel, the game would continue, but it would
-						// have to refresh all the components, and that's disaster!! I'll leave this here for awhile, and see
-						// if it ever happens again.
 						if (!emergencyUpdateCalled) {
-							System.err.println("The problem clearing here is " + loc.clearing.fullString() + " @ " + loc.clearing.parentToString());
-							System.err.println("The location " + loc + " was derived for game object " + rc.getGameObject() + " which itself was derived from " + rc.getGameObject().getGameData().getDataName());
-							System.err.println("This tile is derived from " + getGameObject().getGameData().getDataName());
 							emergencyUpdateCalled = true;
 							forceClearingPositionUpdate(true);
-							JOptionPane.showMessageDialog(null, "forceClearingPositionUpdate was called.  Please check and see if dwellings appear on the map.  If\n" + "not, this solution didn't work.  If the dwellings are there, then it DID work, and I can finally\n" + "close BUG 372.  Please let Robin (robin@dewkid.com) know that you saw this message, and whether or\n" + "not you can still see dwellings and character tokens on the map.  Also, if you could send the error\n"
-									+ "log (if any) to me, that would be awesome!  Thanks.", "Graphics Glitch Fixed?", JOptionPane.WARNING_MESSAGE);
-							System.err.println("forceClearingPositionUpdate was called after p was null!");
 							p = loc.clearing.getAbsolutePosition();
 						}
 					}
