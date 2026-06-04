@@ -975,7 +975,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 						else {
 							ArmorChitComponent armorChit = (ArmorChitComponent) armor;
 							if (!armorChit.isDamaged()) {
-								if (armor.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
+								if (armorChit.getGameObject().hasThisAttribute(Constants.DAMAGEABLE_NOT)) {
+									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot damage the "
+										+getGameObject().getName()+"'s "
+										+armor.getGameObject().getName()+" as it cannot be damaged at all");
+								}
+								else if (armor.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
 									RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot damage the "
 											+getGameObject().getName()+"'s "
 											+armor.getGameObject().getName()+" as it is protected by Ointment of Stone");
@@ -988,6 +993,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 									armorChit.setIntact(false); // NOW its damaged
 								}
 							}
+							else if (armorChit.getGameObject().hasThisAttribute(Constants.DAMAGEABLE_NOT)) {
+								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot destroy the "
+										+getGameObject().getName()+"'s "
+										+armor.getGameObject().getName()+" as it cannot be damaged at all");
+								destroyed = false;
+								}
 							else if (armor.getGameObject().hasThisAttribute(Constants.OINTMENT_OF_STONE)) {
 								RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Cannot destroy the "
 										+getGameObject().getName()+"'s "
