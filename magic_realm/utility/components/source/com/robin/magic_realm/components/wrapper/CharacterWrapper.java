@@ -1831,6 +1831,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (list==null) return 0;
 		return list.size();
 	}
+	public String getLastPerformedAction() {
+		ArrayList<String> list = getList(getCurrentDayKey()+"P");
+		if (list == null || list.isEmpty()) return null;
+		String last = list.get(list.size() - 1);
+		return last.length() > 1 ? last.substring(1) : null;
+	}
 	public ActionState getStateForAction(String action,int index) {
 		ActionState state = ActionState.Pending; // default
 		ArrayList<String> list = getList(getCurrentDayKey()+"P");
