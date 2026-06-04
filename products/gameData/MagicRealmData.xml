@@ -33007,7 +33007,7 @@
         <attribute spell="IV" />
         <attribute duration="combat" />
         <attribute target="character" />
-        <attribute text="Functions like a shield with tremendous vulnerability and light weight" />
+        <attribute text="Functions like a H shield - cannot be damaged" />
         <attribute magic_color="purple" />
         <attribute host_okay="" />
         <attribute new_spells_2="" />
@@ -33023,6 +33023,7 @@
         <attribute armor_row="1" />
         <attribute icon_folder="armor" />
         <attribute shield="" />
+        <attribute not_damageable="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1176" name="Mystic Boots">
