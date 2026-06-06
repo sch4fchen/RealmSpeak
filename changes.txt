@@ -6,6 +6,11 @@
 You can NEVER travel offroad in the Volcano tile.
 CHASM - Offroad travel does not allow you to traverse the Chasm, without crossing the bridge between clearings 5 and 6. If you do choose to travel offroad, be sure to remain on the same side of the chasm regardless of the roll results.
 
+Optional Rule for Guild benefits
+Optional Rule for removing Guild services
+Optional Rule for removing the option to pay fame for advancement
+Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
+Optional Rule for being part of multiple guilds at the same time
 
 Version 1.2.5.9
 NEW FEATURES:

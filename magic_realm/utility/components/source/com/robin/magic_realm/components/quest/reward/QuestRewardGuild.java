@@ -39,7 +39,7 @@ public class QuestRewardGuild extends QuestReward {
 			break;
 		case Set:
 			character.setCurrentGuildLevel(getGuildLevel());
-		}	
+		}
 	}	
 		
 	public String getDescription() {
