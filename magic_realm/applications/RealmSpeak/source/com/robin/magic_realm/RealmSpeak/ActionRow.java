@@ -253,6 +253,12 @@ public class ActionRow {
 				description = description + " (Non-Pony Move)";
 			}
 		}
+		else if (ActionId.Offroad==id) {
+			description = "Offroad Travel";
+			if (ponyLock) {
+				description = description + " (Non-Pony Move)";
+			}
+		}
 		else if (ActionId.Search==id) {
 			description = "Search";
 		}
@@ -459,6 +465,9 @@ public class ActionRow {
 			}
 			else if (ActionId.Move==id) {
 				doMoveAction();
+			}
+			else if (ActionId.Offroad==id) {
+				doOffroadAction();
 			}
 			else if (ActionId.Search==id) {
 				autoMarkInventory = false;
@@ -2048,6 +2057,19 @@ public class ActionRow {
 		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		completed = true;
+	}
+	private void doOffroadAction() {
+		TileLocation tl = character.getCurrentLocation();
+		if (tl.tile.getGameObject().hasThisAttribute(Constants.NO_OFFROAD_TRAVEL)) {
+			result = "Cannot offroad travel in this tile.";
+			completed = true;
+			return;
+		}
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Move;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		completed = true;
 	}

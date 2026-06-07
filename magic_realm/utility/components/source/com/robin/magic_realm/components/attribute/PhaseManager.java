@@ -332,8 +332,15 @@ public class PhaseManager {
 		if (phase.endsWith("!")) {
 			phase = phase.substring(0,phase.length()-1);
 		}
-		boolean movePhase = "M".equals(phase) || "M!".equals(phase);
+		boolean movePhase = "M".equals(phase) || "M!".equals(phase) || "O".equals(phase);
 		list = freeActions.getListAsNew(trimmedPhase(phase));
+		if ("O".equals(phase)) {
+			if (list!=null) {
+			list.addAll(freeActions.getListAsNew("M"));
+			} else {
+				list = freeActions.getListAsNew("M");
+			}
+		}
 		ArrayList nonMoveActions;
 		if (!movePhase) {
 			nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
@@ -447,7 +454,7 @@ public class PhaseManager {
 			newLocation = ClearingUtility.deduceLocationFromAction(character.getGameObject().getGameData(),fullPhase);
 		}
 				
-		if (ponyObject!=null && go!=ponyObject && ponyActive && movePhase && ponyMoves==0) {
+		if (ponyObject!=null && go!=ponyObject && ponyActive && (movePhase || "O".equals(phase)) && ponyMoves==0) {
 			TileLocation current = ClearingUtility.getTileLocation(ponyObject);
 			if (current!=null && (!current.isInClearing() || (!current.clearing.isCave() && !current.clearing.isWater()))) {			
 				if (hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
@@ -489,8 +496,12 @@ public class PhaseManager {
 		}
 		else {
 			ArrayList list = freeActions.getList(trimmedPhase(phase));
+			ArrayList listOffroadMove = null;
+			if ("O".equals(phase)) {
+				listOffroadMove = freeActions.getListAsNew("M");
+			}
 			ArrayList nonMoveActions = null;
-			if (!movePhase) {
+			if (!movePhase && !"O".equals(phase)) {
 				nonMoveActions = freeActions.getListAsNew(trimmedPhase("!M"));
 				if (nonMoveActions!=null) {
 					if (list!=null) {
@@ -502,15 +513,18 @@ public class PhaseManager {
 				}
 			}
 			list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
+			listOffroadMove.removeAll(Collections.singleton(new Requirement(go)));
 			usedObjects.add(go);
 			if (go==ponyObject) {
 				ponyMoves--;
 			}
-			if (list.isEmpty()) {
+			if (list.isEmpty() || listOffroadMove!=null) {
 				if (freeActions.containsKey(trimmedPhase(phase))) {
 					freeActions.removeKeyValue(trimmedPhase(phase),new Requirement(go));
+				} else if ("O".equals(phase) && listOffroadMove!=null && listOffroadMove.isEmpty() && freeActions.containsKey("M")) {
+					freeActions.removeKeyValue("M",new Requirement(go));
 				}
-				else if (!movePhase) {
+				else if (!movePhase && !"O".equals(phase)) {
 					freeActions.removeKeyValue(trimmedPhase("!M"),new Requirement(go));
 				}
 			}
@@ -527,7 +541,7 @@ public class PhaseManager {
 			}
 		}
 			
-		if (movePhase || flyPhase) {
+		if (movePhase || flyPhase || "O".equals(phase)) {
 			removeLocationSpecificFreeActions(actionLocation);
 		}
 	}
@@ -609,7 +623,7 @@ public class PhaseManager {
 		// Have to check for a special case here - generalizing is just too damned complicated!
 		boolean specialCaseOverride = false;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameObject().getGameData());
-		if (count>1 && list!=null && list.contains(REGULAR_PHASE) && "M".equals(action) && pony) {
+		if (count>1 && list!=null && list.contains(REGULAR_PHASE) && ("M".equals(action) || "O".equals(action)) && pony) {
 			// This override happens when you only have one phase left, and you are trying to enter the mountains with a pony
 			if (!hostPrefs.hasPref(Constants.FE_PONY_NO_MOUNTAINS)) {
 				specialCaseOverride = true;
