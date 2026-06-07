@@ -1240,21 +1240,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				}
 				String action = ar.getAction();
 				if (action!=null) { // might be null if there was a re-roll on a table
-					String actionTypeCode = "*"; // actionTypeCode is the type of clearing from which the action was performed
-					try {
-						actionTypeCode = fi.next(); // NoSuchElementException!?!?
-					}
-					catch(NoSuchElementException ex) {
-						// Well this will tell me what's happening if it happens again
-						System.err.println("oldCodes: "+oldCodes);
-						System.err.println("action: "+action);
-						System.err.println("ActionRow: "+ar.toString());
-						System.err.println("blocked: "+blocked);
-						System.err.println("currentActions: "+getCharacter().getCurrentActions());
-						System.err.println("currentActionValids: "+getCharacter().getCurrentActionValids());
-						System.err.println("currentActionTypeCodes: "+getCharacter().getCurrentActionTypeCodes());
-						ex.printStackTrace();
-					}
+					// oldCodes may have fewer entries than actionRows when continuation rows from
+					// multi-phase splits are present — fall back to "*" if exhausted.
+					String actionTypeCode = fi.hasNext() ? fi.next() : "*";
 					for (int n=0;n<ar.getCount();n++) {
 						if (ar.isBlankPhase()) {
 							getCharacter().addCurrentAction("("+action+")");
