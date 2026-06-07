@@ -2875,9 +2875,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 			return hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL);
 		}
-		if (isOffroadTravelLost() && id!=ActionId.Offroad) {
-			return false;
-		}
 		
 		// Test hide
 		if (id==ActionId.Hide) {
