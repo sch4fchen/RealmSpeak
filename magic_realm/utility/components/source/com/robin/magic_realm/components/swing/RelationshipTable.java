@@ -48,7 +48,7 @@ public class RelationshipTable extends JTable {
 				String[] ret = list.get(row);
 				String relBlock = ret[0];
 				String fullName = ret[1];
-				String groupName = fullName.substring(1); // First letter is either N or V
+				String groupName = fullName.substring(1); // First letter is either N or V or G
 				
 				if (relBlock.length()>Constants.GAME_RELATIONSHIP.length()) {
 					fullName = fullName+" "+relBlock.substring(relBlock.length()-1);
@@ -59,7 +59,13 @@ public class RelationshipTable extends JTable {
 				}
 				
 				boolean rovingNative = ret.length>=3&&ret[2]!=null&&ret[2].matches(Constants.ROVING_NATIVE)?true:false;
-				int rel = character.getRelationship(relBlock,groupName,rovingNative);
+				boolean guild = ret.length>=4&&ret[3]!=null&&ret[3].matches(Constants.GUILD)?true:false;
+				int rel = 0;
+				if (guild) {
+					rel = character.isGuildMember(groupName.toLowerCase()) ? character.getCurrentGuildLevel()-1 : -1; // UNFRIENDLY if not a guild member.
+				} else {
+					rel = character.getRelationship(relBlock,groupName,rovingNative);
+				}
 				
 				Color lightColor = Color.white;
 				

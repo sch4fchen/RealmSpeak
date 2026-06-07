@@ -8102,6 +8102,10 @@ public class CharacterWrapper extends GameObjectWrapper {
     public boolean isGuildMember(RealmComponent rc) {
     	return rc.isGuild() && rc.getGameObject().getThisAttribute("guild").equals(getCurrentGuild());
     }
+    public boolean isGuildMember(String guildName) {
+    	String currentGuild = getCurrentGuild();
+    	return currentGuild!=null && guildName.matches(getCurrentGuild());
+    }
     public ArrayList<GameObject> getInventoryToApprove() {
     	ArrayList<GameObject> list = new ArrayList<>();
 		for (GameObject go : getGameObject().getHold()) {

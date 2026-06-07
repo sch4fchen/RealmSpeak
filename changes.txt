@@ -10,9 +10,12 @@ Optional Rule for removing Guild services
 Optional Rule for removing the option to pay fame for advancement (and last reward if buying advancement)
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
 Optional Rule for removing benefits if leaving a guild
-Optional Rule: Guild chits need to be discovered first
-Optional Rule: Guild services and inventory (for buying and selling) are exclusively available for guild members
 Optional Rule: To advance in guild level, character draws 1 quest card (from their respected guild quest card pile)
+Optional Rule: Should always be safe at guilds, if you are a member (from monsters and natives)
+
+Special abilities:
+	Support for friendliness with specific monsters...
+	Extra Quest card as a special ability
 
 Version 1.2.5.9
 NEW FEATURES:

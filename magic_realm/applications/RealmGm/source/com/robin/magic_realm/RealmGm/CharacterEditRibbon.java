@@ -425,12 +425,11 @@ public class CharacterEditRibbon extends JPanel {
 		}
 	}
 	private ArrayList<String[]> getRelationshipNames() {
-		ArrayList<String[]> relationshipNames;
+		ArrayList<String[]> relationshipNames = new ArrayList<String[]>();
 		ArrayList<String> keyVals = new ArrayList<>();
 		HostPrefWrapper	hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		keyVals.add(hostPrefs.getGameKeyVals());
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		relationshipNames = new ArrayList<String[]>();
 		for (GameObject nativeLeader : pool.find("native,rank=HQ")) {
 			String nativeName = nativeLeader.getThisAttribute("native");
 			String relBlock = RealmUtility.getRelationshipBlockFor(nativeLeader);

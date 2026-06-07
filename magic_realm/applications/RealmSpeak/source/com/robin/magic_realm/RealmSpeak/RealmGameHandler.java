@@ -1446,6 +1446,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				}
 				relationshipNames.add(ret);
 			}
+			for (GameObject guild : pool.find(Constants.GUILD)) {
+				String guildNmae = guild.getThisAttribute(Constants.GUILD);
+				String relBlock = RealmUtility.getRelationshipBlockFor(guild);
+				String[] ret = new String[4];
+				ret[0] = relBlock;
+				ret[1] = "G" + StringUtilities.capitalize(guildNmae);
+				ret[2] = "";
+				ret[3] = Constants.GUILD;
+				relationshipNames.add(ret);
+			}
 			Collections.sort(relationshipNames, new Comparator<String[]>() {
 				public int compare(String[] o1, String[] o2) {
 					int ret = o1[0].compareTo(o2[0]);
