@@ -141,7 +141,7 @@ public class RealmSpeakOptions {
 			ChatLine.setHeaderMode(HeaderMode.valueOf(headerMode));
 		}
 		CenteredMapView.setFollowEnabled(options.getBoolean(MAP_FOLLOW_CHARACTER));
-		CombatFrame.setAutoPositioningAttackers(options.getBoolean(AUTO_POSITIONING_ATTACKERS, false));
+		CombatFrame.setAutoPositioningAttackers(options.getBoolean(AUTO_POSITIONING_ATTACKERS));
 		SoundCache.setSoundEnabled(options.getBoolean(ENABLE_SOUND,true));
 		if (options.getBoolean(RealmSpeakOptions.METAL_LNF)) {
 			ComponentTools.setMetalLookAndFeel();
