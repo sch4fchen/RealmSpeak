@@ -1121,7 +1121,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	public void centerOnToken() {
-		if (gameHandler.getGame().getGameStarted()) {
+		if (gameHandler.getGame().getGameStarted() && gameHandler.isOption(RealmSpeakOptions.MAP_CENTER_ON_CHARACTER)) {
 			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
 		}
 	}
