@@ -195,6 +195,9 @@ public class CombatFrame extends JFrame {
 	public static boolean hasAutoPositioningAttackers() {
 		return autoPositioningAttackers;
 	}
+	public static void setAutoPositioningAttackers(boolean val) {
+		autoPositioningAttackers = val;
+	}
 	
 	protected static DieRoller ambushRoll = null;
 	protected static RealmComponent ambusher = null;

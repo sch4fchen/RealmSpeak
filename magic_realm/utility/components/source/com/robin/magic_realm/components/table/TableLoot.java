@@ -420,8 +420,10 @@ public class TableLoot extends Loot {
 		} else {
 			CenteredMapView.getSingleton().markClearings(type,false);
 		}
-		CenteredMapView.getSingleton().centerOn(tl);
-		
+		if (CenteredMapView.isFollowEnabled()) {
+			CenteredMapView.getSingleton().centerOn(tl);
+		}
+
 		// Followers should stay behind!
 		for (CharacterWrapper follower:transportVictim.getActionFollowers()) {
 			transportVictim.removeActionFollower(follower,null,null);

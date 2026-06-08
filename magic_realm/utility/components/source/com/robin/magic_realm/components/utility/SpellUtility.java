@@ -162,8 +162,10 @@ public class SpellUtility {
 			CenteredMapView.getSingleton().markAllClearings(false);
 			CenteredMapView.getSingleton().markAllTiles(false);
 		}
-		CenteredMapView.getSingleton().centerOn(chosen);
-		
+		if (CenteredMapView.isFollowEnabled()) {
+			CenteredMapView.getSingleton().centerOn(chosen);
+		}
+
 		// Followers should stay behind!		
 		character.getFollowingHirelings().stream()
 			.peek(h -> ClearingUtility.moveToLocation(h.getGameObject(), planned))
