@@ -2782,13 +2782,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		GameObject transmorph = getTransmorph();
 
 		// Test move types
-		if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move && id!=ActionId.Offroad) {
+		if (getGameObject().hasThisAttribute(Constants.ONLY_MOVE) && id!=ActionId.Move) {
 			return false;
 		}
-		if ((id==ActionId.Move || id==ActionId.Offroad) && mustFly()) {
+		if (id==ActionId.Move && mustFly()) {
 			return false;
 		}
-		if (id!=ActionId.Move && id!=ActionId.Offroad && location!=null && location.isTileOnly() && !location.isFlying()) {
+		if (id!=ActionId.Move && location!=null && location.isTileOnly() && !location.isFlying()) {
 			return false;
 		}
 		if (id==ActionId.Fly && !canFly(location)) {
@@ -2796,10 +2796,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (location!=null && location.isBetweenTiles() && location.isFlying() && id==ActionId.Fly) {
 			return true;
-		}
-		if (id==ActionId.Offroad) {
-			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-			return hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL);
 		}
 		
 		// Test hide
@@ -7216,7 +7212,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			actionIdHash.put(DayAction.getDayAction(ActionId.SpellPrep).getCode(),ActionId.SpellPrep);
 			actionIdHash.put(DayAction.getDayAction(ActionId.Cache).getCode(),ActionId.Cache);
 			actionIdHash.put(DayAction.getDayAction(ActionId.Steal).getCode(),ActionId.Steal);
-			actionIdHash.put(DayAction.getDayAction(ActionId.Offroad).getCode(),ActionId.Offroad);
 
 			// Special actions
 			actionIdHash.put(DayAction.getDayAction(ActionId.Heal).getCode(),ActionId.Heal);

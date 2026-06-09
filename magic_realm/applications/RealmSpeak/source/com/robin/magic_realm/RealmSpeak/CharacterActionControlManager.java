@@ -39,7 +39,6 @@ public class CharacterActionControlManager {
 	public Action remoteSpellAction;
 	public Action cacheAction;
 	public Action stealAction;
-	public Action offroadAction;
 	
 	public Action healAction;
 	public Action repairAction;
@@ -61,7 +60,6 @@ public class CharacterActionControlManager {
 	public ActionIcon remoteSpellIcon = new ActionIcon("remotespell","Remote SP",DayAction.REMOTE_SPELL_ACTION.getCode());
 	public ActionIcon cacheIcon = new ActionIcon("cache","Cache",DayAction.CACHE_ACTION.getCode());
 	public ActionIcon stealIcon = new ActionIcon("steal","Steal",DayAction.STEAL_ACTION.getCode());
-	public ActionIcon offroadIcon = new ActionIcon("offroad","Offroad",DayAction.OFFROAD_TRAVEL_ACTION.getCode());
 	
 	public ActionIcon healIcon = new ActionIcon("heal","Heal",DayAction.HEAL_ACTION.getCode());
 	public ActionIcon repairIcon = new ActionIcon("repair","Repair",DayAction.REPAIR_ACTION.getCode());
@@ -262,18 +260,6 @@ public class CharacterActionControlManager {
 			}
 		};
 		stealAction.putValue(Action.SHORT_DESCRIPTION,DayAction.STEAL_ACTION.getName());
-		offroadAction = new AbstractAction("",offroadIcon) {
-			public void actionPerformed(ActionEvent ev) {
-				recordingARed = offroadIcon.isWarningOn();
-				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode());
-				if (rtp!=null) {
-					updateControls(rtp.getPhaseManager(),true,false);
-				}
-				recordingARed = offroadIcon.isWarningOn();
-				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode());
-			}
-		};
-		offroadAction.putValue(Action.SHORT_DESCRIPTION,DayAction.OFFROAD_TRAVEL_ACTION.getName());
 		healAction = new AbstractAction("",healIcon) {
 			public void actionPerformed(ActionEvent ev) {
 				recordingARed = healIcon.isWarningOn();
@@ -313,7 +299,6 @@ public class CharacterActionControlManager {
 		toolbar.addSeparator();
 		toolbar.add(cacheAction).setToolTipText(cacheIcon.getText());
 		toolbar.add(stealAction).setToolTipText(stealIcon.getText());
-		toolbar.add(offroadAction).setToolTipText(offroadIcon.getText());
 		if (character.hasSpecialActions()) {
 			toolbar.addSeparator();
 			if (character.hasSpecialAction(ActionId.Heal)) {
@@ -506,13 +491,9 @@ public class CharacterActionControlManager {
 		
 		ArrayList<String> actions = new ArrayList<>();
 		Collection<String> c = getCharacter().getCurrentActions();
-		String removed = null;
 		if (c!=null && !c.isEmpty()) {
 			actions.addAll(c);
-			removed = actions.remove(actions.size()-1);
-			if (removed.startsWith(DayAction.OFFROAD_TRAVEL_ACTION.getCode())) {
-				actions.remove(actions.size()-1);
-			}
+			String removed = actions.remove(actions.size()-1);
 			if (removed.startsWith(DayAction.MOVE_ACTION.getCode()) || removed.startsWith(DayAction.FLY_ACTION.getCode())) {
 				// deleting a move, so delete a clearing plot
 				getCharacter().chompClearingPlot();
@@ -542,9 +523,6 @@ public class CharacterActionControlManager {
 		if (c!=null && !c.isEmpty()) {
 			actionTypeCodes.addAll(c);
 			actionTypeCodes.remove(actionTypeCodes.size()-1);
-			if (removed != null &&  removed.startsWith(DayAction.OFFROAD_TRAVEL_ACTION.getCode())) {
-				actionTypeCodes.remove(actionTypeCodes.size()-1);
-			}
 		}
 		getCharacter().setCurrentActionTypeCodes(actionTypeCodes);
 		
@@ -814,7 +792,7 @@ public class CharacterActionControlManager {
 			}
 		}
 		String detailAction = action;
-		if ((DayAction.MOVE_ACTION.getCode().equals(detailAction) || DayAction.OFFROAD_TRAVEL_ACTION.getCode().equals(detailAction)) && character.isPonyLock()) {
+		if (DayAction.MOVE_ACTION.getCode().equals(detailAction) && character.isPonyLock()) {
 			detailAction = detailAction+"!";
 		}
 		if (actionLocation!=null) {
@@ -911,7 +889,6 @@ public class CharacterActionControlManager {
 		handleInvalidAction(remoteSpellAction,remoteSpellIcon,willBeRed(pm,DayAction.REMOTE_SPELL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(cacheAction,cacheIcon,willBeRed(pm,DayAction.CACHE_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(stealAction,stealIcon,willBeRed(pm,DayAction.STEAL_ACTION,usingPony,planned),birdsong,recordingActions);
-		handleInvalidAction(offroadAction,offroadIcon,willBeRed(pm,DayAction.STEAL_ACTION,usingPony,planned),birdsong,recordingActions);
 		
 		handleInvalidAction(healAction,healIcon,willBeRed(pm,DayAction.HEAL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(repairAction,repairIcon,willBeRed(pm,DayAction.REPAIR_ACTION,usingPony,planned),birdsong,recordingActions);
