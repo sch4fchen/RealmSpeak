@@ -120,6 +120,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 	private boolean fearSelected() {
 		return selection == Constants.MONSTER_FEAR;
 	}
+	private boolean friendlinessSelected() {
+		return selection == Constants.MONSTER_FRIENDLINESS;
+	}
 	
 	private void updateSelection() {
 		ArrayList<String> list = new ArrayList<>();
@@ -131,6 +134,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		else if (fearSelected()) {
 			list = getAttributeList(Constants.MONSTER_FEAR);
+		}
+		else if (friendlinessSelected()) {
+			list = getAttributeList(Constants.MONSTER_FRIENDLINESS);
 		}
 		
 		if (list!=null) {
@@ -188,6 +194,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		else if (fearSelected()) {
 			setAttributeList(Constants.MONSTER_FEAR,list);
 		}
+		else if (friendlinessSelected()) {
+			setAttributeList(Constants.MONSTER_FRIENDLINESS,list);
+		}
 	}
 	public String getSuggestedDescription() {
 		StringBuffer sb = new StringBuffer();
@@ -220,6 +229,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		else if (fearSelected()) {
 			return hasAttribute(Constants.MONSTER_FEAR);
 		}
+		else if (friendlinessSelected()) {
+			return hasAttribute(Constants.MONSTER_FRIENDLINESS);
+		}
 		return hasAttribute(Constants.MONSTER_IMMUNITY);
 	}
 	
@@ -229,6 +241,9 @@ public class MonsterInteractionEditPanel extends AdvantageEditPanel {
 		}
 		else if (fearSelected()) {
 			return "Monster Fear";
+		}
+		else if (friendlinessSelected()) {
+			return "Monster Friendliness";
 		}
 		return "Monster Immunity";
 	}

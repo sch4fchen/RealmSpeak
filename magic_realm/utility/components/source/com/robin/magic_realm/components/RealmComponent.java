@@ -1269,7 +1269,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			fears.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FEAR,","));
 		}
 		return fears;
-	}	
+	}
 	public String getFacing() {
 		return getGameObject().getThisAttribute(Constants.FACING_KEY);
 	}

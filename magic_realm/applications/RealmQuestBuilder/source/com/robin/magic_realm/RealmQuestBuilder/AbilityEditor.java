@@ -26,6 +26,7 @@ public class AbilityEditor extends GenericEditor {
 		MonsterImmunity,
 		MonsterControl,
 		MonsterFear,
+		MonsterFriendliness,
 		TreasureLocationFear,
 		SpecialAction,
 		TacticsChange,
@@ -101,6 +102,9 @@ public class AbilityEditor extends GenericEditor {
 				break;
 			case MonsterFear:
 				editPanel = new MonsterInteractionEditPanel(template,TEMPLATE_ABILITY_BLOCK,Constants.MONSTER_FEAR);
+				break;
+			case MonsterFriendliness:
+				editPanel = new MonsterInteractionEditPanel(template,TEMPLATE_ABILITY_BLOCK,Constants.MONSTER_FRIENDLINESS);
 				break;
 			case TreasureLocationFear:
 				editPanel = new TreasureLocationEditPanel(template,TEMPLATE_ABILITY_BLOCK);
