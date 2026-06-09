@@ -336,7 +336,7 @@ public class PhaseManager {
 		list = freeActions.getListAsNew(trimmedPhase(phase));
 		if ("O".equals(phase)) {
 			if (list!=null) {
-			list.addAll(freeActions.getListAsNew("M"));
+				list.addAll(freeActions.getListAsNew("M"));
 			} else {
 				list = freeActions.getListAsNew("M");
 			}
