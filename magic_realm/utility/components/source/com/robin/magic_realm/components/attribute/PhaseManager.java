@@ -513,7 +513,9 @@ public class PhaseManager {
 				}
 			}
 			list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
-			listOffroadMove.removeAll(Collections.singleton(new Requirement(go)));
+			if (listOffroadMove!=null) {
+				listOffroadMove.removeAll(Collections.singleton(new Requirement(go)));
+			}
 			usedObjects.add(go);
 			if (go==ponyObject) {
 				ponyMoves--;
