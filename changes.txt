@@ -13,9 +13,7 @@ Optional Rule for removing benefits if leaving a guild
 Optional Rule: To advance in guild level, character draws 1 quest card (from their respected guild quest card pile)
 Optional Rule: Should always be safe at guilds, if you are a member (from monsters and natives)
 
-Special abilities:
-	Support for friendliness with specific monsters: pacify at the start of the combat
-	Extra Quest card as a special ability: specific amount: increase hand size limit (and extra drawing at the start of the game)
+Support for friendliness with specific monsters: pacify at the start of the combat
 
 Version 1.2.5.9
 NEW FEATURES:
