@@ -360,7 +360,7 @@ public class RealmUtility {
 		makeDead(rc,-1);
 	}
 	public static void makeDead(RealmComponent rc, int attackSpeed) {
-		if (rc==null || rc.getGameObject().hasThisAttribute(Constants.DEAD)) {
+		if (rc==null || (rc.getGameObject().hasThisAttribute(Constants.DEAD) && rc.getCurrentLocation()==null)) {
 			// No point making something DEAD twice!!
 			return;
 		}
