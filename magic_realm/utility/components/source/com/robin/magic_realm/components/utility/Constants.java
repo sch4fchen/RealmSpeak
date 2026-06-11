@@ -251,6 +251,7 @@ public class Constants {
 	public static final String FORESIGHT_USED = "foresight_used";
 	public static final String STEAL_ATTEMPTS = "stealing_attempts";
 	public static final String DRINKS_BOUGHT = "drinks_bought";
+	public static final String COMBAT_PREBATTLE_DONE = "_prebattle_done_";
 	public static final String FORESIGHT_SAVED_STATS = "foresight_saved_stats";
 	public static final String FORESIGHT_SAVED_STATS_WISHED_STRENGTH = "wished_strength_";
 	public static final String SEAFARING = "seafaring";

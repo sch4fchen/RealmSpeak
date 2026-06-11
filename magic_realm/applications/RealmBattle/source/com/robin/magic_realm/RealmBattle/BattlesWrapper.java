@@ -213,6 +213,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 		for (RealmComponent owner : model.getAllOwningCharacters()) {
 			CharacterWrapper character = new CharacterWrapper(owner.getGameObject());
 			CombatWrapper.clearAllCombatInfo(character.getGameObject());
+			character.getGameObject().removeThisAttribute(Constants.COMBAT_PREBATTLE_DONE);
 			character.clearCombat();
 			character.decrementCombatCount();
 		}
