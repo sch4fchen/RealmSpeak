@@ -4754,7 +4754,10 @@ public class CombatFrame extends JFrame {
 			logger.finer("handling prebattle");
 			ArrayList<CharacterWrapper> list = lists.getList(firstState);
 			CharacterWrapper character = list.iterator().next();
-			processBattlingNatives(frame,character,data);
+			if (!character.getGameObject().hasThisAttribute(Constants.COMBAT_PREBATTLE_DONE)) {
+				character.getGameObject().setThisAttribute(Constants.COMBAT_PREBATTLE_DONE);
+				processBattlingNatives(frame,character,data);
+			}
 			character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_LURE);
 			listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
 		}
