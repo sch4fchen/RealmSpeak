@@ -24,6 +24,7 @@ QUEST UPDATE:
 # Add option to QuestRewardGuild
 BUGS/ISSUES:
 # Fix Magic Shield cannot be damaged
+# Expansion 1 Maze: can move through the clearing with the Maze
 
 Version 1.2.5.8
 NEW FEATURES:

@@ -894,7 +894,7 @@ public class ActionRow {
 		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
 		if ((character.isCharacter() || character.isHiredLeader()) && !character.isMinion()) {
 			RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
-			if (discoverToLeave!=null) {
+			if (discoverToLeave!=null && CharacterWrapper.getIdForAction(character.getLastPerformedActionToday()) != ActionId.Move) {
 				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
 						"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
 				cancelled = true;
