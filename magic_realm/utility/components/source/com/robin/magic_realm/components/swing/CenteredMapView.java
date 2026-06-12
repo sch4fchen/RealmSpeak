@@ -30,6 +30,10 @@ public class CenteredMapView extends JComponent {
 
 	private static BufferedImage tileLayer; // Just the tiles - shared between ALL map views.
 	
+	private static boolean followEnabled = true;
+	public static void setFollowEnabled(boolean enabled) { followEnabled = enabled; }
+	public static boolean isFollowEnabled() { return followEnabled; }
+
 	private static CenteredMapView singleton;
 	public static void initSingleton(GameData data) {
 		singleton = new CenteredMapView(data);
