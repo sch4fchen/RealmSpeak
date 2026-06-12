@@ -14,11 +14,14 @@ Optional Rule: To advance in guild level, character draws 1 quest card (from the
 Optional Rule: Should always be safe at guilds, if you are a member (from monsters and natives)
 
 Support for friendliness with specific monsters: pacify at the start of the combat
+QuestRequirementGuildLocation
 
 Version 1.2.5.9
 NEW FEATURES:
 # Expansion 1: Offroad Travel
 # Show guilds on friendliness chart
+QUEST UPDATE:
+# Add option to QuestRewardGuild
 BUGS/ISSUES:
 # Fix Magic Shield cannot be damaged
 

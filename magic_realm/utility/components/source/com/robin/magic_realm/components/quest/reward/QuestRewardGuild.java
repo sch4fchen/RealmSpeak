@@ -10,6 +10,7 @@ public class QuestRewardGuild extends QuestReward {
 	public static final String GUILD = "_guild";
 	public static final String GUILD_CHANGE = "_guild_change";
 	public static final String GUILD_LEVEL = "_guild_lvl";
+	public static final String GUILD_RESET = "_guild_reset";
 	
 	public enum GuildGainType {
 		Increase,
@@ -27,6 +28,9 @@ public class QuestRewardGuild extends QuestReward {
 			return;
 		}
 		if (!getGuildName().matches(QuestConstants.CURRENT)) {
+			if (resetGuildLevelForGuildChange() && !getGuildName().matches(character.getCurrentGuild())) {
+				character.setCurrentGuildLevel(0);
+			}
 			character.setCurrentGuild(getGuildName());
 		}
 		
@@ -81,5 +85,8 @@ public class QuestRewardGuild extends QuestReward {
 	}
 	private String getGuildName() {
 		return getString(GUILD);
+	}
+	private boolean resetGuildLevelForGuildChange() {
+		return getBoolean(GUILD_RESET);
 	}
 }
