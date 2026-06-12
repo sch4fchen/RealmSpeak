@@ -39,6 +39,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		GamePhase, // end of phase, end of day, start of evening, midnight, birdsong
 		Gender,
 		Guild,
+		GuildLocation,
 		Hidden,
 		HideResult,
 		Hire,
@@ -114,6 +115,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for the characters gender.";
 				case Guild:
 					return "Tests if the character has a certain guild level.";
+				case GuildLocation:
+					return "Tests if the character is in the clearing with a certain guild.";
 				case Hidden:
 					return "Tests if the character is hidden.";
 				case HideResult:
@@ -323,6 +326,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Guild:
 				requirement = new QuestRequirementGuild(go);
+				break;
+			case GuildLocation:
+				requirement = new QuestRequirementGuildLocation(go);
 				break;
 			case Hidden:
 				requirement = new QuestRequirementHidden(go);

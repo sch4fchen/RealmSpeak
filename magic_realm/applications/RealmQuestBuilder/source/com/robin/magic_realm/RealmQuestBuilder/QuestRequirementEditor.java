@@ -138,6 +138,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementGuild.EXCEED_LEVEL, "Exceed target level allowed", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementGuild.SUBCEED_LEVEL, "Subceed target level allowed", FieldType.Boolean));
 				break;
+			case GuildLocation:
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.GUILD, "Guild", FieldType.Regex, null, new String[] { "guild" }));
+				break;
 			case Hidden:
 				break;
 			case HideResult:

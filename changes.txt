@@ -23,6 +23,7 @@ NEW FEATURES:
 # Show guilds on friendliness chart
 QUEST UPDATE:
 # Add option to QuestRewardGuild
+# QuestRequirement: GuildLocation
 BUGS/ISSUES:
 # Fix Magic Shield cannot be damaged
 # Expansion 1 Maze: can move through the clearing with the Maze
