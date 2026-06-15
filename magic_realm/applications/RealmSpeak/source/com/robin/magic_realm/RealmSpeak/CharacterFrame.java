@@ -32,6 +32,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	protected JPanel tokenPanel;
 	protected JLabel charLabel;
+	private java.awt.geom.Point2D.Double savedMapOffset = null;
 	protected MoveMarker mountainMoveIcon;
 	protected CharacterWrapper character;
 	protected HostPrefWrapper hostPrefs;
@@ -1146,7 +1147,16 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	public void centerOnToken() {
 		if (gameHandler.getGame().getGameStarted()) {
-			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+			CenteredMapView map = gameHandler.getInspector().getMap();
+			if (savedMapOffset != null) {
+				map.setOffset(savedMapOffset);
+				map.repaint();
+				savedMapOffset = null;
+			} else {
+				java.awt.geom.Point2D.Double cur = map.getOffset();
+				savedMapOffset = new java.awt.geom.Point2D.Double(cur.x, cur.y);
+				map.centerOn(character.getCurrentLocation());
+			}
 		}
 	}
 
