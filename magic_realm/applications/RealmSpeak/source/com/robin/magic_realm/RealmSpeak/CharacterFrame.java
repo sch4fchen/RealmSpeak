@@ -1196,6 +1196,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 			charLabel.setFont(new Font("Dialog", Font.BOLD, 36));
 			charLabel.setIconTextGap(10);
+			charLabel.setToolTipText("Toggle between center on character and revert.");
 			charLabel.addMouseListener(new MouseAdapter() {
 				public void mousePressed(MouseEvent ev) {
 					Icon icon = charLabel.getIcon();
