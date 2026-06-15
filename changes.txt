@@ -18,6 +18,7 @@ NEW FEATURES:
 # Expansion 1: Offroad Travel
 # Show guilds on friendliness chart
 # Ability: Monster Friendliness
+# Make character list sorting option a host (not client) option
 QUEST UPDATE:
 # Add option to QuestRewardGuild
 # QuestRequirement: GuildLocation

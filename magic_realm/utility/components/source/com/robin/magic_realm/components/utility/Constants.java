@@ -950,6 +950,7 @@ public class Constants {
 	public static final String HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE = "QuestCardHandSizePlusOne";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	public static final String HOUSE3_HORSE_WEAPON_SAME_BOX = "HorseWeaponSameBox";
+	public static final String HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER = "CharacterlistSortingByPlayOrder";
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";

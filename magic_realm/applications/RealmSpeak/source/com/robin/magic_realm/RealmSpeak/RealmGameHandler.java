@@ -2048,11 +2048,20 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 		GamePool pool = new GamePool(RealmObjectMaster.getRealmObjectMaster(client.getGameData()).getPlayerCharacterObjects());
 		ArrayList<GameObject> characterGameObjects = pool.extract(CharacterWrapper.getKeyVals());
-		Collections.sort(characterGameObjects,new Comparator<GameObject>() {
-			public int compare(GameObject g1,GameObject g2) {
-				return new CharacterWrapper(g1).getPlayerOrdering()-new CharacterWrapper(g2).getPlayerOrdering();
-			}
-		});
+		if (hostPrefs!=null && hostPrefs.hasPref(Constants.HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER)) { 
+			Collections.sort(characterGameObjects,new Comparator<GameObject>() {
+				public int compare(GameObject g1,GameObject g2) {
+					return new CharacterWrapper(g1).getPlayerOrdering()-new CharacterWrapper(g2).getPlayerOrdering();
+				}
+			});
+		}
+		else {
+			Collections.sort(characterGameObjects,new Comparator<GameObject>() {
+				public int compare(GameObject g1,GameObject g2) {
+					return g1.getName().compareTo(g2.getName());
+				}
+			});
+		}
 		ArrayList<GameObject> charactersAndMinions = new ArrayList<>();
 		for (GameObject go : characterGameObjects) {
 			CharacterWrapper character = new CharacterWrapper(go);
@@ -2344,7 +2353,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					}
 				}
 			}
-			if (RealmUtility.getRealmSpeakPrefs().getBoolean("characterlistSortingByPlayOrder",true)) {
+			if (hostPrefs!=null && hostPrefs.hasPref(Constants.HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER)) {
 				sort();
 			}
 			else {

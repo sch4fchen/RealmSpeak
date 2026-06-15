@@ -1226,6 +1226,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don't block characters.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"EXTRA SHELTERS - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"SNOW HIDING IN CAVES - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER, "SORT CHARACTER LISTY BY PLAY ORDER - Sort the character list by the play order. This reveals some information.",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"PRODUCTIVE DWARF - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
