@@ -1,4 +1,3 @@
-2.2 Roll on the table below, choosing the column that identifies the clearing that you left from.
 2.3 If you roll a clearing result, move immediately to the appropriate clearing and continue your turn (if possible).
 2.4 If you roll the Avalanche or Lost results, apply the appropriate number of wounds (if necessary), and place your character piece on the tile, but not in a clearing. On following days, you may continue to roll on the same table for every two MOVE actions recorded. You may not perform any other action until you have successfully returned to a clearing.
 2.5 If you perish offroad, your belongings are scattered randomly among the tile’s clearings.

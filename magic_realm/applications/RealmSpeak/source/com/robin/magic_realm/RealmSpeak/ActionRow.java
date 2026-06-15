@@ -2068,6 +2068,13 @@ public class ActionRow {
 			return;
 		}
 		
+		if (location.clearing != null) {
+			// clearing might NOT be on the same side, if a tile flipped somewhere, so update it here
+			location.clearing = location.clearing.correctSide();
+			realmTable = new OffroadTravel(gameHandler.getMainFrame(),location.clearing);
+			handleTable();
+		}
+		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Move;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
