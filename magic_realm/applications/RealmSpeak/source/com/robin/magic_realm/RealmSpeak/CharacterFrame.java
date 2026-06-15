@@ -1147,6 +1147,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	public void centerOnToken() {
 		if (gameHandler.getGame().getGameStarted()) {
+			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+		}
+	}
+	private void toggleCenterOnToken() {
+		if (gameHandler.getGame().getGameStarted()) {
 			CenteredMapView map = gameHandler.getInspector().getMap();
 			if (savedMapOffset != null) {
 				map.setOffset(savedMapOffset);
@@ -1811,7 +1816,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	private void tokenClicked() {
-		centerOnToken();
+		toggleCenterOnToken();
 		if (DebugUtility.isCheat()) {
 			// If CHEAT is on, then clicking the token will allow you to cheat
 			cheat();
