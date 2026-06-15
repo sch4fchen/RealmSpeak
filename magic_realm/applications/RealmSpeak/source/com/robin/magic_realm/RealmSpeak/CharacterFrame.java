@@ -1183,7 +1183,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			charLabel.setIconTextGap(10);
 			charLabel.addMouseListener(new MouseAdapter() {
 				public void mousePressed(MouseEvent ev) {
-					tokenClicked();
+					Icon icon = charLabel.getIcon();
+					if (icon != null && ev.getX() <= charLabel.getInsets().left + icon.getIconWidth()) {
+						tokenClicked();
+					}
 				}
 			});
 			tokenPanel.add(charLabel, "West");
