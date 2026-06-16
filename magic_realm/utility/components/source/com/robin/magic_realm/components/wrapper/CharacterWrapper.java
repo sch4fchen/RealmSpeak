@@ -148,6 +148,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String TREACHERY_BLOCK = "treacheries_b"; // record of all treacheries
 	
 	public static final String PHASE_CHITS = "phaseChits__";
+	public static final String OFFROAD_TRAVEL_CLEARING = "offroadTravelClearing__";
+	public static final String OFFROAD_TRAVEL_LOST = "offroadTravelLost__";
 	
 	// Victory Requirements
 	public static final String VICTORY_REQ_BLOCK = "VR__";
@@ -631,6 +633,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public boolean getNeedsPlayColorChitInterruptPhaseEndDecision() {
 		return getBoolean(NEEDS_COLOR_CHIT_INTERRUPT_PHASE_END_DECISION);
+	}
+	public int getOffroadTravelClearing() {
+		return getInt(OFFROAD_TRAVEL_CLEARING);
+	}
+	public boolean isOffroadTravelLost() {
+		return getBoolean(OFFROAD_TRAVEL_LOST);
 	}
 	
 	// Other getters
@@ -2813,6 +2821,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
 			return hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL);
 		}
+		if (isOffroadTravelLost() && id!=ActionId.Offroad) {
+			return false;
+		}
 		
 		// Test hide
 		if (id==ActionId.Hide) {
@@ -4060,6 +4071,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void removeColorChitInterruptionActionCountPhaseEnd() {
 		removeAttribute(COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_END);
+	}
+	public void setOffroadTravelClearing(int val) {
+		setInt(OFFROAD_TRAVEL_CLEARING,val);
+	}
+	public void removeOffroadTravelClearing() {
+		removeAttribute(OFFROAD_TRAVEL_CLEARING);
+	}
+	public void setOffroadTravelLost(boolean val) {
+		setBoolean(OFFROAD_TRAVEL_LOST,val);
 	}
 	
 	// Adders

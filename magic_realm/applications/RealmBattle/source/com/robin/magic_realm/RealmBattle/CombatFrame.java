@@ -3754,6 +3754,12 @@ public class CombatFrame extends JFrame {
 					"Distracted!",JOptionPane.PLAIN_MESSAGE,activeCharacter.getIcon());
 			return;
 		}
+		if (activeCharacter.isOffroadTravelLost()) {
+			JOptionPane.showMessageDialog(
+					this,"You are lost and cannot RUN AWAY. Travel offroad to find a way back.",
+					"Lost!",JOptionPane.PLAIN_MESSAGE,activeCharacter.getIcon());
+			return;
+		}
 		
 		MoveActivator activator = new MoveActivator(this);
 		MoveActionResult result = activator.playedValidMoveChit("Run Away","You cannot run away, because you do not have a fast enough move to play.\n(Check your inventory!)");

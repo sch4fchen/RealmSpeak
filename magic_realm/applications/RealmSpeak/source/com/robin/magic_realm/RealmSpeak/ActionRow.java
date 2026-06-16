@@ -887,6 +887,51 @@ public class ActionRow {
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doMoveAction() {
+		doMoveAction(false);
+	}
+	private void doOffroadAction() {
+		TileLocation current = character.getCurrentLocation();
+		if (current.tile.getGameObject().hasThisAttribute(Constants.NO_OFFROAD_TRAVEL)) {
+			result = "Cannot offroad travel in this tile.";
+			completed = true;
+			return;
+		}
+		
+		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
+		
+		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
+		if ((character.isCharacter() || character.isHiredLeader()) && !character.isMinion()) {
+			RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
+			if (discoverToLeave!=null && CharacterWrapper.getIdForAction(character.getLastPerformedActionToday()) != ActionId.Move) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
+						"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
+				cancelled = true;
+				return;
+			}
+		}
+		
+		if (character.isTransmorphed()) {
+			if (RealmComponent.getRealmComponent(character.getTransmorph()).getWeight().isMaximum()) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"Your transmorphed form cannot move.");
+				cancelled = true;
+				return;
+			}
+		}
+		
+		character.removeOffroadTravelClearing();
+		realmTable = new OffroadTravel(gameHandler.getMainFrame(),current);
+		handleTable();
+		if (character.getOffroadTravelClearing()!=0) {
+			location = new TileLocation(location.tile.getClearing(character.getOffroadTravelClearing()));
+		} else {
+			completed = true;
+			return;
+		}
+		character.removeOffroadTravelClearing();
+		
+		doMoveAction(true);
+	}
+	private void doMoveAction(boolean offroadTravel) {
 		TileLocation current = character.getCurrentLocation();
 		
 		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
@@ -973,56 +1018,59 @@ public class ActionRow {
 			boolean gates = false;
 			boolean pathfinder = false;
 			
-			if (character.affectedByKey(Constants.MAGIC_PATH_EFFECT)) {
-				magicPath = path == null && current.tile == location.tile?true:false;
-				if (magicPath) {
-					overridePath = true;
-				}
-			}
-			
-			if (character.canWalkWoods(current.tile,current.clearing,location.clearing) || (current.isTileOnly() && !current.isFlying())) {
-				ArrayList<ClearingDetail> validClearings = new ArrayList<>();
-				if (current.clearing!=null) {
-					validClearings.addAll(current.clearing.getParent().getClearings());
-				}
-				else if (current.tile.equals(location.tile)) {
-					validClearings.addAll(location.clearing.getParent().getClearings());
-				}
-				if (current.isBetweenClearings()) {
-					validClearings.addAll(current.getOther().tile.getClearings());
-				}
-				if (validClearings.contains(location.clearing)) {
-					overridePath = true;
-				}
-			}
-			
 			boolean validMove = true;
-			if (current.isBetweenClearings()) {
-				validMove = current.clearing.equals(location.clearing) || current.getOther().clearing.equals(location.clearing);
-				if(current.clearing.connectionHasThorns(current.getOther())) validMove = false;
+			
+			if (!offroadTravel) {
+				if (character.affectedByKey(Constants.MAGIC_PATH_EFFECT)) {
+					magicPath = path == null && current.tile == location.tile?true:false;
+					if (magicPath) {
+						overridePath = true;
+					}
+				}
+				
+				if (character.canWalkWoods(current.tile,current.clearing,location.clearing) || (current.isTileOnly() && !current.isFlying())) {
+					ArrayList<ClearingDetail> validClearings = new ArrayList<>();
+					if (current.clearing!=null) {
+						validClearings.addAll(current.clearing.getParent().getClearings());
+					}
+					else if (current.tile.equals(location.tile)) {
+						validClearings.addAll(location.clearing.getParent().getClearings());
+					}
+					if (current.isBetweenClearings()) {
+						validClearings.addAll(current.getOther().tile.getClearings());
+					}
+					if (validClearings.contains(location.clearing)) {
+						overridePath = true;
+					}
+				}
+				
+				if (current.isBetweenClearings()) {
+					validMove = current.clearing.equals(location.clearing) || current.getOther().clearing.equals(location.clearing);
+					if(current.clearing.connectionHasThorns(current.getOther())) validMove = false;
+				}
+				
+				if (!overridePath && path==null) {
+					overridePath = ClearingUtility.canUseGates(character,location.clearing);
+					gates = true;
+				}
+				
+				if (path!=null && path.isHidden() && character.hasActiveInventoryThisKey(Constants.PATHFINDER)) {
+					overridePath = true;
+					pathfinder = true;
+				}
 			}
 			
-			if (!overridePath && path==null) {
-				overridePath = ClearingUtility.canUseGates(character,location.clearing);
-				gates = true;
-			}
-			
-			if (path!=null && path.isHidden() && character.hasActiveInventoryThisKey(Constants.PATHFINDER)) {
-				overridePath = true;
-				pathfinder = true;
-			}
-			
-			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null)) {
-				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path)) {
+			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null || offroadTravel)) {
+				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path) || offroadTravel) {					
 					// Make sure that if the character is moving into a mountain clearing, check current clearing
 					// to make sure monsters don't block the first half of that move
-					if (location.clearing.moveCost(character,current)>1 && RealmUtility.willBeBlocked(character,isFollowing,true)) {
+					if ((location.clearing.moveCost(character,current)>1 || offroadTravel) && RealmUtility.willBeBlocked(character,isFollowing,true)) {
 						character.setBlocked(true);
 						cancelled = true;
 						result = "BLOCKED";
 						return;
 					}
-					if (location.clearing.moveCost(character,current)>1) {
+					if (location.clearing.moveCost(character,current)>1 || offroadTravel) {
 						for (GameObject livingCharacter : RealmUtility.getLivingCharacters(gameHandler.getClient().getGameData())) {
 							new CharacterWrapper(livingCharacter).checkForBlockingState(true,current);
 						}
@@ -1186,11 +1234,11 @@ public class ActionRow {
 					PathDetail reverse = null;
 					if (path!=null) {
 						reverse = path.getEdgePathFromOtherTile();
-						if (!overridePath) {
+						if (!overridePath && !offroadTravel) {
 							character.updatePathKnowledge(path);
 						}
 					}
-					if (reverse!=null && !overridePath) {
+					if (reverse!=null && !overridePath && !offroadTravel) {
 						character.updatePathKnowledge(reverse);
 					}
 					
@@ -1225,11 +1273,11 @@ public class ActionRow {
 					}
 					
 					for (CharacterWrapper follower :  actionFollowers) {
-						if (!overridePath || path!=null) {
+						if ((!overridePath && !offroadTravel) || path!=null) {
 							if (follower.canFollow()) {
 								follower.moveToLocation(gameHandler.getMainFrame(),location);
 								// Followers ALWAYS learn secrets (unless walking woods...?)
-								if (!overridePath) {
+								if (!overridePath && !offroadTravel) {
 									follower.updatePathKnowledge(path);
 									if (reverse!=null) {
 										follower.updatePathKnowledge(reverse);
@@ -2057,26 +2105,6 @@ public class ActionRow {
 		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
-		completed = true;
-	}
-	private void doOffroadAction() {
-		TileLocation tl = character.getCurrentLocation();
-		if (tl.tile.getGameObject().hasThisAttribute(Constants.NO_OFFROAD_TRAVEL)) {
-			result = "Cannot offroad travel in this tile.";
-			completed = true;
-			return;
-		}
-		
-		if (location.clearing != null) {
-			// clearing might NOT be on the same side, if a tile flipped somewhere, so update it here
-			location.clearing = location.clearing.correctSide();
-			realmTable = new OffroadTravel(gameHandler.getMainFrame(),location.clearing);
-			handleTable();
-		}
-		
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.Move;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		completed = true;
 	}

@@ -1,9 +1,3 @@
-2.3 If you roll a clearing result, move immediately to the appropriate clearing and continue your turn (if possible).
-2.4 If you roll the Avalanche or Lost results, apply the appropriate number of wounds (if necessary), and place your character piece on the tile, but not in a clearing. On following days, you may continue to roll on the same table for every two MOVE actions recorded. You may not perform any other action until you have successfully returned to a clearing.
-2.5 If you perish offroad, your belongings are scattered randomly among the tile’s clearings.
-2.6 When you are lost, you still summon monsters normally except that you cannot run from a battle (a most unfortunate drawback to this method of travel).
-CHASM - Offroad travel does not allow you to traverse the Chasm, without crossing the bridge between clearings 5 and 6. If you do choose to travel offroad, be sure to remain on the same side of the chasm regardless of the roll results.
-
 Optional Rule for Guild benefits by level
 	Acquiring the third and final benefit is dependant on the presence of the unique guild chit. If the chit is already in use by another Character, then the benefit is not granted until the owning Character is either killed or change guild affiliation.
 Optional Rule for removing Guild services

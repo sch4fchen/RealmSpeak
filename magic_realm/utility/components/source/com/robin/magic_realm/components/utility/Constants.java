@@ -595,6 +595,7 @@ public class Constants {
 	public static final String MOVE_SPEED_BONUS_COMBAT_BOX3 = "move_speed_bonus_combat_box3";
 	public static final String COLOR_SOURCE = "color_source";
 	public static final String NO_OFFROAD_TRAVEL = "no_offroad_travel";
+	public static final String OFFROAD_TRAVEL_SIDES = "offroad_travel_sides";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
