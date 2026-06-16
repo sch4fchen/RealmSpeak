@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.robin.general.swing.DieRoller;
+import com.robin.general.util.OrderedHashtable;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
@@ -137,20 +138,24 @@ public class OffroadTravel extends Search {
 	private ArrayList<String> getClearingsOfSameSide() {
 		int side = 0;
 		int currentClearingNum = current.clearing.getNum();
+		String sideString = current.tile.getStatSide();
 		boolean sideExists = false;
-		while(true) {
-			ArrayList<String> list = current.tile.getGameObject().getThisAttributeList(Constants.OFFROAD_TRAVEL_SIDES+"_"+side);
+		ArrayList<String> list = null;
+		for (int i = 0; i<=5; i++) {
+			list = (ArrayList<String>) current.tile.getGameObject().getAttributeBlock(sideString).getOrDefault(Constants.OFFROAD_TRAVEL_SIDE+"_"+i,null);
 			if (list!=null && !list.isEmpty()) {
-				for (int i = 0; i<=list.size(); i++) {
-					if (list.get(i).matches(String.valueOf(currentClearingNum))) {
-						side = i;
+				for (int j=0; j<list.size(); j++) {
+					if (list.get(j).matches(String.valueOf(currentClearingNum))) {
+						sideExists = true;
 						break;
 					}
 				}
 			}
 			if (sideExists) break;
 		}
-		if (sideExists) return current.tile.getGameObject().getThisAttributeList(Constants.OFFROAD_TRAVEL_SIDES+"_"+side);
+		if (sideExists) {
+			return list;
+		}
 		return null;
 	}
 	private void choiceAndMarkPath(CharacterWrapper character) {
@@ -181,8 +186,8 @@ public class OffroadTravel extends Search {
 		ClearingDetail selectedClearing = null;
 		if (current.tile.getGameObject().hasThisAttribute(Constants.OFFROAD_TRAVEL_SIDES)) {
 			ArrayList<String> availableClearings = getClearingsOfSameSide();
-			int selectedClearingNum = Integer.parseInt(availableClearings.get(availableClearings.size()));
-			selectedClearing = current.tile.getClearings().get(RandomNumber.getRandom(selectedClearingNum));
+			String selectedClearingNum = availableClearings.get(RandomNumber.getRandom(availableClearings.size()));
+			selectedClearing = current.tile.getClearing(selectedClearingNum);
 		} else {
 			selectedClearing = current.tile.getClearings().get(RandomNumber.getRandom(current.tile.getClearingCount()));
 		}

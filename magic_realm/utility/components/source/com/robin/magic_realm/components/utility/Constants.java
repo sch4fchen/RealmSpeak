@@ -596,6 +596,7 @@ public class Constants {
 	public static final String COLOR_SOURCE = "color_source";
 	public static final String NO_OFFROAD_TRAVEL = "no_offroad_travel";
 	public static final String OFFROAD_TRAVEL_SIDES = "offroad_travel_sides";
+	public static final String OFFROAD_TRAVEL_SIDE = "offroad_travel_side";
 	
 	// New Spells
 	public static final String SUMMONING = "summoning";
