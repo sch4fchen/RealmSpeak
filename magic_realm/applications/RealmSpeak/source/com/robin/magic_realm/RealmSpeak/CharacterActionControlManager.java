@@ -265,11 +265,6 @@ public class CharacterActionControlManager {
 		offroadAction = new AbstractAction("",offroadIcon) {
 			public void actionPerformed(ActionEvent ev) {
 				recordingARed = offroadIcon.isWarningOn();
-				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode());
-				if (rtp!=null) {
-					updateControls(rtp.getPhaseManager(),true,false);
-				}
-				recordingARed = offroadIcon.isWarningOn();
 				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode(),null,2,1);
 			}
 		};
