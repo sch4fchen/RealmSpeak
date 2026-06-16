@@ -911,7 +911,7 @@ public class CharacterActionControlManager {
 		handleInvalidAction(remoteSpellAction,remoteSpellIcon,willBeRed(pm,DayAction.REMOTE_SPELL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(cacheAction,cacheIcon,willBeRed(pm,DayAction.CACHE_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(stealAction,stealIcon,willBeRed(pm,DayAction.STEAL_ACTION,usingPony,planned),birdsong,recordingActions);
-		handleInvalidAction(offroadAction,offroadIcon,willBeRed(pm,DayAction.STEAL_ACTION,usingPony,planned),birdsong,recordingActions);
+		handleInvalidAction(offroadAction,offroadIcon,willBeRed(pm,DayAction.OFFROAD_TRAVEL_ACTION,usingPony,planned),birdsong,recordingActions);
 		
 		handleInvalidAction(healAction,healIcon,willBeRed(pm,DayAction.HEAL_ACTION,usingPony,planned),birdsong,recordingActions);
 		handleInvalidAction(repairAction,repairIcon,willBeRed(pm,DayAction.REPAIR_ACTION,usingPony,planned),birdsong,recordingActions);
