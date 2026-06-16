@@ -918,6 +918,7 @@ public class ActionRow {
 			}
 		}
 		
+		result = "";
 		character.removeOffroadTravelClearing();
 		realmTable = new OffroadTravel(gameHandler.getMainFrame(),current);
 		handleTable();
@@ -955,7 +956,9 @@ public class ActionRow {
 			}
 		}
 		
-		result = "";
+		if (!offroadTravel) {
+			result = "";
+		}
 		if (character.moveRandomly() && !current.isBetweenClearings()) {
 			// Pick a random location
 			DieRoller roller = new DieRoller();
@@ -1306,7 +1309,9 @@ public class ActionRow {
 						gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
 					}
 					gameHandler.updateCharacterFrames();
-					result = result+"moved";
+					if (!offroadTravel) {
+						result = result+"moved";
+					}
 					
 					if (magicPath) {
 						result = result+" (using Magic Path)";
