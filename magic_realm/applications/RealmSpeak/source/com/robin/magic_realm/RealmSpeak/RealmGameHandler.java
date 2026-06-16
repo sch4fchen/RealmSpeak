@@ -994,27 +994,28 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			resetCombatFrame();
 		}
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS_EXPIRE_IMMEDIATE.equals(command)) {
-			boolean teleported = false;
-			for (GameObject spellObject : info.getGameObjects()) {
-				SpellWrapper spell = new SpellWrapper(spellObject);
-				TileLocation before = spell.getCurrentLocation();
-				spell.affectTargets(CombatFrame.getSingleton(), game, true, null); // this is STILL happening in a thread...
-				TileLocation after = spell.getCurrentLocation();
-				if (before != null && !before.equals(after)) {
-					// The spell transported its target, so update combat
-					RealmBattle.testCombatInClearing(before, client.getGameData());
-					teleported = true;
+			// Run on the EDT so that any blocking dialog (e.g. TileLocationChooser for Teleport)
+			// does not stall the GameClient thread and cause the server to time out.
+			SwingUtilities.invokeLater(() -> {
+				boolean teleported = false;
+				for (GameObject spellObject : info.getGameObjects()) {
+					SpellWrapper spell = new SpellWrapper(spellObject);
+					TileLocation before = spell.getCurrentLocation();
+					spell.affectTargets(CombatFrame.getSingleton(), game, true, null);
+					TileLocation after = spell.getCurrentLocation();
+					if (before != null && !before.equals(after)) {
+						// The spell transported its target, so update combat
+						RealmBattle.testCombatInClearing(before, client.getGameData());
+						teleported = true;
+					}
 				}
-			}
-			// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
-			resetCombatFrame();
-			if (teleported) {
-				// The character left the combat clearing. The server is waiting for this client to submit
-				// its positioning/action choices, but the frame is now blank with no way to re-drive
-				// doDisplayInteractive(). Submit on the EDT to unblock the server-side combat state machine.
-				// (Cannot call submitChangesWithTimeout() directly — handleDirectInfo runs on the GameClient thread.)
-				SwingUtilities.invokeLater(this::submitChangesWithTimeout);
-			}
+				// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
+				resetCombatFrame();
+				if (teleported) {
+					// Character left the combat clearing — submit to unblock server-side combat state machine.
+					submitChangesWithTimeout();
+				}
+			});
 		}
 		// else if
 		// (RealmDirectInfoHolder.SPELL_WISH_FORCE_TRANSPORT.equals(command)) {
