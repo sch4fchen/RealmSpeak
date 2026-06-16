@@ -8,6 +8,7 @@ import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementGuildLocation extends QuestRequirement {
 	public static final String GUILD = "_guild";
+	public static final String CURRENT_GUILD = "_current_guild";
 
 	public QuestRequirementGuildLocation(GameObject go) {
 		super(go);
@@ -15,8 +16,11 @@ public class QuestRequirementGuildLocation extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		TileLocation loc = character.getCurrentLocation();
-		if (loc == null || loc.clearing == null || loc.clearing.getGuild() == null || character.getCurrentGuild() == null) return false;
-		if (loc.clearing.getGuild().getName().matches(character.getCurrentGuild())) {
+		if (loc == null || loc.clearing == null || loc.clearing.getGuild() == null) return false;
+		if (currentGuildLocation() && character.getCurrentGuild()!=null && loc.clearing.getGuild().getGameObject().getName().matches(character.getCurrentGuild())) {
+			return true;
+		}
+		if (!currentGuildLocation() && loc.clearing.getGuild().getGameObject().getName().matches(getGuildName())) {
 			return true;
 		}
 		
@@ -24,11 +28,18 @@ public class QuestRequirementGuildLocation extends QuestRequirement {
 	}
 	
 	protected String buildDescription() {
+		if (currentGuildLocation()) {
+			return "Character must be in the clearing with his current Guild.";
+		}
 		return "Character must be in the clearing with the "+getGuildName();
 	}
 
 	public String getGuildName() {
 		return getString(GUILD);
+	}
+	
+	public boolean currentGuildLocation() {
+		return getBoolean(CURRENT_GUILD);
 	}
 
 	@Override

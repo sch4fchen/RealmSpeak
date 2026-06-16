@@ -140,6 +140,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case GuildLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.GUILD, "Guild", FieldType.Regex, null, new String[] { "guild" }));
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.CURRENT_GUILD, "Check for current Guild", FieldType.Boolean));
 				break;
 			case Hidden:
 				break;
