@@ -3,6 +3,7 @@ package com.robin.magic_realm.components.table;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
@@ -192,15 +193,20 @@ public class OffroadTravel extends Search {
 		character.removeOffroadTravelClearing();
 		character.setOffroadTravelLost(false);
 	}
-	private static void lost(CharacterWrapper character, int wounds) {
+	private void lost(CharacterWrapper character, int wounds) {
+		String text = "You got Lost!";
 		if (wounds!=0) {
 			character.setExtraWounds(wounds);
+			text = text + " You received "+wounds+" wounds while travelling offroad.";
 		}
 		character.setOffroadTravelLost(true);
+		JOptionPane.showMessageDialog(getParentFrame(),text,"Lost",JOptionPane.INFORMATION_MESSAGE);
 	}
-	private static void avalanche(CharacterWrapper character) {
+	private void avalanche(CharacterWrapper character) {
 		DieRoller dieRoller = DieRollBuilder.getDieRollBuilder(null,character).createRoller("Avalance",1);
-		character.setExtraWounds(dieRoller.getTotal());
+		int wounds = dieRoller.getTotal();
+		character.setExtraWounds(wounds);
 		character.setOffroadTravelLost(true);
+		JOptionPane.showMessageDialog(getParentFrame(),"An avalanche hit you and you received "+wounds+" wounds. You are now lost!","Avalanche",JOptionPane.INFORMATION_MESSAGE);
 	}
 }

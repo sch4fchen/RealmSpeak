@@ -922,7 +922,7 @@ public class ActionRow {
 		realmTable = new OffroadTravel(gameHandler.getMainFrame(),current);
 		handleTable();
 		if (character.getOffroadTravelClearing()!=0) {
-			location = new TileLocation(location.tile.getClearing(character.getOffroadTravelClearing()));
+			location = new TileLocation(current.tile.getClearing(character.getOffroadTravelClearing()));
 		} else {
 			completed = true;
 			return;
@@ -1061,7 +1061,7 @@ public class ActionRow {
 			}
 			
 			if (validMove && (overridePath || magicPath || current.isBetweenClearings() || path!=null || offroadTravel)) {
-				if (overridePath || magicPath || current.isBetweenClearings() || character.validPath(path) || offroadTravel) {					
+				if (overridePath || offroadTravel || magicPath || current.isBetweenClearings() || character.validPath(path)) {					
 					// Make sure that if the character is moving into a mountain clearing, check current clearing
 					// to make sure monsters don't block the first half of that move
 					if ((location.clearing.moveCost(character,current)>1 || offroadTravel) && RealmUtility.willBeBlocked(character,isFollowing,true)) {
@@ -1311,7 +1311,7 @@ public class ActionRow {
 					if (magicPath) {
 						result = result+" (using Magic Path)";
 					}
-					if (!overridePath && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
+					if (!overridePath && !offroadTravel && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
 						// Other characters in the same clearing who have found hidden enemies
 						// for the day should gain a discovery when this move occurs (on either end of the path!)
 						if (current.hasClearing() && !hostPrefs.hasPref(Constants.SR_NO_SPYING)) {

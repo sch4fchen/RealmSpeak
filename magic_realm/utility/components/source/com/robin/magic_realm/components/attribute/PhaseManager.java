@@ -512,7 +512,9 @@ public class PhaseManager {
 					}
 				}
 			}
-			list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
+			if (list!=null) {
+				list.removeAll(Collections.singleton(new Requirement(go))); //removes all instances of this requirement
+			}
 			if (listOffroadMove!=null) {
 				listOffroadMove.removeAll(Collections.singleton(new Requirement(go)));
 			}
@@ -520,7 +522,7 @@ public class PhaseManager {
 			if (go==ponyObject) {
 				ponyMoves--;
 			}
-			if (list.isEmpty() || listOffroadMove!=null) {
+			if ((list!=null&&list.isEmpty()) || listOffroadMove!=null) {
 				if (freeActions.containsKey(trimmedPhase(phase))) {
 					freeActions.removeKeyValue(trimmedPhase(phase),new Requirement(go));
 				} else if ("O".equals(phase) && listOffroadMove!=null && listOffroadMove.isEmpty() && freeActions.containsKey("M")) {
