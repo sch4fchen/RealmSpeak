@@ -270,7 +270,7 @@ public class CharacterActionControlManager {
 					updateControls(rtp.getPhaseManager(),true,false);
 				}
 				recordingARed = offroadIcon.isWarningOn();
-				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode());
+				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode(),null,2,1);
 			}
 		};
 		offroadAction.putValue(Action.SHORT_DESCRIPTION,DayAction.OFFROAD_TRAVEL_ACTION.getName());
@@ -506,13 +506,9 @@ public class CharacterActionControlManager {
 		
 		ArrayList<String> actions = new ArrayList<>();
 		Collection<String> c = getCharacter().getCurrentActions();
-		String removed = null;
 		if (c!=null && !c.isEmpty()) {
 			actions.addAll(c);
-			removed = actions.remove(actions.size()-1);
-			if (removed.startsWith(DayAction.OFFROAD_TRAVEL_ACTION.getCode())) {
-				actions.remove(actions.size()-1);
-			}
+			String removed = actions.remove(actions.size()-1);
 			if (removed.startsWith(DayAction.MOVE_ACTION.getCode()) || removed.startsWith(DayAction.FLY_ACTION.getCode())) {
 				// deleting a move, so delete a clearing plot
 				getCharacter().chompClearingPlot();
@@ -542,9 +538,6 @@ public class CharacterActionControlManager {
 		if (c!=null && !c.isEmpty()) {
 			actionTypeCodes.addAll(c);
 			actionTypeCodes.remove(actionTypeCodes.size()-1);
-			if (removed != null &&  removed.startsWith(DayAction.OFFROAD_TRAVEL_ACTION.getCode())) {
-				actionTypeCodes.remove(actionTypeCodes.size()-1);
-			}
 		}
 		getCharacter().setCurrentActionTypeCodes(actionTypeCodes);
 		
