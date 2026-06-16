@@ -37,6 +37,7 @@ public class QuestLocationEditor extends GenericEditor {
 	private SuggestionTextArea locationList;
 	
 	private static String [] companions = getAllCompanionNames();
+	private static String [] travelers = null;
 	
 	private static String[] getAllCompanionNames() {
 		ArrayList<String> companions = new ArrayList<>();
@@ -54,6 +55,16 @@ public class QuestLocationEditor extends GenericEditor {
 		return companions.toArray(new String[0]);
 	}
 	
+	private static String[] getAllTravelerNames(GameData realmSpeakData) {
+		ArrayList<String> travelers = new ArrayList<>();
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		ArrayList<GameObject> templates = pool.find("traveler_template");
+		for (GameObject t : templates) {
+			travelers.add(t.getName());
+		}
+		return travelers.toArray(new String[0]);
+	}
+	
 	public QuestLocationEditor(JFrame parent,GameData realmSpeakData,Quest quest,QuestLocation location) {
 		super(parent,realmSpeakData);
 		this.parent = parent;
@@ -69,9 +80,11 @@ public class QuestLocationEditor extends GenericEditor {
 	
 	private static void initSuggestionWords(GameData realmSpeakData) {
 		suggestionWords = new ArrayList<>();
+		travelers = getAllTravelerNames(realmSpeakData);
 		Collections.addAll(suggestionWords, QuestConstants.wolfs);
 		Collections.addAll(suggestionWords, QuestConstants.transforms);
 		Collections.addAll(suggestionWords, companions);
+		Collections.addAll(suggestionWords, travelers);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		String query = "!part,!summon,!spell,!tile,!character_chit,!virtual_dwelling,!season,!test,!character";
 		for(GameObject go:pool.find(query)) {
@@ -161,7 +174,7 @@ public class QuestLocationEditor extends GenericEditor {
 		StringBuilder sb = new StringBuilder();
 		for (String token:getLocationList()) {
 			sb.append(token);
-			if (!Arrays.asList(QuestConstants.wolfs).contains(token) && !Arrays.asList(QuestConstants.transforms).contains(token) && !Arrays.asList(companions).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
+			if (!Arrays.asList(QuestConstants.wolfs).contains(token) && !Arrays.asList(QuestConstants.transforms).contains(token) && !Arrays.asList(companions).contains(token) && !Arrays.asList(travelers).contains(token) && !QuestLocation.validLocation(realmSpeakData,token)) {
 				sb.append(INVALID);
 			}
 			sb.append("\n");
