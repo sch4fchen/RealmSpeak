@@ -23,7 +23,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	private boolean alteredMoveSpeed = false;
 	private static Hashtable<Integer,ImageIcon> dieIconHash;
 	
-	protected TravelerChitComponent(GameObject obj) {
+	public TravelerChitComponent(GameObject obj) {
 		super(obj);
 		darkColor = MagicRealmColor.FORESTGREEN;
 	}
@@ -79,7 +79,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		GameObject template = list.get(r);
 		assignTravelerTemplate(template);
 	}
-	private void assignTravelerTemplate(GameObject template) {
+	public void assignTravelerTemplate(GameObject template) {
 		getGameObject().setName(template.getName());
 		getGameObject().copyAttributeBlockFrom(template,"this");
 		getGameObject().removeThisAttribute(Constants.TRAVELER_TEMPLATE);

@@ -1104,7 +1104,8 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(addNative);
-		JButton addVisitor = new JButton("Visitor");
+		JPanel miniControls = new JPanel(new GridLayout(1, 2));
+		JButton addVisitor = new JButton("V");
 		addVisitor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				ArrayList<GameObject> things = chooseOther("Visitor", Constants.VISITOR);
@@ -1118,7 +1119,28 @@ public class QuestTesterFrame extends JFrame {
 				retestQuest();
 			}
 		});
-		controls.add(addVisitor);
+		miniControls.add(addVisitor);
+		JButton addTraveler = new JButton("T");
+		addTraveler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> things = chooseOther("Traveler", Constants.TRAVELER_TEMPLATE);
+				if (things == null)
+					return;
+				for (GameObject template : things) {
+					GameObject go = gameData.createNewObject();
+					TravelerChitComponent traveler = new TravelerChitComponent(go);
+					traveler.assignTravelerTemplate(template);
+					traveler.getGameObject().setThisAttribute("traveler");
+					traveler.getGameObject().setThisAttribute("chit");
+					traveler.getGameObject().setThisAttribute("seen");
+					character.getCurrentLocation().clearing.add(traveler.getGameObject(), null);
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		miniControls.add(addTraveler);
+		controls.add(miniControls);
 		JButton addMission = new JButton("Mission");
 		addMission.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {

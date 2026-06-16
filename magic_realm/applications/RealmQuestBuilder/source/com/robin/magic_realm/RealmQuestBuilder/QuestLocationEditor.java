@@ -14,6 +14,7 @@ import com.robin.general.swing.*;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.CompanionEditPanel;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class QuestLocationEditor extends GenericEditor {
 	
@@ -58,7 +59,7 @@ public class QuestLocationEditor extends GenericEditor {
 	private static String[] getAllTravelerNames(GameData realmSpeakData) {
 		ArrayList<String> travelers = new ArrayList<>();
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
-		ArrayList<GameObject> templates = pool.find("traveler_template");
+		ArrayList<GameObject> templates = pool.find(Constants.TRAVELER_TEMPLATE);
 		for (GameObject t : templates) {
 			travelers.add(t.getName());
 		}
