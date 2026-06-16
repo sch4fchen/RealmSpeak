@@ -265,6 +265,11 @@ public class CharacterActionControlManager {
 		offroadAction = new AbstractAction("",offroadIcon) {
 			public void actionPerformed(ActionEvent ev) {
 				recordingARed = offroadIcon.isWarningOn();
+				PhaseManager pm = getCharacter().getPhaseManager(true);
+				if (!recordingARed && pm!=null) {
+					character.updatePhaseManagerWithCurrentActions(pm);
+					recordingARed = !pm.canAddAction("O,O",character.isPonyActive());
+				}
 				doRecord(DayAction.OFFROAD_TRAVEL_ACTION.getCode(),null,2,1);
 			}
 		};
