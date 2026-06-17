@@ -39,6 +39,7 @@ public class CombatWrapper extends GameObjectWrapper {
 	private static final String BETRAYED = "BETRAYED";
 	private static final String BETRAYED_BY = "BETRAYED_BY";
 	private static final String AFFECTED_BY_EXORCISE = "AFFECTED_BY_EXORCISE";
+	private static final String COMBAT_PREBATTLE_DONE = "COMBAT_PREBATTLE_DONE";
 	
 	// Round-only Information
 	private static final String COMBAT_BOXES_ATTACK = "CMB_BOXES_ATT";
@@ -154,6 +155,12 @@ public class CombatWrapper extends GameObjectWrapper {
 	}
 	public boolean isAffectedByExorcise() {
 		return getBoolean(AFFECTED_BY_EXORCISE);
+	}
+	public void setCombatPreBattleDone() {
+		setBoolean(COMBAT_PREBATTLE_DONE,true);
+	}
+	public boolean hasCombatPreBattleDone() {
+		return getBoolean(COMBAT_PREBATTLE_DONE);
 	}
 	public void setBurnedColor(boolean val) {
 		setBoolean(BURNED_COLOR,val);
