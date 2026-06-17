@@ -994,18 +994,28 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			resetCombatFrame();
 		}
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS_EXPIRE_IMMEDIATE.equals(command)) {
-			for (GameObject spellObject : info.getGameObjects()) {
-				SpellWrapper spell = new SpellWrapper(spellObject);
-				TileLocation before = spell.getCurrentLocation();
-				spell.affectTargets(CombatFrame.getSingleton(), game, true, null); // this is STILL happening in a thread...
-				TileLocation after = spell.getCurrentLocation();
-				if (before != null && !before.equals(after)) {
-					// The spell transported its target, so update combat
-					RealmBattle.testCombatInClearing(before, client.getGameData());
+			// Run on the EDT so that any blocking dialog (e.g. TileLocationChooser for Teleport)
+			// does not stall the GameClient thread and cause the server to time out
+			SwingUtilities.invokeLater(() -> {
+				boolean teleported = false;
+				for (GameObject spellObject : info.getGameObjects()) {
+					SpellWrapper spell = new SpellWrapper(spellObject);
+					TileLocation before = spell.getCurrentLocation();
+					spell.affectTargets(CombatFrame.getSingleton(), game, true, null); // this is STILL happening in a thread...
+					TileLocation after = spell.getCurrentLocation();
+					if (before != null && !before.equals(after)) {
+						// The spell transported its target, so update combat
+						RealmBattle.testCombatInClearing(before, client.getGameData());
+						teleported = true;
+					}
 				}
-			}
-			// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
-			resetCombatFrame();
+				// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
+				resetCombatFrame();
+				if (teleported) {
+					// Character left the combat clearing — submit to unblock server-side combat state machine.
+					submitChangesWithTimeout();
+				}
+			});
 		}
 		// else if
 		// (RealmDirectInfoHolder.SPELL_WISH_FORCE_TRANSPORT.equals(command)) {
