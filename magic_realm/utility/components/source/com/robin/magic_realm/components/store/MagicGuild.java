@@ -126,10 +126,13 @@ public class MagicGuild extends GuildStore {
 		int gold = (int)character.getGold();
 		int gtCount = greatTreasures.size();
 		int activeCursesOrSpells = activeCurses.size() + bewitchingSpells.size();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		
 		ButtonOptionDialog chooser = new ButtonOptionDialog(frame,trader.getIcon(),"Which service?",getTraderName()+" Services",true);
-		if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,gtCount>=GT_PRICE);
-		updateButtonChooser(chooser,level);
+		if (!hostPrefs.hasPref(Constants.GUILDS_NO_ADVANCEMENT_SERVICE)) {
+			if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,gtCount>=GT_PRICE);
+			updateButtonChooser(chooser,level);
+		}
 		if (level==1) chooser.addSelectionObject(CURE_SERVICE,(gold>=5) && activeCursesOrSpells>0);
 		if (level>=2) chooser.addSelectionObject(CURE_FREE_SERVICE,(gold>=10) && activeCursesOrSpells>0);
 		if (level>=2) chooser.addSelectionObject(GENERATE_COLOR_SERVICE,gold>=5);

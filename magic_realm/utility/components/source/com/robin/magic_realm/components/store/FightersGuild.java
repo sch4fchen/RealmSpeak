@@ -11,6 +11,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class FightersGuild extends GuildStore {
 	
@@ -52,10 +53,13 @@ public class FightersGuild extends GuildStore {
 	protected String doGuildService(JFrame frame,int level) {
 		int gold = (int)character.getGold();
 		int fame = (int)character.getFame();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		
 		ButtonOptionDialog chooser = new ButtonOptionDialog(frame,trader.getIcon(),"Which service?",getTraderName()+" Services",true);
-		if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,fame>=FAME_PRICE);
-		updateButtonChooser(chooser,level);
+		if (!hostPrefs.hasPref(Constants.GUILDS_NO_ADVANCEMENT_SERVICE)) {
+			if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,fame>=FAME_PRICE);
+			updateButtonChooser(chooser,level);
+		}
 		if (level>=1) chooser.addSelectionObject(REST_SERVICE,(gold>=5) && !restableChits.isEmpty());
 		if (level>=2) chooser.addSelectionObject(REPAIR_SERVICE,(gold>=10) && !repairableArmor.isEmpty());
 		chooser.setVisible(true);

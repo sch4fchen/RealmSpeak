@@ -11,6 +11,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class ThievesGuild extends GuildStore {
 	
@@ -102,9 +103,12 @@ public class ThievesGuild extends GuildStore {
 	}
 	protected String doGuildService(JFrame frame,int level) {
 		int gold = (int)character.getGold();
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		ButtonOptionDialog chooser = new ButtonOptionDialog(frame,trader.getIcon(),"Which service?",getTraderName()+" Services",true);
-		if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,gold>=GOLD_PRICE);
-		updateButtonChooser(chooser,level);
+		if (!hostPrefs.hasPref(Constants.GUILDS_NO_ADVANCEMENT_SERVICE)) {
+			if (level<3) chooser.addSelectionObject(ADVANCEMENT_SERVICE,gold>=GOLD_PRICE);
+			updateButtonChooser(chooser,level);
+		}
 		if (level>=1) chooser.addSelectionObject(MAP_SERVICE_1,(gold>=5) && !tilesWithUnknownPaths.isEmpty());
 		if (level>=2) chooser.addSelectionObject(MAP_SERVICE_2,(gold>=10) && !tilesWithUnknownPassages.isEmpty());
 		if (level==3) chooser.addSelectionObject(UNLOCK_SERVICE,(gold>=50) && !openable.isEmpty());

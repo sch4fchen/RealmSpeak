@@ -1176,6 +1176,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.setTabHtmlDescription(GUILDS,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Guilds</font></body></html>");
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_SERVICES,"NO SERVICES - Guild do not provide any services.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LOOSE_BENEFITS,"LOOSE BENEFITS - If character looses a guild level or exits a guild, corresponding guild benefits are lost.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));

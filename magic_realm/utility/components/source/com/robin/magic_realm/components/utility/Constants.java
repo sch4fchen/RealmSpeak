@@ -1009,6 +1009,7 @@ public class Constants {
 	// Guilds
 	public static final String GUILDS_NO_SERVICES = "GuildsNoServices";
 	public static final String GUILDS_LOOSE_BENEFITS = "GuildsLooseBenefits";
+	public static final String GUILDS_NO_ADVANCEMENT_SERVICE = "GuildsNoAdvancementService";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";
