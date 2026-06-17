@@ -21,6 +21,37 @@ public abstract class GuildStore extends Store {
 	
 	protected abstract void setupGuildSpecific();
 	protected abstract String doGuildService(JFrame frame,int level);
+	public void applyGuildBenefit(JFrame frame, CharacterWrapper character, int level) {
+		switch (level) {
+			case 1: applyGuildBenefit1(frame,character);
+				break;
+			case 2: applyGuildBenefit2(frame,character);
+				break;
+			case 3: applyGuildBenefit3(frame,character);
+				break;
+		}
+	}
+	public void unapplyAllGuildBenefits(JFrame frame, CharacterWrapper character) {
+		for (int i = 1; i <= 3; i++) {
+			unapplyGuildBenefit(frame,character,i);
+		}
+	}
+	public void unapplyGuildBenefit(JFrame frame, CharacterWrapper character, int level) {
+		switch (level) {
+			case 1: unapplyGuildBenefit1(frame,character);
+				break;
+			case 2: unapplyGuildBenefit2(frame,character);
+				break;
+			case 3: unapplyGuildBenefit3(frame,character);
+				break;
+		}
+	}
+	public abstract void applyGuildBenefit1(JFrame frame, CharacterWrapper character);
+	public abstract void unapplyGuildBenefit1(JFrame frame, CharacterWrapper character);
+	public abstract void applyGuildBenefit2(JFrame frame, CharacterWrapper character);
+	public abstract void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character);
+	public abstract void applyGuildBenefit3(JFrame frame, CharacterWrapper character);
+	public abstract void unapplyGuildBenefit3(JFrame frame, CharacterWrapper character);
 
 	public GuildStore(GuildChitComponent guild,CharacterWrapper character) {
 		super(guild);

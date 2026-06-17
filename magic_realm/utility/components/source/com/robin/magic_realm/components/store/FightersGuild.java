@@ -83,23 +83,42 @@ public class FightersGuild extends GuildStore {
 				character.setCurrentGuildLevel(newLevel);
 				chooseFriendlinessGain(frame);
 				if (newLevel==3) {
-					GameObject go = getNewCharacterChit();
-					Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
-					if (!vul.isTremendous()) {
-						vul = vul.addStrength(1);
-					}
-					go.setThisAttribute("action","fight");
-					go.setThisAttribute("speed","3");
-					go.setThisAttribute("strength",vul.toString());
-					go.setThisAttribute("effort","2");
-					go.setName(character.getCharacterLevelName(4)+" FIGHT "+vul.toString()+"3**");
-					go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
-					RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
+					applyGuildBenefit3(frame,character);
 				}
 				return "Advanced to "+character.getCurrentGuildLevelName()+"!";
 			}
 		}
 		
 		return null;
+	}
+	public void applyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+	}
+	public void unapplyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+	}
+	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+	}
+	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+	}
+	public void applyGuildBenefit3(JFrame frame, CharacterWrapper character) {
+		GameObject go = getNewCharacterChit();
+		Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
+		if (!vul.isTremendous()) {
+			vul = vul.addStrength(1);
+		}
+		go.setThisAttribute("action","fight");
+		go.setThisAttribute("speed","3");
+		go.setThisAttribute("strength",vul.toString());
+		go.setThisAttribute("effort","2");
+		go.setName(character.getCharacterLevelName(4)+" FIGHT "+vul.toString()+"3**");
+		go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
+		RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
+	}
+	public void unapplyGuildBenefit3(JFrame frame, CharacterWrapper character) {
+		for (CharacterActionChitComponent chit : character.getAllChits()) {
+			if (chit.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3")) {
+				character.getGameObject().remove(chit.getGameObject());
+				chit.getGameObject().clearAllAttributes();
+			}
+		}
 	}
 }

@@ -21,6 +21,8 @@ import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
+import com.robin.magic_realm.components.store.GuildStore;
+import com.robin.magic_realm.components.store.Store;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.swing.TileLocationChooser;
@@ -8104,6 +8106,16 @@ public class CharacterWrapper extends GameObjectWrapper {
     	clear(CURRENT_GUILD);
     	clear(CURRENT_GUILD_LEVEL);
     }
+	public GuildStore getCurrentGuildStore() {
+		if (getCurrentGuild()==null) return null;
+		GameData data = getGameObject().getGameData();
+		GamePool pool = new GamePool(data.getGameObjects());
+		GameObject guild = pool.findFirst(Constants.GUILD+",name="+getCurrentGuild());
+		if (guild!=null) {
+			return Store.getGuildStore((GuildChitComponent)RealmComponent.getRealmComponent(guild),this);
+		}
+		return null;
+	}
     public String getCurrentGuildBadgeName() {
     	String guild = getCurrentGuild();
     	if (guild!=null) {

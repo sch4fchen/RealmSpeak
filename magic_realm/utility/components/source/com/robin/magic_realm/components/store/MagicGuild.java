@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.ButtonOptionDialog;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.GuildChitComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.Strength;
@@ -157,24 +158,43 @@ public class MagicGuild extends GuildStore {
 				character.setCurrentGuildLevel(newLevel);
 				chooseFriendlinessGain(frame);
 				if (newLevel==3) {
-					String chosenMagicType = chooseMagicType(frame);
-					GameObject go = getNewCharacterChit();
-					Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
-					if (!vul.isTremendous()) {
-						vul = vul.addStrength(1);
-					}
-					go.setThisAttribute("action","magic");
-					go.setThisAttribute("speed","2");
-					go.setThisAttribute("magic",chosenMagicType);
-					go.setThisAttribute("effort","2");
-					go.setName(character.getCharacterLevelName(4)+" MAGIC "+chosenMagicType+"2**");
-					go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
-					RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
+					applyGuildBenefit3(frame,character);
 				}
 				return "Advanced to "+character.getCurrentGuildLevelName()+"!";
 			}
 		}
 		
 		return null;
+	}
+	public void applyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+	}
+	public void unapplyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+	}
+	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+	}
+	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+	}
+	public void applyGuildBenefit3(JFrame frame, CharacterWrapper character) {
+		String chosenMagicType = chooseMagicType(frame);
+		GameObject go = getNewCharacterChit();
+		Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
+		if (!vul.isTremendous()) {
+			vul = vul.addStrength(1);
+		}
+		go.setThisAttribute("action","magic");
+		go.setThisAttribute("speed","2");
+		go.setThisAttribute("magic",chosenMagicType);
+		go.setThisAttribute("effort","2");
+		go.setName(character.getCharacterLevelName(4)+" MAGIC "+chosenMagicType+"2**");
+		go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
+		RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
+	}
+	public void unapplyGuildBenefit3(JFrame frame, CharacterWrapper character) {
+		for (CharacterActionChitComponent chit : character.getAllChits()) {
+			if (chit.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3")) {
+				character.getGameObject().remove(chit.getGameObject());
+				chit.getGameObject().clearAllAttributes();
+			}
+		}
 	}
 }
