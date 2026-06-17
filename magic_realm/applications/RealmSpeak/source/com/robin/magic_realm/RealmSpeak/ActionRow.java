@@ -1658,7 +1658,11 @@ public class ActionRow {
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_SERVICES)) {
 					GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
-					if (store!=null && store.canUseStore()) {
+					if (hostPrefs.hasPref(Constants.GUILDS_NO_SERVICES)) {
+						JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"No Guild Services","Store Not Available!",JOptionPane.PLAIN_MESSAGE,trader.getIcon());
+						completed = false;
+					}
+					else if (store!=null && store.canUseStore()) {
 						result = store.doService(gameHandler.getMainFrame());
 						if (result==null) completed = false;
 					}

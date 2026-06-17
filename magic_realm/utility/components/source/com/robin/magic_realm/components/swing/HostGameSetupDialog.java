@@ -30,6 +30,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	private static final String COMBAT_RULES2_TAB = "Combat Weapon Rules";	
 	private static final String EXPANDING_REALM_TAB = "Expanded Realm";
 	private static final String QUESTS_AND_VP = "Quests and VPs";
+	private static final String GUILDS = "Guilds";
 	
 	private static final String OPTIONAL_CHAR_RULES_TAB = "Characters";
 	private static final String REVISED_RULES_TAB = "Revised Rules";
@@ -1171,6 +1172,9 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_BOUNTY_HUNTER,"BOUNTY HUNTER (Super Realm Advanced) - Every campaign has an alternate campaign that can be claimed instead of the one listed on the chit. It makes an entire clan a partner, and a character a foe.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS,"GROUNDED MISSIONS AND TASKS (Super Realm Advanced) - Individuals can no longer run away, Fly or walk the woods for easily completing missions and tasks.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
+		
+		newOptionPane.setTabHtmlDescription(GUILDS,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Guilds</font></body></html>");
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_SERVICES,"NO SERVICES - Guild do not provide any services.",false));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));

@@ -313,6 +313,7 @@ public class Constants {
 	public static final String TASK_SITES = "task_sites";
 	public static final String TASK_VISITED_SITES = "task_visited_sites";
 	public static final String TASK_COMPLETED = "task_completed";
+	public static final String GUILD_BENEFIT = "guild_benefit";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
@@ -1004,6 +1005,9 @@ public class Constants {
 	public static final String SR_OPT_CORNERED = "Cornered";
 	public static final String SR_OPT_STEALING = "StealingInCombat";
 	public static final String SR_OPT_REGROUPING = "Regrouping";
+	
+	// Guilds
+	public static final String GUILDS_NO_SERVICES = "GuildsNoServices";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";

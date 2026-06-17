@@ -93,6 +93,7 @@ public class FightersGuild extends GuildStore {
 					go.setThisAttribute("strength",vul.toString());
 					go.setThisAttribute("effort","2");
 					go.setName(character.getCharacterLevelName(4)+" FIGHT "+vul.toString()+"3**");
+					go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
 					RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
 				}
 				return "Advanced to "+character.getCurrentGuildLevelName()+"!";

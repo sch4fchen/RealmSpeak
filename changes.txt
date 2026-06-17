@@ -1,6 +1,5 @@
 Optional Rule for Guild benefits by level
 	Acquiring the third and final benefit is dependant on the presence of the unique guild chit. If the chit is already in use by another Character, then the benefit is not granted until the owning Character is either killed or change guild affiliation.
-Optional Rule for removing Guild services
 Optional Rule for removing the option to pay fame for advancement (and last reward if buying advancement)
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
 Optional Rule for removing benefits if leaving a guild
@@ -12,6 +11,7 @@ NEW FEATURES:
 # Show guilds on friendliness chart
 # Ability: Monster Friendliness
 # Make character list sorting option a host (not client) option
+# Optional rules for Guilds
 QUEST UPDATE:
 # Add option to QuestRewardGuild
 # QuestRequirement: GuildLocation

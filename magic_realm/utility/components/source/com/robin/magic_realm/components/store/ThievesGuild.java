@@ -148,6 +148,7 @@ public class ThievesGuild extends GuildStore {
 					go.setThisAttribute("strength",vul.toString());
 					go.setThisAttribute("effort","2");
 					go.setName(character.getCharacterLevelName(4)+" MOVE "+vul.toString()+"2**");
+					go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
 					RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
 				}
 				return "Advanced to "+character.getCurrentGuildLevelName()+"!";
