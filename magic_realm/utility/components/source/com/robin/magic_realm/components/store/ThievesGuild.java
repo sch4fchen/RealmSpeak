@@ -153,35 +153,47 @@ public class ThievesGuild extends GuildStore {
 		return null;
 	}
 	public void applyGuildBenefit1(JFrame frame, CharacterWrapper character) {
-		character.getGameObject().addThisAttributeListItem(Constants.EXTRA_ACTIONS,"H");
-		character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_1");
+		if (!character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_1")) {
+			character.getGameObject().addThisAttributeListItem(Constants.EXTRA_ACTIONS,"H");
+			character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_1");
+		}
 	}
 	public void unapplyGuildBenefit1(JFrame frame, CharacterWrapper character) {
-		character.getGameObject().removeThisAttributeListItem(Constants.EXTRA_ACTIONS,"H");
-		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_1");
+		if (character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_1")) {
+			character.getGameObject().removeThisAttributeListItem(Constants.EXTRA_ACTIONS,"H");
+			character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_1");
+		}
 	}
 	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
-		character.getGameObject().addThisAttributeListItem(Constants.DIEMOD,"-1:loot:all");
-		character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_2");
+		if (!character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_2")) {
+			character.getGameObject().addThisAttributeListItem(Constants.DIEMOD,"-1:loot:all");
+			character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_2");
+		}
 	}
 	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
-		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_2");
+		if (character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_2")) {
+			character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_2");
+		}
 	}
 	public void applyGuildBenefit3(JFrame frame, CharacterWrapper character) {
-		GameObject go = getNewCharacterChit();
-		Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
-		if (!vul.isTremendous()) {
-			vul = vul.addStrength(1);
+		if (!character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3")) {
+			character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_3");
+			GameObject go = getNewCharacterChit();
+			Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));
+			if (!vul.isTremendous()) {
+				vul = vul.addStrength(1);
+			}
+			go.setThisAttribute("action","move");
+			go.setThisAttribute("speed","2");
+			go.setThisAttribute("strength",vul.toString());
+			go.setThisAttribute("effort","2");
+			go.setName(character.getCharacterLevelName(4)+" MOVE "+vul.toString()+"2**");
+			go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
+			RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
 		}
-		go.setThisAttribute("action","move");
-		go.setThisAttribute("speed","2");
-		go.setThisAttribute("strength",vul.toString());
-		go.setThisAttribute("effort","2");
-		go.setName(character.getCharacterLevelName(4)+" MOVE "+vul.toString()+"2**");
-		go.setThisAttribute(Constants.GUILD_BENEFIT+"_3");
-		RealmLogging.logMessage(character.getGameObject().getName(),"Gained a "+go.getName()+" chit.");
 	}
 	public void unapplyGuildBenefit3(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_3");
 		for (CharacterActionChitComponent chit : character.getAllChits()) {
 			if (chit.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3")) {
 				character.getGameObject().remove(chit.getGameObject());
