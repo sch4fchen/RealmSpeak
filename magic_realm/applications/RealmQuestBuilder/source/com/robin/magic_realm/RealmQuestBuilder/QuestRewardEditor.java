@@ -156,7 +156,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Guild:
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD, "Guild", FieldType.StringSelector, getGuildNames()));
-				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_RESET, "Reset Guild Level (0) if Guild changes", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_RESET, "Reset Guild Level (0 or 1) if Guild changes", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_CHANGE, "Change level", FieldType.StringSelector, QuestRewardGuild.GuildGainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardGuild.GUILD_LEVEL, "Set guild level (0-3)", FieldType.Number));
 				break;

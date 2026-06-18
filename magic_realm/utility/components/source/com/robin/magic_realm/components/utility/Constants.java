@@ -1016,6 +1016,9 @@ public class Constants {
 	public static final String GUILDS_HIDEOUT = "GuildsHideout";
 	public static final String GUILDS_BENEFITS = "GuildsBenefits";
 	public static final String GUILDS_START_LEVEL = "GuildsStartLevel";
+	public static final String GUILDS_MIN_LVL_0 = "GuildsMinLevel0";
+	public static final String GUILDS_MIN_LVL_1 = "GuildsMinLevel1";
+	public static final String GUILDS_MAX_LVL_3 = "GuildsMaxLevel3";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";

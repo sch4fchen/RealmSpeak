@@ -18,7 +18,8 @@ public class QuestRewardGuild extends QuestReward {
 	public enum GuildGainType {
 		Increase,
 		Decrease,
-		Set
+		Set,
+		NoChange
 	}
 	
 	public QuestRewardGuild(GameObject go) {
@@ -37,7 +38,11 @@ public class QuestRewardGuild extends QuestReward {
 		}
 		if (!getGuildName().matches(QuestConstants.CURRENT)) {
 			if (resetGuildLevelForGuildChange() && !getGuildName().matches(character.getCurrentGuild())) {
-				character.setCurrentGuildLevel(0);
+				if (hostPrefs.hasPref(Constants.GUILDS_START_LEVEL)) {
+					character.setCurrentGuildLevel(0);
+				} else {
+					character.setCurrentGuildLevel(1);
+				}
 				if (hostPrefs.hasPref(Constants.GUILDS_LOOSE_BENEFITS)) {
 					GuildStore guild = character.getCurrentGuildStore();
 					guild.unapplyAllGuildBenefits(frame, character);
@@ -48,6 +53,9 @@ public class QuestRewardGuild extends QuestReward {
 		
 		switch (getGuildChange()) {
 			case Increase:
+				if (hostPrefs.hasPref(Constants.GUILDS_MAX_LVL_3) && character.getCurrentGuildLevel()>=3) {
+					return;
+				}
 				character.setCurrentGuildLevel(character.getCurrentGuildLevel()+1);
 				if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
 					GuildStore guild = character.getCurrentGuildStore();
@@ -55,6 +63,12 @@ public class QuestRewardGuild extends QuestReward {
 				}
 				break;
 			case Decrease:
+				if (hostPrefs.hasPref(Constants.GUILDS_MIN_LVL_1) && character.getCurrentGuildLevel()<=1) {
+					return;
+				}
+				if (hostPrefs.hasPref(Constants.GUILDS_MIN_LVL_0) && character.getCurrentGuildLevel()<=0) {
+					return;
+				}
 				character.setCurrentGuildLevel(character.getCurrentGuildLevel()-1);
 				if (hostPrefs.hasPref(Constants.GUILDS_LOOSE_BENEFITS)) {
 					GuildStore guild = character.getCurrentGuildStore();
@@ -63,7 +77,15 @@ public class QuestRewardGuild extends QuestReward {
 				break;
 			case Set:
 				int lvlBefore = character.getCurrentGuildLevel();
-				character.setCurrentGuildLevel(getGuildLevel());
+				if (hostPrefs.hasPref(Constants.GUILDS_MAX_LVL_3) && getGuildLevel()>=3) {
+					character.setCurrentGuildLevel(3);
+				} else if (hostPrefs.hasPref(Constants.GUILDS_MIN_LVL_1) && getGuildLevel()<=1) {
+					character.setCurrentGuildLevel(1);
+				} else if (hostPrefs.hasPref(Constants.GUILDS_MIN_LVL_0) && getGuildLevel()<=0) {
+					character.setCurrentGuildLevel(0);
+				} else {
+					character.setCurrentGuildLevel(getGuildLevel());
+				}
 				if (hostPrefs.hasPref(Constants.GUILDS_LOOSE_BENEFITS)) {
 					if (lvlBefore>character.getCurrentGuildLevel()) {
 						GuildStore guild = character.getCurrentGuildStore();
@@ -82,6 +104,8 @@ public class QuestRewardGuild extends QuestReward {
 						}
 					}
 				}
+			case NoChange:
+				break;
 		}
 	}	
 		
@@ -91,14 +115,16 @@ public class QuestRewardGuild extends QuestReward {
 			return "Removes the characters guild membership.";
 		}
 		switch (getGuildChange()) {
-		case Increase:
-			sb.append("Increase ");
-			break;
-		case Decrease:
-			sb.append("Deacrease ");
-			break;
-		case Set:
-			sb.append("Set ");
+			case Increase:
+				sb.append("Increase ");
+				break;
+			case Decrease:
+				sb.append("Deacrease ");
+				break;
+			case Set:
+				sb.append("Set ");
+			case NoChange:
+				return "Set characters guild to "+getGuildName();
 		}
 		if (getGuildName().matches(QuestConstants.CURRENT)) {
 			sb.append("characters current guild level");

@@ -1180,7 +1180,10 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_BENEFITS,"BENEFITS 1+2 - Characters can get benefits for guild level one and two.",false));	
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_START_LEVEL,"START LEVEL - Characters start with guild level 0 (not 1), after joining a guild.",false));	
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_START_LEVEL,"START LEVEL - Characters start with guild level 0 (not 1), after joining a guild.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_MIN_LVL_0,"MAX LEVEL 0 - Characters can never fall below guild level 0.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_MIN_LVL_1,"MIN LEVEL 1 - Characters can never fall below guild level 1.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_MAX_LVL_3,"MAX LEVEL 3 - Characters start max. reach guild level 3.",false));
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));
