@@ -1115,6 +1115,26 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		tabs.addTab(null, ImageCache.getIcon("tab/chat"), getChatPanel(),"Chat");
 
+		// JTabbedPane selects on mousePressed (before mouseClicked fires), so we can't use
+		// "clicked == selectedIndex" in mouseClicked — it's always true by then.
+		// Instead, let the ChangeListener mark when a click actually changed the tab;
+		// absence of that mark means the user re-clicked the already-selected tab → toggle home.
+		boolean[] tabChangedByThisPress = {false};
+		tabs.addChangeListener(e -> tabChangedByThisPress[0] = true);
+		tabs.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int clicked = tabs.indexAtLocation(e.getX(), e.getY());
+				if (clicked >= 0 && !tabChangedByThisPress[0]) {
+					int homeIdx = 0;
+					for (int i = 0; i < tabs.getTabCount(); i++) {
+						if (RealmTurnPanel.TAB_NAME.equals(tabs.getToolTipTextAt(i))) { homeIdx = i; break; }
+					}
+					tabs.setSelectedIndex(homeIdx);
+				}
+				tabChangedByThisPress[0] = false;
+			}
+		});
+
 		layoutPanel.add(tabs, "Center");
 
 		//		updateCharacter(); // no need to do this here
@@ -2299,6 +2319,10 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	private void showCharCard() {
+		if (FrameManager.getFrameManager().hasFrame(FrameManager.DEFAULT_FRAME_KEY)) {
+			FrameManager.getFrameManager().disposeFrame(FrameManager.DEFAULT_FRAME_KEY);
+			return;
+		}
 		CharacterSpyPanel panel = new CharacterSpyPanel(gameHandler, character);
 		FrameManager.showDefaultManagedFrame(gameHandler.getMainFrame(), panel, character.getGameObject().getName() + " Spy", null, false);
 	}
