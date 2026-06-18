@@ -8140,6 +8140,9 @@ public class CharacterWrapper extends GameObjectWrapper {
     				levelName=GuildLevel.Master.toString();
     				break;
     		}
+    		if (level>3) {
+    			levelName=GuildLevel.Master.toString();
+    		}
     		return StringUtilities.capitalize(guild)+" Guild "+levelName;
     	}
     	return null;
