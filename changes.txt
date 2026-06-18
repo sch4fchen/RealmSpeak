@@ -17,7 +17,9 @@ QUEST UPDATE:
 # Add option to QuestRewardGuild
 # QuestRequirement: GuildLocation
 # Improve Q40 Travels Merchant quest
+# Add guild quests
 BUGS/ISSUES:
+# Fix QuestRequirementHire
 # Fix Magic Shield cannot be damaged
 # Expansion 1 Maze: can move through the clearing with the Maze
 
