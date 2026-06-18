@@ -1172,11 +1172,13 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_BOUNTY_HUNTER,"BOUNTY HUNTER (Super Realm Advanced) - Every campaign has an alternate campaign that can be claimed instead of the one listed on the chit. It makes an entire clan a partner, and a character a foe.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.SR_ADV_GROUNDED_MISSIONS_AND_TASKS,"GROUNDED MISSIONS AND TASKS (Super Realm Advanced) - Individuals can no longer run away, Fly or walk the woods for easily completing missions and tasks.",false));
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.EXP_BOUNTY_POINTS_FOR_DISCOVERIES,"BOUNTY POINTS FOR DISCOVERIES (Book of Quests Variant) - A character gains points for recording certain discoveries.",false));
+		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QUEST_HAND_LIMIT_ONE,"QUEST LIMIT ONE - Hand card size limit for quests is always one.",false));
 		
 		newOptionPane.setTabHtmlDescription(GUILDS,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Guilds</font></body></html>");
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_SERVICES,"NO SERVICES - Guild do not provide any services.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LOOSE_BENEFITS,"LOOSE BENEFITS - If character looses a guild level or exits a guild, corresponding guild benefits are lost.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));		
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));

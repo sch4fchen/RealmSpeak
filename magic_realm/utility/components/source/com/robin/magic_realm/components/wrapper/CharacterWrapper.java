@@ -8345,6 +8345,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return count;
 	}
 	public int getQuestSlotCount(HostPrefWrapper hostPrefs) {
+		if (hostPrefs.hasPref(Constants.HOUSE3_QUEST_HAND_LIMIT_ONE)) {
+			return 1;
+		}
 		int mod = 0;
 		if (hostPrefs.hasPref(Constants.HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE)) {
 			mod = 1;

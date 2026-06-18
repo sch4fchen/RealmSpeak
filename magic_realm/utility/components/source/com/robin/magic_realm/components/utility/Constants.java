@@ -954,6 +954,7 @@ public class Constants {
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	public static final String HOUSE3_HORSE_WEAPON_SAME_BOX = "HorseWeaponSameBox";
 	public static final String HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER = "CharacterlistSortingByPlayOrder";
+	public static final String HOUSE3_QUEST_HAND_LIMIT_ONE = "QuestHandLimitOne";
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";
@@ -1010,6 +1011,7 @@ public class Constants {
 	public static final String GUILDS_NO_SERVICES = "GuildsNoServices";
 	public static final String GUILDS_LOOSE_BENEFITS = "GuildsLooseBenefits";
 	public static final String GUILDS_NO_ADVANCEMENT_SERVICE = "GuildsNoAdvancementService";
+	public static final String GUILDS_HIDEOUT = "GuildsHideout";
 	
 	// Events
 	public static final String SR_EVENTS = "Events";

@@ -3,7 +3,6 @@ Optional Rule: Acquiring the third and final benefit is dependant on the presenc
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
 Optional Rule: Should always be safe at guilds, if you are a member (from monsters and natives)
 QuestReward: DiscardEnabled, DiscardDisabled
-Optional Rule: cannot freely discard and draw guild quests
 Optional Rule: can only draw guild of the current guild (option: or always, if no Guild Level)
 
 Version 1.2.5.9

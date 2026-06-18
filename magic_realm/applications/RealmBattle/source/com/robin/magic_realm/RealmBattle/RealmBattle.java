@@ -272,6 +272,7 @@ public class RealmBattle {
 					switch(actionState) {
 						case Constants.COMBAT_PREBATTLE:
 							energizeDenizenPreBattleSpells(currentCombatLocation,data);
+							guildHideout(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_LURE:
 							// need to do preparation before moving onto LURE
@@ -649,6 +650,11 @@ public class RealmBattle {
 	public static void energizeDenizenPreBattleSpells(TileLocation location,GameData data) {
 		BattleModel model = buildBattleModel(location,data);
 		model.doEnergizeDenizenPreBattleSpells();
+	}
+	
+	public static void guildHideout(TileLocation location,GameData data) {
+		BattleModel model = buildBattleModel(location,data);
+		model.checkForGuildHideout();
 	}
 	
 	public static void checkForHurricaneWinds(TileLocation location,GameData data) {
