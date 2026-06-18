@@ -1180,6 +1180,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_BENEFITS,"BENEFITS 1+2 - Characters can get benefits for guild level one and two.",false));	
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_START_LEVEL,"START LEVEL - Characters start with guild level 0 (not 1), after joining a guild.",false));	
 		
 		newOptionPane.setTabHtmlDescription(OPTIONAL_CHAR_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Optional Character Rules</font></body></html>");
 		newOptionPane.addOption(OPTIONAL_CHAR_RULES_TAB,new GameOption(Constants.TE_KNIGHT_ADJUSTMENT,"KNIGHTS ADJUSTMENT (3rd ed) - To limit the Black/White Knight's advantage, their ALLY starts off as FRIENDLY.",false));

@@ -1653,12 +1653,17 @@ public class ActionRow {
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_JOIN)) {
 					character.setCurrentGuild(trader.getGameObject().getThisAttribute("guild"));
-					character.setCurrentGuildLevel(1);
-					result = "Joined the "+trader.getGameObject().getName();
-					if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
-						GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
-						store.applyGuildBenefit1(gameHandler.getMainFrame(), character);
+					if (hostPrefs.hasPref(Constants.GUILDS_START_LEVEL)) {
+						character.setCurrentGuildLevel(0);
 					}
+					else {
+						character.setCurrentGuildLevel(1);
+						if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+							GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
+							store.applyGuildBenefit1(gameHandler.getMainFrame(), character);
+						}
+					}
+					result = "Joined the "+trader.getGameObject().getName();
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_SERVICES)) {
 					GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
