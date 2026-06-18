@@ -2539,8 +2539,10 @@ public class ActionRow {
 				if (!negate) {
 					QuestRequirementParams params = new QuestRequirementParams();
 					params.actionType = CharacterActionType.Hire;
-					for (RealmComponent hired : list) {
-						params.objectList.add(hired.getGameObject());
+					if (realmTable!=null && ((Meeting)realmTable).getSucessfullyHiredGroup()!=null) {
+						for (RealmComponent hired : ((Meeting)realmTable).getSucessfullyHiredGroup()) {
+							params.objectList.add(hired.getGameObject());
+						}
 					}
 					character.testQuestRequirements(gameHandler.getMainFrame(),params);
 				}

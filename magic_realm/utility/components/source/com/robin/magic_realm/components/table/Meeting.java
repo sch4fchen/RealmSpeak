@@ -26,6 +26,7 @@ public abstract class Meeting extends Trade {
 	
 	protected GameObject merchandise; // might be null if hiring or rolling for meeting
 	protected Collection<RealmComponent> hireGroup; // might be null if trading or rolling for meeting
+	protected Collection<RealmComponent> sucessfullyHiredGroup; // might be null if trading or rolling for meeting
 	
 	protected boolean blockBattle;
 	protected boolean creditFame = false;
@@ -314,6 +315,8 @@ public abstract class Meeting extends Trade {
 			}
 			character.updateChitEffects();
 			character.addHireling(last.getGameObject());
+			sucessfullyHiredGroup=new ArrayList<>();
+			sucessfullyHiredGroup.add(last);
 			return;
 		}
 		
@@ -402,8 +405,10 @@ public abstract class Meeting extends Trade {
 					else {
 						character.addFame(-askingPrice);
 						character.addCreditFame(tradeInfo.getTrader().getGameObject(),askingPrice);
+						sucessfullyHiredGroup=new ArrayList<>();
 						for (RealmComponent rc : hireGroup) {
 							character.addHireling(rc.getGameObject());
+							sucessfullyHiredGroup.add(rc);
 						}
 					}
 					return;
@@ -414,8 +419,10 @@ public abstract class Meeting extends Trade {
 					character.addGold(-askingPrice);
 					
 					// Hire the group!
+					sucessfullyHiredGroup=new ArrayList<>();
 					for (RealmComponent rc : hireGroup) {
 						character.addHireling(rc.getGameObject());
+						sucessfullyHiredGroup.add(rc);
 					}
 				}
 				else {
@@ -432,6 +439,9 @@ public abstract class Meeting extends Trade {
 			sb.append("  You only have "+charGold+" gold.");
 			JOptionPane.showMessageDialog(getParentFrame(),sb.toString(),offerTitle,JOptionPane.INFORMATION_MESSAGE,last.getIcon());
 		}
+	}
+	public Collection<RealmComponent> getSucessfullyHiredGroup() {
+		return sucessfullyHiredGroup;
 	}
 	protected String useCompletedActiveTask(CharacterWrapper character, String text) {
 		GameObject task = character.getCompletedActiveTask();

@@ -1,7 +1,10 @@
 Optional Rule for Guild benefits by level
-	Acquiring the third and final benefit is dependant on the presence of the unique guild chit. If the chit is already in use by another Character, then the benefit is not granted until the owning Character is either killed or change guild affiliation.
+Optional Rule: Acquiring the third and final benefit is dependant on the presence of the unique guild chit. If the chit is already in use by another Character, then the benefit is not granted until the owning Character is either killed or change guild affiliation.
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
 Optional Rule: Should always be safe at guilds, if you are a member (from monsters and natives)
+QuestReward: DiscardEnabled, DiscardDisabled
+Optional Rule: cannot freely discard and draw guild quests
+Optional Rule: can only draw guild of the current guild (option: or always, if no Guild Level)
 
 Version 1.2.5.9
 NEW FEATURES:
