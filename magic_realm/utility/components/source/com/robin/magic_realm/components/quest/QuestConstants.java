@@ -52,6 +52,10 @@ public class QuestConstants {
 	public static final String CHARACTER_SPEC_REGEX = "_crgx";
 	
 	public static final String QUEST_MULTIPLE_USE = "quest_multiple_use";
+	
+	public static final String DISCARD_ALWAYS = "discard_always";
+	public static final String DISCARD_NORMAL = "discard_normal";
+	public static final String DISCARD_NEVER = "discard_never";
 	//-------------------------------
 	
 	public static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};

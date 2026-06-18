@@ -273,15 +273,17 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		if (hostPrefs.isUsingQuestCards() || hostPrefs.isUsingGuildQuests()) {
 			Quest selQuest = getSelectedQuest();
 			boolean gameStarted = getGame().getGameStarted();
+			boolean isBirdsong = getGameHandler().getGame().isRecording();
 			activateQuestButton.setEnabled(gameStarted && selQuest != null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay());
 
 			boolean canDiscardQuests = !getCharacter().alreadyDiscardedQuests() && gameStarted;
+			boolean questCanAlwaysBeDiscarded = selQuest!=null && selQuest.getGameObject().hasThisAttribute(QuestConstants.DISCARD_ALWAYS) && gameStarted && isBirdsong;
+			boolean questCannotBeDiscarded = selQuest!=null && selQuest.getGameObject().hasThisAttribute(QuestConstants.DISCARD_NEVER);
 			boolean characterIsAtLocation = getCharacter().getCurrentLocation() != null;
 			boolean characterIsAtDwelling = characterIsAtLocation && getCharacter().getCurrentLocation().isAtDwelling(true);
 			boolean characterIsAtGuild = characterIsAtLocation && getCharacter().getCurrentLocation().isAtGuild();
-			boolean isBirdsong = getGameHandler().getGame().isRecording();
-			discardQuestButton.setEnabled(canDiscardQuests && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned &&
-					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
+			discardQuestButton.setEnabled(questCanAlwaysBeDiscarded || (canDiscardQuests && !questCannotBeDiscarded && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned &&
+					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild))));
 
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
