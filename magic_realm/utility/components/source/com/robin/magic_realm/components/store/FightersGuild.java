@@ -86,6 +86,9 @@ public class FightersGuild extends GuildStore {
 				int newLevel = character.getCurrentGuildLevel()+1;
 				character.setCurrentGuildLevel(newLevel);
 				chooseFriendlinessGain(frame);
+				if (newLevel!=3 && hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+					applyGuildBenefit(frame,character,newLevel);
+				}
 				if (newLevel==3) {
 					applyGuildBenefit3(frame,character);
 				}
@@ -96,12 +99,18 @@ public class FightersGuild extends GuildStore {
 		return null;
 	}
 	public void applyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().addThisAttributeListItem(Constants.EXTRA_ACTIONS,"R");
+		character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_1");
 	}
 	public void unapplyGuildBenefit1(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().removeThisAttributeListItem(Constants.EXTRA_ACTIONS,"R");
+		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_1");
 	}
 	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_2");
 	}
 	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_2");
 	}
 	public void applyGuildBenefit3(JFrame frame, CharacterWrapper character) {
 		GameObject go = getNewCharacterChit();

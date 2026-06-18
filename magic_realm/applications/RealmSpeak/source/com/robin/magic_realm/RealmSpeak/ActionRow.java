@@ -1655,6 +1655,10 @@ public class ActionRow {
 					character.setCurrentGuild(trader.getGameObject().getThisAttribute("guild"));
 					character.setCurrentGuildLevel(1);
 					result = "Joined the "+trader.getGameObject().getName();
+					if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+						GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
+						store.applyGuildBenefit1(gameHandler.getMainFrame(), character);
+					}
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_SERVICES)) {
 					GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);

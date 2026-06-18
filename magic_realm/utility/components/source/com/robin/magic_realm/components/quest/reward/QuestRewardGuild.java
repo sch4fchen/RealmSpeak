@@ -49,6 +49,10 @@ public class QuestRewardGuild extends QuestReward {
 		switch (getGuildChange()) {
 			case Increase:
 				character.setCurrentGuildLevel(character.getCurrentGuildLevel()+1);
+				if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+					GuildStore guild = character.getCurrentGuildStore();
+					guild.applyGuildBenefit(frame,character,character.getCurrentGuildLevel());
+				}
 				break;
 			case Decrease:
 				character.setCurrentGuildLevel(character.getCurrentGuildLevel()-1);
@@ -66,6 +70,15 @@ public class QuestRewardGuild extends QuestReward {
 						while (lvlBefore>character.getCurrentGuildLevel()) {
 							guild.unapplyGuildBenefit(frame,character,lvlBefore);
 							lvlBefore--;
+						}
+					}
+				}
+				if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+					if (lvlBefore<character.getCurrentGuildLevel()) {
+						GuildStore guild = character.getCurrentGuildStore();
+						while (lvlBefore<character.getCurrentGuildLevel()) {
+							guild.applyGuildBenefit(frame,character,lvlBefore+1);
+							lvlBefore++;
 						}
 					}
 				}
