@@ -2091,6 +2091,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.DRINKS_BOUGHT);
 		getGameObject().removeThisAttribute(Constants.FORESIGHT_USED);
 		getGameObject().removeThisAttribute(Constants.STEAL_ATTEMPTS);
+		getGameObject().removeThisAttribute(Constants.FREE_ENCHANT_CHIT_USED);
 		removeColorChitInterruptionActionCountPhaseBeginning();
 		removeColorChitInterruptionActionCountPhaseEnd();
 		

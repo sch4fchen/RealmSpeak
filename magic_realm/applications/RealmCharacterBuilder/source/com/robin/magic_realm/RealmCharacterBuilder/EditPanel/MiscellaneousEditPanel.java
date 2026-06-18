@@ -89,6 +89,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can cast multiple instances of a single spell.",Constants.ENHANCED_MAGIC,""},
 		{"Can use Artifacts and Spell Books as extra MAGIC chits.",Constants.ENHANCED_ARTIFACTS,""},
 		{"Can raise dead once each evening.",Constants.RAISE_DEAD,""},
+		{"Can enchant one chit for free, per day.",Constants.FREE_ENCHANT_CHIT,""},
 		{"-1 to horse speed (min. 2)",Constants.SPURS,""},
 		{"horse armored, +1 to horse speed, ",Constants.HORSE_ARMOR,""},
 	};

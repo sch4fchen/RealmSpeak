@@ -2759,23 +2759,8 @@ public class ActionRow {
 			// enchant a chit
 			MagicChit chit = (MagicChit)compChooser.getFirstSelectedComponent();
 			if (chit!=null) {
-				int enchantNumber;
-				ArrayList<Integer> list = chit.getEnchantableNumbers();
-				if (list.size()>1) {
-					ButtonOptionDialog colorChooser = new ButtonOptionDialog(gameHandler.getMainFrame(),chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
-					for(int mn:list) {
-						ColorMagic cm = new ColorMagic(mn,false);
-						colorChooser.addSelectionObject(cm.getColorName());
-					}
-					colorChooser.setVisible(true);
-					String colorName = (String)colorChooser.getSelectedObject();
-					enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
-				}
-				else {
-					enchantNumber = list.get(0);
-				}
+				RealmUtility.enchantChit(gameHandler.getMainFrame(),chit);
 				
-				chit.enchant(enchantNumber);
 				result = "enchanted "+chit.getGameObject().getName();
 				gameHandler.updateCharacterFrames();
 				

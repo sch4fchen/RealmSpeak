@@ -11,6 +11,7 @@ import com.robin.game.objects.*;
 import com.robin.general.graphics.TextType;
 import com.robin.general.io.PreferenceManager;
 import com.robin.general.io.ResourceFinder;
+import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.IconFactory;
 import com.robin.general.util.*;
@@ -823,6 +824,25 @@ public class RealmUtility {
 		}
 		colorChit.makeFatigued();
 		RealmUtility.reportChitFatigue(character,colorChit,"Fatigued color chit: ");
+	}
+	public static void enchantChit(JFrame frame, MagicChit chit) {
+		ArrayList<Integer> list = chit.getEnchantableNumbers();
+		int enchantNumber;
+		if (list.size()>1) {
+			ButtonOptionDialog colorChooser = new ButtonOptionDialog(frame,chit.getIcon(),"What color?","Enchant "+chit.getGameObject().getName(),false);
+			for(int mn:list) {
+				ColorMagic cm = new ColorMagic(mn,false);
+				colorChooser.addSelectionObject(cm.getColorName());
+			}
+			colorChooser.setVisible(true);
+			String colorName = (String)colorChooser.getSelectedObject();
+			enchantNumber = ColorMagic.makeColorMagic(colorName,false).getColorNumber();
+		}
+		else {
+			enchantNumber = list.get(0);
+		}
+		
+		chit.enchant(enchantNumber);
 	}
 	public static CharacterActionChitComponent selectMoveChitToBoost(JFrame parent,CharacterWrapper character) {
 		Collection<CharacterActionChitComponent> moveChits = character.getActiveMoveChits();

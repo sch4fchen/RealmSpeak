@@ -11,9 +11,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.LegendLabel;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.ChitStateViewer;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.utility.Constants;
@@ -26,6 +30,7 @@ public class CharacterChitPanel extends CharacterFramePanel {
 	protected RealmObjectPanel chitHolderPanel;
 	protected JButton fatigueChitButton;
 	protected JButton chitDetailButton;
+	protected JButton enchantChitButton;
 	public CharacterChitPanel(CharacterFrame parent) {
 		super(parent);
 		init();
@@ -67,23 +72,34 @@ public class CharacterChitPanel extends CharacterFramePanel {
 				});
 			box.add(fatigueChitButton);
 			box.add(Box.createHorizontalGlue());
+			enchantChitButton = new JButton("Enchant Chit");
+			enchantChitButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					enchantChit();
+				}
+			});
+		box.add(enchantChitButton);
+			box.add(Box.createHorizontalGlue());
 		add(box,"South");
 	}
 	public void updateControls(boolean isAwaitingReactions) {
 		if (isAwaitingReactions) {
 			fatigueChitButton.setEnabled(false);
+			enchantChitButton.setEnabled(false);
 			return;
 		}
+		boolean enableEnchantChitButton = false;
 		boolean onlyColorMagicChits = false;
 		boolean followingActive = getCharacter().isFollowingCharacterPlayingTurn();
 		boolean playingTurn = getCharacterFrame().getTurnPanel()!=null && getCharacterFrame().getTurnPanel().hasActionsLeft();
+		RealmComponent rc = chitHolderPanel.getSelectedComponent();
 		if ((playingTurn || followingActive) && !getCharacter().isGone() && getGameHandler().getGame().isDaylight()) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
+			enableEnchantChitButton = true;
 			if (!getCharacter().isBlocked() || !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS)) {
 				if (!getCharacter().isSleep() || !hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) {
 					TileLocation tl = getCharacter().getCurrentLocation();
 					if (tl!=null && !tl.isBetweenClearings() && !tl.isBetweenTiles()) {
-						RealmComponent rc = chitHolderPanel.getSelectedComponent();
 						if (rc!=null && rc.isMagicChit()) {
 							onlyColorMagicChits = true;
 							MagicChit chit = (MagicChit)rc;
@@ -96,6 +112,10 @@ public class CharacterChitPanel extends CharacterFramePanel {
 			}
 		}
 		fatigueChitButton.setEnabled(onlyColorMagicChits);
+		if (!getCharacter().affectedByKey(Constants.FREE_ENCHANT_CHIT) || getCharacter().getGameObject().hasThisAttribute(Constants.FREE_ENCHANT_CHIT_USED)) {
+			enableEnchantChitButton = false;
+		}
+		enchantChitButton.setEnabled(enableEnchantChitButton && rc!=null && rc.isMagicChit() && ((MagicChit)rc).isEnchantable() && ((MagicChit)rc).getColorMagic()==null);
 	}
 	public void updatePanel() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getCharacter().getGameData());
@@ -160,5 +180,19 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		getCharacterFrame().updateCharacter();
 		getGameHandler().getInspector().redrawMap();
 		getGameHandler().submitChanges();
+	}
+	private void enchantChit() {
+		getCharacter().getGameObject().setThisAttribute(Constants.FREE_ENCHANT_CHIT_USED);
+		MagicChit chit = (MagicChit)chitHolderPanel.getSelectedComponent();
+		RealmUtility.enchantChit(getMainFrame(), chit);
+		
+		chitHolderPanel.clearSelected();
+		getCharacterFrame().updateCharacter();
+		getGameHandler().submitChanges();
+		
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Enchant;
+		params.actionName = "chit";
+		getCharacter().testQuestRequirements(getGameHandler().getMainFrame(),params);
 	}
 }

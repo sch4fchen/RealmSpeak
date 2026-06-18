@@ -181,6 +181,7 @@ public class MagicGuild extends GuildStore {
 		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_1");
 	}
 	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
+		character.getGameObject().setThisAttribute(Constants.FREE_ENCHANT_CHIT);
 		character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_2");
 	}
 	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
