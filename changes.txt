@@ -1,6 +1,7 @@
 Optional Rule for Guild benefits by level
 	Fighters 2: Sharpness stars unaffected by armor (+ character editor)
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
+	Guild Requirement quests?!
 Optional Rule: Acquiring the third and final benefit is dependant on the presence of the unique guild chit. If the chit is already in use by another Character, then the benefit is not granted until the owning Character is either killed or change guild affiliation.
 
 Version 1.2.5.9
@@ -10,6 +11,7 @@ NEW FEATURES:
 # Ability: Monster Friendliness
 # Make character list sorting option a host (not client) option
 # Optional rules for Guilds
+# Guild Benefits for level 1 and 2
 QUEST UPDATE:
 # Add option to QuestRewardGuild
 # QuestRequirement: GuildLocation
