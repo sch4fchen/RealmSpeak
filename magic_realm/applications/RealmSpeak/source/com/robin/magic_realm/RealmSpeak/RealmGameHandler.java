@@ -1012,7 +1012,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				// If a spell is being applied through direct info, then make sure the combat frame reflects the change!!
 				resetCombatFrame();
 				if (teleported) {
-					// Character left the combat clearing — submit to unblock server-side combat state machine.
+					// Character left the combat clearing â€” submit to unblock server-side combat state machine.
 					submitChangesWithTimeout();
 				}
 			});
