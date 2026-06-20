@@ -2,10 +2,13 @@ package com.robin.magic_realm.components.table;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.robin.general.swing.ButtonOptionDialog;
 import com.robin.general.swing.DieRoller;
+import com.robin.general.swing.IconFactory;
 import com.robin.general.util.OrderedHashtable;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
@@ -59,15 +62,12 @@ public class OffroadTravel extends Search {
 	
 	public String applyOne(CharacterWrapper character) {
 		if (current.hasClearing() && current.clearing.isMountain()) {
-			choiceAndMarkPath(character);
-			return RESULT_MOUNTAINS[0];
+			return choiceOrMarkPath(character);
 		}
 		if (current.hasClearing() && current.clearing.isCave()) {
-			choiceAndMarkPath(character);
-			return RESULT_CAVES[0];
+			return choiceOrMarkPath(character);
 		}
-		choiceAndMarkPath(character);
-		return RESULT_OTHERS[0];
+		return choiceOrMarkPath(character);
 	}
 
 	public String applyTwo(CharacterWrapper character) {
@@ -158,12 +158,76 @@ public class OffroadTravel extends Search {
 		}
 		return null;
 	}
-	private void choiceAndMarkPath(CharacterWrapper character) {
+	private String choiceOrMarkPath(CharacterWrapper character) {
+		String pathsString = "Mark Paths";
+		ImageIcon paths = getIconFromList(convertPathDetailToImageIcon(getAllUndiscoveredPaths(character)));
+		String chooseString = "Choose Clearing";
+		String sameString = "Same Clearing";
+		String randomString = "Random Clearing";
+		String lostString = "Lost";
+		String lostWoundString = "Lost (1 wound)";
+		String avalancheString = "Avalanche (1d6 wounds)";
+		
+		ButtonOptionDialog chooseSearch = new ButtonOptionDialog(getParentFrame(), null, "Choice:", "Offroad Travel", false);
+		chooseSearch.addSelectionObject(pathsString);
+		chooseSearch.setSelectionObjectIcon(pathsString,paths);
+		chooseSearch.addSelectionObject(chooseString);
+		chooseSearch.setSelectionObjectIcon(chooseString,IconFactory.findIcon("images/interface/build.gif"));
+		chooseSearch.addSelectionObject(randomString);
+		chooseSearch.setSelectionObjectIcon(randomString,IconFactory.findIcon("images/interface/build.gif"));
+		if (current.hasClearing() && (current.clearing.isMountain() || current.clearing.isCave())) {
+			chooseSearch.addSelectionObject(sameString);
+			chooseSearch.setSelectionObjectIcon(sameString,IconFactory.findIcon("images/interface/build.gif"));
+		}
+		if (current.hasClearing() && (current.clearing.isMountain())) {
+			chooseSearch.addSelectionObject(avalancheString);
+			chooseSearch.setSelectionObjectIcon(avalancheString,IconFactory.findIcon("images/phases/mountain.gif"));
+		}
+		if (current.hasClearing() && !current.clearing.isCave()) {
+			chooseSearch.addSelectionObject(lostString);
+			chooseSearch.setSelectionObjectIcon(lostString,IconFactory.findIcon("images/phases/normal.gif"));
+		}
+		if (current.hasClearing() && current.clearing.isCave()) {
+			chooseSearch.addSelectionObject(lostWoundString);
+			chooseSearch.setSelectionObjectIcon(lostWoundString,IconFactory.findIcon("images/phases/cave.gif"));
+		}
+		chooseSearch.setVisible(true);
+		String choice = (String)chooseSearch.getSelectedObject();
+		if (choice.equals(pathsString)) {
+			sameClearing(character);
+			return "Choice - "+pathsString;
+		}
+		else if (choice.equals(chooseString)) {
+			chooseClearing(character);
+			return "Choice - "+chooseString;
+		}
+		else if (choice.equals(sameString)) {
+			sameClearing(character);
+			return "Choice - "+sameString;
+		}
+		else if (choice.equals(randomString)) {
+			randomClearing(character);
+			return "Choice - "+randomString;
+		}
+		else if (choice.equals(avalancheString)) {
+			avalanche(character);
+			return "Choice - "+avalancheString;
+		}
+		else if (choice.equals(lostString)) {
+			lost(character,0);
+			return "Choice - "+lostString;
+		}
+		else if (choice.equals(lostWoundString)) {
+			lost(character,1);
+			return "Choice - "+lostWoundString;
+		}
+		return null;
+	}
+	private void markPaths(CharacterWrapper character) {
 		ArrayList<PathDetail> list = getAllUndiscoveredPaths(character);
 		for (PathDetail path:list) {
 			character.addHiddenPathDiscovery(path.getFullPathKey());
 		}
-		chooseClearing(character);
 	}
 	private void chooseClearing(CharacterWrapper character) {
 		CenteredMapView.getSingleton().setMarkClearingAlertText("Travel to which clearing?");
