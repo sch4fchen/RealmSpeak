@@ -230,6 +230,7 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 	}
 	public boolean applyHit(GameWrapper game, HostPrefWrapper hostPrefs, BattleChit attacker, int box, Harm attackerHarm, int attackOrderPos) {
 		CombatWrapper combat = new CombatWrapper(getGameObject());
+		
 		ArrayList<SpellWrapper> holyShields = SpellUtility.getBewitchingSpellsWithKey(getGameObject(),Constants.HOLY_SHIELD);
 		if ((holyShields!=null&&!holyShields.isEmpty()) || affectedByKey(Constants.HOLY_SHIELD) || combat.hasHolyShield(attacker.getAttackSpeed(),attacker.getLength())) {
 			for (SpellWrapper spell : holyShields) {
@@ -242,11 +243,12 @@ public class TravelerChitComponent extends StateChitComponent implements BattleC
 		
 		Harm harm = new Harm(attackerHarm);
 		Strength vulnerability = new Strength(getThisAttribute( "vulnerability"));
-		if (!harm.getIgnoresArmor() && getGameObject().hasThisAttribute(Constants.ARMORED)) {
+		boolean armorPiercing = attacker.getGameObject().hasThisAttribute(Constants.ARMOR_PIERCING) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.ARMOR_PIERCING));
+		if (!harm.getIgnoresArmor() && !armorPiercing && getGameObject().hasThisAttribute(Constants.ARMORED)) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
-		else if (!getGameObject().hasThisAttribute(Constants.ARMORED) && getGameObject().hasThisAttribute(Constants.BARKSKIN)) {
+		else if (!getGameObject().hasThisAttribute(Constants.ARMORED) && !armorPiercing && getGameObject().hasThisAttribute(Constants.BARKSKIN)) {
 			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 			if (attackerImmunityColor!=null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");

@@ -112,13 +112,13 @@ public class FightersGuild extends GuildStore {
 	}
 	public void applyGuildBenefit2(JFrame frame, CharacterWrapper character) {
 		if (!character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_2")) {
-			character.getGameObject().setThisAttribute(Constants.PIERCING);
+			character.getGameObject().setThisAttribute(Constants.ARMOR_PIERCING);
 			character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_2");
 		}
 	}
 	public void unapplyGuildBenefit2(JFrame frame, CharacterWrapper character) {
 		if (character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_2")) {
-			character.getGameObject().removeThisAttribute(Constants.PIERCING);
+			character.getGameObject().removeThisAttribute(Constants.ARMOR_PIERCING);
 			character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT+"_2");
 		}
 	}

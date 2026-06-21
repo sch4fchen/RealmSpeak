@@ -433,11 +433,12 @@ public class NativeSteedChitComponent extends SquareChitComponent implements Bat
 			}
 		}
 		
-		if (!harm.getIgnoresArmor() && isArmored()) {
+		boolean armorPiercing = attacker.getGameObject().hasThisAttribute(Constants.ARMOR_PIERCING) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.ARMOR_PIERCING));
+		if (!harm.getIgnoresArmor() && !armorPiercing && isArmored()) {
 			harm.dampenSharpness();
 			RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
 		}
-		else if (!isArmored() && hasBarkskin()) {
+		else if (!isArmored() && !armorPiercing && hasBarkskin()) {
 			ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 			if (attackerImmunityColor!=null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");

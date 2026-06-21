@@ -805,6 +805,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			}
 			
 			Strength vulnerability = character.getVulnerability();
+			boolean armorPiercing = attacker.getGameObject().hasThisAttribute(Constants.ARMOR_PIERCING) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.ARMOR_PIERCING));
 
 			// Find armor (if any) at box - chits before cards...
 			RealmComponent armor = null;
@@ -883,7 +884,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 							}
 						}
 					}
-					else if (hasBarkskin()) {
+					else if (!armorPiercing && hasBarkskin()) {
 						ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 						if (attackerImmunityColor != null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 							RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");
@@ -906,12 +907,12 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 			boolean tookSeriousWounds = false;
 			Strength minForWound = new Strength("L"); // Without armor, L is all that is required to wound
 			
-			if (armor==null && armorsPenetratingAttack==null && hasNaturalArmor()) { // custom character possibility
+			if (armor==null && armorsPenetratingAttack==null && !armorPiercing && hasNaturalArmor()) { // custom character possibility
 				harm.dampenSharpness();
 				RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),getGameObject().getNameWithNumber() + " has natural armor, which reduces sharpness: "+harm.toString());
 			}
 			
-			if (armor==null && armorsPenetratingAttack==null && hasBarkskin()) {
+			if (armor==null && armorsPenetratingAttack==null && !armorPiercing && hasBarkskin()) {
 				ColorMagic attackerImmunityColor = ColorMagic.makeColorMagic(attacker.getGameObject().getThisAttribute(Constants.MAGIC_IMMUNITY),true);
 				if (attackerImmunityColor != null && (attackerImmunityColor.isPrismColor()||attackerImmunityColor.getColorNumber()==ColorMagic.GRAY)) {
 					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Barkskin is ignored.");

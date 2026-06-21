@@ -82,7 +82,7 @@ public class MiscellaneousEditPanel extends AdvantageEditPanel {
 		{"Can throw corresponding weapons.",Constants.THROWING_WEAPONS,""},
 		{"Playing a Fight chit as 'Thrust' attack increases its force one leve,",Constants.FIT,"1"},
 		{"A successful HIDE roll on missile attacks, allows to stay hidden.",Constants.SNEAKY,""},
-		{"Can penetrate targets armor.",Constants.PIERCING,""},
+		{"Can penetrate targets armor.",Constants.ARMOR_PIERCING,""},
 		{"Can penetrate targets armor with missile weapons.",Constants.SHARPSHOOTER,""},
 		{"Can attack with a staff additionally to casting without any active armor.",Constants.BATTLE_MAGE,""},
 		{"Cannot play a MAGIC counter, if any weapon except a staff is activated.",Constants.STAFF_RESTRICTED_SPELLCASTING,""},

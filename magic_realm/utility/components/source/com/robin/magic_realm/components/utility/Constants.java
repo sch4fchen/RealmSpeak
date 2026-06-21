@@ -260,7 +260,7 @@ public class Constants {
 	public static final String OFFROAD_TRAVEL = "offroad_travel";
 	public static final String FREE_ENCHANT_CHIT = "free_enchant_chit";
 	public static final String FREE_ENCHANT_CHIT_USED = "free_enchant_chit_used";
-	public static final String PIERCING = "piercing";
+	public static final String ARMOR_PIERCING = "piercing";
 	
 	// Relationships
 	public static final String BASE_RELATIONSHIP = "relationship";
