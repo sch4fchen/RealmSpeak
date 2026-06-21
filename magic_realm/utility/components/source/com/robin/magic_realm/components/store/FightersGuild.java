@@ -10,6 +10,7 @@ import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmLogging;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
@@ -124,6 +125,16 @@ public class FightersGuild extends GuildStore {
 	}
 	public void applyGuildBenefit3(JFrame frame, CharacterWrapper character) {
 		if (!character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3")) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+			if (hostPrefs.hasPref(Constants.GUILDS_FINAL_BENEFIT)) {
+				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(character.getGameData())) {
+					if (new CharacterWrapper(livingCharacter).getCurrentGuild().matches(FIGHTERS_GUILD)) {
+						if (livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT+"_3") || livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR)) {
+							return;
+						}
+					}
+				}
+			}
 			character.getGameObject().setThisAttribute(Constants.GUILD_BENEFIT+"_3");
 			GameObject go = getNewCharacterChit();
 			Strength vul = new Strength(character.getGameObject().getThisAttribute("vulnerability"));

@@ -317,6 +317,7 @@ public class Constants {
 	public static final String TASK_VISITED_SITES = "task_visited_sites";
 	public static final String TASK_COMPLETED = "task_completed";
 	public static final String GUILD_BENEFIT = "guild_benefit";
+	public static final String GUILD_BENEFIT_SUCESSOR = "guild_benefit_sucessor";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
@@ -1016,6 +1017,7 @@ public class Constants {
 	public static final String GUILDS_NO_ADVANCEMENT_SERVICE = "GuildsNoAdvancementService";
 	public static final String GUILDS_HIDEOUT = "GuildsHideout";
 	public static final String GUILDS_BENEFITS = "GuildsBenefits";
+	public static final String GUILDS_FINAL_BENEFIT = "GuildsFinalBenefit";
 	public static final String GUILDS_START_LEVEL = "GuildsStartLevel";
 	public static final String GUILDS_MIN_LVL_0 = "GuildsMinLevel0";
 	public static final String GUILDS_MIN_LVL_1 = "GuildsMinLevel1";

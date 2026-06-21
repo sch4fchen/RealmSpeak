@@ -565,6 +565,10 @@ public class RealmUtility {
 		
 		// Make sure it is light side up for the next regeneration!
 		normalizeParticipant(rc);
+		
+		if (rc.isCharacter()) {
+			passOnFinalGuildBenefit(new CharacterWrapper(rc.getGameObject()));
+		}
 	}
 	public static void normalizeParticipant(RealmComponent rc) {
 		if (rc.isMonster()) {
@@ -585,6 +589,37 @@ public class RealmUtility {
 			NativeSteedChitComponent horse = (NativeSteedChitComponent)nativeChit.getHorse();
 			if (horse!=null) {
 				horse.setLightSideUp();
+			}
+		}
+	}
+	public static void passOnFinalGuildBenefit(CharacterWrapper character) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefs.hasPref(Constants.GUILDS_FINAL_BENEFIT)) {
+			if (character.getCurrentGuild()!=null && (character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT+"_3") || character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR))) {
+				character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR);
+				String guild = character.getCurrentGuild();
+				HashLists<CharacterWrapper,Integer> possibleSuccessors = new HashLists<>();
+				int maxLevel = 0;
+				for (GameObject livingChar : getLivingCharacters(character.getGameObject().getGameData())) {
+					CharacterWrapper livingCharacter = new CharacterWrapper(livingChar);
+					if (livingCharacter.getCurrentGuild().matches(guild) && livingCharacter.getCurrentGuildLevel()>=3) {
+						if (livingCharacter.getCurrentGuildLevel()>maxLevel) {
+							maxLevel = livingCharacter.getCurrentGuildLevel();
+						}
+						possibleSuccessors.put(livingCharacter, livingCharacter.getCurrentGuildLevel());
+					}
+				}
+				if (!possibleSuccessors.isEmpty()) {
+					ArrayList<CharacterWrapper> charactersWithMaxLevel = new ArrayList<>();
+					for (CharacterWrapper livingCharacter : possibleSuccessors.keySet()) {
+						if (livingCharacter.getCurrentGuildLevel()==maxLevel) {
+							charactersWithMaxLevel.add(character);
+						}
+					}
+					if (charactersWithMaxLevel.size()==1) {
+						charactersWithMaxLevel.get(0).getGameObject().setThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR,guild);
+					}
+				}
 			}
 		}
 	}

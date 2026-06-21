@@ -8092,18 +8092,25 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     
     public void setCurrentGuild(String guild) {
+    	if (!guild.matches(getCurrentGuild())) {
+    		RealmUtility.passOnFinalGuildBenefit(this);
+    	}
     	setString(CURRENT_GUILD,guild);
     }
     public String getCurrentGuild() {
     	return getString(CURRENT_GUILD);
     }
     public void setCurrentGuildLevel(int level) {
+    	if (level<=3) {
+    		RealmUtility.passOnFinalGuildBenefit(this);
+    	}
     	setInt(CURRENT_GUILD_LEVEL,level);
     }
     public int getCurrentGuildLevel() {
     	return getInt(CURRENT_GUILD_LEVEL);
     }
     public void clearGuild() {
+    	RealmUtility.passOnFinalGuildBenefit(this);
     	clear(CURRENT_GUILD);
     	clear(CURRENT_GUILD_LEVEL);
     }

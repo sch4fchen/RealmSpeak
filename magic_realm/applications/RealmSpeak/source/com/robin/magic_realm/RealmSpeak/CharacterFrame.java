@@ -58,6 +58,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton stopFollowingButton;
 	protected SingleButton approveInventoryButton;
 	protected SingleButton gsPickupButton; // This is the only optional SingleButton
+	protected SingleButton guildBenefitButton; // This is the only optional SingleButton
 	protected SingleButtonManager singleButtonManager;
 	
 	protected JButton viewChitsButton;
@@ -919,6 +920,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 	}
+	
+	private void selectGuildBenefit() {
+		character.getCurrentGuildStore().applyGuildBenefit3(gameHandler.getMainFrame(), character);
+		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR);
+	}
+	
 	protected void enchantToContinue() {
 		int count = character.getFollowSpellActions();
 		if (count>0) {
@@ -1688,6 +1695,26 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(gsPickupButton, new Dimension(150, 25));
 		singleButtonManager.addButton(gsPickupButton);
 		box.add(gsPickupButton);
+		
+		// Guild Benefit Button
+		guildBenefitButton = new SingleButton("Choose Guild Benefit",false) {
+			public boolean needsShow() {
+				return character.isActive()
+						&& character.isCharacter()
+						&& showingTurn()
+						&& character.getGameObject().hasThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR);
+			}
+		};
+		guildBenefitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				selectGuildBenefit();
+			}
+		});
+		guildBenefitButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		guildBenefitButton.setVisible(false);
+		ComponentTools.lockComponentSize(guildBenefitButton, new Dimension(150, 25));
+		singleButtonManager.addButton(guildBenefitButton);
+		box.add(guildBenefitButton);
 		
 		box.add(Box.createHorizontalGlue());
 		

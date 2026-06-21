@@ -29,6 +29,10 @@ public abstract class Store {
 		return trader.getGameObject().getName();
 	}
 	
+	public final static String MAGIC_GUILD = "magic";
+	public final static String FIGHTERS_GUILD = "fighters";
+	public final static String THIEVES_GUILD = "thieves";
+	
 	public static Store getStore(TravelerChitComponent traveler,CharacterWrapper character) {
 		Store store = null;
 		String storeName = traveler.getGameObject().getThisAttribute(Constants.STORE);
@@ -58,13 +62,13 @@ public abstract class Store {
 		GuildStore store = null;
 		String storeName = guild.getGameObject().getThisAttribute("guild");
 		if (storeName!=null) {
-			if ("magic".equals(storeName)) {
+			if (MAGIC_GUILD.equals(storeName)) {
 				store = new MagicGuild(guild,character);
 			}
-			else if ("fighters".equals(storeName)) {
+			else if (FIGHTERS_GUILD.equals(storeName)) {
 				store = new FightersGuild(guild,character);
 			}
-			else if ("thieves".equals(storeName)) {
+			else if (THIEVES_GUILD.equals(storeName)) {
 				store = new ThievesGuild(guild,character);
 			}
 		}

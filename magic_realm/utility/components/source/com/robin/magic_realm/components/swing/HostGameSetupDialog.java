@@ -1179,7 +1179,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LOOSE_BENEFITS,"LOOSE BENEFITS - If character looses a guild level or exits a guild, corresponding guild benefits are lost.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_BENEFITS,"BENEFITS 1+2 - Characters can get benefits for guild level one and two.",false));	
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_BENEFITS,"BENEFITS 1+2 - Characters can get benefits for guild level one and two.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_FINAL_BENEFIT,"FINAL BENEFIT - Only a single character can hold the final benefit.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_START_LEVEL,"START LEVEL - Characters start with guild level 0 (not 1), after joining a guild.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_MIN_LVL_0,"MAX LEVEL 0 - Characters can never fall below guild level 0.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_MIN_LVL_1,"MIN LEVEL 1 - Characters can never fall below guild level 1.",false));
