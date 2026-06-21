@@ -834,8 +834,10 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				}
 				else {
 					if (armorsPenetratingAttack!=null && !armorsPenetratingAttack.isEmpty()) {
-						harm.dampenSharpness();
-						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
+						if (!armorPiercing) {
+							harm.dampenSharpness();
+							RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor, and reduces sharpness: "+harm.toString());
+						}
 						
 						for (RealmComponent test:armorsPenetratingAttack) {
 							if (isDragonBreath && test.getGameObject().hasThisAttribute(Constants.IMMUNE_BREATH)) {
@@ -926,16 +928,18 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				// Wound minimum is increased to M if there is armor involved
 				minForWound = new Strength("M");
 				
-				// If armor, reduce harm by one star, determine if armor is damaged/destroyed, apply wounds
-				harm.dampenSharpness();
-				if (armor.isCharacter()) {
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits characater fortification, and reduces sharpness: "+harm.toString());
-				}
-				else if (armor.isWeapon() || armor instanceof CharacterActionChitComponent) {
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hit is parried ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
-				}
-				else {
-					RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
+				if (!armorPiercing) {
+					// If armor, reduce harm by one star, determine if armor is damaged/destroyed, apply wounds
+					harm.dampenSharpness();
+					if (armor.isCharacter()) {
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits characater fortification, and reduces sharpness: "+harm.toString());
+					}
+					else if (armor.isWeapon() || armor instanceof CharacterActionChitComponent) {
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hit is parried ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
+					}
+					else {
+						RealmLogging.logMessage(attacker.getGameObject().getNameWithNumber(),"Hits armor ("+armor.getGameObject().getNameWithNumber()+"), and reduces sharpness: "+harm.toString());
+					}
 				}
 				Strength armorVulnerability = new Strength(armor.getGameObject().getThisAttribute("vulnerability"));
 				if (armor.isArmor()) armorVulnerability = ((ArmorChitComponent)armor).getVulnerability();

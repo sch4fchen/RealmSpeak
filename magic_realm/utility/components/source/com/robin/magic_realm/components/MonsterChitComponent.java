@@ -926,7 +926,7 @@ public class MonsterChitComponent extends SquareChitComponent implements BattleC
 		}
 		
 		boolean armorPiercing = attacker.getGameObject().hasThisAttribute(Constants.ARMOR_PIERCING) || (attacker.isCharacter() && (new CharacterWrapper(attacker.getGameObject())).affectedByKey(Constants.ARMOR_PIERCING));
-		if (!harm.getIgnoresArmor() && !armorPiercing && hasActiveShield()) {
+		if (!harm.getIgnoresArmor() && hasActiveShield()) {
 			MonsterPartChitComponent shield = getShield();
 			CombatWrapper shieldCombat = new CombatWrapper(getShield().getGameObject());
 			if (shieldCombat.getCombatBoxDefense() == box) {
