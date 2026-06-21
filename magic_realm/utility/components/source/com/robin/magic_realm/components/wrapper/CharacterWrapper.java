@@ -8130,6 +8130,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     		String levelName = "";
     		int level = getCurrentGuildLevel();
     		switch(level) {
+    			case 0:
     			case 1:
     				levelName=GuildLevel.Apprentice.toString();
     				break;
