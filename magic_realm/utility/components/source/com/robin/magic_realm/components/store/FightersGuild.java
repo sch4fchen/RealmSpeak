@@ -128,8 +128,9 @@ public class FightersGuild extends GuildStore {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 			if (hostPrefs.hasPref(Constants.GUILDS_FINAL_BENEFIT)) {
 				for (GameObject livingCharacter : RealmUtility.getLivingCharacters(character.getGameData())) {
-					if (new CharacterWrapper(livingCharacter).getCurrentGuild().matches(FIGHTERS_GUILD)) {
-						if (livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT+"_3") || livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR)) {
+					String guildLivingCharacter = new CharacterWrapper(livingCharacter).getCurrentGuild();
+					if (guildLivingCharacter!=null && guildLivingCharacter.matches(FIGHTERS_GUILD)) {
+						if (livingCharacter.getId()!=character.getGameObject().getId() && (livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT+"_3") || livingCharacter.hasThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR))) {
 							return;
 						}
 					}

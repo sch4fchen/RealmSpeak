@@ -8092,7 +8092,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     }
     
     public void setCurrentGuild(String guild) {
-    	if (!guild.matches(getCurrentGuild())) {
+    	if (getCurrentGuild()!=null && !guild.matches(getCurrentGuild())) {
     		RealmUtility.passOnFinalGuildBenefit(this);
     	}
     	setString(CURRENT_GUILD,guild);
@@ -8118,7 +8118,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getCurrentGuild()==null) return null;
 		GameData data = getGameObject().getGameData();
 		GamePool pool = new GamePool(data.getGameObjects());
-		GameObject guild = pool.findFirst(Constants.GUILD+",name="+getCurrentGuild());
+		GameObject guild = pool.findFirst(Constants.GUILD+"="+getCurrentGuild());
 		if (guild!=null) {
 			return Store.getGuildStore((GuildChitComponent)RealmComponent.getRealmComponent(guild),this);
 		}

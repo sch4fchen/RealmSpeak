@@ -924,6 +924,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void selectGuildBenefit() {
 		character.getCurrentGuildStore().applyGuildBenefit3(gameHandler.getMainFrame(), character);
 		character.getGameObject().removeThisAttribute(Constants.GUILD_BENEFIT_SUCESSOR);
+		gameHandler.updateCharacterFrames();
 	}
 	
 	protected void enchantToContinue() {

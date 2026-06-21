@@ -602,7 +602,7 @@ public class RealmUtility {
 				int maxLevel = 0;
 				for (GameObject livingChar : getLivingCharacters(character.getGameObject().getGameData())) {
 					CharacterWrapper livingCharacter = new CharacterWrapper(livingChar);
-					if (livingCharacter.getCurrentGuild().matches(guild) && livingCharacter.getCurrentGuildLevel()>=3) {
+					if (livingCharacter.getGameObject().getId()!=character.getGameObject().getId() && livingCharacter.getCurrentGuild().matches(guild) && livingCharacter.getCurrentGuildLevel()>=3) {
 						if (livingCharacter.getCurrentGuildLevel()>maxLevel) {
 							maxLevel = livingCharacter.getCurrentGuildLevel();
 						}
@@ -613,7 +613,7 @@ public class RealmUtility {
 					ArrayList<CharacterWrapper> charactersWithMaxLevel = new ArrayList<>();
 					for (CharacterWrapper livingCharacter : possibleSuccessors.keySet()) {
 						if (livingCharacter.getCurrentGuildLevel()==maxLevel) {
-							charactersWithMaxLevel.add(character);
+							charactersWithMaxLevel.add(livingCharacter);
 						}
 					}
 					if (charactersWithMaxLevel.size()==1) {
