@@ -86,7 +86,7 @@ public class CombatFrame extends JFrame {
 	private JButton combatSummaryButton;
 	private JToggleButton lockNextButton;
 	private JButton undoButton;
-	private JButton textButton;
+	private JToggleButton textButton;
 	private FlashingButton endButton; // if combat is not necessary (ie., all characters are hidden)
 	private FlashingButton nextButton;
 	
@@ -1185,6 +1185,7 @@ public class CombatFrame extends JFrame {
 				list.add(getSuggestButton());
 			}
 			list.add(getShowPanel());
+			list.add(gameControls);
 		}
 		else {
 			instructionLabel = new JLabel("Observing");
@@ -1295,8 +1296,7 @@ public class CombatFrame extends JFrame {
 		});
 		bottomPanel.add(combatSummaryButton,"Center");
 		gameControls = new JPanel(new GridLayout(2,2));
-		bottomPanel.add(gameControls,"South");
-		
+
 		undoButton = new JButton("Reset");
 		undoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1310,13 +1310,27 @@ public class CombatFrame extends JFrame {
 			}
 		});
 		gameControls.add(undoButton);
-		textButton = new JButton("Details");
+		textButton = new JToggleButton("Details");
+		textButton.setSelected(RealmLogWindow.getSingleton().isVisible());
 		textButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				RealmLogWindow log = RealmLogWindow.getSingleton();
-				log.setVisible(true);
-				log.toFront();
-				log.scrollToEnd();
+				if (textButton.isSelected()) {
+					log.setVisible(true);
+					log.toFront();
+					log.scrollToEnd();
+				}
+				else {
+					log.setVisible(false);
+				}
+			}
+		});
+		RealmLogWindow.getSingleton().addComponentListener(new ComponentAdapter() {
+			public void componentShown(ComponentEvent ev) {
+				textButton.setSelected(true);
+			}
+			public void componentHidden(ComponentEvent ev) {
+				textButton.setSelected(false);
 			}
 		});
 		gameControls.add(textButton);
@@ -1341,6 +1355,7 @@ public class CombatFrame extends JFrame {
 		nextButton.setFont(INSTRUCTION_FONT);
 		gameControls.add(nextButton);
 		ComponentTools.lockComponentSize(gameControls,180,80);
+		gameControls.setBorder(BorderFactory.createLineBorder(Color.yellow,6));
 		sidePanel.add(bottomPanel,"South");
 		
 		controlPanel = Box.createVerticalBox();

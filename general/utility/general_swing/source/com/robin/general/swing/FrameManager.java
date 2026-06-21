@@ -53,6 +53,9 @@ public class FrameManager {
 		}
 		return false;
 	}
+	public boolean hasFrame(String frameKey) {
+		return frameHash.containsKey(frameKey);
+	}
 	public void disposeFrame(String frameKey) {
 		ManagedFrame cached = frameHash.get(frameKey);
 		if (cached!=null) {
