@@ -1123,16 +1123,6 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		tabs.addTab(null, ImageCache.getIcon("tab/chat"), getChatPanel(),"Chat");
 
-		// JTabbedPane's own mousePressed listener (installed by the UI delegate, registered
-		// before ours) changes the selection synchronously, before our listener runs — so by
-		// the time any of our listeners fire, "clicked == selectedIndex" is always true and
-		// useless for detecting a re-click. Instead, the ChangeListener marks when a press
-		// actually changed the tab; absence of that mark means the user pressed the
-		// already-selected tab → toggle home.
-		// Use mousePressed rather than mouseClicked: AWT only synthesizes mouseClicked when
-		// press and release land at (nearly) the same pixel, which trackpads routinely miss
-		// even on an intended single click — causing the toggle to silently do nothing and
-		// requiring several repeated clicks before one happens to land cleanly.
 		boolean[] tabChangedByThisPress = {false};
 		tabs.addChangeListener(e -> tabChangedByThisPress[0] = true);
 		tabs.addMouseListener(new MouseAdapter() {
