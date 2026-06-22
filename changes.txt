@@ -4,6 +4,8 @@ Optional Rule for join requirement: be at guild: ask for joining: fulfill requir
 Version 1.2.6.0
 NEW FEATURES:
 # Optional rule for joining a Guild
+QUEST UPDATE:
+# Improve Q40 Travels Merchant quest
 
 Version 1.2.5.9
 NEW FEATURES:
@@ -17,7 +19,7 @@ QUEST UPDATE:
 # Add option to QuestRewardGuild
 # QuestRequirement: GuildLocation
 # QuestReward: DiscardOption
-# Improve Q40 Travels Merchant quest
+# Improve Q19 Ends Earth
 # Add guild quests
 BUGS/ISSUES:
 # Fix QuestRequirementHire
