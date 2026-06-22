@@ -1,6 +1,5 @@
 package com.robin.game.server;
 
-import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -152,7 +151,6 @@ public class GameHost {
 	 * Assigns a server to the provided connection
 	 */
 	public void addConnection(Socket connection) {
-		try { connection.setSoTimeout(GameNet.DEFAULT_TIMEOUT_MS); } catch(IOException ex) { /* ignore */ }
 		GameServer server = new GameServer(this,connection);
 		server.setClientHostName(hostName);
 		server.start();
