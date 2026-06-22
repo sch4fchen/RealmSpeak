@@ -1614,29 +1614,17 @@ public class ActionRow {
 			completed = true;
 			return;
 		}
-		
+
 		character.checkForLostInTheMaze(current); // Lost in the Maze rule for Super Realm
-		
-		// Before starting, make sure that you aren't "lost in the maze" (expansion 1).
-		// Rules behavior (EXP_MAZE_PASSTHROUGH ON, default): pass-through is allowed only if
-		// the character's last action TODAY was a Move — meaning they just moved in this turn
-		// and haven't stopped to do anything else. Three cases fall out naturally:
-		//   - Last action = Move (just moved in)  → pass-through allowed
-		//   - Last action = null (new turn, ended last turn here) → trapped
-		//   - Last action = non-Move (did something here) → trapped
-		// Legacy behavior (OFF): always trapped when in an undiscovered discover_to_leave clearing.
+
+		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
 		if ((character.isCharacter() || character.isHiredLeader()) && !character.isMinion()) {
 			RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
-			if (discoverToLeave!=null) {
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-				boolean passThroughAllowed = hostPrefs.hasPref(Constants.EXP_MAZE_PASSTHROUGH)
-						&& CharacterWrapper.getIdForAction(character.getLastPerformedAction()) == ActionId.Move;
-				if (!passThroughAllowed) {
-					JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
-							"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
-					cancelled = true;
-					return;
-				}
+			if (discoverToLeave!=null && CharacterWrapper.getIdForAction(character.getLastPerformedActionToday()) != ActionId.Move) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
+						"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
+				cancelled = true;
+				return;
 			}
 		}
 
@@ -1670,16 +1658,11 @@ public class ActionRow {
 		// Before starting, make sure that you aren't "lost in the maze" (expansion 1)
 		if ((character.isCharacter() || character.isHiredLeader()) && !character.isMinion()) {
 			RealmComponent discoverToLeave = ClearingUtility.findDiscoverToLeaveComponent(current,character);
-			if (discoverToLeave!=null) {
-				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
-				boolean passThroughAllowed = hostPrefs.hasPref(Constants.EXP_MAZE_PASSTHROUGH)
-						&& CharacterWrapper.getIdForAction(character.getLastPerformedAction()) == ActionId.Move;
-				if (!passThroughAllowed) {
-					JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
-							"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
-					cancelled = true;
-					return;
-				}
+			if (discoverToLeave!=null && CharacterWrapper.getIdForAction(character.getLastPerformedActionToday()) != ActionId.Move) {
+				JOptionPane.showMessageDialog(gameHandler.getMainFrame(),"You are trapped in the "+discoverToLeave.getGameObject().getName()+"! MOVE is cancelled.",
+						"Trapped!",JOptionPane.PLAIN_MESSAGE,discoverToLeave.getFaceUpIcon());
+				cancelled = true;
+				return;
 			}
 		}
 		
