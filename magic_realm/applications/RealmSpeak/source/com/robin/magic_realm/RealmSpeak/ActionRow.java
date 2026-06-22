@@ -1005,7 +1005,18 @@ public class ActionRow {
 				location = chooser.getSelectedLocation();
 			}
 		}
-		
+
+		// TBD(11): A character who is between clearings (TileLocation.isBetweenClearings()) can
+		// record an illegal move if the target TileLocation has a null clearing — the recording-time
+		// guard in CharacterActionControlManager only fires when tl.hasClearing() is true, so a
+		// null-clearing target silently bypasses it. At execution time, every dereference of
+		// location.clearing below (correctSide, getConnectingPath, canWalkWoods, moveCost, etc.)
+		// will NPE because the outer guard only checks location != null, not location.isInClearing().
+		// The same exposure exists on game load: RealmTurnPanel.initActionRow() decodes the action
+		// string via ClearingUtility.deduceLocationFromAction() with no post-decode validation, so
+		// a save file with a between-clearings character and a bad planned move will crash here.
+		// Fix: add isInClearing() guard here and in getDescription(), and re-validate on load.
+
 		// Player is moved to clearing
 		if (location != null) {
 			// clearing might NOT be on the same side, if a tile flipped somewhere, so update it here
