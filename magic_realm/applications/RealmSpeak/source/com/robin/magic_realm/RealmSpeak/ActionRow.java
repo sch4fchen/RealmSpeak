@@ -2841,19 +2841,6 @@ public class ActionRow {
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		completed = true;
 	}
-	private void doOffroadAction() {
-		TileLocation tl = character.getCurrentLocation();
-		if (tl.tile.getGameObject().hasThisAttribute(Constants.NO_OFFROAD_TRAVEL)) {
-			result = "Cannot offroad travel in this tile.";
-			completed = true;
-			return;
-		}
-
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.Move;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
-		completed = true;
-	}
 
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {
