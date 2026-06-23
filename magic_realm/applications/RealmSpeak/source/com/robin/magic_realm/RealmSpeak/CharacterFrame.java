@@ -1817,10 +1817,13 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	private void tokenClicked() {
-		toggleCenterOnToken();
 		if (DebugUtility.isCheat()) {
-			// If CHEAT is on, then clicking the token will allow you to cheat
+			// If CHEAT is on, clicking the token opens the cheat prompt instead of toggling the
+			// map view — the two features share this click and would otherwise fight over it
+			// (every cheat click also toggling/un-toggling the centered view underneath the dialog).
 			cheat();
+		} else {
+			toggleCenterOnToken();
 		}
 	}
 
