@@ -13,6 +13,7 @@ import com.robin.game.objects.GameData;
 import com.robin.general.swing.IconFactory;
 import com.robin.magic_realm.components.attribute.ChatLine;
 import com.robin.magic_realm.components.swing.CenteredMapView;
+import com.robin.magic_realm.components.swing.MapDefaultViewControl;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
 import com.robin.magic_realm.components.wrapper.*;
@@ -88,7 +89,22 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 			}
 		});
 
-		getContentPane().add(map,"Center");
+		// CenteredMapView overrides paint() directly without calling super.paint()/paintChildren(),
+		// so a Swing child added directly to map would never actually be painted. The "Default
+		// View"/"Set Default" overlay is therefore added as a SIBLING of map inside a JLayeredPane,
+		// on a higher layer so it floats on top and still receives its own click events.
+		JLayeredPane mapLayeredPane = new JLayeredPane();
+		mapLayeredPane.setLayout(null);
+		mapLayeredPane.add(map,JLayeredPane.DEFAULT_LAYER);
+		final MapDefaultViewControl defaultViewControl = new MapDefaultViewControl(map);
+		mapLayeredPane.add(defaultViewControl,JLayeredPane.PALETTE_LAYER);
+		mapLayeredPane.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent ev) {
+				map.setBounds(0,0,mapLayeredPane.getWidth(),mapLayeredPane.getHeight());
+				defaultViewControl.reanchor(mapLayeredPane.getWidth(),mapLayeredPane.getHeight());
+			}
+		});
+		getContentPane().add(mapLayeredPane,"Center");
 		addKeyListener(map.getShiftKeyListener());
 		
 		zoomSlider = new JSlider(10,100,70);
@@ -141,6 +157,11 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 			ex.printStackTrace();
 		}
 		map.centerMap();
+		if (!map.hasDefaultView()) {
+			// First time this map window is organized, the initial centered view becomes the
+			// default view (until the user explicitly overrides it with "Set Default").
+			map.setAsDefaultView();
+		}
 	}
 	public boolean onlyOneInstancePerGame() {
 		return true;
