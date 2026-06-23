@@ -91,6 +91,11 @@ public class CenteredMapView extends JComponent {
 	protected double scale = 1.0;
 	protected Rectangle normalMapRect;
 	protected Rectangle borderRect;
+
+	// Default view (pan/zoom) saved via the map window's "Set Default" button — in-memory only,
+	// for the lifetime of this CenteredMapView instance (not persisted across games or restarts).
+	private Point2D.Double defaultOffset = null;
+	private double defaultScale = -1;
 	
 	protected BufferedImage mapImage = null;
 	protected boolean replot = true;
@@ -908,6 +913,31 @@ public class CenteredMapView extends JComponent {
 	}
 	public void setOffset(Point2D.Double p) {
 		offset = p;
+	}
+	/**
+	 * Captures the current pan offset and zoom scale as this map's default view, for later recall
+	 * via {@link #restoreDefaultView()}. In-memory only — not persisted across games or restarts.
+	 */
+	public void setAsDefaultView() {
+		defaultOffset = new Point2D.Double(offset.x,offset.y);
+		defaultScale = scale;
+	}
+	public boolean hasDefaultView() {
+		return defaultOffset != null;
+	}
+	/**
+	 * Restores the view saved by {@link #setAsDefaultView()}. If nothing has been saved yet,
+	 * falls back to {@link #centerMap()} so the button is useful on first click too.
+	 */
+	public void restoreDefaultView() {
+		if (hasDefaultView()) {
+			scale = defaultScale;
+			offset = new Point2D.Double(defaultOffset.x,defaultOffset.y);
+			repaint();
+		}
+		else {
+			centerMap();
+		}
 	}
 	public void paint(Graphics g1) {
 		Graphics2D g = (Graphics2D)g1;
