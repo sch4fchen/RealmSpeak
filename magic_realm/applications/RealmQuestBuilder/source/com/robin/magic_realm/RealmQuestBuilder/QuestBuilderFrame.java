@@ -99,6 +99,8 @@ public class QuestBuilderFrame extends JFrame {
 	private JTextField specificCharacterListField;
 	private JButton specificCharacterHelperButton;
 	private JCheckBox multipleUseOption;
+	private JCheckBox discardNeverOption;
+	private JCheckBox discardAlwaysOption;
 
 	private JTable ruleLimitationTable;
 
@@ -232,6 +234,8 @@ public class QuestBuilderFrame extends JFrame {
 		femaleCharacterOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_FEMALE));
 		
 		multipleUseOption.setSelected(quest.getBoolean(QuestConstants.QUEST_MULTIPLE_USE));
+		discardNeverOption.setSelected(quest.getBoolean(QuestConstants.DISCARD_NEVER));
+		discardAlwaysOption.setSelected(quest.getBoolean(QuestConstants.DISCARD_ALWAYS));
 
 		specificCharacterListOption.setSelected(quest.getBoolean(QuestConstants.CHARACTER_SPEC_REGEX));
 		specificCharacterListField.setText(specificCharacterListOption.isSelected() ? quest.getString(QuestConstants.CHARACTER_SPEC_REGEX) : "");
@@ -271,6 +275,8 @@ public class QuestBuilderFrame extends JFrame {
 		quest.setString(QuestConstants.CHARACTER_SPEC_REGEX, specificCharacterListOption.isSelected() ? specificCharacterListField.getText() : null);
 		
 		quest.setBoolean(QuestConstants.QUEST_MULTIPLE_USE, multipleUseOption.isSelected());
+		quest.setBoolean(QuestConstants.DISCARD_NEVER, discardNeverOption.isSelected());
+		quest.setBoolean(QuestConstants.DISCARD_ALWAYS, discardAlwaysOption.isSelected());
 	}
 
 	private void rebuildSteps() {
@@ -870,6 +876,16 @@ public class QuestBuilderFrame extends JFrame {
 		clonedQuests.add(multipleUseOption);
 		clonedQuestsFrame.add(clonedQuests);
 		right.add(clonedQuestsFrame);
+		right.add(Box.createVerticalGlue());
+		
+		JPanel discardOptionFrame = new JPanel(new GridLayout(1, 2));
+		discardOptionFrame.setMaximumSize(new Dimension(1000, 100));
+		discardOptionFrame.setBorder(BorderFactory.createTitledBorder("Discard Allowed Option"));
+		discardNeverOption = new JCheckBox("Never");
+		discardAlwaysOption = new JCheckBox("Always");
+		discardOptionFrame.add(discardNeverOption);
+		discardOptionFrame.add(discardAlwaysOption);
+		right.add(discardOptionFrame);
 		right.add(Box.createVerticalGlue());
 		
 		panel.add(right);
