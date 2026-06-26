@@ -1078,6 +1078,7 @@ public class CombatFrame extends JFrame {
 		}
 		
 		list.add(getRefreshDisplayButton());
+		list.add(gameControls);
 		
 		if (interactiveFrame) {
 			// Special "Change Tactics" button for transmorphed players
@@ -1185,7 +1186,6 @@ public class CombatFrame extends JFrame {
 				list.add(getSuggestButton());
 			}
 			list.add(getShowPanel());
-			list.add(gameControls);
 		}
 		else {
 			instructionLabel = new JLabel("Observing");
