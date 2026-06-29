@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * Small floating control shown over a {@link CenteredMapView}: "Default View" recalls a saved
  * pan/zoom, "Set Default" saves the current one. Dragged via a dedicated grip handle so the
- * buttons themselves only ever fire their click action — never a drag.
+ * buttons themselves only ever fire their click action - never a drag.
  * <p>
  * By default this control anchors to the lower-left corner of its container, tracking resizes,
  * until the user drags it somewhere else (after which it stays put, only being clamped back into
@@ -24,13 +24,12 @@ public class MapDefaultViewControl extends JPanel {
 
 	public MapDefaultViewControl(CenteredMapView map) {
 		super(new BorderLayout(2,0));
-		setOpaque(true);
 		setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLineBorder(Color.darkGray),
 				BorderFactory.createEmptyBorder(2,2,2,2)));
-
+		
 		JComponent grip = createGripHandle();
-		add(grip,"West");
+		add(grip,BorderLayout.WEST);
 
 		JPanel buttons = new JPanel(new GridLayout(1,2,4,0));
 		JButton defaultViewButton = new JButton("Default View");
@@ -41,7 +40,7 @@ public class MapDefaultViewControl extends JPanel {
 		setDefaultButton.addActionListener(ev -> map.setAsDefaultView());
 		buttons.add(defaultViewButton);
 		buttons.add(setDefaultButton);
-		add(buttons,"Center");
+		add(buttons,BorderLayout.CENTER);
 	}
 
 	private JComponent createGripHandle() {
@@ -99,7 +98,7 @@ public class MapDefaultViewControl extends JPanel {
 			moveTo(getX(),getY());
 		}
 		else {
-			setLocation(MARGIN,containerHeight-getHeight()-MARGIN);
+			setLocation(MARGIN,MARGIN);
 		}
 	}
 }

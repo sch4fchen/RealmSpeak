@@ -94,7 +94,6 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 		// View"/"Set Default" overlay is therefore added as a SIBLING of map inside a JLayeredPane,
 		// on a higher layer so it floats on top and still receives its own click events.
 		JLayeredPane mapLayeredPane = new JLayeredPane();
-		mapLayeredPane.setLayout(null);
 		mapLayeredPane.add(map,JLayeredPane.DEFAULT_LAYER);
 		final MapDefaultViewControl defaultViewControl = new MapDefaultViewControl(map);
 		mapLayeredPane.add(defaultViewControl,JLayeredPane.PALETTE_LAYER);
@@ -104,9 +103,10 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 				defaultViewControl.reanchor(mapLayeredPane.getWidth(),mapLayeredPane.getHeight());
 			}
 		});
-		getContentPane().add(mapLayeredPane,"Center");
+		getContentPane().add(mapLayeredPane,BorderLayout.CENTER);
+		defaultViewControl.reanchor(mapLayeredPane.getWidth(),mapLayeredPane.getHeight());
 		addKeyListener(map.getShiftKeyListener());
-		
+
 		zoomSlider = new JSlider(10,100,70);
 		zoomSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
@@ -115,7 +115,7 @@ public class RealmInspectorFrame extends RealmSpeakInternalFrame {
 				map.setScale(scale);
 			}
 		});
-		getContentPane().add(zoomSlider,"South");
+		getContentPane().add(zoomSlider,BorderLayout.SOUTH);
 		zoomSlider.setVisible(false);
 		
 		map.addMouseListener(new MouseAdapter() {
