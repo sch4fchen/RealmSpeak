@@ -10,6 +10,7 @@ NEW FEATURES:
 # Alternative Placement for combat buttons
 QUEST UPDATE:
 # Improve Q40 Travels Merchant quest
+# More guild quests
 
 Version 1.2.5.9
 NEW FEATURES:
