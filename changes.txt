@@ -1,3 +1,4 @@
+QuestRequirementSearch: find a specific item and option to mark the item
 Selecting random traveler for questLocation etc.: Questbuilder, it does not have a way to determine which traveler chits are "in play".
 	TravelerAdd (specific, random unused, clearing type, tile type, characters loc..), TravelerMark (random, specific, in characters loc..), TravelerMove (random, toTileType, toClearingType, toCharacterLoc, toLocation), ReqTravel: be in loc of traveler, traveler in game
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
@@ -6,6 +7,7 @@ Optional Rule for join requirement: be at guild: ask for joining: fulfill requir
 Version 1.2.6.0
 NEW FEATURES:
 # Optional rule for joining a Guild
+# Alternative Placement for combat buttons
 QUEST UPDATE:
 # Improve Q40 Travels Merchant quest
 

@@ -21,6 +21,7 @@ import com.robin.general.util.*;
 import com.robin.magic_realm.RealmBattle.MoveActivator.MoveActionResult;
 import com.robin.magic_realm.RealmBattle.targeting.SpellTargeting;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
+import com.robin.magic_realm.RealmSpeak.RealmSpeakOptions;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.CharacterActionType;
@@ -1078,7 +1079,9 @@ public class CombatFrame extends JFrame {
 		}
 		
 		list.add(getRefreshDisplayButton());
-		list.add(gameControls);
+		if (!new RealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.COMBAT_CONTROLS_PLACEMENT_2)) {
+			list.add(gameControls);
+		}
 		
 		if (interactiveFrame) {
 			// Special "Change Tactics" button for transmorphed players
@@ -1288,6 +1291,7 @@ public class CombatFrame extends JFrame {
 			}
 		});
 		bottomPanel.add(lockNextButton,"North");
+
 		combatSummaryButton = new JButton("Round Summary",IconFactory.findIcon("images/combat/combatsummary.gif"));
 		combatSummaryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1296,6 +1300,9 @@ public class CombatFrame extends JFrame {
 		});
 		bottomPanel.add(combatSummaryButton,"Center");
 		gameControls = new JPanel(new GridLayout(2,2));
+		if (new RealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.COMBAT_CONTROLS_PLACEMENT_2)) {
+			bottomPanel.add(gameControls,"South");
+		}
 
 		undoButton = new JButton("Reset");
 		undoButton.addActionListener(new ActionListener() {

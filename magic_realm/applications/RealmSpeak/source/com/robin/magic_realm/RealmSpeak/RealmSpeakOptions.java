@@ -42,6 +42,7 @@ public class RealmSpeakOptions {
 	public static final String SHOW_SEASON_ICON = "sSeasI";
 	public static final String MAP_FOLLOW_CHARACTER = "mapFollowCharacter";
 	public static final String MAP_CENTER_ON_CHARACTER = "mapCenterOnCharacter";
+	public static final String COMBAT_CONTROLS_PLACEMENT_2 = "combatControlsPlacement2";
 	public static final String NUMBER_OF_CHAT_LINES = "nlChat";
 	public static final String HEADER_CHAT_LINES = "hChatL";
 	public static final String DAILY_COMBAT = "dailyCombat";
@@ -179,6 +180,7 @@ public class RealmSpeakOptions {
 			options.set(SETUP_CARD_LAYOUT,true);
 			options.set(MAP_FOLLOW_CHARACTER,true);
 			options.set(MAP_CENTER_ON_CHARACTER,true);
+			options.set(COMBAT_CONTROLS_PLACEMENT_2,false);
 		}
 	}
 	public void save() {
