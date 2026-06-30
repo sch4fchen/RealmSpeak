@@ -382,7 +382,14 @@ public class TableLoot extends Loot {
 			qp.searchType = SearchResultType.ReadRunesAnySite;
 			qp.searchHadAnEffect = true;
 		}
+		if (foundItem!=null) {
+			qp.objectList.add(foundItem);
+		}
 		character.testQuestRequirements(getParentFrame(),qp);
+		qp.targetOfSearch = treasureLocation;
+		qp.actionName = "Loot";
+		character.testQuestRequirements(getParentFrame(),qp);
+		
 		return ret;
 	}
 	private void doClues(CharacterWrapper character,GameObject go) {

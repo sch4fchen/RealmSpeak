@@ -28,6 +28,7 @@ public class Loot extends RealmTable {
 	protected ActionPrerequisite drawPr;
 	protected CharacterWrapper character;
 	protected Boolean ignorePit;
+	protected GameObject foundItem;
 	
 	public Loot(JFrame frame,ChangeListener listener) {
 		super(frame,listener);
@@ -403,6 +404,7 @@ public class Loot extends RealmTable {
 		dumpGoldSpecialsToClearing();
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
+		foundItem = thing;
 		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS) || thing.hasThisAttribute(Constants.NO_SECRET)) {
 			return "Found " + thing.getName();
 		}
