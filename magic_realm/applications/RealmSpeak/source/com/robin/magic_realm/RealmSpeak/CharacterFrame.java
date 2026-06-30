@@ -1104,25 +1104,25 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		tabs = new JTabbedPane(SwingConstants.BOTTOM);
 		tabs.addTab(null, ImageCache.getIcon("tab/record"), getActionPanel(), "Record Actions");
 		if (character.isCharacter())
-			tabs.addTab(null, ImageCache.getIcon("tab/chits"), getChitPanel(), "Chits");
+			tabs.addTab(null, ImageCache.getIcon("tab/chits"), getChitPanel(), "Toggle Chits View");
 		if (!character.isMinion())
-			tabs.addTab(null, ImageCache.getIcon("tab/inventory"), getInventoryObjectPanel(), "Inventory");
-		tabs.addTab(null, ImageCache.getIcon("tab/spells"), getSpellsPanel(), "Spells"); // hired leaders might be bewitched by spells...
-		tabs.addTab(null, ImageCache.getIcon("tab/disc"), getDiscoveriesPanel(), "Discoveries");
-		tabs.addTab(null, ImageCache.getIcon("tab/relationships"), getRelationshipPanel(), "Native Relationships");
+			tabs.addTab(null, ImageCache.getIcon("tab/inventory"), getInventoryObjectPanel(), "Toggle Inventory View");
+		tabs.addTab(null, ImageCache.getIcon("tab/spells"), getSpellsPanel(), "Toggle Spells View"); // hired leaders might be bewitched by spells...
+		tabs.addTab(null, ImageCache.getIcon("tab/disc"), getDiscoveriesPanel(), "Toggle Discoveries View");
+		tabs.addTab(null, ImageCache.getIcon("tab/relationships"), getRelationshipPanel(), "Toggle Native Relationships View");
 		if (!character.isMinion())
-			tabs.addTab(null, ImageCache.getIcon("tab/followers"), getHirelingPanel(), "Hirelings");
+			tabs.addTab(null, ImageCache.getIcon("tab/followers"), getHirelingPanel(), "Toggle Hirelings View");
 		if (character.isCharacter()) {
-			tabs.addTab(null, ImageCache.getIcon("tab/victoryreq"), getVictoryPanel(), "Victory Requirements");
-			tabs.addTab(null, ImageCache.getIcon("tab/notepad"), getNotesPanel(),"Character Notes");
+			tabs.addTab(null, ImageCache.getIcon("tab/victoryreq"), getVictoryPanel(), "Toggle Victory Requirements View");
+			tabs.addTab(null, ImageCache.getIcon("tab/notepad"), getNotesPanel(),"Toggle Character Notes View");
 		}
 		if (hostPrefs.getGameKeyVals().contains("rw_expansion_1")) {
-			tabs.addTab(null, ImageCache.getIcon("tab/expansionOne"), getExpansionOnePanel(),"Expansion");
+			tabs.addTab(null, ImageCache.getIcon("tab/expansionOne"), getExpansionOnePanel(),"Toggle Expansion View");
 		}
 		if (hostPrefs.isUsingQuests()) {
-			tabs.addTab(null, ImageCache.getIcon("tab/quest"), getQuestPanel(),"Quest");
+			tabs.addTab(null, ImageCache.getIcon("tab/quest"), getQuestPanel(),"Toggle Quest View");
 		}
-		tabs.addTab(null, ImageCache.getIcon("tab/chat"), getChatPanel(),"Chat");
+		tabs.addTab(null, ImageCache.getIcon("tab/chat"), getChatPanel(),"Toggle Chat View");
 
 		boolean[] tabChangedByThisPress = {false};
 		tabs.addChangeListener(e -> tabChangedByThisPress[0] = true);
@@ -1184,7 +1184,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			if (transmorph != null) {
 				getCharacter().setTransmorph(null);
 			}
-			charLabel = new JLabel(chit.getMediumIcon());
+			charLabel = new JLabel(chit.getMediumIcon()) {
+				public String getToolTipText(MouseEvent ev) {
+					Icon icon = getIcon();
+					if (icon != null && ev.getX() <= getInsets().left + icon.getIconWidth()) {
+						return "Toggle between center-on-character and default view.";
+					}
+					return null;
+				}
+			};
 			if (resetHidden) {
 				chit.setHidden(true);
 			}
@@ -1193,7 +1201,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 			charLabel.setFont(new Font("Dialog", Font.BOLD, 36));
 			charLabel.setIconTextGap(10);
-			charLabel.setToolTipText("Toggle between center on character and revert.");
+			charLabel.setToolTipText("Toggle between center-on-character and default view.");
 			charLabel.addMouseListener(new MouseAdapter() {
 				public void mousePressed(MouseEvent ev) {
 					Icon icon = charLabel.getIcon();
@@ -2533,7 +2541,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						gameOverPanel = new GameOverPanel(character.getGameObject(),hostPrefs);
-						tabs.addTab(null, ImageCache.getIcon("tab/gameover"), gameOverPanel, GameOverPanel.TAB_NAME);
+						tabs.addTab(null, ImageCache.getIcon("tab/gameover"), gameOverPanel, "Toggle " + GameOverPanel.TAB_NAME + " View");
 						tabs.setSelectedIndex(tabs.getTabCount() - 1);
 					}
 				});
@@ -2545,7 +2553,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		SwingUtilities.invokeLater(new Runnable() { // This should get rid of the ArrayIndexOutOfBoundsException problem
 			public void run() {
 				for (int i = 0; i < tabs.getTabCount(); i++) {
-					if (GameOverPanel.TAB_NAME.equals(tabs.getToolTipTextAt(i))) {
+					if (("Toggle " + GameOverPanel.TAB_NAME + " View").equals(tabs.getToolTipTextAt(i))) {
 						tabs.removeTabAt(i);
 						tabs.setSelectedIndex(0);
 						break;
