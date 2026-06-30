@@ -32,6 +32,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 
 	protected JPanel tokenPanel;
 	protected JLabel charLabel;
+	private boolean centeredOnToken = false;
 	protected MoveMarker mountainMoveIcon;
 	protected CharacterWrapper character;
 	protected HostPrefWrapper hostPrefs;
@@ -1145,8 +1146,19 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	public void centerOnToken() {
-		if (gameHandler.getGame().getGameStarted() && gameHandler.isOption(RealmSpeakOptions.MAP_CENTER_ON_CHARACTER)) {
+		if (gameHandler.getGame().getGameStarted()) {
 			gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
+		}
+	}
+	private void toggleCenterOnToken() {
+		if (gameHandler.getGame().getGameStarted()) {
+			CenteredMapView map = gameHandler.getInspector().getMap();
+			if (centeredOnToken) {
+				map.restoreDefaultView();
+			} else {
+				map.centerOn(character.getCurrentLocation());
+			}
+			centeredOnToken = !centeredOnToken;
 		}
 	}
 
@@ -1181,9 +1193,13 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 			charLabel.setFont(new Font("Dialog", Font.BOLD, 36));
 			charLabel.setIconTextGap(10);
+			charLabel.setToolTipText("Toggle between center on character and revert.");
 			charLabel.addMouseListener(new MouseAdapter() {
 				public void mousePressed(MouseEvent ev) {
-					tokenClicked();
+					Icon icon = charLabel.getIcon();
+					if (icon != null && ev.getX() <= charLabel.getInsets().left + icon.getIconWidth()) {
+						tokenClicked();
+					}
 				}
 			});
 			tokenPanel.add(charLabel, "West");
@@ -1798,10 +1814,13 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	}
 
 	private void tokenClicked() {
-		centerOnToken();
 		if (DebugUtility.isCheat()) {
-			// If CHEAT is on, then clicking the token will allow you to cheat
+			// If CHEAT is on, clicking the token opens the cheat prompt instead of toggling the
+			// map view — the two features share this click and would otherwise fight over it
+			// (every cheat click also toggling/un-toggling the centered view underneath the dialog).
 			cheat();
+		} else {
+			toggleCenterOnToken();
 		}
 	}
 
