@@ -21,7 +21,6 @@ import com.robin.general.util.*;
 import com.robin.magic_realm.RealmBattle.MoveActivator.MoveActionResult;
 import com.robin.magic_realm.RealmBattle.targeting.SpellTargeting;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
-import com.robin.magic_realm.RealmSpeak.RealmSpeakOptions;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.CharacterActionType;
@@ -168,6 +167,7 @@ public class CombatFrame extends JFrame {
 	private CombatSuggestionAi suggestionAi;
 	private static boolean combatNextPhaseWarning = true;
 	private static boolean autoPositioningAttackers = false;
+	private static boolean controlsPlacement2 = false;
 	
 	// These are needed to differentiate all the players during results
 	private String playerName;
@@ -199,7 +199,10 @@ public class CombatFrame extends JFrame {
 	public static void setAutoPositioningAttackers(boolean val) {
 		autoPositioningAttackers = val;
 	}
-	
+	public static void setControlsPlacement2(boolean val) {
+		controlsPlacement2 = val;
+	}
+
 	protected static DieRoller ambushRoll = null;
 	protected static RealmComponent ambusher = null;
 	protected static boolean ambushRollAtEndOfCombatRound = false;
@@ -1079,7 +1082,7 @@ public class CombatFrame extends JFrame {
 		}
 		
 		list.add(getRefreshDisplayButton());
-		if (!new RealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.COMBAT_CONTROLS_PLACEMENT_2)) {
+		if (!controlsPlacement2) {
 			list.add(gameControls);
 		}
 		
@@ -1300,7 +1303,7 @@ public class CombatFrame extends JFrame {
 		});
 		bottomPanel.add(combatSummaryButton,"Center");
 		gameControls = new JPanel(new GridLayout(2,2));
-		if (new RealmSpeakOptions().getOptions().getBoolean(RealmSpeakOptions.COMBAT_CONTROLS_PLACEMENT_2)) {
+		if (controlsPlacement2) {
 			bottomPanel.add(gameControls,"South");
 		}
 

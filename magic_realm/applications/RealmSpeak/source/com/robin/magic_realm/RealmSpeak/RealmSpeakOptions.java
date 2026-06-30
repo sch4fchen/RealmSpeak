@@ -142,6 +142,7 @@ public class RealmSpeakOptions {
 		}
 		CenteredMapView.setFollowEnabled(options.getBoolean(MAP_FOLLOW_CHARACTER));
 		CombatFrame.setAutoPositioningAttackers(options.getBoolean(AUTO_POSITIONING_ATTACKERS));
+		CombatFrame.setControlsPlacement2(options.getBoolean(COMBAT_CONTROLS_PLACEMENT_2));
 		SoundCache.setSoundEnabled(options.getBoolean(ENABLE_SOUND,true));
 		if (options.getBoolean(RealmSpeakOptions.METAL_LNF)) {
 			ComponentTools.setMetalLookAndFeel();
