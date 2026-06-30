@@ -440,6 +440,7 @@ public class QuestBuilderFrame extends JFrame {
 			public void actionPerformed(ActionEvent ev) {
 				if (canOverwriteQuest("New Quest")) {
 					initNewQuest();
+					lastQuestFile = null;
 				}
 			}
 		});
