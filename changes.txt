@@ -1,4 +1,4 @@
-GVersion 1.2.6.0
+Version 1.2.6.0
 NEW FEATURES:
 # Optional rule for joining a Guild
 # Alternative Placement for combat buttons
