@@ -13,6 +13,7 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
@@ -26,6 +27,7 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 	public static final String MAX_DENIZEN_HOLDERS = "_max_denizen_holders";
 	public static final String SUMMON_TO = "_summon_to";
 	public static final String LOCATION = "_loc";
+	public static final String MARK = "_mark";
 	
 	public enum SummonTo {
 		Anywhere,
@@ -151,6 +153,9 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 		for (GameObject chit : validChits) {
 			RealmComponent rcChit = RealmComponent.getRealmComponent(chit);	
 			for (GameObject denizen : validDenizens) {
+				if (markDenizens()) {
+					denizen.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				}				
 				GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 				RealmComponent rcDenizenHolder = RealmComponent.getRealmComponent(denizenHolder);
 				String bn = denizenHolder.getThisAttribute(Constants.BOARD_NUMBER);
@@ -280,5 +285,9 @@ public class QuestRewardSummonFromAppearanceToChit extends QuestReward {
 	}
 	public void updateIds(Hashtable<Long, GameObject> lookup) {
 		updateIdsForKey(lookup,LOCATION);
+	}
+	
+	private boolean markDenizens() {
+		return getBoolean(MARK);
 	}
 }

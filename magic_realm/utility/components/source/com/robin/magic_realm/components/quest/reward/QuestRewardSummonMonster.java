@@ -28,6 +28,7 @@ public class QuestRewardSummonMonster extends QuestReward {
 	public static final String SUMMON_TO_LOCATION = "_summon_loc";
 	public static final String RANDOM_LOCATION = "_rnd_loc";
 	public static final String LOCATION = "_loc";
+	public static final String MARK = "_mark";
 	
 	public static enum SummonType {
 		NewMonster,
@@ -67,6 +68,9 @@ public class QuestRewardSummonMonster extends QuestReward {
 				logger.fine("QuestLocation "+loc.getName()+" doesn't have any valid locations!");
 				return;
 			}
+			if (markDenizens()) {
+				monster.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+			}
 			if (randomLocation()) {
 				int random = RandomNumber.getRandom(validLocations.size());
 				TileLocation tileLocation = validLocations.get(random);
@@ -82,6 +86,9 @@ public class QuestRewardSummonMonster extends QuestReward {
 		}
 		
 		if (randomClearing()) {
+			if (markDenizens()) {
+				monster.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+			}
 			ArrayList<ClearingDetail> clearings = character.getCurrentLocation().tile.getClearings();
 			int random = RandomNumber.getRandom(clearings.size());
 			clearings.get(random).add(monster,null);
@@ -142,6 +149,10 @@ public class QuestRewardSummonMonster extends QuestReward {
 	
 	private boolean randomLocation() {
 		return getBoolean(RANDOM_LOCATION);
+	}
+	
+	private boolean markDenizens() {
+		return getBoolean(MARK);
 	}
 	
 	public boolean usesLocationTag(String tag) {

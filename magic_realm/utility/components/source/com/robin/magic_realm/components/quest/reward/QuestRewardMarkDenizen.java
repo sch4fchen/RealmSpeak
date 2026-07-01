@@ -31,7 +31,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 		if (getDenizenAmount()!=0) {
 			Collections.shuffle(denizens);
 		}
-		for(RealmComponent rc:denizens) {
+		for (RealmComponent rc:denizens) {
 			if (pattern==null || pattern.matcher(rc.getGameObject().getName()).find()) {
 				rc.getGameObject().setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
 				markedDenizen++;

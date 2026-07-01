@@ -365,6 +365,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.SUMMON_TO_LOCATION, "Summon to location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.RANDOM_LOCATION, "Random clearing of location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonMonster.MARK, "Mark denizens", FieldType.Boolean));
 				break;
 			case SummonFromAppearanceToChit:
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.CHIT, "Chit to summon to", FieldType.Regex, null, new String[] { "warning", "sound", "treasure_location", "dwelling" }));
@@ -374,11 +375,18 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.MAX_DENIZEN_HOLDERS, "Max.# of monster boxes", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.SUMMON_TO, "Chit location", FieldType.StringSelector, QuestRewardSummonFromAppearanceToChit.SummonTo.values()));
 				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonFromAppearanceToChit.MARK, "Mark denizens", FieldType.Boolean));
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
 			case SummonTraveler:
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.TRAVELER_NAME, "Traveler", FieldType.Regex, null, new String[] { Constants.TRAVELER_TEMPLATE }));
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.RANDOM_TRAVELER, "Random traveler", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.RANDOM_CLEARING, "Random clearing of characters tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.SUMMON_TO_LOCATION, "Summon to location", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardSummonTraveler.MARK, "Mark travelers", FieldType.Boolean));
 				break;
 			case TalkToWiseBird:
 				break;
