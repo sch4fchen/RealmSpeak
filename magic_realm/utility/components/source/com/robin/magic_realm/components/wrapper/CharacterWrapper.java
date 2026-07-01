@@ -21,7 +21,9 @@ import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
+import com.robin.magic_realm.components.store.FightersGuild;
 import com.robin.magic_realm.components.store.GuildStore;
+import com.robin.magic_realm.components.store.MagicGuild;
 import com.robin.magic_realm.components.store.Store;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
@@ -5536,6 +5538,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Add it to character
 		getGameObject().add(spell);
 		
+		// Check for Magic Guild join requirement
+		GuildStore currentGuild = getCurrentGuildStore(false);
+		if (hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof MagicGuild) {
+			((MagicGuild)currentGuild).validateRequirementAndJoin(frame, this);
+		}
+		
 		return spell;
 	}
 	public boolean eraseSpell(GameObject spell) {
@@ -8120,8 +8128,11 @@ public class CharacterWrapper extends GameObjectWrapper {
     	clear(CURRENT_GUILD_LEVEL);
     	clear(CURRENT_GUILD_JOIN_REQUIREMENT);
     }
-	public GuildStore getCurrentGuildStore() {
-		if (getCurrentGuild()==null) return null;
+    public GuildStore getCurrentGuildStore() {
+    	return getCurrentGuildStore(true);
+    }
+	public GuildStore getCurrentGuildStore(boolean validateJoinRequirement) {
+		if (getCurrentGuild(validateJoinRequirement)==null) return null;
 		GameData data = getGameObject().getGameData();
 		GamePool pool = new GamePool(data.getGameObjects());
 		GameObject guild = pool.findFirst(Constants.GUILD+"="+getCurrentGuild());

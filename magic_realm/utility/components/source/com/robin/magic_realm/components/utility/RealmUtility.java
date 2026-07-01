@@ -576,8 +576,8 @@ public class RealmUtility {
 		
 		if (killerRc!=null && killerRc.isCharacter()) {
 			CharacterWrapper character = new CharacterWrapper(killerRc.getGameObject());
-			GuildStore currentGuild = character.getCurrentGuildStore();
-			if (character.hasGuildJoinRequirement() && currentGuild instanceof FightersGuild) {
+			GuildStore currentGuild = character.getCurrentGuildStore(false);
+			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof FightersGuild) {
 				((FightersGuild)currentGuild).validateRequirementAndJoin(character,rc,killerIsASpell);
 			}
 		}
