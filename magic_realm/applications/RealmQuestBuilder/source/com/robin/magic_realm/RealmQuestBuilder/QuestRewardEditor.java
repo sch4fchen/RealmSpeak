@@ -234,6 +234,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_ACTIVE, "Must be activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_DEACTIVE, "Must be deactivated?", FieldType.Boolean));
 				break;
+			case MarkTraveler:
+				break;
 			case Mesmerize:
 				list.add(new QuestPropertyBlock(QuestRewardMesmerize.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMesmerize.REMOVE_CURSES, "Remove all curses", FieldType.Boolean));
@@ -253,6 +255,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_COMPANIONS, "Move companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_SUMMONED, "Move summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_LIMITED, "Move ONLY those (see above)", FieldType.Boolean));
+				break;
+			case MoveTraveler:
 				break;
 			case NoCombat:
 				break;
@@ -373,6 +377,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case SummonRoll:
 				list.add(new QuestPropertyBlock(QuestRewardSummonRoll.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
+				break;
+			case SummonTraveler:
 				break;
 			case TalkToWiseBird:
 				break;

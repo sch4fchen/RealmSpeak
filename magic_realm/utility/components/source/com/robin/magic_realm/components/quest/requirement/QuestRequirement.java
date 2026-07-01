@@ -68,6 +68,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		TimePassed,
 		Teleport,
 		Trade,
+		Traveler,
 		Treachery,
 		Weather,
 		;
@@ -173,6 +174,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific length of time (in days) passed.";
 				case Trade:
 					return "Tests for a specific TRADE occurrence.";
+				case Traveler:
+					return "Tests for any or a specific Traveler to be in a certain location or hired by the character.";
 				case Treachery:
 					return "Tests for that character commiting treachery.";
 				case Weather:
@@ -413,6 +416,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Trade:
 				requirement = new QuestRequirementTrade(go);
+				break;
+			case Traveler:
+				requirement = new QuestRequirementTraveler(go);
 				break;
 			case Treachery:
 				requirement = new QuestRequirementTreachery(go);

@@ -60,9 +60,11 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MakeWhole,
 		MarkDenizen,
 		MarkItem,
+		MarkTraveler,
 		Mesmerize,
 		MinorCharacter,
 		MoveDenizen,
+		MoveTraveler,
 		NoCombat,
 		NoProwling,
 		NoSummoning,
@@ -95,6 +97,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		SummonMonster,
 		SummonFromAppearanceToChit,
 		SummonRoll,
+		SummonTraveler,
 		TalkToWiseBird,
 		Teleport,
 		TeleportChoose,
@@ -154,8 +157,10 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
+				case MarkTraveler:				return "Marks a random or specific traveler.  This is useful if you want to make sure a character hires a traveler or that a traveler is in a certain location.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen:				return "Move one or several denizen to a location.";
+				case MoveTraveler:				return "Move a random or a specific traveler to a location.";
 				case NoCombat:					return "Character does not participate in combat this round.";
 				case NoProwling:				return "Character does not make denizens prowling this round.";
 				case NoSummoning:				return "Character does not summon monsters this round.";
@@ -184,9 +189,10 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case StripInventory:			return "Removes ALL inventory and (optionally) gold from the character (placed to location defined by 'LostInventoryToLocation/Default').";
 				case SummonGeneratedMonster:	return "Generate and summon a specific monster to the a clearing.";
 				case SummonGuardian:			return "For a specific quest location, summon the treasure site guardian (if any)";
-				case SummonMonster:				return "Summon a specific monster to the a clearing.";
+				case SummonMonster:				return "Summon a specific monster to a clearing.";
 				case SummonFromAppearanceToChit:		return "Summon a specific monster from the chart of appearance to a sound or warning chit.";
 				case SummonRoll:				return "Force a monster summoning roll with a specific number.";
+				case SummonTraveler:			return "Summon a random or specific traveler to a clearing.";
 				case TalkToWiseBird:			return "Character does instantly a free peer action";
 				case Teleport:					return "Teleport the character to a new location. Must create a QuestLocation BEFORE creating this reward.";
 				case TeleportChoose:			return "Teleport the character to another clearing. Note: no effect in QuestTester";
@@ -417,6 +423,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 			case MarkItem:
 				reward = new QuestRewardMarkItem(go);
 				break;
+			case MarkTraveler:
+				reward = new QuestRewardMarkTraveler(go);
+				break;
 			case Mesmerize:
 				reward = new QuestRewardMesmerize(go);
 				break;
@@ -425,6 +434,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MoveDenizen:
 				reward = new QuestRewardMoveDenizen(go);
+				break;
+			case MoveTraveler:
+				reward = new QuestRewardMoveTraveler(go);
 				break;
 			case NoCombat:
 				reward = new QuestRewardNoCombat(go);
@@ -521,6 +533,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case SummonRoll:
 				reward = new QuestRewardSummonRoll(go);
+				break;
+			case SummonTraveler:
+				reward = new QuestRewardSummonTraveler(go);
 				break;
 			case TalkToWiseBird:
 				reward = new QuestRewardTalkToWiseBird(go);
