@@ -1130,7 +1130,7 @@ public class QuestTesterFrame extends JFrame {
 					GameObject go = gameData.createNewObject();
 					TravelerChitComponent traveler = new TravelerChitComponent(go);
 					traveler.assignTravelerTemplate(template);
-					traveler.getGameObject().setThisAttribute("traveler");
+					traveler.getGameObject().setThisAttribute(Constants.TRAVELER);
 					traveler.getGameObject().setThisAttribute("chit");
 					traveler.getGameObject().setThisAttribute("seen");
 					character.getCurrentLocation().clearing.add(traveler.getGameObject(), null);

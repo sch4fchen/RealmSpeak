@@ -50,6 +50,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	public static final String MOVE_HIRELINGS = "_mh";
 	public static final String MOVE_COMPANIONS = "_mc";
 	public static final String MOVE_SUMMONED = "_ms";
+	public static final String MOVE_TRAVELERS = "_mt";
 	public static final String MOVE_LIMITED = "_ml";
 	
 	public QuestRewardMoveDenizen(GameObject go) {
@@ -63,7 +64,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		ArrayList<GameObject> denizensToMove = new ArrayList<>();
 		for (GameObject denizen : denizens) {
 			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
-			if (denizenRc == null || !denizenRc.isDenizen()) continue;
+			if (denizenRc == null || (!denizenRc.isDenizen() && !denizenRc.isTraveler())) continue;
 			TileLocation denizenLoc = denizenRc.getCurrentLocation();
 			if(getMoveFromOption() == MoveFromOption.CharactersClearing
 					&& (denizenLoc == null || charactersLoc == null || denizenLoc.tile != charactersLoc.tile || denizenLoc.clearing != charactersLoc.clearing)) {
@@ -81,7 +82,10 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			if (!moveSummoned() && denizen.hasThisAttribute(Constants.SUMMONED)) {
 				continue;
 			}
-			if (moveOnlyHirelingsCompanionsSummonedMonsters() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {
+			if (!moveTravelers() && denizen.hasThisAttribute(Constants.TRAVELER)) {
+				continue;
+			}
+			if (moveOnlySpecificOnes() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED) && !denizen.hasThisAttribute(Constants.TRAVELER)) {
 				continue;
 			}
 			denizensToMove.add(denizen);
@@ -270,7 +274,10 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	private Boolean moveSummoned() {
 		return getBoolean(MOVE_SUMMONED);
 	}
-	private Boolean moveOnlyHirelingsCompanionsSummonedMonsters() {
+	private Boolean moveTravelers() {
+		return getBoolean(MOVE_TRAVELERS);
+	}
+	private Boolean moveOnlySpecificOnes() {
 		return getBoolean(MOVE_LIMITED);
 	}
 	public RewardType getRewardType() {

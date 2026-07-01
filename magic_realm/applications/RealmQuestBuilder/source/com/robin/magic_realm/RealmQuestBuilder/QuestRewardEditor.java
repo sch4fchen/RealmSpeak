@@ -257,6 +257,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_HIRELINGS, "Move hirelings", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_COMPANIONS, "Move companions", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_SUMMONED, "Move summoned monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_TRAVELERS, "Move summoned monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_LIMITED, "Move ONLY those (see above)", FieldType.Boolean));
 				break;
 			case MoveTraveler:

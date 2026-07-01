@@ -55,7 +55,10 @@ public class QuestRewardSummonTraveler extends QuestReward {
 			template.copyAttributeBlockFrom(template,"this");
 			template.removeThisAttribute(Constants.TRAVELER_TEMPLATE);
 			template.setThisAttribute(Constants.TEMPLATE_ASSIGNED);
-			template.setThisAttribute("traveler");
+			template.setThisAttribute(Constants.TRAVELER);
+			template.setThisAttribute("chit");
+			template.setThisAttribute("print");
+			template.setThisAttribute("monster_die",RandomNumber.getDieRoll(6));
 			template.addAll(template.getHold());
 			template.setThisAttribute(Constants.USED);
 			travelersToSummone.add(template);

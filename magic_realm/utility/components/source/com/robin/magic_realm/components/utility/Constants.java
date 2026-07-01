@@ -286,6 +286,7 @@ public class Constants {
 	public static final String HIRELING = "hireling";
 	public static final String COMPANION = "companion";
 	public static final String SUMMONED = "summoned";
+	public static final String TRAVELER = "traveler";
 	public static final String MISSION = "mission";
 	public static final String NOMAD = "nomad";
 	public static final String GUILD = "guild";
