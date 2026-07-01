@@ -43,9 +43,9 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	public String getDescription() {
 		int number = getDenizenAmount();
 		if (number != 0) {
-			return "Mark up to "+number+" denizens in current clearing matching name: "+getDenizenRegEx();
+			return "Mark up to "+number+" denizens in current clearing matching the name: "+getDenizenRegEx();
 		}
-		return "Mark all denizens in current clearing matching name: "+getDenizenRegEx();
+		return "Mark all denizens in current clearing the matching name: "+getDenizenRegEx();
 	}
 
 	public RewardType getRewardType() {

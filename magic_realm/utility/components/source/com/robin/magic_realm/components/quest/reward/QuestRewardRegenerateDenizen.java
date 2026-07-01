@@ -76,7 +76,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		return getBoolean(CHARACTERS_CLEARING);
 	}
 	private Boolean charactersTileOnly() {
-		return getBoolean(CHARACTERS_CLEARING);
+		return getBoolean(CHARACTERS_TILE);
 	}
 	private Boolean regenerateHirelings() {
 		return getBoolean(REGENERATE_HIRELINGS);

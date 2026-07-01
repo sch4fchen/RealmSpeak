@@ -1,4 +1,4 @@
-SummonTraveler, MarkTraveler (random, specific, in characters loc..), MoveTraveler (random, toTileType, toClearingType, toCharacterLoc, toLocation), ReqTravel: be in loc of traveler, traveler in game
+MoveTraveler (random, toTileType, toClearingType, toCharacterLoc, toLocation), ReqTravel: be in loc of traveler, traveler in game
 Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
 	Guild Requirement quests?!
 

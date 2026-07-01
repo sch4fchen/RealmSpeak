@@ -17,6 +17,7 @@ import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardSummonTraveler extends QuestReward {
+	
 	private static Logger logger = Logger.getLogger(QuestStep.class.getName());
 	public static final String TRAVELER_NAME = "_tr";
 	public static final String RANDOM_TRAVELER = "_rnd_tr";
@@ -54,6 +55,7 @@ public class QuestRewardSummonTraveler extends QuestReward {
 			template.copyAttributeBlockFrom(template,"this");
 			template.removeThisAttribute(Constants.TRAVELER_TEMPLATE);
 			template.setThisAttribute(Constants.TEMPLATE_ASSIGNED);
+			template.setThisAttribute("traveler");
 			template.addAll(template.getHold());
 			template.setThisAttribute(Constants.USED);
 			travelersToSummone.add(template);
