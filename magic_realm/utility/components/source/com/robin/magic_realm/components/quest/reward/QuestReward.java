@@ -64,7 +64,6 @@ public abstract class QuestReward extends AbstractQuestObject {
 		Mesmerize,
 		MinorCharacter,
 		MoveDenizen,
-		MoveTraveler,
 		NoCombat,
 		NoProwling,
 		NoSummoning,
@@ -159,8 +158,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
 				case MarkTraveler:				return "Marks a random or specific traveler.  This is useful if you want to make sure a character hires a traveler or that a traveler is in a certain location.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
-				case MoveDenizen:				return "Move one or several denizen to a location.";
-				case MoveTraveler:				return "Move a random or a specific traveler to a location.";
+				case MoveDenizen:				return "Move one or several denizen (or travelers) to a location.";
 				case NoCombat:					return "Character does not participate in combat this round.";
 				case NoProwling:				return "Character does not make denizens prowling this round.";
 				case NoSummoning:				return "Character does not summon monsters this round.";
@@ -434,9 +432,6 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MoveDenizen:
 				reward = new QuestRewardMoveDenizen(go);
-				break;
-			case MoveTraveler:
-				reward = new QuestRewardMoveTraveler(go);
 				break;
 			case NoCombat:
 				reward = new QuestRewardNoCombat(go);

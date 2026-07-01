@@ -94,9 +94,12 @@ public class QuestRewardSummonTraveler extends QuestReward {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Summons ");
 		if (randomTraveler()) {
-			sb.append(" a random traveler");
+			sb.append("a random traveler");
 		} else {
-			sb.append("a single or multiple travelers with the name "+travelerName());
+			sb.append("a single or multiple travelers");
+		}
+		if (!travelerName().isEmpty()) {
+			sb.append(" with the name "+travelerName());
 		}
 		if (locationOnly()) {
 			sb.append(" to the location");
@@ -104,7 +107,7 @@ public class QuestRewardSummonTraveler extends QuestReward {
 				sb.append(" "+getQuestLocation());
 			}
 		} else if (randomClearing()) {
-			sb.append("to a random clearing of characters tile");
+			sb.append(" to a random clearing of characters tile");
 		}
 		sb.append(".");
 		return sb.toString();

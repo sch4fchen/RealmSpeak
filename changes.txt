@@ -9,6 +9,10 @@ NEW FEATURES:
 QUEST UPDATE:
 # Improve Q40 Travels Merchant quest
 # More guild quests
+# Add support for travelers to QuestRewardMoveDenizen
+# QuestRewardMarkTraveler
+# QuestRewardSummonTraveler
+# QuestRequirementTraveler
 
 Version 1.2.5.9
 NEW FEATURES:

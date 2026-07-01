@@ -299,6 +299,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
 			case Traveler:
+				list.add(new QuestPropertyBlock(QuestRequirementTraveler.TRAVELER_REGEX, "Name", FieldType.Regex, null, new String[] { Constants.TRAVELER_TEMPLATE }));
+				list.add(new QuestPropertyBlock(QuestRequirementTraveler.MARK, "Requires a mark?", FieldType.Boolean));
 				break;
 			case Treachery:
 				list.add(new QuestPropertyBlock(QuestRequirementTreachery.REGEX_FILTER, "Denizen", FieldType.Regex, null, new String[] {"denizen"}));
