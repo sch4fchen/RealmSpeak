@@ -20,6 +20,8 @@ import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestBookEvents;
 import com.robin.magic_realm.components.quest.QuestDeck;
+import com.robin.magic_realm.components.store.FightersGuild;
+import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -371,12 +373,14 @@ public class RealmUtility {
 		CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 		GameObject killer = combat.getKilledBy();
 		RealmComponent killerRc = null;
+		boolean killerIsASpell = false;
 		if (killer!=null) {
 			killerRc = RealmComponent.getRealmComponent(killer);
 			if (killerRc!=null && killerRc.isSpell() && !(killerRc instanceof EventSpellCardComponent)) { // as in the case of attack spells
 				SpellWrapper spell = new SpellWrapper(killer);
 				killer = spell.getCaster().getGameObject();
 				killerRc = RealmComponent.getRealmComponent(killer);
+				killerIsASpell = true;
 			}
 		}
 //		CombatWrapper.clearAllCombatInfo(rc.getGameObject()); // <-- Can't do this, because it removes getKilledBy, and breaks BattleModel.doDisengagement
@@ -568,6 +572,14 @@ public class RealmUtility {
 		
 		if (rc.isCharacter()) {
 			passOnFinalGuildBenefit(new CharacterWrapper(rc.getGameObject()));
+		}
+		
+		if (killerRc!=null && killerRc.isCharacter()) {
+			CharacterWrapper character = new CharacterWrapper(killerRc.getGameObject());
+			GuildStore currentGuild = character.getCurrentGuildStore();
+			if (character.hasGuildJoinRequirement() && currentGuild instanceof FightersGuild) {
+				((FightersGuild)currentGuild).validateRequirementAndJoin(character,rc,killerIsASpell);
+			}
 		}
 	}
 	public static void normalizeParticipant(RealmComponent rc) {

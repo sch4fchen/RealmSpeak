@@ -1,5 +1,4 @@
-Optional Rule for join requirement: be at guild: ask for joining: fulfill requirement: go go guild and join (ask if you want to remove leave old guild if you have already one)
-	Guild Requirement quests?!
+Guild Requirement quests?!
 
 Version 1.2.6.0
 NEW FEATURES:
