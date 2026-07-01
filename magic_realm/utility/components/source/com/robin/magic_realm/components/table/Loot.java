@@ -369,13 +369,17 @@ public class Loot extends RealmTable {
 		 * Thief Remains - Roll for CURSE (this.curse).  Gain 20 gold (this.gold_reward).  Gain both treasures (this.no_loot)
 		 */
 
+		boolean itemTaken = false;
 		if (!thing.hasThisAttribute(Constants.NEEDS_OPEN)) {
 			// If doesn't need to be opened, or is already opened, then handle special attributes before adding
-			handleSpecial(character,thing,true,true);
+			 itemTaken = handleSpecial(character,thing,true,true);
 		}
 		else {
 			// If the treasure is not "open", then just add the treasure directly
-			addItemToCharacter(getParentFrame(),getListener(),character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
+			itemTaken = addItemToCharacter(getParentFrame(),getListener(),character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
+		}
+		if (itemTaken) {
+			foundItem = thing;
 		}
 		
 		/*
@@ -404,7 +408,6 @@ public class Loot extends RealmTable {
 		dumpGoldSpecialsToClearing();
 		
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
-		foundItem = thing;
 		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS) || thing.hasThisAttribute(Constants.NO_SECRET)) {
 			return "Found " + thing.getName();
 		}
@@ -419,10 +422,10 @@ public class Loot extends RealmTable {
 			}
 		}
 	}
-	public static void addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing) {
-		addItemToCharacter(frame,listener,character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
+	public static boolean addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing) {
+		return addItemToCharacter(frame,listener,character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
 	}
-	public static void addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing,HostPrefWrapper hostPrefs) {
+	public static boolean addItemToCharacter(JFrame frame,ChangeListener listener,CharacterWrapper character,GameObject thing,HostPrefWrapper hostPrefs) {
 		boolean drop = false;
 		boolean abandon = false;
 		boolean unhide = false;
@@ -508,17 +511,17 @@ public class Loot extends RealmTable {
 		}
 		if (drop || abandon) {
 			TreasureUtility.doDrop(character,thing,listener,drop);
+			return false;
 		}
-		else {
-			if (rc.isTreasure()) {
-				TreasureCardComponent treasure = (TreasureCardComponent)rc;
-				treasure.setFaceUp();
-			}
-			rc.setCharacterTimestamp(character);
-			thing.setThisAttribute(Constants.TREASURE_NEW);
-			character.getGameObject().add(thing);
-			character.checkInventoryStatus(frame,thing,listener);
+		if (rc.isTreasure()) {
+			TreasureCardComponent treasure = (TreasureCardComponent)rc;
+			treasure.setFaceUp();
 		}
+		rc.setCharacterTimestamp(character);
+		thing.setThisAttribute(Constants.TREASURE_NEW);
+		character.getGameObject().add(thing);
+		character.checkInventoryStatus(frame,thing,listener);
+		return true;
 	}
 	/**
 	 * This should be called upon receiving an item, or opening an item (like the chest) for the first time.
@@ -526,7 +529,7 @@ public class Loot extends RealmTable {
 	public void handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault) {
 		handleSpecial(character,thing,addByDefault,false);
 	}
-	public void handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault,boolean testQuestRequirementsForLooting) {
+	public boolean handleSpecial(CharacterWrapper character, GameObject thing,boolean addByDefault,boolean testQuestRequirementsForLooting) {
 		if (thing.hasThisAttribute("curse")) {
 			setNewTable(new Curse(getParentFrame(), character.getGameObject()));
 		}
@@ -619,8 +622,12 @@ public class Loot extends RealmTable {
 			thing.detach();
 		}
 		else if (addByDefault) {
-			addItemToCharacter(getParentFrame(),getListener(),character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
+			boolean taken = addItemToCharacter(getParentFrame(),getListener(),character,thing,HostPrefWrapper.findHostPrefs(thing.getGameData()));
+			if (taken) {
+				return true;
+			}
 		}
+		return false;
 	}
 	@Override
 	protected ArrayList<ImageIcon> getHintIcons(CharacterWrapper character) {
