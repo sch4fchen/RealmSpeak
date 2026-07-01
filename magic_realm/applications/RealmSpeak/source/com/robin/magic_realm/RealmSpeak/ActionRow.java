@@ -1564,6 +1564,7 @@ public class ActionRow {
 	private static final String TRADE_REPAIR_BLACKSMITH = "Repair Armor (Blacksmith)";
 	private static final String TRADE_CLERIC = "Cleric Services";
 	private static final String TRADE_JOIN = "Join Guild";
+	private static final String TRADE_LEAVE = "Leave Guild";
 	private static final String TRADE_SERVICES = "Guild Services";
 	private void doTradeAction() {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
@@ -1585,8 +1586,13 @@ public class ActionRow {
 						if (character.isGuildMember(rc)) {
 							key = chooser.generateOption(TRADE_SERVICES);
 						}
-						else if (character.getCurrentGuild()==null) {
+						else if ((character.getCurrentGuild()==null && !character.hasGuildJoinRequirement()) || hostPrefs.hasPref(Constants.GUILDS_LEAVING)) {
 							key = chooser.generateOption(TRADE_JOIN);
+						}
+						else if (hostPrefs.hasPref(Constants.GUILDS_LEAVING) && (character.getCurrentGuild()!=null || character.hasGuildJoinRequirement())) {
+							if (character.getCurrentGuild(false).matches(rc.getGameObject().getThisAttribute("guild"))) {
+								key = chooser.generateOption(TRADE_LEAVE);
+							}
 						}
 						if (key!=null) {
 							chooser.addRealmComponentToOption(key,rc,RealmComponentOptionChooser.DisplayOption.Darkside);
@@ -1653,17 +1659,26 @@ public class ActionRow {
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_JOIN)) {
 					character.setCurrentGuild(trader.getGameObject().getThisAttribute("guild"));
-					if (hostPrefs.hasPref(Constants.GUILDS_START_LEVEL)) {
-						character.setCurrentGuildLevel(0);
-					}
-					else {
-						character.setCurrentGuildLevel(1);
-						if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
-							GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
-							store.applyGuildBenefit1(gameHandler.getMainFrame(), character);
+					if (hostPrefs.hasPref(Constants.GUILDS_JOIN_REQUIREMENT) && character.hasGuildJoinRequirement()) {
+						character.setGuildJoinRequirement(true);
+						result = "Accepted the guild join requirement of "+trader.getGameObject().getName();
+					} else {
+						if (hostPrefs.hasPref(Constants.GUILDS_START_LEVEL)) {
+							character.setCurrentGuildLevel(0);
 						}
+						else {
+							character.setCurrentGuildLevel(1);
+							if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+								GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);
+								store.applyGuildBenefit1(gameHandler.getMainFrame(), character);
+							}
+						}
+						result = "Joined the "+trader.getGameObject().getName();
 					}
-					result = "Joined the "+trader.getGameObject().getName();
+				}
+				else if (trader.isGuild() && selText.equals(TRADE_LEAVE)) {
+					character.clearGuild();
+					result = "Left the "+trader.getGameObject().getName();
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_SERVICES)) {
 					GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);

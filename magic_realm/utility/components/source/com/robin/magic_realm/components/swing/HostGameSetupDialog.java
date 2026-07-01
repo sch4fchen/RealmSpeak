@@ -1175,10 +1175,12 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QUEST_HAND_LIMIT_ONE,"QUEST LIMIT ONE - Hand card size limit for quests is always one.",false));
 		
 		newOptionPane.setTabHtmlDescription(GUILDS,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Guilds</font></body></html>");
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_SERVICES,"NO SERVICES - Guild do not provide any services.",false));
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LOOSE_BENEFITS,"LOOSE BENEFITS - If character looses a guild level or exits a guild, corresponding guild benefits are lost.",false));
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_JOIN_REQUIREMENT,"JOIN REQUIREMENT - Characters must fulfill a requirement to join a guild.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LEAVING,"LEAVING - Characters can leave a guild.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_SERVICES,"NO SERVICES - Guild do not provide any services.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_NO_ADVANCEMENT_SERVICE,"NO ADVANCEMENT SERVICE - Characters cannot pay for guild level advancement.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LOOSE_BENEFITS,"LOOSE BENEFITS - If character looses a guild level or exits a guild, corresponding guild benefits are lost.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_BENEFITS,"BENEFITS 1+2 - Characters can get benefits for guild level one and two.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_FINAL_BENEFIT,"FINAL BENEFIT - Only a single character can hold the final benefit.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_START_LEVEL,"START LEVEL - Characters start with guild level 0 (not 1), after joining a guild.",false));

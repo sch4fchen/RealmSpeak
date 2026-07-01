@@ -115,6 +115,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
+	public static final String CURRENT_GUILD_JOIN_REQUIREMENT = "_ccjr_";
 
 	public static final String BLOCKING = "bkkng_"; // indicates the character is blocking everything in the clearing
 	public static final String BLOCK_DECISION = "bkkng_dec"; // the blocking character has decided what to do
@@ -8098,6 +8099,10 @@ public class CharacterWrapper extends GameObjectWrapper {
     	setString(CURRENT_GUILD,guild);
     }
     public String getCurrentGuild() {
+    	return getCurrentGuild(true);
+    }
+    public String getCurrentGuild(boolean validateJoinRequirement) {
+    	if (validateJoinRequirement && hasGuildJoinRequirement()) return null;
     	return getString(CURRENT_GUILD);
     }
     public void setCurrentGuildLevel(int level) {
@@ -8113,6 +8118,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     	RealmUtility.passOnFinalGuildBenefit(this);
     	clear(CURRENT_GUILD);
     	clear(CURRENT_GUILD_LEVEL);
+    	clear(CURRENT_GUILD_JOIN_REQUIREMENT);
     }
 	public GuildStore getCurrentGuildStore() {
 		if (getCurrentGuild()==null) return null;
@@ -8161,6 +8167,12 @@ public class CharacterWrapper extends GameObjectWrapper {
     public boolean isGuildMember(String guildName) {
     	String currentGuild = getCurrentGuild();
     	return currentGuild!=null && guildName.matches(getCurrentGuild());
+    }
+    public boolean hasGuildJoinRequirement() {
+    	return getBoolean(CURRENT_GUILD_JOIN_REQUIREMENT);
+    }
+    public void setGuildJoinRequirement(boolean val) {
+    	setBoolean(CURRENT_GUILD_JOIN_REQUIREMENT, val);
     }
     public ArrayList<GameObject> getInventoryToApprove() {
     	ArrayList<GameObject> list = new ArrayList<>();
