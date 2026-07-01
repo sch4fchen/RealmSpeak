@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.store.GuildStore;
+import com.robin.magic_realm.components.store.ThievesGuild;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -52,6 +54,14 @@ public class StealTablesCommon {
 			chooser.setVisible(true);
 			RealmComponent selectedItem = chooser.getFirstSelectedComponent();
 			Loot.addItemToCharacter(frame, null, character, selectedItem.getGameObject());
+			
+			// Check for Thieves Guild join requirement
+			GuildStore currentGuild = character.getCurrentGuildStore(false);
+			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof ThievesGuild) {
+				if (((ThievesGuild)currentGuild).validateRequirementAndJoin(character, selectedItem.getGameObject())) {
+					JOptionPane.showMessageDialog(frame,"You fulfilled the join requirement for the Thieves Guild. You are now a member of the Thieves Guild.","Joining Thieves Guild",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
 		}
 	}
 }

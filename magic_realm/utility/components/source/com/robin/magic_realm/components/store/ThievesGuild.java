@@ -212,4 +212,22 @@ public class ThievesGuild extends GuildStore {
 			}
 		}
 	}
+	
+	public boolean validateRequirementAndJoin(CharacterWrapper character, GameObject loot) {
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (character.hasGuildJoinRequirement() && RealmComponent.getRealmComponent(loot).isTreasure()) {
+			character.setGuildJoinRequirement(false);
+			if (hostPrefs.hasPref(Constants.GUILDS_START_LEVEL)) {
+				character.setCurrentGuildLevel(0);
+			}
+			else {
+				character.setCurrentGuildLevel(1);
+				if (hostPrefs.hasPref(Constants.GUILDS_BENEFITS)) {
+					character.getCurrentGuildStore().applyGuildBenefit1(null, character);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 }

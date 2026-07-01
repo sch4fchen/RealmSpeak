@@ -5541,7 +5541,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		// Check for Magic Guild join requirement
 		GuildStore currentGuild = getCurrentGuildStore(false);
 		if (hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof MagicGuild) {
-			((MagicGuild)currentGuild).validateRequirementAndJoin(frame, this);
+			if (((MagicGuild)currentGuild).validateRequirementAndJoin(frame, this)) {
+				JOptionPane.showMessageDialog(frame,"You fulfilled the join requirement for the Magic Guild. You are now a member of the Magic Guild.","Joining Magic Guild",JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 		
 		return spell;

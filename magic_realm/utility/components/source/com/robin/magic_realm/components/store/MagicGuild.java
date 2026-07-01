@@ -235,7 +235,7 @@ public class MagicGuild extends GuildStore {
 		}
 	}
 	
-	public void validateRequirementAndJoin(JFrame frame, CharacterWrapper character) {
+	public boolean validateRequirementAndJoin(JFrame frame, CharacterWrapper character) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (character.hasGuildJoinRequirement()) {
 			character.setGuildJoinRequirement(false);
@@ -248,6 +248,8 @@ public class MagicGuild extends GuildStore {
 					character.getCurrentGuildStore().applyGuildBenefit1(frame, character);
 				}
 			}
+			return true;
 		}
+		return false;
 	}
 }

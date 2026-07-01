@@ -8,7 +8,10 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.RealmBattle.check;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.store.GuildStore;
+import com.robin.magic_realm.components.store.ThievesGuild;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -73,7 +76,15 @@ public class StealReward extends RealmTable {
 			JOptionPane.showMessageDialog(getParentFrame(),"No treasure to steal from "+victim.getGameObject().getNameWithNumber(),"Steal Reward",JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
-			Loot.addItemToCharacter(getParentFrame(), null, character, treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject());
+			GameObject loot = treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject();
+			Loot.addItemToCharacter(getParentFrame(), null, character, loot);
+			// Check for Thieves Guild join requirement
+			GuildStore currentGuild = character.getCurrentGuildStore(false);
+			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof ThievesGuild) {
+				if (((ThievesGuild)currentGuild).validateRequirementAndJoin(character, loot)) {
+					JOptionPane.showMessageDialog(getParentFrame(),"You fulfilled the join requirement for the Thieves Guild. You are now a member of the Thieves Guild.","Joining Thieves Guild",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
 		}
 		return RESULT[3];
 	}

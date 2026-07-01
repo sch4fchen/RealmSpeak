@@ -161,8 +161,8 @@ public class FightersGuild extends GuildStore {
 		}
 	}
 	
-	public void validateRequirementAndJoin(CharacterWrapper character, RealmComponent victim, boolean spellUsed) {
-		if (spellUsed) return;
+	public boolean validateRequirementAndJoin(CharacterWrapper character, RealmComponent victim, boolean spellUsed) {
+		if (spellUsed) return false;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (character.hasGuildJoinRequirement() && victim.isMonster() && ((MonsterChitComponent)victim).getVulnerability().equalTo(new Strength("H"))) {
 			character.setGuildJoinRequirement(false);
@@ -175,6 +175,8 @@ public class FightersGuild extends GuildStore {
 					character.getCurrentGuildStore().applyGuildBenefit1(null, character);
 				}
 			}
+			return true;
 		}
+		return false;
 	}
 }
