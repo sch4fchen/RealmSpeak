@@ -579,7 +579,7 @@ public class RealmUtility {
 			GuildStore currentGuild = character.getCurrentGuildStore(false);
 			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof FightersGuild) {
 				if (((FightersGuild)currentGuild).validateRequirementAndJoin(character,rc,killerIsASpell)) {
-					RealmLogging.logMessage(killerRc.getName(),"Fulfilled the join requirement for the Fighters Guild.");
+					RealmLogging.logMessage(killerRc.getName(),FightersGuild.JOIN_GUILD_LOG_MESSAGE);
 				}
 			}
 		}

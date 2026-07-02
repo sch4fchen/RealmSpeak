@@ -21,6 +21,8 @@ public class ThievesGuild extends GuildStore {
 	private static String MAP_SERVICE_2 = "Learn all secret passages on a tile (both sides) for 10 gold.";
 	private static String UNLOCK_SERVICE = "Unlock the Chest for 50 gold.";
 	private static String ADVANCEMENT_SERVICE = "Pay "+GOLD_PRICE+" gold to advance to next level.";
+	public static String JOIN_GUILD_TEXT = "You have fulfilled the join requirement for the Thieves Guild. You are now a member of the Thieves Guild.";
+	public static String JOIN_GUILD_TITLE = "Joining Thieves Guild";
 	
 	private ArrayList<TileComponent> tilesWithUnknownPaths;
 	private ArrayList<TileComponent> tilesWithUnknownPassages;

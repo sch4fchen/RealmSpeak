@@ -81,7 +81,7 @@ public class StealReward extends RealmTable {
 			GuildStore currentGuild = character.getCurrentGuildStore(false);
 			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof ThievesGuild) {
 				if (((ThievesGuild)currentGuild).validateRequirementAndJoin(character, loot)) {
-					JOptionPane.showMessageDialog(getParentFrame(),"You fulfilled the join requirement for the Thieves Guild. You are now a member of the Thieves Guild.","Joining Thieves Guild",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(getParentFrame(),ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}

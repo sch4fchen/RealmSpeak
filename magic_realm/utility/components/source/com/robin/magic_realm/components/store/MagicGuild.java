@@ -23,6 +23,8 @@ public class MagicGuild extends GuildStore {
 	private static String CURE_FREE_SERVICE = "Cancel curse or spell for free.";
 	private static String GENERATE_COLOR_SERVICE = "Generate any color for a day for 5 gold.";
 	private static String ADVANCEMENT_SERVICE = "Pay "+GT_PRICE+" Great Treasures to advance to next level.";
+	public static String JOIN_GUILD_TEXT = "You have fulfilled the join requirement for the Magic Guild. You are now a member of the Magic Guild.";
+	public static String JOIN_GUILD_TITLE = "Joining Magic Guild";
 	
 	private ArrayList<GameObject> greatTreasures;
 	private ArrayList<SpellWrapper> bewitchingSpells;
@@ -235,7 +237,7 @@ public class MagicGuild extends GuildStore {
 		}
 	}
 	
-	public boolean validateRequirementAndJoin(JFrame frame, CharacterWrapper character) {
+	public boolean validateRequirementAndJoin(JFrame frame, CharacterWrapper character, GameObject spell) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (character.hasGuildJoinRequirement()) {
 			character.setGuildJoinRequirement(false);

@@ -21,6 +21,7 @@ public class FightersGuild extends GuildStore {
 	private static String REST_SERVICE = "Rest all fatigued FIGHT/MOVE chits for 5 gold.";
 	private static String REPAIR_SERVICE = "Repair all active armor for 10 gold.";
 	private static String ADVANCEMENT_SERVICE = "Pay "+FAME_PRICE+" FAME to advance to next level.";
+	public static String JOIN_GUILD_LOG_MESSAGE = "Fulfilled the join requirement for the Fighters Guild.";
 	
 	private ArrayList<CharacterActionChitComponent> restableChits;
 	private ArrayList<ArmorChitComponent> repairableArmor;

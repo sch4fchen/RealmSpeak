@@ -4602,7 +4602,7 @@ public class CombatFrame extends JFrame {
 			GuildStore currentGuild = activeCharacter.getCurrentGuildStore(false);
 			if (activeCharacter.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof ThievesGuild) {
 				if (((ThievesGuild)currentGuild).validateRequirementAndJoin(activeCharacter, loot)) {
-					JOptionPane.showMessageDialog(this,"You fulfilled the join requirement for the Thieves Guild. You are now a member of the Thieves Guild.","Joining Thieves Guild",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this,ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		}
