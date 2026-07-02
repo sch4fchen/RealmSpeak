@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -47,6 +48,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	public static final String CLEARING = "_cl";
 	public static final String LOCATION = "_loc";
 	public static final String AMOUNT = "_amnt";
+	public static final String MARK = "_mk";
 	public static final String MOVE_HIRELINGS = "_mh";
 	public static final String MOVE_COMPANIONS = "_mc";
 	public static final String MOVE_SUMMONED = "_ms";
@@ -62,6 +64,7 @@ public class QuestRewardMoveDenizen extends QuestReward {
 		QuestLocation loc = getQuestLocation();
 		TileLocation charactersLoc= character.getCurrentLocation();
 		ArrayList<GameObject> denizensToMove = new ArrayList<>();
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject denizen : denizens) {
 			RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 			if (denizenRc == null || (!denizenRc.isDenizen() && !denizenRc.isTraveler())) continue;
@@ -87,6 +90,10 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			}
 			if (moveOnlySpecificOnes() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED) && !denizen.hasThisAttribute(Constants.TRAVELER)) {
 				continue;
+			}
+			if (needsMark()) {
+				String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
+				if (mark==null || !mark.equals(questId)) continue;
 			}
 			denizensToMove.add(denizen);
 		}
@@ -266,6 +273,9 @@ public class QuestRewardMoveDenizen extends QuestReward {
 	}
 	private int numberOfDenizens() {
 		return getInt(AMOUNT);
+	}
+	private boolean needsMark() {
+		return getBoolean(MARK);
 	}
 	private Boolean moveHirelings() {
 		return getBoolean(MOVE_HIRELINGS);
