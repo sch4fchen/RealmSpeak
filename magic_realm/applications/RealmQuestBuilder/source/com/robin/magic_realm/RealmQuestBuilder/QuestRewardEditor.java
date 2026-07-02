@@ -235,7 +235,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_DEACTIVE, "Must be deactivated?", FieldType.Boolean));
 				break;
 			case MarkTraveler:
-				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.TRAVELER_REGEX, "Traveler name filter (regex)", FieldType.Regex, null, new String[] { "traveler" }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.TRAVELER_REGEX, "Traveler name filter (regex)", FieldType.Regex, null, new String[] { "traveler_template" }));
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.RANDOM_TRAVELER, "Random traveler", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.CHARACTERS_CLEARING, "In characters tile only", FieldType.Boolean));
 				break;

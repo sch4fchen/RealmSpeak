@@ -1,7 +1,6 @@
 package com.robin.magic_realm.components.quest.reward;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
@@ -12,7 +11,6 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.QuestConstants;
-import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardMarkTraveler extends QuestReward {
