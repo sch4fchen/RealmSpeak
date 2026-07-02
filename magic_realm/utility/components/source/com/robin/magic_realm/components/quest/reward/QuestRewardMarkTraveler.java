@@ -54,6 +54,15 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	}
 
 	public String getDescription() {
+		if (randomTraveler()) {
+			StringBuffer sb = new StringBuffer();
+			sb.append("Mark a random traveler");
+			if (charactersClearingOnly()) {
+				sb.append(" in current clearing");
+			}
+			sb.append(".");
+			return sb.toString();
+		}
 		StringBuffer sb = new StringBuffer();
 		sb.append("Mark all travelers");
 		if (charactersClearingOnly()) {
