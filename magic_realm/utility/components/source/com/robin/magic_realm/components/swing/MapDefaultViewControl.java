@@ -16,7 +16,7 @@ import javax.swing.*;
  */
 public class MapDefaultViewControl extends JPanel {
 
-	public static final int MARGIN = 10;
+	public static final int MARGIN = 20;
 	private static final int GRIP_WIDTH = 14;
 
 	private boolean userPositioned = false;
@@ -98,7 +98,7 @@ public class MapDefaultViewControl extends JPanel {
 			moveTo(getX(),getY());
 		}
 		else {
-			setLocation(MARGIN,MARGIN);
+			setLocation(containerWidth-getWidth()-MARGIN,containerWidth-getHeight()-MARGIN);
 		}
 	}
 }
