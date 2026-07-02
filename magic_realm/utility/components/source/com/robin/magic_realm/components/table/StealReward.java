@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
-import com.robin.magic_realm.RealmBattle.check;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.store.ThievesGuild;
