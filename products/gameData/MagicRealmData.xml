@@ -22979,6 +22979,16 @@
         <attribute offroad_travel_sides="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
+	    <attributeList keyName="offroad_travel_side_1">
+          <attributeVal N0="1" />
+          <attributeVal N1="3" />
+          <attributeVal N2="4" />
+          <attributeVal N3="6" />
+        </attributeList>
+        <attributeList keyName="offroad_travel_side_2">
+          <attributeVal N0="2" />
+          <attributeVal N1="5" />
+        </attributeList>
         <attribute offroad_xy="52.2,16.5" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="29.0,26.5" />
@@ -23033,6 +23043,16 @@
         </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
+	  	<attributeList keyName="offroad_travel_side_1">
+          <attributeVal N0="1" />
+          <attributeVal N1="3" />
+          <attributeVal N2="4" />
+          <attributeVal N3="6" />
+        </attributeList>
+        <attributeList keyName="offroad_travel_side_2">
+          <attributeVal N0="2" />
+          <attributeVal N1="5" />
+        </attributeList>
         <attribute offroad_xy="45.5,12.8" />
         <attribute clearing_1_type="normal" />
         <attribute clearing_1_xy="28.2,27.7" />
@@ -31381,6 +31401,17 @@
         <attribute offroad_travel_sides="" />
       </AttributeBlock>
       <AttributeBlock blockName="normal">
+	    <attributeList keyName="offroad_travel_side_1">
+          <attributeVal N0="1" />
+          <attributeVal N1="2" />
+          <attributeVal N2="3" />
+          <attributeVal N3="4" />
+        </attributeList>
+        <attributeList keyName="offroad_travel_side_2">
+          <attributeVal N0="2" />
+          <attributeVal N1="5" />
+          <attributeVal N2="6" />
+        </attributeList>
         <attribute offroad_xy="66.5,9.7" />
         <attribute clearing_1_type="woods" />
         <attribute clearing_1_xy="33.6,21.6" />
@@ -31442,6 +31473,17 @@
         </attributeList>
       </AttributeBlock>
       <AttributeBlock blockName="enchanted">
+	  	<attributeList keyName="offroad_travel_side_1">
+          <attributeVal N0="1" />
+          <attributeVal N1="2" />
+          <attributeVal N2="3" />
+          <attributeVal N3="4" />
+        </attributeList>
+        <attributeList keyName="offroad_travel_side_2">
+          <attributeVal N0="2" />
+          <attributeVal N1="5" />
+          <attributeVal N2="6" />
+        </attributeList>
         <attribute offroad_xy="66.5,9.7" />
         <attribute clearing_1_type="woods" />
         <attribute clearing_1_xy="34.4,21.9" />
