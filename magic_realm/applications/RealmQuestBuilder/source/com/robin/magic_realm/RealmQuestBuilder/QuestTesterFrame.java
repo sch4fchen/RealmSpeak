@@ -61,13 +61,14 @@ public class QuestTesterFrame extends JFrame {
 	JList<GameObject> activeInventory;
 	JList<GameObject> inactiveInventory;
 
-	// Hirelings
+	// Hirelings, Journal, Marked Things
 	JList<RealmComponent> hirelings;
 	JButton hirelingAdd;
 	JButton hirelingUnhire;
 	JButton hirelingKill;
 	JButton hirelingToggleFollow;
 	JList<QuestJournalEntry> journalList;
+	JList<RealmComponent> markedThings;
 
 	// Clearing
 	JList<RealmComponent> clearingComponents;
@@ -825,7 +826,7 @@ public class QuestTesterFrame extends JFrame {
 	}
 
 	private JPanel buildCharacterHirelingPanel() {
-		JPanel panel = new JPanel(new GridLayout(2, 1));
+		JPanel panel = new JPanel(new GridLayout(3, 1));
 		JPanel hirelingsPanel = new JPanel(new BorderLayout());	
 		hirelings = new JList<>();
 		hirelings.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -915,6 +916,12 @@ public class QuestTesterFrame extends JFrame {
 		journalList = new JList<>();
 		journalList.setCellRenderer(new JournalEntryListRenderer());
 		panel.add(makeTitledScrollPane("Journal", journalList));
+				
+		JPanel markedThingsPanel = new JPanel(new BorderLayout());
+		markedThings = new JList<>();
+		markedThings.setCellRenderer(new MarkedThingsListRenderer());
+		markedThingsPanel.add(markedThings);
+		panel.add(makeTitledScrollPane("Marked Things", markedThingsPanel));
 		return panel;
 	}
 	
@@ -1599,6 +1606,7 @@ public class QuestTesterFrame extends JFrame {
 		inactiveInventory.setListData(new Vector<>(character.getInactiveInventory()));
 		hirelings.setListData(new Vector<>(character.getAllHirelings()));
 		journalList.setListData(new Vector<>(quest.getJournalEntries()));
+		markedThings.setListData(new Vector<>(setAllMarkedThings()));
 
 		clearingTitle.setText(character.getCurrentLocation().toString()+getEnchanted()+" "+getMagicColors());
 		
@@ -1890,6 +1898,42 @@ public class QuestTesterFrame extends JFrame {
 			}
 			return this;
 		}
+	}
+	
+	private class MarkedThingsListRenderer extends DefaultListCellRenderer {
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+			super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+			GameObject go = null;
+			if (value instanceof RealmComponent) {
+				go = ((RealmComponent) value).getGameObject();
+			}
+			else if (value instanceof GameObject) {
+				go = (GameObject) value;
+			}	
+			if (go != null) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				StringBuffer sb = new StringBuffer();
+				sb.append(getKey(go));
+				TileLocation location = rc.getCurrentLocation();
+				if (location!=null) {
+					sb.append(" ("+location+")");
+				} else if (rc.getHeldBy()!=null){
+					sb.append(" ("+rc.getHeldBy().getGameObject().getName()+")");
+				}
+				setText(sb.toString());
+			}
+			return this;
+		}
+	}
+	
+	public ArrayList<RealmComponent> setAllMarkedThings() {
+		ArrayList<RealmComponent> list = new ArrayList<>();
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
+		for (GameObject go :pool.find(QuestConstants.QUEST_MARK)) {
+			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			list.add(rc);
+		}
+		return list;
 	}
 
 	private class JournalEntryListRenderer extends DefaultListCellRenderer {
