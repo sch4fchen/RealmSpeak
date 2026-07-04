@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -103,7 +105,7 @@ public class QuestView extends JPanel implements Scrollable {
 		add(splitPane, BorderLayout.CENTER);
 		markedView = new RealmObjectPanel(false,false);
 		markedView.setVisible(false);
-		markedView.setBorder(BorderFactory.createTitledBorder("Quest related things"));
+		markedView.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),"Quest related things",TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
 		add(markedView, BorderLayout.SOUTH);
 		updateMarkedView(quest);
 	}
@@ -145,14 +147,10 @@ public class QuestView extends JPanel implements Scrollable {
 				if (go.getThisAttribute(QuestConstants.QUEST_MARK).equals(questId)) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					markedView.add(rc);
-					if (rc.isTraveler()) {
-						TravelerChitComponent traveler = (TravelerChitComponent)rc;
-						traveler.setShowFlipSide(true);
-					} else if (rc.isTreasure() || rc.isSpell()) {
-						CardComponent card = (CardComponent)rc;
-						card.setFaceUp();
-					}
 				}
+			}
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
+				markedView.activateFlipView();
 			}
 			markedView.setVisible(true);
 		} else {
