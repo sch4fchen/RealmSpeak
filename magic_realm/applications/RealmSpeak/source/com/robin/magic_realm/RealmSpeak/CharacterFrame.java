@@ -11,6 +11,7 @@ import javax.swing.event.ChangeEvent;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.*;
 import com.robin.magic_realm.components.quest.*;
@@ -1854,6 +1855,17 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				
 				GameObject thing = character.getGameObject().getGameData().getGameObjectByName(thingName);
 				if (thing != null) {
+					if (thing.hasThisAttribute(Constants.TRAVELER_TEMPLATE)) {
+						GameObject go = character.getGameObject().getGameData().createNewObject();
+						TravelerChitComponent traveler = new TravelerChitComponent(go);
+						traveler.assignTravelerTemplate(thing);
+						traveler.getGameObject().setThisAttribute(Constants.TRAVELER);
+						traveler.getGameObject().setThisAttribute("chit");
+						traveler.getGameObject().setThisAttribute("seen");
+						traveler.getGameObject().setThisAttribute("print");
+						traveler.getGameObject().setThisAttribute("monster_die",RandomNumber.getDieRoll(6));
+						thing = go;
+					}
 					RealmComponent rc = RealmComponent.getRealmComponent(thing);
 					if (rc.isTreasure() || rc.isWeapon() || rc.isArmor() || rc.isHorse()) {
 						System.out.println("CHEAT - Steal treasure: " + thing.getName());
@@ -1876,7 +1888,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						}
 						gameHandler.updateCharacterFrames();
 					}
-					else if (rc.isMonster() || rc.isTreasureLocation() || rc.isGoldSpecial()) {
+					else if (rc.isMonster() || rc.isTreasureLocation() || rc.isGoldSpecial() || rc.isTraveler()) {
 						System.out.println("CHEAT - Summon to clearing: " + thing.getName());
 						if (allSimilar) {
 							for (GameObject sim:character.getGameObject().getGameData().getGameObjectsByName(thingName)) {

@@ -1,3 +1,5 @@
+Option to add SuperRealm and/or QtR to Guild Quests
+
 Version 1.2.6.0
 NEW FEATURES:
 # Optional rule for joining a Guild
