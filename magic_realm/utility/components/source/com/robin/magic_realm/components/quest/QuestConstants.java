@@ -58,6 +58,7 @@ public class QuestConstants {
 	public static final String DISCARD_NEVER = "discard_never";
 	
 	public static final String MAKRED_VIEW = "marked_view";
+	public static final String MAKRED_VIEW_NO_SECRETS = "marked_view_no_secrets";
 	//-------------------------------
 	
 	public static String [] wolfs = new String [] {"Wolf 1","Wolf 2"};

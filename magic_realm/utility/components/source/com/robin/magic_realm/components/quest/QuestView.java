@@ -12,7 +12,10 @@ import javax.swing.event.ChangeListener;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
+import com.robin.magic_realm.components.CardComponent;
+import com.robin.magic_realm.components.ChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.TravelerChitComponent;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -137,10 +140,18 @@ public class QuestView extends JPanel implements Scrollable {
 		if (quest!=null && quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW)) {
 			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
 			String questId = quest.getGameObject().getStringId();
+
 			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
 				if (go.getThisAttribute(QuestConstants.QUEST_MARK).equals(questId)) {
-				RealmComponent rc = RealmComponent.getRealmComponent(go);
-				markedView.add(rc);
+					RealmComponent rc = RealmComponent.getRealmComponent(go);
+					markedView.add(rc);
+					if (rc.isTraveler()) {
+						TravelerChitComponent traveler = (TravelerChitComponent)rc;
+						traveler.setShowFlipSide(true);
+					} else if (rc.isTreasure() || rc.isSpell()) {
+						CardComponent card = (CardComponent)rc;
+						card.setFaceUp();
+					}
 				}
 			}
 			markedView.setVisible(true);

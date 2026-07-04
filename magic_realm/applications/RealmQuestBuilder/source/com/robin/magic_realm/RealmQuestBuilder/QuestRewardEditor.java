@@ -243,6 +243,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case MarkedView:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.OPTION, "Enable/Disable", FieldType.StringSelector, new String[] {QuestRewardMarkedView.ENABLE,QuestRewardMarkedView.DISABLE} ));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.NO_SECRETS, "Show hidden things", FieldType.Boolean));
 				break;
 			case Mesmerize:
 				list.add(new QuestPropertyBlock(QuestRewardMesmerize.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));

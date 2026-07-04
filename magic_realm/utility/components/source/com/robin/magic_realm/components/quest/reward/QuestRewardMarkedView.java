@@ -10,6 +10,7 @@ public class QuestRewardMarkedView extends QuestReward {
 	public static final String OPTION = "_option";
 	public static final String ENABLE = "Enable";
 	public static final String DISABLE = "Disable";
+	public static final String NO_SECRETS = "_no_secrets";
 
 	public QuestRewardMarkedView(GameObject go) {
 		super(go);
@@ -18,9 +19,13 @@ public class QuestRewardMarkedView extends QuestReward {
 	public void processReward(JFrame frame, CharacterWrapper character) {
 		if (enabled()) {
 			getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW);
+			if (noSecrets()) {
+				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS);
+			}
 			return;
 		}
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW);
+		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS);
 	}
 
 	public RewardType getRewardType() {
@@ -36,5 +41,9 @@ public class QuestRewardMarkedView extends QuestReward {
 	
 	private boolean enabled() {
 		return getString(OPTION).matches(ENABLE);
+	}
+	
+	private boolean noSecrets() {
+		return getBoolean(NO_SECRETS);
 	}
 }
