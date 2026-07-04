@@ -21,7 +21,6 @@ import com.robin.magic_realm.components.effect.SpellEffectContext;
 import com.robin.magic_realm.components.events.RealmEvents;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
-import com.robin.magic_realm.components.store.FightersGuild;
 import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.store.MagicGuild;
 import com.robin.magic_realm.components.store.Store;
@@ -8146,7 +8145,9 @@ public class CharacterWrapper extends GameObjectWrapper {
     public String getCurrentGuildBadgeName() {
     	String guild = getCurrentGuild();
     	if (guild!=null) {
-    		return guild+getCurrentGuildLevel();
+    		int level = getCurrentGuildLevel();
+    		if (level > 3) level = 3;
+    		return guild+level;
     	}
     	return null;
     }
