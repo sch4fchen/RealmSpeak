@@ -405,6 +405,7 @@ public class CharacterActionControlManager {
 						continueWithRecord = false;
 					}
 				}
+				HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameHandler.getClient().getGameData());
 				if (getGameHandler().isOption(RealmSpeakOptions.INVALID_PHASE_WARNING) && DayAction.MOVE_ACTION.getCode().equals(theAction)) {
 					PathDetail path = current.hasClearing()
 							? current.clearing.getConnectingPath(tl.clearing)
@@ -414,7 +415,7 @@ public class CharacterActionControlManager {
 							&& current.tile == tl.tile) {
 						overridePath = true;
 					}
-					if (current.isBetweenClearings() && ((character.canWalkWoods(current.tile,current.clearing,tl.clearing) && current.getOther().tile == tl.tile) || (current.contains(tl.tile) && current.contains(tl.clearing)))) {
+					if (current.isBetweenClearings() && ((character.canWalkWoods(current.tile,current.clearing,tl.clearing) && current.getOther().tile == tl.tile && !hostPrefs.hasPref(Constants.EXP_WALK_WOODS_NO_ROADWAYS)) || (current.contains(tl.tile) && current.contains(tl.clearing)))) {
 							overridePath = true;
 					}
 					if (ClearingUtility.canUseGates(character,tl.clearing)) {
@@ -864,8 +865,9 @@ public class CharacterActionControlManager {
 		return true;
 	}
 	public void updateControls(PhaseManager pm,boolean recordingActions,boolean birdsong) {
+		boolean hasplannedOffroadMove = getCharacter().hasCurrentAction("O");
 		TileLocation planned = getCharacter().getPlannedLocation();
-		finishAction.setEnabled(getCharacter().isActive() && recordingActions && planned != null && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || (getCharacter().canDoDaytimeRecord() && pm.hasActionsLeft())));
+		finishAction.setEnabled(getCharacter().isActive() && recordingActions && planned != null && ((!planned.isBetweenClearings() && !planned.isBetweenTiles()) || hasplannedOffroadMove || (getCharacter().canDoDaytimeRecord() && pm.hasActionsLeft())));
 		boolean canBackspace = getCharacter().isActive() && recordingActions && getCharacter().getCurrentActionCount()>0;
 		boolean canUnsend = getCharacter().isActive() && birdsong && !getCharacter().isDoRecord();
 		backAction.setEnabled(canBackspace || canUnsend);

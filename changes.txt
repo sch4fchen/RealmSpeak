@@ -1,6 +1,4 @@
 Option to add SuperRealm and/or QtR to Guild Quests
-Show marked things in quest tester
-Option to disallow Walking the woods and/or offroad travel if currently on roadway
 Reward to show / hide marked items in quest view
 
 Version 1.2.6.0

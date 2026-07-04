@@ -2270,6 +2270,11 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (canWaterRun(fromClearing,toClearing)) return true;
 		if (((fromClearing!=null && fromClearing.isMountain()) || (toClearing!=null && toClearing.isMountain())) && this.affectedByKey(Constants.CRAGSMAN)) return true;
 		
+		if (this.getCurrentLocation().isBetweenClearings()) {
+			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameData());
+			if (hostPrefs.hasPref(Constants.EXP_WALK_WOODS_NO_ROADWAYS)) return false;
+		}
+		
 		GameObject transmorph = getTransmorph();
 		if (transmorph!=null) {
 			condition = transmorph.getThisAttribute(Constants.WALK_WOODS);
@@ -2824,6 +2829,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (id==ActionId.Offroad) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
+			if (location.isBetweenClearings() && hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL_NO_ROADWAYS)) {
+				return false;
+			}
 			return hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL);
 		}
 		if (isOffroadTravelLost() && id!=ActionId.Offroad) {

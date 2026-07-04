@@ -1059,6 +1059,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_ORDER_STACKS,"ORDER STACKS (Super Realm Basic) - When dropping items, the stack is orderd.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.SR_OPENING_TREASURE_LOCATIONS,"OPENING TREASURE LOCATIONS (Super Realm Basic) - Treasure locations (Vault and Tomb) cannot be opened with Move chits when mist-like, but with Hurricane Winds, Lightning Bolt and Alchemists Mixture.",false));
 		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_OFFROAD_TRAVEL,"OFFROAD TRAVEL (Expansion 1) - Travelling offroad is a skill given only to Monsters and transformed characters. In this expansion, Characters are given this ability, but must accept a certain amount of danger when using it.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_OFFROAD_TRAVEL_NO_ROADWAYS,"OFFROAD TRAVEL - NOT ON ROADWAYS - Travelling offroad is not possible if the character is on a roadway.",false));
+		newOptionPane.addOption(EXTENDING_GAME_SYSTEM_TAB,new GameOption(Constants.EXP_WALK_WOODS_NO_ROADWAYS,"WALK THE WOODS - NOT ON ROADWAYS - Walk the woods is not possible of the character is on a roadway.",false));
 
 		newOptionPane.setTabHtmlDescription(TRADING_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Trading</font></body></html>");
 		newOptionPane.addOption(TRADING_TAB,new GameOption(Constants.OPT_COMMERCE,"COMMERCE D.2 (Magic Realm Extended) - This includes changes in native trading prices based on the group and using the commerce table for selling goods.",false));
