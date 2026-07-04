@@ -957,6 +957,8 @@ public class Constants {
 	public static final String HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION = "NoEventsAndAllPlayQuestsWithActivation";
 	public static final String HOUSE3_QTR_AND_SR_QUEST_CARDS = "QuestingTheRealmAndRealmQuestCards";
 	public static final String HOUSE3_EXCHANGE_QTR_AND_SR_QUEST_CARDS = "ExchangeQuestingTheRealmAndSuperRealmQuestCards";
+	public static final String HOUSE3_GUILD_QUESTS_ADD_QTR = "GuildQuestsAddQtr";
+	public static final String HOUSE3_GUILD_QUESTS_ADD_SR = "GuildQuestsAddSR";
 	public static final String HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE = "QuestCardHandSizePlusOne";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	public static final String HOUSE3_HORSE_WEAPON_SAME_BOX = "HorseWeaponSameBox";

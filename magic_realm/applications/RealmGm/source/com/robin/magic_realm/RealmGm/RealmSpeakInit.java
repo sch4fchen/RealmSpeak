@@ -505,10 +505,44 @@ public class RealmSpeakInit {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(data);
 		for(Quest template:QuestLoader.loadAllQuestsFromQuestFolder()) {
 			if (!template.verifyGameVariant(hostPrefs)) continue;
+			
+			boolean qtr = hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) && template.getBoolean(QuestConstants.WORKS_WITH_QTR);
+			boolean sr = hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR) && template.getBoolean(QuestConstants.WORKS_WITH_SR);
+			
+			if (qtr || sr) {
+				if (hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS) && template.isAllPlay()) continue;
+				if (hostPrefs.hasPref(Constants.HOUSE3_NO_CHARACTER_QUEST_CARDS) && !template.isAllPlay()) continue;
+				if (hostPrefs.hasPref(Constants.HOUSE3_NO_SECRET_QUESTS) && template.isSecretQuest()) continue;
+				boolean doesRequireActivation = false;
+				if ((hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION) || hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) && template.isAllPlay()) {
+					QuestStep step = template.getSteps().get(0);
+					if (step == null) continue;
+					for (QuestRequirement req : step.getRequirements()) {
+						if (req.getRequirementType() == RequirementType.Active) {
+							doesRequireActivation = true;
+						}
+					}
+				}
+				if (!doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITHOUT_ACTIVATION)) continue;
+				if (doesRequireActivation && hostPrefs.hasPref(Constants.HOUSE3_NO_EVENTS_AND_ALL_PLAY_QUESTS_WITH_ACTIVATION)) continue;
+			}
+			
 			if (checkForDuplicateQuests && deck.getAllQuestNames().contains(template.getName())) continue;
 			if (template.getGuild()!=null) {
 				Quest quest = template.copyQuestToGameData(data);
 				deck.addCards(quest,1);
+			} else if (qtr || sr) {
+				int count = template.getInt(QuestConstants.CARD_COUNT);
+				if (count>0) {
+					// Add the template to the data object and init deck
+					Quest quest = template.copyQuestToGameData(data);
+					if (quest.isAllPlay()) {
+						deck.addAllPlayCard(quest); // count is ignored for all play cards
+					}
+					else {
+						deck.addCards(quest,count);
+					}
+				}
 			}
 		}
 		deck.shuffle();
