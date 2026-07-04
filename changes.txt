@@ -1,7 +1,7 @@
 Version 1.2.6.0
 NEW FEATURES:
 # Optional rule for joining a Guild
-# Alternative Placement for combat buttons
+# Alternative placement for combat buttons
 QUEST UPDATE:
 # Improve Q40 Travels Merchant quest
 # More guild quests
