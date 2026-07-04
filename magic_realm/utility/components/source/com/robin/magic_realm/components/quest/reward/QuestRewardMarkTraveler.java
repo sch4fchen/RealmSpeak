@@ -18,6 +18,7 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	public static final String TRAVELER_REGEX = "_regex";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
 	public static final String RANDOM_TRAVELER = "_rnd_tr";
+	public static final String REMOVE = "_rmv_mrk";
 	
 	public QuestRewardMarkTraveler(GameObject go) {
 		super(go);
@@ -44,12 +45,20 @@ public class QuestRewardMarkTraveler extends QuestReward {
 				if (randomTraveler()) {
 					allTravelers.add(go);
 				} else {
-					go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+					if (removeMark()) {
+						go.removeThisAttribute(QuestConstants.QUEST_MARK);
+					} else {
+						go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+					}
 				}
 			}
 		}
 		if (randomTraveler()) {
-			allTravelers.get(RandomNumber.getRandom(allTravelers.size())).setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+			if (removeMark()) {
+				allTravelers.get(RandomNumber.getRandom(allTravelers.size())).removeThisAttribute(QuestConstants.QUEST_MARK);
+			} else {
+				allTravelers.get(RandomNumber.getRandom(allTravelers.size())).setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+			}
 		}
 	}
 
@@ -86,5 +95,9 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	
 	private Boolean randomTraveler() {
 		return getBoolean(RANDOM_TRAVELER);
+	}
+	
+	private Boolean removeMark() {
+		return getBoolean(REMOVE);
 	}
 }

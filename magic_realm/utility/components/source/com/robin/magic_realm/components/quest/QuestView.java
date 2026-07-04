@@ -3,12 +3,17 @@ package com.robin.magic_realm.components.quest;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import com.robin.game.objects.GameObject;
+import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -18,6 +23,7 @@ public class QuestView extends JPanel implements Scrollable {
 	private JTextArea questDescription;
 	private JList<QuestJournalEntry> questJournalList;
 	private DefaultListModel<QuestJournalEntry> model;
+	private RealmObjectPanel markedView;
 	private Quest quest;
 
 	private JSplitPaneImproved splitPane;
@@ -92,6 +98,11 @@ public class QuestView extends JPanel implements Scrollable {
 		questJournalList.setCellRenderer(new JournalLineRenderer());
 		splitPane = new JSplitPaneImproved(JSplitPane.VERTICAL_SPLIT, true, new JScrollPane(questDescription), new JScrollPane(questJournalList));
 		add(splitPane, BorderLayout.CENTER);
+		markedView = new RealmObjectPanel(false,false);
+		markedView.setVisible(false);
+		markedView.setBorder(BorderFactory.createTitledBorder("Quest related things"));
+		add(markedView, BorderLayout.SOUTH);
+		updateMarkedView(quest);
 	}
 	
 	public void clear() {
@@ -116,8 +127,26 @@ public class QuestView extends JPanel implements Scrollable {
 			model.addElement(entry);
 		}
 		splitPane.setDividerLocation(questJournalList.getModel().getSize() == 0 ? 1.0 : 0.5);
+		updateMarkedView(quest);
+		
 		repaint();
 		revalidate();
+	}
+	
+	private void updateMarkedView(Quest quest) {
+		if (quest!=null && quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW)) {
+			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
+			String questId = quest.getGameObject().getStringId();
+			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
+				if (go.getThisAttribute(QuestConstants.QUEST_MARK).equals(questId)) {
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				markedView.add(rc);
+				}
+			}
+			markedView.setVisible(true);
+		} else {
+			markedView.setVisible(false);
+		}
 	}
 
 	// Scrollable interface

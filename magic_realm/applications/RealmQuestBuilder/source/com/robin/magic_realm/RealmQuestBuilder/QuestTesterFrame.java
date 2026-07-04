@@ -1606,7 +1606,7 @@ public class QuestTesterFrame extends JFrame {
 		inactiveInventory.setListData(new Vector<>(character.getInactiveInventory()));
 		hirelings.setListData(new Vector<>(character.getAllHirelings()));
 		journalList.setListData(new Vector<>(quest.getJournalEntries()));
-		markedThings.setListData(new Vector<>(setAllMarkedThings()));
+		markedThings.setListData(new Vector<>(getAllMarkedThings()));
 
 		clearingTitle.setText(character.getCurrentLocation().toString()+getEnchanted()+" "+getMagicColors());
 		
@@ -1926,10 +1926,10 @@ public class QuestTesterFrame extends JFrame {
 		}
 	}
 	
-	public ArrayList<RealmComponent> setAllMarkedThings() {
+	public ArrayList<RealmComponent> getAllMarkedThings() {
 		ArrayList<RealmComponent> list = new ArrayList<>();
 		GamePool pool = new GamePool(character.getGameData().getGameObjects());
-		for (GameObject go :pool.find(QuestConstants.QUEST_MARK)) {
+		for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			list.add(rc);
 		}

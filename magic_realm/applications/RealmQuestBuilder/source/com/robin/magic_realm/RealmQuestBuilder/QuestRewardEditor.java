@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.*;
 import com.robin.magic_realm.RealmCharacterBuilder.EditPanel.CompanionEditPanel;
 import com.robin.magic_realm.RealmQuestBuilder.QuestPropertyBlock.FieldType;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
@@ -83,7 +84,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
 			case Control:
-				list.add(new QuestPropertyBlock(QuestRewardControl.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardControl.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardControl.REMOVE_CONTROL, "Remove control", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardControl.AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardControl.LOCATION_ONLY, "Control targets in location", FieldType.Boolean));
@@ -101,7 +102,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCurse.REMOVE_CURSES, "Remove all curses", FieldType.Boolean));
 				break;
 			case CustomTreasure:
-				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure", FieldType.Regex, null, new String[] { "treasure" }));
+				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_REGEX, "Treasure", FieldType.Regex, null, new String[] { RealmComponent.TREASURE }));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_NAME, "Name", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_PRICE, "Price ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardCustomTreasure.TREASURE_FAME, "Fame ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
@@ -138,7 +139,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case DiscardQuest:
 				break;
 			case DiscoverTreasureSite:
-				list.add(new QuestPropertyBlock(QuestRewardDiscoverTreasureSite.SITE_REGEX, "Treasure site", FieldType.Regex, null, new String[] { "treasure_location" }));
+				list.add(new QuestPropertyBlock(QuestRewardDiscoverTreasureSite.SITE_REGEX, "Treasure site", FieldType.Regex, null, new String[] { RealmComponent.TREASURE_LOCATION }));
 				break;
 			case DrawQuests:
 				break;
@@ -222,7 +223,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case MakeWhole:
 				break;
 			case MarkDenizen:
-				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				break;
 			case MarkItem:
@@ -235,9 +236,13 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_DEACTIVE, "Must be deactivated?", FieldType.Boolean));
 				break;
 			case MarkTraveler:
-				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.TRAVELER_REGEX, "Traveler name filter (regex)", FieldType.Regex, null, new String[] { "traveler_template" }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.TRAVELER_REGEX, "Traveler name filter (regex)", FieldType.Regex, null, new String[] { Constants.TRAVELER_TEMPLATE }));
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.RANDOM_TRAVELER, "Random traveler", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.CHARACTERS_CLEARING, "In characters tile only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.REMOVE, "Remove mark", FieldType.Boolean));
+				break;
+			case MarkedView:
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.OPTION, "Enable/Disable", FieldType.StringSelector, new String[] {QuestRewardMarkedView.ENABLE,QuestRewardMarkedView.DISABLE} ));
 				break;
 			case Mesmerize:
 				list.add(new QuestPropertyBlock(QuestRewardMesmerize.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
@@ -248,7 +253,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMinorCharacter.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				break;
 			case MoveDenizen:
-				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_FROM_OPTION, "Move from", FieldType.StringSelector, QuestRewardMoveDenizen.MoveFromOption.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.MOVE_OPTION, "Move to", FieldType.StringSelector, QuestRewardMoveDenizen.MoveOption.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMoveDenizen.CLEARING, "Clearing", FieldType.StringSelector, QuestRewardMoveDenizen.ClearingSelection.values()));
@@ -284,7 +289,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardPowerOfThePit.DIE_ROLL, "Die roll", FieldType.StringSelector, DieRollType.values()));
 				break;
 			case RegenerateDenizen:
-				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_REGEX, "Denizen", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
@@ -428,7 +433,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardQuestVps.BONUS_VP, "Set Bonus Quest Vps?", FieldType.Boolean));
 				break;
 			case Visitor:
-				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { "visitor" }));
+				list.add(new QuestPropertyBlock(QuestRewardVisitor.VISITOR_REGEX, "Visitor RegEx", FieldType.Regex, null, new String[] { Constants.VISITOR }));
 				list.add(new QuestPropertyBlock(QuestRewardVisitor.ACQUISITION_TYPE, "Method to acquire hireling", FieldType.StringSelector, ChitAcquisitionType.values()));
 				break;
 			case Weather:
