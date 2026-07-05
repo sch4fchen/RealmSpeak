@@ -107,7 +107,6 @@ public class QuestView extends JPanel implements Scrollable {
 		markedView.setVisible(false);
 		markedView.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),"Quest related things",TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
 		add(markedView, BorderLayout.SOUTH);
-		updateMarkedView(quest);
 	}
 	
 	public void clear() {
@@ -139,10 +138,10 @@ public class QuestView extends JPanel implements Scrollable {
 	}
 	
 	private void updateMarkedView(Quest quest) {
+		markedView.removeAll();
 		if (quest!=null && quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW)) {
 			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
 			String questId = quest.getGameObject().getStringId();
-
 			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
 				if (go.getThisAttribute(QuestConstants.QUEST_MARK).equals(questId)) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
