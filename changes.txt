@@ -1,6 +1,7 @@
 Version 1.2.6.1
 QUEST UPDATE:
 # More guild quests
+# QuestRewardMarkedView: Custom headline
 
 Version 1.2.6.0
 NEW FEATURES:

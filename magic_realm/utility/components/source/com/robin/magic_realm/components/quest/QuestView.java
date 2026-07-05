@@ -3,7 +3,6 @@ package com.robin.magic_realm.components.quest;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -14,10 +13,7 @@ import javax.swing.event.ChangeListener;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.swing.*;
-import com.robin.magic_realm.components.CardComponent;
-import com.robin.magic_realm.components.ChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.TravelerChitComponent;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -151,6 +147,14 @@ public class QuestView extends JPanel implements Scrollable {
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
 				markedView.activateFlipView();
 			}
+			String title = "Quest related things";	
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_TITLE)) {
+				String customTitle = quest.getGameObject().getThisAttribute(QuestConstants.MAKRED_VIEW_TITLE);
+				if (customTitle!=null && !customTitle.isEmpty()) {
+					title = customTitle;
+				}
+			}
+			markedView.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),title,TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
 			markedView.setVisible(true);
 		} else {
 			markedView.setVisible(false);
