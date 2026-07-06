@@ -24638,6 +24638,7 @@
         <attribute fame="7" />
         <attribute notoriety="7" />
         <attribute icon_type="spider" />
+        <attribute spider="" />
         <attribute setup_start="Web" />
         <attribute monster_die="5" />
         <attribute base_price="10" />
