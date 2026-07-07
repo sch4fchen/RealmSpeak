@@ -587,6 +587,7 @@ public class Constants {
 	public static final String MAGIC_CHANGE_BY_FREE_SPELL = "magic_change_by_free_spell";
 	public static final String FORCED_ENCHANTMENT = "forced_enchant";
 	public static final String TELEPORT = "teleport";
+	public static final String TELEPORT_RANDOM_CLEARING = "teleport_random_clearing";
 	public static final String TREASURE_CHIT = "treasure_chit";
 	public static final String NO_UNDEAD = "no_undead";
 	public static final String ADVANCEMENT = "advancement";
@@ -929,6 +930,7 @@ public class Constants {
 	public static final String HOUSE2_DECLINE_OPPORTUNITY = "DeclineOpportunity";
 	public static final String HOUSE2_RED_SPECIAL_SHELTER = "RedSpecialShelter";
 	public static final String HOUSE2_REVISED_ENHANCED_MAGIC = "RevisedEnhancedMagic";
+	public static final String HOUSE2_TELEPORT = "RevisedTeleport";
 	public static final String HOUSE2_NATIVES_REMEMBER_DISCOVERIES = "NativesRememberDiscoveries";
 	public static final String HOUSE2_ANY_VPS = "AnyVps";
 	public static final String HOUSE2_NO_MISSION_VISITOR_FLIPSIDE = "NoMissionVisitorFlip";

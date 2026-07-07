@@ -155,6 +155,11 @@ public class SpellUtility {
 			chosen = chooser.getSelectedLocation();
 		}
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if ((teleportType!=TeleportType.ChooseAny || teleportType!=TeleportType.ChooseTileTwo) && hostPrefs.hasPref(Constants.HOUSE2_TELEPORT)) {
+			character.getGameObject().setThisAttribute(Constants.TELEPORT_RANDOM_CLEARING);
+		}
+		
 		character.jumpMoveHistory(); // because we didn't walk here
 		character.moveToLocation(null,chosen);
 		RealmLogging.logMessage(character.getGameObject().getName(),"Teleported to "+chosen);

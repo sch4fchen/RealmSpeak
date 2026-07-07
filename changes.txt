@@ -1,4 +1,6 @@
 Version 1.2.6.1
+NEW FEATURES:
+# Optional rule: teleport to a random clearing
 QUEST UPDATE:
 # More guild quests
 # QuestRewardMarkedView: Custom headline

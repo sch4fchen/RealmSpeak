@@ -2067,6 +2067,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		TileLocation current = getCurrentLocation();
 		
+		if (getGameObject().hasThisAttribute(Constants.TELEPORT_RANDOM_CLEARING) && current!=null && !current.hasClearing() && current.tile!=null) {
+			ArrayList<ClearingDetail> clearings = current.tile.getClearings();
+			int r = RandomNumber.getRandom(clearings.size());
+			TileLocation chosen = clearings.get(r).getTileLocation();
+			jumpMoveHistory();
+			moveToLocation(null,chosen);
+			RealmLogging.logMessage(getGameObject().getName(),"Teleported to "+chosen);
+		}
+		
 		logger.fine("applyMidnight");
 //		setHidden(false); // This doesn't happen at midnight:  happens at the start of the player turn (rule 8.3)
 		setBlocked(false);
@@ -2087,6 +2096,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		clearActionFollowers();
 		removeAttribute(RELCHANGE_GROUP_LIST);
 		removeRunAwayLastUsedChit();
+		getGameObject().removeThisAttribute(Constants.TELEPORT_RANDOM_CLEARING);
 		getGameObject().removeThisAttribute(Constants.SAILS_LAST_CLEARING);
 		getGameObject().removeThisAttribute(Constants.COMRADE_BEING_FOLLOWED_TODAY);
 		getGameObject().removeThisAttribute(Constants.COMRADE_WILL_BE_FOLLOWED_TODAY);
