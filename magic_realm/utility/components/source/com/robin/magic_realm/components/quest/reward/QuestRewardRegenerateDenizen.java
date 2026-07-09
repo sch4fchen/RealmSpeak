@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -18,6 +19,8 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
 	public static final String CHARACTERS_TILE = "_ch_tile";
 	public static final String REGENERATE_HIRELINGS = "_reg_hirelings";
+	public static final String REQ_MARK = "_req_mark";
+	public static final String REMOVE_MARKS = "_remove_marks";
 	
 	public QuestRewardRegenerateDenizen(GameObject go) {
 		super(go);
@@ -29,9 +32,14 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		if (numberOfDenizens()!=0) {
 			Collections.shuffle(denizens);
 		}
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
+				if (requiresMark()) {
+					String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
+					if (mark==null || !mark.equals(questId)) continue;
+				}
 				if (denizenRc.getOwner()!=null && !regenerateHirelings()) continue;
 				if (charactersClearingOnly()) {
 					if(denizenRc.getCurrentLocation() == null || character.getCurrentLocation() == null || denizenRc.getCurrentLocation().tile != character.getCurrentLocation().tile || denizenRc.getCurrentLocation().clearing != character.getCurrentLocation().clearing) {
@@ -44,6 +52,9 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 					}
 				}
 				SetupCardUtility.resetDenizen(denizen);
+				if (removeMarks() ) {
+					denizen.removeThisAttribute(QuestConstants.QUEST_MARK);
+				}
 				regeneratedDenizens++;
 				if (numberOfDenizens() != 0 && regeneratedDenizens>=numberOfDenizens()) return;
 			}
@@ -80,6 +91,12 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	}
 	private Boolean regenerateHirelings() {
 		return getBoolean(REGENERATE_HIRELINGS);
+	}
+	public boolean requiresMark() {
+		return getBoolean(REQ_MARK);
+	}
+	public boolean removeMarks() {
+		return getBoolean(REMOVE_MARKS);
 	}
 	
 	public RewardType getRewardType() {
