@@ -271,8 +271,8 @@ public class RealmBattle {
 					// Check special inits before moving onto actionState
 					switch(actionState) {
 						case Constants.COMBAT_PREBATTLE:
-							energizeDenizenPreBattleSpells(currentCombatLocation,data);
 							guildHideout(currentCombatLocation,data);
+							energizeDenizenPreBattleSpells(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_LURE:
 							// need to do preparation before moving onto LURE
@@ -288,6 +288,7 @@ public class RealmBattle {
 							break;
 						case Constants.COMBAT_ACTIONS:
 							LogStage("Actions");
+							checkForHurricaneWinds(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_ASSIGN:
 							// need to init melee before moving into target assignment
@@ -316,7 +317,6 @@ public class RealmBattle {
 							expireWishStrength(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_DISENGAGE:
-							checkForHurricaneWinds(currentCombatLocation,data);
 							if (disengage(currentCombatLocation,data)) {
 								// reset back to LURE
 								for (CharacterWrapper one : choices) {
@@ -777,6 +777,7 @@ public class RealmBattle {
 		TileLocation test = getCurrentCombatLocation(data); // if test is null, then all characters in the clearing are dead!
 		if (test==null || model.getAllOwningCharacters().isEmpty() || (tile.lastTwoAreMisses() && (hostPrefs.hasPref(Constants.SR_ENDING_COMBAT) || !model.arePinningMonsters())) || tile.isSleepClearing(location.clearing.getNum())) {
 			// Combat is over.  Move to the next clearing.
+			checkForHurricaneWinds(location,data);
 			endCombatInClearing(location,data);
 			updateClearingOrder(data);
 			return false;
