@@ -12,6 +12,7 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.table.SummonDemon;
 import com.robin.magic_realm.components.table.SummonDemon.DemonType;
 import com.robin.magic_realm.components.utility.*;
@@ -75,6 +76,22 @@ public class BattlesWrapper extends GameObjectWrapper {
 			applyEventEffects(data,tl);
 			ArrayList<RealmComponent> combatants = tl.clearing.getClearingComponents();
 			for (RealmComponent monster : combatants) {
+				ArrayList<RealmComponent> characterCanControlMarkedDenizen = new ArrayList<>();
+				if (monster.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK)) {
+					String questId = monster.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
+					for (RealmComponent characterRc : combatants) {
+						if (!characterRc.isCharacter()) continue;
+						ArrayList<String> marks = new ArrayList<>();
+						CharacterWrapper characterWithMarkAbility = new CharacterWrapper(characterRc.getGameObject());
+						marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+						for (String mark : marks) {
+							if (mark.matches(questId)) {
+								characterCanControlMarkedDenizen.add(characterRc);
+							}
+						}
+					}
+				}
+				
 				if (!monster.isMonster()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : combatants) {
@@ -88,9 +105,18 @@ public class BattlesWrapper extends GameObjectWrapper {
 							}
 						}
 				}
-				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
-					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
-					int duration = characterCanControl.get(0).getControllableMonsterDuration(false,monster.getGameObject().getName());
+				
+				CharacterWrapper characterWrapper = null;
+				int duration = 0;
+				if (characterCanControlMarkedDenizen.toArray().length == 1) {
+					characterWrapper = new CharacterWrapper(characterCanControlMarkedDenizen.get(0).getGameObject());
+					duration = Constants.TEN_YEARS;
+				}
+				else if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
+					characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
+					duration = characterCanControl.get(0).getControllableMonsterDuration(false,monster.getGameObject().getName());
+				}
+				if (characterWrapper!=null) {
 					RealmComponent monsterOwner = monster.getOwner();
 					
 					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {

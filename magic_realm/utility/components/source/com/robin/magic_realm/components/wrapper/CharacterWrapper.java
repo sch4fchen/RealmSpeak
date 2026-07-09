@@ -8441,6 +8441,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (current != null && current.clearing != null) {
 			ArrayList<RealmComponent> clearingComponents = current.clearing.getClearingComponents();
 			for (RealmComponent monster : clearingComponents) {
+				ArrayList<RealmComponent> characterCanControlMarkedDenizen = new ArrayList<>();
+				if (monster.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK)) {
+					String questId = monster.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
+					for (RealmComponent characterRc : clearingComponents) {
+						if (!characterRc.isCharacter()) continue;
+						ArrayList<String> marks = new ArrayList<>();
+						CharacterWrapper characterWithMarkAbility = new CharacterWrapper(characterRc.getGameObject());
+						marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+						for (String mark : marks) {
+							if (mark.matches(questId)) {
+								characterCanControlMarkedDenizen.add(characterRc);
+							}
+						}
+					}
+				}
 				if (!monster.isMonster()) continue;
 				ArrayList<RealmComponent> characterCanControl = new ArrayList<>();
 				for (RealmComponent characterRc : clearingComponents) {
@@ -8455,11 +8470,19 @@ public class CharacterWrapper extends GameObjectWrapper {
 						}
 					}
 				}
-				if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
-					CharacterWrapper characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
-					int duration = characterCanControl.get(0).getControllableMonsterDuration(onlyEnhancedMonsterControl,monster.getGameObject().getName());
+				
+				CharacterWrapper characterWrapper = null;
+				int duration = 0;
+				if (characterCanControlMarkedDenizen.toArray().length == 1) {
+					characterWrapper = new CharacterWrapper(characterCanControlMarkedDenizen.get(0).getGameObject());
+					duration = Constants.TEN_YEARS;
+				}
+				else if (characterCanControl.toArray().length == 1) { // only if exactly one character can control this monster
+					characterWrapper = new CharacterWrapper(characterCanControl.get(0).getGameObject());
+					duration = characterCanControl.get(0).getControllableMonsterDuration(onlyEnhancedMonsterControl,monster.getGameObject().getName());
+				}
+				if (characterWrapper!=null) {
 					RealmComponent monsterOwner = monster.getOwner();
-					
 					if(monsterOwner!=null && monsterOwner.isCharacter() && monsterOwner.getGameObject() == characterWrapper.getGameObject()) {
 						if(monster.getTermOfHire()<duration) {
 							monster.setTermOfHire(duration);
