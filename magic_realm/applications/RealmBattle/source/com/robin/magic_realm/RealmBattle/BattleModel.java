@@ -3092,83 +3092,71 @@ public class BattleModel {
 				rcsToMakeDead.add(rc);
 			}
 			else {				
-				// Check first for Hurricane Winds
-				boolean hurricaneWindsEvent = rc.getGameObject().hasThisAttribute(Constants.EVENT_HURRICANE_WINDS);
-				String blownSpellId = rc.getGameObject().getThisAttribute(Constants.BLOWS_TARGET);
-				if (blownSpellId!=null) {
-					blowTarget(blownSpellId, rc);
-					disengage = true;
-				} else if (hurricaneWindsEvent) {
-					blowTarget(null, rc);
-					disengage = true;
+				RealmComponent target1 = rc.getTarget();
+				RealmComponent target2 = rc.get2ndTarget();
+				CombatWrapper targetCombat1 = target1==null?null:new CombatWrapper(target1.getGameObject());
+				CombatWrapper targetCombat2 = target2==null?null:new CombatWrapper(target2.getGameObject());
+				
+				// Determine disengagement rules
+				if (rc.isMonster()) {
+					if (!testRedDeadDisengage((MonsterChitComponent)rc,combat,targetCombat1)) {
+						disengage = false;
+					}
 				}
-				else {
-					RealmComponent target1 = rc.getTarget();
-					RealmComponent target2 = rc.get2ndTarget();
-					CombatWrapper targetCombat1 = target1==null?null:new CombatWrapper(target1.getGameObject());
-					CombatWrapper targetCombat2 = target2==null?null:new CombatWrapper(target2.getGameObject());
-					
-					// Determine disengagement rules
-					if (rc.isMonster()) {
-						if (!testRedDeadDisengage((MonsterChitComponent)rc,combat,targetCombat1)) {
+				else if (rc.isCharacter()) {
+					MonsterChitComponent transmorph = ((CharacterChitComponent)rc).getTransmorphedComponent();
+					if (transmorph!=null) {
+						if (!testRedDeadDisengage(transmorph,combat,targetCombat1)) {
 							disengage = false;
 						}
 					}
-					else if (rc.isCharacter()) {
-						MonsterChitComponent transmorph = ((CharacterChitComponent)rc).getTransmorphedComponent();
-						if (transmorph!=null) {
-							if (!testRedDeadDisengage(transmorph,combat,targetCombat1)) {
-								disengage = false;
+				}
+				if (target1!=null) {
+					// If the target is a character, and the attacker is a denizen, then don't disengage
+					if (target1.isCharacter() && rc.getOwner()==null) {
+						logBattleInfo(rc+" won't disengage when fighting a character");
+						disengage1 = false; // don't disengage when fighting a character
+					}
+					
+					if (!rc.isCharacter() && target1.isMonster()) {
+						MonsterChitComponent monster = (MonsterChitComponent)target1;
+						if (monster.isPinningOpponent()) {
+							RealmComponent monsterTarget = monster.getTarget();
+							if (monsterTarget.equals(rc)) {
+								logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
+								disengage1 = false;
 							}
 						}
 					}
-					if (target1!=null) {
-						// If the target is a character, and the attacker is a denizen, then don't disengage
-						if (target1.isCharacter() && rc.getOwner()==null) {
-							logBattleInfo(rc+" won't disengage when fighting a character");
-							disengage1 = false; // don't disengage when fighting a character
-						}
-						
-						if (!rc.isCharacter() && target1.isMonster()) {
-							MonsterChitComponent monster = (MonsterChitComponent)target1;
-							if (monster.isPinningOpponent()) {
-								RealmComponent monsterTarget = monster.getTarget();
-								if (monsterTarget.equals(rc)) {
-									logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
-									disengage1 = false;
-								}
+					
+					// If the target is dead (regardless of who), always disengage
+					if (targetCombat1.getKilledBy()!=null) { 
+						logBattleInfo(rc+" disengages because target is dead");
+						disengage1 = true; // always disengage if target is dead
+					}
+				}
+				if (target2!=null) {
+					// If the target is a character, and the attacker is a denizen, then don't disengage
+					if (target2.isCharacter() && rc.getOwner()==null) {
+						logBattleInfo(rc+" won't disengage when fighting a character");
+						disengage2 = false; // don't disengage when fighting a character
+					}
+					
+					if (!rc.isCharacter() && target2.isMonster()) {
+						MonsterChitComponent monster = (MonsterChitComponent)target2;
+						if (monster.isPinningOpponent()) {
+							RealmComponent monsterTarget = monster.getTarget();
+							if (monsterTarget.equals(rc)) {
+								logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
+								disengage2 = false;
 							}
-						}
-						
-						// If the target is dead (regardless of who), always disengage
-						if (targetCombat1.getKilledBy()!=null) { 
-							logBattleInfo(rc+" disengages because target is dead");
-							disengage1 = true; // always disengage if target is dead
 						}
 					}
-					if (target2!=null) {
-						// If the target is a character, and the attacker is a denizen, then don't disengage
-						if (target2.isCharacter() && rc.getOwner()==null) {
-							logBattleInfo(rc+" won't disengage when fighting a character");
-							disengage2 = false; // don't disengage when fighting a character
-						}
-						
-						if (!rc.isCharacter() && target2.isMonster()) {
-							MonsterChitComponent monster = (MonsterChitComponent)target2;
-							if (monster.isPinningOpponent()) {
-								RealmComponent monsterTarget = monster.getTarget();
-								if (monsterTarget.equals(rc)) {
-									logBattleInfo(rc+" can't disengage when held by a Red-side-up Tremendous monster");
-									disengage2 = false;
-								}
-							}
-						}
-						
-						// If the target is dead (regardless of who), always disengage
-						if (targetCombat2.getKilledBy()!=null) { 
-							logBattleInfo(rc+" disengages because target is dead");
-							disengage2 = true; // always disengage if target is dead
-						}
+					
+					// If the target is dead (regardless of who), always disengage
+					if (targetCombat2.getKilledBy()!=null) { 
+						logBattleInfo(rc+" disengages because target is dead");
+						disengage2 = true; // always disengage if target is dead
 					}
 				}
 			}
