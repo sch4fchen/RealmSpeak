@@ -47,16 +47,16 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 		if (add) {
 			sb.append("Adds ");
 			if (controlSelected()) {
-				sb.append("control/command");
+				sb.append("control/command ");
 			}
 			if (immunitySelected()) {
-				sb.append("immunity");
+				sb.append("immunity ");
 			}
 			if (controlSelected()) {
-				sb.append("fear");
+				sb.append("fear ");
 			}
 			if (controlSelected()) {
-				sb.append("friendliness");
+				sb.append("friendliness ");
 			}
 		}
 		if (remove) {
