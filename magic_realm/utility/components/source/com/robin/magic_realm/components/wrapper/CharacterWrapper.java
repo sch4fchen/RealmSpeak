@@ -8450,6 +8450,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 						if (monster.getGameObject().getName().matches(monsterType.toString())) {
 							if (!characterCanControl.contains(characterRc) && (controllableMonsters.get(monsterType)[1]==0 || (new CharacterWrapper(characterRc.getGameObject()).getAllControlledMonstersWithSameName(monsterType).size()<controllableMonsters.get(monsterType)[1]))) {
 								characterCanControl.add(characterRc);
+								break;
 							}
 						}
 					}

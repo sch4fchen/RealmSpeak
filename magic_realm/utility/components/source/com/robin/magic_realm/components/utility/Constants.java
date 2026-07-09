@@ -204,13 +204,16 @@ public class Constants {
 	public static final String COMPANION_NAME = "companion_name";
 	public static final String WALK_WOODS = "walk_woods";
 	public static final String MONSTER_IMMUNITY = "monster_immunity";
+	public static final String MONSTER_IMMUNITY_MARK = "monster_immunity_mark";
 	public static final String MONSTER_CONTROL = "monster_control";
 	public static final String MONSTER_CONTROL_ENHANCED = "monster_control_enhanced";
 	public static final String MONSTER_CONTROL_DURATION = "monster_control_duration";
 	public static final String MONSTER_CONTROL_VALIDATE_CONTROL = "monster_control_validate_control";
 	public static final String MONSTER_CONTROL_LIMIT = "monster_control_limit";
 	public static final String MONSTER_FEAR = "monster_fear";
+	public static final String MONSTER_FEAR_MARK = "monster_fear_mark";
 	public static final String MONSTER_FRIENDLINESS = "pacifymonster";
+	public static final String MONSTER_FRIENDLINESS_MARK = "pacifymonster_mark";
 	public static final String TREASURE_LOCATION_FEAR = "treasure_location_fear";
 	public static final String BONUS_CHIT = "bonus_chit";
 	public static final String SPECIAL_ACTION = "special_action";

@@ -15,6 +15,7 @@ import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.*;
 import com.robin.magic_realm.components.wrapper.*;
 
@@ -492,6 +493,20 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 			
 		Integer pacifyType = null;
+		
+		if (getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK)) {
+			if (isCharacter()) {
+				String questId = getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
+				ArrayList<String> marks = new ArrayList<>();
+				marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FRIENDLINESS_MARK,null));
+				for (String mark : marks) {
+					if (mark.matches(questId)) {
+						pacifyType = 0;
+					}
+				}
+			}
+		}
+		
 		ArrayList<String> list = getGameObject().getThisAttributeList("pacifyBlocks");
 		if (list!=null) {
 			String testId = character.getGameObject().getStringId();
@@ -1142,9 +1157,6 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	public TileLocation getCurrentLocation() {
 		return ClearingUtility.getTileLocation(getGameObject());
 	}
-	public boolean hasImmunities() {
-		return !getImmunities().isEmpty();
-	}
 	public boolean isImmuneTo(RealmComponent rc) {
 		if (affectedByKey(Constants.HOLY_WATER)) {
 			if (rc.getGameObject().hasThisAttribute(Constants.DEMON)
@@ -1154,6 +1166,15 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 					|| rc.getGameObject().hasThisAttribute(Constants.DEVIL)
 					|| rc.getGameObject().hasThisAttribute(Constants.UNDEAD_SUMMONED)) {
 				return true;
+			}
+		}
+		if (rc.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && isCharacter()) {
+			String questId = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
+			ArrayList<String> marks = new ArrayList<>();
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+			for (String mark : marks) {
+				if (mark.matches(questId)) return true;
 			}
 		}
 		ArrayList<String> list = getImmunities();
@@ -1243,13 +1264,22 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		return null;
 	}
 	public boolean fears(RealmComponent rc) {
-		ArrayList<String> list = getFears();
-		if (!list.isEmpty()) {
-			// Make sure we resolve to the monster, not the part!
-			if (rc.isMonsterPart()) {
-				rc = RealmComponent.getRealmComponent(rc.getGameObject().getHeldBy());
+		// Make sure we resolve to the monster, not the part!
+		if (rc.isMonsterPart()) {
+			rc = RealmComponent.getRealmComponent(rc.getGameObject().getHeldBy());
+		}
+		if (rc.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && isCharacter()) {
+			String questId = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
+			ArrayList<String> marks = new ArrayList<>();
+			CharacterWrapper character = new CharacterWrapper(getGameObject());
+			marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FEAR_MARK,null));
+			for (String mark : marks) {
+				if (mark.matches(questId)) return true;
 			}
-			
+		}
+		
+		ArrayList<String> list = getFears();
+		if (!list.isEmpty()) {			
 			// list will contain monster names like:  Flying Demon, Demon, Imp
 			String name = rc.getGameObject().getName();
 			if (rc.getGameObject().hasThisAttribute(Constants.BOARD_NUMBER)) {
