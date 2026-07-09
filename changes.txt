@@ -7,6 +7,7 @@ QUEST UPDATE:
 # More guild quests
 # QuestRewardMarkedView: Custom headline
 # QuestRewardRegenerateDenizen: options for requiring and removing marks
+# QuestRewardMarkedDenizensAbility
 
 Version 1.2.6.0
 NEW FEATURES:

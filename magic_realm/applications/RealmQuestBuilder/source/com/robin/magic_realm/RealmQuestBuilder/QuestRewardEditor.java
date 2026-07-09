@@ -226,6 +226,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				break;
+			case MarkedDenizensAbility:
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds or removes Control/Command", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.IMMUNITY, "Adds or removes Immunity", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FEAR, "Adds or removes Fear", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FRIENDLINESS, "Adds or removes Friendliness", FieldType.Boolean));
+				break;
 			case MarkItem:
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));

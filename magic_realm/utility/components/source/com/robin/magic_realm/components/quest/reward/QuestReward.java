@@ -59,6 +59,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MagicColor,
 		MakeWhole,
 		MarkDenizen,
+		MarkedDenizensAbility,
 		MarkItem,
 		MarkTraveler,
 		MarkedView,
@@ -114,6 +115,8 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case LostInventoryToDefault:
 				case LostInventoryToLocation:
 				case MarkDenizen:
+				case MarkTraveler:
+				case MarkedView:
 					return false;
 				default: return true;
 			}
@@ -156,6 +159,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MagicColor:				return "Provides a magic color to a clearing.";
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
+				case MarkedDenizensAbility:		return "Adds or removes abilities for marked denizens.";
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
 				case MarkTraveler:				return "Marks a random or specific traveler.  This is useful if you want to make sure a character hires a traveler or that a traveler is in a certain location.";
 				case MarkedView:				return "Enables or disables the Marked Things view in the quest view.";
@@ -419,6 +423,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MarkDenizen:
 				reward = new QuestRewardMarkDenizen(go);
+				break;
+			case MarkedDenizensAbility:
+				reward = new QuestRewardMarkedDenizensAbility(go);
 				break;
 			case MarkItem:
 				reward = new QuestRewardMarkItem(go);
