@@ -207,13 +207,12 @@ public class RealmBattle {
 				updateClearingOrder(data);
 				return nextCombatAction(host,data); // recurses!
 			}
-			
-			checkForHurricaneWinds(currentCombatLocation,data);
-			
+						
 			HashLists<Integer,CharacterWrapper> lists = findCharacterStates(currentCombatLocation,data);
 			ArrayList<Integer> states = new ArrayList<>(lists.keySet());
 			
 			if (states.isEmpty()) { // this can happen when a character runs!  (I think...)
+				checkForHurricaneWinds(currentCombatLocation,data);
 				updateClearingOrder(data);
 				return nextCombatAction(host,data);
 			}
@@ -262,6 +261,7 @@ public class RealmBattle {
 						combat.setSkipCombat(false); // reset it now
 					}
 					if (skipCombat) {
+						checkForHurricaneWinds(currentCombatLocation,data);
 						// All characters agreed to skip combat, so end it!
 						endCombatInClearing(currentCombatLocation,data);
 						updateClearingOrder(data);
@@ -316,6 +316,7 @@ public class RealmBattle {
 							expireWishStrength(currentCombatLocation,data);
 							break;
 						case Constants.COMBAT_DISENGAGE:
+							checkForHurricaneWinds(currentCombatLocation,data);
 							if (disengage(currentCombatLocation,data)) {
 								// reset back to LURE
 								for (CharacterWrapper one : choices) {
