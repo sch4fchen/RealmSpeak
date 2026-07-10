@@ -412,8 +412,14 @@ public class RealmBattle {
 				sheetOwners.add(rc);
 			}
 		}
+				
 		RealmComponent charRc = RealmComponent.getRealmComponent(character.getGameObject());
-		boolean activeCharacterIsHere = model.getBattleGroup(charRc).getCharacterInBattle()!=null;
+		BattleGroup characterBattleGroup = model.getBattleGroup(charRc);
+		if (characterBattleGroup==null) {
+			return false;
+		}
+
+		boolean activeCharacterIsHere = characterBattleGroup.getCharacterInBattle()!=null;
 		logger.finer(character.getGameObject().getName()+" is here = "+activeCharacterIsHere);
 		switch(character.getCombatStatus()) {
 			case Constants.COMBAT_PREBATTLE:
