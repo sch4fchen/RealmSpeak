@@ -12,6 +12,7 @@ NEW FEATURES:
 # Optional rule: teleport to a random clearing
 BUGS/ISSUES:
 # Correct Hurricane Winds timing
+# Fix landing denizens in a tile with less than 6 clearings
 QUEST UPDATE:
 # More guild quests
 # QuestRewardMarkedView: Custom headline

@@ -21,6 +21,7 @@ import com.robin.general.swing.FlashingButton;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.RealmBattle.BattleModel;
 import com.robin.magic_realm.RealmBattle.RealmBattle;
+import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.MonsterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.WarningChitComponent;
@@ -345,17 +346,19 @@ public class RealmHostPanel extends JPanel {
 					// Land now!
 					TileLocation current = rc.getCurrentLocation();
 					if (current!=null) {
-						int clearingCount = current.tile.getClearingCount();
-						ArrayList<Integer> clearingsTriedToLand = new ArrayList<>();
+						ArrayList<Integer> possibleClearings = new ArrayList<>();
+						for (ClearingDetail cl : current.tile.getClearings()) {
+							possibleClearings.add(cl.getNum());
+						}
 						while(current.clearing==null) {
-							int r = RandomNumber.getHighLow(1,6);
+							if (possibleClearings.size()==0) break;
+							int r = possibleClearings.get(RandomNumber.getRandom(possibleClearings.size()));
 							if (!current.tile.getClearing(r).isAffectedByViolentWinds()) {
 								current.clearing = current.tile.getClearing(r);
 							}
 							else {
-								if (!clearingsTriedToLand.contains(r))  clearingsTriedToLand.add(r);
+								possibleClearings.remove(r);
 							}
-							if (clearingsTriedToLand.size() == clearingCount) break;
 						}
 						if (current.clearing!=null) {
 							current.setFlying(false);
