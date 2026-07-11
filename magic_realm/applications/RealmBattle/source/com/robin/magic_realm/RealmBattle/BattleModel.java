@@ -3518,6 +3518,7 @@ public class BattleModel {
 		
 		ClearingUtility.moveToLocation(rc.getGameObject(),tl);
 		
+		rc.clearTargets();
 		CombatWrapper combat = new CombatWrapper(rc.getGameObject());
 		// Clear all attackers
 		for (GameObject attacker:combat.getAttackers()) {
