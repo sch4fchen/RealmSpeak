@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TreasureType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -30,7 +31,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 			ArrayList<GameObject> matches = filterObjectsForRequirement(character,reqParams.objectList,logger);
 			if (markItems() && !matches.isEmpty() ) {
 				for (GameObject item : matches) {
-					item.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+					Quest.GameObjectAddQuestMark(item, getParentQuest().getGameObject().getStringId());
 				}
 			}
 			return !matches.isEmpty();
@@ -92,10 +93,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 			String questId = getParentQuest().getGameObject().getStringId();
 			for(GameObject go:typeMatches) {
 				if (pattern==null || pattern.matcher(go.getName()).find()) {
-					if (requiresMark()) {
-						String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
-						if (mark==null || !mark.equals(questId)) continue;
-					}
+					if (requiresMark() && !Quest.GameObjectHasQuestMark(go, questId)) continue;
 					if (getRequiredAbility()!=null && !getRequiredAbility().isEmpty()) {
 						if (!go.hasAllKeyVals(getRequiredAbility())) {
 							continue;

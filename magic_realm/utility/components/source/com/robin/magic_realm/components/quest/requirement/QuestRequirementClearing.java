@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitType;
 import com.robin.magic_realm.components.quest.LocationClearingType;
 import com.robin.magic_realm.components.quest.LocationTileSideType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -63,9 +64,8 @@ public class QuestRequirementClearing extends QuestRequirement {
 		for (RealmComponent rc : componentsToCheck) {
 			if (pattern != null && !pattern.matcher(rc.getGameObject().getName()).find()) continue;
 			if (getChitType() != null && getChitType() != ChitType.Any && !getChitType().matches(rc)) continue;
-			if (requiresMark()) {
-				String mark = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-				if (mark==null || !mark.equals(questId)) continue;
+			if (requiresMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) {
+				continue;
 			}
 			foundChits++;
 			if (foundChits == getChitAmount()) return true;

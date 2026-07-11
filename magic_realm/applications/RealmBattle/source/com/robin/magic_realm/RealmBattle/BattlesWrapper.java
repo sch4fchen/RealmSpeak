@@ -78,15 +78,17 @@ public class BattlesWrapper extends GameObjectWrapper {
 			for (RealmComponent monster : combatants) {
 				ArrayList<RealmComponent> characterCanControlMarkedDenizen = new ArrayList<>();
 				if (monster.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK)) {
-					String questId = monster.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-					for (RealmComponent characterRc : combatants) {
-						if (!characterRc.isCharacter()) continue;
-						ArrayList<String> marks = new ArrayList<>();
-						CharacterWrapper characterWithMarkAbility = new CharacterWrapper(characterRc.getGameObject());
-						marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
-						for (String mark : marks) {
-							if (mark.matches(questId)) {
-								characterCanControlMarkedDenizen.add(characterRc);
+					for (String questId : monster.getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+						for (RealmComponent characterRc : combatants) {
+							if (!characterRc.isCharacter()) continue;
+							ArrayList<String> marks = new ArrayList<>();
+							CharacterWrapper characterWithMarkAbility = new CharacterWrapper(characterRc.getGameObject());
+							marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+							for (String mark : marks) {
+								if (mark.matches(questId)) {
+									characterCanControlMarkedDenizen.add(characterRc);
+									break;
+								}
 							}
 						}
 					}

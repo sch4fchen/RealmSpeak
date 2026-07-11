@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.ChitItemType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
@@ -36,7 +37,7 @@ public class QuestRewardMarkItem extends QuestReward {
 
 		ArrayList<GameObject> availableObjects = new ArrayList<>();
 		for (GameObject item : objects) {
-			if (removeMark() && !item.hasThisAttribute(QuestConstants.QUEST_MARK)) continue;
+			if (removeMark() && !Quest.GameObjectHasQuestMark(item,getParentQuest().getGameObject().getStringId())) continue;
 			if (mustBeActive() && !item.hasThisAttribute(Constants.ACTIVATED)) continue;
 			if (mustBeDeactive() && item.hasThisAttribute(Constants.ACTIVATED)) continue;
 			availableObjects.add(item);
@@ -50,17 +51,17 @@ public class QuestRewardMarkItem extends QuestReward {
 			chooser.setVisible(true);
 			RealmComponent item = chooser.getFirstSelectedComponent();
 			if (removeMark()) {
-				item.getGameObject().removeThisAttribute(QuestConstants.QUEST_MARK);
+				Quest.GameObjectRemoveQuestMark(item.getGameObject(),getParentQuest().getGameObject().getStringId());
 			} else {
-				item.getGameObject().setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(item.getGameObject(),getParentQuest().getGameObject().getStringId());
 			}
 			return;
 		}
 		for (GameObject item : objects) {
 			if (removeMark()) {
-				item.removeThisAttribute(QuestConstants.QUEST_MARK);
+				Quest.GameObjectRemoveQuestMark(item,getParentQuest().getGameObject().getStringId());
 			} else {
-				item.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(item,getParentQuest().getGameObject().getStringId());
 			}
 		}
 	}

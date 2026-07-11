@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -33,7 +34,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 		}
 		for (RealmComponent rc:denizens) {
 			if (pattern==null || pattern.matcher(rc.getGameObject().getName()).find()) {
-				rc.getGameObject().setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(rc.getGameObject(),getParentQuest().getGameObject().getStringId());
 				markedDenizen++;
 				if (getDenizenAmount()!=0 && markedDenizen>=getDenizenAmount()) return;
 			}

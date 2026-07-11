@@ -12,6 +12,7 @@ import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
@@ -91,9 +92,8 @@ public class QuestRewardMoveDenizen extends QuestReward {
 			if (moveOnlySpecificOnes() && !denizen.hasThisAttribute(Constants.HIRELING) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED) && !denizen.hasThisAttribute(Constants.TRAVELER)) {
 				continue;
 			}
-			if (needsMark()) {
-				String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
-				if (mark==null || !mark.equals(questId)) continue;
+			if (needsMark() && !Quest.GameObjectHasQuestMark(denizen, questId)) {
+				continue;
 			}
 			denizensToMove.add(denizen);
 		}

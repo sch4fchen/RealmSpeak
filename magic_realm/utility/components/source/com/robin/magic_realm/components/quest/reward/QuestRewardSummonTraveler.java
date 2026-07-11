@@ -10,6 +10,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
@@ -66,7 +67,7 @@ public class QuestRewardSummonTraveler extends QuestReward {
 
 		for (GameObject traveler : travelersToSummone) {
 			if (markTravelers()) {
-				traveler.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(traveler, getParentQuest().getGameObject().getStringId());
 			}
 			if (locationOnly()) {
 				QuestLocation loc = getQuestLocation();

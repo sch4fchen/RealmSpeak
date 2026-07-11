@@ -12,6 +12,7 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
@@ -69,7 +70,7 @@ public class QuestRewardSummonMonster extends QuestReward {
 				return;
 			}
 			if (markDenizens()) {
-				monster.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(monster, getParentQuest().getGameObject().getStringId());
 			}
 			if (randomLocation()) {
 				int random = RandomNumber.getRandom(validLocations.size());
@@ -87,7 +88,7 @@ public class QuestRewardSummonMonster extends QuestReward {
 		
 		if (randomClearing()) {
 			if (markDenizens()) {
-				monster.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(monster, getParentQuest().getGameObject().getStringId());
 			}
 			ArrayList<ClearingDetail> clearings = character.getCurrentLocation().tile.getClearings();
 			int random = RandomNumber.getRandom(clearings.size());

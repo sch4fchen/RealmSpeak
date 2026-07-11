@@ -858,4 +858,26 @@ public class Quest extends GameObjectWrapper {
 	public void setMultipleUse(boolean val) {
 		setBoolean(QuestConstants.QUEST_MULTIPLE_USE,val);
 	}
+	
+	public static boolean GameObjectHasQuestMark(GameObject go, String questMarkId) {
+		ArrayList<String> marks = go.getThisAttributeList(QuestConstants.QUEST_MARK);
+		if (marks==null || marks.isEmpty()) return false;
+		for (String mark : marks) {
+			if (mark.equals(questMarkId)) return true;
+		}
+		return false;
+	}
+	public static void GameObjectAddQuestMark(GameObject go, String questMarkId) {
+		if (!GameObjectHasQuestMark(go,questMarkId)) {
+			go.addThisAttributeListItem(QuestConstants.QUEST_MARK, questMarkId);
+		}
+	}
+	public static void GameObjectRemoveQuestMark(GameObject go, String questMarkId) {
+		if (GameObjectHasQuestMark(go,questMarkId)) {
+			go.removeThisAttributeListItem(QuestConstants.QUEST_MARK, questMarkId);
+			if (go.getThisAttributeList(QuestConstants.QUEST_MARK)!=null && go.getThisAttributeList(QuestConstants.QUEST_MARK).isEmpty()) {
+				go.removeThisAttribute(QuestConstants.QUEST_MARK);
+			}
+		}
+	}
 }

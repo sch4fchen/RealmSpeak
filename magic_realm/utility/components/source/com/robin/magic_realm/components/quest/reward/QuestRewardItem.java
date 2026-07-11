@@ -15,6 +15,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.ItemGainType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
@@ -68,9 +69,9 @@ public class QuestRewardItem extends QuestReward {
 			objects.clear();
 			String questId = getParentQuest().getGameObject().getStringId();
 			for (GameObject item : objectsToCheck) {
-				String mark = item.getThisAttribute(QuestConstants.QUEST_MARK);
-				if (mark==null || !mark.equals(questId)) continue;
-				objects.add(item);
+				if (Quest.GameObjectHasQuestMark(item,questId)) {
+					objects.add(item);
+				}
 			}
 		}
 		
@@ -98,7 +99,7 @@ public class QuestRewardItem extends QuestReward {
 		}
 		
 		if (markItem()) {
-			selected.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+			Quest.GameObjectAddQuestMark(selected,getParentQuest().getGameObject().getStringId());
 		}
 		
 		if (isGain()) {

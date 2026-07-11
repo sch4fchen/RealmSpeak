@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TreasureType;
 import com.robin.magic_realm.components.utility.Constants;
@@ -65,7 +66,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 				if (found==n) {
 					if (markItems()) {
 						for (GameObject validItem : validMatches) {
-							validItem.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+							Quest.GameObjectAddQuestMark(validItem, getParentQuest().getGameObject().getStringId());
 						}
 					}
 					return true;
@@ -75,7 +76,7 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 				if (found>=n) {
 					if (markItems()) {
 						for (GameObject validItem : validMatches) {
-							validItem.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+							Quest.GameObjectAddQuestMark(validItem, getParentQuest().getGameObject().getStringId());
 						}
 					}
 					return true;

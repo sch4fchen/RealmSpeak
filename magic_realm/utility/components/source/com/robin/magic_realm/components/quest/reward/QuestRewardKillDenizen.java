@@ -11,6 +11,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Spoils;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.utility.Constants;
@@ -61,9 +62,8 @@ public class QuestRewardKillDenizen extends QuestReward {
 			if (!denizen.hasThisAttribute("vulnerability") || (!denizen.hasThisAttribute("denizen") && !isATransformation(denizen)) || denizen.hasThisAttribute(Constants.DEAD)) continue;
 			GameObject denizenHolder = SetupCardUtility.getDenizenHolder(denizen);
 			if (denizenHolder != null && denizen.getHeldBy() == denizenHolder) continue;
-			if (requiresMark()) {
-				String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
-				if (mark==null || !mark.equals(questId)) continue;
+			if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen,questId)) {
+				continue;
 			}
 			if (!killHirelings() && denizen.hasThisAttribute(Constants.HIRELING)) {
 				continue;

@@ -139,7 +139,7 @@ public class QuestView extends JPanel implements Scrollable {
 			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
 			String questId = quest.getGameObject().getStringId();
 			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
-				if (go.getThisAttribute(QuestConstants.QUEST_MARK).equals(questId)) {
+				if (Quest.GameObjectHasQuestMark(go, questId)) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					markedView.add(rc);
 				}

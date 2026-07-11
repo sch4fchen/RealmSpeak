@@ -10,6 +10,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.ArmoredType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestStep;
 import com.robin.magic_realm.components.quest.TargetValueType;
@@ -68,10 +69,7 @@ public class QuestRequirementKill extends QuestRequirement {
 				if (!killCharacters() && !go.hasThisAttribute(Constants.DENIZEN)) continue;
 				if (killCharacters() && !go.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(go.getName()).find()) continue;
-				if (requireMark) {
-					String mark = go.getThisAttribute(QuestConstants.QUEST_MARK);
-					if (mark==null || !mark.equals(questId)) continue;
-				}
+				if (requireMark && !Quest.GameObjectHasQuestMark(go, questId)) continue;
 				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(go.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				if ((getArmored() == ArmoredType.Armored && !go.hasThisAttribute("armored"))|| (getArmored() == ArmoredType.Unarmored && go.hasThisAttribute("armored"))) continue;
 				if (!go.hasThisAttribute(Constants.DEAD)) {
@@ -97,10 +95,7 @@ public class QuestRequirementKill extends QuestRequirement {
 				if (!killCharacters() && !kill.hasThisAttribute(Constants.DENIZEN)) continue;
 				if (killCharacters() && !kill.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(kill.getName()).find()) continue;
-				if (requireMark) {
-					String mark = kill.getThisAttribute(QuestConstants.QUEST_MARK);
-					if (mark==null || !mark.equals(questId)) continue;
-				}
+				if (requireMark && !Quest.GameObjectHasQuestMark(kill, questId)) continue;
 				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(kill.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				if ((getArmored() == ArmoredType.Armored && !kill.hasThisAttribute("armored")) || (getArmored() == ArmoredType.Unarmored && kill.hasThisAttribute("armored"))) continue;
 				

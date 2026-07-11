@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -26,9 +27,8 @@ public class QuestRequirementTraveler extends QuestRequirement {
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent traveler : loc.clearing.getClearingComponents()) {
 			if (getRegExFilter().isEmpty() || pattern.matcher(traveler.getGameObject().getName()).find()) {
-				if (requiresMark()) {
-					String mark = traveler.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-					if (mark==null || !mark.equals(questId)) continue;
+				if (requiresMark() && !Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) {
+					continue;
 				}
 				return true;
 			}

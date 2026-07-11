@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
@@ -36,9 +37,8 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 		for (GameObject denizen : denizens) {
 			if (denizen != null && denizen.hasThisAttribute("denizen") && !denizen.hasThisAttribute(Constants.CLONED) && !denizen.hasThisAttribute(Constants.COMPANION) && !denizen.hasThisAttribute(Constants.SUMMONED)) {				
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
-				if (requiresMark()) {
-					String mark = denizen.getThisAttribute(QuestConstants.QUEST_MARK);
-					if (mark==null || !mark.equals(questId)) continue;
+				if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen, questId)) {
+					continue;
 				}
 				if (denizenRc.getOwner()!=null && !regenerateHirelings()) continue;
 				if (charactersClearingOnly()) {
@@ -53,7 +53,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 				}
 				SetupCardUtility.resetDenizen(denizen);
 				if (removeMarks() ) {
-					denizen.removeThisAttribute(QuestConstants.QUEST_MARK);
+					Quest.GameObjectRemoveQuestMark(denizen, questId);
 				}
 				regeneratedDenizens++;
 				if (numberOfDenizens() != 0 && regeneratedDenizens>=numberOfDenizens()) return;

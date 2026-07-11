@@ -1,5 +1,4 @@
 ::ROADMAP::
-support multiple questId for marks -> make it an attributeList
 test questing the realm quests added to guild quests
 QuestRequirementDenizen (Vulnerability etc.)
 QuestRewardDenizen: only mark denizens in current clearing
@@ -15,6 +14,7 @@ BUGS/ISSUES:
 # Fix landing denizens in a tile with less than 6 clearings
 QUEST UPDATE:
 # More guild quests
+# Support for multiple quest marks per game object
 # QuestRewardMarkedView: Custom headline
 # QuestRewardRegenerateDenizen: options for requiring and removing marks
 # QuestRewardMarkedDenizensAbility

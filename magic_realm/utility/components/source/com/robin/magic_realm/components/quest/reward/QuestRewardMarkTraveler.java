@@ -10,6 +10,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -46,18 +47,18 @@ public class QuestRewardMarkTraveler extends QuestReward {
 					allTravelers.add(go);
 				} else {
 					if (removeMark()) {
-						go.removeThisAttribute(QuestConstants.QUEST_MARK);
+						Quest.GameObjectRemoveQuestMark(go,getParentQuest().getGameObject().getStringId());
 					} else {
-						go.setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+						Quest.GameObjectAddQuestMark(go,getParentQuest().getGameObject().getStringId());
 					}
 				}
 			}
 		}
 		if (randomTraveler()) {
 			if (removeMark()) {
-				allTravelers.get(RandomNumber.getRandom(allTravelers.size())).removeThisAttribute(QuestConstants.QUEST_MARK);
+				Quest.GameObjectRemoveQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),getParentQuest().getGameObject().getStringId());
 			} else {
-				allTravelers.get(RandomNumber.getRandom(allTravelers.size())).setThisAttribute(QuestConstants.QUEST_MARK,getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),getParentQuest().getGameObject().getStringId());
 			}
 		}
 	}

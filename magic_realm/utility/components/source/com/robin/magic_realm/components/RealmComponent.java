@@ -496,12 +496,14 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		
 		if (getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK)) {
 			if (isCharacter()) {
-				String questId = getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-				ArrayList<String> marks = new ArrayList<>();
-				marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FRIENDLINESS_MARK,null));
-				for (String mark : marks) {
-					if (mark.matches(questId)) {
-						pacifyType = 0;
+				for (String questId : getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+					ArrayList<String> marks = new ArrayList<>();
+					marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FRIENDLINESS_MARK,null));
+					for (String mark : marks) {
+						if (mark.matches(questId)) {
+							pacifyType = 0;
+							break;
+						}
 					}
 				}
 			}
@@ -1169,12 +1171,13 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			}
 		}
 		if (rc.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && isCharacter()) {
-			String questId = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-			ArrayList<String> marks = new ArrayList<>();
-			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
-			for (String mark : marks) {
-				if (mark.matches(questId)) return true;
+			for (String questId : getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+				ArrayList<String> marks = new ArrayList<>();
+				CharacterWrapper character = new CharacterWrapper(getGameObject());
+				marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+				for (String mark : marks) {
+					if (mark.matches(questId)) return true;
+				}
 			}
 		}
 		ArrayList<String> list = getImmunities();
@@ -1269,12 +1272,13 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			rc = RealmComponent.getRealmComponent(rc.getGameObject().getHeldBy());
 		}
 		if (rc.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && isCharacter()) {
-			String questId = rc.getGameObject().getThisAttribute(QuestConstants.QUEST_MARK);
-			ArrayList<String> marks = new ArrayList<>();
-			CharacterWrapper character = new CharacterWrapper(getGameObject());
-			marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FEAR_MARK,null));
-			for (String mark : marks) {
-				if (mark.matches(questId)) return true;
+			for (String questId : rc.getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+				ArrayList<String> marks = new ArrayList<>();
+				CharacterWrapper character = new CharacterWrapper(getGameObject());
+				marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_FEAR_MARK,null));
+				for (String mark : marks) {
+					if (mark.matches(questId)) return true;
+				}
 			}
 		}
 		
