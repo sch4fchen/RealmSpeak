@@ -1,3 +1,12 @@
+::ROADMAP::
+support multiple questId for marks -> make it an attributeList
+test questing the realm quests added to guild quests
+QuestRequirementDenizen (Vulnerability etc.)
+QuestRewardDenizen: only mark denizens in current clearing
+Q25: make it generic
+Q25: show marked T Monster in Quest View
+Q25: remove mark when resetting
+
 Version 1.2.6.1
 NEW FEATURES:
 # Optional rule: teleport to a random clearing
