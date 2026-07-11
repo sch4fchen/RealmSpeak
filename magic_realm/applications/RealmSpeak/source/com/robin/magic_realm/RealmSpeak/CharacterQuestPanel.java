@@ -282,12 +282,16 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean characterIsAtLocation = getCharacter().getCurrentLocation() != null;
 			boolean characterIsAtDwelling = characterIsAtLocation && getCharacter().getCurrentLocation().isAtDwelling(true);
 			boolean characterIsAtGuild = characterIsAtLocation && getCharacter().getCurrentLocation().isAtGuild();
-			discardQuestButton.setEnabled(questCanAlwaysBeDiscarded || (canDiscardQuests && !questCannotBeDiscarded && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned &&
-					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling && !selQuest.isAllPlay()) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild))));
+			discardQuestButton.setEnabled(questCanAlwaysBeDiscarded || (canDiscardQuests && !questCannotBeDiscarded && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay() &&
+					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling)
+							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR)) && characterIsAtDwelling && selQuest.getGuild()==null)
+							|| (hostPrefs.isUsingGuildQuests() && characterIsAtGuild && selQuest.getGuild()!=null))));
 
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
-					((hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && characterIsAtDwelling) || (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
+					((hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && characterIsAtDwelling)
+							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR) && characterIsAtDwelling))
+							|| (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
 		}
 	}
 

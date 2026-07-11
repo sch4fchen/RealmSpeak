@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
@@ -147,11 +148,29 @@ public class QuestDeck extends GameObjectWrapper {
 			if (hostPrefs.isUsingGuildQuests() && gameObject.hasThisAttribute("character")) {
 				CharacterWrapper character = new CharacterWrapper(gameObject);
 				String guildName = null;
+				boolean characterIsAtDwelling = false;
 				TileLocation loc = character.getCurrentLocation();
 				if (loc!=null && loc.hasClearing()) {
 					guildName = loc.clearing.getGuild().getGameObject().getThisAttribute("guild");
 				}
-				if (guildName==null || !card.getGuild().matches(guildName)) {
+				
+				if ((hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR))) {
+					if (loc!=null && loc.isAtDwelling(true)) {
+						characterIsAtDwelling = true;
+					}
+				}
+				
+				if (!characterIsAtDwelling && guildName==null) {
+					discardCard(card);
+					return null;
+				}
+					
+				if (characterIsAtDwelling && guildName==null && card.getGuild()!=null) {
+					discardCard(card);
+					return null;
+				}
+				
+				if (card.getGuild()!=null && (guildName==null || !card.getGuild().matches(guildName))) {
 					discardCard(card);
 					return null;
 				}
