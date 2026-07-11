@@ -1,7 +1,6 @@
 ::ROADMAP::
-test questing the realm quests added to guild quests
-QuestRequirementDenizen (Vulnerability etc.)
-QuestRewardDenizen: only mark denizens in current clearing
+QuestRequirementDenizen (Vulnerability, Armored, Mark, Regex, Native and/or Monster, amount, same tile/same clearing, and more (see hirelings))
+QuestRewardMarkDenizen: option: only mark denizens in current tile, only mark denizens in current clearing
 Q25: make it generic
 Q25: show marked T Monster in Quest View
 Q25: remove mark when resetting
