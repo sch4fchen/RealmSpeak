@@ -30,6 +30,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		ColorMagic,
 		Counter,
 		Curse,
+		Denizens,
 		Discovery, // must have a specific discovery
 		Enchant,
 		Fighter,
@@ -98,6 +99,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a specific counter has reached a certain value.";
 				case Curse:
 					return "Tests for a specific curse.";
+				case Denizens:
+					return "Tests for a specific denizens in characters tile or clearing.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
 				case Enchant:
@@ -302,6 +305,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Curse:
 				requirement = new QuestRequirementCurse(go);
+				break;
+			case Denizens:
+				requirement = new QuestRequirementDenizens(go);
 				break;
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);

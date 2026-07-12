@@ -109,6 +109,26 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Curse:
 				list.add(new QuestPropertyBlock(QuestRequirementCurse.CURSE, "Curse", FieldType.StringSelector, getCurseStrings().toArray()));
 				break;
+			case Denizens:
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.DENIZEN_REGEX, "Denizen RegEx", FieldType.Regex, null, new String[] { "denizen" }));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_TILE, "Characters  tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_CLEARING, "Characters clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.AMOUNT, "Number of hirelings", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.ATTACK_SPEED, "Attack speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.ATTACK_LENGTH, "Attack length", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SHARPNESS, "Number of sharpness stars", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MOVE_SPEED, "Move speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.FLY_SPEED, "Fly speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MISSILE, "Must own missile attack", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.ARMORED, "Must be armored", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.CHECK_BOTH_SIDES, "Check ligth and dark chit sides", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.REQ_MARK, "Requires a mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.NATIVES_ONLY, "Only Natives", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MONSTERS_ONLY, "Only Monsters", FieldType.Boolean));
+				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
 				break;

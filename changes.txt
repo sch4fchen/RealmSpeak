@@ -1,5 +1,4 @@
 ::ROADMAP::
-QuestRequirementDenizen (Vulnerability, Armored, Mark, Regex, Native and/or Monster, amount, same tile/same clearing, and more (see hirelings))
 QuestRewardMarkDenizen: option: only mark denizens in current tile, only mark denizens in current clearing
 Q25: make it generic
 Q25: show marked T Monster in Quest View
@@ -17,6 +16,7 @@ QUEST UPDATE:
 # QuestRewardMarkedView: Custom headline
 # QuestRewardRegenerateDenizen: options for requiring and removing marks
 # QuestRewardMarkedDenizensAbility
+# QuestRequirementDenizens
 
 Version 1.2.6.0
 NEW FEATURES:
