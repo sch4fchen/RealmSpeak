@@ -33,6 +33,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 	
 	public static final String TAB_NAME = "Your Turn";
 	public static final String PLAY_NEXT = "Play Next";
+	public static final String PLAY_ALL = "Play All";
 
 	private GameWrapper game;
 	private int month;
@@ -380,10 +381,22 @@ public class RealmTurnPanel extends CharacterFramePanel {
 				break;
 			}
 		}
-		playNextButton.setText(haveFollowersThatHaveSpellActions?"Followers Enchanting...":PLAY_NEXT);
-		playNextButton.setText(haveFollowersThatHaveFollowAlerts?"Followers Alerting...":PLAY_NEXT);
-		playNextButton.setText(haveFollowersThatHaveFollowRests?"Followers Resting...":PLAY_NEXT);
-		playNextButton.setText(haveFollowersThatHaveWeatherFatigue?"Followers Exhausting...":PLAY_NEXT);
+		if (haveFollowersThatHaveSpellActions) {
+			playNextButton.setText("Followers Enchanting...");
+			playAllButton.setText(PLAY_ALL+" (Followers Enchanting...)");
+		} else if(haveFollowersThatHaveFollowAlerts) {
+			playNextButton.setText("Followers Alerting...");
+			playAllButton.setText(PLAY_ALL+" (Followers Alerting...)");
+		} else if (haveFollowersThatHaveFollowRests) {
+			playNextButton.setText("Followers Enchanting...");
+			playAllButton.setText(PLAY_ALL+" (Followers Enchanting...)");
+		} else if (haveFollowersThatHaveWeatherFatigue) {
+			playNextButton.setText("Followers Exhausting...");
+			playAllButton.setText(PLAY_ALL+" (Followers Exhausting...)");
+		} else { 
+			playNextButton.setText(PLAY_NEXT);
+			playAllButton.setText(PLAY_ALL);
+		}
 		
 		boolean actionsLeft = isNextAction();
 		playNextButton.setEnabled(actionsLeft && !waitingForSingleButton && activatePlayNextTimer==null && !haveFollowersThatHaveFollowRests && !haveFollowersThatHaveFollowAlerts && !haveFollowersThatHaveSpellActions && !haveFollowersThatHaveWeatherFatigue);
@@ -467,7 +480,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 			}
 		});
 		panel.add(playNextButton);
-		playAllButton = new JButton("Play All");
+		playAllButton = new JButton(PLAY_ALL);
 		playAllButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				playAll();
