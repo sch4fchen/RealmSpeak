@@ -111,8 +111,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Denizens:
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.DENIZEN_REGEX, "Denizen RegEx", FieldType.Regex, null, new String[] { "denizen" }));
-				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_TILE, "Characters  tile", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_CLEARING, "Characters clearing", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_TILE, "Characters tile only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.SAME_CLEARING, "Characters clearing only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.AMOUNT, "Number of hirelings", FieldType.Number));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
