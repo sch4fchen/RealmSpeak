@@ -227,7 +227,19 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.TILE, "Denizens on characters tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MAP, "Denizens on the whole map", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REQ_MARK, "Requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ATTACK_SPEED, "Attack speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ATTACK_LENGTH, "Attack length", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.SHARPNESS, "Number of sharpness stars", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MOVE_SPEED, "Move speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.FLY_SPEED, "Fly speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MISSILE, "Must own missile attack", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ARMORED, "Must be armored", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.CHECK_BOTH_SIDES, "Check ligth and dark chit sides", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.NATIVES_ONLY, "Only natives", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
 				break;
 			case MarkedDenizensAbility:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds or removes Control/Command", FieldType.Boolean));
