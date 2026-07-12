@@ -52,10 +52,10 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 			if (immunitySelected()) {
 				sb.append("immunity ");
 			}
-			if (controlSelected()) {
+			if (fearSelected()) {
 				sb.append("fear ");
 			}
-			if (controlSelected()) {
+			if (friendlinessSelected()) {
 				sb.append("friendliness ");
 			}
 		}
@@ -71,10 +71,10 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 			if (!immunitySelected()) {
 				sb.append("immunity ");
 			}
-			if (!controlSelected()) {
+			if (!fearSelected()) {
 				sb.append("fear ");
 			}
-			if (!controlSelected()) {
+			if (!friendlinessSelected()) {
 				sb.append("friendliness ");
 			}
 		}
