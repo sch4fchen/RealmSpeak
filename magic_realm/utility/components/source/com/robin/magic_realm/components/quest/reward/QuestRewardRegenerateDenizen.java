@@ -63,7 +63,15 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	
 	public String getDescription() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getDenizenNameRegex() +" are regenerated");
+		if (requiresMark()) {
+			sb.append("Marked ");
+		}
+		if (getDenizenNameRegex()!=null && !getDenizenNameRegex().isEmpty()) {
+			sb.append(getDenizenNameRegex());
+		} else {
+			sb.append("Denizens");
+		}
+		sb.append(" are regenerated");
 		if (numberOfDenizens()!=0) {
 			sb.append(" (max. "+numberOfDenizens()+")");
 		}
