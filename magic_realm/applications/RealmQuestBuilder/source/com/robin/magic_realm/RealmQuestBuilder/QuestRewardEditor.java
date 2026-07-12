@@ -225,6 +225,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.TILE, "Denizens on characters tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MAP, "Denizens on the whole map", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REQ_MARK, "Requires mark?", FieldType.Boolean));
 				break;
 			case MarkedDenizensAbility:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds or removes Control/Command", FieldType.Boolean));

@@ -1,5 +1,4 @@
 ::ROADMAP::
-QuestRewardMarkDenizen: option: only mark denizens in current tile, only mark denizens in current clearing
 Q25: make it generic
 Q25: show marked T Monster in Quest View
 Q25: remove mark when resetting
@@ -16,6 +15,7 @@ QUEST UPDATE:
 # QuestRewardMarkedView: Custom headline
 # QuestRewardRegenerateDenizen: options for requiring and removing marks
 # QuestRewardMarkedDenizensAbility
+# QuestRewardMarkDenizen: more options
 # QuestRequirementDenizens
 
 Version 1.2.6.0
