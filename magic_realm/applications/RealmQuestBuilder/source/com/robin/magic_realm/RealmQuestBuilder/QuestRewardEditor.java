@@ -317,8 +317,21 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.REGENERATE_HIRELINGS, "Regenerate hirelings as well", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.ATTACK_SPEED, "Attack speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.ATTACK_LENGTH, "Attack length", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.SHARPNESS, "Number of sharpness stars", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.MOVE_SPEED, "Move speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.FLY_SPEED, "Fly speed", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.MISSILE, "Must own missile attack", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.ARMORED, "Must be armored", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.CHECK_BOTH_SIDES, "Check ligth and dark chit sides", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));				
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.REQ_MARK, "Requires mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.REMOVE_MARKS, "Remove marks?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.NATIVES_ONLY, "Only natives", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
 				break;	
 			case RelationshipChange:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));
