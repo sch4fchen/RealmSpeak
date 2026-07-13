@@ -1,7 +1,13 @@
 package com.robin.magic_realm.components.quest.reward;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -10,6 +16,7 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 	public static final String IMMUNITY = "_immunity";
 	public static final String FEAR = "_fear";
 	public static final String FRIENDLINESS = "_friendliness";
+	public static final String REMOVE_UNCONTROLLED_HIRELINGS = "_remove_uncontrolled_hirelings";
 	
 	public QuestRewardMarkedDenizensAbility(GameObject go) {
 		super(go);
@@ -21,6 +28,11 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 			character.getGameObject().addThisAttributeListItem(Constants.MONSTER_CONTROL_MARK, questId);
 		} else {
 			character.getGameObject().removeThisAttributeListItem(Constants.MONSTER_CONTROL_MARK, questId);
+			if (removeUncontrolledHirelings()) {
+				for (RealmComponent hireling : character.getAllHirelings()) {
+					validateControlForHireling(hireling,character,questId);
+				}
+			}
 		}
 		if (immunitySelected()) {
 			character.getGameObject().addThisAttributeListItem(Constants.MONSTER_IMMUNITY_MARK, questId);
@@ -93,6 +105,9 @@ public class QuestRewardMarkedDenizensAbility extends QuestReward {
 	}
 	public boolean friendlinessSelected() {
 		return getBoolean(FRIENDLINESS);
+	}
+	public boolean removeUncontrolledHirelings() {
+		return getBoolean(REMOVE_UNCONTROLLED_HIRELINGS);
 	}
 
 	public RewardType getRewardType() {

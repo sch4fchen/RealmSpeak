@@ -240,12 +240,15 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.NATIVES_ONLY, "Only natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_MARK, "Remove mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_UNCONTROLLED_HIRELINGS, "Unhire uncontrolled marked denizen", FieldType.Boolean));
 				break;
 			case MarkedDenizensAbility:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds or removes Control/Command", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.IMMUNITY, "Adds or removes Immunity", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FEAR, "Adds or removes Fear", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FRIENDLINESS, "Adds or removes Friendliness", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.REMOVE_UNCONTROLLED_HIRELINGS, "Unhire uncontrolled marked denizens", FieldType.Boolean));
 				break;
 			case MarkItem:
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_REGEX, "Item RegEx", FieldType.Regex));

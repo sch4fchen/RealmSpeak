@@ -605,4 +605,34 @@ public abstract class QuestReward extends AbstractQuestObject {
 				return RandomNumber.getDieRoll(6);
 		}
 	}
+	protected static void validateControlForHireling(RealmComponent hireling, CharacterWrapper character, String questId) {
+		ArrayList<String> marks = new ArrayList<>();
+		marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL_MARK,null));
+		if (hireling.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && Quest.GameObjectHasQuestMark(hireling.getGameObject(), questId)) {
+			boolean canControl = false;
+			for (String markId : hireling.getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+				for (String mark : marks) {
+					if (mark.matches(markId)) {
+						canControl = true;
+						break;
+					}
+				}
+			}
+			if (!canControl) {
+				RealmComponent characterRc = RealmComponent.getRealmComponent(character.getGameObject());
+				Hashtable<String,Integer[]> controllableMonsters = characterRc.getControllableMonsters(false);
+				for (String monsterType : controllableMonsters.keySet()) {
+					if (hireling.getGameObject().getName().matches(monsterType.toString())) {
+						if (controllableMonsters.get(monsterType)[1]==0 || (new CharacterWrapper(character.getGameObject()).getAllControlledMonstersWithSameName(monsterType).size()<controllableMonsters.get(monsterType)[1])) {
+							canControl = true;
+							break;
+						}
+					}
+				}
+			}
+			if (!canControl) {
+				character.removeHireling(hireling.getGameObject());
+			}
+		}
+	}
 }
