@@ -8,7 +8,7 @@ QUEST UPDATE:
 # More guild quests
 # Support for multiple quest marks per game object
 # QuestRewardMarkedView: Custom headline
-# QuestRewardRegenerateDenizen: options for requiring and removing marks
+# QuestRewardRegenerateDenizen: more options
 # QuestRewardMarkedDenizensAbility
 # QuestRewardMarkDenizen: more options
 # QuestRequirementDenizens

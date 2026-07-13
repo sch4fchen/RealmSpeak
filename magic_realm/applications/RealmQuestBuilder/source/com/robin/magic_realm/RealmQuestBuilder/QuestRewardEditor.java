@@ -242,12 +242,16 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_MARK, "Remove mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_UNCONTROLLED_HIRELINGS, "Unhire uncontrolled marked denizen", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.IGNORE_HIRELINGS, "Ignore hirelings", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.IGNORE_CONTROLLED_DENIZENS, "Ignore controlled denizens", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.IGNORE_COMPANIONS, "Ignore companions", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.IGNORE_SUMMONED, "Ignore summoned", FieldType.Boolean));
 				break;
 			case MarkedDenizensAbility:
-				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds or removes Control/Command", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.IMMUNITY, "Adds or removes Immunity", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FEAR, "Adds or removes Fear", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FRIENDLINESS, "Adds or removes Friendliness", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.CONTROL, "Adds Control/Command", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.IMMUNITY, "Adds Immunity", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FEAR, "Adds Fear", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.FRIENDLINESS, "Adds Friendliness", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedDenizensAbility.REMOVE_UNCONTROLLED_HIRELINGS, "Unhire uncontrolled marked denizens", FieldType.Boolean));
 				break;
 			case MarkItem:

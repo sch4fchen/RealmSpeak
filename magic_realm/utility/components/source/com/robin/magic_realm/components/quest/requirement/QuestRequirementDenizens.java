@@ -41,6 +41,10 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	public static final String REQ_MARK = "_requires_mark";
 	public static final String NATIVES_ONLY = "_natives_only";
 	public static final String MONSTERS_ONLY = "_monsters_only";
+	public static final String IGNORE_HIRELINGS = "_ignore_hirelings";
+	public static final String IGNORE_CONTROLLED_DENIZENS = "_ignore_controlled";
+	public static final String IGNORE_COMPANIONS = "_ignore_companions";
+	public static final String IGNORE_SUMMONED = "_ignore_summoned";
 
 	public QuestRequirementDenizens(GameObject go) {
 		super(go);
@@ -54,7 +58,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			TileLocation loc = character.getCurrentLocation();
 			if (loc==null || !loc.hasClearing()) return false;
 			for (RealmComponent component : loc.clearing.getClearingComponents()) {
-				if (component.isDenizen()) {
+				if (component.isMonster() || component.isNative()) {
 					denizens.add(component);
 				}
 			}
@@ -62,7 +66,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			TileComponent tile = character.getCurrentLocation().tile;
 			for (ClearingDetail cl : tile.getClearings()) {
 				for (RealmComponent component : cl.getClearingComponents()) {
-					if (component.isDenizen()) {
+					if (component.isMonster() || component.isNative()) {
 						denizens.add(component);
 					}
 				}
@@ -76,6 +80,10 @@ public class QuestRequirementDenizens extends QuestRequirement {
 		
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent denizen : denizens) {
+			if (ignoreHirelings() && denizen.isHireling()) continue;
+			if (ignoreControlledDenizens() && (denizen.isControlledNative() || denizen.isControlledMonster())) continue;
+			if (ignoreCompanions() && denizen.isCompanion()) continue;
+			if (ignoreSummoned() && denizen.isSummoned()) continue;
 			if (nativesOnly() && !denizen.isNative()) continue;
 			if (monstersOnly() && !denizen.isMonster()) continue;
 			if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen.getGameObject(),questId)) continue;
@@ -255,5 +263,17 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	}
 	private Boolean monstersOnly() {
 		return getBoolean(MONSTERS_ONLY);
+	}
+	private Boolean ignoreHirelings() {
+		return getBoolean(IGNORE_HIRELINGS);
+	}
+	private Boolean ignoreControlledDenizens() {
+		return getBoolean(IGNORE_CONTROLLED_DENIZENS);
+	}
+	private Boolean ignoreCompanions() {
+		return getBoolean(IGNORE_COMPANIONS);
+	}
+	private Boolean ignoreSummoned() {
+		return getBoolean(IGNORE_SUMMONED);
 	}
 }

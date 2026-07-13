@@ -128,6 +128,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.REQ_MARK, "Requires a mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.NATIVES_ONLY, "Only Natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MONSTERS_ONLY, "Only Monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_HIRELINGS, "Ignore hirelings", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_CONTROLLED_DENIZENS, "Ignore controlled denizens", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_COMPANIONS, "Ignore companions", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_SUMMONED, "Ignore summoned", FieldType.Boolean));
 				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));

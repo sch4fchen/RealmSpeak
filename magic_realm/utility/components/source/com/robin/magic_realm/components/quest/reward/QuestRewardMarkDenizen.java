@@ -43,6 +43,10 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	public static final String MONSTERS_ONLY = "_monsters_only";
 	public static final String REMOVE_MARK = "_remove_mark";
 	public static final String REMOVE_UNCONTROLLED_HIRELINGS = "_remove_uncontrolled_hirelings";
+	public static final String IGNORE_HIRELINGS = "_ignore_hirelings";
+	public static final String IGNORE_CONTROLLED_DENIZENS = "_ignore_controlled";
+	public static final String IGNORE_COMPANIONS = "_ignore_companions";
+	public static final String IGNORE_SUMMONED = "_ignore_summoned";
 
 	public QuestRewardMarkDenizen(GameObject go) {
 		super(go);
@@ -75,6 +79,10 @@ public class QuestRewardMarkDenizen extends QuestReward {
 		}
 		
 		for (RealmComponent rc:denizens) {
+			if (ignoreHirelings() && rc.isHireling()) continue;
+			if (ignoreControlledDenizens() && (rc.isControlledNative() || rc.isControlledMonster())) continue;
+			if (ignoreCompanions() && rc.isCompanion()) continue;
+			if (ignoreSummoned() && rc.isSummoned()) continue;
 			if (nativesOnly() && !rc.isNative()) continue;
 			if (monstersOnly() && !rc.isMonster()) continue;
 			if (pattern==null || pattern.matcher(rc.getGameObject().getName()).find()) {
@@ -276,5 +284,17 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	}
 	public boolean removeUncontrolledHirelings() {
 		return getBoolean(REMOVE_UNCONTROLLED_HIRELINGS);
+	}
+	private Boolean ignoreHirelings() {
+		return getBoolean(IGNORE_HIRELINGS);
+	}
+	private Boolean ignoreControlledDenizens() {
+		return getBoolean(IGNORE_CONTROLLED_DENIZENS);
+	}
+	private Boolean ignoreCompanions() {
+		return getBoolean(IGNORE_COMPANIONS);
+	}
+	private Boolean ignoreSummoned() {
+		return getBoolean(IGNORE_SUMMONED);
 	}
 }
