@@ -12,6 +12,7 @@ QUEST UPDATE:
 # QuestRewardMarkedDenizensAbility
 # QuestRewardMarkDenizen: more options
 # QuestRequirementDenizens
+# Update to Q57 Zoological Specimen
 
 Version 1.2.6.0
 NEW FEATURES:
