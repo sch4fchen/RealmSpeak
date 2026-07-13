@@ -364,7 +364,8 @@ public class TreasureUtility {
 					return false;
 				}
 			}
-			if (thing.hasThisAttribute(Constants.SUMMON_COMPANION) && !thing.hasThisAttribute(Constants.POTION)) {
+			if (thing.hasThisAttribute(Constants.SUMMON_COMPANION) && !thing.hasThisAttribute(Constants.POTION)
+					&& !thing.hasThisAttribute(Constants.SUMMON_COMPANION_ID)) {
 				GameObject companion = getCompanionFromItem(thing);
 				character.addHireling(companion,Constants.TEN_YEARS);
 				CombatWrapper combat = new CombatWrapper(companion);
@@ -956,6 +957,7 @@ public class TreasureUtility {
 						character.removeHireling(companion);
 						SetupCardUtility.resetDenizen(companion);
 						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
+						companion.detach();
 						data.removeObject(companion);
 					}
 					else {
