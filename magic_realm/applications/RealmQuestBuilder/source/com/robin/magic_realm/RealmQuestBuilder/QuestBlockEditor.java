@@ -101,7 +101,7 @@ public abstract class QuestBlockEditor extends GenericEditor {
 	}
 	private void initComponents() {
 		setTitle(getEditorTitle());
-		setSize(500,500);
+		setSize(500,650);
 		setLayout(new BorderLayout());
 		add(buildForm(),BorderLayout.CENTER);
 		add(buildOkCancelLine(),BorderLayout.SOUTH);
