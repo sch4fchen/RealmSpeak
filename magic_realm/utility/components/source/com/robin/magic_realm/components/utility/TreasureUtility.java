@@ -957,6 +957,7 @@ public class TreasureUtility {
 						character.removeHireling(companion);
 						SetupCardUtility.resetDenizen(companion);
 						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
+						companion.detach();
 						data.removeObject(companion);
 					}
 					else {
