@@ -1171,7 +1171,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			}
 		}
 		if (rc.getGameObject().hasThisAttribute(QuestConstants.QUEST_MARK) && isCharacter()) {
-			for (String questId : getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
+			for (String questId : rc.getGameObject().getThisAttributeList(QuestConstants.QUEST_MARK)) {
 				ArrayList<String> marks = new ArrayList<>();
 				CharacterWrapper character = new CharacterWrapper(getGameObject());
 				marks.addAll(character.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));

@@ -83,7 +83,7 @@ public class BattlesWrapper extends GameObjectWrapper {
 							if (!characterRc.isCharacter()) continue;
 							ArrayList<String> marks = new ArrayList<>();
 							CharacterWrapper characterWithMarkAbility = new CharacterWrapper(characterRc.getGameObject());
-							marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_IMMUNITY_MARK,null));
+							marks.addAll(characterWithMarkAbility.getActiveInventoryValuesForThisKey(Constants.MONSTER_CONTROL_MARK,null));
 							for (String mark : marks) {
 								if (mark.matches(questId)) {
 									characterCanControlMarkedDenizen.add(characterRc);
