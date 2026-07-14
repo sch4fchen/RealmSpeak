@@ -32793,6 +32793,7 @@
         <attribute summon_companion="Hound" />
         <attribute author="Expansion 1" />
         <attribute item="" />
+        <attribute nosecret="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
         <attribute monster="" />
@@ -60644,6 +60645,7 @@
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Hunters" />
+        <attribute nosecret="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
         <attribute monster="" />
