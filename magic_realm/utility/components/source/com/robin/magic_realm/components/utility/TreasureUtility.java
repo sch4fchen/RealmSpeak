@@ -952,15 +952,14 @@ public class TreasureUtility {
 						if (owner!=null) {
 							(new CharacterWrapper(owner.getGameObject())).removeHireling(companion);
 						}
+						character.removeHireling(companion);
 						combat.targetsRemoveAttackers();
 						CombatWrapper.clearAllCombatInfo(companion);
-						character.removeHireling(companion);
-						SetupCardUtility.resetDenizen(companion);
-						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
 						SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(data);
 						spellMaster.expireBewitchingSpells(companion);
+						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
 						ClearingUtility.moveToLocation(companion,null);
-						data.removeObject(companion);
+						companion.detach();
 					}
 					else {
 						return false;
