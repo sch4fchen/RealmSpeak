@@ -403,6 +403,10 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Code Contributors",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Matt Gardner",listing,listingColor));
+		scroller.addLine(new ScrollLine("Bruce Sears",listing,listingColor));
+		scroller.addLine(new ScrollLine());
+		scroller.addLine(new ScrollLine("Testing Support",subheader,subheaderColor));
+		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Quest Development and",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("Questing the Realm",subheader,subheaderColor));
@@ -414,6 +418,7 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 		scroller.addLine(new ScrollLine("More community quests",subheader,subheaderColor));
 		scroller.addLine(new ScrollLine("James Dean",listing,listingColor));
 		scroller.addLine(new ScrollLine("Reggie Kemp",listing,listingColor));
+		scroller.addLine(new ScrollLine("Jim (East Paladin)",listing,listingColor));
 		scroller.addLine(new ScrollLine());
 		scroller.addLine(new ScrollLine("Magic Realm the Boardgame",header,headerColor,Color.black,2));
 		scroller.addLine(new ScrollLine("Publisher",subheader,subheaderColor));
