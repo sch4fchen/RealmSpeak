@@ -32796,7 +32796,6 @@
         <attribute potion="" />
         <attribute discard="" />
         <attribute nosecret="" />
-        <attribute cannot_be_deactivated="" />
         <attribute must_be_activated="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
