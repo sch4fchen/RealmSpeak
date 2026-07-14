@@ -957,6 +957,9 @@ public class TreasureUtility {
 						character.removeHireling(companion);
 						SetupCardUtility.resetDenizen(companion);
 						thing.removeThisAttribute(Constants.SUMMON_COMPANION_ID);
+						SpellMasterWrapper spellMaster = SpellMasterWrapper.getSpellMaster(data);
+						spellMaster.expireBewitchingSpells(companion);
+						ClearingUtility.moveToLocation(companion,null);
 						data.removeObject(companion);
 					}
 					else {
