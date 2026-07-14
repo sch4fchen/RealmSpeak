@@ -1,6 +1,7 @@
 Version 1.2.6.1
 NEW FEATURES:
 # Optional rule: teleport to a random clearing
+# Change Hound treasure to one-use item
 BUGS/ISSUES:
 # Correct Hurricane Winds timing
 # Fix landing denizens in a tile with less than 6 clearings

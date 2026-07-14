@@ -367,7 +367,6 @@ public class Constants {
 	public static final String MAGIC_PATH_AFFECTED_CHARACTER = "magic_path_character";
 	public static final String SUMMON_COMPANION = "summon_companion";
 	public static final String SUMMON_COMPANION_ID = "summon_companion_id";
-	public static final String SUMMON_PERMANENT_COMPANION = "summon_permanent_companion";
 	public static final String DESTROY_TREASURE_WHEN_KILLED = "destroy_treasure_when_killed";
 	public static final String MAGIC_FOOD = "magic_food";
 	public static final String HOUND = "hound";
@@ -569,7 +568,6 @@ public class Constants {
 	public static final String CURSED ="cursed"; // cannot be deactivated, except at chapel where the item is destroyed.
 	public static final String NO_ACTIVATE = "no_activate";
 	public static final String CANNOT_BE_ACTIVATED = "cannot_be_activated";
-	public static final String CANNOT_BE_DEACTIVATED = "cannot_be_deactivated";
 	public static final String MUST_BE_ACTIVATED = "must_be_activated";
 	public static final String COLOR_CAPTURE = "color_capture";
 	public static final String BEAST_AWAY = "beast_away";

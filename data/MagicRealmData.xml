@@ -32793,7 +32793,10 @@
         <attribute summon_companion="Hound" />
         <attribute author="Expansion 1" />
         <attribute item="" />
+        <attribute potion="" />
+        <attribute discard="" />
         <attribute nosecret="" />
+        <attribute must_be_activated="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
         <attribute monster="" />
@@ -32807,6 +32810,7 @@
         <attribute icon_type_alt="Era_of_Chaos-animals-hound" />
         <attribute icon_folder_alt="wesnoth/units/addons" />
         <attribute hound="" />
+        <attribute base_price="2" />
       </AttributeBlock>
       <AttributeBlock blockName="companion_light">
         <attribute move_speed="1" />
@@ -60642,10 +60646,13 @@
         <attribute fame="2" />
         <attribute summon_companion="Hound" />
         <attribute item="" />
+        <attribute potion="" />
+        <attribute discard="" />
         <attribute super_realm="" />
         <attribute super_realm_treasure="" />
         <attribute native="Hunters" />
         <attribute nosecret="" />
+        <attribute must_be_activated="" />
       </AttributeBlock>
       <AttributeBlock blockName="companion">
         <attribute monster="" />
@@ -60657,6 +60664,7 @@
         <attribute denizen="" />
         <attribute hound="" />
         <attribute super_realm="" />
+        <attribute base_price="10" />
       </AttributeBlock>
       <AttributeBlock blockName="companion_light">
         <attribute move_speed="2" />

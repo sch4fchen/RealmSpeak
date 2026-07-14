@@ -521,6 +521,9 @@ public class Loot extends RealmTable {
 		thing.setThisAttribute(Constants.TREASURE_NEW);
 		character.getGameObject().add(thing);
 		character.checkInventoryStatus(frame,thing,listener);
+		if (thing.hasThisAttribute(Constants.MUST_BE_ACTIVATED)) {
+			TreasureUtility.doActivate(frame, character, thing, listener, false);
+		}
 		return true;
 	}
 	/**
