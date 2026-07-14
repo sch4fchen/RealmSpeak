@@ -312,6 +312,9 @@ public class RealmPaymentDialog extends AggressiveDialog {
 			character.addNoteTrade(tradeInfo.getGameObject(),dwelling.getHold());
 			character.checkInventoryStatus(frame,merchandise,listener);
 			RealmLogging.logMessage(character.getGameObject().getName(),"Buys the "+merchandise.getName()+" from the "+tradeInfo.getGameObject().getName());
+			if (merchandise.hasThisAttribute(Constants.MUST_BE_ACTIVATED)) {
+				TreasureUtility.doActivate(frame, character, merchandise, listener, false);
+			}
 		}
 		
 		QuestRequirementParams params = new QuestRequirementParams();
