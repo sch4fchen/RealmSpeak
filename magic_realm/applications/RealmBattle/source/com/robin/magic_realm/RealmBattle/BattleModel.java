@@ -3532,8 +3532,8 @@ public class BattleModel {
 			if (spell!=null) {
 				spell.expireSpell();
 			}
-			rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
 		}
+		rc.getGameObject().setThisAttribute(Constants.LAND_FIRST); // Forces a landing at the beginning of next turn
 		logBattleInfo(rc+" is blown away to "+tl.tile.getGameObject().getNameWithNumber()+"!");
 	}
 	
