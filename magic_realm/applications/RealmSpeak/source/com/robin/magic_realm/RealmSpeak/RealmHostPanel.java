@@ -336,7 +336,9 @@ public class RealmHostPanel extends JPanel {
 		//checkForGameEnd(livingCharacters);
 		
 		// Land any non-turn-recording denizens now
-		ArrayList<GameObject> denizenObjects = RealmObjectMaster.getRealmObjectMaster(host.getGameData()).getDenizenObjects();
+		RealmObjectMaster rom = RealmObjectMaster.getRealmObjectMaster(host.getGameData());
+		rom.resetDenizenObjects();
+		ArrayList<GameObject> denizenObjects = rom.getDenizenObjects();
 		for (GameObject go:denizenObjects) {
 			String blownSpellId = go.getThisAttribute(Constants.BLOWS_TARGET);
 			boolean hurricaneWindsEvent = go.hasThisAttribute(Constants.EVENT_HURRICANE_WINDS);

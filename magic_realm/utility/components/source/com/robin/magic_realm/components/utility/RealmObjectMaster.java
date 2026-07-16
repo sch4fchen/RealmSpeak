@@ -91,6 +91,10 @@ public class RealmObjectMaster {
 		return denizenObjects;
 	}
 	
+	public void resetDenizenObjects() {
+		denizenObjects=null;
+	}
+	
 	/**
 	 * @return		A Collection of all the tile objects
 	 */
