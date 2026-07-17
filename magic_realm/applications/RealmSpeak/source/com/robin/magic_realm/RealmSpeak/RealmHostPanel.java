@@ -386,6 +386,7 @@ public class RealmHostPanel extends JPanel {
 					SpellWrapper spell = new SpellWrapper(spellGo);
 					spell.expireSpell();
 				}
+				go.removeThisAttribute(Constants.LAND_FIRST);
 			}
 		}
 
