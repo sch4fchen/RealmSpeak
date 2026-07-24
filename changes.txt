@@ -1,6 +1,8 @@
+Version 1.2.6.3
+
 Version 1.2.6.2
 BUGS/ISSUES:
-# Fix controlled hirelings landing after Hurricane Winds 
+# Fix controlled hirelings landing after Hurricane Winds
 
 Version 1.2.6.1
 NEW FEATURES:
