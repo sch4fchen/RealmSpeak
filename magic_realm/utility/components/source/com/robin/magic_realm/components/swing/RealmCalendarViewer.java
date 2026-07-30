@@ -18,6 +18,7 @@ import com.robin.magic_realm.components.wrapper.HostPrefWrapper;
 
 public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 	
+	public static final String RC_VIEW = "calendar";
 	private RealmCalendar realmCalendar;
 	private GameWrapper game;
 	private HostPrefWrapper hostPrefs;
@@ -365,7 +366,7 @@ public class RealmCalendarViewer extends JFrame implements ManagedFrame {
 	public void cleanup() {
 	}
 	public String getKey() {
-		return "calendar";
+		return RC_VIEW;
 	}
 	/**
 	 * For testing only

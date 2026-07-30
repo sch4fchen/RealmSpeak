@@ -1,4 +1,6 @@
 Version 1.2.6.3
+BUGS/ISSUES:
+# Close Setup Card and Calendar View when shutting down a game
 
 Version 1.2.6.2
 BUGS/ISSUES:

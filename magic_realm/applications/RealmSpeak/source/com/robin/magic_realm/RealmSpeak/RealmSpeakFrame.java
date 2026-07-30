@@ -2277,6 +2277,8 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 				gameHandler.cleanup();
 			}
 			gameHandler = null;
+			FrameManager.getFrameManager().disposeFrame(RealmCalendarViewer.RC_VIEW);
+			FrameManager.getFrameManager().disposeFrame(TreasureSetupCardView.TS_VIEW);
 			desktop.removeAll();
 			gameControlFrames.clear();
 			characterFrames.clear();
