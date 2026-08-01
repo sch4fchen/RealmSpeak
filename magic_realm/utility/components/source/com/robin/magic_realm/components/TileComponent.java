@@ -85,17 +85,6 @@ public class TileComponent extends ChitComponent {
 	private boolean alwaysPaint = false;
 	private boolean needsRepaint = true;
 
-	/*
-	 * Tile adjacency is a CACHE, not a derived value - edgeTiles is filled only by
-	 * ClearingUtility.initAdjacentTiles().  Its long-standing caller is CenteredMapView, so adjacency
-	 * happens to be populated on a client as a side effect of building the map view.  Code working
-	 * against a GameData that never builds one - the host has its own GameData and its own
-	 * RealmComponent cache - saw every tile report ZERO neighbours instead.  That is indistinguishable
-	 * from "this tile really is isolated", so callers could not tell they were being handed nothing.
-	 *
-	 * adjacencyInitAttempted lets the accessors below populate the cache on demand, so adjacency is
-	 * correct for every caller rather than only for callers that remember to prime it first.
-	 */
 	private Hashtable<String,TileComponent> edgeTiles = new Hashtable<>();
 	private boolean adjacencyInitAttempted = false;
 
@@ -1132,19 +1121,12 @@ public class TileComponent extends ChitComponent {
 
 	public void clearAdjacentTiles() {
 		edgeTiles.clear();
-		// initAdjacentTiles() clears then refills every tile in the map grid, so re-arm the lazy path
-		// for any tile that legitimately ends up with no neighbours (e.g. mid map build).
 		adjacencyInitAttempted = false;
 	}
 	public void putAdjacentTile(String rotatedEdge, TileComponent c) {
 		edgeTiles.put(rotatedEdge, c);
 	}
 
-	/**
-	 * Populates the adjacency cache from this tile's GameData if nobody has done so yet.  Tried at
-	 * most once per tile between explicit initAdjacentTiles() calls, so a tile that is genuinely not
-	 * on the map grid does not rebuild the grid on every query.
-	 */
 	private void ensureAdjacentTiles() {
 		if (!edgeTiles.isEmpty() || adjacencyInitAttempted) return;
 		adjacencyInitAttempted = true;

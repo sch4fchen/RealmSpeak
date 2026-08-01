@@ -342,9 +342,7 @@ public class RealmEvents {
 		if (list.isEmpty()) return null;
 		return list.get(RandomNumber.getRandom(list.size()));
 	}
-	public static ArrayList<TileComponent> chooseRandomAndAdjacentTiles(GameData data) {
-		ClearingUtility.initAdjacentTiles(data);
-		
+	public static ArrayList<TileComponent> chooseRandomAndAdjacentTiles(GameData data) {		
 		ArrayList<TileComponent> allTiles = new ArrayList<>();
 		TileComponent tile = RealmEvents.chooseRandomTile(data);
 		allTiles.add(tile);
