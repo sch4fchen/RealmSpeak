@@ -329,8 +329,7 @@ public abstract class GameClient extends GameNet {
 			logger.info("attempt "+attempts);
 			try {
 				connection = new Socket(ipAddress,port);
-				// Generous while logging in - see CLIENT_LOGIN_TIMEOUT_MS.  run() restores
-				// DEFAULT_TIMEOUT_MS once the login sync has completed.
+				// run() restores DEFAULT_TIMEOUT_MS once the login sync has completed.
 				connection.setSoTimeout(GameNet.CLIENT_LOGIN_TIMEOUT_MS);
 				logger.info("Client connected");
 			}
@@ -365,14 +364,11 @@ public abstract class GameClient extends GameNet {
 				logger.info("GameClient "+clientName+": logged in");
 				// Send name information
 				doRequest(new RequestObject(SUBMIT_LOGIN));
-				/*
-				 * The login sync is finished - that request is where the server ships the entire
-				 * masterData-to-gameData diff in one blocking read, and it is the only legitimately
-				 * slow response.  Everything from here on is REQUEST_IDLE polling, so go back to the
-				 * normal timeout: a long timeout during play only delays noticing a dead server, and
-				 * leaves the client outliving the server's own SO_TIMEOUT on the same connection.
-				 */
-				try { connection.setSoTimeout(GameNet.DEFAULT_TIMEOUT_MS); } catch(SocketException ex) { /* keep the login value */ }
+				try {
+					connection.setSoTimeout(GameNet.DEFAULT_TIMEOUT_MS); }
+				catch(SocketException ex) {
+					/* keep the login value */
+				}
 				connected = true;
 				
 				fireStateChanged();
