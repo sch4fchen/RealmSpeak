@@ -875,15 +875,6 @@ public class RealmHostPanel extends JPanel {
 		
 		/*
 		 * Unblock all monsters (this might be overkill, but maybe its not a big deal).
-		 *
-		 * Do NOT filter this query on getGameKeyVals().  Monsters created at runtime - anything a
-		 * generator (Pond/Hive/Tomb) spawns through MonsterCreator - are never stamped with the game
-		 * keyVals, so a keyVals-scoped query silently skips every one of them.  Their "blocked" flag
-		 * was then set once by updateMonsterBlock() and never cleared again, which stopped them both
-		 * propagating (SetupCardUtility.moveGeneratedMonster returns immediately on isBlocked) and
-		 * prowling (the prowl loop in summonMonsters excludes blocked monsters) for the rest of the
-		 * game.  Unblocking a monster is harmless whichever content set it came from, and the
-		 * isMonster() test below still keeps non-monsters out.
 		 */
 		GamePool pool = new GamePool(host.getGameData().getGameObjects());
 		for (GameObject go:pool.find("monster")) {
