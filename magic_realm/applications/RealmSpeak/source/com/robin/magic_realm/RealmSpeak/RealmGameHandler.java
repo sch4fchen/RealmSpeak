@@ -1058,11 +1058,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 		else if (RealmDirectInfoHolder.POPUP_MESSAGE.equals(command)) {
 			// Run on the EDT, for the same reason as the branches above: handleDirectInfo() is called
-			// from the GameClient thread (GameClient.handleResponse -> receiveInfoDirect), and
-			// popupMessage() shows a MODAL dialog.  Calling it directly here stops that client
-			// polling until the player clicks OK, so the server's SO_TIMEOUT (GameNet.DEFAULT_TIMEOUT_MS)
-			// tears the connection down underneath them - seen as "Broken pipe" and a dead client with
-			// every window closed.  invokeLater lets handleDirectInfo() return immediately so polling
+			// from the GameClient thread. invokeLater lets handleDirectInfo() return immediately so polling
 			// continues while the dialog is up.
 			SwingUtilities.invokeLater(() -> {
 				RealmUtility.popupMessage(CombatFrame.getSingleton(), info);
