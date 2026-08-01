@@ -6,6 +6,14 @@ import java.util.ArrayList;
 
 public abstract class GameNet extends Thread {
 	public static int DEFAULT_TIMEOUT_MS = 10000;
+	/**
+	 * Client-side SO_TIMEOUT for the LOGIN SYNC ONLY.  That one request has the server ship the whole
+	 * masterData-to-gameData diff in a single blocking read, which on a large saved game runs well
+	 * past DEFAULT_TIMEOUT_MS; a client that gives up there dies mid-load and never recovers.
+	 * GameClient.run() drops the socket back to DEFAULT_TIMEOUT_MS as soon as that request returns,
+	 * so ordinary play keeps the short timeout.
+	 */
+	public static int CLIENT_LOGIN_TIMEOUT_MS = 120000; // 2 minutes
 	
 	protected Socket connection;
 	protected ObjectOutputStream out = null;
