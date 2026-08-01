@@ -541,6 +541,12 @@ public class SetupCardUtility {
 				choices.put(distanceFromHome,adj);
 			}
 			
+			if (choices.isEmpty()) {
+				// No adjacent tiles at all, so furthest is still Integer.MIN_VALUE and getList() below
+				// would return null.  Nothing to fly to - stay put rather than throw.
+				return;
+			}
+
 			// Randomly choose from furthest locations
 			ArrayList<TileComponent> finalChoices = choices.getList(furthest);
 			int r = RandomNumber.getRandom(finalChoices.size());
