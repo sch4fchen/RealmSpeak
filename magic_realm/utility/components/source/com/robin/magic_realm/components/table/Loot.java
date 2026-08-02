@@ -390,6 +390,7 @@ public class Loot extends RealmTable {
 		 *  2nd Edition Rule # (optional) 	
 		 */
 		
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 		GameObject source = thing.getHeldBy();
 		if (source!=null && source.hasThisAttribute(Constants.MIN_LARGE_T) && !source.hasThisAttribute(Constants.DESTROYED)) {
 			int minLarge = source.getThisInt(Constants.MIN_LARGE_T);
@@ -401,13 +402,12 @@ public class Loot extends RealmTable {
 				}
 			}
 			if (totalLarge<minLarge) {
-				TreasureUtility.destroyGenerator(character,source);
+				TreasureUtility.destroyGenerator(character,source,hostPrefs);
 			}
 		}
 		
 		dumpGoldSpecialsToClearing();
 		
-		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(thing.getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE1_NO_SECRETS) || thing.hasThisAttribute(Constants.NO_SECRET)) {
 			return "Found " + thing.getName();
 		}
