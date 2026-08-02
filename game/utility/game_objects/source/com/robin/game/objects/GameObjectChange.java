@@ -69,7 +69,7 @@ public abstract class GameObjectChange implements Serializable {
 		if (go==null) {
 			go = data.createNewObject(id);
 		}
-		go.setName(name);
+		go._setName(name); // raw: applying a change must not emit a fresh change back at the sender
 		go._setVersion(version);
 		applyChange(data,go);
 	}
