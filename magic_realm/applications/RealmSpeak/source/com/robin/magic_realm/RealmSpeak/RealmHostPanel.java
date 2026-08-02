@@ -877,12 +877,15 @@ public class RealmHostPanel extends JPanel {
 		 * Unblock all monsters (this might be overkill, but maybe its not a big deal).
 		 */
 		GamePool pool = new GamePool(host.getGameData().getGameObjects());
-		for (GameObject go:pool.find("monster")) {
+		for (GameObject go:pool.find(RealmComponent.MONSTER)) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isMonster()) {
 				MonsterChitComponent monster = (MonsterChitComponent) rc;
 				monster.setBlocked(false);
 			}
+		}
+		for (GameObject go:pool.find(Constants.TRAVELER)) {
+			go.removeThisAttribute(Constants.TRAVELER_MOVED);
 		}
 		
 		for (GameObject go:pool.find("guild,color_source")) {

@@ -323,6 +323,7 @@ public class Constants {
 	public static final String TASK_COMPLETED = "task_completed";
 	public static final String GUILD_BENEFIT = "guild_benefit";
 	public static final String GUILD_BENEFIT_SUCESSOR = "guild_benefit_sucessor";
+	public static final String TRAVELER_MOVED = "traveler_moved";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
@@ -969,8 +970,10 @@ public class Constants {
 	public static final String HOUSE3_QUEST_CARD_HAND_SIZE_PLUS_ONE = "QuestCardHandSizePlusOne";
 	public static final String HOUSE3_SMALL_MONSTERS = "SmallMonsters";
 	public static final String HOUSE3_HORSE_WEAPON_SAME_BOX = "HorseWeaponSameBox";
-	public static final String HOUSE_CHARACTERLIST_SORTING_BY_PLAY_ORDER = "CharacterlistSortingByPlayOrder";
+	public static final String HOUSE3_CHARACTERLIST_SORTING_BY_PLAY_ORDER = "CharacterlistSortingByPlayOrder";
 	public static final String HOUSE3_QUEST_HAND_LIMIT_ONE = "QuestHandLimitOne";
+	public static final String HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY = "TravelersMoveOncePerDay";
+	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY = "GeneratedMonstersMoveOncePerDay";
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";

@@ -174,7 +174,7 @@ public class SetupCardUtility {
 		// Expansion:  move the travelers
 		for (GameObject go:travelers) {
 			TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
-			moveTraveler(traveler);
+			moveTraveler(traveler,hostPrefs);
 		}
 		
 		// Before anything can be summoned, all prowling monsters on the tile need to be moved to the clearing,
@@ -587,7 +587,10 @@ public class SetupCardUtility {
 			}
 		}
 	}
-	private static void moveTraveler(TravelerChitComponent traveler) {
+	private static void moveTraveler(TravelerChitComponent traveler, HostPrefWrapper hostPrefs) {
+		if (traveler.getGameObject().hasThisAttribute(Constants.TRAVELER_MOVED)) {
+			return;
+		}
 		TileLocation current = traveler.getCurrentLocation();
 		if (current == null) return;	// not sure why this can happen, but at least this wont throw an error anymore
 		
@@ -617,6 +620,9 @@ public class SetupCardUtility {
 		if (!current.clearing.equals(finalClearing)) {
 			TileLocation tl = finalClearing.getTileLocation();
 			ClearingUtility.moveToLocation(traveler.getGameObject(),tl);
+			if (hostPrefs.hasPref(Constants.HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY)) {
+				traveler.getGameObject().setThisAttribute(Constants.TRAVELER_MOVED);
+			}
 		}
 	}
 	private static int getDieRollForString(String dieString) {
