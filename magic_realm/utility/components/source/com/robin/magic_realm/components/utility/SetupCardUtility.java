@@ -529,12 +529,26 @@ public class SetupCardUtility {
 		TileLocation home = ClearingUtility.getTileLocation(generator);
 		TileLocation current = monster.getCurrentLocation();
 		if (monster.isBlocked() || current==null) return;
+		TileLocation revengeLocation = null;
+		int distanceFromTarget = 0;
+		if (monster.getGameObject().hasThisAttribute(Constants.REVENGE)) {
+			GameObject target = monster.getGameObject().getGameData().getGameObject(new Long(monster.getGameObject().getThisAttribute(Constants.REVENGE)));
+			revengeLocation = ClearingUtility.getTileLocation(target);
+		}
 		int furthest = Integer.MIN_VALUE;
 		if (monster.flies()) {
+			if (revengeLocation!=null) {
+				distanceFromTarget = ClearingUtility.getDistanceBetweenTiles(current.tile,revengeLocation.tile);
+			}
+			
 			// Find tiles to move to
 			HashLists<Integer,TileComponent> choices = new HashLists<>();
 			for (TileComponent adj:current.tile.getAllAdjacentTiles()) {
 				int distanceFromHome = ClearingUtility.getDistanceBetweenTiles(adj,home.tile);
+				if (revengeLocation!=null) {
+					int newDistanceFromTarget = ClearingUtility.getDistanceBetweenTiles(adj,revengeLocation.tile);
+					if (newDistanceFromTarget>distanceFromTarget) continue;
+				}
 				
 				// if tile has characters in it, make it MORE interesting
 				int interest = calculateIncentive(adj.getAllClearingComponents(),-1,20);
@@ -560,11 +574,27 @@ public class SetupCardUtility {
 			}
 		}
 		else {
+			if (revengeLocation!=null) {
+				if (revengeLocation.clearing==null) {
+					distanceFromTarget = ClearingUtility.getDistanceBetweenTiles(current.tile,revengeLocation.tile);
+				} else {
+					distanceFromTarget = ClearingUtility.calculateClearingCount(current,revengeLocation);
+				}
+			}
 			// Find clearing to move to
 			HashLists<Integer,ClearingDetail> choices = new HashLists<>();
 			for (PathDetail path:current.clearing.getConnectedPaths()) {
 				ClearingDetail other = path.findConnection(current.clearing);
 				int distanceFromHome = ClearingUtility.calculateClearingCount(home,other.getTileLocation()); // is this going to kill performance?
+				if (revengeLocation!=null) {
+					if (revengeLocation.clearing==null) {
+						int newDistanceFromTarget = ClearingUtility.getDistanceBetweenTiles(other.getTileLocation().tile,revengeLocation.tile);
+						if (newDistanceFromTarget>distanceFromTarget) continue;
+					} else {
+						int newDistanceFromTarget = ClearingUtility.calculateClearingCount(other.getTileLocation(),revengeLocation);
+						if (newDistanceFromTarget>distanceFromTarget) continue;
+					}
+				}
 
 				// if clearing has characters in it, make it MORE interesting
 				int interest = calculateIncentive(other.getClearingComponents(),-1,20);
