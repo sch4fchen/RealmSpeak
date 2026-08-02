@@ -324,6 +324,7 @@ public class Constants {
 	public static final String GUILD_BENEFIT = "guild_benefit";
 	public static final String GUILD_BENEFIT_SUCESSOR = "guild_benefit_sucessor";
 	public static final String TRAVELER_MOVED = "traveler_moved";
+	public static final String GENERATED_MONSTER_MOVED = "generated_monster_moved";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";

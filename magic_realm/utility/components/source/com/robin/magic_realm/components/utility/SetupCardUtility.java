@@ -165,7 +165,7 @@ public class SetupCardUtility {
 		// Expansion:  move the generated prowlers
 		for (GameObject prowler:nonCurrentTileProwlers) {
 			MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(prowler);
-			moveGeneratedMonster(monster);
+			moveGeneratedMonster(monster, hostPrefs);
 			if (monster.getCurrentLocation().isInClearing()) {
 				updateMonsterBlock(monster);
 			}
@@ -521,7 +521,10 @@ public class SetupCardUtility {
 		}
 		return count;
 	}
-	private static void moveGeneratedMonster(MonsterChitComponent monster) {
+	private static void moveGeneratedMonster(MonsterChitComponent monster, HostPrefWrapper hostPrefs) {
+		if (monster.getGameObject().hasThisAttribute(Constants.GENERATED_MONSTER_MOVED)) {
+			return;
+		}
 		GameObject generator = monster.getGameObject().getGameData().getGameObject(monster.getGameObject().getThisInt(Constants.GENERATOR_ID));
 		TileLocation home = ClearingUtility.getTileLocation(generator);
 		TileLocation current = monster.getCurrentLocation();
@@ -552,6 +555,9 @@ public class SetupCardUtility {
 			TileLocation tl = new TileLocation(finalTile,true);
 			
 			ClearingUtility.moveToLocation(monster.getGameObject(),tl);
+			if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY)) {
+				monster.getGameObject().setThisAttribute(Constants.GENERATED_MONSTER_MOVED);
+			}
 		}
 		else {
 			// Find clearing to move to
@@ -578,6 +584,10 @@ public class SetupCardUtility {
 			else {
 				TileLocation tl = finalClearing.getTileLocation();
 				ClearingUtility.moveToLocation(monster.getGameObject(),tl);
+				if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY)) {
+					monster.getGameObject().setThisAttribute(Constants.GENERATED_MONSTER_MOVED);
+				}
+				
 				if (monster.getGameObject().hasThisAttribute(Constants.GM_GROW)) {
 					MonsterGrow table = new MonsterGrow(null,null,monster);
 					DieRollBuilder builder = new DieRollBuilder(null,null,0);

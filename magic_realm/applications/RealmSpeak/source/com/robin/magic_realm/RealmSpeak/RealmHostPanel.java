@@ -883,6 +883,7 @@ public class RealmHostPanel extends JPanel {
 				MonsterChitComponent monster = (MonsterChitComponent) rc;
 				monster.setBlocked(false);
 			}
+			go.removeThisAttribute(Constants.GENERATED_MONSTER_MOVED);
 		}
 		for (GameObject go:pool.find(Constants.TRAVELER)) {
 			go.removeThisAttribute(Constants.TRAVELER_MOVED);
