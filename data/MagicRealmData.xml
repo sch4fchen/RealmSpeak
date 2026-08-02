@@ -26250,6 +26250,7 @@
         <attribute susceptibleto="generator_flamed" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="creepers" />
+		<attribute revenge="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="975" name="Tomb">

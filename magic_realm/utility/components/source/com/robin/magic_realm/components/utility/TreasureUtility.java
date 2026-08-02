@@ -305,7 +305,7 @@ public class TreasureUtility {
 								&& !cc.getGameObject().hasThisAttribute(Constants.DESTROYED)
 								&& Constants.GENERATOR_FLAMED.equals(cc.getGameObject().getThisAttribute(Constants.SUSCEPTIBLETO))) {
 
-							TreasureUtility.destroyGenerator(character,cc.getGameObject());
+							TreasureUtility.destroyGenerator(character,cc.getGameObject(),hostPrefs);
 							sb.append(cc.getGameObject().getName());
 						}
 					}
@@ -1507,7 +1507,7 @@ public class TreasureUtility {
 		}
 		return price;
 	}
-	public static void destroyGenerator(CharacterWrapper character,GameObject generator) {
+	public static void destroyGenerator(CharacterWrapper character,GameObject generator,HostPrefWrapper hostPrefs) {
 		// Mark generator destroyed
 		generator.setThisAttribute(Constants.DESTROYED);
 		RealmLogging.logMessage(character.getGameObject().getName(),"Destroyed the "+generator.getName()+"!");
@@ -1520,9 +1520,15 @@ public class TreasureUtility {
 		query.add("!"+Constants.DEAD);
 		ArrayList<GameObject> list = pool.find(query);
 		if (!list.isEmpty()) {
-			RealmLogging.logMessage(character.getGameObject().getName(),list.size()+" generated monster"+(list.size()==1?"":"s")+" leave the realm.");
-			for (GameObject go:list) {
-				RealmUtility.makeDead(RealmComponent.getRealmComponent(go));
+			if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_REVENGE)) {
+				for (GameObject go:list) {
+					go.setThisAttribute(Constants.REVENGE,character.getGameObject().getStringId());
+				}
+			} else {
+				RealmLogging.logMessage(character.getGameObject().getName(),list.size()+" generated monster"+(list.size()==1?"":"s")+" leave the realm.");
+				for (GameObject go:list) {
+					RealmUtility.makeDead(RealmComponent.getRealmComponent(go));
+				}
 			}
 		}
 		

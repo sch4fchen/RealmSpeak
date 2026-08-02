@@ -1,5 +1,4 @@
 Once the hive is destroyed, it no longer generates pods of bees, but all remaining pods on the board move toward the offending character every turn they are active (no longer do other characters move the pods).
-If the character is killed, then the pods return to normal activity
 
 Version 1.2.6.3
 NEW FEATURES:

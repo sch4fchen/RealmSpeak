@@ -7234,6 +7234,17 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		
+		// Clear revenge for generated monsters
+		GamePool pool = new GamePool(getGameData().getGameObjects());
+		String characterId = getGameObject().getStringId();
+		for (GameObject go:pool.find(RealmComponent.MONSTER)) {
+			if (go.hasThisAttribute(Constants.REVENGE)) {
+				if (go.getThisAttribute(Constants.REVENGE).matches(characterId)) {
+					go.removeThisAttribute(Constants.REVENGE);
+				}
+			}
+		}
+		
 		// Remove from clearing
 		ClearingUtility.moveToLocation(getGameObject(),null);
 		

@@ -975,6 +975,7 @@ public class Constants {
 	public static final String HOUSE3_QUEST_HAND_LIMIT_ONE = "QuestHandLimitOne";
 	public static final String HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY = "TravelersMoveOncePerDay";
 	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY = "GeneratedMonstersMoveOncePerDay";
+	public static final String HOUSE3_GENERATED_MONSTERS_REVENGE = "GeneratedMonstersRevenge";
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";
@@ -1065,6 +1066,7 @@ public class Constants {
 	public static final String RANDOM_MERSENNE_TWISTER = "RndMt";
 	public static final String RANDOM_ON_THE_FLY = "RndOnTheFly";
 	public static final String RANDOM_GEN_FOR_SETUP = "RndGenForSetup";
+	public static final String REVENGE = "revenge";
 	
 	// Quests
 	public static final String QST_BOOK_OF_QUESTS = "BookOfQuests";

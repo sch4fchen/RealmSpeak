@@ -516,7 +516,7 @@ public class RealmUtility {
 				// Primary monster was killed, so generator is destroyed
 				if (killerRc.getOwnerId()!=null) killerRc = killerRc.getOwner(); // In case killer is a hireling
 				CharacterWrapper character = killerRc!=null && killerRc.isCharacter()?new CharacterWrapper(killerRc.getGameObject()):null;
-				TreasureUtility.destroyGenerator(character,denizenHolder);
+				TreasureUtility.destroyGenerator(character,denizenHolder,hostPrefs);
 			}
 			
 			// Check to see if there were any hirelings following this guide
