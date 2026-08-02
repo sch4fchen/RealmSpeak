@@ -99,7 +99,7 @@ public class GameObject extends ModifyableObject implements Serializable {
 		// during the loop are harmless - we are not reading the field, only writing it once done.
 		GameObject local = new GameObject();
 		local.id = this.id;
-		local._setName(name); // so that keyval searches with name actually work!!  (raw: detached snapshot)
+		local._setName(name); // so that keyval searches with name actually work!!
 		local._setVersion(version);
 		for (String blockName : attributeBlocks.keySet()) {
 			OrderedHashtable<String,OrderedHashtable> attributes = attributeBlocks.get(blockName);
@@ -1110,9 +1110,6 @@ public class GameObject extends ModifyableObject implements Serializable {
 	}
 
 	public void revertNameToDefault() {
-		// Raw: naming a brand new object is initialization, not a rename.  Going through setName() here
-		// would make every createNewObject() - including the one a client does while APPLYING an
-		// incoming change - emit a carrier change of its own.
 		_setName("GameObject"); // default name
 	}
 
@@ -1336,26 +1333,6 @@ public class GameObject extends ModifyableObject implements Serializable {
 		this.id = newid;
 	}
 
-	/**
-	 * Rename this object.
-	 *
-	 * A rename is the only mutation that is NOT represented by its own GameObjectChange.  Every change
-	 * carries the object's name as it stood when that change was CONSTRUCTED (see
-	 * GameObjectChange's constructor), and the receiving side re-applies it - so historically a rename
-	 * only reached other clients by riding along on whatever unrelated change happened to be built
-	 * next, and the result depended on replay order.
-	 *
-	 * That is fine for an object that is named once at setup and never renamed, which is almost
-	 * everything.  It is NOT fine for objects created at run time and named immediately afterwards -
-	 * e.g. generated monsters, where MonsterCreator.createOrReuseMonster() hands back either a recycled
-	 * corpse (already correctly named, so every change carries the right name) or a brand new object
-	 * still called "GameObject".  In the new-object case the earliest changes carry "GameObject", and a
-	 * replay that stops short of a later change leaves the monster permanently misnamed.
-	 *
-	 * So: emit a carrier change at the moment of the rename.  GameBumpVersionChange does nothing itself,
-	 * but it is constructed AFTER the field is updated, so it captures the new name and the base class
-	 * applies it on the receiving side - making the rename a first-class, correctly ordered event.
-	 */
 	public void setName(String val) {
 		if (val != null && !val.equals(name)) {
 			_setName(val);
