@@ -3,6 +3,8 @@ NEW FEATURES:
 # Optional rule: Travelers can only move once per day
 # Optional rule: Generated monsters can only move once per day
 # Optional rule: Hive's revenge
+# Optional rule: Travelers move at Birdsong once per day
+# Optional rule: Generated monsters move at Birdsong once per day
 BUGS/ISSUES:
 # Close Setup Card and Calendar View when shutting down a game
 # Fix generated monsters never being unblocked at day end

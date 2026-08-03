@@ -164,17 +164,25 @@ public class SetupCardUtility {
 		
 		// Expansion:  move the generated prowlers
 		for (GameObject prowler:nonCurrentTileProwlers) {
-			MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(prowler);
-			moveGeneratedMonster(monster, hostPrefs);
-			if (monster.getCurrentLocation().isInClearing()) {
-				updateMonsterBlock(monster);
+			if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_BIRDSONG)) {
+				prowler.setThisAttribute(Constants.GENERATED_MONSTER_MOVE_AT_BIRDSONG);
+			} else {
+				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(prowler);
+				moveGeneratedMonster(monster, hostPrefs);
+				if (monster.getCurrentLocation().isInClearing()) {
+					updateMonsterBlock(monster);
+				}
 			}
 		}
 		
 		// Expansion:  move the travelers
 		for (GameObject go:travelers) {
-			TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
-			moveTraveler(traveler,hostPrefs);
+			if (hostPrefs.hasPref(Constants.HOUSE3_TRAVELERS_MOVE_AT_BIRDSONG)) {
+				go.setThisAttribute(Constants.TRAVELER_MOVE_AT_BIRDSONG);
+			} else {
+				TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
+				moveTraveler(traveler,hostPrefs);
+			}
 		}
 		
 		// Before anything can be summoned, all prowling monsters on the tile need to be moved to the clearing,
@@ -521,7 +529,7 @@ public class SetupCardUtility {
 		}
 		return count;
 	}
-	private static void moveGeneratedMonster(MonsterChitComponent monster, HostPrefWrapper hostPrefs) {
+	public static void moveGeneratedMonster(MonsterChitComponent monster, HostPrefWrapper hostPrefs) {
 		if (monster.getGameObject().hasThisAttribute(Constants.GENERATED_MONSTER_MOVED)) {
 			return;
 		}
@@ -627,7 +635,7 @@ public class SetupCardUtility {
 			}
 		}
 	}
-	private static void moveTraveler(TravelerChitComponent traveler, HostPrefWrapper hostPrefs) {
+	public static void moveTraveler(TravelerChitComponent traveler, HostPrefWrapper hostPrefs) {
 		if (traveler.getGameObject().hasThisAttribute(Constants.TRAVELER_MOVED)) {
 			return;
 		}
