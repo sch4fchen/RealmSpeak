@@ -18,9 +18,13 @@ public class Prowl2Event implements IEvent {
 		if (mrGameObjects == null || mrGameObjects.isEmpty()) return;
 		GameWrapper game = new GameWrapper(mrGameObjects.get(0));
 		DieRoller nativeDie = game.getNativeDie();
-		nativeDie.addRedDie();
-		game.setNativeDie(nativeDie);
-		RealmLogging.logMessage("Event","Prowl II: An additional row of natives is prowling this day.");
+		if (nativeDie!=null) {
+			nativeDie.addRedDie();
+			game.setNativeDie(nativeDie);
+			RealmLogging.logMessage("Event","Prowl II: An additional row of natives is prowling this day.");
+			return;
+		}
+		RealmLogging.logMessage("Event","Prowl II: No row of natives, cannot prowl additionally.");
 	}
 	public void applySunset(GameData data) {
 	}

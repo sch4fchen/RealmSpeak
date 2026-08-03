@@ -21,9 +21,11 @@ public class RegenerateEvent implements IEvent {
 			SetupCardUtility.resetDenizens(data, monsterDieRoller.getValue(1), hostPrefs.hasPref(Constants.SR_HORSES_REGENERATION));
 		}
 		DieRoller nativeDieRoller = game.getNativeDie();
-		SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(0));
-		if (nativeDieRoller.getNumberOfDice()>1) {
-			SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(1));
+		if (nativeDieRoller!=null) {
+			SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(0));
+			if (nativeDieRoller.getNumberOfDice()>1) {
+				SetupCardUtility.resetNatives(data, nativeDieRoller.getValue(1));
+			}
 		}
 		RealmLogging.logMessage("Event","Regenerate: All prowling denizens regenerated.");
 	}

@@ -8,6 +8,7 @@ NEW FEATURES:
 BUGS/ISSUES:
 # Close Setup Card and Calendar View when shutting down a game
 # Fix generated monsters never being unblocked at day end
+# Fix SR Events with Expansion 1
 
 Version 1.2.6.2
 BUGS/ISSUES:

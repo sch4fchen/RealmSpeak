@@ -21,9 +21,13 @@ public class Prowl3Event implements IEvent {
 		monsterDie.addRedDie();
 		game.setMonsterDie(monsterDie);
 		DieRoller nativeDie = game.getNativeDie();
-		nativeDie.addRedDie();
-		game.setNativeDie(nativeDie);
-		RealmLogging.logMessage("Event","Prowl III: An additional row of monsters and natives are prowling this day.");
+		if (nativeDie!=null) {
+			nativeDie.addRedDie();
+			game.setNativeDie(nativeDie);
+			RealmLogging.logMessage("Event","Prowl III: An additional row of monsters and natives are prowling this day.");
+			return;
+		}
+		RealmLogging.logMessage("Event","Prowl III: An additional row of monsters is prowling this day.");
 	}
 	public void applySunset(GameData data) {
 	}

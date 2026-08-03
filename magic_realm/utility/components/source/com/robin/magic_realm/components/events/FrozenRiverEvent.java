@@ -55,7 +55,10 @@ public class FrozenRiverEvent implements IEvent {
 				text = text + tile.getNameWithNumber() + ", ";
 			}
 		}
-		text = "All water clearings in "+text.substring(0,text.length()-2) + " are frozen until the end of the week.";
+		if (text.length()<=2) {
+			return "Water clearings would be frozen until the end of the week, but there are none.";
+		}
+		text = "All water clearings in " + text.substring(0,text.length()-2) + " are frozen until the end of the week.";
 		return text;
 	}
 }

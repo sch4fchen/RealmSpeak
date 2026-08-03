@@ -25,8 +25,10 @@ public class HorseWhisperEvent implements IEvent {
 	public void expire(GameData data) {
 		GameObject config = RealmEvents.findEventsConfig(data);
 		ArrayList<String> ids = RealmEvents.getTileIdsForEffect(config,Constants.EVENT_HORSE_WHISPER);
+		ArrayList<String> idsToRemove = new ArrayList<>();
 		if (ids!=null && !ids.isEmpty()) {
-			for (String id : ids) {
+			idsToRemove.addAll(ids);
+			for (String id : idsToRemove) {
 				GameObject tile = data.getGameObject(Long.valueOf(id));
 				tile.removeThisAttribute(Constants.EVENT_HORSE_WHISPER);
 				RealmEvents.removeEffectForTile(config,Constants.EVENT_HORSE_WHISPER,id);
