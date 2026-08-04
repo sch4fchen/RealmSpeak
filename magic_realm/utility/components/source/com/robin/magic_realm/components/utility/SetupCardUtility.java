@@ -164,8 +164,8 @@ public class SetupCardUtility {
 		
 		// Expansion:  move the generated prowlers
 		for (GameObject prowler:nonCurrentTileProwlers) {
-			if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_BIRDSONG)) {
-				prowler.setThisAttribute(Constants.GENERATED_MONSTER_MOVE_AT_BIRDSONG);
+			if (hostPrefs.hasPref(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING)) {
+				prowler.setThisAttribute(Constants.GENERATED_MONSTER_MOVE_AT_EVENING);
 			} else {
 				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(prowler);
 				moveGeneratedMonster(monster, hostPrefs);
@@ -177,8 +177,8 @@ public class SetupCardUtility {
 		
 		// Expansion:  move the travelers
 		for (GameObject go:travelers) {
-			if (hostPrefs.hasPref(Constants.HOUSE3_TRAVELERS_MOVE_AT_BIRDSONG)) {
-				go.setThisAttribute(Constants.TRAVELER_MOVE_AT_BIRDSONG);
+			if (hostPrefs.hasPref(Constants.HOUSE3_TRAVELERS_MOVE_AT_EVENING)) {
+				go.setThisAttribute(Constants.TRAVELER_MOVE_AT_EVENING);
 			} else {
 				TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
 				moveTraveler(traveler,hostPrefs);

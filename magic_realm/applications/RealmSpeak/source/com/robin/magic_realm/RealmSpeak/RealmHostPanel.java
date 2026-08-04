@@ -390,34 +390,6 @@ public class RealmHostPanel extends JPanel {
 				go.removeThisAttribute(Constants.LAND_FIRST);
 			}
 		}
-	
-		GamePool pool = new GamePool(host.getGameData().getGameObjects());
-		// Expansion:  move the generated prowlers
-		ArrayList<String> generatedQuery = new ArrayList<>();
-		generatedQuery.add(Constants.GENERATED);
-		generatedQuery.add(Constants.GENERATED_MONSTER_MOVE_AT_BIRDSONG);
-		for (GameObject go:pool.find(generatedQuery)) {
-			if (!go.hasThisAttribute(Constants.DEAD)) {
-				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(go);
-				SetupCardUtility.moveGeneratedMonster(monster, hostPrefs);
-				if (monster.getCurrentLocation().isInClearing()) {
-					SetupCardUtility.updateMonsterBlock(monster);
-				}
-			}
-			go.removeThisAttribute(Constants.GENERATED_MONSTER_MOVE_AT_BIRDSONG);
-		}
-		// Expansion:  move the travelers
-		ArrayList<String> travelerQuery = new ArrayList<>();
-		travelerQuery.add(RealmComponent.TRAVELER);
-		travelerQuery.add(Constants.SPAWNED);
-		travelerQuery.add(Constants.TRAVELER_MOVE_AT_BIRDSONG);
-		for (GameObject go:pool.find(travelerQuery)) {
-			if (!go.hasThisAttribute(Constants.DEAD) && !go.hasThisAttribute(RealmComponent.OWNER_ID)) {
-				TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
-				SetupCardUtility.moveTraveler(traveler,hostPrefs);
-			}
-			go.removeThisAttribute(Constants.TRAVELER_MOVE_AT_BIRDSONG);
-		}
 		
 		for (GameObject characterGo : livingCharacters) {
 			CharacterWrapper character = new CharacterWrapper(characterGo);
@@ -828,6 +800,35 @@ public class RealmHostPanel extends JPanel {
 	}
 	private void updateGameStateResolving() {
 		logger.fine("EVENING");
+		
+		GamePool pool = new GamePool(host.getGameData().getGameObjects());
+		// Expansion:  move the generated prowlers
+		ArrayList<String> generatedQuery = new ArrayList<>();
+		generatedQuery.add(Constants.GENERATED);
+		generatedQuery.add(Constants.GENERATED_MONSTER_MOVE_AT_EVENING);
+		for (GameObject go:pool.find(generatedQuery)) {
+			if (!go.hasThisAttribute(Constants.DEAD)) {
+				MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(go);
+				SetupCardUtility.moveGeneratedMonster(monster, hostPrefs);
+				if (monster.getCurrentLocation().isInClearing()) {
+					SetupCardUtility.updateMonsterBlock(monster);
+				}
+			}
+			go.removeThisAttribute(Constants.GENERATED_MONSTER_MOVE_AT_EVENING);
+		}
+		// Expansion:  move the travelers
+		ArrayList<String> travelerQuery = new ArrayList<>();
+		travelerQuery.add(RealmComponent.TRAVELER);
+		travelerQuery.add(Constants.SPAWNED);
+		travelerQuery.add(Constants.TRAVELER_MOVE_AT_EVENING);
+		for (GameObject go:pool.find(travelerQuery)) {
+			if (!go.hasThisAttribute(Constants.DEAD) && !go.hasThisAttribute(RealmComponent.OWNER_ID)) {
+				TravelerChitComponent traveler = (TravelerChitComponent)RealmComponent.getRealmComponent(go);
+				SetupCardUtility.moveTraveler(traveler,hostPrefs);
+			}
+			go.removeThisAttribute(Constants.TRAVELER_MOVE_AT_EVENING);
+		}
+		
 		autoSaveNow();
 		ArrayList<GameObject> activeCharacters = getLivingCharacters();
 		for (GameObject go:activeCharacters) {

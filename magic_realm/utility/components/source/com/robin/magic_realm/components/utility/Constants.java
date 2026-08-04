@@ -325,8 +325,8 @@ public class Constants {
 	public static final String GUILD_BENEFIT_SUCESSOR = "guild_benefit_sucessor";
 	public static final String TRAVELER_MOVED = "traveler_moved";
 	public static final String GENERATED_MONSTER_MOVED = "generated_monster_moved";
-	public static final String TRAVELER_MOVE_AT_BIRDSONG = "traveler_move_at_birdsong";
-	public static final String GENERATED_MONSTER_MOVE_AT_BIRDSONG = "generated_monster_move_at_birdsong";
+	public static final String TRAVELER_MOVE_AT_EVENING = "traveler_move_at_evening";
+	public static final String GENERATED_MONSTER_MOVE_AT_EVENING = "generated_monster_move_at_evening";
 	
 	// Spoils of War needed action
 	public static final String SPOILS_ = "spoils_";
@@ -978,8 +978,8 @@ public class Constants {
 	public static final String HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY = "TravelersMoveOncePerDay";
 	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY = "GeneratedMonstersMoveOncePerDay";
 	public static final String HOUSE3_GENERATED_MONSTERS_REVENGE = "GeneratedMonstersRevenge";
-	public static final String HOUSE3_TRAVELERS_MOVE_AT_BIRDSONG = "TravelersMoveAtBirdsong";
-	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_AT_BIRDSONG = "GeneratedMonstersMoveAtBirdsong";
+	public static final String HOUSE3_TRAVELERS_MOVE_AT_EVENING = "TravelersMoveAtEvening";
+	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING = "GeneratedMonstersMoveAtEvening";
 	
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";

@@ -1250,8 +1250,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_CHARACTERLIST_SORTING_BY_PLAY_ORDER, "SORT CHARACTER LISTY BY PLAY ORDER - Sort the character list by the play order. This reveals some information.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY, "TRAVELERS MOVE ONCE PER DAY - Travelers can only move once per day.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY, "GENERATED MONSTERS MOVE ONCE PER DAY - Generated monsters can only move once per day.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_AT_BIRDSONG, "TRAVELERS MOVE ONCE PER DAY - Travelers move only once at Birdsong.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_BIRDSONG, "GENERATED MONSTERS MOVE AT BIRDSONG - Generated monsters move only once at Birdsong.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_AT_EVENING, "TRAVELERS MOVE AT EVENING - Travelers move only once at Evening.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING, "GENERATED MONSTERS MOVE AT EVENING - Generated monsters move only once at Evening.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_REVENGE, "HIVE'S REVENGE - Once the Hive is destroyed, all remaining pods on the board move toward the offending character every turn they are active (Expansion 1).",false));
 		
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
