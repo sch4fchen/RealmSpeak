@@ -94,7 +94,6 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_TYPE, "Chit type", FieldType.StringSelector, ChitType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_NAME, "Chit name", FieldType.Regex, null, null));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.MARK_REQUIRED, "Chit requires a mark", FieldType.Boolean));
-				
 				break;
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic.", FieldType.StringSelector, Constants.MAGIC_COLORS));
@@ -135,6 +134,12 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Discovery:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscovery.DISCOVERY_KEY, "Discovery", FieldType.StringSelector, getDiscoveryStrings().toArray()));
+				break;
+			case DiscoveryPathsPassagesOfLocation:
+				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.PATHS, "Paths", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.PASSAGES, "Paths", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.TILE_SIDES, "Tile sides", FieldType.StringSelector, QuestRequirementDiscoveryPathsPassagesOfLocation.TileSides.values()));
 				break;
 			case Enchant:
 				list.add(new QuestPropertyBlock(QuestRequirementEnchant.TYPE, "Target", FieldType.StringSelector, new String[] { "chit", RealmComponent.TILE} ));

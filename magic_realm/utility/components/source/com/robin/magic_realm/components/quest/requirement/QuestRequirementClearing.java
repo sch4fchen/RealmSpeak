@@ -13,7 +13,6 @@ import com.robin.magic_realm.components.quest.ChitType;
 import com.robin.magic_realm.components.quest.LocationClearingType;
 import com.robin.magic_realm.components.quest.LocationTileSideType;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementClearing extends QuestRequirement {

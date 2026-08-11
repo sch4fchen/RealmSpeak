@@ -5,6 +5,8 @@ NEW FEATURES:
 # Optional rule: Hive's revenge
 # Optional rule: Travelers move at Evening once per day
 # Optional rule: Generated monsters move at Evening once per day
+QUEST UPDATE:
+# QuestRequirementDiscoveryPathsPassagesOfLocation
 BUGS/ISSUES:
 # Close Setup Card and Calendar View when shutting down a game
 # Fix generated monsters never being unblocked at day end

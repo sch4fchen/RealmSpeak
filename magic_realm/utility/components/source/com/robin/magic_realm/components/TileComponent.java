@@ -1178,9 +1178,13 @@ public class TileComponent extends ChitComponent {
 		return getHiddenPaths(false);
 	}
 	public ArrayList<PathDetail> getHiddenPaths(boolean currentSideOnly) {
+		return getHiddenPaths(currentSideOnly,false);
+	}
+	public ArrayList<PathDetail> getHiddenPaths(boolean currentSideOnly, boolean otherSideOnly) {
 		ArrayList<PathDetail> list = new ArrayList<PathDetail>();
 		for (int side = 0; side < 2; side++) {
 			if (currentSideOnly && side!=getFacingIndex()) continue;
+			if (otherSideOnly && side==getFacingIndex()) continue;
 			for (PathDetail path : paths[side]) {
 				if (path.isHidden()) {
 					list.add(path);
@@ -1194,9 +1198,13 @@ public class TileComponent extends ChitComponent {
 		return getSecretPassages(false);
 	}
 	public ArrayList<PathDetail> getSecretPassages(boolean currentSideOnly) {
+		return getSecretPassages(currentSideOnly,false);
+	}
+	public ArrayList<PathDetail> getSecretPassages(boolean currentSideOnly,boolean otherSideOnly) {
 		ArrayList<PathDetail> list = new ArrayList<PathDetail>();
 		for (int side = 0; side < 2; side++) {
 			if (currentSideOnly && side!=getFacingIndex()) continue;
+			if (otherSideOnly && side==getFacingIndex()) continue;
 			for (PathDetail path : paths[side]) {
 				if (path.isSecret()) {
 					list.add(path);

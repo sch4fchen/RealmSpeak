@@ -32,6 +32,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Curse,
 		Denizens,
 		Discovery, // must have a specific discovery
+		DiscoveryPathsPassagesOfLocation,
 		Enchant,
 		Fighter,
 		Fly,
@@ -103,6 +104,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific denizens in characters tile or clearing.";
 				case Discovery:
 					return "Tests for a specific recorded discovery.";
+				case DiscoveryPathsPassagesOfLocation:
+					return "Tests for recorded paths and passages discoveries of a specific quest location.";
 				case Enchant:
 					return "Tests for enchant action.";
 				case Fighter:
@@ -311,6 +314,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Discovery:
 				requirement = new QuestRequirementDiscovery(go);
+				break;
+			case DiscoveryPathsPassagesOfLocation:
+				requirement = new QuestRequirementDiscoveryPathsPassagesOfLocation(go);
 				break;
 			case Enchant:
 				requirement = new QuestRequirementEnchant(go);
