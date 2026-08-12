@@ -209,9 +209,10 @@ public class QuestStepPanel extends JPanel {
 			public void add() {
 				ButtonOptionDialog dialog = new ButtonOptionDialog(parent, null, "Choose a requirement type:", "New Requirement", true,4);
 				for (RequirementType rt : RequirementType.values()) {
-					boolean enabled = (rt!=RequirementType.OccupyLocation && rt!=RequirementType.LocationExists && rt!=RequirementType.Counter)
+					boolean enabled = (rt!=RequirementType.OccupyLocation && rt!=RequirementType.LocationExists && rt!=RequirementType.DiscoveryPathsPassagesOfLocation && rt!=RequirementType.Counter)
 							|| (rt==RequirementType.OccupyLocation && quest.getLocations().size()>0)
 							|| (rt==RequirementType.LocationExists && quest.getLocations().size()>0)
+							|| (rt==RequirementType.DiscoveryPathsPassagesOfLocation && quest.getLocations().size()>0)
 							|| (rt==RequirementType.Counter && quest.getCounters().size()>0);
 					dialog.addSelectionObject(rt,enabled,rt.getDescription());
 				}

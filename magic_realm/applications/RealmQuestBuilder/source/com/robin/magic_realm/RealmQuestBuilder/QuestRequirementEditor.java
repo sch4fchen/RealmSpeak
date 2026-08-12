@@ -138,7 +138,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case DiscoveryPathsPassagesOfLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.PATHS, "Paths", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.PASSAGES, "Paths", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.PASSAGES, "Passages", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDiscoveryPathsPassagesOfLocation.TILE_SIDES, "Tile sides", FieldType.StringSelector, QuestRequirementDiscoveryPathsPassagesOfLocation.TileSides.values()));
 				break;
 			case Enchant:

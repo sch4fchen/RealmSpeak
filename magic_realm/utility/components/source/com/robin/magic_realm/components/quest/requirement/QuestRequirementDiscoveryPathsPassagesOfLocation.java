@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.attribute.TileLocation;
-import com.robin.magic_realm.components.quest.LocationTileSideType;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -51,7 +50,7 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 				}
 					
 				for (PathDetail path : tileLoc.tile.getHiddenPaths()) {
-					if (character.hasHiddenPathDiscovery(path.getFullPathKey())) return false;
+					if (!character.hasHiddenPathDiscovery(path.getFullPathKey())) return false;
 				}
 			}
 			if (passages()) {
@@ -69,7 +68,7 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 						passages.addAll(tileLoc.tile.getSecretPassages(false,true));
 					}
 				} else {
-					passages.addAll(tileLoc.tile.getHiddenPaths());
+					passages.addAll(tileLoc.tile.getSecretPassages());
 				}
 				
 				for (PathDetail passage : passages) {
@@ -77,7 +76,7 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 				}
 			}
 		}
-		return false;		
+		return true;		
 	}
 	
 	protected String buildDescription() {
