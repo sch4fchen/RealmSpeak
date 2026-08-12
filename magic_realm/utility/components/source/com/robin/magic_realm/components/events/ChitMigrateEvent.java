@@ -37,7 +37,7 @@ public class ChitMigrateEvent implements IEvent {
 			return;
 		}
 		GameObject tile = chosenChit.getHeldBy();
-		if (tile.hasThisAttribute(RealmComponent.TILE)) {
+		if (tile.hasThisAttribute(RealmComponent.TILE) && tile.getAttribute("mapGrid","mapPosition")!=null) {
 			ArrayList<GameObject> adjacentTiles = RealmEvents.getAllAdjacentTiles(tile,data);
 			Collections.shuffle(adjacentTiles);
 			Collections.shuffle(adjacentTiles);
