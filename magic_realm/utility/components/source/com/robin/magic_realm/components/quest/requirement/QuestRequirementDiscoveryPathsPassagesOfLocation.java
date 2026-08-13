@@ -49,7 +49,7 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 					paths.addAll(tileLoc.tile.getHiddenPaths());
 				}
 					
-				for (PathDetail path : tileLoc.tile.getHiddenPaths()) {
+				for (PathDetail path : paths) {
 					if (!character.hasHiddenPathDiscovery(path.getFullPathKey())) return false;
 				}
 			}

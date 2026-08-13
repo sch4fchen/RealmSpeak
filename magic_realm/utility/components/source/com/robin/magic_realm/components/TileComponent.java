@@ -1175,7 +1175,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public ArrayList<PathDetail> getHiddenPaths() {
-		return getHiddenPaths(false);
+		return getHiddenPaths(false,false);
 	}
 	public ArrayList<PathDetail> getHiddenPaths(boolean currentSideOnly) {
 		return getHiddenPaths(currentSideOnly,false);
@@ -1195,7 +1195,7 @@ public class TileComponent extends ChitComponent {
 	}
 
 	public ArrayList<PathDetail> getSecretPassages() {
-		return getSecretPassages(false);
+		return getSecretPassages(false,false);
 	}
 	public ArrayList<PathDetail> getSecretPassages(boolean currentSideOnly) {
 		return getSecretPassages(currentSideOnly,false);
