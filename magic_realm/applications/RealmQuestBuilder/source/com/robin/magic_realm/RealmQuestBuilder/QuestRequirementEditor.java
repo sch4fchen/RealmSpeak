@@ -127,6 +127,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.REQ_MARK, "Requires a mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.NATIVES_ONLY, "Only Natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MONSTERS_ONLY, "Only Monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.GUARDIANS_ONLY, "Only Guardians", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_HIRELINGS, "Ignore hirelings", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_CONTROLLED_DENIZENS, "Ignore controlled denizens", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.IGNORE_COMPANIONS, "Ignore companions", FieldType.Boolean));

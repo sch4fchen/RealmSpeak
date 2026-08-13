@@ -17,6 +17,7 @@ import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -40,6 +41,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	public static final String INCLUDE_WEAPONS = "_include_weapons";
 	public static final String NATIVES_ONLY = "_natives_only";
 	public static final String MONSTERS_ONLY = "_monsters_only";
+	public static final String GUARDIANS_ONLY = "_guardians_only";
 	public static final String REQ_MARK = "_req_mark";
 	public static final String REMOVE_MARKS = "_remove_marks";
 	
@@ -59,6 +61,7 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 				RealmComponent denizenRc = RealmComponent.getRealmComponent(denizen);
 				if (nativesOnly() && !denizenRc.isNative()) continue;
 				if (monstersOnly() && !denizenRc.isMonster()) continue;
+				if (guardiansOnly() && !RealmUtility.denizenIsGuardian(denizenRc,character.getGameData())) continue;
 				if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen, questId)) {
 					continue;
 				}
@@ -264,6 +267,9 @@ public class QuestRewardRegenerateDenizen extends QuestReward {
 	}
 	private Boolean monstersOnly() {
 		return getBoolean(MONSTERS_ONLY);
+	}
+	private Boolean guardiansOnly() {
+		return getBoolean(GUARDIANS_ONLY);
 	}
 	
 	public RewardType getRewardType() {

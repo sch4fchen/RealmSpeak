@@ -240,6 +240,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.NATIVES_ONLY, "Only natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.GUARDIANS_ONLY, "Only guardians", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_MARK, "Remove mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.REMOVE_UNCONTROLLED_HIRELINGS, "Unhire uncontrolled marked denizen", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.IGNORE_HIRELINGS, "Ignore hirelings", FieldType.Boolean));
@@ -339,6 +340,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.REMOVE_MARKS, "Remove marks?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.NATIVES_ONLY, "Only natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.MONSTERS_ONLY, "Only monsters", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardRegenerateDenizen.GUARDIANS_ONLY, "Only guardians", FieldType.Boolean));
 				break;	
 			case RelationshipChange:
 				list.add(new QuestPropertyBlock(QuestRewardRelationshipSet.NATIVE_GROUP, "Native group", FieldType.StringSelector, getRelationshipNames()));

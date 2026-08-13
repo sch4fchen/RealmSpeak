@@ -7,6 +7,7 @@ NEW FEATURES:
 # Optional rule: Generated monsters move at Evening once per day
 QUEST UPDATE:
 # QuestRequirementDiscoveryPathsPassagesOfLocation
+# new option for requirement Denizens and rewards MarkDenizen and RegenerateDenizen: Check for guardians only
 BUGS/ISSUES:
 # Close Setup Card and Calendar View when shutting down a game
 # Fix generated monsters never being unblocked at day end

@@ -19,6 +19,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementDenizens extends QuestRequirement {
@@ -41,6 +42,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	public static final String REQ_MARK = "_requires_mark";
 	public static final String NATIVES_ONLY = "_natives_only";
 	public static final String MONSTERS_ONLY = "_monsters_only";
+	public static final String GUARDIANS_ONLY = "_guardians_only";
 	public static final String IGNORE_HIRELINGS = "_ignore_hirelings";
 	public static final String IGNORE_CONTROLLED_DENIZENS = "_ignore_controlled";
 	public static final String IGNORE_COMPANIONS = "_ignore_companions";
@@ -78,6 +80,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			}
 		}
 		
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent denizen : denizens) {
 			if (ignoreHirelings() && denizen.isHireling()) continue;
@@ -86,6 +89,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			if (ignoreSummoned() && denizen.isSummoned()) continue;
 			if (nativesOnly() && !denizen.isNative()) continue;
 			if (monstersOnly() && !denizen.isMonster()) continue;
+			if (guardiansOnly() && !RealmUtility.denizenIsGuardian(denizen,character.getGameData())) continue;
 			if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen.getGameObject(),questId)) continue;
 			if (getRegExFilter().isEmpty() || pattern.matcher(denizen.getGameObject().getName()).find()) {
 				if (checkStats()) {
@@ -263,6 +267,9 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	}
 	private Boolean monstersOnly() {
 		return getBoolean(MONSTERS_ONLY);
+	}
+	private Boolean guardiansOnly() {
+		return getBoolean(GUARDIANS_ONLY);
 	}
 	private Boolean ignoreHirelings() {
 		return getBoolean(IGNORE_HIRELINGS);

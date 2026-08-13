@@ -19,7 +19,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
-import com.robin.magic_realm.components.utility.Constants;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardMarkDenizen extends QuestReward {
@@ -41,6 +41,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	public static final String INCLUDE_WEAPONS = "_include_weapons";
 	public static final String NATIVES_ONLY = "_natives_only";
 	public static final String MONSTERS_ONLY = "_monsters_only";
+	public static final String GUARDIANS_ONLY = "_guardians_only";
 	public static final String REMOVE_MARK = "_remove_mark";
 	public static final String REMOVE_UNCONTROLLED_HIRELINGS = "_remove_uncontrolled_hirelings";
 	public static final String IGNORE_HIRELINGS = "_ignore_hirelings";
@@ -85,6 +86,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 			if (ignoreSummoned() && rc.isSummoned()) continue;
 			if (nativesOnly() && !rc.isNative()) continue;
 			if (monstersOnly() && !rc.isMonster()) continue;
+			if (guardiansOnly() && !RealmUtility.denizenIsGuardian(rc,character.getGameData())) continue;
 			if (pattern==null || pattern.matcher(rc.getGameObject().getName()).find()) {
 				if (checkStats()) {
 					Strength vul = new Strength();
@@ -278,6 +280,9 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	}
 	private Boolean monstersOnly() {
 		return getBoolean(MONSTERS_ONLY);
+	}
+	private Boolean guardiansOnly() {
+		return getBoolean(GUARDIANS_ONLY);
 	}
 	private Boolean removeMark() {
 		return getBoolean(REMOVE_MARK);

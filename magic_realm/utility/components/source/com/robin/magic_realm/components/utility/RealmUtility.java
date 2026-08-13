@@ -1419,4 +1419,19 @@ public class RealmUtility {
 		}
 		return active;
 	}
+	public static boolean denizenIsGuardian(RealmComponent denizen, GameData data) {
+		boolean treasureLocationFound = false;
+		String setupStart = denizen.getGameObject().getThisAttribute("setup_start");
+		if (setupStart!=null) {
+			GamePool pool = new GamePool(data.getGameObjects());
+			ArrayList<GameObject> setupStarts = pool.find("name="+setupStart);
+			for (GameObject go : setupStarts) {
+				if (go.hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
+					treasureLocationFound = true;
+					break;
+				}
+			}
+		}
+		return treasureLocationFound;
+	}
 }
