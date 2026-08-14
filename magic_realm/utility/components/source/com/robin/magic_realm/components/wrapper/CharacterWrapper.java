@@ -5381,7 +5381,9 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canLoot(RealmComponent rc) {
 		if (this.affectedByKey(Constants.TREASURE_LOCATION_FEAR) && rc.getGameObject().hasThisAttribute(RealmComponent.TREASURE_LOCATION)) {
 			ArrayList<String> fears = new ArrayList<>();
-			fears.addAll(this.getGameObject().getThisAttributeList(Constants.TREASURE_LOCATION_FEAR));
+			if (this.getGameObject().hasThisAttribute(Constants.TREASURE_LOCATION_FEAR)) {
+				fears.addAll(this.getGameObject().getThisAttributeList(Constants.TREASURE_LOCATION_FEAR));
+			}
 			fears.addAll(this.getActiveInventoryValuesForThisKey(Constants.TREASURE_LOCATION_FEAR,","));
 			
 			String name = rc.getGameObject().getThisAttribute(RealmComponent.TREASURE_LOCATION);
