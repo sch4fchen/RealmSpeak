@@ -1036,10 +1036,15 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				// Now what?
 				JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You have died of weather fatigue.", "Dead", JOptionPane.INFORMATION_MESSAGE);
 				character.makeDead("Died by weather fatigue");
-				// I doubt this is enough...
 			}
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterFrames();
+			// updateCharacterFrames() skips frames whose character is no longer isActive(), so a
+			// character that just died is never refreshed again - its "Fatigue to Continue" button
+			// keeps whatever state it last had.  Only updateCharacterList() removes the frame, and
+			// without this call that does not happen until some later server-driven change reaches
+			// updateGameHandler(), leaving a frozen window behind in the meantime.
+			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 		}
 	}
 	protected void checkDenizenControlToContinue() {
@@ -1070,10 +1075,12 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 				// Now what?
 				JOptionPane.showMessageDialog(gameHandler.getMainFrame(), "You have died of your wounds.", "Dead", JOptionPane.INFORMATION_MESSAGE);
 				character.makeDead("Died of wounds.");
-				// I doubt this is enough...
 			}
 			gameHandler.submitChanges();
 			gameHandler.updateCharacterFrames();
+			// See fatigueToContinue():  the dying character's frame is skipped by
+			// updateCharacterFrames() and only updateCharacterList() will remove it.
+			gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
 		}
 	}
 	
