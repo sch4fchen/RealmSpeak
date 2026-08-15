@@ -2839,7 +2839,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		if (id==ActionId.Offroad) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-			if (location.isBetweenClearings() && hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL_NO_ROADWAYS)) {
+			if (location!=null && location.isBetweenClearings() && hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL_NO_ROADWAYS)) {
 				return false;
 			}
 			return hostPrefs.hasPref(Constants.EXP_OFFROAD_TRAVEL);
