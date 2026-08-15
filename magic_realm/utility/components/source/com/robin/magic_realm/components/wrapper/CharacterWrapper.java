@@ -528,15 +528,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getCombatCount() {
 		return getInt(COMBAT_COUNT);
 	}
-	/**
-	 * A character is recording only while it is still in the game.  Nothing clears DO_RECORD when a
-	 * character leaves - makeDead() and makeGone() both null the location without touching the flag,
-	 * and only doFinish() and the minion path in RealmHostPanel ever call setDoRecord(false) - so the
-	 * flag stays set on a character that died partway through its own turn.  Filtering here rather
-	 * than at each call site keeps every consumer consistent and covers any future removal path;
-	 * otherwise showNextRecordFrame() brings a dead character's action panel to the front whenever
-	 * anyone else finishes their turn.
-	 */
 	public boolean isDoRecord() {
 		if (getBoolean(DO_RECORD)) {
 			return isActive() && canPlay();
