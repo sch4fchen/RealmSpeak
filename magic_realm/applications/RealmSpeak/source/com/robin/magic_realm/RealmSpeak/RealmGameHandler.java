@@ -1750,6 +1750,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 					// equipment
 					character.calculateStartingWorth();
 					
+					if (hostPrefs.hasPref(Constants.GUILDS_DISCOVERED)) {
+						for (GameObject guild : pool.find(RealmComponent.GUILD)) {
+							character.addOtherChitDiscovery(guild.getName());
+						}
+					}
+					
 					if (hostPrefs.hasPref(Constants.QST_QUEST_CARDS) || hostPrefs.hasPref(Constants.QST_SR_QUESTS)) {
 						QuestDeck deck = QuestDeck.findDeck(client.getGameData());
 						deck.setupAllPlayCards(getMainFrame(),character);

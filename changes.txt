@@ -1,4 +1,6 @@
 Version 1.2.6.4
+NEW FEATURES:
+# Optional rules: Face up and discovered guilds
 
 Version 1.2.6.3
 NEW FEATURES:

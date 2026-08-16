@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 import com.robin.game.objects.GameObject;
 import com.robin.general.graphics.GraphicsUtil;

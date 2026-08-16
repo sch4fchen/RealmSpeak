@@ -7,6 +7,7 @@ import com.robin.game.server.GameHost;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.MRMap.*;
 import com.robin.magic_realm.RealmCharacterBuilder.RealmCharacterBuilderModel;
+import com.robin.magic_realm.components.GuildChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TravelerChitComponent;
 import com.robin.magic_realm.components.quest.*;
@@ -165,6 +166,14 @@ public class RealmSpeakInit {
 		// Match up the gold specials
 		if (!hostPrefs.usesSuperRealm()) {
 			RealmUtility.doMatchGoldSpecials(data);
+		}
+		
+		if (hostPrefs.hasPref(Constants.GUILDS_FACE_UP)) {
+			GamePool pool = new GamePool(data.getGameObjects());
+			for (GameObject guild : pool.find(Constants.GUILD)) {
+				GuildChitComponent guildChit = (GuildChitComponent) RealmComponent.getRealmComponent(guild);
+				guildChit.setFaceUp();
+			}
 		}
 		
 		// Some items require a spell be cast (Flying Carpet)
