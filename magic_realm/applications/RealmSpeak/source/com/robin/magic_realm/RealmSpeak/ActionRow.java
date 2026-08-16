@@ -1590,7 +1590,7 @@ public class ActionRow {
 							key = chooser.generateOption(TRADE_JOIN);
 						}
 						else if (hostPrefs.hasPref(Constants.GUILDS_LEAVING) && (character.getCurrentGuild()!=null || character.hasGuildJoinRequirement())) {
-							if (character.getCurrentGuild(false).matches(rc.getGameObject().getThisAttribute("guild"))) {
+							if (character.getCurrentGuild(false).matches(rc.getGameObject().getThisAttribute(RealmComponent.GUILD))) {
 								key = chooser.generateOption(TRADE_LEAVE);
 							}
 						}
@@ -1658,7 +1658,7 @@ public class ActionRow {
 					}
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_JOIN)) {
-					character.setCurrentGuild(trader.getGameObject().getThisAttribute("guild"));
+					character.setCurrentGuild(trader.getGameObject().getThisAttribute(RealmComponent.GUILD));
 					if (hostPrefs.hasPref(Constants.GUILDS_JOIN_REQUIREMENT) && character.hasGuildJoinRequirement()) {
 						character.setGuildJoinRequirement(true);
 						result = "Accepted the guild join requirement of "+trader.getGameObject().getName();

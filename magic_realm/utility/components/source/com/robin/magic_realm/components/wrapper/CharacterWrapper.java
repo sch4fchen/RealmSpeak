@@ -8207,7 +8207,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     	return null;
     }
     public boolean isGuildMember(RealmComponent rc) {
-    	return rc.isGuild() && rc.getGameObject().getThisAttribute("guild").equals(getCurrentGuild());
+    	return rc.isGuild() && rc.getGameObject().getThisAttribute(Constants.GUILD).equals(getCurrentGuild());
     }
     public boolean isGuildMember(String guildName) {
     	String currentGuild = getCurrentGuild();

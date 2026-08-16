@@ -526,7 +526,7 @@ public class BattleModel {
 		if (guild==null) return;
 		for (CharacterChitComponent rc : getAllParticipatingCharacters()) {
 			CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
-			if (character.isGuildMember(guild.getGameObject().getThisAttribute(Constants.GUILD))) {
+			if (character.isGuildMember(guild.getGameObject().getThisAttribute(RealmComponent.GUILD))) {
 				character.setHidden(true);
 			}
 		}

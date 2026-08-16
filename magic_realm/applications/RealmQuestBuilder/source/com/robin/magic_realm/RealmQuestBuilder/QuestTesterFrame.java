@@ -559,7 +559,7 @@ public class QuestTesterFrame extends JFrame {
 		JButton guild = new JButton("Set");
 		guild.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				ArrayList<GameObject> guildName = chooseOther("Guilds", "guild");
+				ArrayList<GameObject> guildName = chooseOther("Guilds", RealmComponent.GUILD);
 				if (guildName == null)
 					return;
 				if (guildName.size() != 1) {
@@ -1137,7 +1137,7 @@ public class QuestTesterFrame extends JFrame {
 					GameObject go = gameData.createNewObject();
 					TravelerChitComponent traveler = new TravelerChitComponent(go);
 					traveler.assignTravelerTemplate(template);
-					traveler.getGameObject().setThisAttribute(Constants.TRAVELER);
+					traveler.getGameObject().setThisAttribute(RealmComponent.TRAVELER);
 					traveler.getGameObject().setThisAttribute("chit");
 					traveler.getGameObject().setThisAttribute("seen");
 					character.getCurrentLocation().clearing.add(traveler.getGameObject(), null);

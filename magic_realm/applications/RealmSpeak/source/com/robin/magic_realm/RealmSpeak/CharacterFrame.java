@@ -574,7 +574,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	private void chooseQuest() {
 		ArrayList<Quest> quests = new ArrayList<>();
 		if (hostPrefs.isUsingGuildQuests()) {
-			String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute("guild");
+			String guildName = character.getCurrentLocation().clearing.getGuild().getGameObject().getThisAttribute(RealmComponent.GUILD);
 			for (Quest quest : QuestLoader.findAvailableQuests(character,hostPrefs)) {
 				if (quest.getGuild().matches(guildName)) {
 					quests.add(quest);
@@ -1859,7 +1859,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 						GameObject go = character.getGameObject().getGameData().createNewObject();
 						TravelerChitComponent traveler = new TravelerChitComponent(go);
 						traveler.assignTravelerTemplate(thing);
-						traveler.getGameObject().setThisAttribute(Constants.TRAVELER);
+						traveler.getGameObject().setThisAttribute(RealmComponent.TRAVELER);
 						traveler.getGameObject().setThisAttribute("chit");
 						traveler.getGameObject().setThisAttribute("seen");
 						traveler.getGameObject().setThisAttribute("print");

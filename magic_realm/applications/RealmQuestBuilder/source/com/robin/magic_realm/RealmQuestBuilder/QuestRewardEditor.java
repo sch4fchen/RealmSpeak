@@ -533,8 +533,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 		names.add(QuestConstants.CURRENT);
 		names.add(QuestConstants.REMOVE);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
-		for (GameObject go : pool.find(Constants.GUILD)) {
-			names.add(go.getThisAttribute(Constants.GUILD));
+		for (GameObject go : pool.find(RealmComponent.GUILD)) {
+			names.add(go.getThisAttribute(RealmComponent.GUILD));
 		}
 		return names.toArray(new String[0]);
 	}

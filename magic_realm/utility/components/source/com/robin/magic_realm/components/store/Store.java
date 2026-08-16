@@ -60,7 +60,7 @@ public abstract class Store {
 	}
 	public static GuildStore getGuildStore(GuildChitComponent guild,CharacterWrapper character) {
 		GuildStore store = null;
-		String storeName = guild.getGameObject().getThisAttribute("guild");
+		String storeName = guild.getGameObject().getThisAttribute(Constants.GUILD);
 		if (storeName!=null) {
 			if (MAGIC_GUILD.equals(storeName)) {
 				store = new MagicGuild(guild,character);

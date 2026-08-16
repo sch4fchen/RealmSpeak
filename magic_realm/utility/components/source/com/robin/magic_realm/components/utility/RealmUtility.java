@@ -241,7 +241,7 @@ public class RealmUtility {
 			return denizen.getThisAttribute(RealmComponent.NATIVE);
 		}
 		else if (rc.isGuild()) {
-			return StringUtilities.capitalize(denizen.getThisAttribute("guild"))+" Guild";
+			return StringUtilities.capitalize(denizen.getThisAttribute(Constants.GUILD))+" Guild";
 		}
 		return denizen.getThisAttribute(Constants.VISITOR);
 	}

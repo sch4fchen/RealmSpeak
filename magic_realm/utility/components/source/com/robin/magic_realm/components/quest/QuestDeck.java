@@ -151,7 +151,7 @@ public class QuestDeck extends GameObjectWrapper {
 				boolean characterIsAtDwelling = false;
 				TileLocation loc = character.getCurrentLocation();
 				if (loc!=null && loc.hasClearing()) {
-					guildName = loc.clearing.getGuild().getGameObject().getThisAttribute("guild");
+					guildName = loc.clearing.getGuild().getGameObject().getThisAttribute(Constants.GUILD);
 				}
 				
 				if ((hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR))) {

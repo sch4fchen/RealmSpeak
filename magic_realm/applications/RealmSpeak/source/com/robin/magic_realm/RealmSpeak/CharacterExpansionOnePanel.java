@@ -12,6 +12,7 @@ import com.robin.game.objects.GamePool;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MagicRealmColor;
 import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.utility.Constants;
 
 public class CharacterExpansionOnePanel extends CharacterFramePanel {
 	protected ChitDiscoveryModel gateDiscoveryModel;
@@ -39,7 +40,7 @@ public class CharacterExpansionOnePanel extends CharacterFramePanel {
 			leftTop.add(new JScrollPane(gateTable),"Center");
 		left.add(leftTop);
 			JPanel leftBottom = new JPanel(new BorderLayout());
-				ArrayList<GameObject> guilds = pool.find("guild");
+				ArrayList<GameObject> guilds = pool.find(RealmComponent.GUILD);
 				guildDiscoveryModel = new ChitDiscoveryModel("Guild",guilds);
 				guildTable = new JTable(guildDiscoveryModel);
 				guildTable.setDefaultRenderer(String.class,new ChitDiscoveryRenderer(guilds));
