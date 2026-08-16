@@ -12,7 +12,6 @@ import com.robin.game.objects.GamePool;
 import com.robin.general.swing.ComponentTools;
 import com.robin.magic_realm.components.MagicRealmColor;
 import com.robin.magic_realm.components.RealmComponent;
-import com.robin.magic_realm.components.utility.Constants;
 
 public class CharacterExpansionOnePanel extends CharacterFramePanel {
 	protected ChitDiscoveryModel gateDiscoveryModel;
