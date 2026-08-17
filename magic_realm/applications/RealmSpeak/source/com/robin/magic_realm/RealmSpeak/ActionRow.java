@@ -1659,7 +1659,7 @@ public class ActionRow {
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_JOIN)) {
 					character.setCurrentGuild(trader.getGameObject().getThisAttribute(RealmComponent.GUILD));
-					if (hostPrefs.hasPref(Constants.GUILDS_JOIN_REQUIREMENT) && character.hasGuildJoinRequirement()) {
+					if (hostPrefs.hasPref(Constants.GUILDS_JOIN_REQUIREMENT)) {
 						character.setGuildJoinRequirement(true);
 						result = "Accepted the guild join requirement of "+trader.getGameObject().getName();
 					} else {

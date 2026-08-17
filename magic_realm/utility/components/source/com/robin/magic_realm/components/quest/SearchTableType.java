@@ -7,6 +7,8 @@ public enum SearchTableType {
 	MagicSight,
 	Peer,
 	ReadRunes,
+	Stealing,
+	StealReward,
 	ToadstoolCircle,
 	CryptOfTheKnight,
 	EnchantedMeadow,

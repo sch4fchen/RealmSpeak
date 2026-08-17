@@ -1,6 +1,7 @@
 Version 1.2.6.4
 NEW FEATURES:
 # Optional rules: Face up and discovered guilds
+# Optional rule: Only draw guild quests, if already guild member
 QUEST UPDATE:
 # QuestRequirementDiscoveryPathsPassagesOfLocation: Option for checking current tile side
 

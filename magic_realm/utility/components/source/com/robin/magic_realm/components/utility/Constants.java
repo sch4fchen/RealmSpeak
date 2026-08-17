@@ -1033,6 +1033,7 @@ public class Constants {
 	public static final String SR_OPT_REGROUPING = "Regrouping";
 	
 	// Guilds
+	public static final String GUILDS_QUESTS_FOR_MEMBERS_ONLY = "GuildsQuestsForMembersOnly";
 	public static final String GUILDS_JOIN_REQUIREMENT = "GuildsJoinRequirement";
 	public static final String GUILDS_LEAVING = "GuildsLeaving";
 	public static final String GUILDS_HIDEOUT = "GuildsHideout";

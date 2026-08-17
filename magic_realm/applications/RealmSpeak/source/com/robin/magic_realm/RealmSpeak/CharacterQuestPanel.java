@@ -290,8 +290,8 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
 					((hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && characterIsAtDwelling)
-							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR) && characterIsAtDwelling))
-							|| (hostPrefs.isUsingGuildQuests() && characterIsAtGuild)));
+							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) || getCharacter().getCurrentGuild()!=null) && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR) && characterIsAtDwelling))
+							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) || getCharacter().getCurrentGuild()!=null) && characterIsAtGuild)));
 		}
 	}
 
