@@ -20,7 +20,7 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 		All,
 		Unenchanted,
 		Enchanted,
-		;
+		CurrentSide;
 	}
 	
 	public QuestRequirementDiscoveryPathsPassagesOfLocation(GameObject go) {
@@ -45,6 +45,8 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 					} else {
 						paths.addAll(tileLoc.tile.getHiddenPaths(false,true));
 					}
+				} else if (getTileSides()==TileSides.CurrentSide) {
+					paths.addAll(tileLoc.tile.getHiddenPaths(true,false));
 				} else {
 					paths.addAll(tileLoc.tile.getHiddenPaths());
 				}
@@ -67,6 +69,8 @@ public class QuestRequirementDiscoveryPathsPassagesOfLocation extends QuestRequi
 					} else {
 						passages.addAll(tileLoc.tile.getSecretPassages(false,true));
 					}
+				} else if (getTileSides()==TileSides.CurrentSide) {
+					passages.addAll(tileLoc.tile.getSecretPassages(true,false));
 				} else {
 					passages.addAll(tileLoc.tile.getSecretPassages());
 				}
