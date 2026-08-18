@@ -98,9 +98,13 @@ public class QuestDeck extends GameObjectWrapper {
 	}
 	
 	private void reshuffle() {
+		ArrayList<String> cardList = getList(QUEST_CARD_LIST);
 		ArrayList<String> discards = getList(QUEST_DISCARDS);
+		ArrayList<String> allCards = new ArrayList<>();
+		allCards.addAll(cardList);
+		allCards.addAll(discards);
 		if (discards==null || discards.size()==0) return; // if there are no discards, then there are more player quest slots than the deck can handle, and nothing happens.
-		setList(QUEST_CARD_LIST,new ArrayList<>(discards));
+		setList(QUEST_CARD_LIST,new ArrayList<>(allCards));
 		clear(QUEST_DISCARDS);
 		shuffle();
 	}
@@ -151,7 +155,7 @@ public class QuestDeck extends GameObjectWrapper {
 				String guildName = null;
 				boolean characterIsAtDwelling = false;
 				TileLocation loc = character.getCurrentLocation();
-				if (loc!=null && loc.hasClearing()) {
+				if (loc!=null && loc.hasClearing() && loc.clearing.getGuild()!=null) {
 					guildName = loc.clearing.getGuild().getGameObject().getThisAttribute(Constants.GUILD);
 				}
 				
