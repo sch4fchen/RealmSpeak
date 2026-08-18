@@ -286,7 +286,7 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean characterIsAtLocation = loc != null;
 			boolean characterIsAtDwelling = characterIsAtLocation && loc.isAtDwelling(true);
 			boolean characterIsAtGuild = characterIsAtLocation && loc.isAtGuild();
-			boolean characterIsMemberOfGuild = characterIsAtGuild && loc.clearing.getGuild().getGameObject().getThisAttribute(RealmComponent.GUILD).toLowerCase().matches(getCharacter().getCurrentGuild().toLowerCase()); 
+			boolean characterIsMemberOfGuild = characterIsAtGuild && getCharacter().getCurrentGuild()!=null && loc.clearing.getGuild().getGameObject().getThisAttribute(RealmComponent.GUILD).toLowerCase().matches(getCharacter().getCurrentGuild().toLowerCase()); 
 			discardQuestButton.setEnabled(questCanAlwaysBeDiscarded || (canDiscardQuests && !questCannotBeDiscarded && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay() &&
 					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling)
 							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR)) && characterIsAtDwelling && selQuest.getGuild()==null)
