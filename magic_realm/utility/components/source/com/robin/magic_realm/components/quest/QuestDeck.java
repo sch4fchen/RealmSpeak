@@ -21,6 +21,7 @@ public class QuestDeck extends GameObjectWrapper {
 	private static String QUEST_DISCARDS = "_qdisc";
 	private static String QUEST_CARD_TEMPLATE = "_qtemplate";
 	private static String QUEST_UNIQUE_ID_GENERATOR = "_uidg";
+	private boolean cardDiscarded = false;
 	
 	public QuestDeck(GameObject go) {
 		super(go);
@@ -67,6 +68,7 @@ public class QuestDeck extends GameObjectWrapper {
 	public void discardCard(Quest quest) {
 		quest.reset(); // clears out the quest so it can be used again
 		addListItem(QUEST_DISCARDS,quest.getGameObject().getStringId());
+		cardDiscarded = true;
 	}
 
 	public void setupAllPlayCards(JFrame frame,CharacterWrapper character) {
@@ -149,6 +151,7 @@ public class QuestDeck extends GameObjectWrapper {
 			// If this is the last card, then "reshuffle" with discards
 			if (getListCount(QUEST_CARD_LIST)==0) reshuffle();
 			
+			cardDiscarded = false;
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(gameObject.getGameData());
 			if (hostPrefs.isUsingGuildQuests() && gameObject.hasThisAttribute("character")) {
 				CharacterWrapper character = new CharacterWrapper(gameObject);
@@ -207,12 +210,14 @@ public class QuestDeck extends GameObjectWrapper {
 		while(n>0 && getCardCount()>0) {
 			Quest quest = drawCard(character.getGameObject());
 			if (quest==null) {
-				if (reshuffled) {
-					JOptionPane.showMessageDialog(frame,"There are not enough available quests to draw.","Not enough available quests",JOptionPane.INFORMATION_MESSAGE);
-					break;
+				if (!cardDiscarded) {
+					if (reshuffled) {
+						JOptionPane.showMessageDialog(frame,"There are not enough available quests to draw.","Not enough available quests",JOptionPane.INFORMATION_MESSAGE);
+						break;
+					}
+					reshuffle();
+					reshuffled = true;
 				}
-				reshuffle();
-				reshuffled = true;
 				continue;
 			}
 			quest.setState(QuestState.Assigned, character.getCurrentDayKey(), character);
