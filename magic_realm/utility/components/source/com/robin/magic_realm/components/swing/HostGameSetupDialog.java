@@ -1179,7 +1179,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(QUESTS_AND_VP,new GameOption(Constants.HOUSE3_QUEST_HAND_LIMIT_ONE,"QUEST LIMIT ONE - Hand card size limit for quests is always one.",false));
 		
 		newOptionPane.setTabHtmlDescription(GUILDS,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Guilds</font></body></html>");
-		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY,"DISCOVERED GUILDS - Characters can only draw guild quests, if already member of the corresponding guild.",false));
+		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY,"QUESTS FOR MEMBERS ONLY - Characters can only draw guild quests, if already member of the corresponding guild.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_JOIN_REQUIREMENT,"JOIN REQUIREMENT - Characters must fulfill a requirement to join a guild.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_LEAVING,"LEAVING - Characters can leave a guild.",false));
 		newOptionPane.addOption(GUILDS,new GameOption(Constants.GUILDS_HIDEOUT,"HIDEOUT - Characters are safe at guilds, if you are a member (always hidden at the start of a combat).",false));

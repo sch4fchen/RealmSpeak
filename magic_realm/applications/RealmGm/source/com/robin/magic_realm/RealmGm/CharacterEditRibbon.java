@@ -12,6 +12,9 @@ import com.robin.general.swing.*;
 import com.robin.general.util.StringUtilities;
 import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.ChitComponent;
+import com.robin.magic_realm.components.RealmComponent;
+import com.robin.magic_realm.components.attribute.GuildLevelType;
+import com.robin.magic_realm.components.attribute.GuildLevelType.GuildLevel;
 import com.robin.magic_realm.components.swing.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -40,6 +43,7 @@ public class CharacterEditRibbon extends JPanel {
 	private JLabel notorietyAmount;
 	private JLabel fameAmount;
 	private JLabel goldAmount;
+	private JLabel guild;
 	
 	private JToggleButton noColor;
 	private JToggleButton colorWhite;
@@ -122,6 +126,10 @@ public class CharacterEditRibbon extends JPanel {
 		notorietyAmount.setText(character.getNotorietyString());
 		fameAmount.setText(character.getFameString());
 		goldAmount.setText(character.getGoldString());
+		guild.setText(character.getCurrentGuild());
+		if (character.getCurrentGuild()!=null) {
+			guild.setText(character.getCurrentGuild()+" ("+character.getCurrentGuildLevel()+")");
+		}
 		String colorSource = character.getGameObject().getThisAttribute("color_source");
 		noColor.setSelected(colorSource==null);
 		colorWhite.setSelected("white".equals(colorSource));
@@ -221,7 +229,7 @@ public class CharacterEditRibbon extends JPanel {
 	private JComponent buildStatsEditor() {
 		JPanel panel = new JPanel(new BorderLayout());
 		
-		JPanel statsPanel = new JPanel(new GridLayout(5,3));
+		JPanel statsPanel = new JPanel(new GridLayout(6,3));
 		notorietyAmount = addStatAdjusters(statsPanel,"Recorded Notoriety:",new UpDownButton() {
 			public void changeAmount(int value) {
 				character.addNotoriety(value);
@@ -240,6 +248,16 @@ public class CharacterEditRibbon extends JPanel {
 				updatePanel();
 			}
 		});
+		
+		JButton changeGuildButton = new JButton("Change");
+		changeGuildButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				changeGuild();
+				updatePanel();
+			}
+		});
+		guild = addStatAdjusters(statsPanel,"Guild:",changeGuildButton);
+		
 		for (int i=0;i<6;i++) statsPanel.add(Box.createGlue());
 		statsPanel.setBorder(BorderFactory.createTitledBorder("Recorded Stats"));
 		panel.add(statsPanel,BorderLayout.CENTER);
@@ -299,7 +317,7 @@ public class CharacterEditRibbon extends JPanel {
 		
 		return panel;
 	}
-	private static JLabel addStatAdjusters(JPanel panel,String title,UpDownButton adjusters) {
+	private static JLabel addStatAdjusters(JPanel panel,String title,JComponent adjusters) {
 		panel.add(new JLabel(title,SwingConstants.RIGHT));
 		Box line = Box.createHorizontalBox();
 		JLabel label;
@@ -307,7 +325,7 @@ public class CharacterEditRibbon extends JPanel {
 		label.setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLoweredBevelBorder(),
 				BorderFactory.createEmptyBorder(2,2,2,2)));
-		ComponentTools.lockComponentSize(label,50,25);
+		ComponentTools.lockComponentSize(label,70,25);
 		ComponentTools.lockComponentSize(adjusters,80,25);
 		line.add(adjusters);
 		line.add(Box.createHorizontalGlue());
@@ -597,5 +615,39 @@ public class CharacterEditRibbon extends JPanel {
 			});
 			add(bigAdd);
 		}
+	}
+	
+	private void changeGuild() {
+		RealmObjectChooser chooser = new RealmObjectChooser("Choose Guild",character.getGameData(),true,false,true);
+		GamePool pool = new GamePool(character.getGameData().getGameObjects());
+		chooser.addObjectsToChoose(pool.find(RealmComponent.GUILD));
+		chooser.setVisible(true);
+		if (chooser.pressedOkay()) {
+			ArrayList<GameObject> chosenGuilds = chooser.getChosenObjects();
+			if (chosenGuilds==null) {
+				character.clearGuild();
+			}
+			if (chosenGuilds!=null && chosenGuilds.size()==1) {
+				GameObject chosenGuild = chosenGuilds.get(0);
+				GuildLevel level = chooseGuildLevel();
+				if (level==null) return;
+				int guildLevel = GuildLevelType.getIntFor(level);
+				
+				character.setCurrentGuild(chosenGuild.getThisAttribute(RealmComponent.GUILD));
+				character.setCurrentGuildLevel(guildLevel);
+			}
+			if (HostPrefWrapper.findHostPrefs(character.getGameData()).hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+				character.discardNonEligibleGuildQuests();
+			}
+		}
+	}
+	private GuildLevel chooseGuildLevel() {
+		ListChooser chooser = new ListChooser(new JFrame(), "Choose guild level", GuildLevel.values() );
+		chooser.setDoubleClickEnabled(true);
+		chooser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		chooser.setLocationRelativeTo(this);
+		chooser.setVisible(true);
+		GuildLevel selected = (GuildLevel) chooser.getSelectedItem();
+		return selected;
 	}
 }

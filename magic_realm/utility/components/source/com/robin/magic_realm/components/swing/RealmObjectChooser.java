@@ -24,6 +24,7 @@ public class RealmObjectChooser extends JDialog {
 	protected GameData gameData; // for validation purposes
 	protected int minCount = -1;
 	protected int maxCount = -1;
+	protected boolean noSelectionAllowed = false;
 	
 	protected JButton cancelButton;
 	protected JButton okayButton;
@@ -36,10 +37,14 @@ public class RealmObjectChooser extends JDialog {
 		this(title,data,singleSelection,false);
 	}
 	public RealmObjectChooser(String title,GameData data,boolean singleSelection,boolean manualFlipEnabled) {
+		this(title,data,singleSelection,manualFlipEnabled,false);
+	}
+	public RealmObjectChooser(String title,GameData data,boolean singleSelection,boolean manualFlipEnabled,boolean noSelectionAllowed) {
 		setTitle(title);
 		this.gameData = data;
 		initComponents(singleSelection,manualFlipEnabled);
 		setLocationRelativeTo(null);
+		this.noSelectionAllowed = noSelectionAllowed;
 		panel.addSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent ev) {
 				updateControls();
@@ -103,7 +108,7 @@ public class RealmObjectChooser extends JDialog {
 		int count = panel.getSelectedCount();
 		boolean meetsMin = minCount<0 || count>=minCount;
 		boolean meetsMax = maxCount<0 || count<=maxCount;
-		okayButton.setEnabled(meetsMin && meetsMax && panel.getSelectedCount()>0);
+		okayButton.setEnabled(meetsMin && meetsMax && (noSelectionAllowed || panel.getSelectedCount()>0));
 	}
 	private void initComponents(boolean singleSelection,boolean manualFlipEnabled) {
 		getContentPane().setLayout(new BorderLayout());
@@ -167,6 +172,11 @@ public class RealmObjectChooser extends JDialog {
 	}
 	private boolean doOkay() {
 		GameObject[] object = panel.getSelectedGameObjects();
+		
+		if (noSelectionAllowed && object.length==0) {
+			okay = true;
+			return okay;
+		}
 		
 		if (object.length>0) {
 			okay = true;
