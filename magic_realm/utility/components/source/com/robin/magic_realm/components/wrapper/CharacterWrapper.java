@@ -8756,4 +8756,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
+    
+    public void discardNonEligibleGuildQuests() {
+    	QuestDeck deck = QuestDeck.findDeck(getGameData());
+    	for (Quest quest : getAllQuests()) {
+    		if (quest.getGuild()!=null && quest.getGuild().toLowerCase().matches(getCurrentGuild().toLowerCase())) {
+    			deck.discardCard(quest);
+    		}
+    	}
+    }
 }

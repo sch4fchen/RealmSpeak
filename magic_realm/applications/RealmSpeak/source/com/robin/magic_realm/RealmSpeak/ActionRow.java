@@ -1675,10 +1675,16 @@ public class ActionRow {
 						}
 						result = "Joined the "+trader.getGameObject().getName();
 					}
+					if (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+						character.discardNonEligibleGuildQuests();
+					}
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_LEAVE)) {
 					character.clearGuild();
 					result = "Left the "+trader.getGameObject().getName();
+					if (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+						character.discardNonEligibleGuildQuests();
+					}
 				}
 				else if (trader.isGuild() && selText.equals(TRADE_SERVICES)) {
 					GuildStore store = Store.getGuildStore((GuildChitComponent)trader,character);

@@ -30,6 +30,9 @@ public class QuestRewardGuild extends QuestReward {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (getGuildName().matches(QuestConstants.REMOVE)) {
 			character.clearGuild();
+			if (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+				character.discardNonEligibleGuildQuests();
+			}
 			if (hostPrefs.hasPref(Constants.GUILDS_LOOSE_BENEFITS)) {
 				GuildStore guild = character.getCurrentGuildStore();
 				guild.unapplyAllGuildBenefits(frame, character);
@@ -49,6 +52,9 @@ public class QuestRewardGuild extends QuestReward {
 				}
 			}
 			character.setCurrentGuild(getGuildName());
+			if (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+				character.discardNonEligibleGuildQuests();
+			}
 		}
 		
 		switch (getGuildChange()) {

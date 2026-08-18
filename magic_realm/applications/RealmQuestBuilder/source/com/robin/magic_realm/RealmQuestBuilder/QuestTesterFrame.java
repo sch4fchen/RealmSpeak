@@ -571,6 +571,9 @@ public class QuestTesterFrame extends JFrame {
 				
 				character.setCurrentGuild(guildName.get(0).getName());
 				character.setCurrentGuildLevel(guildLevel);
+				if (HostPrefWrapper.findHostPrefs(gameData).hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY)) {
+					character.discardNonEligibleGuildQuests();
+				}
 				
 				updateCharacterPanel();
 				retestQuest();
