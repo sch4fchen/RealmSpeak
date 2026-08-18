@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import com.robin.game.objects.*;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -173,6 +174,14 @@ public class QuestDeck extends GameObjectWrapper {
 				if (card.getGuild()!=null && (guildName==null || !card.getGuild().matches(guildName))) {
 					discardCard(card);
 					return null;
+				}
+				
+				if (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) && card.getGuild()!=null) {
+					boolean characterIsMemberOfCorrectGuild = guildName!=null && loc.clearing.getGuild().getGameObject().getThisAttribute(RealmComponent.GUILD).toLowerCase().matches(character.getCurrentGuild().toLowerCase());
+					if (!characterIsMemberOfCorrectGuild) {
+						discardCard(card);
+						return null;
+					}
 				}
 			}
 			

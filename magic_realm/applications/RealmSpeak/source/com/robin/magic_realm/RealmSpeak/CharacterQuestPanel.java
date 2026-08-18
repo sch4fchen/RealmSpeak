@@ -3,6 +3,7 @@ package com.robin.magic_realm.RealmSpeak;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -11,6 +12,7 @@ import javax.swing.event.ListSelectionListener;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.*;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.*;
@@ -275,13 +277,15 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean gameStarted = getGame().getGameStarted();
 			boolean isBirdsong = getGameHandler().getGame().isRecording();
 			activateQuestButton.setEnabled(gameStarted && selQuest != null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay());
-
+			TileLocation loc = getCharacter().getCurrentLocation();
+			
 			boolean canDiscardQuests = !getCharacter().alreadyDiscardedQuests() && gameStarted;
 			boolean questCanAlwaysBeDiscarded = selQuest!=null && selQuest.getGameObject().hasThisAttribute(QuestConstants.DISCARD_ALWAYS) && gameStarted && isBirdsong;
 			boolean questCannotBeDiscarded = selQuest!=null && selQuest.getGameObject().hasThisAttribute(QuestConstants.DISCARD_NEVER);
-			boolean characterIsAtLocation = getCharacter().getCurrentLocation() != null;
-			boolean characterIsAtDwelling = characterIsAtLocation && getCharacter().getCurrentLocation().isAtDwelling(true);
-			boolean characterIsAtGuild = characterIsAtLocation && getCharacter().getCurrentLocation().isAtGuild();
+			boolean characterIsAtLocation = loc != null;
+			boolean characterIsAtDwelling = characterIsAtLocation && loc.isAtDwelling(true);
+			boolean characterIsAtGuild = characterIsAtLocation && loc.isAtGuild();
+			boolean characterIsMemberOfGuild = characterIsAtGuild && loc.clearing.getGuild().getGameObject().getThisAttribute(RealmComponent.GUILD).toLowerCase().matches(getCharacter().getCurrentGuild().toLowerCase()); 
 			discardQuestButton.setEnabled(questCanAlwaysBeDiscarded || (canDiscardQuests && !questCannotBeDiscarded && isBirdsong && selQuest!=null && selQuest.getState() == QuestState.Assigned && !selQuest.isAllPlay() &&
 					((hostPrefs.isUsingQuestCards() && characterIsAtDwelling)
 							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR)) && characterIsAtDwelling && selQuest.getGuild()==null)
@@ -290,8 +294,8 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 			boolean hasAvailableSlots = (getCharacter().getQuestSlotCount(hostPrefs) - getCharacter().getUnfinishedNotAllPlayQuestCount()) > 0;
 			drawQuestsButton.setEnabled(isBirdsong && hasAvailableSlots && getCharacter().isCharacter() &&
 					((hostPrefs.hasPref(Constants.QST_QUEST_CARDS) && characterIsAtDwelling)
-							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) || getCharacter().getCurrentGuild()!=null) && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR) && characterIsAtDwelling))
-							|| (hostPrefs.isUsingGuildQuests() && (hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) || getCharacter().getCurrentGuild()!=null) && characterIsAtGuild)));
+							|| (hostPrefs.isUsingGuildQuests() && characterIsAtDwelling && (hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_QTR) || hostPrefs.hasPref(Constants.HOUSE3_GUILD_QUESTS_ADD_SR)))
+							|| (hostPrefs.isUsingGuildQuests() && characterIsAtGuild && (!hostPrefs.hasPref(Constants.GUILDS_QUESTS_FOR_MEMBERS_ONLY) || characterIsMemberOfGuild))));
 		}
 	}
 
