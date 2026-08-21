@@ -2141,10 +2141,6 @@ public class ActionRow {
 			newAction.completed = true;
 			gameHandler.updateCharacterFrames();
 		}
-		
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.Stealing;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 		completed = true;
 	}
 	private void doRestAction() {

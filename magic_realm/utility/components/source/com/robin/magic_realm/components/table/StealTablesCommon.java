@@ -8,23 +8,22 @@ import javax.swing.JOptionPane;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.store.GuildStore;
-import com.robin.magic_realm.components.store.MagicGuild;
 import com.robin.magic_realm.components.store.ThievesGuild;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class StealTablesCommon {
-	public static void stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
-		stealChoice(frame,character,victim,tableName,true,false,false,false);
+	public static boolean stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+		return stealChoice(frame,character,victim,tableName,true,false,false,false);
 	}
-	public static void stealChoiceHorse(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
-		stealChoice(frame,character,victim,tableName,false,false,true,false);
+	public static boolean stealChoiceHorse(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+		return stealChoice(frame,character,victim,tableName,false,false,true,false);
 	}
-	public static void stealChoiceArmor(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
-		stealChoice(frame,character,victim,tableName,false,false,false,true);
+	public static boolean stealChoiceArmor(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+		return stealChoice(frame,character,victim,tableName,false,false,false,true);
 	}
-	private static void stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName, boolean allItems, boolean treasures, boolean horse, boolean armor) {
+	private static boolean stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName, boolean allItems, boolean treasures, boolean horse, boolean armor) {
 		GameObject holder = SetupCardUtility.getDenizenHolder(victim.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Select item to steal:",false);
 		ArrayList<GameObject> holdToNote = new ArrayList<>();
@@ -48,21 +47,23 @@ public class StealTablesCommon {
 			} else if (armor) {
 				itemType = "No armor";
 			}
-			JOptionPane.showMessageDialog(frame,itemType+" to steal from "+victim.getGameObject().getNameWithNumber(),tableName,JOptionPane.INFORMATION_MESSAGE);
-		}
-		else {
-			character.addNoteSteal(victim.getGameObject(),holdToNote);
-			chooser.setVisible(true);
-			RealmComponent selectedItem = chooser.getFirstSelectedComponent();
-			Loot.addItemToCharacter(frame, null, character, selectedItem.getGameObject());
 			
-			// Check for Thieves Guild join requirement
-			GuildStore currentGuild = character.getCurrentGuildStore(false);
+			JOptionPane.showMessageDialog(frame,itemType+" to steal from "+victim.getGameObject().getNameWithNumber(),tableName,JOptionPane.INFORMATION_MESSAGE);
+			return false;
+		}
+		
+		character.addNoteSteal(victim.getGameObject(),holdToNote);
+		chooser.setVisible(true);
+		RealmComponent selectedItem = chooser.getFirstSelectedComponent();
+		Loot.addItemToCharacter(frame, null, character, selectedItem.getGameObject());
+		
+		// Check for Thieves Guild join requirement
+		GuildStore currentGuild = character.getCurrentGuildStore(false);
 			if (character.hasGuildJoinRequirement() && currentGuild!=null && currentGuild instanceof ThievesGuild) {
-				if (((ThievesGuild)currentGuild).validateRequirementAndJoin(character, selectedItem.getGameObject())) {
-					JOptionPane.showMessageDialog(frame,ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
-				}
+			if (((ThievesGuild)currentGuild).validateRequirementAndJoin(character, selectedItem.getGameObject())) {
+				JOptionPane.showMessageDialog(frame,ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
+		return true;
 	}
 }

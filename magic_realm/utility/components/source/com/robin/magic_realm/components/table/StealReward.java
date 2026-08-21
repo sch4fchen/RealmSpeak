@@ -9,6 +9,9 @@ import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.*;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.SearchResultType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.store.GuildStore;
 import com.robin.magic_realm.components.store.ThievesGuild;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
@@ -48,17 +51,20 @@ public class StealReward extends RealmTable {
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {
-		StealTablesCommon.stealChoice(getParentFrame(),character,victim,"Steal Reward");
+		boolean itemStolen = StealTablesCommon.stealChoice(getParentFrame(),character,victim,"Steal Reward");
+		testQuestRequirements(character,SearchResultType.Choice,itemStolen);
 		return RESULT[0];
 	}
 
 	public String applyTwo(CharacterWrapper character) {
-		StealTablesCommon.stealChoiceHorse(getParentFrame(),character,victim,"Steal Reward");
+		boolean itemStolen = StealTablesCommon.stealChoiceHorse(getParentFrame(),character,victim,"Steal Reward");
+		testQuestRequirements(character,SearchResultType.Mount,itemStolen);
 		return RESULT[1];
 	}
 
 	public String applyThree(CharacterWrapper character) {
-		StealTablesCommon.stealChoiceArmor(getParentFrame(),character,victim,"Steal Reward");
+		boolean itemStolen = StealTablesCommon.stealChoiceArmor(getParentFrame(),character,victim,"Steal Reward");
+		testQuestRequirements(character,SearchResultType.Armor,itemStolen);
 		return RESULT[2];
 	}
 
@@ -73,6 +79,7 @@ public class StealReward extends RealmTable {
 		}
 		if (treasures.size()==0) {
 			JOptionPane.showMessageDialog(getParentFrame(),"No treasure to steal from "+victim.getGameObject().getNameWithNumber(),"Steal Reward",JOptionPane.INFORMATION_MESSAGE);
+			testQuestRequirements(character,SearchResultType.Nothing,false);
 		}
 		else {
 			GameObject loot = treasures.get(RandomNumber.getRandom(treasures.size())).getGameObject();
@@ -84,6 +91,7 @@ public class StealReward extends RealmTable {
 					JOptionPane.showMessageDialog(getParentFrame(),ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
+			testQuestRequirements(character,SearchResultType.Treasure,true);
 		}
 		return RESULT[3];
 	}
@@ -91,11 +99,23 @@ public class StealReward extends RealmTable {
 	public String applyFive(CharacterWrapper character) {
 		JOptionPane.showMessageDialog(getParentFrame(),"You have stolen 10 gold.","Steal Reward",JOptionPane.INFORMATION_MESSAGE);
 		character.addGold(10);
+		testQuestRequirements(character,SearchResultType.Gold,true);
 		return RESULT[4];
 	}
 
 	public String applySix(CharacterWrapper character) {
 		JOptionPane.showMessageDialog(getParentFrame(),"Nothing found.","Steal Reward",JOptionPane.INFORMATION_MESSAGE);
+		testQuestRequirements(character,SearchResultType.Nothing,false);
 		return RESULT[5];
+	}
+	
+	private void testQuestRequirements(CharacterWrapper character, SearchResultType searchResult,boolean searchHadAnEffect) {
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.SearchTable;
+		params.actionName = getTableKey();
+		params.targetOfSearch = victim.getGameObject();
+		params.searchType = searchResult;
+		params.searchHadAnEffect = searchHadAnEffect;
+		character.testQuestRequirements(getParentFrame(),params);
 	}
 }

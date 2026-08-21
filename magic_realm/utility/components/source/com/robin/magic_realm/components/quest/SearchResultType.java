@@ -43,6 +43,17 @@ public enum SearchResultType {
 	RemoveCurse,
 	Wound,
 	Unhide,
+	
+	Item,
+	LooseFriendliness,
+	CaughtBlocked,
+	
+	Choice,
+	Mount,
+	Armor,
+	Treasure,
+	//Gold,
+	Nothing,
 	;
 	public boolean canGetTreasure() {
 		switch(this) {
@@ -121,6 +132,20 @@ public enum SearchResultType {
 				list.add(SearchResultType.LearnAndAwaken);
 				list.add(SearchResultType.Awaken);
 				list.add(SearchResultType.Curse);
+				break;
+			case Stealing:
+				list.add(SearchResultType.Choice);
+				list.add(SearchResultType.Item);
+				list.add(SearchResultType.LooseFriendliness);
+				list.add(SearchResultType.CaughtBlocked);
+				break;
+			case StealReward:
+				list.add(SearchResultType.Choice);
+				list.add(SearchResultType.Mount);
+				list.add(SearchResultType.Armor);
+				list.add(SearchResultType.Treasure);
+				list.add(SearchResultType.Gold);
+				list.add(SearchResultType.Nothing);
 				break;
 			case ToadstoolCircle:
 				list.add(SearchResultType.Counters);
