@@ -104,8 +104,12 @@ public class QuestDeck extends GameObjectWrapper {
 		ArrayList<String> cardList = getList(QUEST_CARD_LIST);
 		ArrayList<String> discards = getList(QUEST_DISCARDS);
 		ArrayList<String> allCards = new ArrayList<>();
-		allCards.addAll(cardList);
-		allCards.addAll(discards);
+		if (cardList!=null) {
+			allCards.addAll(cardList);
+		}
+		if (discards!=null) {
+			allCards.addAll(discards);
+		}
 		if (discards==null || discards.size()==0) return; // if there are no discards, then there are more player quest slots than the deck can handle, and nothing happens.
 		setList(QUEST_CARD_LIST,new ArrayList<>(allCards));
 		clear(QUEST_DISCARDS);
