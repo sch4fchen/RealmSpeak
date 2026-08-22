@@ -3,7 +3,8 @@ QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guild
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling
 QuestReward: MarkGate: current tile, current clearing, regex
 QuestRequirement: GateLocation: current tile, current clearing, regex
-QuestRequirement: StealingFromCharacter: character name/regex, guildMember (and specific guild), fighter and/or magic user, male and/or female
+QuestRequirement: StealingFromCharacter: character name/regex, guildMember (and specific guild), fighter and/or magic user, male and/or female, properties of stolen item
+QuestRequirement: StealingFromNaTive: native regex, properties of stolen item, gold (=searchHadAnEffect, but no item)
 QuestReward: show specific RealmComponents (like Infoscreen for marked objects): Enable/Disable, show hidden things, CustomHeadline, add/remove objects from screen
 
 Version 1.2.6.4
