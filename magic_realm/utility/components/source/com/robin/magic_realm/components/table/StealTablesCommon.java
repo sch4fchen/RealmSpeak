@@ -14,16 +14,16 @@ import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class StealTablesCommon {
-	public static boolean stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+	public static GameObject stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
 		return stealChoice(frame,character,victim,tableName,true,false,false,false);
 	}
-	public static boolean stealChoiceHorse(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+	public static GameObject stealChoiceHorse(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
 		return stealChoice(frame,character,victim,tableName,false,false,true,false);
 	}
-	public static boolean stealChoiceArmor(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
+	public static GameObject stealChoiceArmor(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName) {
 		return stealChoice(frame,character,victim,tableName,false,false,false,true);
 	}
-	private static boolean stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName, boolean allItems, boolean treasures, boolean horse, boolean armor) {
+	private static GameObject stealChoice(JFrame frame, CharacterWrapper character, RealmComponent victim, String tableName, boolean allItems, boolean treasures, boolean horse, boolean armor) {
 		GameObject holder = SetupCardUtility.getDenizenHolder(victim.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Select item to steal:",false);
 		ArrayList<GameObject> holdToNote = new ArrayList<>();
@@ -49,7 +49,7 @@ public class StealTablesCommon {
 			}
 			
 			JOptionPane.showMessageDialog(frame,itemType+" to steal from "+victim.getGameObject().getNameWithNumber(),tableName,JOptionPane.INFORMATION_MESSAGE);
-			return false;
+			return null;
 		}
 		
 		character.addNoteSteal(victim.getGameObject(),holdToNote);
@@ -64,6 +64,6 @@ public class StealTablesCommon {
 				JOptionPane.showMessageDialog(frame,ThievesGuild.JOIN_GUILD_TEXT,ThievesGuild.JOIN_GUILD_TITLE,JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
-		return true;
+		return selectedItem.getGameObject();
 	}
 }

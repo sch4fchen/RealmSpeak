@@ -4591,12 +4591,25 @@ public class CombatFrame extends JFrame {
 		if (lootRoll>inventory.size()) {
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Failed to steal from the inactive inventory.");
 			JOptionPane.showMessageDialog(this,"Failed to steal from the inactive inventory.","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.StealingFromCharacter;
+			params.targetOfSearch = victim.getGameObject();
+			params.searchHadAnEffect = false;
+			activeCharacter.testQuestRequirements(this,params);
 		}
 		else {
 			GameObject loot = inventory.get(lootRoll-1);
 			broadcastMessage(activeCharacter.getGameObject().getName(),"Steal: Stealed from "+victim.getGameObject().getName());
 			JOptionPane.showMessageDialog(this,"You have stolen the "+loot.getName()+" from the "+victim.getGameObject().getName()+".","Steal",JOptionPane.INFORMATION_MESSAGE,activeCharacter.getIcon());
 			Loot.addItemToCharacter(this,null,activeCharacter,loot);
+			
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.StealingFromCharacter;
+			params.targetOfSearch = victim.getGameObject();
+			params.searchHadAnEffect = true;
+			params.objectList.add(loot);
+			activeCharacter.testQuestRequirements(this,params);
 			
 			// Check for Thieves Guild join requirement
 			GuildStore currentGuild = activeCharacter.getCurrentGuildStore(false);

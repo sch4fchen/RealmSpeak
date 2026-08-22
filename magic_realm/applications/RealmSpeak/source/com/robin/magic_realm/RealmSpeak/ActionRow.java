@@ -2115,6 +2115,9 @@ public class ActionRow {
 		if (victims.isEmpty()) {
 			result = "Nobody to steal from.";
 			completed = true;
+			QuestRequirementParams params = new QuestRequirementParams();
+			params.actionType = CharacterActionType.Stealing;
+			character.testQuestRequirements(gameHandler.getMainFrame(),params);
 			return;
 		}	
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select victim to steal from:",false);
@@ -2142,6 +2145,9 @@ public class ActionRow {
 			gameHandler.updateCharacterFrames();
 		}
 		completed = true;
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.Stealing;
+		character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {

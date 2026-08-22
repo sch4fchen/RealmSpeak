@@ -21,6 +21,7 @@ public enum CharacterActionType {
 	Teleport,
 	Trading,
 	Stealing,
+	StealingFromCharacter,
 	AbandonMissionCampaign,
 	CompleteMissionCampaign,
 	FailMissionCampaign,
