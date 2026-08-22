@@ -7,6 +7,7 @@ QUEST UPDATE:
 # QuestRequirementDiscoveryPathsPassagesOfLocation: Option for checking current tile side
 # Thieves Guild quests
 # Updates to Magic and Fighters Guild quests
+# QuestRequirementClearing: Option to check for marked tile
 BUGS/ISSUES:
 # Fix drawing guild quest cards
 

@@ -22,7 +22,8 @@ public class QuestRequirementClearing extends QuestRequirement {
 	public static final String CHIT_NAME = "_chit_name";
 	public static final String CHIT_TYPE = "_chit_type";
 	public static final String CHIT_AMOUNT = "_chit_amount";
-	public static final String MARK_REQUIRED = "_req_mark";
+	public static final String CHIT_MARK_REQUIRED = "_chit_req_mark";
+	public static final String TILE_MARK_REQUIRED = "_tile_req_mark";
 
 	public QuestRequirementClearing(GameObject go) {
 		super(go);
@@ -30,14 +31,17 @@ public class QuestRequirementClearing extends QuestRequirement {
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		TileLocation loc = character.getCurrentLocation();
-		if (loc == null || loc.clearing == null) return false;
+		if (loc == null || loc.tile == null) return false;
 		if (getTileSide() !=  LocationTileSideType.Any && !getTileSide().matches(loc.tile)) return false;
+		String questId = getParentQuest().getGameObject().getStringId();
+		if (tileRequiresMark() && Quest.GameObjectHasQuestMark(loc.tile.getGameObject(), questId)) return false;
 		
 		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<>();
 		if (checkTile()) {
 			clearingsToCheck.addAll(loc.tile.getClearings());
 		}
 		else {
+			if (loc.clearing == null) return false;
 			clearingsToCheck.add(loc.clearing);
 		}
 		
@@ -58,12 +62,11 @@ public class QuestRequirementClearing extends QuestRequirement {
 		int foundChits = 0;
 		String regex = getChitName().trim();
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
-		String questId = getParentQuest().getGameObject().getStringId();
 		
 		for (RealmComponent rc : componentsToCheck) {
 			if (pattern != null && !pattern.matcher(rc.getGameObject().getName()).find()) continue;
 			if (getChitType() != null && getChitType() != ChitType.Any && !getChitType().matches(rc)) continue;
-			if (requiresMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) {
+			if (chitRequiresMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) {
 				continue;
 			}
 			foundChits++;
@@ -74,7 +77,7 @@ public class QuestRequirementClearing extends QuestRequirement {
 	}
 
 	private boolean noChitsToCheck() {
-		return ((getChitName()==null || getChitName().isEmpty()) && (getChitType()==null || getChitType() == ChitType.Any) && !requiresMark());
+		return ((getChitName()==null || getChitName().isEmpty()) && (getChitType()==null || getChitType() == ChitType.Any) && !chitRequiresMark());
 	}
 	
 	protected String buildDescription() {
@@ -82,6 +85,9 @@ public class QuestRequirementClearing extends QuestRequirement {
 		sb.append("Character must be in a");
 		if (getTileSide() != LocationTileSideType.Any) {
 			sb.append(" "+getTileSide());
+		}
+		if (tileRequiresMark()) {
+			sb.append(" marked");
 		}
 		if (checkTile()) {
 			sb.append(" tile with a clearing");
@@ -99,7 +105,7 @@ public class QuestRequirementClearing extends QuestRequirement {
 			if (getChitAmount() != 0 && getChitAmount() != 1) {
 				sb.append(" "+getChitAmount());
 			}
-			if (requiresMark()) {
+			if (chitRequiresMark()) {
 				sb.append(" marked");
 			}
 			if (getChitAmount() == 1) {
@@ -131,6 +137,9 @@ public class QuestRequirementClearing extends QuestRequirement {
 	public boolean checkTile() {
 		return getBoolean(TILE);
 	}
+	private boolean tileRequiresMark() {
+		return getBoolean(CHIT_MARK_REQUIRED);
+	}
 	public LocationClearingType getClearingType() {
 		return LocationClearingType.valueOf(getString(TYPE));
 	}
@@ -146,7 +155,7 @@ public class QuestRequirementClearing extends QuestRequirement {
 	public int getChitAmount() {
 		return getInt(CHIT_AMOUNT);
 	}
-	private boolean requiresMark() {
-		return getBoolean(MARK_REQUIRED);
+	private boolean chitRequiresMark() {
+		return getBoolean(CHIT_MARK_REQUIRED);
 	}
 }
