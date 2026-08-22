@@ -5,6 +5,8 @@ NEW FEATURES:
 # GameMaster: add Guild stats to character tab
 QUEST UPDATE:
 # QuestRequirementDiscoveryPathsPassagesOfLocation: Option for checking current tile side
+# Thieves Guild quests
+# Updates to Magic and Fighters Guild quests
 BUGS/ISSUES:
 # Fix drawing guild quest cards
 
