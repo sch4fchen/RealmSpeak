@@ -296,7 +296,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.REQ_TABLENAME, "Search table", FieldType.StringSelector, SearchTableType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.LOCATION, "Location of search", FieldType.GameObjectWrapperSelector, getOptionalQuestLocationArray().toArray()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.TARGET_LOC, "Target of search", FieldType.GameObjectWrapperSelector, getOptionalQuestLocationArray().toArray()));
-				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.TARGET_REGEX, "OR", FieldType.Regex, null, new String[] { "ts_section,!dwelling,!summon,!guild" }));
+				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.TARGET_REGEX, "OR", FieldType.Regex, null, new String[] { "rank|ts_section,commerce|ts_section,!dwelling,!summon,!guild" }));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.RESULT1, "Search result", FieldType.StringSelector, SearchResultType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.RESULT2, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
 				list.add(new QuestPropertyBlock(QuestRequirementSearchResult.RESULT3, "OR", FieldType.StringSelector, SearchResultType.optionalValues()));
