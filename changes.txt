@@ -1,11 +1,22 @@
+QuestReward: MarkChit (character chit, same as requirement): regex, ...
+QuestReward: MarkChitSoundWarning: regex, sound, warning
+QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
 QuestReward: MarkTile: current tile, specific tile (regex or tile type)
 QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling
-QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling
+QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked
 QuestReward: MarkGate: current tile, current clearing, regex
-QuestRequirement: GateLocation: current tile, current clearing, regex
+QuestRequirement: GateLocation: current tile, current clearing, regex, marked
 QuestRequirement: StealingFromCharacter: character name/regex, guildMember (and specific guild), fighter and/or magic user, male and/or female, properties of stolen item
 QuestRequirement: StealingFromNaTive: native regex, properties of stolen item, gold (=searchHadAnEffect, but no item)
 QuestReward: show specific RealmComponents (like Infoscreen for marked objects): Enable/Disable, show hidden things, CustomHeadline, add/remove objects from screen
+	as well for MarkedView: show location (tile with/without clearing), show Owner (e.g. denizen, treasureLocation, character..., TWT -> extra checkbox to show TWT owner)
+QuestRequirement: TreasureLocation: current tile, current clearing, regex, marked
+QuestReward: MarkTreasureLocation: current tile, current clearing, regex
+QuestRequirement: MissionCampaignTask: current tile, current clearing, regex, marked, must own it
+QuestReward: MarkMissionCampaignTask: current tile, current clearing, regex, all owned
+QuestRequirement: Visitor: current tile, current clearing, regex, marked
+QuestReward: MarkVisitor: current tile, current clearing, regex, marked
+QuestRequirement Traveler: new option: current tile
 
 Version 1.2.6.4
 NEW FEATURES:
