@@ -69,6 +69,10 @@ public class CombatSummarySheet extends JPanel {
 	private int buttonHeight = 20;
 	public void paintComponent(Graphics g1) {
 		super.paintComponent(g1);
+		// The Sheet/Lure/Flip buttons below are created and added during the paint, so without this
+		// every repaint leaks another set - thousands of them after a while, until the event thread
+		// spends all its time painting button text
+		removeAll();
 		g1.setFont(STAGE_FONT);
 		Graphics2D g = (Graphics2D)g1;
 		AffineTransform normal = g.getTransform();
