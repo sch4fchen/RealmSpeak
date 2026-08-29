@@ -21,6 +21,7 @@ import com.robin.magic_realm.components.quest.*;
 import com.robin.magic_realm.components.quest.requirement.*;
 import com.robin.magic_realm.components.quest.reward.QuestReward;
 import com.robin.magic_realm.components.swing.CharacterChooser;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.table.Search;
 import com.robin.magic_realm.components.utility.*;
@@ -1763,6 +1764,25 @@ public class QuestTesterFrame extends JFrame {
 		if (result == null)
 			return;
 
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.SearchTable;
+		params.searchType = result;
+		params.actionName = table.toString();
+		params.targetOfSearch = rc.getGameObject();
+		if (table == SearchTableType.Stealing || table == SearchTableType.StealReward) {
+			GamePool pool = new GamePool(character.getGameData().getGameObjects());
+			ArrayList<GameObject> list =  pool.find("rank=HQ");
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Steal from who?",true);
+			chooser.addGameObjects(list, true);
+			chooser.setVisible(true);
+			String option = chooser.getSelectedText();
+			if (option!=null) {
+				params.targetOfSearch = chooser.getFirstSelectedComponent().getGameObject();
+			} else {
+				return;
+			 }
+		}
+		
 		dialog = new ButtonOptionDialog(this, rc.getFaceUpIcon(), "What kind of gain?", "Search Gain", false);
 		dialog.addSelectionObject(SEARCH_RESULT_NOTHING);
 		dialog.addSelectionObject(SEARCH_RESULT_SOMETHING);
@@ -1775,11 +1795,6 @@ public class QuestTesterFrame extends JFrame {
 		dialog.setVisible(true);
 		String gain = (String) dialog.getSelectedObject();
 
-		QuestRequirementParams params = new QuestRequirementParams();
-		params.actionType = CharacterActionType.SearchTable;
-		params.searchType = result;
-		params.targetOfSearch = rc.getGameObject();
-		params.actionName = table.toString();
 		if (SEARCH_RESULT_SOMETHING.equals(gain)) {
 			params.searchHadAnEffect = true;
 		}
