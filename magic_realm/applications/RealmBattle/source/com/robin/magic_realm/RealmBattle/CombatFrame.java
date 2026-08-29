@@ -1448,7 +1448,10 @@ public class CombatFrame extends JFrame {
 			boolean hasHirelings = false;
 			if (!hasEnemies) {
 				for (RealmComponent hireling : character.getAllHirelings()) {
-					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
+					// A character that has run away can be left with no location at all, and a
+					// hireling may have none either - neither can then share a clearing with anyone
+					TileLocation hirelingLoc = hireling.getCurrentLocation();
+					if (loc!=null && hirelingLoc!=null && loc.toString().matches(hirelingLoc.toString())) {
 						hasHirelings = true;
 						if (new CombatWrapper(hireling.getGameObject()).getAttackerCount()>0) {
 							attackers.addAll(new CombatWrapper(hireling.getGameObject()).getAttackers());
@@ -1463,7 +1466,10 @@ public class CombatFrame extends JFrame {
 				boolean hidden = character.isHidden();
 				boolean attackingEnemies = true;
 				for (RealmComponent hireling : character.getAllHirelings()) {
-					if (loc.toString().matches(hireling.getCurrentLocation().toString())) {
+					// A character that has run away can be left with no location at all, and a
+					// hireling may have none either - neither can then share a clearing with anyone
+					TileLocation hirelingLoc = hireling.getCurrentLocation();
+					if (loc!=null && hirelingLoc!=null && loc.toString().matches(hirelingLoc.toString())) {
 						if (!hireling.isHidden()) {
 							hidden = false;
 						}
