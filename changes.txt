@@ -1,4 +1,3 @@
-QuestRequirement: SearchResult: filter results by selected table
 QuestReward: MarkChit (character chit, same as requirement): regex, ...
 QuestReward: MarkChitSoundWarning: regex, sound, warning
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
@@ -29,7 +28,6 @@ QUEST UPDATE:
 # Thieves Guild quests
 # Updates to Magic and Fighters Guild quests
 # QuestRequirementClearing: Option to check for marked tile
-# Update to quest A37
 BUGS/ISSUES:
 # Fix drawing guild quest cards
 
