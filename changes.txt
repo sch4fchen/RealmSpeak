@@ -18,6 +18,10 @@ QuestRequirement: Visitor: current tile, current clearing, regex, marked
 QuestReward: MarkVisitor: current tile, current clearing, regex, marked
 QuestRequirement Traveler: new option: current tile
 
+Version 1.2.6.5
+NEW FEATURES:
+QUEST UPDATE:
+
 Version 1.2.6.4
 NEW FEATURES:
 # Optional rules: Face up and discovered guilds
