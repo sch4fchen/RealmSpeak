@@ -141,6 +141,10 @@ public class ActionRow {
 		}
 		else {
 			roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
+			if (realmTable instanceof StealAttempt) {
+				roller.addModifier(character.getStealAttempts());
+			}
+			
 			if (foresigthPossible && character.affectedByKey(Constants.FORESIGHT)
 					&& !character.getGameObject().hasThisAttribute(Constants.DRINKS_BOUGHT) && !character.getGameObject().hasThisAttribute(Constants.FORESIGHT_USED)) {
 				character.getGameObject().setThisAttribute(Constants.FORESIGHT_USED);
@@ -197,6 +201,9 @@ public class ActionRow {
 			}
 			if (!negate) {
 				message = realmTable.apply(character,roller);
+				if (realmTable instanceof StealAttempt) {
+					character.addStealAttempt();
+				}
 			}
 		}
 		if (message!=null) {
@@ -2125,26 +2132,9 @@ public class ActionRow {
 			chooser.addRealmComponent(rc,rc.getGameObject().getName());
 		}
 		chooser.setVisible(true);
-		String message = null;
 		RealmComponent victim = chooser.getFirstSelectedComponent();
 		realmTable = new StealAttempt(gameHandler.getMainFrame(),victim);
-		roller = DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(realmTable);
-		roller.addModifier(character.getStealAttempts());
-		message = realmTable.apply(character,roller);
-		result = realmTable.getTableName(false) + " - " + message;
-		gameHandler.updateCharacterFrames();
-		character.addStealAttempt();
-		
-		if (realmTable.getNewTable()!=null) {
-			RealmTable newTable = realmTable.getNewTable();
-			newAction = new ActionRow(turnPanel,character,newTable,isFollowing);
-			newAction.setRoller(DieRollBuilder.getDieRollBuilder(gameHandler.getMainFrame(),character).createRoller(newTable));
-			message = newTable.apply(character,roller);
-			newAction.setResult(newTable.getTableName(false) + " - " + message);
-			newAction.completed = true;
-			gameHandler.updateCharacterFrames();
-		}
-		completed = true;
+		handleTable();
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
 		character.testQuestRequirements(gameHandler.getMainFrame(),params);

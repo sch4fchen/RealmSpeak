@@ -15,7 +15,7 @@ public class StealAttempt extends RealmTable {
 	public static final String KEY = "Stealing";
 	private static final String[] RESULT = {
 		"Success - Take desired item",
-		"Success - Roll for item (susbstract 1)",
+		"Success - Roll for item (substract 1)",
 		"Success - Roll for item",
 		"Success - Roll for item",
 		"Suspect - Lose one level of friendliness",

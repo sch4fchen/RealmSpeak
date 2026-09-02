@@ -30,6 +30,7 @@ QUEST UPDATE:
 # QuestRequirementClearing: Option to check for marked tile
 BUGS/ISSUES:
 # Fix drawing guild quest cards
+# Fix stealing table (StealReward)
 
 Version 1.2.6.3
 NEW FEATURES:
