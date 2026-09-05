@@ -16,6 +16,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 
 	public static final String ANY = "any";
 	public static final String NONE = "none";
+	public static final String MEMBER = "member";
 	
 	public enum RequirementType {
 		Action,

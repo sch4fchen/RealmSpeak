@@ -323,7 +323,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_ADD_MARK, "Victim add mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REMOVE_MARK, "Victim remove mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GUILD, "Targeted character is a guildmember?", FieldType.StringSelector, getGuildNames()));
-				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GENDER, "Targeted character's gender", FieldType.StringSelector, new String[] { QuestConstants.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GENDER, "Targeted character's gender", FieldType.StringSelector, new String[] { QuestRequirement.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_FIGHTER, "Targeted character must be a figghter?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_MAGIC_USER, "Targeted character must be a magic user?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_TYPE, "Item type", FieldType.StringSelector, QuestRequirementStealing.ItemType.values()));
@@ -546,9 +546,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 	
 	private String[] getGuildNames() {
 		ArrayList<String> names = new ArrayList<>();
-		names.add(QuestConstants.ANY);
-		names.add(QuestConstants.MEMBER);
-		names.add(QuestConstants.NONE);
+		names.add(QuestRequirement.ANY);
+		names.add(QuestRequirement.NONE);
+		names.add(QuestRequirement.MEMBER);
 		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
 		for (GameObject go : pool.find(RealmComponent.GUILD)) {
 			names.add(go.getThisAttribute(RealmComponent.GUILD));
