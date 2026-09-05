@@ -1,5 +1,4 @@
 QuestRewardMarkCharacter: current tile, current clearing, regex, random/all/choose
-QuestReward: MarkChit (character chit, same as requirement): regex, ..., random/all/choose
 QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
@@ -18,12 +17,12 @@ QuestReward: MarkVisitor: current tile, current clearing, regex, random/all/choo
 QuestRequirement Traveler: new option: current tile
 QuestRewardMarkItem: random item/all/choose
 QuestRewardMarkDenizen: random/all/choose
-QuestRewardMarkTraveler: choose
 
 Version 1.2.6.5
 NEW FEATURES:
 QUEST UPDATE:
 # QuestRequirementStealing
+# QuestRewardMarkTraveler: option to choose a single traveler
 
 Version 1.2.6.4
 NEW FEATURES:

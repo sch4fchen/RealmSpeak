@@ -12,12 +12,14 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardMarkTraveler extends QuestReward {
 	
 	public static final String TRAVELER_REGEX = "_regex";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
+	public static final String CHOOSE_TRAVELER = "_choose_tr";
 	public static final String RANDOM_TRAVELER = "_rnd_tr";
 	public static final String REMOVE = "_rmv_mrk";
 	
@@ -43,7 +45,7 @@ public class QuestRewardMarkTraveler extends QuestReward {
 		ArrayList<GameObject> allTravelers = new ArrayList<>();
 		for (GameObject go:travelers) {
 			if (pattern==null || pattern.matcher(go.getName()).find()) {
-				if (randomTraveler()) {
+				if (randomTraveler() || chooseTraveler()) {
 					allTravelers.add(go);
 				} else {
 					if (removeMark()) {
@@ -52,6 +54,17 @@ public class QuestRewardMarkTraveler extends QuestReward {
 						Quest.GameObjectAddQuestMark(go,getParentQuest().getGameObject().getStringId());
 					}
 				}
+			}
+		}
+		if (chooseTraveler()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Choose one traveler to mark:",false);
+			chooser.addGameObjects(allTravelers,false);
+			chooser.setVisible(true);
+			RealmComponent selectedTraveler = chooser.getFirstSelectedComponent();
+			if (removeMark()) {
+				Quest.GameObjectRemoveQuestMark(selectedTraveler.getGameObject(),getParentQuest().getGameObject().getStringId());
+			} else {
+				Quest.GameObjectAddQuestMark(selectedTraveler.getGameObject(),getParentQuest().getGameObject().getStringId());
 			}
 		}
 		if (randomTraveler()) {
@@ -64,9 +77,13 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	}
 
 	public String getDescription() {
-		if (randomTraveler()) {
+		if (randomTraveler() || chooseTraveler()) {
 			StringBuffer sb = new StringBuffer();
-			sb.append("Mark a random traveler");
+			if (randomTraveler()) {
+				sb.append("Mark a random traveler");
+			} else {
+				sb.append("Mark a traveler");
+			}
 			if (charactersClearingOnly()) {
 				sb.append(" in current clearing");
 			}
@@ -92,6 +109,10 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	
 	private Boolean charactersClearingOnly() {
 		return getBoolean(CHARACTERS_CLEARING);
+	}
+	
+	private Boolean chooseTraveler() {
+		return getBoolean(CHOOSE_TRAVELER);
 	}
 	
 	private Boolean randomTraveler() {
