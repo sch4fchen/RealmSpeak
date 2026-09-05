@@ -66,19 +66,19 @@ public class QuestRequirementStealing extends QuestRequirement {
 		if (!getVictimRegEx().isEmpty() && !pattern.matcher(victim.getName()).find()) return false;
 		String questId = getParentQuest().getGameObject().getStringId();
 		if (victimRequiresMark() && !Quest.GameObjectHasQuestMark(victim, questId));
-		if (!victimGuild().matches(QuestConstants.ANY) && victimRc.isCharacter()) {
+		if (!victimGuild().matches(QuestRequirement.ANY) && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
-			if (victimGuild().matches(QuestConstants.NONE)) {
+			if (victimGuild().matches(QuestRequirement.NONE)) {
 				if (victimCharacter.getCurrentGuild()!=null) return false;
 			}
-			if (victimGuild().matches(QuestConstants.MEMBER)) {
+			if (victimGuild().matches(QuestRequirement.MEMBER)) {
 				if (victimCharacter.getCurrentGuild()==null) return false;
 			}
-			if (!victimGuild().matches(QuestConstants.NONE) && !victimGuild().matches(QuestConstants.MEMBER)) {
+			if (!victimGuild().matches(QuestRequirement.NONE) && !victimGuild().matches(QuestRequirement.MEMBER)) {
 				if (victimCharacter.getCurrentGuild()==null || !victimCharacter.getCurrentGuild().matches(victimGuild())) return false;
 			}
 		}
-		if (!victimGender().matches(QuestConstants.ANY) && victimRc.isCharacter()) {
+		if (!victimGender().matches(QuestRequirement.ANY) && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
 			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
 			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
