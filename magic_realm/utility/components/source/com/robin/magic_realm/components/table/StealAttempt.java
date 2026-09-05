@@ -82,5 +82,8 @@ public class StealAttempt extends RealmTable {
 		params.searchType = searchResult;
 		params.searchHadAnEffect = true;
 		character.testQuestRequirements(getParentFrame(),params);
+		
+		params.actionType = CharacterActionType.Stealing;
+		character.testQuestRequirements(getParentFrame(),params);
 	}
 }

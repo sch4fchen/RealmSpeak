@@ -10,6 +10,9 @@ public class QuestConstants {
 	public static final String QUEST_MARK = "_qmark__";
 	
 	public static final int ALL_VALUE = 999;
+	public static final String ANY = "Any";
+	public static final String NONE = "None";
+	public static final String MEMBER = "Member";
 	
 	public static final String CHOICE = "Player Choice";
 	public static final String RANDOM = "Randomly Selected";

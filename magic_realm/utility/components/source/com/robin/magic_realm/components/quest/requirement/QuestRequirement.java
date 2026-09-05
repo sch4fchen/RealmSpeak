@@ -67,6 +67,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Season,
 		SearchResult, // (optional location designation) Clues, Paths, Passages, Hidden Enemies, Discover Chit(s), Learn and Awaken, Curse!, Awaken, Counters, Treasure Cards,Perceive Spell
 		SearchTile,
+		Stealing,
 		TimePassed,
 		Teleport,
 		Trade,
@@ -174,6 +175,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for a specific search result on a specific tile.";
 				case Season:
 					return "Tests for a specific season.";
+				case Stealing:
+					return "Tests for a stealing specific item from a character and/or native.";
 				case Teleport:
 					return "Tests for that character is teleported.";
 				case TimePassed:
@@ -419,6 +422,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Season:
 				requirement = new QuestRequirementSeason(go);
+				break;
+			case Stealing:
+				requirement = new QuestRequirementStealing(go);
 				break;
 			case Teleport:
 				requirement = new QuestRequirementTeleport(go);

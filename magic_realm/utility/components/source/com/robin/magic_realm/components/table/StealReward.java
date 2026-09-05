@@ -123,5 +123,8 @@ public class StealReward extends RealmTable {
 			params.objectList.add(stolenItem);
 		}
 		character.testQuestRequirements(getParentFrame(),params);
+		
+		params.actionType = CharacterActionType.Stealing;
+		character.testQuestRequirements(getParentFrame(),params);
 	}
 }

@@ -16,7 +16,6 @@ import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.ItemGainType;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.utility.ClearingUtility;

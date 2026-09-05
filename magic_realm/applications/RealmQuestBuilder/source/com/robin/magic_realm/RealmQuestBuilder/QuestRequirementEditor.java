@@ -316,6 +316,21 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Season:
 				list.add(new QuestPropertyBlock(QuestRequirementSeason.SEASON, "Season", FieldType.StringSelector, getSeasonStrings().toArray() ));
 				break;
+			case Stealing:
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM, "Victim", FieldType.StringSelector, QuestRequirementStealing.VictimType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REGEX, "Victim Regex", FieldType.Regex, null, new String[] { "native,rank=HQ","character" }));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REQ_MARK, "Victim requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_ADD_MARK, "Victim add mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REMOVE_MARK, "Victim remove mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GUILD, "Targeted character is a guildmember?", FieldType.StringSelector, getGuildNames()));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GENDER, "Targeted character's gender", FieldType.StringSelector, new String[] { QuestConstants.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_FIGHTER, "Targeted character must be a figghter?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_MAGIC_USER, "Targeted character must be a magic user?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_TYPE, "Item type", FieldType.StringSelector, QuestRequirementStealing.ItemType.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REQ_MARK, "Item requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_ADD_MARK, "Item add mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REMOVE_MARK, "Item remove mark?", FieldType.Boolean));
+				break;
 			case TimePassed:
 				list.add(new QuestPropertyBlock(QuestRequirementTimePassed.VALUE, "How many days", FieldType.Number));
 				break;
@@ -327,6 +342,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_TREASURE, "Treasure?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_SPELL, "Spell?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.TRADE_CONDITIONAL_FAME, "Trade item with conditional fame?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTrade.REQ_MARK, "Traded item requires mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTrade.ADD_MARK, "Add mark to traded item?", FieldType.Boolean));
 				break;
 			case Traveler:
@@ -526,5 +542,17 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		Collections.sort(list);
 		teleportTypes.addAll(list);
 		return teleportTypes;
+	}
+	
+	private String[] getGuildNames() {
+		ArrayList<String> names = new ArrayList<>();
+		names.add(QuestConstants.ANY);
+		names.add(QuestConstants.MEMBER);
+		names.add(QuestConstants.NONE);
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for (GameObject go : pool.find(RealmComponent.GUILD)) {
+			names.add(go.getThisAttribute(RealmComponent.GUILD));
+		}
+		return names.toArray(new String[0]);
 	}
 }

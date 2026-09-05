@@ -9,7 +9,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.TradeType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -23,6 +22,7 @@ public class QuestRequirementTrade extends QuestRequirement {
 	public static final String TRADE_TREASURE = "_trade_treasure";
 	public static final String TRADE_SPELL = "_trade_spell";
 	public static final String TRADE_CONDITIONAL_FAME = "_trade_conditional_fame";
+	public static final String REQ_MARK = "_req_mark";
 	public static final String ADD_MARK = "_add_mark";
 
 	public QuestRequirementTrade(GameObject go) {
@@ -47,7 +47,8 @@ public class QuestRequirementTrade extends QuestRequirement {
 			if (reqParams.objectList!=null && reqParams.objectList.size()>0) {
 				String itemRegex = getTradeItemRegEx();
 				Pattern itemPattern = itemRegex!=null && itemRegex.trim().length()>0?Pattern.compile(itemRegex):null;
-
+				String questId = getParentQuest().getGameObject().getStringId();
+				
 				for (GameObject go:reqParams.objectList) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if ((!tradeItem() && !tradeTreasure() && !tradeSpell()) ||
@@ -61,9 +62,12 @@ public class QuestRequirementTrade extends QuestRequirement {
 									continue;
 								}
 							}
+							if (itemRequiresMark() && !Quest.GameObjectHasQuestMark(go, questId)) {
+								continue;
+							}
 							
 							if (markItem()) {
-								Quest.GameObjectAddQuestMark(go, getParentQuest().getGameObject().getStringId());
+								Quest.GameObjectAddQuestMark(go, questId);
 							}
 							return true;
 						}
@@ -155,6 +159,9 @@ public class QuestRequirementTrade extends QuestRequirement {
 	}
 	public boolean tradeWithConditionalFame() {
 		return getBoolean(TRADE_CONDITIONAL_FAME);
+	}
+	public boolean itemRequiresMark() {
+		return getBoolean(REQ_MARK);
 	}
 	public boolean markItem() {
 		return getBoolean(ADD_MARK);
