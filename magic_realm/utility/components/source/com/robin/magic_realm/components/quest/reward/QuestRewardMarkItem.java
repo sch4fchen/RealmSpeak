@@ -8,7 +8,6 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
@@ -38,6 +37,7 @@ public class QuestRewardMarkItem extends QuestReward {
 		ArrayList<GameObject> availableObjects = new ArrayList<>();
 		for (GameObject item : objects) {
 			if (removeMark() && !Quest.GameObjectHasQuestMark(item,getParentQuest().getGameObject().getStringId())) continue;
+			if (!removeMark() && Quest.GameObjectHasQuestMark(item,getParentQuest().getGameObject().getStringId())) continue;
 			if (mustBeActive() && !item.hasThisAttribute(Constants.ACTIVATED)) continue;
 			if (mustBeDeactive() && item.hasThisAttribute(Constants.ACTIVATED)) continue;
 			availableObjects.add(item);

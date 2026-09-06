@@ -79,7 +79,10 @@ public class QuestRewardMarkDenizen extends QuestReward {
 			Collections.shuffle(denizens);
 		}
 		
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent rc:denizens) {
+			if (removeMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(),questId)) continue;
+			if (!removeMark() && Quest.GameObjectHasQuestMark(rc.getGameObject(),questId)) continue;
 			if (ignoreHirelings() && rc.isHireling()) continue;
 			if (ignoreControlledDenizens() && (rc.isControlledNative() || rc.isControlledMonster())) continue;
 			if (ignoreCompanions() && rc.isCompanion()) continue;
@@ -175,12 +178,12 @@ public class QuestRewardMarkDenizen extends QuestReward {
 				}
 				
 				if (removeMark()) {
-					Quest.GameObjectRemoveQuestMark(rc.getGameObject(),getParentQuest().getGameObject().getStringId());
+					Quest.GameObjectRemoveQuestMark(rc.getGameObject(),questId);
 					if (removeUncontrolledHirelings()) {
-						validateControlForHireling(rc,character,getParentQuest().getGameObject().getStringId());
+						validateControlForHireling(rc,character,questId);
 					}
 				} else {
-					Quest.GameObjectAddQuestMark(rc.getGameObject(),getParentQuest().getGameObject().getStringId());
+					Quest.GameObjectAddQuestMark(rc.getGameObject(),questId);
 				}
 				markedDenizen++;
 				if (getDenizenAmount()!=0 && markedDenizen>=getDenizenAmount()) return;

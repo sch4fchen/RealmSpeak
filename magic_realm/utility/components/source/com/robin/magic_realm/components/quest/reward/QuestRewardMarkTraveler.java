@@ -11,7 +11,6 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
-import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -43,35 +42,39 @@ public class QuestRewardMarkTraveler extends QuestReward {
 		String regex = getTravelerRegEx().trim();
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
 		ArrayList<GameObject> allTravelers = new ArrayList<>();
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject go:travelers) {
 			if (pattern==null || pattern.matcher(go.getName()).find()) {
 				if (randomTraveler() || chooseTraveler()) {
+					if (removeMark() && !Quest.GameObjectHasQuestMark(go,questId)) continue;
+					if (!removeMark() && Quest.GameObjectHasQuestMark(go,questId)) continue;
 					allTravelers.add(go);
 				} else {
 					if (removeMark()) {
-						Quest.GameObjectRemoveQuestMark(go,getParentQuest().getGameObject().getStringId());
+						Quest.GameObjectRemoveQuestMark(go,questId);
 					} else {
-						Quest.GameObjectAddQuestMark(go,getParentQuest().getGameObject().getStringId());
+						Quest.GameObjectAddQuestMark(go,questId);
 					}
 				}
 			}
 		}
+		if (allTravelers.size() == 0) return;
 		if (chooseTraveler()) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Choose one traveler to mark:",false);
 			chooser.addGameObjects(allTravelers,false);
 			chooser.setVisible(true);
 			RealmComponent selectedTraveler = chooser.getFirstSelectedComponent();
 			if (removeMark()) {
-				Quest.GameObjectRemoveQuestMark(selectedTraveler.getGameObject(),getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectRemoveQuestMark(selectedTraveler.getGameObject(),questId);
 			} else {
-				Quest.GameObjectAddQuestMark(selectedTraveler.getGameObject(),getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(selectedTraveler.getGameObject(),questId);
 			}
 		}
 		if (randomTraveler()) {
 			if (removeMark()) {
-				Quest.GameObjectRemoveQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectRemoveQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),questId);
 			} else {
-				Quest.GameObjectAddQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),getParentQuest().getGameObject().getStringId());
+				Quest.GameObjectAddQuestMark(allTravelers.get(RandomNumber.getRandom(allTravelers.size())),questId);
 			}
 		}
 	}
