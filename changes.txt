@@ -1,4 +1,4 @@
-QuestRewardMarkCharacter: current tile, current clearing, regex, random/all/choose
+QuestRewardMarkCharacter: current tile, current clearing, male/female, fighter/magicUser, guild, regex, random/all/choose
 QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
