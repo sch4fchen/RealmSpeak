@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.game.objects.GamePool;
 import com.robin.general.util.RandomNumber;
+import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
@@ -18,6 +19,7 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	
 	public static final String TRAVELER_REGEX = "_regex";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
+	public static final String CHARACTERS_TILE = "_ch_tile";
 	public static final String CHOOSE_TRAVELER = "_choose_tr";
 	public static final String RANDOM_TRAVELER = "_rnd_tr";
 	public static final String REMOVE = "_rmv_mrk";
@@ -33,7 +35,19 @@ public class QuestRewardMarkTraveler extends QuestReward {
 			if (!current.isInClearing()) return;
 			travelers = new ArrayList<>();
 			for (RealmComponent rc : current.clearing.getClearingComponents()) {
-				travelers.add(rc.getGameObject());
+				if (rc.isTraveler()) {
+					travelers.add(rc.getGameObject());
+				}
+			}
+		} else if (charactersTileOnly()) {
+			TileLocation current = character.getCurrentLocation();
+			travelers = new ArrayList<>();
+			for (ClearingDetail cl : current.tile.getClearings()) {
+				for (RealmComponent rc : cl.getClearingComponents()) {
+					if (rc.isTraveler()) {
+						travelers.add(rc.getGameObject());
+					}
+				}
 			}
 		} else {
 			GamePool pool = new GamePool(character.getGameData().getGameObjects());
@@ -90,6 +104,9 @@ public class QuestRewardMarkTraveler extends QuestReward {
 			if (charactersClearingOnly()) {
 				sb.append(" in current clearing");
 			}
+			if (charactersTileOnly()) {
+				sb.append(" in current tile");
+			}
 			sb.append(".");
 			return sb.toString();
 		}
@@ -112,6 +129,10 @@ public class QuestRewardMarkTraveler extends QuestReward {
 	
 	private Boolean charactersClearingOnly() {
 		return getBoolean(CHARACTERS_CLEARING);
+	}
+	
+	private Boolean charactersTileOnly() {
+		return getBoolean(CHARACTERS_TILE);
 	}
 	
 	private Boolean chooseTraveler() {
