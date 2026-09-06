@@ -12,13 +12,13 @@ QuestRequirement: TreasureLocation: current tile, current clearing, regex, marke
 QuestReward: MarkTreasureLocation: current tile, current clearing, regex, random/all/choose
 QuestRequirement: MissionCampaignTask: current tile, current clearing, regex, marked, must own it
 QuestReward: MarkMissionCampaignTask: current tile, current clearing, regex, all owned, random/all/choose
-QuestRequirement: Visitor: current tile, current clearing, regex, marked
-QuestReward: MarkVisitor: current tile, current clearing, regex, random/all/choose
 
 Version 1.2.6.5
 NEW FEATURES:
 QUEST UPDATE:
 # QuestRequirementStealing
+# QuestRewardMarkVisitor
+# QuestRewardRequirementVisitor
 # QuestRewardMarkTraveler: option to choose a single traveler
 # QuestRewardMarkDenizen: option for choosing denizens
 # QuestRewardMarkItem: option for random item

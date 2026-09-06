@@ -274,6 +274,14 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkTraveler.REMOVE, "Remove mark", FieldType.Boolean));
 				break;
+			case MarkVisitor:
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.VISITOR_REGEX, "Visitor name filter (regex)", FieldType.Regex, null, new String[] { Constants.VISITOR }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.CHOOSE_VISITOR, "Choose visitor", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.RANDOM_VISITOR, "Random visitor", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkVisitor.REMOVE, "Remove mark", FieldType.Boolean));
+				break;
 			case MarkedView:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.OPTION, "Enable/Disable", FieldType.StringSelector, new String[] {QuestRewardMarkedView.ENABLE,QuestRewardMarkedView.DISABLE} ));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.NO_SECRETS, "Show hidden things", FieldType.Boolean));

@@ -347,6 +347,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Traveler:
 				list.add(new QuestPropertyBlock(QuestRequirementTraveler.TRAVELER_REGEX, "Name", FieldType.Regex, null, new String[] { Constants.TRAVELER_TEMPLATE }));
+				list.add(new QuestPropertyBlock(QuestRequirementTraveler.SAME_TILE, "Same tile?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTraveler.MARK, "Requires a mark?", FieldType.Boolean));
 				break;
 			case Treachery:
@@ -356,6 +357,11 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				break;
 			case Teleport:
 				list.add(new QuestPropertyBlock(QuestRequirementTeleport.TELEPORT_TYPE, "Teleport type", FieldType.StringSelector, getTeleportTypes().toArray()));
+				break;
+			case Visitor:
+				list.add(new QuestPropertyBlock(QuestRequirementVisitor.VISITOR_REGEX, "Name", FieldType.Regex, null, new String[] { Constants.VISITOR }));
+				list.add(new QuestPropertyBlock(QuestRequirementVisitor.SAME_TILE, "Same tile?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementVisitor.MARK, "Requires a mark?", FieldType.Boolean));
 				break;
 			case Weather:
 				list.add(new QuestPropertyBlock(QuestRequirementWeather.WEATHER_ENABLED, "Weather must be enabled", FieldType.Boolean));

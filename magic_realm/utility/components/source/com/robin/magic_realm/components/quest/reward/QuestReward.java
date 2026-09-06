@@ -62,6 +62,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		MarkedDenizensAbility,
 		MarkItem,
 		MarkTraveler,
+		MarkVisitor,
 		MarkedView,
 		Mesmerize,
 		MinorCharacter,
@@ -114,8 +115,6 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case Journal:
 				case LostInventoryToDefault:
 				case LostInventoryToLocation:
-				case MarkDenizen:
-				case MarkTraveler:
 				case MarkedView:
 					return false;
 				default: return true;
@@ -162,6 +161,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case MarkedDenizensAbility:		return "Adds or removes abilities for marked denizens.";
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
 				case MarkTraveler:				return "Marks a random or specific traveler.  This is useful if you want to make sure a character hires a traveler or that a traveler is in a certain location.";
+				case MarkVisitor:				return "Marks a random or specific visitor.";
 				case MarkedView:				return "Enables or disables the Marked Things view in the quest view.";
 				case MinorCharacter:			return "Add or remove a Minor Character.  Must create Minor Characters BEFORE creating this reward.";
 				case MoveDenizen:				return "Move one or several denizen (or travelers) to a location.";
@@ -432,6 +432,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MarkTraveler:
 				reward = new QuestRewardMarkTraveler(go);
+				break;
+			case MarkVisitor:
+				reward = new QuestRewardMarkVisitor(go);
 				break;
 			case MarkedView:
 				reward = new QuestRewardMarkedView(go);

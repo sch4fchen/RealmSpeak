@@ -74,6 +74,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Trade,
 		Traveler,
 		Treachery,
+		Visitor,
 		Weather,
 		;
 		public String getDescription() {
@@ -188,6 +189,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for any or a specific Traveler to be in a certain location or hired by the character.";
 				case Treachery:
 					return "Tests for that character commiting treachery.";
+				case Visitor:
+					return "Tests for any or a specific Visitor to be in a certain location.";
 				case Weather:
 					return "Tests for a specific weather.";
 			default:
@@ -441,6 +444,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case Treachery:
 				requirement = new QuestRequirementTreachery(go);
+				break;
+			case Visitor:
+				requirement = new QuestRequirementVisitor(go);
 				break;
 			case Weather:
 				requirement = new QuestRequirementWeather(go);
