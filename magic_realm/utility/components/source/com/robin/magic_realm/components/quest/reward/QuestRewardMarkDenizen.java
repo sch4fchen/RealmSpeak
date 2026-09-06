@@ -19,6 +19,7 @@ import com.robin.magic_realm.components.attribute.Strength;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
+import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
 import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -26,6 +27,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	
 	public static final String DENIZEN_REGEX = "_regex";
 	public static final String DENIZEN_AMOUNT = "_amount";
+	public static final String CHOOSE = "_choose";
 	public static final String TILE = "_tile";
 	public static final String MAP = "_map";
 	public static final String VULNERARBILITY = "_vulnerability";
@@ -59,6 +61,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
 		int markedDenizen = 0;
 		ArrayList<RealmComponent> denizens = new ArrayList<>();
+		ArrayList<GameObject> denizensToChoose = new ArrayList<>();
 		if (allOnMap()) {
 			GamePool pool = new GamePool(character.getGameData().getGameObjects());
 			for (GameObject go : pool.find("denizen")) {
@@ -177,16 +180,35 @@ public class QuestRewardMarkDenizen extends QuestReward {
 					if (getArmored() && !armored) continue;
 				}
 				
-				if (removeMark()) {
-					Quest.GameObjectRemoveQuestMark(rc.getGameObject(),questId);
-					if (removeUncontrolledHirelings()) {
-						validateControlForHireling(rc,character,questId);
-					}
+				if (chooseDenizens()) {
+					denizensToChoose.add(rc.getGameObject());
 				} else {
-					Quest.GameObjectAddQuestMark(rc.getGameObject(),questId);
+					if (removeMark()) {
+						Quest.GameObjectRemoveQuestMark(rc.getGameObject(),questId);
+						if (removeUncontrolledHirelings()) {
+							validateControlForHireling(rc,character,questId);
+						}
+					} else {
+						Quest.GameObjectAddQuestMark(rc.getGameObject(),questId);
+					}
+					markedDenizen++;
+					if (getDenizenAmount()!=0 && markedDenizen>=getDenizenAmount()) return;
+				}
+			}
+		}
+		if (chooseDenizens() && !denizensToChoose.isEmpty()) {
+			while ((markedDenizen<getDenizenAmount() || getDenizenAmount()==0) && !denizensToChoose.isEmpty()) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Choose denizen to mark:",false);
+				chooser.addGameObjects(denizensToChoose,false);
+				chooser.setVisible(true);
+				RealmComponent selectedDenizen = chooser.getFirstSelectedComponent();
+				if (removeMark()) {
+					Quest.GameObjectRemoveQuestMark(selectedDenizen.getGameObject(),questId);
+				} else {
+					Quest.GameObjectAddQuestMark(selectedDenizen.getGameObject(),questId);
 				}
 				markedDenizen++;
-				if (getDenizenAmount()!=0 && markedDenizen>=getDenizenAmount()) return;
+				denizensToChoose.remove(selectedDenizen.getGameObject());
 			}
 		}
 	}
@@ -226,6 +248,10 @@ public class QuestRewardMarkDenizen extends QuestReward {
 	
 	public int getDenizenAmount() {
 		return getInt(DENIZEN_AMOUNT);
+	}
+	
+	public boolean chooseDenizens() {
+		return getBoolean(CHOOSE);
 	}
 	
 	public boolean allInTile() {

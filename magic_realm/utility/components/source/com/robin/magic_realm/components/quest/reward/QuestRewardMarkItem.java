@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
+import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.ChitItemType;
 import com.robin.magic_realm.components.quest.Quest;
@@ -17,6 +18,7 @@ public class QuestRewardMarkItem extends QuestReward {
 	public static final String ITEM_REGEX = "_irx";
 	public static final String ITEM_INVENTORY = "_iinv";
 	public static final String SINGLE_ITEM = "_single_i";
+	public static final String RANDOM_ITEM = "_random_i";
 	public static final String REMOVE = "_remove";
 	public static final String ITEM_ACTIVE = "_iact";
 	public static final String ITEM_DEACTIVE = "_idact";
@@ -45,7 +47,7 @@ public class QuestRewardMarkItem extends QuestReward {
 		objects = availableObjects;
 
 		if (objects.size() == 0) return;
-		if(onlySingleItem()){
+		if (onlySingleItem()) {
 			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame,"Choose one item to mark:",false);
 			chooser.addGameObjects(objects,false);
 			chooser.setVisible(true);
@@ -54,6 +56,14 @@ public class QuestRewardMarkItem extends QuestReward {
 				Quest.GameObjectRemoveQuestMark(item.getGameObject(),getParentQuest().getGameObject().getStringId());
 			} else {
 				Quest.GameObjectAddQuestMark(item.getGameObject(),getParentQuest().getGameObject().getStringId());
+			}
+			return;
+		}
+		if (randomItem()) {
+			if (removeMark()) {
+				Quest.GameObjectRemoveQuestMark(objects.get(RandomNumber.getRandom(objects.size())),getParentQuest().getGameObject().getStringId());
+			} else {
+				Quest.GameObjectAddQuestMark(objects.get(RandomNumber.getRandom(objects.size())),getParentQuest().getGameObject().getStringId());
 			}
 			return;
 		}
@@ -72,6 +82,9 @@ public class QuestRewardMarkItem extends QuestReward {
 			if(onlySingleItem()) {
 				sb.append("Removes the mark of a single item");
 			}
+			else if (randomItem()){
+				sb.append("Removes the marks of a random item");
+			}
 			else {
 				sb.append("Removes the marks of all items");
 			}
@@ -79,6 +92,9 @@ public class QuestRewardMarkItem extends QuestReward {
 		else {
 			if(onlySingleItem()) {
 				sb.append("Marks single item");
+			}
+			else if (randomItem()){
+				sb.append("Marks a random item");
 			}
 			else {
 				sb.append("Marks all items");
@@ -118,6 +134,9 @@ public class QuestRewardMarkItem extends QuestReward {
 	}
 	public boolean onlySingleItem() {
 		return getBoolean(SINGLE_ITEM);
+	}
+	public boolean randomItem() {
+		return getBoolean(RANDOM_ITEM);
 	}
 	public boolean removeMark() {
 		return getBoolean(REMOVE);

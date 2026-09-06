@@ -227,6 +227,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_AMOUNT, "Number of denizens (0: unlimited)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.TILE, "Denizens on characters tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.MAP, "Denizens on the whole map", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.CHOOSE, "Character must choose", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ATTACK_STRENGTH, "Attack strength", FieldType.StringSelector, VulnerabilityType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.ATTACK_SPEED, "Attack speed", FieldType.NumberAll));
@@ -260,6 +261,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_CHITTYPES, "Item Type Restriction", FieldType.ChitType));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_INVENTORY, "In character's inventory", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.SINGLE_ITEM, "Character must choose single item", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkItem.RANDOM_ITEM, "Random item is chosen", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.REMOVE, "Remove mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_ACTIVE, "Must be activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkItem.ITEM_DEACTIVE, "Must be deactivated?", FieldType.Boolean));
