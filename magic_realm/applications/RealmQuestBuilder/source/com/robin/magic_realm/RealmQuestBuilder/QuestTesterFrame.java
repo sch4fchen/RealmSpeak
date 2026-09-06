@@ -1821,6 +1821,10 @@ public class QuestTesterFrame extends JFrame {
 			}
 		}
 		retestQuest(params);
+		if (table == SearchTableType.Stealing || table == SearchTableType.StealReward) {
+			params.actionType=CharacterActionType.Stealing;
+			retestQuest(params);
+		}
 	}
 	
 	private void updateTextArea(final String text) {

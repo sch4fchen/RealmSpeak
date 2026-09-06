@@ -56,17 +56,20 @@ public class QuestRequirementStealing extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		if (reqParams.actionType!=CharacterActionType.Stealing) return false;
 		GameObject victim = reqParams.targetOfSearch;
-		RealmComponent victimRc = RealmComponent.getRealmComponent(victim);
-		if (getVictim()==VictimType.Native && !victimRc.isNativeLeader()) return false;
-		if (getVictim()==VictimType.NativeNotControlled && (!victimRc.isNativeLeader() || victimRc.isControlledNative())) return false;
-		if (getVictim()==VictimType.Character && !victimRc.isCharacter()) return false;
-		if (getVictim()==VictimType.HiredLeader && !victimRc.isHiredLeader()) return false;
-		if (getVictim()==VictimType.CharacterOrHiredLeader && (!victimRc.isCharacter() || !victimRc.isHiredLeader())) return false;
+		RealmComponent victimRc = null;
+		if (victim!=null) {
+			victimRc = RealmComponent.getRealmComponent(victim);
+		}
+		if (getVictim()==VictimType.Native && (victimRc==null || !victimRc.isNativeLeader())) return false;
+		if (getVictim()==VictimType.NativeNotControlled && (victimRc==null || (!victimRc.isNativeLeader() || victimRc.isControlledNative()))) return false;
+		if (getVictim()==VictimType.Character && (victimRc==null || !victimRc.isCharacter())) return false;
+		if (getVictim()==VictimType.HiredLeader && (victimRc==null || !victimRc.isHiredLeader())) return false;
+		if (getVictim()==VictimType.CharacterOrHiredLeader && (victimRc==null || (!victimRc.isCharacter() || !victimRc.isHiredLeader()))) return false;
 		Pattern pattern = Pattern.compile(getVictimRegEx());
-		if (!getVictimRegEx().isEmpty() && !pattern.matcher(victim.getName()).find()) return false;
+		if (!getVictimRegEx().isEmpty() && (victim==null || !pattern.matcher(victim.getName()).find())) return false;
 		String questId = getParentQuest().getGameObject().getStringId();
-		if (victimRequiresMark() && !Quest.GameObjectHasQuestMark(victim, questId));
-		if (!victimGuild().matches(QuestRequirement.ANY) && victimRc.isCharacter()) {
+		if (victimRequiresMark() && (victim==null || !Quest.GameObjectHasQuestMark(victim, questId)));
+		if (!victimGuild().matches(QuestRequirement.ANY) && victimRc!=null && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
 			if (victimGuild().matches(QuestRequirement.NONE)) {
 				if (victimCharacter.getCurrentGuild()!=null) return false;
@@ -78,13 +81,13 @@ public class QuestRequirementStealing extends QuestRequirement {
 				if (victimCharacter.getCurrentGuild()==null || !victimCharacter.getCurrentGuild().matches(victimGuild())) return false;
 			}
 		}
-		if (!victimGender().matches(QuestRequirement.ANY) && victimRc.isCharacter()) {
+		if (!victimGender().matches(QuestRequirement.ANY) && victimRc!=null && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
 			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
 			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
 		}
-		if (victimMustBeAFighter() && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;
-		if (victimMustBeAMagicUser() && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;
+		if (victimMustBeAFighter() && victimRc!=null && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;
+		if (victimMustBeAMagicUser() && victimRc!=null && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;
 		
 		GameObject stolenItem = null;
 		if (reqParams.objectList !=null && !reqParams.objectList.isEmpty()) {
