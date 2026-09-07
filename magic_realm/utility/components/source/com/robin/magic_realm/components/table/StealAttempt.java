@@ -2,6 +2,7 @@ package com.robin.magic_realm.components.table;
 
 import javax.swing.JFrame;
 
+import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.magic_realm.components.*;
 import com.robin.magic_realm.components.attribute.RelationshipType;
@@ -37,8 +38,8 @@ public class StealAttempt extends RealmTable {
 		return super.apply(character,roller);
 	}
 	public String applyOne(CharacterWrapper character) {
-		StealTablesCommon.stealChoice(getParentFrame(),character,victim,"Steal Attempt");
-		testQuestRequirements(character,SearchResultType.Choice);
+		GameObject stolenItem = StealTablesCommon.stealChoice(getParentFrame(),character,victim,"Steal Attempt");
+		testQuestRequirements(character,SearchResultType.Choice,stolenItem);
 		return RESULT[0];
 	}
 
@@ -75,12 +76,18 @@ public class StealAttempt extends RealmTable {
 	}
 	
 	private void testQuestRequirements(CharacterWrapper character, SearchResultType searchResult) {
+		testQuestRequirements(character,searchResult,null);
+	}
+	private void testQuestRequirements(CharacterWrapper character, SearchResultType searchResult, GameObject stolenItem) {
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.SearchTable;
 		params.actionName = getTableKey();
 		params.targetOfSearch = victim.getGameObject();
 		params.searchType = searchResult;
 		params.searchHadAnEffect = true;
+		if (stolenItem!=null) {
+			params.objectList.add(stolenItem);
+		}
 		character.testQuestRequirements(getParentFrame(),params);
 		
 		params.actionType = CharacterActionType.Stealing;
