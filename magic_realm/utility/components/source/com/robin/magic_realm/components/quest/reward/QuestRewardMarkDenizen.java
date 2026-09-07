@@ -84,6 +84,7 @@ public class QuestRewardMarkDenizen extends QuestReward {
 		
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent rc:denizens) {
+			if (!rc.isDenizen()) continue;
 			if (removeMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(),questId)) continue;
 			if (!removeMark() && Quest.GameObjectHasQuestMark(rc.getGameObject(),questId)) continue;
 			if (ignoreHirelings() && rc.isHireling()) continue;
