@@ -324,7 +324,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REMOVE_MARK, "Victim remove mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GUILD, "Targeted character is a guildmember?", FieldType.StringSelector, getGuildNames()));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GENDER, "Targeted character's gender", FieldType.StringSelector, new String[] { QuestRequirement.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
-				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_FIGHTER, "Targeted character must be a figghter?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_FIGHTER, "Targeted character must be a fighter?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_MAGIC_USER, "Targeted character must be a magic user?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_TYPE, "Item type", FieldType.StringSelector, QuestRequirementStealing.ItemType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REQ_MARK, "Item requires mark?", FieldType.Boolean));
