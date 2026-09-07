@@ -1634,7 +1634,11 @@ public class CombatFrame extends JFrame {
 					CombatSummarySheet combatSummarySheet = new CombatSummarySheet(this);
 					int height = 400+allParticipants.size()*(PARTICIPANT_ROW_HEIGHT+PARTICIPANT_ROW_HEIGHT/2);
 					combatSummarySheet.setPreferredSize(new Dimension(600,height));
-					combatSheetPanel.add(new JScrollPane(combatSummarySheet));
+					JScrollPane summaryScroll = new JScrollPane(combatSummarySheet);
+					summaryScroll.getVerticalScrollBar().setUnitIncrement(20);
+					summaryScroll.getHorizontalScrollBar().setUnitIncrement(20);
+					combatSheetPanel.add(summaryScroll);
+					SwingUtilities.invokeLater(summaryScroll.getViewport()::requestFocusInWindow);
 				}
 				else {
 					RealmComponent rc = allParticipants.get(row-1);
