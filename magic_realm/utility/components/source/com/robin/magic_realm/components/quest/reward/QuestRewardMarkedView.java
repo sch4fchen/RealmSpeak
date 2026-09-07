@@ -11,6 +11,7 @@ public class QuestRewardMarkedView extends QuestReward {
 	public static final String ENABLE = "Enable";
 	public static final String DISABLE = "Disable";
 	public static final String NO_SECRETS = "_no_secrets";
+	public static final String LOCATIONS = "_locations";
 	public static final String TITLE = "_title";
 
 	public QuestRewardMarkedView(GameObject go) {
@@ -25,6 +26,11 @@ public class QuestRewardMarkedView extends QuestReward {
 			} else {
 				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS);
 			}
+			if (locations()) {
+				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
+			} else {
+				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
+			}
 			if (title()!=null && !title().isEmpty()) {
 				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_TITLE,title());
 			} else {
@@ -34,6 +40,7 @@ public class QuestRewardMarkedView extends QuestReward {
 		}
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW);
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS);
+		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_TITLE);
 	}
 
@@ -54,6 +61,10 @@ public class QuestRewardMarkedView extends QuestReward {
 	
 	private boolean noSecrets() {
 		return getBoolean(NO_SECRETS);
+	}
+	
+	private boolean locations() {
+		return getBoolean(LOCATIONS);
 	}
 	
 	private String title() {

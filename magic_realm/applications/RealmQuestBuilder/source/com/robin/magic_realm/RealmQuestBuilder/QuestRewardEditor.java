@@ -285,6 +285,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case MarkedView:
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.OPTION, "Enable/Disable", FieldType.StringSelector, new String[] {QuestRewardMarkedView.ENABLE,QuestRewardMarkedView.DISABLE} ));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.NO_SECRETS, "Show hidden things", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.LOCATIONS, "Show locations", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.TITLE, "Custom headline", FieldType.TextLine));
 				break;
 			case Mesmerize:

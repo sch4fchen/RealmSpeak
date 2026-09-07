@@ -147,6 +147,9 @@ public class QuestView extends JPanel implements Scrollable {
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
 				markedView.activateFlipView();
 			}
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS)) {
+				markedView.activateLocationView();
+			}
 			String title = "Quest related things";	
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_TITLE)) {
 				String customTitle = quest.getGameObject().getThisAttribute(QuestConstants.MAKRED_VIEW_TITLE);

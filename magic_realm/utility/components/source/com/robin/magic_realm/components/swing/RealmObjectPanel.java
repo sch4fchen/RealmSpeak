@@ -27,6 +27,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	protected int selectionMode = MULTIPLE_SELECTION;
 	
 	protected boolean flipView = false;
+	protected boolean showLocations = false;
 	
 	private ArrayList<ListSelectionListener> listSelectionListeners;
 	
@@ -81,6 +82,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			flipView = true;
 			repaint();
 		}
+	}
+	public void activateLocationView() {
+		showLocations=true;
 	}
 	/**
 	 * This method was necessary to workaround a bug in Java 1.5 where findComponentAt wasn't working!!
@@ -275,6 +279,11 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				}
 			}
 		}
+		if (showLocations==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setShowLocation(true);
+			}
+		}
 		
 		super.paint(g);
 		
@@ -305,6 +314,11 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			g.drawImage(flipIcon.getImage(),4,4,null);
 		}
 		
+		if (showLocations==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setShowLocation(false);
+			}
+		}
 		if (flipViewOn==true) {
 			for (Iterator i=rcs.iterator();i.hasNext();) {
 				RealmComponent rc = (RealmComponent)i.next();

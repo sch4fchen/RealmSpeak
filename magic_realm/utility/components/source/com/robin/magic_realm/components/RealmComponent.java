@@ -113,6 +113,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	protected boolean shadow = true;
 
 	protected boolean selected = false;
+	protected boolean displayLocation = false;
 
 	protected RealmComponent(GameObject obj) {
 		this.gameObject = obj;
@@ -877,6 +878,18 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				g.drawRect(n, n, size.width - (n << 1), size.height - (n << 1));
 			}
 		}
+		if (displayLocation) {
+			String location = null;
+			if (getCurrentLocation()!=null) {
+				location = getCurrentLocation().toString();
+			} else if (getHeldBy()!=null) {
+				location = getHeldBy().toString();
+			}
+			if (location!=null) {
+				g.setFont(Constants.ATTRIBUTE_FONT);
+				g.drawString(location, 0, getSize().height);
+			}
+		}
 	}
 
 	/////////////////////////////////////////////////////////////
@@ -1146,6 +1159,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	 */
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+		repaint();
+	}
+	
+	public void setShowLocation(boolean location) {
+		this.displayLocation = location;
 		repaint();
 	}
 
