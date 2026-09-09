@@ -1436,16 +1436,6 @@ public class CombatFrame extends JFrame {
 			doFatigueWounds(this,activeCharacter);
 		}
 	}
-	/**
-	 * True when a placed attack chit will land on the given target, judged by the sheet it was
-	 * placed on.
-	 * <p>
-	 * A target that owns a sheet is attacked on its own sheet.  A denizen that owns no sheet is
-	 * displayed alongside whoever IT is attacking, which is often a DIFFERENT character than the
-	 * one attacking it - so the attack chit is placed on that third party's sheet, and comparing
-	 * the sheet to either the target or the attacker misses it.  See CombatSheet.updateLayout,
-	 * which places a participant on a sheet when its target's target is already on that sheet.
-	 */
 	private static boolean attackReachesTarget(CombatWrapper placedChit,RealmComponent target) {
 		if (target==null || !placedChit.getPlacedAsFight()) return false;
 		String sheetId = placedChit.getSheetOwnerId();
