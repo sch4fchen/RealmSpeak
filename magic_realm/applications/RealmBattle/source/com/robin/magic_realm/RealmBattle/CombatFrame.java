@@ -1436,6 +1436,27 @@ public class CombatFrame extends JFrame {
 			doFatigueWounds(this,activeCharacter);
 		}
 	}
+	/**
+	 * True when a placed attack chit will land on the given target, judged by the sheet it was
+	 * placed on.
+	 * <p>
+	 * A target that owns a sheet is attacked on its own sheet.  A denizen that owns no sheet is
+	 * displayed alongside whoever IT is attacking, which is often a DIFFERENT character than the
+	 * one attacking it - so the attack chit is placed on that third party's sheet, and comparing
+	 * the sheet to either the target or the attacker misses it.  See CombatSheet.updateLayout,
+	 * which places a participant on a sheet when its target's target is already on that sheet.
+	 */
+	private static boolean attackReachesTarget(CombatWrapper placedChit,RealmComponent target) {
+		if (target==null || !placedChit.getPlacedAsFight()) return false;
+		String sheetId = placedChit.getSheetOwnerId();
+		if (sheetId==null) return false;
+		if (sheetId.equals(target.getGameObject().getStringId())) return true;
+		RealmComponent targetsTarget = target.getTarget();
+		if (targetsTarget!=null && sheetId.equals(targetsTarget.getGameObject().getStringId())) return true;
+		RealmComponent targetsTarget2 = target.get2ndTarget();
+		if (targetsTarget2!=null && sheetId.equals(targetsTarget2.getGameObject().getStringId())) return true;
+		return false;
+	}
 	private void doNext() {
 		if (combatNextPhaseWarning) {
 			String warning = null;
@@ -1543,13 +1564,13 @@ public class CombatFrame extends JFrame {
 							combatChits.add(monsterCombat);
 						}
 						for (CombatWrapper combat : combatChits) {
-							if (target1!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target1.getGameObject().getStringId())) {
+							if (attackReachesTarget(combat,target1)) {
 								attacksTarget1 = true;
 							}
-							if (target2!=null && combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(target2.getGameObject().getStringId())) {
+							if (attackReachesTarget(combat,target2)) {
 								attacksTarget2 = true;
 							}
-							if (combat.getPlacedAsFight() && combat.getSheetOwnerId().matches(character.getGameObject().getStringId())) {
+							if (combat.getPlacedAsFight() && character.getGameObject().getStringId().equals(combat.getSheetOwnerId())) {
 								if (target1!=null && !(new CombatWrapper(target1.getGameObject())).isSheetOwner()) {
 									attacksTarget1 = true;
 								}
