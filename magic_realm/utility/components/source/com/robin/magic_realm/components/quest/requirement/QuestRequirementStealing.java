@@ -53,7 +53,7 @@ public class QuestRequirementStealing extends QuestRequirement {
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
-		if (reqParams.actionType!=CharacterActionType.Stealing) return false;
+		if (reqParams.actionType!=CharacterActionType.Stealing && reqParams.actionType!=CharacterActionType.StealingFromCharacter) return false;
 		GameObject victim = reqParams.targetOfSearch;
 		RealmComponent victimRc = null;
 		if (victim!=null) {

@@ -1,3 +1,6 @@
+Transform should nnot be ablte to target native horse (and rs freezes)
+Steal from character doesn't trigger reward
+
 QuestRewardMarkCharacter: current tile, current clearing, male/female, fighter/magicUser, guild, regex, random/all/choose
 QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
@@ -6,8 +9,7 @@ QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guild
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked
 QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
 QuestRequirement: GateLocation: current tile, current clearing, regex, marked
-QuestReward: show specific RealmComponents (like Infoscreen for marked objects): Enable/Disable, show hidden things, CustomHeadline, add/remove objects from screen
-	as well for MarkedView: show location (tile with/without clearing), show Owner (e.g. denizen, treasureLocation, character..., TWT -> extra checkbox to show TWT owner)
+MarkedView: show only tile for location, show held by, show derived location of held by, fix component size
 QuestRequirement: TreasureLocation: current tile, current clearing, regex, marked
 QuestReward: MarkTreasureLocation: current tile, current clearing, regex, random/all/choose
 QuestRequirement: MissionCampaignTask: current tile, current clearing, regex, marked, must own it
