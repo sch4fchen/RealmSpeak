@@ -71,12 +71,13 @@ public class GameServer extends GameNet {
 		}
 		return null;
 	}
-	private void doBroadcast() throws IOException {
+	private boolean doBroadcast() throws IOException {
 		String[] string = getNextBroadcast();
+		if (string == null) return false; // list emptied between isBroadcast() and remove(); caller sends IDLE
 		getOutputStream().writeInt(RESPOND_BROADCAST);
 		getOutputStream().writeObject(string);
 		flush();
-		// no feedback needed
+		return true;
 	}
 	public void addInfoDirect(InfoObject io) {
 		infoDirects.add(io);
@@ -171,8 +172,8 @@ public class GameServer extends GameNet {
 				else if (isInfoDirect()) {
 					doInfoDirect();
 				}
-				else if (isBroadcast()) {
-					doBroadcast();
+				else if (isBroadcast() && doBroadcast()) {
+					// broadcast sent
 				}
 				else if (shuttingDown) {
 					getOutputStream().writeInt(RESPOND_GOODBYE);
