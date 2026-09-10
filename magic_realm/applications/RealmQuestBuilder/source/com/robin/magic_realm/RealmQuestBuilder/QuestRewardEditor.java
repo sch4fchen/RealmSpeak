@@ -11,6 +11,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementStealing;
 import com.robin.magic_realm.components.quest.reward.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
@@ -223,6 +224,16 @@ public class QuestRewardEditor extends QuestBlockEditor {
 			case MakeWhole:
 				break;
 			case MarkCharacter:
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHARACTER_REGEX, "Character name filter (regex)", FieldType.Regex, null, new String[] { "character" }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHARACTER_GUILD, "Character is a guildmember?", FieldType.StringSelector, getGuildNames()));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHARACTER_GENDER, "Character's gender", FieldType.StringSelector, new String[] { QuestConstants.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.FIGHTER, "Character must be a fighter?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.MAGIC_USER, "Character must be a magic user?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHOOSE_CHARACTER, "Choose character", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.RANDOM_CHARACTER, "Random character", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHARACTERS_CLEARING, "In characters clearing only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.CHARACTERS_TILE, "In characters tile only", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkCharacter.REMOVE, "Remove mark", FieldType.Boolean));
 				break;
 			case MarkDenizen:
 				list.add(new QuestPropertyBlock(QuestRewardMarkDenizen.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));

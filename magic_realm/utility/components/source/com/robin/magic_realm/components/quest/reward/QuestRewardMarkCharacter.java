@@ -138,10 +138,31 @@ public class QuestRewardMarkCharacter extends QuestReward {
 		}
 		StringBuffer sb = new StringBuffer();
 		sb.append("Mark all characters");
+		if (mustBeAFighter()) {
+			if (randomCharacter() || chooseCharacter()) {
+				sb.append(" who is a fighter");
+			} else {
+				sb.append("who are fighters");
+			}
+		}
+		if (mustBeAMagicUser()) {
+			if (randomCharacter() || chooseCharacter()) {
+				sb.append(" who is a magic user");
+			} else {
+				sb.append("who are magic users");
+			}
+		}
 		if (charactersClearingOnly()) {
 			sb.append(" in current clearing");
 		}
-		sb.append(" matching the name: "+getCharacterRegEx());
+		if (charactersClearingOnly()) {
+			sb.append(" in current clearing");
+		}
+		if (getCharacterRegEx()!=null && !getCharacterRegEx().isEmpty()) {
+			sb.append(" matching the name: "+getCharacterRegEx());
+		} else {
+			sb.append(".");
+		}
 		return sb.toString();
 	}
 
