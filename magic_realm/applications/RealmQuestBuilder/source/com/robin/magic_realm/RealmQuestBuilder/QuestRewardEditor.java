@@ -286,6 +286,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.OPTION, "Enable/Disable", FieldType.StringSelector, new String[] {QuestRewardMarkedView.ENABLE,QuestRewardMarkedView.DISABLE} ));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.NO_SECRETS, "Show hidden things", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.LOCATIONS, "Show locations", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.PARENT_CHITS, "Show parent chits", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.PARENT_CHITS_LOCATION, "Show location of parent chits", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardMarkedView.LOCATIONS_TILE_ONLY, "Show only tile of locations", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardMarkedView.TITLE, "Custom headline", FieldType.TextLine));
 				break;
 			case Mesmerize:

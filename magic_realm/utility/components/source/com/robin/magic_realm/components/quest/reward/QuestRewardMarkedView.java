@@ -12,6 +12,9 @@ public class QuestRewardMarkedView extends QuestReward {
 	public static final String DISABLE = "Disable";
 	public static final String NO_SECRETS = "_no_secrets";
 	public static final String LOCATIONS = "_locations";
+	public static final String PARENT_CHITS = "_parent_chits";
+	public static final String PARENT_CHITS_LOCATION = "_parent_chits_location";
+	public static final String LOCATIONS_TILE_ONLY = "_locations_tile_only";
 	public static final String TITLE = "_title";
 
 	public QuestRewardMarkedView(GameObject go) {
@@ -31,6 +34,21 @@ public class QuestRewardMarkedView extends QuestReward {
 			} else {
 				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
 			}
+			if (parentChits()) {
+				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS);
+			} else {
+				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS);
+			}
+			if (parentChitsLocation()) {
+				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS_LOCATION);
+			} else {
+				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS_LOCATION);
+			}
+			if (locationsTileOnly()) {
+				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS_TILE_ONLY);
+			} else {
+				getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS_TILE_ONLY);
+			}
 			if (title()!=null && !title().isEmpty()) {
 				getParentQuest().getGameObject().setThisAttribute(QuestConstants.MAKRED_VIEW_TITLE,title());
 			} else {
@@ -41,6 +59,9 @@ public class QuestRewardMarkedView extends QuestReward {
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW);
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS);
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
+		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS);
+		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS_LOCATION);
+		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS_TILE_ONLY);
 		getParentQuest().getGameObject().removeThisAttribute(QuestConstants.MAKRED_VIEW_TITLE);
 	}
 
@@ -65,6 +86,18 @@ public class QuestRewardMarkedView extends QuestReward {
 	
 	private boolean locations() {
 		return getBoolean(LOCATIONS);
+	}
+	
+	private boolean parentChits() {
+		return getBoolean(PARENT_CHITS);
+	}
+	
+	private boolean parentChitsLocation() {
+		return getBoolean(PARENT_CHITS_LOCATION);
+	}
+	
+	private boolean locationsTileOnly() {
+		return getBoolean(LOCATIONS_TILE_ONLY);
 	}
 	
 	private String title() {

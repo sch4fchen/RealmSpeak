@@ -145,9 +145,28 @@ public class QuestView extends JPanel implements Scrollable {
 			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
 				view.activateFlipView();
+			} else {
+				view.deactivateFlipView();
 			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS)) {
-				view.activateLocationView();
+				view.activateLocationView(true);
+			} else {
+				view.activateLocationView(false);
+			}
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS)) {
+				view.activateParentChitsView(true);
+			} else {
+				view.activateParentChitsView(false);
+			}
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS_LOCATION)) {
+				view.activateParentChitsLocationView(true);
+			} else {
+				view.activateParentChitsLocationView(false);
+			}
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS_TILE_ONLY)) {
+				view.displayLocationsTileOnly(true);
+			} else {
+				view.displayLocationsTileOnly(false);
 			}
 			String title = "Quest related things";	
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_TITLE)) {
@@ -157,6 +176,7 @@ public class QuestView extends JPanel implements Scrollable {
 				}
 			}
 			view.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),title,TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
+			view.revalidate();
 			view.setVisible(true);
 		} else {
 			view.setVisible(false);

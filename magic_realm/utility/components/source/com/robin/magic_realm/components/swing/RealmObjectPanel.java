@@ -28,6 +28,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	
 	protected boolean flipView = false;
 	protected boolean displayLocations = false;
+	protected boolean displayParentChits = false;
+	protected boolean displayParentChitsLocation = false;
+	protected boolean displayLocationsTileOnly = false;
 	
 	private ArrayList<ListSelectionListener> listSelectionListeners;
 	
@@ -83,8 +86,20 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			repaint();
 		}
 	}
-	public void activateLocationView() {
-		displayLocations=true;
+	public void deactivateFlipView() {
+		flipView = false;
+	}
+	public void activateLocationView(boolean display) {
+		displayLocations=display;
+	}
+	public void activateParentChitsView(boolean display) {
+		displayParentChits=display;
+	}
+	public void activateParentChitsLocationView(boolean display) {
+		displayParentChitsLocation=display;
+	}
+	public void displayLocationsTileOnly(boolean display) {
+		displayLocationsTileOnly=display;
 	}
 	/**
 	 * This method was necessary to workaround a bug in Java 1.5 where findComponentAt wasn't working!!

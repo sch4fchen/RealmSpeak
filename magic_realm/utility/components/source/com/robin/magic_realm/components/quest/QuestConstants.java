@@ -60,6 +60,9 @@ public class QuestConstants {
 	public static final String MAKRED_VIEW = "marked_view";
 	public static final String MAKRED_VIEW_NO_SECRETS = "marked_view_no_secrets";
 	public static final String MAKRED_VIEW_LOCATIONS = "marked_view_locations";
+	public static final String MAKRED_VIEW_PARENT_CHITS = "marked_parent_chits";
+	public static final String MAKRED_VIEW_PARENT_CHITS_LOCATION = "marked_view_parent_chits_location";
+	public static final String MAKRED_VIEW_LOCATIONS_TILE_ONLY = "marked_locations_tile_only";
 	public static final String MAKRED_VIEW_TITLE = "marked_view_title";
 	//-------------------------------
 	
