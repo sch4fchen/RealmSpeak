@@ -1164,7 +1164,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		repaint();
 	}
 	
-	public void setShowLocation(boolean location) {
+	public void setDisplayLocation(boolean location) {
 		Dimension size = getSize();
 		if (displayLocation == false && location == true) {
 			size.height = size.height+DISPLAY_LOCATION_SPACING;
@@ -1173,9 +1173,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		setSize(size);
 		setPreferredSize(size);
-		setMaximumSize(size);
-		setMinimumSize(size);
 		this.displayLocation = location;
+		revalidate();
 		repaint();
 	}
 

@@ -138,20 +138,15 @@ public class QuestView extends JPanel implements Scrollable {
 		if (quest!=null && quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW)) {
 			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
 			String questId = quest.getGameObject().getStringId();
-			boolean viewLocations = quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
 			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
 				if (Quest.GameObjectHasQuestMark(go, questId)) {
-					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					if (viewLocations) {
-						rc.setShowLocation(true);
-					}
-					view.add(rc);
+					view.addRealmComponent(RealmComponent.getRealmComponent(go));
 				}
 			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
 				view.activateFlipView();
 			}
-			if (viewLocations) {
+			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS)) {
 				view.activateLocationView();
 			}
 			String title = "Quest related things";	

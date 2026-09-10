@@ -27,7 +27,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	protected int selectionMode = MULTIPLE_SELECTION;
 	
 	protected boolean flipView = false;
-	protected boolean showLocations = false;
+	protected boolean displayLocations = false;
 	
 	private ArrayList<ListSelectionListener> listSelectionListeners;
 	
@@ -84,7 +84,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		}
 	}
 	public void activateLocationView() {
-		showLocations=true;
+		displayLocations=true;
 	}
 	/**
 	 * This method was necessary to workaround a bug in Java 1.5 where findComponentAt wasn't working!!
@@ -247,6 +247,12 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		throw new IllegalArgumentException("Use addObject instead.");
 	}
 	public void adjustSize() {
+		Collection<RealmComponent> rcs = getAllRealmComponents();
+		if (rcs!=null && displayLocations==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayLocation(true);
+			}
+		}
 		validate();
 		doLayout(); // This is important to guarantee all the components have positions before adjusting the size
 		Component[] comp = getComponents();
@@ -267,6 +273,11 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			setPreferredSize(d);
 			revalidate();
 		}
+		if (rcs!=null && displayLocations==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayLocation(false);
+			}
+		}
 	}
 	public void paint(Graphics g) {
 		Collection<RealmComponent> rcs = getAllRealmComponents();
@@ -279,9 +290,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				}
 			}
 		}
-		if (showLocations==true) {
+		if (displayLocations==true) {
 			for (RealmComponent rc : rcs) {
-				rc.setShowLocation(true);
+				rc.setDisplayLocation(true);
 			}
 		}
 		
@@ -314,9 +325,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			g.drawImage(flipIcon.getImage(),4,4,null);
 		}
 		
-		if (showLocations==true) {
+		if (displayLocations==true) {
 			for (RealmComponent rc : rcs) {
-				rc.setShowLocation(false);
+				rc.setDisplayLocation(false);
 			}
 		}
 		if (flipViewOn==true) {
