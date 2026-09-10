@@ -22,6 +22,7 @@ import com.robin.magic_realm.components.quest.requirement.*;
 import com.robin.magic_realm.components.quest.reward.QuestReward;
 import com.robin.magic_realm.components.swing.CharacterChooser;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.table.Loot;
 import com.robin.magic_realm.components.table.Search;
 import com.robin.magic_realm.components.utility.*;
@@ -42,6 +43,8 @@ public class QuestTesterFrame extends JFrame {
 	JTextArea stepDetails;
 
 	JTextArea debugOutput;
+	
+	RealmObjectPanel markedView;
 
 	// Stats
 	JLabel charName;
@@ -104,6 +107,7 @@ public class QuestTesterFrame extends JFrame {
 	private void initComponents() {
 		setTitle("RealmSpeak Quest Tester");
 		setSize(1400, 1080);
+		setIconImage(IconFactory.findIcon("images/tab/record.gif").getImage());
 
 		setLayout(new BorderLayout());
 
@@ -142,6 +146,11 @@ public class QuestTesterFrame extends JFrame {
 		questDescription.setBackground(null);
 		questDescription.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		top.add(new JScrollPane(questDescription), BorderLayout.CENTER);
+		markedView = new RealmObjectPanel(false,false);
+		markedView.setVisible(false);
+		JScrollPane markedViewPane = new JScrollPane(markedView);
+		ComponentTools.lockComponentSize(markedViewPane, 500, 200);
+		top.add(markedViewPane, BorderLayout.EAST);
 		add(top, BorderLayout.NORTH);
 
 		JPanel main = new JPanel(new GridLayout(2, 1));
@@ -1570,6 +1579,7 @@ public class QuestTesterFrame extends JFrame {
 		
 		character.distributeMonsterControlInCurrentClearing(false);
 		
+		QuestView.updateMarkedView(quest, markedView);
 		updateCharacterPanel();
 		debugOutput.setCaretPosition(0); // why doesn't this work?
 	}

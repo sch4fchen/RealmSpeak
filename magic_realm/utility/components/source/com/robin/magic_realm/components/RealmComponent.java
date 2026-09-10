@@ -114,6 +114,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 
 	protected boolean selected = false;
 	protected boolean displayLocation = false;
+	private static final int DISPLAY_LOCATION_SPACING = 20;
+	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 14;
 
 	protected RealmComponent(GameObject obj) {
 		this.gameObject = obj;
@@ -887,7 +889,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			}
 			if (location!=null) {
 				g.setFont(Constants.ATTRIBUTE_FONT);
-				g.drawString(location, 0, getSize().height);
+				g.drawString(location, 0, getSize().height-DISPLAY_LOCATION_SPACING_OFFSET);
 			}
 		}
 	}
@@ -1163,6 +1165,16 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	}
 	
 	public void setShowLocation(boolean location) {
+		Dimension size = getSize();
+		if (displayLocation == false && location == true) {
+			size.height = size.height+DISPLAY_LOCATION_SPACING;
+		} else if (displayLocation == true && location == false) {
+			size.height = size.height-DISPLAY_LOCATION_SPACING;
+		}
+		setSize(size);
+		setPreferredSize(size);
+		setMaximumSize(size);
+		setMinimumSize(size);
 		this.displayLocation = location;
 		repaint();
 	}

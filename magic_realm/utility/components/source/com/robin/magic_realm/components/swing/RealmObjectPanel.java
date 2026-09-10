@@ -320,8 +320,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 			}
 		}
 		if (flipViewOn==true) {
-			for (Iterator i=rcs.iterator();i.hasNext();) {
-				RealmComponent rc = (RealmComponent)i.next();
+			for (RealmComponent rc : rcs) {
 				if (rc.isChit()) {
 					ChitComponent chit = (ChitComponent)rc;
 					chit.setShowFlipSide(false);

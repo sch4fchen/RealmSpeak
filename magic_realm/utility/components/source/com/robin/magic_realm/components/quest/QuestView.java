@@ -133,22 +133,26 @@ public class QuestView extends JPanel implements Scrollable {
 		revalidate();
 	}
 	
-	private void updateMarkedView(Quest quest) {
-		markedView.removeAll();
+	public static void updateMarkedView(Quest quest, RealmObjectPanel view) {
+		view.removeAll();
 		if (quest!=null && quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW)) {
 			GamePool pool = new GamePool(quest.getGameData().getGameObjects());
 			String questId = quest.getGameObject().getStringId();
+			boolean viewLocations = quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS);
 			for (GameObject go : pool.find(QuestConstants.QUEST_MARK)) {
 				if (Quest.GameObjectHasQuestMark(go, questId)) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
-					markedView.add(rc);
+					if (viewLocations) {
+						rc.setShowLocation(true);
+					}
+					view.add(rc);
 				}
 			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
-				markedView.activateFlipView();
+				view.activateFlipView();
 			}
-			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS)) {
-				markedView.activateLocationView();
+			if (viewLocations) {
+				view.activateLocationView();
 			}
 			String title = "Quest related things";	
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_TITLE)) {
@@ -157,11 +161,15 @@ public class QuestView extends JPanel implements Scrollable {
 					title = customTitle;
 				}
 			}
-			markedView.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),title,TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
-			markedView.setVisible(true);
+			view.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED),title,TitledBorder.CENTER,TitledBorder.DEFAULT_POSITION));
+			view.setVisible(true);
 		} else {
-			markedView.setVisible(false);
+			view.setVisible(false);
 		}
+	}
+	
+	private void updateMarkedView(Quest quest) {
+		updateMarkedView(quest, markedView);
 	}
 
 	// Scrollable interface

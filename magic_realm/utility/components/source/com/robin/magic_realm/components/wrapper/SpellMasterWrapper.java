@@ -506,6 +506,11 @@ public class SpellMasterWrapper extends GameObjectWrapper {
 			MASTER_ID = Long.valueOf(gm.getId());
 			return new SpellMasterWrapper(gm);
 		}
-		return new SpellMasterWrapper(data.getGameObject(MASTER_ID));
+		GameObject game = data.getGameObject(MASTER_ID);
+		if (game==null) {
+			MASTER_ID=null;
+			return getSpellMaster(data);
+		}
+		return new SpellMasterWrapper(game);
 	}
 }
