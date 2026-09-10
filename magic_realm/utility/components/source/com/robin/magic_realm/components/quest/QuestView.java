@@ -159,11 +159,6 @@ public class QuestView extends JPanel implements Scrollable {
 			} else {
 				view.activateParentChitsView(false);
 			}
-			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_PARENT_CHITS_LOCATION)) {
-				view.activateParentChitsLocationView(true);
-			} else {
-				view.activateParentChitsLocationView(false);
-			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_LOCATIONS_TILE_ONLY)) {
 				view.displayLocationsTileOnly(true);
 			} else {

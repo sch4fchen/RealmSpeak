@@ -30,7 +30,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	protected boolean showTreasures = false;
 	protected boolean displayLocations = false;
 	protected boolean displayParentChits = false;
-	protected boolean displayParentChitsLocation = false;
 	protected boolean displayLocationsTileOnly = false;
 	
 	private ArrayList<ListSelectionListener> listSelectionListeners;
@@ -98,9 +97,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	}
 	public void activateParentChitsView(boolean display) {
 		displayParentChits=display;
-	}
-	public void activateParentChitsLocationView(boolean display) {
-		displayParentChitsLocation=display;
 	}
 	public void displayLocationsTileOnly(boolean display) {
 		displayLocationsTileOnly=display;
@@ -277,11 +273,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				rc.setDisplayParentChit(true);
 			}
 		}
-		if (rcs!=null && displayParentChitsLocation==true) {
-			for (RealmComponent rc : rcs) {
-				rc.setDisplayParentChitLocation(true);
-			}
-		}
 		validate();
 		doLayout(); // This is important to guarantee all the components have positions before adjusting the size
 		Component[] comp = getComponents();
@@ -312,11 +303,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				rc.setDisplayParentChit(false);
 			}
 		}
-		if (rcs!=null && displayParentChitsLocation==true) {
-			for (RealmComponent rc : rcs) {
-				rc.setDisplayParentChitLocation(false);
-			}
-		}
 	}
 	public void paint(Graphics g) {
 		Collection<RealmComponent> rcs = getAllRealmComponents();
@@ -340,11 +326,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		if (displayParentChits==true) {
 			for (RealmComponent rc : rcs) {
 				rc.setDisplayParentChit(true);
-			}
-		}
-		if (displayParentChitsLocation==true) {
-			for (RealmComponent rc : rcs) {
-				rc.setDisplayParentChitLocation(true);
 			}
 		}
 		if (displayLocationsTileOnly==true) {
@@ -390,11 +371,6 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		if (displayParentChits==true) {
 			for (RealmComponent rc : rcs) {
 				rc.setDisplayParentChit(false);
-			}
-		}
-		if (displayParentChitsLocation==true) {
-			for (RealmComponent rc : rcs) {
-				rc.setDisplayParentChitLocation(false);
 			}
 		}
 		if (displayLocationsTileOnly==true) {

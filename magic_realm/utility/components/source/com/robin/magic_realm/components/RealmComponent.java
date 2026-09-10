@@ -115,7 +115,6 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	protected boolean selected = false;
 	protected boolean displayLocation = false;
 	protected boolean displayParentChit = false;
-	protected boolean displayParentChitLocation = false;
 	protected boolean displayLocationsTileOnly = false;
 	private static final int DISPLAY_LOCATION_SPACING = 20;
 	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 9;
@@ -884,7 +883,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			}
 		}
 		
-		int y = getSize().height-2*DISPLAY_LOCATION_SPACING;
+		int y = getSize().height-DISPLAY_LOCATION_SPACING;
 		g.setFont(Constants.ATTRIBUTE_FONT_SMALL);
 		if (displayLocation) {
 			String location = null;
@@ -903,28 +902,13 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		if (displayParentChit) {
 			String chit = null;
-			if (getHeldBy()!=null) {
+			if (getHeldBy()!=null && !getHeldBy().isTile()) {
 				chit = getHeldBy().toString();
 			}
 			if (chit!=null) {
 				int textWidth = g.getFontMetrics().stringWidth(chit);
 				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
 				g.drawString(chit, getWidth()/2-textWidth/2, y);
-			}
-		}
-		if (displayParentChitLocation) {
-			String location = null;
-			if (getHeldBy()!=null && getHeldBy().getCurrentLocation()!=null) {
-				if (displayLocationsTileOnly) {
-					location = getHeldBy().getCurrentLocation().tile.toString();
-				} else {
-					location = getHeldBy().getCurrentLocation().toString();
-				}
-			}
-			if (location!=null) {
-				int textWidth = g.getFontMetrics().stringWidth(location);
-				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
-				g.drawString(location, getWidth()/2-textWidth/2, y);
 			}
 		}
 	}
@@ -1201,10 +1185,12 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	
 	public void setDisplayLocation(boolean location) {
 		Dimension size = getSize();
-		if (displayLocation == false && location == true) {
-			size.height = size.height+DISPLAY_LOCATION_SPACING;
-		} else if (displayLocation == true && location == false) {
-			size.height = size.height-DISPLAY_LOCATION_SPACING;
+		if (!displayParentChit) {
+			if (displayLocation == false && location == true) {
+				size.height = size.height+DISPLAY_LOCATION_SPACING;
+			} else if (displayLocation == true && location == false) {
+				size.height = size.height-DISPLAY_LOCATION_SPACING;
+			}
 		}
 		setSize(size);
 		setPreferredSize(size);
@@ -1215,28 +1201,16 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	
 	public void setDisplayParentChit(boolean chit) {
 		Dimension size = getSize();
-		if (displayParentChit == false && chit == true) {
-			size.height = size.height+DISPLAY_LOCATION_SPACING;
-		} else if (displayParentChit == true && chit == false) {
-			size.height = size.height-DISPLAY_LOCATION_SPACING;
+		if (!displayLocation) {
+			if (displayParentChit == false && chit == true) {
+				size.height = size.height+DISPLAY_LOCATION_SPACING;
+			} else if (displayParentChit == true && chit == false) {
+				size.height = size.height-DISPLAY_LOCATION_SPACING;
+			}
 		}
 		setSize(size);
 		setPreferredSize(size);
 		this.displayParentChit = chit;
-		revalidate();
-		repaint();
-	}
-	
-	public void setDisplayParentChitLocation(boolean location) {
-		Dimension size = getSize();
-		if (displayParentChitLocation == false && location == true) {
-			size.height = size.height+DISPLAY_LOCATION_SPACING;
-		} else if (displayParentChitLocation == true && location == false) {
-			size.height = size.height-DISPLAY_LOCATION_SPACING;
-		}
-		setSize(size);
-		setPreferredSize(size);
-		this.displayParentChitLocation = location;
 		revalidate();
 		repaint();
 	}
