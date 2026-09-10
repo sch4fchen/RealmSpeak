@@ -1,6 +1,3 @@
-Transform should nnot be ablte to target native horse (and rs freezes)
-Steal from character doesn't trigger reward
-
 QuestRewardMarkCharacter: current tile, current clearing, male/female, fighter/magicUser, guild, regex, random/all/choose
 QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
@@ -24,6 +21,8 @@ QUEST UPDATE:
 # QuestRewardMarkTraveler: option to choose a single traveler
 # QuestRewardMarkDenizen: option for choosing denizens
 # QuestRewardMarkItem: option for random item
+BUGS/ISSUES:
+# Fix casting certain spells on horses
 
 Version 1.2.6.4
 NEW FEATURES:
