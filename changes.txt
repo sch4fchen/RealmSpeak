@@ -21,6 +21,7 @@ QUEST UPDATE:
 # QuestRewardMarkTraveler: option to choose a single traveler
 # QuestRewardMarkDenizen: option for choosing denizens
 # QuestRewardMarkItem: option for random item
+# QuestRewardMarkedView: more options
 BUGS/ISSUES:
 # Fix casting certain spells on horses
 

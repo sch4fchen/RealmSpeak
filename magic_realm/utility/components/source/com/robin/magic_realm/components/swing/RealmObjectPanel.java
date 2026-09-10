@@ -268,6 +268,16 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				rc.setDisplayLocation(true);
 			}
 		}
+		if (rcs!=null && displayParentChits==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChit(true);
+			}
+		}
+		if (rcs!=null && displayParentChitsLocation==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChitLocation(true);
+			}
+		}
 		validate();
 		doLayout(); // This is important to guarantee all the components have positions before adjusting the size
 		Component[] comp = getComponents();
@@ -293,6 +303,16 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				rc.setDisplayLocation(false);
 			}
 		}
+		if (rcs!=null && displayParentChits==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChit(false);
+			}
+		}
+		if (rcs!=null && displayParentChitsLocation==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChitLocation(false);
+			}
+		}
 	}
 	public void paint(Graphics g) {
 		Collection<RealmComponent> rcs = getAllRealmComponents();
@@ -308,6 +328,21 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		if (displayLocations==true) {
 			for (RealmComponent rc : rcs) {
 				rc.setDisplayLocation(true);
+			}
+		}
+		if (displayParentChits==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChit(true);
+			}
+		}
+		if (displayParentChitsLocation==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChitLocation(true);
+			}
+		}
+		if (displayLocationsTileOnly==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayLocationsTileOnly(true);
 			}
 		}
 		
@@ -343,6 +378,21 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 		if (displayLocations==true) {
 			for (RealmComponent rc : rcs) {
 				rc.setDisplayLocation(false);
+			}
+		}
+		if (displayParentChits==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChit(false);
+			}
+		}
+		if (displayParentChitsLocation==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayParentChitLocation(false);
+			}
+		}
+		if (displayLocationsTileOnly==true) {
+			for (RealmComponent rc : rcs) {
+				rc.setDisplayLocationsTileOnly(false);
 			}
 		}
 		if (flipViewOn==true) {

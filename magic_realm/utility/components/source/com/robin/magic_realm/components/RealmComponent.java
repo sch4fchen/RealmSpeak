@@ -114,8 +114,11 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 
 	protected boolean selected = false;
 	protected boolean displayLocation = false;
+	protected boolean displayParentChit = false;
+	protected boolean displayParentChitLocation = false;
+	protected boolean displayLocationsTileOnly = false;
 	private static final int DISPLAY_LOCATION_SPACING = 20;
-	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 14;
+	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 6;
 
 	protected RealmComponent(GameObject obj) {
 		this.gameObject = obj;
@@ -880,16 +883,45 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				g.drawRect(n, n, size.width - (n << 1), size.height - (n << 1));
 			}
 		}
+		
+		int y = getSize().height-DISPLAY_LOCATION_SPACING;
+		g.setFont(Constants.ATTRIBUTE_FONT);
 		if (displayLocation) {
 			String location = null;
 			if (getCurrentLocation()!=null) {
-				location = getCurrentLocation().toString();
-			} else if (getHeldBy()!=null) {
-				location = getHeldBy().toString();
+				if (displayLocationsTileOnly) {
+					location = getCurrentLocation().tile.toString();
+				} else {
+					location = getCurrentLocation().toString();
+				}
 			}
 			if (location!=null) {
-				g.setFont(Constants.ATTRIBUTE_FONT);
-				g.drawString(location, 0, getSize().height-DISPLAY_LOCATION_SPACING_OFFSET);
+				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
+				g.drawString(location, 0, y);
+			}
+		}
+		if (displayParentChit) {
+			String chit = null;
+			if (getHeldBy()!=null) {
+				chit = getHeldBy().getName();
+			}
+			if (chit!=null) {
+				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
+				g.drawString(chit, 0, y);
+			}
+		}
+		if (displayParentChitLocation) {
+			String location = null;
+			if (getHeldBy()!=null && getHeldBy().getCurrentLocation()!=null) {
+				if (displayLocationsTileOnly) {
+					location = getHeldBy().getCurrentLocation().tile.toString();
+				} else {
+					location = getHeldBy().getCurrentLocation().toString();
+				}
+			}
+			if (location!=null) {
+				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
+				g.drawString(location, 0, y);
 			}
 		}
 	}
@@ -1176,6 +1208,38 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		this.displayLocation = location;
 		revalidate();
 		repaint();
+	}
+	
+	public void setDisplayParentChit(boolean chit) {
+		Dimension size = getSize();
+		if (displayParentChit == false && chit == true) {
+			size.height = size.height+DISPLAY_LOCATION_SPACING;
+		} else if (displayParentChit == true && chit == false) {
+			size.height = size.height-DISPLAY_LOCATION_SPACING;
+		}
+		setSize(size);
+		setPreferredSize(size);
+		this.displayParentChit = chit;
+		revalidate();
+		repaint();
+	}
+	
+	public void setDisplayParentChitLocation(boolean location) {
+		Dimension size = getSize();
+		if (displayParentChitLocation == false && location == true) {
+			size.height = size.height+DISPLAY_LOCATION_SPACING;
+		} else if (displayParentChitLocation == true && location == false) {
+			size.height = size.height-DISPLAY_LOCATION_SPACING;
+		}
+		setSize(size);
+		setPreferredSize(size);
+		this.displayParentChitLocation = location;
+		revalidate();
+		repaint();
+	}
+	
+	public void setDisplayLocationsTileOnly(boolean value) {
+		displayLocationsTileOnly = value;
 	}
 
 	public void setGameObject(GameObject gameObject) {
