@@ -9,6 +9,7 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.GenderType;
 import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -68,22 +69,22 @@ public class QuestRequirementStealing extends QuestRequirement {
 		if (!getVictimRegEx().isEmpty() && (victim==null || !pattern.matcher(victim.getName()).find())) return false;
 		String questId = getParentQuest().getGameObject().getStringId();
 		if (victimRequiresMark() && (victim==null || !Quest.GameObjectHasQuestMark(victim, questId)));
-		if (!victimGuild().matches(QuestRequirement.ANY) && victimRc!=null && victimRc.isCharacter()) {
+		if (!victimGuild().matches(QuestConstants.ANY) && victimRc!=null && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
-			if (victimGuild().matches(QuestRequirement.NONE)) {
+			if (victimGuild().matches(QuestConstants.NONE)) {
 				if (victimCharacter.getCurrentGuild()!=null) return false;
 			}
-			if (victimGuild().matches(QuestRequirement.MEMBER)) {
+			if (victimGuild().matches(QuestConstants.MEMBER)) {
 				if (victimCharacter.getCurrentGuild()==null) return false;
 			}
-			if (!victimGuild().matches(QuestRequirement.NONE) && !victimGuild().matches(QuestRequirement.MEMBER)) {
+			if (!victimGuild().matches(QuestConstants.NONE) && !victimGuild().matches(QuestConstants.MEMBER)) {
 				if (victimCharacter.getCurrentGuild()==null || !victimCharacter.getCurrentGuild().matches(victimGuild())) return false;
 			}
 		}
-		if (!victimGender().matches(QuestRequirement.ANY) && victimRc!=null && victimRc.isCharacter()) {
+		if (!victimGender().matches(QuestConstants.ANY) && victimRc!=null && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
 			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
-			if (victimGender().matches(GenderType.Female.toString()) && !victimCharacter.isFemale()) return false;
+			if (victimGender().matches(GenderType.Male.toString()) && !victimCharacter.isMale()) return false;
 		}
 		if (victimMustBeAFighter() && victimRc!=null && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;
 		if (victimMustBeAMagicUser() && victimRc!=null && victimRc.isCharacter() && !(new CharacterWrapper(victim).isFighter())) return false;

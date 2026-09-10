@@ -33,7 +33,7 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 			logger.fine("No search was done.");
 		}
 		TileLocation loc = character.getCurrentLocation();
-		if (getTileType()!=null && !getTileType().matches(ANY)) {
+		if (getTileType()!=null && !getTileType().matches(QuestConstants.ANY)) {
 			if (!loc.tile.getTileType().toLowerCase().matches(getTileType().toLowerCase())) {
 				logger.fine("Wrong tile type.");
 				return false;
@@ -49,7 +49,7 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 			logger.fine("Search type "+reqParams.searchType+" wasn't among the acceptable search results: "+StringUtilities.collectionToString(acceptibleSearchResults,","));
 			return false;
 		}
-		if (getChit()!=null && !getChit().matches(NONE)) {
+		if (getChit()!=null && !getChit().matches(QuestConstants.NONE)) {
 			boolean chitFound = false;
 			for (GameObject go : loc.tile.getGameObject().getHold()) {
 				RealmComponent rc = RealmComponent.getRealmComponent(go);
@@ -110,13 +110,13 @@ public class QuestRequirementSearchTile extends QuestRequirement {
 	protected String buildDescription() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Must ");
-		if ((getTileType()!=null && !getTileType().matches(ANY)) || (getChit()!=null && !getChit().matches(NONE))) {
+		if ((getTileType()!=null && !getTileType().matches(QuestConstants.ANY)) || (getChit()!=null && !getChit().matches(QuestConstants.NONE))) {
 			sb.append("be in a ");
-			if (getTileType()!=null && !getTileType().matches(ANY)) {
+			if (getTileType()!=null && !getTileType().matches(QuestConstants.ANY)) {
 				sb.append(getTileType()+" ");
 			}
 			sb.append("tile ");
-			if (getChit()!=null && !getChit().matches(NONE)) {
+			if (getChit()!=null && !getChit().matches(QuestConstants.NONE)) {
 				sb.append("with a "+getChit()+" chit ");
 			}
 			sb.append("and ");

@@ -1,4 +1,3 @@
-QuestRewardMarkCharacter: current tile, current clearing, male/female, fighter/magicUser, guild, regex, random/all/choose
 QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
 QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
@@ -18,6 +17,7 @@ QUEST UPDATE:
 # QuestRequirementStealing
 # QuestRewardMarkVisitor
 # QuestRewardRequirementVisitor
+# QuestRewardMarkCharacter
 # QuestRewardMarkTraveler: option to choose a single traveler
 # QuestRewardMarkDenizen: option for choosing denizens
 # QuestRewardMarkItem: option for random item

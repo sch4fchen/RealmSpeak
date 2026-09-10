@@ -8,6 +8,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementEnchant extends QuestRequirement {
@@ -122,7 +123,7 @@ public class QuestRequirementEnchant extends QuestRequirement {
 	
 	private String getSite() {
 		String tl = getString(SITE);
-		if (tl==null || tl.matches(NONE)) {
+		if (tl==null || tl.matches(QuestConstants.NONE)) {
 			return null;
 		}
 		return tl;
@@ -130,7 +131,7 @@ public class QuestRequirementEnchant extends QuestRequirement {
 	
 	private String getChit() {
 		String chit = getString(CHIT);
-		if (chit==null || chit.matches(NONE)) {
+		if (chit==null || chit.matches(QuestConstants.NONE)) {
 			return null;
 		}
 		return chit;

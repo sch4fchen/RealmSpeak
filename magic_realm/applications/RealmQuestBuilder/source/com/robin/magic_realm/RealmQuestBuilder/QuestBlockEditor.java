@@ -387,4 +387,16 @@ public abstract class QuestBlockEditor extends GenericEditor {
 			return block;
 		}
 	}
+	
+	protected String[] getGuildNames() {
+		ArrayList<String> names = new ArrayList<>();
+		names.add(QuestConstants.ANY);
+		names.add(QuestConstants.NONE);
+		names.add(QuestConstants.MEMBER);
+		GamePool pool = new GamePool(realmSpeakData.getGameObjects());
+		for (GameObject go : pool.find(RealmComponent.GUILD)) {
+			names.add(go.getThisAttribute(RealmComponent.GUILD));
+		}
+		return names.toArray(new String[0]);
+	}
 }

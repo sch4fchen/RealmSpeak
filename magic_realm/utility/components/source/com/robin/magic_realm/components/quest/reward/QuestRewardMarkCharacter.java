@@ -11,13 +11,21 @@ import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.ClearingDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.GenderType;
 import com.robin.magic_realm.components.quest.Quest;
+import com.robin.magic_realm.components.quest.QuestConstants;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirement;
 import com.robin.magic_realm.components.swing.RealmComponentOptionChooser;
+import com.robin.magic_realm.components.utility.RealmUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRewardMarkCharacter extends QuestReward {
 	
 	public static final String CHARACTER_REGEX = "_regex";
+	public static final String CHARACTER_GENDER = "_gender";
+	public static final String FIGHTER = "_fighter";
+	public static final String MAGIC_USER = "_magic_user";
+	public static final String CHARACTER_GUILD = "_guild";
 	public static final String CHARACTERS_CLEARING = "_ch_cl";
 	public static final String CHARACTERS_TILE = "_ch_tile";
 	public static final String CHOOSE_CHARACTER = "_choose_character";
@@ -50,12 +58,7 @@ public class QuestRewardMarkCharacter extends QuestReward {
 				}
 			}
 		} else {
-			GamePool pool = new GamePool(character.getGameData().getGameObjects());
-			for (GameObject go: pool.find("character")) {
-				if (!new CharacterWrapper(go).isDead()) {
-					characters.add(go);
-				}
-			}
+			characters.addAll(RealmUtility.getLivingCharacters(character.getGameData()));
 		}
 		String regex = getCharacterRegEx().trim();
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
@@ -63,6 +66,25 @@ public class QuestRewardMarkCharacter extends QuestReward {
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject go:characters) {
 			if (pattern==null || pattern.matcher(go.getName()).find()) {
+				CharacterWrapper target = new CharacterWrapper(go);
+				if (!gender().matches(QuestConstants.ANY)) {
+					if (gender().matches(GenderType.Female.toString()) && !target.isFemale()) continue;
+					if (gender().matches(GenderType.Male.toString()) && !target.isMale()) continue;
+				}
+				if (mustBeAFighter() && !target.isFighter()) continue;
+				if (mustBeAMagicUser() && !target.isMagicUser()) continue;
+				if (!guild().matches(QuestConstants.ANY)) {
+					if (guild().matches(QuestConstants.NONE)) {
+						if (target.getCurrentGuild()!=null) continue;
+					}
+					if (guild().matches(QuestConstants.MEMBER)) {
+						if (target.getCurrentGuild()==null) continue;;
+					}
+					if (!guild().matches(QuestConstants.NONE) && !guild().matches(QuestConstants.MEMBER)) {
+						if (target.getCurrentGuild()==null || !target.getCurrentGuild().matches(guild())) continue;
+					}
+				}
+				
 				if (randomCharacter() || chooseCharacter()) {
 					if (removeMark() && !Quest.GameObjectHasQuestMark(go,questId)) continue;
 					if (!removeMark() && Quest.GameObjectHasQuestMark(go,questId)) continue;
@@ -149,5 +171,18 @@ public class QuestRewardMarkCharacter extends QuestReward {
 	
 	private Boolean removeMark() {
 		return getBoolean(REMOVE);
+	}
+	
+	private String guild() {
+		return getString(CHARACTER_GUILD);
+	}
+	private String gender() {
+		return getString(CHARACTER_GENDER);
+	}
+	private boolean mustBeAFighter() {
+		return getBoolean(FIGHTER);
+	}
+	private boolean mustBeAMagicUser() {
+		return getBoolean(MAGIC_USER);
 	}
 }

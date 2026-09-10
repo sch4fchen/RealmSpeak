@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
+import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.utility.SetupCardUtility;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -25,14 +26,14 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 		ArrayList<GameObject> kills = character.getKills(character.getCurrentDayKey());
 		String chitName = getChit().toLowerCase();
 		TileLocation loc = character.getCurrentLocation();
-		if (getTileType()!=null && !getTileType().matches(ANY)) {
+		if (getTileType()!=null && !getTileType().matches(QuestConstants.ANY)) {
 			if (!loc.tile.getTileType().toLowerCase().matches(getTileType().toLowerCase())) {
 				return false;
 			}
 		}
 		ArrayList<String> chitNames = new ArrayList<>();
 		if (sameClearing()) {			
-			if (getChit().matches(QuestRequirement.NONE)) {
+			if (getChit().matches(QuestConstants.NONE)) {
 				if (loc==null || loc.clearing==null) {
 					return true;
 				}
@@ -74,7 +75,7 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 			GameObject holder = SetupCardUtility.getDenizenHolder(kill);
 			if (holder!=null) {
 				String summonList = holder.getThisAttribute("summon");
-				if (getChit().matches(QuestRequirement.NONE) && (summonList==null || summonList.isEmpty())) {
+				if (getChit().matches(QuestConstants.NONE) && (summonList==null || summonList.isEmpty())) {
 					return true;
 				}
 				if (summonList!=null) {
@@ -106,7 +107,7 @@ public class QuestRequirementKillDenizenSummonedByChit extends QuestRequirement 
 		if (sameClearing()) {
 			sb.append(" and be in the same clearing");
 		}
-		if (getTileType()!=null && !getTileType().matches(ANY)) {
+		if (getTileType()!=null && !getTileType().matches(QuestConstants.ANY)) {
 			sb.append(" of type ");
 			sb.append(getTileType());
 		}

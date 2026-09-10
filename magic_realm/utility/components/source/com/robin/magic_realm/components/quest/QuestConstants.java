@@ -17,6 +17,10 @@ public class QuestConstants {
 	public static final String CURRENT = "Current";
 	public static final String REMOVE = "Remove";
 	
+	public static final String ANY = "any";
+	public static final String NONE = "none";
+	public static final String MEMBER = "member";
+	
 	//-------------------------------
 	
 	public static final String FLAG_TESTING = "testing";
