@@ -58,6 +58,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		LostInventoryToLocation,
 		MagicColor,
 		MakeWhole,
+		MarkCharacter,
 		MarkDenizen,
 		MarkedDenizensAbility,
 		MarkItem,
@@ -157,6 +158,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case LostInventoryToLocation:	return "All future lost inventory from this quest will go to a specified location.";
 				case MagicColor:				return "Provides a magic color to a clearing.";
 				case MakeWhole:					return "Heals all fatigue and wounds, cancels wither curse and repairs items.";
+				case MarkCharacter:				return "Mark a particular character for later reference.";
 				case MarkDenizen:				return "Mark a particular denizen for later reference.  This is useful if you want to make sure a character kills (for example) a particular monster.";
 				case MarkedDenizensAbility:		return "Adds or removes abilities for marked denizens.";
 				case MarkItem:					return "Marks particular item(s) for later reference.  This is useful if you want to make sure a character owns (for example) a particular item.";
@@ -420,6 +422,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case MakeWhole:
 				reward = new QuestRewardMakeWhole(go);
+				break;
+			case MarkCharacter:
+				reward = new QuestRewardMarkCharacter(go);
 				break;
 			case MarkDenizen:
 				reward = new QuestRewardMarkDenizen(go);
