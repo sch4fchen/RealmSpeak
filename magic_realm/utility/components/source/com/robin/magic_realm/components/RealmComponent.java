@@ -885,7 +885,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 		}
 		
 		int y = getSize().height-DISPLAY_LOCATION_SPACING;
-		g.setFont(Constants.ATTRIBUTE_FONT);
+		//g.setFont(Constants.ATTRIBUTE_FONT);
 		if (displayLocation) {
 			String location = null;
 			if (getCurrentLocation()!=null) {

@@ -6,7 +6,7 @@ QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guild
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked
 QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
 QuestRequirement: GateLocation: current tile, current clearing, regex, marked
-MarkedView: show only tile for location, show held by, show derived location of held by, fix component size
+MarkedView: fix component size, check font
 QuestRequirement: TreasureLocation: current tile, current clearing, regex, marked
 QuestReward: MarkTreasureLocation: current tile, current clearing, regex, random/all/choose
 QuestRequirement: MissionCampaignTask: current tile, current clearing, regex, marked, must own it
