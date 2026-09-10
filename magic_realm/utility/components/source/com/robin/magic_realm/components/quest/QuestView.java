@@ -145,6 +145,7 @@ public class QuestView extends JPanel implements Scrollable {
 			}
 			if (quest.getGameObject().hasThisAttribute(QuestConstants.MAKRED_VIEW_NO_SECRETS)) {
 				view.activateFlipView();
+				view.activateShowTreasuresView(true);
 			} else {
 				view.deactivateFlipView();
 			}

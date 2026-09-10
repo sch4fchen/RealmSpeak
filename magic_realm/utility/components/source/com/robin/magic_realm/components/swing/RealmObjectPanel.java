@@ -27,6 +27,7 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	protected int selectionMode = MULTIPLE_SELECTION;
 	
 	protected boolean flipView = false;
+	protected boolean showTreasures = false;
 	protected boolean displayLocations = false;
 	protected boolean displayParentChits = false;
 	protected boolean displayParentChitsLocation = false;
@@ -88,6 +89,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 	}
 	public void deactivateFlipView() {
 		flipView = false;
+	}
+	public void activateShowTreasuresView(boolean treasures) {
+		showTreasures=treasures;
 	}
 	public void activateLocationView(boolean display) {
 		displayLocations=display;
@@ -323,6 +327,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 					ChitComponent chit = (ChitComponent)rc;
 					chit.setShowFlipSide(true);
 				}
+				else if (showTreasures && rc.isTreasure()) {
+					rc.flip();
+				}
 			}
 		}
 		if (displayLocations==true) {
@@ -400,6 +407,9 @@ public class RealmObjectPanel extends JPanel implements Scrollable {
 				if (rc.isChit()) {
 					ChitComponent chit = (ChitComponent)rc;
 					chit.setShowFlipSide(false);
+				}
+				else if (showTreasures && rc.isTreasure()) {
+					rc.flip();
 				}
 			}
 		}

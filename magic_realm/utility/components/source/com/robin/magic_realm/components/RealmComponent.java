@@ -118,7 +118,7 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 	protected boolean displayParentChitLocation = false;
 	protected boolean displayLocationsTileOnly = false;
 	private static final int DISPLAY_LOCATION_SPACING = 20;
-	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 6;
+	private static final int DISPLAY_LOCATION_SPACING_OFFSET = 9;
 
 	protected RealmComponent(GameObject obj) {
 		this.gameObject = obj;
@@ -884,8 +884,8 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 			}
 		}
 		
-		int y = getSize().height-DISPLAY_LOCATION_SPACING;
-		//g.setFont(Constants.ATTRIBUTE_FONT);
+		int y = getSize().height-2*DISPLAY_LOCATION_SPACING;
+		g.setFont(Constants.ATTRIBUTE_FONT_SMALL);
 		if (displayLocation) {
 			String location = null;
 			if (getCurrentLocation()!=null) {
@@ -896,18 +896,20 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				}
 			}
 			if (location!=null) {
+				int textWidth = g.getFontMetrics().stringWidth(location);
 				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
-				g.drawString(location, 0, y);
+				g.drawString(location, getWidth()/2-textWidth/2, y);
 			}
 		}
 		if (displayParentChit) {
 			String chit = null;
 			if (getHeldBy()!=null) {
-				chit = getHeldBy().getName();
+				chit = getHeldBy().toString();
 			}
 			if (chit!=null) {
+				int textWidth = g.getFontMetrics().stringWidth(chit);
 				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
-				g.drawString(chit, 0, y);
+				g.drawString(chit, getWidth()/2-textWidth/2, y);
 			}
 		}
 		if (displayParentChitLocation) {
@@ -920,8 +922,9 @@ public abstract class RealmComponent extends JComponent implements Comparable {
 				}
 			}
 			if (location!=null) {
+				int textWidth = g.getFontMetrics().stringWidth(location);
 				y = y+DISPLAY_LOCATION_SPACING_OFFSET;
-				g.drawString(location, 0, y);
+				g.drawString(location, getWidth()/2-textWidth/2, y);
 			}
 		}
 	}

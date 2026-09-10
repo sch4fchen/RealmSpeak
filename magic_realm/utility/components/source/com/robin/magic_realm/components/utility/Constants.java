@@ -15,6 +15,7 @@ public class Constants {
 	public static final Font RESULT_FONT = new Font("Dialog",Font.BOLD,12);
 	public static final Font VUL_FONT = new Font("Dialog",Font.BOLD,16);
 	public static final Font ATTRIBUTE_FONT = new Font("Dialog",Font.BOLD,11);
+	public static final Font ATTRIBUTE_FONT_SMALL = new Font("Dialog",Font.BOLD,9);
 	public static final Font FORTRESS_FONT = new Font("Dialog",Font.BOLD,24);
 	public static final int COMBAT_SIDEBAR_WIDTH = 275;
 	
