@@ -25,6 +25,7 @@ public class QuestRequirementKill extends QuestRequirement {
 
 	public static final String REGEX_FILTER = "_regex";
 	public static final String REQUIRE_MARK = "_rqm";
+	public static final String REQUIRE_NO_MARK = "_rqnm";
 	public static final String TARGET_VALUE_TYPE = "_tvt";
 	public static final String VALUE = "_rq";
 	public static final String VULNERABILITY = "_vy";
@@ -58,6 +59,7 @@ public class QuestRequirementKill extends QuestRequirement {
 		}
 		
 		boolean requireMark = getRequireMark();
+		boolean requireNoMark = getRequireNoMark();
 		String questId = getParentQuest().getGameObject().getStringId();
 		String regex = getRegExFilter().trim();
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
@@ -70,6 +72,7 @@ public class QuestRequirementKill extends QuestRequirement {
 				if (killCharacters() && !go.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(go.getName()).find()) continue;
 				if (requireMark && !Quest.GameObjectHasQuestMark(go, questId)) continue;
+				if (requireNoMark && Quest.GameObjectHasQuestMark(go, questId)) continue;
 				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(go.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				if ((getArmored() == ArmoredType.Armored && !go.hasThisAttribute("armored"))|| (getArmored() == ArmoredType.Unarmored && go.hasThisAttribute("armored"))) continue;
 				if (!go.hasThisAttribute(Constants.DEAD)) {
@@ -96,6 +99,7 @@ public class QuestRequirementKill extends QuestRequirement {
 				if (killCharacters() && !kill.hasThisAttribute(RealmComponent.CHARACTER)) continue;
 				if (pattern!=null && !pattern.matcher(kill.getName()).find()) continue;
 				if (requireMark && !Quest.GameObjectHasQuestMark(kill, questId)) continue;
+				if (requireNoMark && Quest.GameObjectHasQuestMark(kill, questId)) continue;
 				if (getVulnerability()!=VulnerabilityType.Any && VulnerabilityType.valueOf(kill.getThisAttribute("vulnerability"))!=getVulnerability()) continue;
 				if ((getArmored() == ArmoredType.Armored && !kill.hasThisAttribute("armored")) || (getArmored() == ArmoredType.Unarmored && kill.hasThisAttribute("armored"))) continue;
 				
@@ -118,6 +122,7 @@ public class QuestRequirementKill extends QuestRequirement {
 		sb.append(mark?"":"any ");
 		sb.append(val==QuestConstants.ALL_VALUE?"ALL":""+val);
 		sb.append(mark?" marked":"");
+		sb.append(getRequireNoMark()?" non marked":"");
 		if (getArmored() != ArmoredType.Any) {
 			sb.append(" "+getArmored().toString().toLowerCase());
 		}
@@ -160,6 +165,9 @@ public class QuestRequirementKill extends QuestRequirement {
 	}
 	private boolean getRequireMark() {
 		return getBoolean(REQUIRE_MARK);
+	}
+	private boolean getRequireNoMark() {
+		return getBoolean(REQUIRE_NO_MARK);
 	}
 	private int getValue() {
 		return getInt(VALUE);
