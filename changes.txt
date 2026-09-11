@@ -1,14 +1,27 @@
-QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
-QuestRequirement: ChitSoundWarning: regex, sound, warning, same tile, current clearing
+::Options for current quest requirements::
+QuestRequirementClearing: add/remove mark, must not have mark
+QuestRequirementKill: add/remove mark, must not have mark
+QuestRequirementDenizens: add/remove mark, must not have mark
+QuestRequirementHirelings: requires mark, add/remove mark, must not have mark
+QuestRequirementGuildLocation: requires mark, add/remove mark, must not have mark
+QuestRequirementMissionCampaign: requires mark, add/remove mark, must not have mark
+QuestRequirementTraveler: add/remove mark, must not have mark
+QuestRequirementVisitor: add/remove mark, must not have mark
+::New quest requirements and rewards::
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
+QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked, add/remove mark, must not have mark
 QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, random/all/choose
-QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked
-QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
-QuestRequirement: GateLocation: current tile, current clearing, regex, marked
-QuestRequirement: TreasureLocation: current tile, current clearing, regex, marked
+QuestRequirement: TreasureLocation: current tile, current clearing, regex, marked, add/remove mark, must not have mark
 QuestReward: MarkTreasureLocation: current tile, current clearing, regex, random/all/choose
-QuestRequirement: MissionCampaignTask: current tile, current clearing, regex, marked, must own it
+QuestRequirement: ChitSoundWarning: regex, sound, warning, always same tile, mark, add/remove mark, must not have mark
+QuestReward: MarkChitSoundWarning: regex, sound, warning, random/all/choose
+QuestRequirement: MissionCampaignTaskLocation: current tile, current clearing, regex, must own it, marked, add/remove mark, must not have mark
 QuestReward: MarkMissionCampaignTask: current tile, current clearing, regex, all owned, random/all/choose
+QuestReward: MarkGuild: current tile, current clearing, regex, random/all/choose
+QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
+QuestRequirement: GateLocation: current tile, current clearing, regex, marked, add/remove mark, must not have mark
+QuestRequirement: CharacterMet: current tile, current clearing, regex, fighter/magicUser, guild, mark/remove mark, requires mark
+
 
 Version 1.2.6.5
 NEW FEATURES:
