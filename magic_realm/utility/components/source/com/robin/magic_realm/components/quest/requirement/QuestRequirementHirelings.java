@@ -13,6 +13,7 @@ import com.robin.magic_realm.components.NativeChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Speed;
 import com.robin.magic_realm.components.attribute.Strength;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.VulnerabilityType;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
@@ -20,6 +21,8 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	
 	public static final String HIRELING_REGEX = "_regex";
 	public static final String AMOUNT = "_amount";
+	public static final String REQUIRES_MARK = "_requires_mark";
+	public static final String REQUIRES_NO_MARK = "_requires_no_mark";
 	public static final String MUST_FOLLOW = "_must_follow";
 	public static final String SAME_LOCATION = "_with_character";
 	public static final String VULNERARBILITY = "_vulnerability";
@@ -47,8 +50,11 @@ public class QuestRequirementHirelings extends QuestRequirement {
 			hirelings = character.getAllHirelings();
 		}
 		Pattern pattern = Pattern.compile(getRegExFilter());
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent hireling : hirelings) {
 			if (getRegExFilter().isEmpty() || pattern.matcher(hireling.getGameObject().getName()).find()) {
+				if (requiresMark() && !Quest.GameObjectHasQuestMark(hireling.getGameObject(), questId)) continue;
+				if (requiresNoMark() && Quest.GameObjectHasQuestMark(hireling.getGameObject(), questId)) continue;
 				if (sameLocation() && !(hireling.getCurrentLocation().tile == character.getCurrentLocation().tile && hireling.getCurrentLocation().clearing == character.getCurrentLocation().clearing)) continue;
 				if (checkStats()) {
 					BattleChit denizen = null;
@@ -158,6 +164,12 @@ public class QuestRequirementHirelings extends QuestRequirement {
 	}
 	private int getAmount() {
 		return getInt(AMOUNT);
+	}
+	private boolean requiresMark() {
+		return getBoolean(REQUIRES_MARK);
+	}
+	private boolean requiresNoMark() {
+		return getBoolean(REQUIRES_NO_MARK);
 	}
 	private boolean mustFollow() {
 		return getBoolean(MUST_FOLLOW);

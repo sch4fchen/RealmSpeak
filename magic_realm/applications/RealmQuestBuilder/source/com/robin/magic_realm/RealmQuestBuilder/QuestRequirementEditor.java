@@ -189,6 +189,8 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Hirelings:
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.HIRELING_REGEX, "Hireling RegEx", FieldType.Regex, null, new String[] { "denizen" }));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.AMOUNT, "Number of hirelings", FieldType.Number));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.REQUIRES_MARK, "Requires a mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementHirelings.REQUIRES_NO_MARK, "Must have no mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.MUST_FOLLOW, "Must be following", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.SAME_LOCATION, "Same location (incl. character riding it)", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementHirelings.VULNERARBILITY, "Vulnerability", FieldType.StringSelector, VulnerabilityType.values()));
