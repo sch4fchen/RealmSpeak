@@ -69,6 +69,11 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 							Quest.GameObjectAddQuestMark(validItem, getParentQuest().getGameObject().getStringId());
 						}
 					}
+					if (removeItemsMarks()) {
+						for (GameObject validItem : validMatches) {
+							Quest.GameObjectRemoveQuestMark(validItem, getParentQuest().getGameObject().getStringId());
+						}
+					}
 					return true;
 				}
 			}
@@ -77,6 +82,11 @@ public class QuestRequirementInventory extends QuestRequirementLoot {
 					if (markItems()) {
 						for (GameObject validItem : validMatches) {
 							Quest.GameObjectAddQuestMark(validItem, getParentQuest().getGameObject().getStringId());
+						}
+					}
+					if (removeItemsMarks()) {
+						for (GameObject validItem : validMatches) {
+							Quest.GameObjectRemoveQuestMark(validItem, getParentQuest().getGameObject().getStringId());
 						}
 					}
 					return true;

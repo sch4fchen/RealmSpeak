@@ -16,6 +16,7 @@ public class QuestRequirementTraveler extends QuestRequirement {
 	public static final String TRAVELER_REGEX = "_regex";
 	public static final String SAME_TILE = "_tile";
 	public static final String MARK = "_mark";
+	public static final String NO_MARK = "_no_mark";
 
 	public QuestRequirementTraveler(GameObject go) {
 		super(go);
@@ -32,9 +33,8 @@ public class QuestRequirementTraveler extends QuestRequirement {
 				for (RealmComponent traveler : cl.getClearingComponents()) {
 					if (!traveler.isTraveler()) continue;
 					if (getRegExFilter().isEmpty() || pattern.matcher(traveler.getGameObject().getName()).find()) {
-						if (requiresMark() && !Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) {
-							continue;
-						}
+						if (requiresMark() && !Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) continue;
+						if (requiresNoMark() && Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) continue;
 						return true;
 					}
 				}
@@ -43,9 +43,8 @@ public class QuestRequirementTraveler extends QuestRequirement {
 			for (RealmComponent traveler : loc.clearing.getClearingComponents()) {
 				if (!traveler.isTraveler()) continue;
 				if (getRegExFilter().isEmpty() || pattern.matcher(traveler.getGameObject().getName()).find()) {
-					if (requiresMark() && !Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) {
-						continue;
-					}
+					if (requiresMark() && !Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) continue;
+					if (requiresNoMark() && Quest.GameObjectHasQuestMark(traveler.getGameObject(), questId)) continue;
 					return true;
 				}
 			}
@@ -86,5 +85,8 @@ public class QuestRequirementTraveler extends QuestRequirement {
 	}
 	public boolean requiresMark() {
 		return getBoolean(MARK);
+	}
+	public boolean requiresNoMark() {
+		return getBoolean(NO_MARK);
 	}
 }

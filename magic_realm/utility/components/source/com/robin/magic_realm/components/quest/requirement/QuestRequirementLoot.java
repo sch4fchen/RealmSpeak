@@ -19,7 +19,9 @@ public class QuestRequirementLoot extends QuestRequirement {
 	public static final String TREASURE_TYPE = "_tt";
 	public static final String REGEX_FILTER = "_regex";
 	public static final String REQ_MARK = "_req_mark";
+	public static final String REQ_NO_MARK = "_req_no_mark";
 	public static final String ADD_MARK = "_add_mark";
+	public static final String REMOVE_MARK = "_remove_mark";
 	public static final String REQ_ABILITY = "_req_ability";
 	
 	public QuestRequirementLoot(GameObject go) {
@@ -29,9 +31,14 @@ public class QuestRequirementLoot extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame,CharacterWrapper character,QuestRequirementParams reqParams) {
 		if (reqParams!=null && "Loot".equals(reqParams.actionName)) {
 			ArrayList<GameObject> matches = filterObjectsForRequirement(character,reqParams.objectList,logger);
-			if (markItems() && !matches.isEmpty() ) {
+			if (markItems() && !matches.isEmpty()) {
 				for (GameObject item : matches) {
 					Quest.GameObjectAddQuestMark(item, getParentQuest().getGameObject().getStringId());
+				}
+			}
+			if (removeItemsMarks() && !matches.isEmpty() ) {
+				for (GameObject item : matches) {
+					Quest.GameObjectRemoveQuestMark(item, getParentQuest().getGameObject().getStringId());
 				}
 			}
 			return !matches.isEmpty();
@@ -94,6 +101,7 @@ public class QuestRequirementLoot extends QuestRequirement {
 			for(GameObject go:typeMatches) {
 				if (pattern==null || pattern.matcher(go.getName()).find()) {
 					if (requiresMark() && !Quest.GameObjectHasQuestMark(go, questId)) continue;
+					if (requiresNoMark() && Quest.GameObjectHasQuestMark(go, questId)) continue;
 					if (getRequiredAbility()!=null && !getRequiredAbility().isEmpty()) {
 						if (!go.hasAllKeyVals(getRequiredAbility())) {
 							continue;
@@ -147,10 +155,16 @@ public class QuestRequirementLoot extends QuestRequirement {
 	public boolean requiresMark() {
 		return getBoolean(REQ_MARK);
 	}
+	public boolean requiresNoMark() {
+		return getBoolean(REQ_NO_MARK);
+	}
 	public String getRequiredAbility() {
 		return getString(REQ_ABILITY);
 	}
 	public boolean markItems() {
 		return getBoolean(ADD_MARK);
+	}
+	public boolean removeItemsMarks() {
+		return getBoolean(REMOVE_MARK);
 	}
 }

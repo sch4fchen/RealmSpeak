@@ -16,6 +16,7 @@ public class QuestRequirementVisitor extends QuestRequirement {
 	public static final String VISITOR_REGEX = "_regex";
 	public static final String SAME_TILE = "_tile";
 	public static final String MARK = "_mark";
+	public static final String NO_MARK = "_no_mark";
 
 	public QuestRequirementVisitor(GameObject go) {
 		super(go);
@@ -32,9 +33,8 @@ public class QuestRequirementVisitor extends QuestRequirement {
 				for (RealmComponent visitor : cl.getClearingComponents()) {
 					if (!visitor.isVisitor()) continue;
 					if (getRegExFilter().isEmpty() || pattern.matcher(visitor.getGameObject().getName()).find()) {
-						if (requiresMark() && !Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) {
-							continue;
-						}
+						if (requiresMark() && !Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) continue;
+						if (requiresNoMark() && Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) continue;
 						return true;
 					}
 				}
@@ -43,9 +43,8 @@ public class QuestRequirementVisitor extends QuestRequirement {
 			for (RealmComponent visitor : loc.clearing.getClearingComponents()) {
 				if (!visitor.isVisitor()) continue;
 				if (getRegExFilter().isEmpty() || pattern.matcher(visitor.getGameObject().getName()).find()) {
-					if (requiresMark() && !Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) {
-						continue;
-					}
+					if (requiresMark() && !Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) continue;
+					if (requiresNoMark() && Quest.GameObjectHasQuestMark(visitor.getGameObject(), questId)) continue;
 					return true;
 				}
 			}
@@ -63,6 +62,9 @@ public class QuestRequirementVisitor extends QuestRequirement {
 		}
 		if (requiresMark()) {
 			sb.append(" a marked");
+		}
+		if (requiresMark()) {
+			sb.append(" a not marked");
 		}
 		sb.append(" visitor");
 		if (!getRegExFilter().isEmpty()) {
@@ -86,5 +88,8 @@ public class QuestRequirementVisitor extends QuestRequirement {
 	}
 	public boolean requiresMark() {
 		return getBoolean(MARK);
+	}
+	public boolean requiresNoMark() {
+		return getBoolean(NO_MARK);
 	}
 }

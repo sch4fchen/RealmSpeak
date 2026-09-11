@@ -1,7 +1,3 @@
-::Options for current quest requirements::
-QuestRequirementMissionCampaign: requires mark, add/remove mark, must not have mark
-QuestRequirementTraveler: add/remove mark, must not have mark
-QuestRequirementVisitor: add/remove mark, must not have mark
 ::New quest requirements and rewards::
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked, add/remove mark, must not have mark

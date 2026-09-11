@@ -217,7 +217,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_ACTIVE, "Require activated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementInventory.ITEM_DEACTIVE, "Require deactivated?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_NO_MARK, "Must have no mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.ADD_MARK, "Add marks to items?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REMOVE_MARK, "Remove marks from items?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_ABILITY, "Requires ability?", FieldType.TextLine));
 				break;
 			case InventoryValue:
@@ -226,6 +228,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of inventory", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Inventory name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_NO_MARK, "Must have no mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_ABILITY, "Requires ability?", FieldType.TextLine));
 				break;
 			case Kill:
@@ -259,7 +262,9 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.TREASURE_TYPE, "Type of Loot to acquire", FieldType.StringSelector, TreasureType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REGEX_FILTER, "Loot name filter (regex)", FieldType.Regex, null, new String[] { "item","treasure_within_treasure" }));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_MARK, "Loot requires mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_NO_MARK, "Loot must have no mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.ADD_MARK, "Add marks to loot?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementLoot.REMOVE_MARK, "Remove marks from loot?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementLoot.REQ_ABILITY, "Requires ability?", FieldType.TextLine));
 				break;
 			case NextPhase:
@@ -279,6 +284,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.ACTION_TYPE, "Mission/Campaign action", FieldType.StringSelector, CharacterActionType.mcValues()));
 				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.DISABLE_ON_PICKUP, "Disable on Pickup", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.REGEX_FILTER, "Mission/Campaign filter (regex)", FieldType.Regex, null, new String[] { "mission","campaign" }));
+				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.REQUIRES_MARK, "Requires mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.REQUIRES_NO_MARK, "Must have no mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.ADD_MARK, "Add mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementMissionCampaign.REMOVE_MARK, "Remove mark", FieldType.Boolean));
 				break;
 			case OccupyLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementLocation.LOCATION, "Quest Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
@@ -362,6 +371,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementTraveler.TRAVELER_REGEX, "Name", FieldType.Regex, null, new String[] { Constants.TRAVELER_TEMPLATE }));
 				list.add(new QuestPropertyBlock(QuestRequirementTraveler.SAME_TILE, "Same tile?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementTraveler.MARK, "Requires a mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementTraveler.NO_MARK, "Must have no mark?", FieldType.Boolean));
 				break;
 			case Treachery:
 				list.add(new QuestPropertyBlock(QuestRequirementTreachery.REGEX_FILTER, "Denizen", FieldType.Regex, null, new String[] {"denizen"}));
@@ -375,6 +385,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementVisitor.VISITOR_REGEX, "Name", FieldType.Regex, null, new String[] { Constants.VISITOR }));
 				list.add(new QuestPropertyBlock(QuestRequirementVisitor.SAME_TILE, "Same tile?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementVisitor.MARK, "Requires a mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementVisitor.NO_MARK, "Must have no mark?", FieldType.Boolean));
 				break;
 			case Weather:
 				list.add(new QuestPropertyBlock(QuestRequirementWeather.WEATHER_ENABLED, "Weather must be enabled", FieldType.Boolean));

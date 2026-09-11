@@ -9,6 +9,7 @@ import com.robin.game.objects.GameObject;
 import com.robin.magic_realm.components.GoldSpecialChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
 
 public class QuestRequirementMissionCampaign extends QuestRequirement {
@@ -18,6 +19,10 @@ public class QuestRequirementMissionCampaign extends QuestRequirement {
 	public static final String ACTION_TYPE = "_at";
 	public static final String REGEX_FILTER = "_regex";
 	public static final String DISABLE_ON_PICKUP = "_dop";
+	public static final String REQUIRES_MARK = "_mark";
+	public static final String REQUIRES_NO_MARK = "_no_mark";
+	public static final String ADD_MARK = "_add_mark";
+	public static final String REMOVE_MARK = "_remove_mark";
 
 	public QuestRequirementMissionCampaign(GameObject go) {
 		super(go);
@@ -26,15 +31,28 @@ public class QuestRequirementMissionCampaign extends QuestRequirement {
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
 		CharacterActionType actionType = getActionType();
 		if (reqParams != null && reqParams.actionType == actionType) {
+			GameObject gsGo = reqParams.targetOfSearch;
+			GoldSpecialChitComponent gs = (GoldSpecialChitComponent)RealmComponent.getRealmComponent(gsGo);
+			String questId = getParentQuest().getGameObject().getStringId();
 			String regex = getRegExFilter();
 			boolean match = regex == null || regex.length() == 0 ? true : Pattern.compile(regex).matcher(reqParams.actionName).find();
 			if (!match) {
 				logger.fine(character.getName()+" did not interact with correct mission/campaign matching "+regex+":"+reqParams.actionName);
 			}
 			
-			if (isDisabledOnPickup()) {
-				GoldSpecialChitComponent gs = (GoldSpecialChitComponent)RealmComponent.getRealmComponent(reqParams.targetOfSearch);
+			if (requiresMark() && !Quest.GameObjectHasQuestMark(gsGo, questId)) return false;
+			if (requiresNoMark() && Quest.GameObjectHasQuestMark(gsGo, questId)) return false;
+			
+			if (match && isDisabledOnPickup()) {
 				gs.expireEffect(character);
+			}
+			if (match) {
+				if (addMark()) {
+					Quest.GameObjectAddQuestMark(gsGo, questId);
+				}
+				if (removeMark()) {
+					Quest.GameObjectRemoveQuestMark(gsGo, questId);
+				}
 			}
 			
 			return match;
@@ -73,6 +91,19 @@ public class QuestRequirementMissionCampaign extends QuestRequirement {
 
 	public String getRegExFilter() {
 		return getString(REGEX_FILTER);
+	}
+	
+	private boolean requiresMark() {
+		return getBoolean(REQUIRES_MARK);
+	}
+	private boolean requiresNoMark() {
+		return getBoolean(REQUIRES_NO_MARK);
+	}
+	private boolean addMark() {
+		return getBoolean(ADD_MARK);
+	}
+	private boolean removeMark() {
+		return getBoolean(REMOVE_MARK);
 	}
 	
 	public boolean isDisabledOnPickup() {
