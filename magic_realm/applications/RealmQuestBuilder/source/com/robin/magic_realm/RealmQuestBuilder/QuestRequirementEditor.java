@@ -325,6 +325,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM, "Victim", FieldType.StringSelector, QuestRequirementStealing.VictimType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REGEX, "Victim Regex", FieldType.Regex, null, new String[] { "native,rank=HQ","character" }));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REQ_MARK, "Victim requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REQ_NO_MARK, "Victim must have no mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_ADD_MARK, "Victim add mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_REMOVE_MARK, "Victim remove mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_GUILD, "Targeted character is a guildmember?", FieldType.StringSelector, getGuildNames()));
@@ -333,6 +334,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.VICTIM_MAGIC_USER, "Targeted character must be a magic user?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_TYPE, "Item type", FieldType.StringSelector, QuestRequirementStealing.ItemType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REQ_MARK, "Item requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REQ_NO_MARK, "Item must have no mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_ADD_MARK, "Item add mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementStealing.ITEM_REMOVE_MARK, "Item remove mark?", FieldType.Boolean));
 				break;

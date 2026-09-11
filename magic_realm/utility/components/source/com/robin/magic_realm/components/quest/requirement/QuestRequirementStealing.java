@@ -38,6 +38,7 @@ public class QuestRequirementStealing extends QuestRequirement {
 	public static final String VICTIM = "_victim";
 	public static final String VICTIM_REGEX = "_victim_regex";
 	public static final String VICTIM_REQ_MARK = "_victim_req_mark";
+	public static final String VICTIM_REQ_NO_MARK = "_victim_req_no_mark";
 	public static final String VICTIM_ADD_MARK = "_victim_add_mark";
 	public static final String VICTIM_REMOVE_MARK = "_victim_remove_mark";
 	public static final String VICTIM_GUILD = "_victim_guild";
@@ -46,6 +47,7 @@ public class QuestRequirementStealing extends QuestRequirement {
 	public static final String VICTIM_MAGIC_USER = "_victim_magic_user";
 	public static final String ITEM_TYPE = "_item_type";
 	public static final String ITEM_REQ_MARK = "_item_req_mark";
+	public static final String ITEM_REQ_NO_MARK = "_item_req_no_mark";
 	public static final String ITEM_ADD_MARK = "_item_add_mark";
 	public static final String ITEM_REMOVE_MARK = "_item_remove_mark";
 	
@@ -68,7 +70,8 @@ public class QuestRequirementStealing extends QuestRequirement {
 		Pattern pattern = Pattern.compile(getVictimRegEx());
 		if (!getVictimRegEx().isEmpty() && (victim==null || !pattern.matcher(victim.getName()).find())) return false;
 		String questId = getParentQuest().getGameObject().getStringId();
-		if (victimRequiresMark() && (victim==null || !Quest.GameObjectHasQuestMark(victim, questId)));
+		if (victimRequiresMark() && (victim==null || !Quest.GameObjectHasQuestMark(victim, questId))) return false;
+		if (victimRequiresNoMark() && (victim!=null && Quest.GameObjectHasQuestMark(victim, questId))) return false;
 		if (!victimGuild().matches(QuestConstants.ANY) && victimRc!=null && victimRc.isCharacter()) {
 			CharacterWrapper victimCharacter = new CharacterWrapper(victim);
 			if (victimGuild().matches(QuestConstants.NONE)) {
@@ -113,8 +116,7 @@ public class QuestRequirementStealing extends QuestRequirement {
 			}
 		}
 		if (itemRequiresMark() && (stolenItem==null || !Quest.GameObjectHasQuestMark(stolenItem, questId))) return false;
-		// check properties of item
-		// check if gold stolen: (=searchHadAnEffect, but no item)
+		if (itemRequiresNoMark() && (stolenItem!=null && Quest.GameObjectHasQuestMark(stolenItem, questId))) return false;
 		
 		if (itemAddMark() && stolenItem!=null) {
 			Quest.GameObjectAddQuestMark(stolenItem, questId);
@@ -153,6 +155,9 @@ public class QuestRequirementStealing extends QuestRequirement {
 	private boolean victimRequiresMark() {
 		return getBoolean(VICTIM_REQ_MARK);
 	}
+	private boolean victimRequiresNoMark() {
+		return getBoolean(VICTIM_REQ_NO_MARK);
+	}
 	private boolean victimAddMark() {
 		return getBoolean(VICTIM_ADD_MARK);
 	}
@@ -176,6 +181,9 @@ public class QuestRequirementStealing extends QuestRequirement {
 	}
 	private boolean itemRequiresMark() {
 		return getBoolean(VICTIM_REQ_MARK);
+	}
+	private boolean itemRequiresNoMark() {
+		return getBoolean(VICTIM_REQ_NO_MARK);
 	}
 	private boolean itemAddMark() {
 		return getBoolean(VICTIM_ADD_MARK);
