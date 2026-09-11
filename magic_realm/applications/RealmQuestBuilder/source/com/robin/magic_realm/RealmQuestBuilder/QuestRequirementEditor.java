@@ -129,6 +129,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.CHECK_BOTH_SIDES, "Check ligth and dark chit sides", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.INCLUDE_WEAPONS, "Include monster weapons", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.REQ_MARK, "Requires a mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementDenizens.REQ_NO_MARK, "Must have no mark", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.NATIVES_ONLY, "Only Natives", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.MONSTERS_ONLY, "Only Monsters", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementDenizens.GUARDIANS_ONLY, "Only Guardians", FieldType.Boolean));

@@ -40,6 +40,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	public static final String CHECK_BOTH_SIDES = "_both_sides";
 	public static final String INCLUDE_WEAPONS = "_include_weapons";
 	public static final String REQ_MARK = "_requires_mark";
+	public static final String REQ_NO_MARK = "_requires_no_mark";
 	public static final String NATIVES_ONLY = "_natives_only";
 	public static final String MONSTERS_ONLY = "_monsters_only";
 	public static final String GUARDIANS_ONLY = "_guardians_only";
@@ -80,7 +81,6 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			}
 		}
 		
-		GamePool pool = new GamePool(character.getGameData().getGameObjects());
 		String questId = getParentQuest().getGameObject().getStringId();
 		for (RealmComponent denizen : denizens) {
 			if (ignoreHirelings() && denizen.isHireling()) continue;
@@ -91,6 +91,7 @@ public class QuestRequirementDenizens extends QuestRequirement {
 			if (monstersOnly() && !denizen.isMonster()) continue;
 			if (guardiansOnly() && !RealmUtility.denizenIsGuardian(denizen,character.getGameData())) continue;
 			if (requiresMark() && !Quest.GameObjectHasQuestMark(denizen.getGameObject(),questId)) continue;
+			if (requiresNoMark() && Quest.GameObjectHasQuestMark(denizen.getGameObject(),questId)) continue;
 			if (getRegExFilter().isEmpty() || pattern.matcher(denizen.getGameObject().getName()).find()) {
 				if (checkStats()) {
 					Strength vul = new Strength();
@@ -261,6 +262,9 @@ public class QuestRequirementDenizens extends QuestRequirement {
 	}
 	private Boolean requiresMark() {
 		return getBoolean(REQ_MARK);
+	}
+	private Boolean requiresNoMark() {
+		return getBoolean(REQ_NO_MARK);
 	}
 	private Boolean nativesOnly() {
 		return getBoolean(NATIVES_ONLY);

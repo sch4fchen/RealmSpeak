@@ -1,5 +1,4 @@
 ::Options for current quest requirements::
-QuestRequirementDenizens: add/remove mark, must not have mark
 QuestRequirementHirelings: requires mark, add/remove mark, must not have mark
 QuestRequirementGuildLocation: requires mark, add/remove mark, must not have mark
 QuestRequirementMissionCampaign: requires mark, add/remove mark, must not have mark
