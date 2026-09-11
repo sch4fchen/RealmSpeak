@@ -176,6 +176,10 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case GuildLocation:
 				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.GUILD, "Guild", FieldType.Regex, null, new String[] { "guild" }));
 				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.CURRENT_GUILD, "Check for current Guild", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.REQ_MARK, "Guild requires mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.REQ_NO_MARK, "Guild must have no mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.ADD_MARK, "Add mark to Guild", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementGuildLocation.REMOVE_MARK, "Remove mark from Guild", FieldType.Boolean));
 				break;
 			case Hidden:
 				break;

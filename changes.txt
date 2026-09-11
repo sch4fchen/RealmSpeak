@@ -1,5 +1,4 @@
 ::Options for current quest requirements::
-QuestRequirementGuildLocation: requires mark, add/remove mark, must not have mark
 QuestRequirementMissionCampaign: requires mark, add/remove mark, must not have mark
 QuestRequirementTraveler: add/remove mark, must not have mark
 QuestRequirementVisitor: add/remove mark, must not have mark
