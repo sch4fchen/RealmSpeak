@@ -24,6 +24,9 @@ public class QuestRequirementClearing extends QuestRequirement {
 	public static final String CHIT_AMOUNT = "_chit_amount";
 	public static final String CHIT_MARK_REQUIRED = "_chit_req_mark";
 	public static final String TILE_MARK_REQUIRED = "_tile_req_mark";
+	public static final String TILE_NO_MARK = "_tile_no_mark";
+	public static final String TILE_ADD_MARK = "_tile_add_mark";
+	public static final String TILE_REMOVE_MARK = "_tile_remove_mark";
 
 	public QuestRequirementClearing(GameObject go) {
 		super(go);
@@ -34,7 +37,8 @@ public class QuestRequirementClearing extends QuestRequirement {
 		if (loc == null || loc.tile == null) return false;
 		if (getTileSide() !=  LocationTileSideType.Any && !getTileSide().matches(loc.tile)) return false;
 		String questId = getParentQuest().getGameObject().getStringId();
-		if (tileRequiresMark() && Quest.GameObjectHasQuestMark(loc.tile.getGameObject(), questId)) return false;
+		if (tileRequiresMark() && !Quest.GameObjectHasQuestMark(loc.tile.getGameObject(), questId)) return false;
+		if (tileNoMark() && Quest.GameObjectHasQuestMark(loc.tile.getGameObject(), questId)) return false;
 		
 		ArrayList<ClearingDetail> clearingsToCheck = new ArrayList<>();
 		if (checkTile()) {
@@ -48,12 +52,16 @@ public class QuestRequirementClearing extends QuestRequirement {
 		if (noChitsToCheck()) {
 			for (ClearingDetail clearing : clearingsToCheck) {
 				if (getClearingType() != LocationClearingType.Any && !getClearingType().matches(clearing)) continue;
+				updateTileMark(loc.tile.getGameObject());
 				return true;
 			}
 			return false;
 		}
 		
-		if (getChitAmount() == 0) return true;
+		if (getChitAmount() == 0) {
+			updateTileMark(loc.tile.getGameObject());
+			return true;
+		}
 		ArrayList<RealmComponent> componentsToCheck = new ArrayList<>();
 		for (ClearingDetail clearing : clearingsToCheck) {
 			if (getClearingType() != LocationClearingType.Any && !getClearingType().matches(clearing)) continue;
@@ -70,7 +78,10 @@ public class QuestRequirementClearing extends QuestRequirement {
 				continue;
 			}
 			foundChits++;
-			if (foundChits == getChitAmount()) return true;
+			if (foundChits == getChitAmount()) {
+				updateTileMark(loc.tile.getGameObject());
+				return true;
+			}
 		}
 		
 		return false;
@@ -78,6 +89,15 @@ public class QuestRequirementClearing extends QuestRequirement {
 
 	private boolean noChitsToCheck() {
 		return ((getChitName()==null || getChitName().isEmpty()) && (getChitType()==null || getChitType() == ChitType.Any) && !chitRequiresMark());
+	}
+	
+	private void updateTileMark(GameObject tile) {
+		if (tileAddMark()) {
+			Quest.GameObjectAddQuestMark(tile, getParentQuest().getGameObject().getStringId());
+		}
+		if (tileRemoveMark()) {
+			Quest.GameObjectRemoveQuestMark(tile, getParentQuest().getGameObject().getStringId());
+		}
 	}
 	
 	protected String buildDescription() {
@@ -88,6 +108,9 @@ public class QuestRequirementClearing extends QuestRequirement {
 		}
 		if (tileRequiresMark()) {
 			sb.append(" marked");
+		}
+		if (tileNoMark()) {
+			sb.append(" not marked");
 		}
 		if (checkTile()) {
 			sb.append(" tile with a clearing");
@@ -138,7 +161,10 @@ public class QuestRequirementClearing extends QuestRequirement {
 		return getBoolean(TILE);
 	}
 	private boolean tileRequiresMark() {
-		return getBoolean(CHIT_MARK_REQUIRED);
+		return getBoolean(TILE_MARK_REQUIRED);
+	}
+	private boolean tileNoMark() {
+		return getBoolean(TILE_NO_MARK);
 	}
 	public LocationClearingType getClearingType() {
 		return LocationClearingType.valueOf(getString(TYPE));
@@ -157,5 +183,11 @@ public class QuestRequirementClearing extends QuestRequirement {
 	}
 	private boolean chitRequiresMark() {
 		return getBoolean(CHIT_MARK_REQUIRED);
+	}
+	private boolean tileAddMark() {
+		return getBoolean(TILE_ADD_MARK);
+	}
+	private boolean tileRemoveMark() {
+		return getBoolean(TILE_REMOVE_MARK);
 	}
 }

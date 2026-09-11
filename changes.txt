@@ -1,5 +1,4 @@
 ::Options for current quest requirements::
-QuestRequirementClearing: add/remove mark, must not have mark
 QuestRequirementKill: add/remove mark, must not have mark
 QuestRequirementDenizens: add/remove mark, must not have mark
 QuestRequirementHirelings: requires mark, add/remove mark, must not have mark
@@ -35,6 +34,7 @@ QUEST UPDATE:
 # QuestRewardMarkDenizen: option for choosing denizens
 # QuestRewardMarkItem: option for random item
 # QuestRewardMarkedView: more options
+# More options for adding, removing and checking for marks
 BUGS/ISSUES:
 # Fix casting certain spells on horses
 
