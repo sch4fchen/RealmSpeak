@@ -15,7 +15,6 @@ QuestRequirement: CharacterMet: current tile, current clearing, regex, fighter/m
 
 
 Version 1.2.6.5
-NEW FEATURES:
 QUEST UPDATE:
 # Updated guild quests, additional Thieves Guild quests
 # QuestRequirementStealing

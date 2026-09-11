@@ -22,11 +22,15 @@ public class QuestRequirementClearing extends QuestRequirement {
 	public static final String CHIT_NAME = "_chit_name";
 	public static final String CHIT_TYPE = "_chit_type";
 	public static final String CHIT_AMOUNT = "_chit_amount";
-	public static final String CHIT_MARK_REQUIRED = "_chit_req_mark";
 	public static final String TILE_MARK_REQUIRED = "_tile_req_mark";
-	public static final String TILE_NO_MARK = "_tile_no_mark";
+	public static final String TILE_NO_MARK_REQUIRED = "_tile_req_no_mark";
 	public static final String TILE_ADD_MARK = "_tile_add_mark";
 	public static final String TILE_REMOVE_MARK = "_tile_remove_mark";
+	public static final String CHIT_MARK_REQUIRED = "_chit_req_mark";
+	public static final String CHIT_NO_MARK_REQUIRED = "_chit_req_no_mark";
+	public static final String CHIT_ADD_MARK = "_chit_add_mark";
+	public static final String CHIT_REMOVE_MARK = "_chit_remove_mark";
+
 
 	public QuestRequirementClearing(GameObject go) {
 		super(go);
@@ -67,21 +71,29 @@ public class QuestRequirementClearing extends QuestRequirement {
 			if (getClearingType() != LocationClearingType.Any && !getClearingType().matches(clearing)) continue;
 			componentsToCheck.addAll(clearing.getDeepClearingComponents());
 		}
-		int foundChits = 0;
+		ArrayList<RealmComponent> foundChits = new ArrayList<>();
 		String regex = getChitName().trim();
 		Pattern pattern = regex.length()==0?null:Pattern.compile(regex);
 		
 		for (RealmComponent rc : componentsToCheck) {
 			if (pattern != null && !pattern.matcher(rc.getGameObject().getName()).find()) continue;
 			if (getChitType() != null && getChitType() != ChitType.Any && !getChitType().matches(rc)) continue;
-			if (chitRequiresMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) {
-				continue;
+			if (chitRequiresMark() && !Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) continue;
+			if (chitRequiresNoMark() && Quest.GameObjectHasQuestMark(rc.getGameObject(), questId)) continue;
+			foundChits.add(rc);
+			
+		}
+		if (foundChits.size() >= getChitAmount()) {
+			updateTileMark(loc.tile.getGameObject());
+			for (RealmComponent chit : foundChits) {
+				if (chitAddMark()) {
+					Quest.GameObjectAddQuestMark(chit.getGameObject(), getParentQuest().getGameObject().getStringId());
+				}
+				if (chitRemoveMark()) {
+					Quest.GameObjectRemoveQuestMark(chit.getGameObject(), getParentQuest().getGameObject().getStringId());
+				}
 			}
-			foundChits++;
-			if (foundChits == getChitAmount()) {
-				updateTileMark(loc.tile.getGameObject());
-				return true;
-			}
+			return true;
 		}
 		
 		return false;
@@ -164,7 +176,13 @@ public class QuestRequirementClearing extends QuestRequirement {
 		return getBoolean(TILE_MARK_REQUIRED);
 	}
 	private boolean tileNoMark() {
-		return getBoolean(TILE_NO_MARK);
+		return getBoolean(TILE_NO_MARK_REQUIRED);
+	}
+	private boolean tileAddMark() {
+		return getBoolean(TILE_ADD_MARK);
+	}
+	private boolean tileRemoveMark() {
+		return getBoolean(TILE_REMOVE_MARK);
 	}
 	public LocationClearingType getClearingType() {
 		return LocationClearingType.valueOf(getString(TYPE));
@@ -184,10 +202,13 @@ public class QuestRequirementClearing extends QuestRequirement {
 	private boolean chitRequiresMark() {
 		return getBoolean(CHIT_MARK_REQUIRED);
 	}
-	private boolean tileAddMark() {
-		return getBoolean(TILE_ADD_MARK);
+	private boolean chitRequiresNoMark() {
+		return getBoolean(CHIT_NO_MARK_REQUIRED);
 	}
-	private boolean tileRemoveMark() {
-		return getBoolean(TILE_REMOVE_MARK);
+	private boolean chitAddMark() {
+		return getBoolean(CHIT_ADD_MARK);
+	}
+	private boolean chitRemoveMark() {
+		return getBoolean(CHIT_REMOVE_MARK);
 	}
 }

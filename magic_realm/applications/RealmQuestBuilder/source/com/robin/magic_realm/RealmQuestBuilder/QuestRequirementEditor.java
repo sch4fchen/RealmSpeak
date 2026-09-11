@@ -89,15 +89,18 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case Clearing:
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE, "Check all clearings of tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_MARK_REQUIRED, "Tile requires a mark", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_NO_MARK, "Tile must have no mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_NO_MARK_REQUIRED, "Tile must have no mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_ADD_MARK, "Add mark to tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_REMOVE_MARK, "Remove mark of tile", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_SIDE, "Tile side", FieldType.StringSelector, LocationTileSideType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.TYPE, "Clearing type", FieldType.StringSelector, LocationClearingType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_AMOUNT, "Amount of chits in clearing(s)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_TYPE, "Chit type", FieldType.StringSelector, ChitType.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_NAME, "Chit name", FieldType.Regex, null, null));
 				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_MARK_REQUIRED, "Chit requires a mark", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_ADD_MARK, "Add mark to tile", FieldType.Boolean));
-				list.add(new QuestPropertyBlock(QuestRequirementClearing.TILE_REMOVE_MARK, "Remove mark of tile", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_NO_MARK_REQUIRED, "Chit must have no mark", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_ADD_MARK, "Add mark to chit", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementClearing.CHIT_REMOVE_MARK, "Remove mark of chit", FieldType.Boolean));
 				break;
 			case ColorMagic:
 				list.add(new QuestPropertyBlock(QuestRequirementColorMagic.COLOR_KEY, "In the presence of color magic.", FieldType.StringSelector, Constants.MAGIC_COLORS));
