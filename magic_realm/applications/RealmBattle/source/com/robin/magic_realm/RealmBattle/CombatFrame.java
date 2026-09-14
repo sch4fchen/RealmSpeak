@@ -4719,19 +4719,23 @@ public class CombatFrame extends JFrame {
 		// same hit. Clearing on entry means the second caller sees zero for both and exits
 		// each dialog block immediately.
 		//
-		// weatherFatigue is already cleared inside doFatigueWeather() after its dialog,
-		// and effortUsed is derived fresh from chit state, so neither needs clearing here.
+		// weatherFatigue is already cleared inside doFatigueWeather() after its dialog.
+		// effortUsed reads from two paths: active/alert chits (cleared when ChitFatigueManager
+		// fatigue-s them) AND USED_IDS in CombatWrapper (never cleared by ChitFatigueManager).
+		// We read effortUsed and clear USED_IDS before any dialog so a queued second caller
+		// sees zero chits from both paths and skips fatigue processing entirely.
 		int healing = combat.getHealing(); // i.e., Drain Life
 		combat.clearHealing();
 		int newWounds = combat.getNewWounds();
 		combat.clearNewWounds();
+		Effort effortUsed = BattleUtility.getEffortUsed(character);
+		combat.clearUsedChits();
 
 		if (healing>0) {
 			broadcastMessage(character.getGameObject().getName(),"Healing "+healing+" asterisk"+(healing==1?"":"s")+".");
 			ChitRestManager rester = new ChitRestManager(parent,character,healing);
 			rester.setVisible(true);
 		}
-		Effort effortUsed = BattleUtility.getEffortUsed(character);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
 		needToFatigue += runAwayFatigue;
