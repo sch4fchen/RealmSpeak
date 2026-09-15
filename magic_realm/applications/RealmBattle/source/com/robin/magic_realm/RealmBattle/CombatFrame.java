@@ -49,6 +49,7 @@ public class CombatFrame extends JFrame {
 	private static Rectangle lastKnownLocation = null;
 	private static boolean interactiveFrame;
 	private static boolean isGameHost;
+	private static boolean inFatigueWounds = false; // reentrant-guard: EDT re-enters doDisplay while a fatigue dialog is showing
 	private static boolean closeableFrame = false; // If this is true, there is a button for ending the simulation
 	
 	private RealmObjectPanel denizenPanel;
@@ -4852,9 +4853,16 @@ public class CombatFrame extends JFrame {
 			logger.finer("handling fatigue/wounds");
 			ArrayList<CharacterWrapper> list = lists.getList(firstState);
 			CharacterWrapper character = list.iterator().next();
-			doFatigueWounds(frame,character);
-			character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_DISENGAGE);
-			listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
+			if (interactive && character.getPlayerName().equals(playerName) && !inFatigueWounds) {
+				inFatigueWounds = true;
+				try {
+					doFatigueWounds(frame,character);
+					character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_DISENGAGE);
+					listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
+				} finally {
+					inFatigueWounds = false;
+				}
+			}
 		}
 		logger.fine("***** Done Display new combat frame");
 		return true;
