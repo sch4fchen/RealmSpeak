@@ -555,8 +555,9 @@ public class SpellWrapper extends GameObjectWrapper implements BattleChit {
 					if ((!getGameObject().hasThisAttribute(Constants.BENEVOLENT_FOR_LEADERS) || !rc.isNativeLeader())
 					&& (!getGameObject().hasThisAttribute(Constants.BENEVOLENT_FOR_MONSTERS) || !rc.isMonster())) {
 						BattleUtility.processTreachery(character,rc);
+						BattleUtility.handleHoundReaction(rc);
 					}
-				}
+				}				
 			}
 			
 			// if target is an unassigned denizen, move them to their own sheet (sucker punch)

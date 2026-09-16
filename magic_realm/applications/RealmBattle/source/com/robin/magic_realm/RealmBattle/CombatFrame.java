@@ -2584,7 +2584,7 @@ public class CombatFrame extends JFrame {
 					currentBattleModel.setGotUnhidden();
 				}
 				handleNativeReaction(theTarget);
-				handleHoundReaction(theTarget);
+				BattleUtility.handleHoundReaction(theTarget);
 				
 				targetsSelected = true;
 				if (attacker.isCharacter() && attacker.get2ndTarget() == null) {
@@ -2640,15 +2640,6 @@ public class CombatFrame extends JFrame {
 		}
 		if (theTarget.ownedBy(activeParticipant)) {
 			BattleUtility.processTreachery(activeCharacter,theTarget);
-		}
-	}
-	private static void handleHoundReaction(RealmComponent theTarget) {
-		if (theTarget.getGameObject().hasThisAttribute(Constants.HOUND)) {
-			RealmComponent owner = theTarget.getOwner();
-			if (owner!=null) {
-				(new CharacterWrapper(owner.getGameObject())).removeHireling(theTarget.getGameObject());
-			}
-			theTarget.clearOwner();
 		}
 	}
 	public void makeWatchfulNatives(RealmComponent theTarget,boolean makeTargetWatchful) {

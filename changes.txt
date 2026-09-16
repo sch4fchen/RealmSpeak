@@ -13,6 +13,8 @@ QuestRequirement: GateLocation: current tile, current clearing, regex, marked, a
 QuestRequirement: CharacterMet: current tile, current clearing, regex, fighter/magicUser, guild, mark/remove mark, requires mark
 
 Version 1.2.6.6
+BUGS/ISSUES:
+# Fix Treachery: rebels cannot attack nor be attacked by monsters and unhired natives
 
 Version 1.2.6.5
 QUEST UPDATE:

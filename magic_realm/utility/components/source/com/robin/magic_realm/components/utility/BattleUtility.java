@@ -248,6 +248,37 @@ public class BattleUtility {
 			int bounty = rc.getGameObject().getThisInt("notoriety");
 			activeCharacter.addFame(-bounty);
 			RealmLogging.logMessage(activeCharacter.getGameObject().getName(),"Loses "+bounty+" fame for treachery against "+rc.getGameObject().getName());
+			
+			ArrayList<RealmComponent> attackersToRemove = new ArrayList<>();
+			for (RealmComponent attacker : combat.getAttackersAsComponents()) {
+				if (!attacker.isHiredOrControlled()) {
+					attackersToRemove.add(attacker);
+				}
+			}
+			for (RealmComponent attacker : attackersToRemove) {
+				combat.removeAttacker(attacker.getGameObject());
+				if (attacker.getTarget()!=null && attacker.getTarget()==rc) {
+					attacker.clearTarget();
+				}
+				if (attacker.get2ndTarget()!=null && attacker.get2ndTarget()==rc) {
+					attacker.clear2ndTarget();
+				}
+			}
+			if (rc.getTarget()!=null && !rc.getTarget().isHiredOrControlled()) {
+				rc.clearTarget();
+			}
+			if (rc.get2ndTarget()!=null && !rc.get2ndTarget().isHiredOrControlled()) {
+				rc.clear2ndTarget();
+			}
+		}
+	}
+	public static void handleHoundReaction(RealmComponent theTarget) {
+		if (theTarget.getGameObject().hasThisAttribute(Constants.HOUND)) {
+			RealmComponent owner = theTarget.getOwner();
+			if (owner!=null) {
+				(new CharacterWrapper(owner.getGameObject())).removeHireling(theTarget.getGameObject());
+			}
+			theTarget.clearOwner();
 		}
 	}
 	/**
