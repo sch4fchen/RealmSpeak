@@ -49,6 +49,7 @@ public class CombatFrame extends JFrame {
 	private static Rectangle lastKnownLocation = null;
 	private static boolean interactiveFrame;
 	private static boolean isGameHost;
+	private static boolean inFatigueWounds = false; // reentrant-guard: EDT re-enters doDisplay while a fatigue dialog is showing
 	private static boolean closeableFrame = false; // If this is true, there is a button for ending the simulation
 	
 	private RealmObjectPanel denizenPanel;
@@ -4719,19 +4720,23 @@ public class CombatFrame extends JFrame {
 		// same hit. Clearing on entry means the second caller sees zero for both and exits
 		// each dialog block immediately.
 		//
-		// weatherFatigue is already cleared inside doFatigueWeather() after its dialog,
-		// and effortUsed is derived fresh from chit state, so neither needs clearing here.
+		// weatherFatigue is already cleared inside doFatigueWeather() after its dialog.
+		// effortUsed reads from two paths: active/alert chits (cleared when ChitFatigueManager
+		// fatigue-s them) AND USED_IDS in CombatWrapper (never cleared by ChitFatigueManager).
+		// We read effortUsed and clear USED_IDS before any dialog so a queued second caller
+		// sees zero chits from both paths and skips fatigue processing entirely.
 		int healing = combat.getHealing(); // i.e., Drain Life
 		combat.clearHealing();
 		int newWounds = combat.getNewWounds();
 		combat.clearNewWounds();
+		Effort effortUsed = BattleUtility.getEffortUsed(character);
+		combat.clearUsedChits();
 
 		if (healing>0) {
 			broadcastMessage(character.getGameObject().getName(),"Healing "+healing+" asterisk"+(healing==1?"":"s")+".");
 			ChitRestManager rester = new ChitRestManager(parent,character,healing);
 			rester.setVisible(true);
 		}
-		Effort effortUsed = BattleUtility.getEffortUsed(character);
 		int free = character.getEffortFreeAsterisks();
 		int needToFatigue = effortUsed.getNeedToFatigue(free);
 		needToFatigue += runAwayFatigue;
@@ -4848,9 +4853,16 @@ public class CombatFrame extends JFrame {
 			logger.finer("handling fatigue/wounds");
 			ArrayList<CharacterWrapper> list = lists.getList(firstState);
 			CharacterWrapper character = list.iterator().next();
-			doFatigueWounds(frame,character);
-			character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_DISENGAGE);
-			listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
+			if (interactive && character.getPlayerName().equals(playerName) && !inFatigueWounds) {
+				inFatigueWounds = true;
+				try {
+					doFatigueWounds(frame,character);
+					character.setCombatStatus(Constants.COMBAT_WAIT+Constants.COMBAT_DISENGAGE);
+					listener.actionPerformed(new ActionEvent(parent,0,"")); // does the submit in RealmSpeak
+				} finally {
+					inFatigueWounds = false;
+				}
+			}
 		}
 		logger.fine("***** Done Display new combat frame");
 		return true;

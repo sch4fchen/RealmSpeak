@@ -782,7 +782,10 @@ public class CombatWrapper extends GameObjectWrapper {
 		}
 		return 0;
 	}
-	
+	public void clearUsedChits() {
+		getGameObject().removeAttribute(COMBAT_BLOCK, USED_IDS);
+	}
+
 	// Attacker
 	public void addAttacker(GameObject attacker) {
 		if (isPeaceful()) { // PEACE ends if attacked
