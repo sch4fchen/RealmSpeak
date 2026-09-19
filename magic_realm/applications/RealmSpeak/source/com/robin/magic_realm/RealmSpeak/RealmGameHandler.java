@@ -96,6 +96,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 	private String clientEmail;
 	private ArrayList<String> playerWarned = new ArrayList<>();
 	private boolean addCharacterButtonEnabled = true;
+	// At most one updateGameHandler() invokeLater pending: rapid stateChanged events during a modal
+	// dialog's nested event loop queue up and drain serially, blocking state updates for 10-15 seconds.
+	private final java.util.concurrent.atomic.AtomicBoolean updateHandlerPending = new java.util.concurrent.atomic.AtomicBoolean(false);
 
 	// Update listener
 	protected ChangeListener updateFrameListener = new ChangeListener() {
@@ -1204,11 +1207,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		};
 		client.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent ev) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						updateGameHandler();
-					}
-				});
+				if (updateHandlerPending.compareAndSet(false, true)) {
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							updateHandlerPending.set(false);
+							updateGameHandler();
+						}
+					});
+				}
 			}
 		});
 		if (host != null) { // this will happen when running a local
