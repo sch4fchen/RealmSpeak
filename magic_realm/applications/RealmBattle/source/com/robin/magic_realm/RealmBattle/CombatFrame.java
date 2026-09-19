@@ -516,7 +516,8 @@ public class CombatFrame extends JFrame {
 				for (CharacterWrapper character : characterList) {
 					if (character.getDoInstantPeer()) {
 						// Only process if the character belongs to THIS player
-						if (character.getPlayerName().equals(GameClient.GetMostRecentClient().getClientName())) {
+						GameClient _client = GameClient.GetMostRecentClient();
+						if (_client != null && character.getPlayerName().equals(_client.getClientName())) {
 							character.setDoInstantPeer(false);
 							// This is lame, but seeing as this is the only spell (Wise Bird) that has this requirement, I'm going to go
 							// ahead and do it this way, especially if it resolves the problems I'm having with the trade interface.
