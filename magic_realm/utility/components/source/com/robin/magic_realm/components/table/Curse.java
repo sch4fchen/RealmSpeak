@@ -36,10 +36,15 @@ public class Curse extends RealmTable {
 		RealmComponent targetRc = RealmComponent.getRealmComponent(target);
 		// Determine the destination client
 		RealmComponent destOwner = targetRc.getOwner();
-		// destOwner should NOT be null at this point!
 		if (destOwner == null) {
 			RealmComponent chasterRc = RealmComponent.getRealmComponent(this.caster);
 			destOwner = chasterRc.getOwner();
+		}
+		if (destOwner == null) {
+			// Neither the target nor the caster is owned by a player character (e.g., Imp curses
+			// an unowned NPC traveler).  Return null so callers skip the sendMessage entirely —
+			// routing to a local popup would block the server thread and cause a client timeout.
+			return null;
 		}
 		CharacterWrapper destCharacter = new CharacterWrapper(destOwner.getGameObject());
 		return destCharacter.getPlayerName();
@@ -50,18 +55,24 @@ public class Curse extends RealmTable {
 			cursed = false;
 			String result = super.apply(character,roller);
 			if (!cursed) {
-				sendMessage(character.getGameObject().getGameData(),
-						getDestClientName(character.getGameObject()),
-						getCurseTitle(character),
-						"The "+character.getCharacterName()+" is hit with "+result+", but it has no effect!");
+				String dest = getDestClientName(character.getGameObject());
+				if (dest != null) {
+					sendMessage(character.getGameObject().getGameData(),
+							dest,
+							getCurseTitle(character),
+							"The "+character.getCharacterName()+" is hit with "+result+", but it has no effect!");
+				}
 				result = result + ", but not affected.";
 			}
 			return result;
 		}
-		sendMessage(character.getGameObject().getGameData(),
-				getDestClientName(character.getGameObject()),
-				getCurseTitle(character),
-				"The "+character.getCharacterName()+" is hit with a curse, but it has no effect!");
+		String dest = getDestClientName(character.getGameObject());
+		if (dest != null) {
+			sendMessage(character.getGameObject().getGameData(),
+					dest,
+					getCurseTitle(character),
+					"The "+character.getCharacterName()+" is hit with a curse, but it has no effect!");
+		}
 		return "Unaffected";
 	}
 	private static String getCurseTitle(CharacterWrapper character) {
