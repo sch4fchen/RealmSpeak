@@ -96,7 +96,7 @@ public class ReadRunes extends RealmTable {
 
 	public String applyFive(CharacterWrapper character) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
-		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread()) {
+		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread() && !character.immuneToCurses()) {
 			character.applyDread();
 			sendMessage(
 				character.getGameData(),
