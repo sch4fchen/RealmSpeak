@@ -113,7 +113,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipedc_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_BEGINNING = "_cciacpa_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_END = "_cciacpe_";
-	
+	public static final String DREAD = "_dread_";
+
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
 	public static final String CURRENT_GUILD_JOIN_REQUIREMENT = "_ccjr_";
@@ -2090,6 +2091,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setStormed(false);
 		setLostPhases(0);
 		setFortified(false);
+		clearDread();
 		setFortDamaged(false);
 		setNeedsQuestCheck(true);
 		setDiscardedQuests(false);
@@ -3992,6 +3994,35 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setFortDamaged(boolean val) {
 		setBoolean(FORT_DAMAGED,val);
+	}
+	public boolean hasDread() {
+		return getBoolean(DREAD);
+	}
+	public void applyDread() {
+		setBoolean(DREAD,true);
+		getGameObject().addThisAttributeListItem(Constants.DIEMOD,"-1:readrunes:all");
+		CharacterActionChitComponent chitToWound = null;
+		for (CharacterActionChitComponent chit : getActiveChits()) {
+			if (chit.isMagic()) {
+				chitToWound = chit;
+				break;
+			}
+		}
+		if (chitToWound == null) {
+			ArrayList<CharacterActionChitComponent> active = getActiveChits();
+			if (!active.isEmpty()) {
+				chitToWound = active.get(0);
+			}
+		}
+		if (chitToWound != null) {
+			chitToWound.makeWounded();
+		}
+	}
+	public void clearDread() {
+		if (hasDread()) {
+			setBoolean(DREAD,false);
+			getGameObject().removeThisAttributeListItem(Constants.DIEMOD,"-1:readrunes:all");
+		}
 	}
 	public int getStealAttempts() {
 		return getGameObject().getThisInt(Constants.STEAL_ATTEMPTS);

@@ -95,16 +95,29 @@ public class ReadRunes extends RealmTable {
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		// Curse
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread()) {
+			character.applyDread();
+			sendMessage(
+				character.getGameData(),
+				character.getPlayerName(),
+				"Read Runes - Dread!",
+				"The " + character.getCharacterName() + " is overcome with Dread, and suffers\n"
+					+ "a wound from nausea and vertigo (a magic chit if available).\n"
+					+ "Further Reading Runes today have a -1 DRM, and any more\n"
+					+ "Dread/Curse results today will Curse the " + character.getCharacterName() + ".");
+			return "Dread!";
+		}
+		// Normal Curse — also fires when DREAD is on but the character already has Dread (second 5 that day)
 		setNewTable(new Curse(getParentFrame(), character.getGameObject()));
-		
+
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionName = getTableKey();
 		qp.actionType = CharacterActionType.SearchTable;
 		qp.searchType = SearchResultType.Curse;
 		qp.searchHadAnEffect = true; // (ogh) (ogh?) (OGGGGHHHH!!)
 		character.testQuestRequirements(getParentFrame(),qp);
-		
+
 		return "Curse!";
 	}
 
