@@ -244,6 +244,11 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			label.setToolTipText("Mesmerize - "+effects + postfix);
 			box.add(label);
 		}
+		if (character.hasDread()) {
+			JLabel label = new JLabel(ImageCache.getIcon("curse/dread"));
+			label.setToolTipText("Dread: -1 DRM (maximum) on Reading Runes today; further Dread/Curse results will Curse");
+			box.add(label);
+		}
 	}
 	private void doBlockNow() {
 		if (blockees!=null && !blockees.isEmpty()) {

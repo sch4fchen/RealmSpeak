@@ -981,7 +981,8 @@ public class Constants {
 	public static final String HOUSE3_GENERATED_MONSTERS_REVENGE = "GeneratedMonstersRevenge";
 	public static final String HOUSE3_TRAVELERS_MOVE_AT_EVENING = "TravelersMoveAtEvening";
 	public static final String HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING = "GeneratedMonstersMoveAtEvening";
-	
+	public static final String HOUSE3_DREAD = "Dread";
+
 	// Super Realm
 	public static final String SR_DEDUCT_VPS = "DeductVps";
 	public static final String SR_SETUP_TWO_QUESTS = "SetupTwoQuests";

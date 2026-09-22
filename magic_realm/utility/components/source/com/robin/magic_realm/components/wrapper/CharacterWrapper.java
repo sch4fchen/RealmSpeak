@@ -96,6 +96,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEXT_PENDING_ACTION = "_npa_";
 	public static final String DEATH_REASON = "_dxr_";
 	public static final String FORTIFIED = "_frtfid_";
+	public static final String DREAD = "_dread_";
 	public static final String FORT_DAMAGED = "_frtdmg_";
 	public static final String NEEDS_INVENTORY_CHECK = "_invch_";
 	public static final String NEEDS_ACTION_PANEL_UPDATE = "_appu_";
@@ -2090,6 +2091,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		setStormed(false);
 		setLostPhases(0);
 		setFortified(false);
+		clearDread();
 		setFortDamaged(false);
 		setNeedsQuestCheck(true);
 		setDiscardedQuests(false);
@@ -3992,6 +3994,31 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void setFortDamaged(boolean val) {
 		setBoolean(FORT_DAMAGED,val);
+	}
+	public boolean hasDread() {
+		return getBoolean(DREAD);
+	}
+	public void applyDread() {
+		setBoolean(DREAD,true);
+	}
+	public void clearDread() {
+		if (hasDread()) {
+			setBoolean(DREAD,false);
+		}
+	}
+	public ArrayList<CharacterActionChitComponent> getDreadWoundCandidates() {
+		ArrayList<CharacterActionChitComponent> magic = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> color = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> other = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
+			if (chit.isMagic()) magic.add(chit);
+			else if (chit.isColor()) color.add(chit);
+			else other.add(chit);
+		}
+		if (!magic.isEmpty()) return magic;
+		if (!color.isEmpty()) return color;
+		if (!other.isEmpty()) return other;
+		return new ArrayList<>(getFatiguedChits());
 	}
 	public int getStealAttempts() {
 		return getGameObject().getThisInt(Constants.STEAL_ATTEMPTS);
