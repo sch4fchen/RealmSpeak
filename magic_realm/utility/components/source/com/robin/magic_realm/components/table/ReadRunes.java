@@ -109,7 +109,7 @@ public class ReadRunes extends RealmTable {
 				getParentFrame(),
 				"The " + character.getCharacterName() + " is overcome with Dread, and suffers\n"
 					+ "a wound from nausea and vertigo (a magic chit if available).\n"
-					+ "Further Reading Runes today have a -1 DRM, and any more\n"
+					+ "Further Reading Runes today have a -1 DRM (maximum), and any more\n"
 					+ "Dread/Curse results today will Curse the " + character.getCharacterName() + ".",
 				"Read Runes - Dread!",
 				JOptionPane.INFORMATION_MESSAGE,
