@@ -59,7 +59,13 @@ public class ReadRunes extends RealmTable {
 	public String apply(CharacterWrapper character,DieRoller roller) {
 		// Before rolling, you must select a target spell, which for artifacts/books includes AWAKENED spells
 		targetSpell = selectFromAllAwakenedSpells(character);
-		
+
+		// Dread: -1 DRM, capped — only applied when no other negative modifier already covers it
+		HostPrefWrapper hostPrefsDread = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefsDread.hasPref(Constants.HOUSE3_DREAD) && character.hasDread() && roller.getModifier() >= 0) {
+			roller.addModifier(-1);
+		}
+
 		if (roller.getHighDieResult()==5 && roller.getLowDieResult()<5) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 			if (hostPrefs.hasPref(Constants.SR_ADV_EASIER_SPELL_LEARNING)) {

@@ -4000,7 +4000,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	}
 	public void applyDread() {
 		setBoolean(DREAD,true);
-		getGameObject().addThisAttributeListItem(Constants.DIEMOD,"-1:readrunes:all");
 	}
 	public ArrayList<CharacterActionChitComponent> getDreadWoundCandidates() {
 		ArrayList<CharacterActionChitComponent> magic = new ArrayList<>();
@@ -4019,7 +4018,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void clearDread() {
 		if (hasDread()) {
 			setBoolean(DREAD,false);
-			getGameObject().removeThisAttributeListItem(Constants.DIEMOD,"-1:readrunes:all");
 		}
 	}
 	public int getStealAttempts() {
