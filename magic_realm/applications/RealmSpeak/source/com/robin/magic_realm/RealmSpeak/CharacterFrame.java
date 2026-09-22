@@ -246,7 +246,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		}
 		if (character.hasDread()) {
 			JLabel label = new JLabel(ImageCache.getIcon("curse/dread"));
-			label.setToolTipText("Dread Roberts Runes - -1 DRM on Reading Runes today; next roll of 5 will Curse");
+			label.setToolTipText("Dread: -1 DRM on Reading Runes today; next Dread/Curse will Curse");
 			box.add(label);
 		}
 	}
