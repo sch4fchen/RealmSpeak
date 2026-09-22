@@ -1,5 +1,6 @@
 package com.robin.magic_realm.components.wrapper;
 
+import java.awt.Color;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -88,12 +89,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String CHARACTER_TYPE = "_pl_ch_ty_"; // Currently only applies to Elf:  great or light
 	public static final String CAMPAIGN = "_cmpgn_";
 	public static final String CACHE_NUMBER = "_cHcNm_";
+	public static final String PLAYER_MARKERS = "_plMrk__";
 	public static final String WEATHER_FATIGUE = "_weathF_";
 	public static final String EXTRA_WOUNDS = "_xtWnd_";
 	public static final String DO_INSTANT_PEER = "_do_insp_"; // Informs the combat frame to do an instant peer
 	public static final String SPELL_CONFLICTS = "_sp_cfct_";
 	public static final String STOP_FOLLOWING = "_st_F";
 	public static final String NEXT_PENDING_ACTION = "_npa_";
+	public static final String CURRENT_ACTION_PHASE_TOTAL = "_capt_";
+	public static final String CURRENT_ACTION_PHASE_INDEX = "_capi_";
 	public static final String DEATH_REASON = "_dxr_";
 	public static final String FORTIFIED = "_frtfid_";
 	public static final String FORT_DAMAGED = "_frtdmg_";
@@ -101,26 +105,60 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String NEEDS_ACTION_PANEL_UPDATE = "_appu_";
 	public static final String TREACHERY_PREFERENCE = "_trpr_";
 	public static final String CHAT_STYLE = "_chs_";
-	public static final String FOLLOW_RESTS = "_fllr_";
-	public static final String FOLLOW_ALERTS = "_flla_";
-	public static final String FOLLOW_SPELL = "_flls_";
 	public static final String NEED_QUEST_CHECK = "_qc_";
 	public static final String DISCARDED_QUESTS = "_dq_";
-	public static final String NEEDS_BLOCK_DECISION = "_bckdc_";
+	public static final String NEEDS_REACT_DECISION = "_bckdc_";
 	public static final String NEEDS_BLOCK_EVALUATION = "_bckevl_";
 	public static final String INTERRUPT_PHASE_DECISION = "_ipdc_";
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION = "_ccipbdc_";
 	public static final String NEEDS_COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipedc_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_BEGINNING = "_cciacpa_";
 	public static final String COLOR_CHIT_INTERRUPTION_ACTION_COUNT_PHASE_END = "_cciacpe_";
-	
+	// Pre-phase activity flags: NEEDS_PRE_PHASE_ACTIVITY_DECISION marks that a character must resolve their
+	// pre-phase dialog before the phasing character's next action executes. PRE_PHASE_ACTIVITY_ACTION_COUNT
+	// records how many actions the phasing character had performed when the interrupt was triggered, so that
+	// the same action does not trigger a second interrupt if process() is called again while the dialog is open.
+	// Both flags are cleared at day end via clearDaylight() to avoid stale state carrying across days.
+	public static final String NEEDS_PRE_PHASE_ACTIVITY_DECISION = "_ppdc_";
+	public static final String PRE_PHASE_ACTIVITY_ACTION_COUNT = "_ppac_";
+	public static final String PRE_PHASE_NON_PHASING_ACTION_COUNT = "_ppnpac_";
+	// Post-phase activity flags: symmetric counterpart to the pre-phase flags. NEEDS_POST_PHASE_ACTIVITY_DECISION
+	// marks that a character must resolve their post-phase dialog before the phasing character's next action
+	// executes. POST_PHASE_ACTIVITY_ACTION_COUNT records the action count AFTER the triggering action completed,
+	// which is always one higher than the corresponding pre-phase count, ensuring no collision between the two.
+	// Participants are all individuals in the clearing the phasing individual occupies AFTER the action.
+	public static final String NEEDS_POST_PHASE_ACTIVITY_DECISION = "_poPdc_";
+	public static final String POST_PHASE_ACTIVITY_ACTION_COUNT = "_poPac_";
+	// Stamped with the phasing guide's action-phase count when a follower is released at the guide's
+	// last action (releaseLastPhaseFollowers). The guide's post-phase block dialog is built AFTER that
+	// release, so getActionFollowers() no longer lists them — this stamp lets the block-candidate scan
+	// still recognize "you were my follower this very action" and exclude them (a guide never blocks
+	// their own follower, and followers count as followers until the guide's turn truly ends).
+	public static final String JUST_RELEASED_FOLLOWER_ACTION_COUNT = "_jrfac_";
+	// Companion to JUST_RELEASED_FOLLOWER_ACTION_COUNT: the top guide's id at the moment of release.
+	// Needed because an indirect/cascaded sub-follower's own recorded Follow action points at their
+	// immediate guide, not the top guide whose phase actually drives the release batch — this stamp
+	// lets processReleasedFollowerBatch() correctly scope a batch to one specific guide's phase.
+	public static final String RELEASE_BATCH_GUIDE_ID = "_rbgid_";
+	// In-phase activity flags: NEEDS_IN_PHASE_ACTIVITY_DECISION marks that a follower must resolve
+	// their in-phase dialog before the phasing character's current action executes.
+	// IN_PHASE_ACTIVITY_ACTION_COUNT is the stamp that prevents re-triggering within the same phase.
+	public static final String NEEDS_IN_PHASE_ACTIVITY_DECISION = "_inpdc_";
+	public static final String IN_PHASE_ACTIVITY_ACTION_COUNT = "_inpac_";
+	public static final String IN_PHASE_ACTION_TYPE = "_inpat_";
+
 	public static final String CURRENT_GUILD = "_ccg_";
 	public static final String CURRENT_GUILD_LEVEL = "_ccgl_";
 	public static final String CURRENT_GUILD_JOIN_REQUIREMENT = "_ccjr_";
 
-	public static final String BLOCKING = "bkkng_"; // indicates the character is blocking everything in the clearing
-	public static final String BLOCK_DECISION = "bkkng_dec"; // the blocking character has decided what to do
-	public static final String KEEP_BLOCKING = "keep_bkkng_";
+	public static final String REACTING = "bkkng_"; // indicates the character has inter-phase reactions enabled (blocking, color-chit play, etc.)
+	public static final String REACT_DECISION = "bkkng_dec"; // the reacting character has decided what to do
+	public static final String KEEP_REACTING = "keep_bkkng_";
+	public static final String SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY = "skip_pp_fat_chit_only_";
+	public static final String SKIP_MONSTER_BLOCKING_WHEN_HIDDEN = "skip_mon_blk_hid_";
+	public static final String SKIP_CHARACTER_BLOCKING_WHEN_HIDDEN = "skip_char_blk_hid_";
+	public static final String SKIP_STOP_FOLLOWING_BEFORE_MOVE = "skip_stop_follow_";
+	public static final String DREAD = "_dread_";
 	public static final String COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION = "_ccipbdc_dec";
 	public static final String COLOR_CHIT_INTERRUPT_PHASE_END_DECISION = "_ccipec_dec";
 	
@@ -393,27 +431,27 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isBlocked() {
 		return getBoolean(IS_BLOCKED);
 	}
-	public boolean isBlocking() {
-		return getBoolean(BLOCKING);
+	public boolean isReacting() {
+		return getBoolean(REACTING);
 	}
-	public boolean keepsBlocking() {
-		return getBoolean(KEEP_BLOCKING);
+	public boolean keepsReacting() {
+		return getBoolean(KEEP_REACTING);
 	}
-	public boolean hasBlockDecision(GameObject go) {
-		ArrayList<String> list = getList(BLOCK_DECISION);
+	public boolean hasReactDecision(GameObject go) {
+		ArrayList<String> list = getList(REACT_DECISION);
 		return list!=null && list.contains(go.getStringId());
 	}
-	public void removeBlockDecision(GameObject go) {
-		ArrayList<String> list = getList(BLOCK_DECISION);
+	public void removeReactDecision(GameObject go) {
+		ArrayList<String> list = getList(REACT_DECISION);
 		if (list!=null && list.contains(go.getStringId())) {
 			list.remove(go.getStringId());
 		}
 	}
-	public ArrayList<String> getAllBlockDecisions() {
-		return getList(BLOCK_DECISION);
+	public ArrayList<String> getAllReactDecisions() {
+		return getList(REACT_DECISION);
 	}
-	public void removeAllBlockDecisions() {
-		setBoolean(BLOCK_DECISION,false);
+	public void removeAllReactDecisions() {
+		setBoolean(REACT_DECISION,false);
 	}
 	public boolean hasColorChitInterruptPhaseBeginningDecision(GameObject go) {
 		ArrayList<String> list = getList(COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION);
@@ -528,6 +566,15 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getCombatCount() {
 		return getInt(COMBAT_COUNT);
 	}
+	/**
+	 * A character is recording only while it is still in the game.  Nothing clears DO_RECORD when a
+	 * character leaves - makeDead() and makeGone() both null the location without touching the flag,
+	 * and only doFinish() and the minion path in RealmHostPanel ever call setDoRecord(false) - so the
+	 * flag stays set on a character that died partway through its own turn.  Filtering here rather
+	 * than at each call site keeps every consumer consistent and covers any future removal path:
+	 * showNextRecordFrame() would otherwise bring a dead character's action panel to the front, and
+	 * needsInput() would report it as awaiting input for the rest of the day.
+	 */
 	public boolean isDoRecord() {
 		if (getBoolean(DO_RECORD)) {
 			return isActive() && canPlay();
@@ -623,8 +670,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean getNeedsActionPanelUpdate() {
 		return getBoolean(NEEDS_ACTION_PANEL_UPDATE);
 	}
-	public boolean getNeedsBlockDecision() {
-		return getBoolean(NEEDS_BLOCK_DECISION);
+	public boolean getNeedsReactDecision() {
+		return getBoolean(NEEDS_REACT_DECISION);
 	}
 	public boolean getNeedsBlockEvaluation() {
 		return getBoolean(NEEDS_BLOCK_EVALUATION);
@@ -644,7 +691,13 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean isOffroadTravelLost() {
 		return getBoolean(OFFROAD_TRAVEL_LOST);
 	}
-	
+	public boolean getNeedsPrePhaseActivityDecision() {
+		return getBoolean(NEEDS_PRE_PHASE_ACTIVITY_DECISION);
+	}
+	public int getPrePhaseActivityActionCount() {
+		if (getBoolean(PRE_PHASE_ACTIVITY_ACTION_COUNT) == false) return -1;
+		return getInt(PRE_PHASE_ACTIVITY_ACTION_COUNT);
+	}
 	// Other getters
 	public int getNextCacheNumber() {
 		int n = getInt(CACHE_NUMBER);
@@ -726,14 +779,6 @@ public class CharacterWrapper extends GameObjectWrapper {
 			result = result + " (Asleep)";
  		}
  		
- 		if (isBlocking() && (getNeedsPlayColorChitInterruptPhaseBeginningDecision() || getNeedsPlayColorChitInterruptPhaseEndDecision())) {
- 			result = result + " (REACTING?!)";
- 		}
- 		
- 		if (isBlocking() && (getNeedsBlockDecision() || getNeedsInterruptPhaseDecision())) {
- 			result = result + " (BLOCKING?!)";
- 		}
-		
 		return prefix+result;
 	}
 	public Strength getVulnerability() {
@@ -1726,6 +1771,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNextPendingAction(String val) {
 		setString(NEXT_PENDING_ACTION,val);
 	}
+	public int getCurrentActionPhaseTotal() {
+		String val = getString(CURRENT_ACTION_PHASE_TOTAL);
+		if (val == null) return 1;
+		try { return Integer.parseInt(val); } catch (NumberFormatException e) { return 1; }
+	}
+	public void setCurrentActionPhaseTotal(int total) {
+		setString(CURRENT_ACTION_PHASE_TOTAL, String.valueOf(total));
+	}
+	public void removeCurrentActionPhaseTotal() {
+		getGameObject().removeThisAttribute(CURRENT_ACTION_PHASE_TOTAL);
+	}
+	public int getCurrentActionPhaseIndex() {
+		String val = getString(CURRENT_ACTION_PHASE_INDEX);
+		if (val == null) return 1;
+		try { return Integer.parseInt(val); } catch (NumberFormatException e) { return 1; }
+	}
+	public void setCurrentActionPhaseIndex(int index) {
+		setString(CURRENT_ACTION_PHASE_INDEX, String.valueOf(index));
+	}
 	public boolean hasCurrentAction(String action) {
 		ActionId id = getIdForAction(action);
 		Collection<String> c = getCurrentActions();
@@ -1809,7 +1873,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void addCurrentActionValid(boolean val) {
 		addListItem(getCurrentDayKey()+"V",val?"T":"F");
 	}
-	public void addActionPerformedToday(String action,ActionState state,String message,DieRoller roller) {
+	public void addActionPhasePerformedToday(String action,ActionState state,String message,DieRoller roller) {
 		String prefix=" ";
 		switch(state) {
 			case Completed:
@@ -1838,7 +1902,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		return list!=null && list.size()>0;
 	}
-	public int getNumberOfPerformedActionsToday() {
+	public int getNumberOfPerformedActionPhasesToday() {
 		ArrayList<String> list = getList(getCurrentDayKey()+"P");
 		if (list==null) return 0;
 		return list.size();
@@ -1854,6 +1918,12 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return null;
+	}
+	public String getLastPerformedAction() {
+		ArrayList<String> list = getList(getCurrentDayKey()+"P");
+		if (list == null || list.isEmpty()) return null;
+		String last = list.get(list.size() - 1);
+		return last.length() > 1 ? last.substring(1) : null;
 	}
 	public ActionState getStateForAction(String action,int index) {
 		ActionState state = ActionState.Pending; // default
@@ -1910,13 +1980,29 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 */
 	public TileLocation getPlannedLocation() {
 		TileLocation ret = null;
+		/*
+		 * clearingPlot is a transient in-memory field - it is never written to gameData and never
+		 * syncs between clients, so it can only be cleared on the very CharacterWrapper instance
+		 * that built it.  A character who spent the day FOLLOWING ends their turn through
+		 * ActionRow.completeFollowerTurnDataOnly(), which runs on the GUIDE's client against a
+		 * throwaway "new CharacterWrapper(go)" - so its resetClearingPlot() call is a no-op and the
+		 * follower's own CharacterFrame wrapper keeps yesterday's plot.  The stale endpoint then
+		 * became the origin for the next day's first move, flagging legal moves as invalid.
+		 *
+		 * The recorded action list IS synced game state, so it is the reliable source of truth:
+		 * with nothing recorded, the planned location is by definition the current location.
+		 */
+		Collection<String> recorded = getCurrentActions();
+		if (recorded==null || recorded.isEmpty()) {
+			return getCurrentLocation();
+		}
 		if (clearingPlot!=null && !clearingPlot.isEmpty()) {
 			ret = clearingPlot.get(clearingPlot.size()-1);
 		}
 		else {
 			ret = getCurrentLocation();
 		}
-		
+
 		return ret;
 	}
 	/**
@@ -2079,17 +2165,18 @@ public class CharacterWrapper extends GameObjectWrapper {
 		logger.fine("applyMidnight");
 //		setHidden(false); // This doesn't happen at midnight:  happens at the start of the player turn (rule 8.3)
 		setBlocked(false);
-		if (keepsBlocking()) {
-			setBlocking(true);
+		if (keepsReacting()) {
+			setReacting(true);
 		}
 		else {
-			setBlocking(false);
+			setReacting(false);
 		}
 		setNoSummon(false);
 		setPeerAny(false);
 		setStormed(false);
 		setLostPhases(0);
 		setFortified(false);
+		clearDread();
 		setFortDamaged(false);
 		setNeedsQuestCheck(true);
 		setDiscardedQuests(false);
@@ -2106,7 +2193,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		getGameObject().removeThisAttribute(Constants.FREE_ENCHANT_CHIT_USED);
 		removeColorChitInterruptionActionCountPhaseBeginning();
 		removeColorChitInterruptionActionCountPhaseEnd();
-		
+		removePrePhaseActivityActionCount();
+		removePostPhaseActivityActionCount();
+		removeAttribute(JUST_RELEASED_FOLLOWER_ACTION_COUNT);
+		removeAttribute(RELEASE_BATCH_GUIDE_ID);
+		removeInPhaseActivityActionCount();
+		setNeedsInPhaseActivityDecision(false);
+		setInPhaseActionType(null);
+
 		if (getPonyGameObject()!=null) {
 			ArrayList<RealmComponent> fhList = getFollowingHirelings();
 			if (!fhList.isEmpty()) {
@@ -2341,6 +2435,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		return getGameObject().hasThisAttribute(Constants.MIST_LIKE);
 	}
 	
+	public boolean isSmall() {
+		GameObject transmorph = getTransmorph();
+		if (transmorph != null) {
+			return transmorph.hasThisAttribute(Constants.SMALL);
+		}
+		return getGameObject().hasThisAttribute(Constants.SMALL);
+	}
+
 	//can walk woods in valley tiles
 	public boolean isValeWalker(){
 		return this.getGameObject().hasThisAttribute(Constants.VALE_WALKER);
@@ -2847,7 +2949,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (isOffroadTravelLost() && id!=ActionId.Offroad) {
 			return false;
 		}
-		
+
 		// Test hide
 		if (id==ActionId.Hide) {
 			RealmCalendar cal = RealmCalendar.getCalendar(getGameObject().getGameData());
@@ -3246,7 +3348,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean canReplaceParryThrustAttacks(RealmComponent target) {
 		if (target==null) return false;
 		BattleChit targetChit = (BattleChit) target;
-		return targetChit.getLength()==null || getLengthForParrying(1) > targetChit.getLength();
+		return targetChit.getLength()!=null && getLengthForParrying(1) > targetChit.getLength();
 	}
 	public boolean canReplaceParrySwingAttacks(RealmComponent target) {
 		if (target==null) return false;
@@ -3740,14 +3842,16 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public int getTotalEarnedVps(boolean restrictToAssigned,boolean excludeStartingWorth) {
 		int evps = 0;
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(getGameObject().getGameData());
-		if (hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
-			evps += getQuestPointScore().getEarnedVictoryPoints(restrictToAssigned); // quest points don't count towards earned VPs!
+		boolean anyVp = hostPrefs.hasPref(Constants.EXP_DEV_ANY_VP);
+		boolean restrict = anyVp ? false : restrictToAssigned;
+		if (hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR) || anyVp) {
+			evps += getQuestPointScore().getEarnedVictoryPoints(restrict);
 		}
-		evps += getGreatTreasureScore().getEarnedVictoryPoints(restrictToAssigned);
-		evps += getUsableSpellScore().getEarnedVictoryPoints(restrictToAssigned);
-		evps += getFameScore().getEarnedVictoryPoints(restrictToAssigned);
-		evps += getNotorietyScore().getEarnedVictoryPoints(restrictToAssigned);
-		evps += getGoldScore().getEarnedVictoryPoints(restrictToAssigned,excludeStartingWorth);
+		evps += getGreatTreasureScore().getEarnedVictoryPoints(restrict);
+		evps += getUsableSpellScore().getEarnedVictoryPoints(restrict);
+		evps += getFameScore().getEarnedVictoryPoints(restrict);
+		evps += getNotorietyScore().getEarnedVictoryPoints(restrict);
+		evps += getGoldScore().getEarnedVictoryPoints(restrict,excludeStartingWorth);
 		return evps;
 	}
 	
@@ -3828,17 +3932,41 @@ public class CharacterWrapper extends GameObjectWrapper {
 			setBoolean(IS_BLOCKED,val);
 		}
 	}
-	public void setBlocking(boolean val) {
-		setBoolean(BLOCKING,val);
-		
+	public void setReacting(boolean val) {
+		setBoolean(REACTING,val);
+
 		// Regardless, clear all decisions!
-		setBoolean(BLOCK_DECISION,false);
+		setBoolean(REACT_DECISION,false);
 	}
-	public void addBlockDecision(GameObject go) {
-		addListItem(BLOCK_DECISION,go.getStringId());
+	public void addReactDecision(GameObject go) {
+		addListItem(REACT_DECISION,go.getStringId());
 	}
-	public void setKeepBlocking(boolean val) {
-		setBoolean(KEEP_BLOCKING,val);
+	public void setKeepReacting(boolean val) {
+		setBoolean(KEEP_REACTING,val);
+	}
+	public boolean skipsPrePhaseWhenFatigueChitOnly() {
+		return getBoolean(SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY);
+	}
+	public void setSkipPrePhaseWhenFatigueChitOnly(boolean val) {
+		setBoolean(SKIP_PRE_PHASE_FATIGUE_CHIT_ONLY, val);
+	}
+	public boolean skipsMonsterBlockingWhenHidden() {
+		return getBoolean(SKIP_MONSTER_BLOCKING_WHEN_HIDDEN);
+	}
+	public void setSkipMonsterBlockingWhenHidden(boolean val) {
+		setBoolean(SKIP_MONSTER_BLOCKING_WHEN_HIDDEN, val);
+	}
+	public boolean skipsCharacterBlockingWhenHidden() {
+		return getBoolean(SKIP_CHARACTER_BLOCKING_WHEN_HIDDEN);
+	}
+	public void setSkipCharacterBlockingWhenHidden(boolean val) {
+		setBoolean(SKIP_CHARACTER_BLOCKING_WHEN_HIDDEN, val);
+	}
+	public boolean skipsStopFollowingBeforeMove() {
+		return getBoolean(SKIP_STOP_FOLLOWING_BEFORE_MOVE);
+	}
+	public void setSkipStopFollowingBeforeMove(boolean val) {
+		setBoolean(SKIP_STOP_FOLLOWING_BEFORE_MOVE, val);
 	}
 	public void addColorChitInterruptPhaseBeginningDecision(GameObject go) {
 		addListItem(COLOR_CHIT_INTERRUPT_PHASE_BEGINNING_DECISION,go.getStringId());
@@ -3993,6 +4121,31 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setFortDamaged(boolean val) {
 		setBoolean(FORT_DAMAGED,val);
 	}
+	public boolean hasDread() {
+		return getBoolean(DREAD);
+	}
+	public void applyDread() {
+		setBoolean(DREAD,true);
+	}
+	public ArrayList<CharacterActionChitComponent> getDreadWoundCandidates() {
+		ArrayList<CharacterActionChitComponent> magic = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> color = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> other = new ArrayList<>();
+		for (CharacterActionChitComponent chit : getActiveChits()) {
+			if (chit.isMagic()) magic.add(chit);
+			else if (chit.isColor()) color.add(chit);
+			else other.add(chit);
+		}
+		if (!magic.isEmpty()) return magic;
+		if (!color.isEmpty()) return color;
+		if (!other.isEmpty()) return other;
+		return new ArrayList<>(getFatiguedChits());
+	}
+	public void clearDread() {
+		if (hasDread()) {
+			setBoolean(DREAD,false);
+		}
+	}
 	public int getStealAttempts() {
 		return getGameObject().getThisInt(Constants.STEAL_ATTEMPTS);
 	}
@@ -4064,8 +4217,8 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setNeedsActionPanelUpdate(boolean val) {
 		setBoolean(NEEDS_ACTION_PANEL_UPDATE,val);
 	}
-	public void setNeedsBlockDecision(boolean val) {
-		setBoolean(NEEDS_BLOCK_DECISION,val);
+	public void setNeedsReactDecision(boolean val) {
+		setBoolean(NEEDS_REACT_DECISION,val);
 	}
 	public void setNeedsBlockEvaluation(boolean val) {
 		setBoolean(NEEDS_BLOCK_EVALUATION,val);
@@ -4104,7 +4257,108 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void setOffroadTravelLost(boolean val) {
 		setBoolean(OFFROAD_TRAVEL_LOST,val);
 	}
-	
+	public void setNeedsPrePhaseActivityDecision(boolean val) {
+		setBoolean(NEEDS_PRE_PHASE_ACTIVITY_DECISION, val);
+	}
+	public void setPrePhaseActivityActionCount(int val) {
+		setInt(PRE_PHASE_ACTIVITY_ACTION_COUNT, val);
+	}
+	public boolean getNeedsPostPhaseActivityDecision() {
+		return getBoolean(NEEDS_POST_PHASE_ACTIVITY_DECISION);
+	}
+	public int getPostPhaseActivityActionCount() {
+		if (getBoolean(POST_PHASE_ACTIVITY_ACTION_COUNT) == false) return -1;
+		return getInt(POST_PHASE_ACTIVITY_ACTION_COUNT);
+	}
+	public void setNeedsPostPhaseActivityDecision(boolean val) {
+		setBoolean(NEEDS_POST_PHASE_ACTIVITY_DECISION, val);
+	}
+	public void setPostPhaseActivityActionCount(int val) {
+		setInt(POST_PHASE_ACTIVITY_ACTION_COUNT, val);
+	}
+	public void removePostPhaseActivityActionCount() {
+		removeAttribute(POST_PHASE_ACTIVITY_ACTION_COUNT);
+	}
+	public void setJustReleasedFollowerActionCount(int val) {
+		setInt(JUST_RELEASED_FOLLOWER_ACTION_COUNT, val);
+	}
+	// Returns 0 when unstamped, which is safe for the only caller
+	// (ActionRow.processReleasedFollowerBatch, which reads it only for objects already matched on
+	// RELEASE_BATCH_GUIDE_ID and so always carries the pair - markReleasedFromGuide writes both).
+	public int getJustReleasedFollowerActionCount() {
+		return getInt(JUST_RELEASED_FOLLOWER_ACTION_COUNT);
+	}
+	// Low-level attribute removal — see clearReleaseBatchStamp() below for the actual consume step
+	// callers should use.
+	public void removeJustReleasedFollowerActionCount() {
+		removeAttribute(JUST_RELEASED_FOLLOWER_ACTION_COUNT);
+	}
+	public String getReleaseBatchGuideId() {
+		return getString(RELEASE_BATCH_GUIDE_ID);
+	}
+	public void setReleaseBatchGuideId(String guideId) {
+		if (guideId == null) removeAttribute(RELEASE_BATCH_GUIDE_ID);
+		else setString(RELEASE_BATCH_GUIDE_ID, guideId);
+	}
+	// PCT-Flow: the single stamping point behind Batch-NLF-PC-Pre (step 2.i.a), Batch-NLF-NPC-Pre
+	// (step 5.iii-iv), Batch-NLF-In (step 6.iv-v), and Batch-NLF-End (step 15) — every place a follower
+	// becomes NO LONGER FOLLOWING calls this. See Phasing_Character_Turn_Flow.txt.
+	// THE single stamping point for every way a follower can leave a guide's chain — ditch, voluntary
+	// stop, day's-end release, and every mechanical auto-drop (move-encumbered, can't-follow-terrain,
+	// pony-mismatch, mist-like, sleep, can't-fly, transmorph, table-loot transport). Every one of those
+	// call sites must call this rather than writing the stamp pair inline: it's the only thing binding
+	// them to ActionRow.processReleasedFollowerBatch()'s query, and hand-duplicating it is exactly how
+	// several timing bugs happened before this was consolidated.
+	// batchPhase must be pre-adjusted by the caller for whether it runs before or after THIS phase's
+	// addActionPhasePerformedToday() increment (in ActionRow.process(), called after dispatch):
+	// anything running during pre-phase or during an action's own dispatch (ditch, voluntary stop,
+	// a move/fly action, mist-like, most mechanical drops) runs BEFORE that increment and must pass
+	// getNumberOfPerformedActionPhasesToday()+1 to predict the value the batch query will use;
+	// anything running after process() has returned for the phase (releaseLastPhaseFollowers(), the
+	// post-row pony-mismatch cleanup in RealmTurnPanel.playNext()) runs AFTER it and passes the count
+	// unadjusted. When in doubt, check whether addActionPhasePerformedToday() has run yet for this phase.
+	public void markReleasedFromGuide(CharacterWrapper topGuide, int batchPhase) {
+		setStopFollowing(true);
+		setJustReleasedFollowerActionCount(batchPhase);
+		setReleaseBatchGuideId(topGuide.getGameObject().getStringId());
+		DebugUtility.diag("[IPD] markReleasedFromGuide " + getGameObject().getName()
+			+ " guideId=" + topGuide.getGameObject().getStringId() + " phase=" + batchPhase);
+	}
+	// Consumes this follower's release stamp once ActionRow.processReleasedFollowerBatch() has
+	// completed them, so a later batch stamped with the SAME action-phase count (e.g. a day's-end
+	// release sharing the day's final phase number with an earlier pre-phase-stop batch) still finds
+	// and processes them instead of being masked by a coarse guide-level "already handled this phase
+	// number" guard.
+	public void clearReleaseBatchStamp() {
+		removeJustReleasedFollowerActionCount();
+		setReleaseBatchGuideId(null);
+	}
+	public boolean getNeedsInPhaseActivityDecision() {
+		return getBoolean(NEEDS_IN_PHASE_ACTIVITY_DECISION);
+	}
+	public int getInPhaseActivityActionCount() {
+		if (getBoolean(IN_PHASE_ACTIVITY_ACTION_COUNT) == false) return -1;
+		return getInt(IN_PHASE_ACTIVITY_ACTION_COUNT);
+	}
+	public void setNeedsInPhaseActivityDecision(boolean val) {
+		setBoolean(NEEDS_IN_PHASE_ACTIVITY_DECISION, val);
+	}
+	public void setInPhaseActivityActionCount(int val) {
+		setInt(IN_PHASE_ACTIVITY_ACTION_COUNT, val);
+	}
+	public void removeInPhaseActivityActionCount() {
+		removeAttribute(IN_PHASE_ACTIVITY_ACTION_COUNT);
+	}
+	public String getInPhaseActionType() {
+		return getString(IN_PHASE_ACTION_TYPE);
+	}
+	public void setInPhaseActionType(String actionType) {
+		if (actionType == null) removeAttribute(IN_PHASE_ACTION_TYPE);
+		else setString(IN_PHASE_ACTION_TYPE, actionType);
+	}
+	public void removePrePhaseActivityActionCount() {
+		removeAttribute(PRE_PHASE_ACTIVITY_ACTION_COUNT);
+	}
 	// Adders
 	public void addGold(double val) {
 		addGold(val,false);
@@ -4220,6 +4474,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 			}
 		}
 		return ret;
+	}
+	/**
+	 * Returns only DIRECT followers — characters whose immediate guide is this character.
+	 * getActionFollowers() returns a flat list (all followers at every depth) because
+	 * RealmHostPanel resolves the full chain only to the top guide; intermediate guides do
+	 * not have their own sub-followers registered in their ACTION_FOLLOWER attribute.
+	 * The correct filter is each follower's own "who am I following" pointer
+	 * (getCharacterImFollowing()), which always points to their immediate guide.
+	 */
+	public ArrayList<CharacterWrapper> getDirectActionFollowers() {
+		String myId = getGameObject().getStringId();
+		ArrayList<CharacterWrapper> direct = new ArrayList<>();
+		for (CharacterWrapper follower : getActionFollowers()) {
+			CharacterWrapper theirGuide = follower.getCharacterImFollowing();
+			if (theirGuide != null && myId.equals(theirGuide.getGameObject().getStringId())) {
+				direct.add(follower);
+			}
+		}
+		return direct;
 	}
 	public ArrayList<CharacterWrapper> getStoppedActionFollowers() {
 		GameData data = getGameObject().getGameData();
@@ -8244,33 +8517,6 @@ public class CharacterWrapper extends GameObjectWrapper {
     	String val = getString(CHAT_STYLE);
     	return val==null?"black":val;
     }
-    public void setFollowRests(int rests) {
-    	setInt(FOLLOW_RESTS,rests);
-    }
-    public int getFollowRests() {
-    	return getInt(FOLLOW_RESTS);
-    }
-    public void clearFollowRests() {
-    	clear(FOLLOW_RESTS);
-    }
-    public void setFollowAlerts(int alert) {
-    	setInt(FOLLOW_ALERTS,alert);
-    }
-    public int getFollowAlerts() {
-    	return getInt(FOLLOW_ALERTS);
-    }
-    public void clearFollowAlerts() {
-    	clear(FOLLOW_ALERTS);
-    }
-    public void setFollowSpellActions(int spell) {
-    	setInt(FOLLOW_SPELL,spell);
-    }
-    public int getFollowSpellActions() {
-    	return getInt(FOLLOW_SPELL);
-    }
-    public void clearFollowSpellActions() {
-    	clear(FOLLOW_SPELL);
-    }
     public int getRestBonus(int rests) {
 		int advantage = 0;
 		if (getGameObject().hasThisAttribute(Constants.REST_DOUBLE)) {
@@ -8616,7 +8862,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     private ArrayList<RealmComponent> getPossibleBlockees(boolean interruptMovement, TileLocation loc) {
 		if (getNeedsBlockEvaluation()) return null;
     	ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isMistLike() && !isMinion() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
+		if (isReacting() && !isMistLike() && !isMinion() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING)) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8638,7 +8884,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 							if ((!target.isMistLike() || !getGameObject().hasThisAttribute(Constants.IGNORE_MIST_LIKE)) && !target.getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !target.isSleep() && !target.getNeedsBlockEvaluation() && (takingTurn || targetPlayingTurn)
 									&& ((target.getTransmorph()==null && !target.getGameObject().hasThisAttribute(Constants.SMALL)) || ((target.getTransmorph()!=null && !target.getTransmorph().hasThisAttribute(Constants.SMALL))) || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS))) {
 								if (!target.isHidden() || foundHiddenEnemy(rc.getGameObject())) {
-									if (!target.isBlocked() && !hasBlockDecision(target.getGameObject())) {
+									if (!target.isBlocked() && !hasReactDecision(target.getGameObject())) {
 										// Jeese, ENOUGH conditions to get here!!!!!  :)
 										list.add(rc);
 									}
@@ -8655,25 +8901,34 @@ public class CharacterWrapper extends GameObjectWrapper {
     public ArrayList<RealmComponent> checkForBlockingState() {
     	return checkForBlockingState(false,null);
     }
+
+	public ArrayList<RealmComponent> getBlockableCandidates(TileLocation loc) {
+		if (!isReacting() || isMistLike() || isSleep()
+				|| getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) || isMinion()) {
+			return new ArrayList<>();
+		}
+		ArrayList<RealmComponent> result = getPossibleBlockees(true, loc);
+		return result != null ? result : new ArrayList<>();
+	}
     
 	public ArrayList<RealmComponent> checkForBlockingState(boolean interruptPhase,TileLocation loc) {
 		ArrayList<RealmComponent> blockees = null;
 		// Check for blocking state
-		if (isBlocking() && !isMistLike() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
+		if (isReacting() && !isMistLike() && !isSleep() && !getGameObject().hasThisAttribute(Constants.MEDITATE_NO_BLOCKING) && !isMinion()) {
 			// Look for characters in the clearing
 			blockees = getPossibleBlockees(interruptPhase,loc);
 			if (blockees!=null && !blockees.isEmpty()) {
 				if (interruptPhase) {
 					setInterruptPhaseDecision(true);
 				} else {
-					setNeedsBlockDecision(true);
+					setNeedsReactDecision(true);
 				}
 			}
 			else {
 				if (interruptPhase) {
 					setInterruptPhaseDecision(false);
 				} else {
-					setNeedsBlockDecision(false);
+					setNeedsReactDecision(false);
 				}
 			}
 		}
@@ -8683,7 +8938,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public ArrayList<RealmComponent> checkForColorChitInterruptionState(TileLocation loc,boolean phaseBeginnig, boolean phaseEnd) {
 		ArrayList<RealmComponent> interruptions = null;
 		// Check for blocking state
-		if (this.isPlayingTurn() || !isBlocking()) {
+		if (this.isPlayingTurn() || !isReacting()) {
 			setNeedsPlayColorChitInterruptPhaseDecision(false,phaseBeginnig,phaseEnd);
 			return null;
 		}
@@ -8703,7 +8958,7 @@ public class CharacterWrapper extends GameObjectWrapper {
     public ArrayList<RealmComponent> getPossibleColorChitInterruptions(TileLocation loc,boolean phaseBeginnig, boolean phaseEnd) {
     	if (getColorMagicChits().size()==0 || getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) return null;
     	ArrayList<RealmComponent> list = null;
-		if (isBlocking() && !isMinion()) {
+		if (isReacting() && !isMinion()) {
 			TileLocation current;
 			if (loc!=null) {
 				current = loc;
@@ -8741,7 +8996,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 				if (!rc.getGameObject().getStringId().matches(getGameObject().getStringId()) && rc.isPlayerControlledLeader()) {
 					CharacterWrapper otherCharacter = new CharacterWrapper(rc.getGameObject());
 					if (otherCharacter.isSleep() && hostPrefs.hasPref(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS)) continue;
-					if (otherCharacter.isBlocking() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
+				if (otherCharacter.isReacting() && otherCharacter.getColorMagicChits().size()>0 && !rc.getGameObject().hasThisAttribute(Constants.MAGIC_PROTECTION_EXTENDED)) {
 						// Only count a blocker as an interrupter if checkForColorChitInterruptionState actually
 						// determined they need to play (i.e., the phasing character is a valid interrupt target).
 						// Familiars are not PlayerControlledLeaders, so blocking characters correctly set
@@ -8765,4 +9020,44 @@ public class CharacterWrapper extends GameObjectWrapper {
     		}
     	}
     }
+
+	// ---- Player map markers (personal, not synced) ----
+
+	public ArrayList<String> getPlayerMarkers() {
+		ArrayList<String> list = getGameObject().getThisAttributeList(PLAYER_MARKERS);
+		return list == null ? new ArrayList<>() : list;
+	}
+
+	public void addPlayerMarker(String tileName, int clearingNum, Color color, String label) {
+		removePlayerMarker(tileName, clearingNum, color);
+		String encoded = tileName + "/" + clearingNum + "/" + Integer.toHexString(color.getRGB() & 0xFFFFFF) + "/" + label;
+		getGameObject().addThisAttributeListItem(PLAYER_MARKERS, encoded);
+	}
+
+	public void removePlayerMarker(String tileName, int clearingNum, Color color) {
+		String colorHex = Integer.toHexString(color.getRGB() & 0xFFFFFF);
+		String prefix = tileName + "/" + clearingNum + "/" + colorHex + "/";
+		for (String entry : getPlayerMarkers()) {
+			if (entry.startsWith(prefix)) {
+				getGameObject().removeThisAttributeListItem(PLAYER_MARKERS, entry);
+				return;
+			}
+		}
+	}
+
+	public void removeAllPlayerMarkersInClearing(String tileName, int clearingNum) {
+		String prefix = tileName + "/" + clearingNum + "/";
+		new ArrayList<>(getPlayerMarkers()).stream()
+			.filter(e -> e.startsWith(prefix))
+			.forEach(e -> getGameObject().removeThisAttributeListItem(PLAYER_MARKERS, e));
+	}
+
+	public ArrayList<String> getPlayerMarkersInClearing(String tileName, int clearingNum) {
+		String prefix = tileName + "/" + clearingNum + "/";
+		ArrayList<String> result = new ArrayList<>();
+		for (String entry : getPlayerMarkers()) {
+			if (entry.startsWith(prefix)) result.add(entry);
+		}
+		return result;
+	}
 }

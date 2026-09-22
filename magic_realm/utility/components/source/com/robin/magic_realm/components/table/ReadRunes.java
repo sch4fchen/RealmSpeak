@@ -7,6 +7,7 @@ import javax.swing.*;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.IconGroup;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.SearchResultType;
@@ -58,7 +59,13 @@ public class ReadRunes extends RealmTable {
 	public String apply(CharacterWrapper character,DieRoller roller) {
 		// Before rolling, you must select a target spell, which for artifacts/books includes AWAKENED spells
 		targetSpell = selectFromAllAwakenedSpells(character);
-		
+
+		// Dread: -1 DRM capped at -1 total — skip if a negative modifier already covers it
+		HostPrefWrapper hostPrefsDread = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefsDread.hasPref(Constants.HOUSE3_DREAD) && character.hasDread() && roller.getModifier() >= 0) {
+			roller.addModifier(-1);
+		}
+
 		if (roller.getHighDieResult()==5 && roller.getLowDieResult()<5) {
 			HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 			if (hostPrefs.hasPref(Constants.SR_ADV_EASIER_SPELL_LEARNING)) {
@@ -95,16 +102,50 @@ public class ReadRunes extends RealmTable {
 	}
 
 	public String applyFive(CharacterWrapper character) {
-		// Curse
+		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
+		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread() && !character.immuneToCurses()) {
+			character.applyDread();
+			JOptionPane.showMessageDialog(
+				getParentFrame(),
+				"The " + character.getCharacterName() + " is overcome with Dread, and suffers a wound\n"
+					+ "from nausea and vertigo (a magic chit if available).  Further\n"
+					+ "Reading Runes today will have a -1 DRM (maximum), and any\n"
+					+ "more Dread/Curse results today will Curse the " + character.getCharacterName() + ".",
+				"Read Runes - Dread!",
+				JOptionPane.INFORMATION_MESSAGE,
+				getRollerImage());
+			ArrayList<CharacterActionChitComponent> candidates = character.getDreadWoundCandidates();
+			CharacterActionChitComponent chitToWound = null;
+			if (candidates.size() == 1) {
+				chitToWound = candidates.get(0);
+			} else if (!candidates.isEmpty()) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
+					getParentFrame(), "Dread! Choose a chit to wound:", false);
+				for (CharacterActionChitComponent chit : candidates) {
+					chooser.addRealmComponent(chit);
+				}
+				chooser.setVisible(true);
+				if (chooser.getFirstSelectedComponent() != null) {
+					chitToWound = (CharacterActionChitComponent) chooser.getFirstSelectedComponent();
+				} else {
+					chitToWound = candidates.get(0);
+				}
+			}
+			if (chitToWound != null) {
+				chitToWound.makeWounded();
+			}
+			return "Dread!";
+		}
+		// Normal Curse — also fires when DREAD is on but the character already has Dread (second 5 that day)
 		setNewTable(new Curse(getParentFrame(), character.getGameObject()));
-		
+
 		QuestRequirementParams qp = new QuestRequirementParams();
 		qp.actionName = getTableKey();
 		qp.actionType = CharacterActionType.SearchTable;
 		qp.searchType = SearchResultType.Curse;
 		qp.searchHadAnEffect = true; // (ogh) (ogh?) (OGGGGHHHH!!)
 		character.testQuestRequirements(getParentFrame(),qp);
-		
+
 		return "Curse!";
 	}
 

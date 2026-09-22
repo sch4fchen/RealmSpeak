@@ -91,6 +91,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 	protected JLabel disableCombatWarning;
 	protected JCheckBox disableSummoning;
 	protected JLabel disableSummoningWarning;
+	protected JCheckBox enableDiagnostics;
+	protected IntegerField diagnosticMonsterDie;
 	protected JCheckBox autosaveEnabled;
 	protected JCheckBox alternativeTilesEnabled;
 	protected JCheckBox mixExpansionTilesEnabled;
@@ -133,6 +135,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questCards.setText(String.valueOf(hostPrefs.getQuestCardsHandSize()));
 		disableBattles.setSelected(!hostPrefs.getEnableBattles());
 		disableSummoning.setSelected(hostPrefs.getDisableSummoning());
+		enableDiagnostics.setSelected(hostPrefs.hasPref(Constants.OPT_ENABLE_DIAGNOSTICS));
+		diagnosticMonsterDie.setText(hostPrefs.getDiagnosticMonsterDie());
 		autosaveEnabled.setSelected(hostPrefs.getAutosaveEnabled());
 		boardAutoSetup.setSelected(hostPrefs.getBoardAutoSetup());
 		boardPlayerSetup.setSelected(hostPrefs.getBoardPlayerSetup());
@@ -213,6 +217,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		questCards.setText(prefMan.get("quest_card_hand_size"));
 		disableBattles.setSelected(!prefMan.getBoolean("battlesEnabled"));
 		disableSummoning.setSelected(prefMan.getBoolean("summoningDisabled"));
+		enableDiagnostics.setSelected(prefMan.getBoolean("enableDiagnostics"));
+		diagnosticMonsterDie.setText(prefMan.get("diagnosticMonsterDie"));
 		autosaveEnabled.setSelected(prefMan.getBoolean("autosaveEnabled"));
 		boardAutoSetup.setSelected(prefMan.getBoolean("boardAutoSetup"));
 		boardPlayerSetup.setSelected(prefMan.getBoolean("boardPlayerSetup"));
@@ -277,6 +283,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		prefMan.set("quest_card_hand_size",questCards.getText());
 		prefMan.set("battlesEnabled",!disableBattles.isSelected());
 		prefMan.set("summoningDisabled",disableSummoning.isSelected());
+		prefMan.set("enableDiagnostics",enableDiagnostics.isSelected());
+		prefMan.set("diagnosticMonsterDie",diagnosticMonsterDie.getText());
 		prefMan.set("autosaveEnabled",autosaveEnabled.isSelected());
 		prefMan.set("boardAutoSetup",boardAutoSetup.isSelected());
 		prefMan.set("boardPlayerSetup",boardPlayerSetup.isSelected());
@@ -393,6 +401,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		disableBattles.setEnabled(editMode);
 		disableSummoning.setEnabled(editMode);
+		enableDiagnostics.setEnabled(editMode);
+		updateDiagnosticControls();
 		autosaveEnabled.setEnabled(editMode);
 		boardAutoSetup.setEnabled(editMode);
 		boardPlayerSetup.setEnabled(editMode);
@@ -514,6 +524,24 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		mainPanel.add(mainBox,"Center");
+			// Master switch for developer diagnostics - centered along the very bottom of the Game tab.
+			enableDiagnostics = notifier.getCheckBox("Enable Diagnostics");
+			enableDiagnostics.setToolTipText("Turns on developer diagnostic logging and dialogs.  Leave off for normal play.");
+			enableDiagnostics.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ev) {
+					updateDiagnosticControls();
+				}
+			});
+			diagnosticMonsterDie = notifier.getIntegerField();
+			diagnosticMonsterDie.setToolTipText("Force the monster die to this value every other day, for reproducible testing.  Leave BLANK to roll normally.");
+			ComponentTools.lockComponentSize(diagnosticMonsterDie,30,20);
+			JLabel diagnosticMonsterDieLabel = new JLabel(" Force monster die:");
+			diagnosticMonsterDieLabel.setToolTipText(diagnosticMonsterDie.getToolTipText());
+			JPanel diagnosticsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			diagnosticsPanel.add(enableDiagnostics);
+			diagnosticsPanel.add(diagnosticMonsterDieLabel);
+			diagnosticsPanel.add(diagnosticMonsterDie);
+		mainPanel.add(diagnosticsPanel,"South");
 			
 		optionPane = createOptionPane(mainPanel);
 		
@@ -1004,6 +1032,14 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		gamePlayBox.setBorder(BorderFactory.createTitledBorder("Game Play Options"));
 		return gamePlayBox;
 	}
+	/**
+	 * The forced-die field is only meaningful while diagnostics are on, so it follows the checkbox.
+	 */
+	private void updateDiagnosticControls() {
+		if (diagnosticMonsterDie!=null && enableDiagnostics!=null) {
+			diagnosticMonsterDie.setEnabled(editMode && enableDiagnostics.isSelected());
+		}
+	}
 	private void madeChanges() {
 		optionSetControl.showNoSet();
 	}
@@ -1069,9 +1105,9 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		newOptionPane.setTabHtmlDescription(REACTIONS_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Reactions</font></body></html>");
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_BLOCKING_PHASES,"CHECK BLOCKING EACH PHASE (Magic Realm Basic) - Characters with Blocking ON can choose to block visible characters after every phase.",false));
-		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,"COLOR CHIT AT PHASE BEGIN (Magic Realm Basic) - Characters can play a color chit at the beginning of the phase of any character in the same clearing.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_BLOCKED_CHARACTERS,"NO COLOR CHIT PLAY FOR BLOCKED CHARACTERS - Blocked characters cannot play color chits.",false));
-		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"SUSPICIOUS CHARACTERS - At game start and when each character joins all characters are set as Enemies to each other and the settings for Daily Combat, Day End Trades, DayStart Reactions and Block/Reactions are turned ON. NOTE: This option plus the three above enable strict 3rd edition rules character interactions during Daylight.  Also, these settings can still be contolled in the Character Windows as usual during play.",false));
+		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_SUSPICIOUS_CHARACTERS,"SUSPICIOUS CHARACTERS - At game start and when each character joins all characters are set as Enemies to each other and the settings for Daily Combat, Day End Trades, DayStart Reactions and Block/Reactions are turned ON. NOTE: This option plus the two above enable strict 3rd edition rules character interactions during Daylight.  Also, these settings can still be contolled in the Character Windows as usual during play.",false));
+		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_FOLLOWERS_SEARCH_DURING_GUIDE_HIDE,"FOLLOWERS SEARCH DURING GUIDE HIDE - When a guide performs a HIDE action, each direct follower may perform a simultaneous PEER Search. Followers which have Found Hidden Enemies cannot be ditched by a hidden guide.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS,"NO COLOR CHIT PLAY FOR SLEEPING CHARACTERS - Sleeping characters cannot play color chits.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS,"NO COLOR CHIT PLAY CANNOT AIM AT HIDDEN TARGETS - When burning a color chit you cannot energize a spell which targets a hidden characters.",false));
 		newOptionPane.addOption(REACTIONS_TAB,new GameOption(Constants.OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS,"DISABLE ACTIONS WHEN AWAITING REACTIONS - Cannot play color chits, activate, deactivate items etc. when waiting for another character to block or playing a color chit.",false));
@@ -1114,6 +1150,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_END_OF_ROUND_WOUNDING,"WOUNDING AT THE END OF THE ROUND - Characters die at the end of the round by wounds not immediately and can still attack.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.ADV_AMBUSHES,"AMBUSHES A.2 (Magic Realm Extended) - A successful HIDE roll on missile attacks while hidden, allow you to stay hidden.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_FUMBLE,"FUMBLE D.3.1 (Magic Realm Optional) - Roll on fumble table for attacks.",false,null,null,cannotIncludeSepRiderRules));
+		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_COMBAT_OUTCOME_PROBABILITIES,"SHOW OUTCOME PROBABILITIES (Magic Realm Optional) - Combat frames display possible outcome information for attacks by characters and denizens.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_RIDING_HORSES,"RIDING HORSES D.3.2-3.3 (Magic Realm Optional) - Characters MUST play active horses to run away.  No MOVE chits or BOOTS cards are allowed.  Also, any character or denizen on horseback, can play both a maneuver for the rider, as well as the horse.  When attacking mounted opponents, the rider may be targeted separate from the horse, but are then subject to the rider's maneuver when calculating harm. (REQUIRES FUMBLE RULES)",false,null,requiresFumbleRules));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_STUMBLE,"STUMBLE D.3.4 (Magic Realm Optional) - Roll on stumble table when running.",false));
 		newOptionPane.addOption(COMBAT_RULES_TAB,new GameOption(Constants.OPT_MISSILE,"OPTIONAL MISSILE TABLE D.3.4 (Magic Realm Optional) - Use the Optional Missile Table for missile attacks.",false,exclusiveMissileRules,requiresFumbleRules));
@@ -1151,6 +1188,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEVELOPMENT,"DEVELOPMENT E.5 - Characters may start at a level less than four, and work their way up by earning chits.",false,null,null,cannotIncludeExpDevRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEVELOPMENT_SR,"DEVELOPMENT IN SUPER REALM - Victory points are not assigned or distributed.",false,null,requiresDevelopmentRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEVELOPMENT_PLUS,"EXTENDED DEVELOPMENT E.6 - Characters may develop past level four.  No chits are gained past four, but each new level leads to a reward, as outlined in the 3rd edition rules.",false,null,requiresDevelopmentRules));
+		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEV_ANY_VP,"EXTENDED DEV ANY VP TYPE OK E.6.10 - Victory Points of any kind acquired during the game entitle the character to earn an extra chit.",false,null,requiresDevelopmentRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_MONSTER_DIE_PER_SET,"COMBINDING REALMS E.7 - Separate monster die for each Magic Realm set.",false));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEV_EXCLUDE_SW,"EXCLUDE STARTING WORTH - For purposes of development ONLY, starting equipment value is not considered when gaining chits but is considered for end game victory points.",false,null,requiresDevelopmentRules));
 		newOptionPane.addOption(EXPANDING_REALM_TAB,new GameOption(Constants.EXP_DEV_3RD_REL,"GAIN 3RD RELATIONSHIPS - When you achieve 3rd level, you receive the relationships you would have normally had (exception: Roving natives).  If you are playing with GRUDGES/GRATITUDES, these levels ARE affected by the difference.",false,null,requiresDevelopmentRules));
@@ -1227,6 +1265,7 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		
 		newOptionPane.setTabHtmlDescription(HOUSE_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_NO_SPELL_LIMIT,"NO SPELL LIMIT - Magic Realm limits you to 14 spells per character.  This option removes that limit.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_DREAD, "DREAD ROBERTS RUNES - When Reading Runes, a first Dread/Curse causes Dread (includes 1 wound, magic if available) instead of a Curse. A character with Dread rolls at -1 DRM (maximum) for further Reading Runes that day, and a subsequent Dread/Curse causes a Curse. Dread is removed at midnight.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_REVISED_ENHANCED_MAGIC,"REVISED ENHANCED MAGIC - Spells are not tied up by the casting of a spell, which allows the casting of multiple instances of a single spell.  Unlike normal Enhanced Magic, MAGIC chits ARE tied up by each spell.",false,exclusiveEnhancedMagicRules,null));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_TELEPORT,"TELEPORT RANDOM CLEARING - Character can not choose the clearing he is teleported to, instead a random clearing is chosen.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_PEACE_WITH_NATURE_SITES,"PEACE WITH NATURE ABILITY EXTENDED (to site chits) - When character with this ability ends his turn, the site chits in his tile do not summon monsters from the Chart of Appearances.",false));	
@@ -1250,13 +1289,11 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_SMALL_MONSTERS,"SMALL MONSTERS - Small monsters (Frog, Squirrel, Bird) don't block characters.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE2_RED_SPECIAL_SHELTER,"EXTRA SHELTERS - The Lost City and Lost Castle chits count as shelters, for purposes of sheltered phases and weather.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_SNOW_HIDE_EXCLUDE_CAVES,"SNOW HIDING IN CAVES - Ignore special weather conditions that prevent hiding due to snow or soft ground, when you perform the HIDE activity in a cave.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_CHARACTERLIST_SORTING_BY_PLAY_ORDER, "SORT CHARACTER LISTY BY PLAY ORDER - Sort the character list by the play order. This reveals some information.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_ONCE_PER_DAY, "TRAVELERS MOVE ONCE PER DAY - Travelers can only move once per day.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_ONCE_PER_DAY, "GENERATED MONSTERS MOVE ONCE PER DAY - Generated monsters can only move once per day.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_AT_EVENING, "TRAVELERS MOVE AT EVENING - Travelers move only once at Evening.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING, "GENERATED MONSTERS MOVE AT EVENING - Generated monsters move only once at Evening.",false));
-		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_REVENGE, "HIVE'S REVENGE - Once the Hive is destroyed, all remaining pods on the board move toward the offending character every turn they are active (Expansion 1).",false));
-		
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_AND_GM_MOVE_AT_DAYLIGHT_END, "TRAVELERS AND GENERATED MONSTERS MOVE AT DAYLIGHT END - Travelers and generated monsters make their once-a-day move after the last character's turn, instead of at the start of Daylight.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GM_MOVE_INDIVIDUALLY, "GENERATED MONSTERS MOVE INDIVIDUALLY - Generated monsters of the same generator sharing a location each move on their own, instead of moving together as a pod.",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GM_NO_REVENGE, "GENERATED MONSTERS DO NOT SEEK REVENGE - Destroying a generator kills its monsters outright, instead of leaving them alive to hunt the character responsible (Expansion 1).",false));
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GM_MOVE_BY_CHANCE, "GENERATED MONSTERS MOVE BY CHANCE - Generated monsters pick where to go at random, weighted by how attractive each destination scores, instead of always taking the highest-scoring one.  A better destination is more likely but never certain, so their next move cannot be worked out exactly.",false));
+
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"PRODUCTIVE DWARF - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,"PERSISTENT CHITS - Once sound/warning chits have been discovered, they remain face up for the remainder of the game.",false));
@@ -1317,6 +1354,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		numberMonthsToPlay.setText("1");
 		disableBattles.setSelected(false);
 		disableSummoning.setSelected(false);
+		enableDiagnostics.setSelected(false);
+		diagnosticMonsterDie.setText("");
 		autosaveEnabled.setSelected(true);
 		boardAutoSetup.setSelected(true);
 		alternativeTilesEnabled.setSelected(false);
@@ -1348,8 +1387,6 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			optionPane.setOption(key,false);
 		}
 		optionPane.setOption(Constants.OPT_BLOCKING_PHASES,true);
-		optionPane.setOption(Constants.OPT_PHASE_BEGIN_PLAYING_COLOR_CHIT,true);
-		
 		updateWarnings();
 		loadingPrefs = false;
 	}
@@ -1494,7 +1531,18 @@ public class HostGameSetupDialog extends AggressiveDialog {
 			JOptionPane.showMessageDialog(null,"You must enter a value in every field");
 			return false;
 		}
-		
+
+		// The forced monster die is optional - blank means "roll normally" - but if one IS given it
+		// has to be a value the die can actually show, or it would never match anything.
+		String forcedDie = diagnosticMonsterDie.getText().trim();
+		if (forcedDie.length()>0) {
+			int val = readInt(forcedDie);
+			if (val<1 || val>6) {
+				JOptionPane.showMessageDialog(null,"The forced monster die must be 1-6, or blank to roll normally.");
+				return false;
+			}
+		}
+
 		// Some fields require a number
 		if (readInt(gamePort.getText())<1000) {
 			JOptionPane.showMessageDialog(null,"Game Port must be greater than 1000");
@@ -1529,6 +1577,9 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		hostPrefs.setQuestCardsHandSize(questCards.getText());
 		hostPrefs.setEnableBattles(!disableBattles.isSelected());
 		hostPrefs.setDisableSummoning(disableSummoning.isSelected());
+		hostPrefs.setPref(Constants.OPT_ENABLE_DIAGNOSTICS,enableDiagnostics.isSelected());
+		hostPrefs.setDiagnosticMonsterDie(diagnosticMonsterDie.getText());
+		DebugUtility.setDiagnosticsFromHostPrefs(enableDiagnostics.isSelected()); // take effect immediately for the host
 		hostPrefs.setAutosaveEnabled(autosaveEnabled.isSelected());
 		hostPrefs.setBoardAutoSetup(boardAutoSetup.isSelected());
 		hostPrefs.setBoardPlayerSetup(boardPlayerSetup.isSelected());
