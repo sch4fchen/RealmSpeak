@@ -4011,12 +4011,10 @@ public class CharacterWrapper extends GameObjectWrapper {
 			else if (chit.isColor()) color.add(chit);
 			else other.add(chit);
 		}
-		ArrayList<CharacterActionChitComponent> candidates = new ArrayList<>();
-		candidates.addAll(magic);
-		candidates.addAll(color);
-		candidates.addAll(other);
-		candidates.addAll(getFatiguedChits());
-		return candidates;
+		if (!magic.isEmpty()) return magic;
+		if (!color.isEmpty()) return color;
+		if (!other.isEmpty()) return other;
+		return new ArrayList<>(getFatiguedChits());
 	}
 	public void clearDread() {
 		if (hasDread()) {

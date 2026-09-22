@@ -99,6 +99,15 @@ public class ReadRunes extends RealmTable {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread() && !character.immuneToCurses()) {
 			character.applyDread();
+			JOptionPane.showMessageDialog(
+				getParentFrame(),
+				"The " + character.getCharacterName() + " is overcome with Dread, and suffers\n"
+					+ "a wound from nausea and vertigo (a magic chit if available).\n"
+					+ "Further Reading Runes today have a -1 DRM, and any more\n"
+					+ "Dread/Curse results today will Curse the " + character.getCharacterName() + ".",
+				"Read Runes - Dread!",
+				JOptionPane.INFORMATION_MESSAGE,
+				getRollerImage());
 			ArrayList<CharacterActionChitComponent> candidates = character.getDreadWoundCandidates();
 			CharacterActionChitComponent chitToWound = null;
 			if (candidates.size() == 1) {
@@ -119,14 +128,6 @@ public class ReadRunes extends RealmTable {
 			if (chitToWound != null) {
 				chitToWound.makeWounded();
 			}
-			sendMessage(
-				character.getGameData(),
-				character.getPlayerName(),
-				"Read Runes - Dread!",
-				"The " + character.getCharacterName() + " is overcome with Dread, and suffers\n"
-					+ "a wound from nausea and vertigo (a magic chit if available).\n"
-					+ "Further Reading Runes today have a -1 DRM, and any more\n"
-					+ "Dread/Curse results today will Curse the " + character.getCharacterName() + ".");
 			return "Dread!";
 		}
 		// Normal Curse — also fires when DREAD is on but the character already has Dread (second 5 that day)
