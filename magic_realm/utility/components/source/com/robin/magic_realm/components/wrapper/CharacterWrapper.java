@@ -4001,22 +4001,22 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public void applyDread() {
 		setBoolean(DREAD,true);
 		getGameObject().addThisAttributeListItem(Constants.DIEMOD,"-1:readrunes:all");
-		CharacterActionChitComponent chitToWound = null;
+	}
+	public ArrayList<CharacterActionChitComponent> getDreadWoundCandidates() {
+		ArrayList<CharacterActionChitComponent> magic = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> color = new ArrayList<>();
+		ArrayList<CharacterActionChitComponent> other = new ArrayList<>();
 		for (CharacterActionChitComponent chit : getActiveChits()) {
-			if (chit.isMagic()) {
-				chitToWound = chit;
-				break;
-			}
+			if (chit.isMagic()) magic.add(chit);
+			else if (chit.isColor()) color.add(chit);
+			else other.add(chit);
 		}
-		if (chitToWound == null) {
-			ArrayList<CharacterActionChitComponent> active = getActiveChits();
-			if (!active.isEmpty()) {
-				chitToWound = active.get(0);
-			}
-		}
-		if (chitToWound != null) {
-			chitToWound.makeWounded();
-		}
+		ArrayList<CharacterActionChitComponent> candidates = new ArrayList<>();
+		candidates.addAll(magic);
+		candidates.addAll(color);
+		candidates.addAll(other);
+		candidates.addAll(getFatiguedChits());
+		return candidates;
 	}
 	public void clearDread() {
 		if (hasDread()) {

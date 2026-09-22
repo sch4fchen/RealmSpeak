@@ -7,6 +7,7 @@ import javax.swing.*;
 import com.robin.game.objects.GameObject;
 import com.robin.general.swing.DieRoller;
 import com.robin.general.swing.IconGroup;
+import com.robin.magic_realm.components.CharacterActionChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.quest.CharacterActionType;
 import com.robin.magic_realm.components.quest.SearchResultType;
@@ -98,6 +99,26 @@ public class ReadRunes extends RealmTable {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread() && !character.immuneToCurses()) {
 			character.applyDread();
+			ArrayList<CharacterActionChitComponent> candidates = character.getDreadWoundCandidates();
+			CharacterActionChitComponent chitToWound = null;
+			if (candidates.size() == 1) {
+				chitToWound = candidates.get(0);
+			} else if (!candidates.isEmpty()) {
+				RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
+					getParentFrame(), "Dread! Choose a chit to wound:", false);
+				for (CharacterActionChitComponent chit : candidates) {
+					chooser.addRealmComponent(chit);
+				}
+				chooser.setVisible(true);
+				if (chooser.getFirstSelectedComponent() != null) {
+					chitToWound = (CharacterActionChitComponent) chooser.getFirstSelectedComponent();
+				} else {
+					chitToWound = candidates.get(0);
+				}
+			}
+			if (chitToWound != null) {
+				chitToWound.makeWounded();
+			}
 			sendMessage(
 				character.getGameData(),
 				character.getPlayerName(),
