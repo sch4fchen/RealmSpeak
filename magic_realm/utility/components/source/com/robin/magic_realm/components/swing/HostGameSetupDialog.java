@@ -1256,7 +1256,8 @@ public class HostGameSetupDialog extends AggressiveDialog {
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_TRAVELERS_MOVE_AT_EVENING, "TRAVELERS MOVE AT EVENING - Travelers move only once at Evening.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_MOVE_AT_EVENING, "GENERATED MONSTERS MOVE AT EVENING - Generated monsters move only once at Evening.",false));
 		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_GENERATED_MONSTERS_REVENGE, "HIVE'S REVENGE - Once the Hive is destroyed, all remaining pods on the board move toward the offending character every turn they are active (Expansion 1).",false));
-		
+		newOptionPane.addOption(HOUSE_RULES_TAB,new GameOption(Constants.HOUSE3_DREAD, "DREAD ROBERTS RUNES - When Reading Runes, a first Dread/Curse result causes Dread (includes 1 wound, magic if available) instead of a Curse. A character with Dread rolls at -1 DRM (maximum) for further Reading Runes that day, and a subsequent Dread/Curse causes a Curse. Dread is removed at midnight.",false));
+
 		newOptionPane.setTabHtmlDescription(HOUSE2_RULES_TAB,"<html><body><font face=\"Helvetica, Arial, sans-serif\">Robin's House Rules</font></body></html>");
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_DWARF_ACTION,"PRODUCTIVE DWARF - (This rule replaces section 1.1 of the advantage section for the Dwarf)  The Dwarf must spend one additional consecutive move phase to enter any non-cave clearing, but otherwise receives the normal number of phases.  (Special thanks to Daniel Farrow for this alternative rule which is much more workable than the one I was using!)",false));
 		newOptionPane.addOption(HOUSE2_RULES_TAB,new GameOption(Constants.HOUSE1_CHIT_REMAIN_FACE_UP,"PERSISTENT CHITS - Once sound/warning chits have been discovered, they remain face up for the remainder of the game.",false));
