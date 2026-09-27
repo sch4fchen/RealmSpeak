@@ -144,6 +144,9 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case DrawQuests:
 				break;
+			case Dread:
+				list.add(new QuestPropertyBlock(QuestRewardDread.REMOVE, "Remove Dread?", FieldType.Boolean));
+				break;
 			case EnchantTile:
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.UNENCHANT, "Unenchant tiles", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardEnchantTile.CHARACTERS_TILE, "Affect characters tile", FieldType.Boolean));

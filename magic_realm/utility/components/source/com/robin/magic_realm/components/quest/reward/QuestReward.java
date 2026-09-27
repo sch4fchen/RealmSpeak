@@ -44,6 +44,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		DiscardQuest,
 		DiscoverTreasureSite,
 		DrawQuests,
+		Dread,
 		EnchantTile,
 		Exorcise,
 		FindHiddenEnemies,
@@ -144,6 +145,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case DiscardQuest:				return "Current quest is discarded.";
 				case DiscoverTreasureSite:		return "Character discovers treasure site(s).";
 				case DrawQuests:				return "Character draws quest card(s).";
+				case Dread:						return "Add or remove Dread to the character.";
 				case EnchantTile:				return "Enchants (or unenchants) characters tile and/or tile(s) of a location.";
 				case Exorcise:					return "Exorcise spell is cast";
 				case FindHiddenEnemies:			return "Character finds hidden enemies.";
@@ -380,6 +382,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case DrawQuests:
 				reward = new QuestRewardDrawQuests(go);
+				break;
+			case Dread:
+				reward = new QuestRewardDread(go);
 				break;
 			case EnchantTile:
 				reward = new QuestRewardEnchantTile(go);

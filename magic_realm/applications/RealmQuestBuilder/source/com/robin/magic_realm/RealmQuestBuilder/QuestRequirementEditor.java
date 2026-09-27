@@ -68,7 +68,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.RING, "Must use a ring", FieldType.Boolean));
 				break;
 			case Character:
-				list.add(new QuestPropertyBlock(QuestRequirementCharacter.CHARACTER_REGEX, "Name", FieldType.Regex, null, new String[] { "characte" }));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.CHARACTER_REGEX, "Name", FieldType.Regex, null, new String[] { "character" }));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacter.SAME_TILE, "Same tile?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacter.MARK, "Requires a mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacter.NO_MARK, "Must have no mark?", FieldType.Boolean));
