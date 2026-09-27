@@ -67,6 +67,18 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.ARTIFACT, "Must use an artifact", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCastSpell.RING, "Must use a ring", FieldType.Boolean));
 				break;
+			case Character:
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.CHARACTER_REGEX, "Name", FieldType.Regex, null, new String[] { "characte" }));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.SAME_TILE, "Same tile?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.MARK, "Requires a mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.NO_MARK, "Must have no mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.ADD_MARK, "Add mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.REMOVE_MARK, "Remove mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.GUILD, "Guildmember?", FieldType.StringSelector, getGuildNames()));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.GENDER, "Gender", FieldType.StringSelector, new String[] { QuestConstants.ANY, GenderType.Female.toString(), GenderType.Male.toString() }));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.FIGHTER, "Must be a fighter?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacter.MAGIC_USER, "Must be a magic user?", FieldType.Boolean));
+				break;
 			case CharacterClass:
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
 				break;

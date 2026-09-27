@@ -10,11 +10,12 @@ QuestReward: MarkMissionCampaignTask: current tile, current clearing, regex, all
 QuestReward: MarkGuild: current tile, current clearing, regex, random/all/choose
 QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
 QuestRequirement: GateLocation: current tile, current clearing, regex, marked, add/remove mark, must not have mark
-QuestRequirement: CharacterMet: current tile, current clearing, regex, fighter/magicUser, guild, mark/remove mark, requires mark
 
 Version 1.2.6.6
 NEW FEATURES:
 # Dread Roberts Runes House Rule
+QUEST UPDATE:
+# QuestRequirementCharacter
 BUGS/ISSUES:
 # Fix Treachery: rebels cannot attack nor be attacked by monsters and unhired natives
 

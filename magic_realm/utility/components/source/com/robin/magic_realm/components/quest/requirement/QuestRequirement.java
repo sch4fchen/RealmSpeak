@@ -20,6 +20,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		Attribute,
 		CastMultipleSpells,
 		CastSpell,
+		Character,
 		CharacterClass,
 		CharacterType,
 		Chit,
@@ -85,6 +86,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests whether a certain number of (unique) spells have been cast.";
 				case CastSpell:
 					return "Tests whether a spell has just been cast.";
+				case Character:
+					return "Tests for characters in same clearing or tile.";
 				case CharacterClass:
 					return "Tests for the characters class.";
 				case CharacterType:
@@ -290,6 +293,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case CastSpell:
 				requirement = new QuestRequirementCastSpell(go);
+				break;
+			case Character:
+				requirement = new QuestRequirementCharacter(go);
 				break;
 			case CharacterClass:
 				requirement = new QuestRequirementCharacterClass(go);
