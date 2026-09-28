@@ -61,8 +61,7 @@ public class ReadRunes extends RealmTable {
 		targetSpell = selectFromAllAwakenedSpells(character);
 
 		// Dread: -1 DRM capped at -1 total — skip if a negative modifier already covers it
-		HostPrefWrapper hostPrefsDread = HostPrefWrapper.findHostPrefs(character.getGameData());
-		if (hostPrefsDread.hasPref(Constants.HOUSE3_DREAD) && character.hasDread() && roller.getModifier() >= 0) {
+		if (character.hasDread() && roller.getModifier() >= 0) {
 			roller.addModifier(-1);
 		}
 
