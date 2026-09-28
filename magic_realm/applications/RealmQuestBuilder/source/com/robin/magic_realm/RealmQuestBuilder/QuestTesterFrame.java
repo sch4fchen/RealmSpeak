@@ -948,35 +948,12 @@ public class QuestTesterFrame extends JFrame {
 	private JPanel buildCharacterClearingPanel() {
 		JPanel locationPanel = new JPanel(new BorderLayout());
 		JPanel locationButtonsWithTitlePanel = new JPanel(new GridLayout(2,1));
-		JPanel locationButtonsPanel = new JPanel(new GridLayout(2,2));
+		JPanel locationButtonsPanel = new JPanel(new GridLayout(2,3));
 		JPanel clearingChitsPanel = new JPanel(new BorderLayout());
 				
 		clearingTitle = new JLabel();
 		locationButtonsWithTitlePanel.add(clearingTitle, BorderLayout.NORTH);
 
-		searchClearingButton = new JButton("Search");
-		searchClearingButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				RealmComponent rc = clearingComponents.getSelectedValue();
-				if (rc == null) {
-					rc = character.getCurrentTile();
-				}
-				doSearchOn(rc);
-			}
-		});
-		locationButtonsPanel.add(searchClearingButton);
-		openLocationButton = new JButton("Open Location");
-		openLocationButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				RealmComponent rc = clearingComponents.getSelectedValue();
-				ArrayList<GameObject> objectsToOpen = new ArrayList<>();
-				objectsToOpen.add(rc.getGameObject());
-				TreasureUtility.openOneObject(QuestTesterFrame.this, character, objectsToOpen, null, true);
-				updateCharacterPanel();
-				retestQuest();
-			}
-		});
-		locationButtonsPanel.add(openLocationButton);
 		enchantLocationButton = new JToggleButton("Enchant Location");
 		enchantLocationButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1016,6 +993,54 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		locationButtonsPanel.add(magicForClearingButton);
+		removeFromClearingButton = new JButton("Remove");
+		removeFromClearingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent rc = clearingComponents.getSelectedValue();
+				if (rc == null)
+					return;
+				if (rc.ownedBy(RealmComponent.getRealmComponent(character.getGameObject()))) {
+					character.removeHireling(rc.getGameObject());
+				}
+				rc.getGameObject().detach();
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		locationButtonsPanel.add(removeFromClearingButton);
+		searchClearingButton = new JButton("Search");
+		searchClearingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent rc = clearingComponents.getSelectedValue();
+				if (rc == null) {
+					rc = character.getCurrentTile();
+				}
+				doSearchOn(rc);
+			}
+		});
+		locationButtonsPanel.add(searchClearingButton);
+		discoverButton = new JButton("Discover");
+		discoverButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent rc = clearingComponents.getSelectedValue();
+				Search.discoverChit(QuestTesterFrame.this, character, character.getCurrentLocation().clearing, rc, new QuestRequirementParams(), null,false);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		locationButtonsPanel.add(discoverButton);
+		openLocationButton = new JButton("Open Location");
+		openLocationButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent rc = clearingComponents.getSelectedValue();
+				ArrayList<GameObject> objectsToOpen = new ArrayList<>();
+				objectsToOpen.add(rc.getGameObject());
+				TreasureUtility.openOneObject(QuestTesterFrame.this, character, objectsToOpen, null, true);
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		locationButtonsPanel.add(openLocationButton);
 		locationButtonsWithTitlePanel.add(locationButtonsPanel, BorderLayout.NORTH);
 		clearingChitsPanel.add(locationButtonsWithTitlePanel, BorderLayout.NORTH);
 		
@@ -1124,8 +1149,7 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(addNative);
-		JPanel miniControls = new JPanel(new GridLayout(1, 2));
-		JButton addVisitor = new JButton("V");
+		JButton addVisitor = new JButton("Visitor");
 		addVisitor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				ArrayList<GameObject> things = chooseOther("Visitor", Constants.VISITOR);
@@ -1139,8 +1163,8 @@ public class QuestTesterFrame extends JFrame {
 				retestQuest();
 			}
 		});
-		miniControls.add(addVisitor);
-		JButton addTraveler = new JButton("T");
+		controls.add(addVisitor);
+		JButton addTraveler = new JButton("Traveler");
 		addTraveler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				ArrayList<GameObject> things = chooseOther("Traveler", Constants.TRAVELER_TEMPLATE);
@@ -1159,8 +1183,21 @@ public class QuestTesterFrame extends JFrame {
 				retestQuest();
 			}
 		});
-		miniControls.add(addTraveler);
-		controls.add(miniControls);
+		controls.add(addTraveler);
+		JButton addCharacter = new JButton("Character");
+		addCharacter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				ArrayList<GameObject> things = chooseOther("Character", "character");
+				if (things == null)
+					return;
+				for (GameObject thing : things) {
+					character.getCurrentLocation().clearing.add(thing, null);
+				}
+				updateCharacterPanel();
+				retestQuest();
+			}
+		});
+		controls.add(addCharacter);
 		JButton addMission = new JButton("Mission");
 		addMission.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1200,31 +1237,6 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		controls.add(pickupFromClearingButton);
-		removeFromClearingButton = new JButton("Remove");
-		removeFromClearingButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				RealmComponent rc = clearingComponents.getSelectedValue();
-				if (rc == null)
-					return;
-				if (rc.ownedBy(RealmComponent.getRealmComponent(character.getGameObject()))) {
-					character.removeHireling(rc.getGameObject());
-				}
-				rc.getGameObject().detach();
-				updateCharacterPanel();
-				retestQuest();
-			}
-		});
-		controls.add(removeFromClearingButton);
-		discoverButton = new JButton("Discover");
-		discoverButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				RealmComponent rc = clearingComponents.getSelectedValue();
-				Search.discoverChit(QuestTesterFrame.this, character, character.getCurrentLocation().clearing, rc, new QuestRequirementParams(), null,false);
-				updateCharacterPanel();
-				retestQuest();
-			}
-		});
-		controls.add(discoverButton);
 		killDenizenButton = new JButton("Kill");
 		killDenizenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
@@ -1626,8 +1638,7 @@ public class QuestTesterFrame extends JFrame {
 		
 		Vector<RealmComponent> rcs = new Vector<>();
 		for (RealmComponent rc : character.getCurrentLocation().clearing.getClearingComponents(true)) {
-			if (rc.isCharacter())
-				continue;
+			if (rc.getGameObject().equals(character.getGameObject())) continue;
 			rcs.add(rc);
 		}
 		clearingComponents.setListData(rcs);
