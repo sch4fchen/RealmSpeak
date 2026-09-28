@@ -48,17 +48,18 @@ public class QuestRequirementCharacter extends QuestRequirement {
 			}
 		} else {
 			for (RealmComponent characterRc : loc.clearing.getClearingComponents()) {
-				if (!characterRc.isTraveler()) continue;
+				if (!characterRc.isCharacter()) continue;
 				allCharactersFound.add(characterRc);
 			}
 		}
 		if (!allCharactersFound.isEmpty()) {
 			for (RealmComponent characterRc : allCharactersFound) {
 				if (getRegExFilter().isEmpty() || pattern.matcher(characterRc.getGameObject().getName()).find()) {
+					if (characterRc.getGameObject().equals(character.getGameObject())) continue;
 					if (requiresMark() && !Quest.GameObjectHasQuestMark(characterRc.getGameObject(), questId)) continue;
 					if (requiresNoMark() && Quest.GameObjectHasQuestMark(characterRc.getGameObject(), questId)) continue;
 					CharacterWrapper characterWrapper = new CharacterWrapper(characterRc.getGameObject());
-					if (!requiredGuild().matches(QuestConstants.ANY)) {
+					if (requiredGuild()!=null && !requiredGuild().matches(QuestConstants.ANY)) {
 						if (requiredGuild().matches(QuestConstants.NONE)) {
 							if (characterWrapper.getCurrentGuild()!=null) return false;
 						}
@@ -69,7 +70,7 @@ public class QuestRequirementCharacter extends QuestRequirement {
 							if (characterWrapper.getCurrentGuild()==null || !characterWrapper.getCurrentGuild().matches(requiredGuild())) return false;
 						}
 					}
-					if (!requiredGender().matches(QuestConstants.ANY)) {
+					if (requiredGender()!=null && !requiredGender().matches(QuestConstants.ANY)) {
 						if (requiredGender().matches(GenderType.Female.toString()) && !characterWrapper.isFemale()) return false;
 						if (requiredGender().matches(GenderType.Male.toString()) && !characterWrapper.isMale()) return false;
 					}
