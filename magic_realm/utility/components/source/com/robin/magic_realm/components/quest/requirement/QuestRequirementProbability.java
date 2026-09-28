@@ -15,7 +15,6 @@ public class QuestRequirementProbability extends QuestRequirement {
 
 	public QuestRequirementProbability(GameObject go) {
 		super(go);
-		setNumberOfChecks(0);
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
