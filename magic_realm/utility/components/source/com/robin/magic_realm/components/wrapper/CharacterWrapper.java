@@ -3998,8 +3998,25 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean hasDread() {
 		return getBoolean(DREAD);
 	}
-	public void applyDread() {
+	public void applyDread(JFrame frame) {
 		setBoolean(DREAD,true);
+		ArrayList<CharacterActionChitComponent> candidates = getDreadWoundCandidates();
+		CharacterActionChitComponent chitToWound = null;
+		if (candidates.size() == 1) {
+			chitToWound = candidates.get(0);
+		} else if (!candidates.isEmpty()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(frame, "Dread! Choose a chit to wound:", false);
+			for (CharacterActionChitComponent chit : candidates) {
+				chooser.addRealmComponent(chit);
+			}
+			chooser.setVisible(true);
+			chitToWound = chooser.getFirstSelectedComponent() != null
+				? (CharacterActionChitComponent) chooser.getFirstSelectedComponent()
+				: candidates.get(0);
+		}
+		if (chitToWound != null) {
+			chitToWound.makeWounded();
+		}
 	}
 	public void clearDread() {
 		if (hasDread()) {

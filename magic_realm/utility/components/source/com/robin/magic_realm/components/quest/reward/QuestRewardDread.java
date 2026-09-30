@@ -19,7 +19,7 @@ public class QuestRewardDread extends QuestReward {
 			character.clearDread();
 			return;
 		}
-		character.applyDread();
+		character.applyDread(frame);
 	}
 	
 	@Override
