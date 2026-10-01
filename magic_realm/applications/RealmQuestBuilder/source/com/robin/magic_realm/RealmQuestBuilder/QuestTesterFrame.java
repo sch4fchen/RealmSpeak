@@ -71,6 +71,7 @@ public class QuestTesterFrame extends JFrame {
 	JButton hirelingUnhire;
 	JButton hirelingKill;
 	JButton hirelingToggleFollow;
+	JButton hirelingMove;
 	JList<QuestJournalEntry> journalList;
 	JList<RealmComponent> markedThings;
 
@@ -848,7 +849,7 @@ public class QuestTesterFrame extends JFrame {
 				updateHirelingsButtons();
 			}
 		});
-		JPanel hirelingButtons = new JPanel(new GridLayout(1, 4));
+		JPanel hirelingButtons = new JPanel(new GridLayout(1, 5));
 		hirelings.setCellRenderer(new HirelingListRenderer());
 		hirelingsPanel.add(hirelings);
 		hirelingAdd = new JButton("Add");
@@ -923,6 +924,22 @@ public class QuestTesterFrame extends JFrame {
 			}
 		});
 		hirelingButtons.add(hirelingToggleFollow);
+		hirelingMove = new JButton("Move");
+		hirelingMove.setToolTipText("Move hireling");
+		hirelingMove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				RealmComponent hireling = hirelings.getSelectedValue();
+				if (hireling != null) {
+					ClearingDetail clearing = chooseNewLocationDialog(false);
+					if (clearing != null) {
+						ClearingUtility.moveToLocation(hireling.getGameObject(),clearing.getTileLocation());
+					}
+				}
+				hirelings.updateUI();
+				retestQuest();
+			}
+		});
+		hirelingButtons.add(hirelingMove);
 		hirelingsPanel.add(hirelingButtons, BorderLayout.SOUTH);
 		panel.add(makeTitledScrollPane("Hirelings", hirelingsPanel));
 
@@ -1935,6 +1952,10 @@ public class QuestTesterFrame extends JFrame {
 				}
 				if (go.getHeldBy() == character.getGameObject()) {
 					sb.append(" (following)");
+				}
+				RealmComponent rc = RealmComponent.getRealmComponent(go);
+				if (!rc.getCurrentLocation().equals(character.getCurrentLocation())) {
+					sb.append(" ("+rc.getCurrentLocation()+")");
 				}
 				
 				setText(sb.toString());

@@ -17,6 +17,7 @@ NEW FEATURES:
 QUEST UPDATE:
 # QuestRequirementCharacter
 # QuestRewardDread
+# Add more quest tester functionalities
 BUGS/ISSUES:
 # Fix Treachery: rebels cannot attack nor be attacked by monsters and unhired natives
 
