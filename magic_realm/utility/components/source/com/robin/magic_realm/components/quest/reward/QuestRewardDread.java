@@ -19,7 +19,9 @@ public class QuestRewardDread extends QuestReward {
 			character.clearDread();
 			return;
 		}
-		character.applyDread();
+		if (!character.hasDread()) {
+			character.applyDread();
+		}
 	}
 	
 	@Override

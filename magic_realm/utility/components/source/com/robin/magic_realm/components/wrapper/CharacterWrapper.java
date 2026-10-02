@@ -97,6 +97,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public static final String DEATH_REASON = "_dxr_";
 	public static final String FORTIFIED = "_frtfid_";
 	public static final String DREAD = "_dread_";
+	public static final String DREAD_WOUND = "_dreadWnd_";
 	public static final String FORT_DAMAGED = "_frtdmg_";
 	public static final String NEEDS_INVENTORY_CHECK = "_invch_";
 	public static final String NEEDS_ACTION_PANEL_UPDATE = "_appu_";
@@ -3998,13 +3999,21 @@ public class CharacterWrapper extends GameObjectWrapper {
 	public boolean hasDread() {
 		return getBoolean(DREAD);
 	}
-	public void applyDread() {
+	private void setDread() {
 		setBoolean(DREAD,true);
 	}
+	public void applyDread() {
+		setDread();
+		setDreadWound(true);
+	}
 	public void clearDread() {
-		if (hasDread()) {
-			setBoolean(DREAD,false);
-		}
+		setBoolean(DREAD,false);
+	}
+	public void setDreadWound(boolean val) {
+		setBoolean(DREAD_WOUND,val);
+	}
+	public boolean hasDreadWound() {
+		return getBoolean(DREAD_WOUND);
 	}
 	public ArrayList<CharacterActionChitComponent> getDreadWoundCandidates() {
 		ArrayList<CharacterActionChitComponent> magic = new ArrayList<>();

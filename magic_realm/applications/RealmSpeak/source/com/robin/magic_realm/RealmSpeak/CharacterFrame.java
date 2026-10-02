@@ -51,6 +51,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 	protected SingleButton enchantButton;
 	protected SingleButton alertButton;
 	protected SingleButton restButton;
+	protected SingleButton dreadButton;
 	protected SingleButton fatigueButton;
 	protected SingleButton woundButton;
 	protected SingleButton energizeChoiceButton;
@@ -1064,6 +1065,33 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			}
 		}
 	}
+	
+	protected void dreadWoundToContinue() {
+		ArrayList<CharacterActionChitComponent> candidates = character.getDreadWoundCandidates();
+		CharacterActionChitComponent chitToWound = null;
+		if (candidates.size() == 1) {
+			chitToWound = candidates.get(0);
+		} else if (!candidates.isEmpty()) {
+			RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(
+					gameHandler.getMainFrame(), "Dread! Choose a chit to wound:", false);
+			for (CharacterActionChitComponent chit : candidates) {
+				chooser.addRealmComponent(chit);
+			}
+			chooser.setVisible(true);
+			if (chooser.getFirstSelectedComponent() != null) {
+				chitToWound = (CharacterActionChitComponent) chooser.getFirstSelectedComponent();
+			} else {
+				chitToWound = candidates.get(0);
+			}
+		}
+		if (chitToWound != null) {
+			chitToWound.makeWounded();
+		}
+		character.setDreadWound(false);
+		gameHandler.submitChanges();
+		gameHandler.updateCharacterFrames();
+		gameHandler.updateCharacterList(); // This is necessary so that THIS client is updated
+	}
 	protected void woundToContinue() {
 		int needToWound = character.getExtraWounds();
 		if (needToWound>0) {
@@ -1550,6 +1578,26 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		ComponentTools.lockComponentSize(fatigueButton, new Dimension(150, 25));
 		singleButtonManager.addButton(fatigueButton);
 		box.add(fatigueButton);
+		
+		// Dread Button
+		dreadButton = new SingleButton("Wound to Continue",true) {
+			public boolean needsShow() {
+				boolean dreadWound = getCharacter().hasDreadWound();
+				return character.isActive()
+						&& character.isCharacter()
+						&& dreadWound;
+			}
+		};
+		dreadButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				dreadWoundToContinue();
+			}
+		});
+		dreadButton.setBorder(BorderFactory.createLineBorder(MagicRealmColor.GOLD, 2));
+		dreadButton.setVisible(false);
+		ComponentTools.lockComponentSize(dreadButton, new Dimension(150, 25));
+		singleButtonManager.addButton(dreadButton);
+		box.add(dreadButton);
 		
 		// Wounds Button
 		woundButton = new SingleButton("Wound to Continue",true) {
