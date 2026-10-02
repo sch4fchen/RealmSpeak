@@ -103,7 +103,6 @@ public class ReadRunes extends RealmTable {
 	public String applyFive(CharacterWrapper character) {
 		HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(character.getGameData());
 		if (hostPrefs.hasPref(Constants.HOUSE3_DREAD) && !character.hasDread() && !character.immuneToCurses()) {
-			character.applyDread();
 			JOptionPane.showMessageDialog(
 				getParentFrame(),
 				"The " + character.getCharacterName() + " is overcome with Dread, and suffers a wound\n"
@@ -113,6 +112,7 @@ public class ReadRunes extends RealmTable {
 				"Read Runes - Dread!",
 				JOptionPane.INFORMATION_MESSAGE,
 				getRollerImage());
+			character.applyDread();
 			return "Dread!";
 		}
 		// Normal Curse — also fires when the character already has Dread (second 5 that day)
