@@ -1141,6 +1141,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				log.addMessage("Private Message", message);
 			}
 		}
+		else if (key.startsWith(Constants.BROADCAST_CHAT_NAMED)) {
+			String sender = key.substring(Constants.BROADCAST_CHAT_NAMED.length());
+			ChatLine line = new ChatLine(sender, message);
+			if (line.isValid()) {
+				CharacterChatPanel.updateAllChatPanels(line);
+				inspector.addChatLine(line);
+			}
+		}
 		else if (key.startsWith(Constants.BROADCAST_CHAT)) {
 			String id = key.substring(Constants.BROADCAST_CHAT.length());
 			GameObject go = client.getGameData().getGameObject(Long.valueOf(id));
