@@ -48,7 +48,8 @@ public class Constants {
 	
 	public static final String BROADCAST_PRIVATE_MESSAGE = "_PRIVATE_ACT_";
 	
-	public static final String BROADCAST_CHAT = "_CHATTY_"; 
+	public static final String BROADCAST_CHAT = "_CHATTY_";
+	public static final String BROADCAST_CHAT_NAMED = "_CHATTY_NAMED_"; 
 	public static final String BROADCAST_ATTENTION = "_ATTEN_HUT_"; 
 	
 	// Combat Status
