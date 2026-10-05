@@ -1150,6 +1150,14 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				inspector.addChatLine(line);
 			}
 		}
+		else if (key.startsWith(Constants.BROADCAST_CHAT_NAMED)) {
+			String sender = key.substring(Constants.BROADCAST_CHAT_NAMED.length());
+			ChatLine line = new ChatLine(sender, message);
+			if (line.isValid()) {
+				CharacterChatPanel.updateAllChatPanels(line);
+				inspector.addChatLine(line);
+			}
+		}
 		else {
 			log.addMessage(key, message);
 		}
