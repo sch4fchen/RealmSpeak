@@ -15,7 +15,10 @@ public class QuestRequirementProbability extends QuestRequirement {
 
 	public QuestRequirementProbability(GameObject go) {
 		super(go);
-		setNumberOfChecks(0);
+		// Do NOT reset _number_of_checks here. CharacterWrapper.getAllQuests() calls
+		// new Quest(go) on every testQuestRequirements() invocation, so the constructor
+		// fires on every check. Resetting the counter here makes max_number_of_checks
+		// unenforceable: the per-day limit is always reset before it can be tested.
 	}
 
 	protected boolean testFulfillsRequirement(JFrame frame, CharacterWrapper character, QuestRequirementParams reqParams) {
