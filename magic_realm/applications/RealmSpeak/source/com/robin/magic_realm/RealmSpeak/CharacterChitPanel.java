@@ -193,6 +193,8 @@ public class CharacterChitPanel extends CharacterFramePanel {
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Enchant;
 		params.actionName = "chit";
-		getCharacter().testQuestRequirements(getGameHandler().getMainFrame(),params);
+		if (getCharacter().testQuestRequirements(getGameHandler().getMainFrame(),params)) {
+			getGameHandler().updateGlobalChat();
+		}
 	}
 }

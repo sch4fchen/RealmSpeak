@@ -860,7 +860,9 @@ public class ActionRow {
 					
 					QuestRequirementParams params = new QuestRequirementParams();
 					params.actionType = CharacterActionType.Hide;
-					character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+						gameHandler.updateGlobalChat();
+					}
 				}
 				else {
 					result = "HIDE table is disabled, due to inclement weather.";
@@ -871,7 +873,9 @@ public class ActionRow {
 			result = "N/A";
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Hide;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	private void doFortifyAction() {
@@ -891,7 +895,9 @@ public class ActionRow {
 		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Fortify;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+			gameHandler.updateGlobalChat();
+		}
 	}
 	private void doMoveAction() {
 		doMoveAction(false);
@@ -1228,7 +1234,9 @@ public class ActionRow {
 										qp.actionName = item.getName();
 										qp.actionType = CharacterActionType.AbandonMissionCampaign;
 										qp.targetOfSearch = gs.getGameObject();
-										character.testQuestRequirements(gameHandler.getMainFrame(),qp);
+										if (character.testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+											gameHandler.updateGlobalChat();
+										}
 									}
 								}
 							}
@@ -1310,7 +1318,9 @@ public class ActionRow {
 					
 					QuestRequirementParams params = new QuestRequirementParams();
 					params.actionType = CharacterActionType.Move;
-					character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+						gameHandler.updateGlobalChat();
+					}
 					
 					if (gameHandler.isOption(RealmSpeakOptions.MAP_FOLLOW_CHARACTER)) {
 						gameHandler.getInspector().getMap().centerOn(character.getCurrentLocation());
@@ -1787,6 +1797,7 @@ public class ActionRow {
 								questsToNote.remove(quest1.getGameObject());
 								questsToNote.add(quest2.getGameObject());
 								character.addNoteTrade(trader.getGameObject(),questsToNote);
+								gameHandler.updateGlobalChat();
 							}
 						}
 					}
@@ -1803,7 +1814,9 @@ public class ActionRow {
 		if (!negate) {
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Trading;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	private void processTrade(RealmComponent trader,String tradeAction,HostPrefWrapper hostPrefs) {
@@ -2124,7 +2137,9 @@ public class ActionRow {
 			completed = true;
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Stealing;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 			return;
 		}	
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(gameHandler.getMainFrame(),"Select victim to steal from:",false);
@@ -2137,7 +2152,9 @@ public class ActionRow {
 		handleTable();
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Stealing;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+			gameHandler.updateGlobalChat();
+		}
 	}
 	private void doRestAction() {
 		if (character.hasCurse(Constants.ILL_HEALTH)) {
@@ -2188,7 +2205,9 @@ public class ActionRow {
 					
 					QuestRequirementParams params = new QuestRequirementParams();
 					params.actionType = CharacterActionType.Rest;
-					character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+						gameHandler.updateGlobalChat();
+					}
 				}
 				else {
 					// Cancelled!
@@ -2203,7 +2222,9 @@ public class ActionRow {
 					result = "You are fully rested.";
 					QuestRequirementParams params = new QuestRequirementParams();
 					params.actionType = CharacterActionType.Rest;
-					character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+						gameHandler.updateGlobalChat();
+					}
 				}
 			}
 		}
@@ -2257,7 +2278,9 @@ public class ActionRow {
 		
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Heal;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+			gameHandler.updateGlobalChat();
+		}
 	}
 	public static RealmComponentOptionChooser alertChooser(CharacterWrapper character, RealmGameHandler gameHandler) {
 		RealmComponentOptionChooser chooser = null;
@@ -2357,7 +2380,9 @@ public class ActionRow {
 				
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Alert;
-				character.testQuestRequirements(gameHandler.getMainFrame(),params);
+				if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+					gameHandler.updateGlobalChat();
+				}
 				
 				gameHandler.updateCharacterFrames();
 			}
@@ -2381,7 +2406,9 @@ public class ActionRow {
 			result = "nothing to alert";
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Alert;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	private void doRepairAction() {
@@ -2412,7 +2439,9 @@ public class ActionRow {
 		}
 		QuestRequirementParams params = new QuestRequirementParams();
 		params.actionType = CharacterActionType.Repair;
-		character.testQuestRequirements(gameHandler.getMainFrame(),params);
+		if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+			gameHandler.updateGlobalChat();
+		}
 	}
 	private void doHireAction() {
 		// Player chooses from native groups, and then gets to bid on lowest ranked native
@@ -2566,7 +2595,9 @@ public class ActionRow {
 							params.objectList.add(hired.getGameObject());
 						}
 					}
-					character.testQuestRequirements(gameHandler.getMainFrame(),params);
+					if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+						gameHandler.updateGlobalChat();
+					}
 				}
 			}
 			else {
@@ -2580,7 +2611,9 @@ public class ActionRow {
 		if (!negate) {
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Hire;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	public static TileLocation getTargetClearingForSpellAction(CharacterWrapper character, RealmGameHandler gameHandler) {
@@ -2771,7 +2804,9 @@ public class ActionRow {
 			params.actionType = CharacterActionType.Enchant;
 			params.actionName = RealmComponent.TILE;
 			params.objectList.add(tile.getGameObject());
-			character.testQuestRequirements(gameHandler.getMainFrame(), params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(), params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 		else {
 			// enchant a chit
@@ -2807,7 +2842,9 @@ public class ActionRow {
 			result = "nothing to enchant";
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Enchant;
-			character.testQuestRequirements(gameHandler.getMainFrame(), params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(), params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	private void doEnhancedPeerAction() {
@@ -2942,7 +2979,9 @@ public class ActionRow {
 						qp.actionName = item.getName();
 						qp.actionType = CharacterActionType.AbandonMissionCampaign;
 						qp.targetOfSearch = gs.getGameObject();
-						character.testQuestRequirements(gameHandler.getMainFrame(),qp);
+						if (character.testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+							gameHandler.updateGlobalChat();
+						}
 					}
 				}
 			}
@@ -2967,7 +3006,9 @@ public class ActionRow {
 			
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Fly;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 			
 			gameHandler.updateCharacterFrames();
 			
@@ -3074,7 +3115,9 @@ public class ActionRow {
 				
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Cache;
-				character.testQuestRequirements(gameHandler.getMainFrame(), params);
+				if (character.testQuestRequirements(gameHandler.getMainFrame(), params)) {
+					gameHandler.updateGlobalChat();
+				}
 			}
 			else {
 				completed = false;

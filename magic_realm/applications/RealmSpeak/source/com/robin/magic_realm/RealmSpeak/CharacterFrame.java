@@ -601,6 +601,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 			
 			// Add the quest
 			getCharacter().addQuest(gameHandler.getMainFrame(),quest);
+			gameHandler.updateGlobalChat();
 			
 			// Submit changes
 			gameHandler.submitChanges();
@@ -851,6 +852,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 								qp.actionType = CharacterActionType.PickUpMissionCampaign;
 								qp.targetOfSearch = gsrc.getGameObject();
 								if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+									gameHandler.updateGlobalChat();
 									gameHandler.getInspector().redrawMap();
 								}
 		
@@ -910,6 +912,7 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 								qp.actionType = CharacterActionType.PickUpMissionCampaign;
 								qp.targetOfSearch = gsrc.getGameObject();
 								if(getCharacter().testQuestRequirements(gameHandler.getMainFrame(),qp)) {
+									gameHandler.updateGlobalChat();
 									gameHandler.getInspector().redrawMap();
 								}
 		
@@ -990,7 +993,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		else {
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Enchant;
-			character.testQuestRequirements(gameHandler.getMainFrame(), params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(), params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	private void doAlertActionAsFollower() {
@@ -1007,7 +1012,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 								
 				QuestRequirementParams params = new QuestRequirementParams();
 				params.actionType = CharacterActionType.Alert;
-				character.testQuestRequirements(gameHandler.getMainFrame(),params);
+				if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+					gameHandler.updateGlobalChat();
+				}
 				
 				gameHandler.updateCharacterFrames();
 			}
@@ -1028,7 +1035,9 @@ public class CharacterFrame extends RealmSpeakInternalFrame implements ICharacte
 		else {
 			QuestRequirementParams params = new QuestRequirementParams();
 			params.actionType = CharacterActionType.Alert;
-			character.testQuestRequirements(gameHandler.getMainFrame(),params);
+			if (character.testQuestRequirements(gameHandler.getMainFrame(),params)) {
+				gameHandler.updateGlobalChat();
+			}
 		}
 	}
 	protected void fatigueToContinue() {

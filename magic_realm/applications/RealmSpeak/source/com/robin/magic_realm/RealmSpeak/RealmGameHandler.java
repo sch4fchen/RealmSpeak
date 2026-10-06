@@ -586,7 +586,9 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			}
 			
 			QuestRequirementParams params = new QuestRequirementParams();
-			ch.testQuestRequirements(null, params);
+			if (ch.testQuestRequirements(null, params)) {
+				updateGlobalChat();
+			}
 			if (hostPrefs.hasPref(Constants.SR_DEDUCT_VPS) && !hostPrefs.hasPref(Constants.EXP_DEVELOPMENT_SR)) {
 				ch.addPenaltyVps();
 			}
@@ -1173,6 +1175,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 	public void broadcastAttention() {
 		broadcast(Constants.BROADCAST_ATTENTION, "");
+	}
+	
+	public void updateGlobalChat() {
+		GameWrapper game = findGame();
+		if (game!=null) {
+			for (String[] chat : game.getGlobalChats()) {
+				broadcastChatNamed(chat[0],chat[1]);
+			}
+			game.clearGlobalChats();
+		}
 	}
 
 	private void handleSummaryMessage(String message) {

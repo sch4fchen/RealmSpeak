@@ -3,8 +3,8 @@ package com.robin.magic_realm.components.quest.reward;
 import javax.swing.JFrame;
 
 import com.robin.game.objects.GameObject;
-import com.robin.magic_realm.RealmSpeak.RealmSpeakFrame;
 import com.robin.magic_realm.components.wrapper.CharacterWrapper;
+import com.robin.magic_realm.components.wrapper.GameWrapper;
 
 public class QuestRewardChat extends QuestReward {
 	
@@ -17,12 +17,10 @@ public class QuestRewardChat extends QuestReward {
 
 	@Override
 	public void processReward(JFrame frame, CharacterWrapper character) {
-		for (int i = 0; i < 8; i++) {
-			  if (frame instanceof RealmSpeakFrame) {
-				  ((RealmSpeakFrame)frame).getGameHandler().broadcastChatNamed(sender(), text());
-				  break;
-			  }
-			}
+		GameWrapper game = GameWrapper.findGame(getGameData());
+		if (game!=null) {
+			game.addGlobalChat(sender(), text());
+		}
 	}
 	
 	@Override

@@ -192,7 +192,10 @@ public class CharacterQuestPanel extends CharacterFramePanel {
 		QuestRequirementParams questRequirementParams = new QuestRequirementParams();
 		questRequirementParams.timeOfCall = getGameHandler().getGame().getGamePhase();
 		if (quest.testRequirements(getMainFrame(), getCharacter(), questRequirementParams)) {
-			getCharacter().testQuestRequirements(getMainFrame()); // Make sure that all quests get updated (auto-journal)
+			getGameHandler().updateGlobalChat();
+			if(getCharacter().testQuestRequirements(getMainFrame())) { // Make sure that all quests get updated (auto-journal)
+				getGameHandler().updateGlobalChat();
+			}
 			getCharacterFrame().updateCharacter();
 			getGameHandler().getInspector().redrawMap();
 		}

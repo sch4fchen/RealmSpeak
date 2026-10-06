@@ -703,6 +703,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 					qp.targetOfSearch = gs.getGameObject();
 					if (getCharacter().testQuestRequirements(getMainFrame(),qp)) {
 						getCharacterFrame().updateCharacter();
+						getGameHandler().updateGlobalChat();
 						getGameHandler().getInspector().redrawMap();
 					}
 				}
@@ -873,6 +874,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
+			getGameHandler().updateGlobalChat();
 			getGameHandler().getInspector().redrawMap();
 		}
 		
@@ -1160,6 +1162,7 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		params.timeOfCall = GamePhaseType.EndOfTurn;
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
+			getGameHandler().updateGlobalChat();
 			getGameHandler().getInspector().redrawMap();
 		}
 		

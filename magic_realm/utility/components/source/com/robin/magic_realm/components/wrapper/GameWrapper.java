@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.robin.game.objects.*;
 import com.robin.general.swing.DieRoller;
+import com.robin.general.util.OrderedHashtable;
 import com.robin.general.util.RandomNumber;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
@@ -35,6 +36,8 @@ public class GameWrapper extends GameObjectWrapper {
 	public static final String GAME_Q_PREFIX = "_gqp__";
 	public static final String GAME_I_ID = "_giid_";
 	public static final String GAME_I_PREFIX = "_gip__";
+	public static final String GAME_CHAT_ID = "_gchatid_";
+	public static final String GAME_CHAT = "_gchat__";
 	public static final String GAME_LAST_REGEN = "_lrg__"; // keeps track of denizens that regenerate on the 7th day
 	public static final String GAME_CLIENTS_TAKEN_TURN = "_ctt__";
 	
@@ -279,6 +282,13 @@ public class GameWrapper extends GameObjectWrapper {
 		return iid;
 	}
 	
+	public int getNextGlobalChatId() {
+		int cid = getInt(GAME_CHAT_ID);
+		cid++;
+		setInt(GAME_CHAT_ID,cid);
+		return cid;
+	}
+	
 	public void addQuestion(String askingPlayerName,String answeringPlayerName,String question) {
 		int qid = getNextQuestionId();
 		String qAttribute = GAME_Q_PREFIX+qid;
@@ -292,6 +302,12 @@ public class GameWrapper extends GameObjectWrapper {
 		String iAttribute = GAME_I_PREFIX+iid;
 		addListItem(iAttribute,player);
 		addListItem(iAttribute,gameObjectId);
+	}
+		
+	public void addGlobalChat(String sender, String text) {
+		String cid = String.valueOf(getNextGlobalChatId());
+		getGameObject().addAttributeListItem(GAME_CHAT,cid,sender);
+		getGameObject().addAttributeListItem(GAME_CHAT,cid,text);
 	}
 	
 	public void clearRegeneratedDenizens() {
@@ -380,6 +396,24 @@ public class GameWrapper extends GameObjectWrapper {
 			}
 		}
 		return null;
+	}
+	
+	public ArrayList<String[]> getGlobalChats() {
+		ArrayList<String[]> chats = new ArrayList<>();
+		if (getGameObject().hasAttributeBlock(GAME_CHAT)) {
+			OrderedHashtable<String, Object> chatBlock = getGameObject().getAttributeBlock(GAME_CHAT);
+			for (Object chatObject : chatBlock.values()) {
+				String[] chat = new String[2];
+				chat[0] = ((ArrayList<String>)chatObject).get(0);
+				chat[1] = ((ArrayList<String>)chatObject).get(1);
+				chats.add(chat);
+			}
+		}
+		return chats;
+	}
+	
+	public void clearGlobalChats() {
+		getGameObject().removeAttributeBlock(GAME_CHAT); 
 	}
 	
 	///////////////////////////////////////////////

@@ -323,7 +323,7 @@ public class RealmPaymentDialog extends AggressiveDialog {
 		params.objectList = new ArrayList<>();
 		params.objectList.add(merchandise);
 		params.targetOfSearch = tradeInfo.getGameObject();
-		character.testQuestRequirements(frame,params);
+		character.testQuestRequirements(frame,params);		
 	}
 	private void doCancel() {
 		if (mc.isBoon()) {
