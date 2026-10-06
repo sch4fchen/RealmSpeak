@@ -60,7 +60,7 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				break;
 			case Chat:
 				list.add(new QuestPropertyBlock(QuestRewardChat.SENDER, "Sender", FieldType.TextLine));
-				list.add(new QuestPropertyBlock(QuestRewardChat.TEXT, "Text", FieldType.TextLine));
+				list.add(new QuestPropertyBlock(QuestRewardChat.TEXT, "Text", FieldType.TextArea));
 				break;
 			case ChooseNextStep:
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));
