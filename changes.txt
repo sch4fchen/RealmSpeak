@@ -1,3 +1,4 @@
+Flash/Mark chat if unread messages
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked, add/remove mark, must not have mark
 QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, random/all/choose
@@ -17,6 +18,7 @@ NEW FEATURES:
 QUEST UPDATE:
 # QuestRequirementCharacter
 # QuestRewardDread
+# QuestRewardChat
 # Add more quest tester functionalities
 BUGS/ISSUES:
 # Fix Treachery: rebels cannot attack nor be attacked by monsters and unhired natives

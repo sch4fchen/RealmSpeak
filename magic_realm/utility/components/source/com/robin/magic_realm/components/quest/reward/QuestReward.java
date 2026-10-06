@@ -27,6 +27,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		AlterBlock,
 		AlterHide,
 		Attribute,
+		Chat,
 		ChooseNextStep,
 		ClonedQuestsComplete,
 		ClonedQuestsFailed,
@@ -129,6 +130,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case AlterBlock:				return "Change questing character's blocked status (from blocked to unblocked, or the other way around).";	
 				case AlterHide:					return "Change questing character's hide status (from hidden to unhidden, or the other way around).";
 				case Attribute:					return "Modify Fame, Notoriety, or Gold.  Can either add or subtract points/gold.";
+				case Chat:						return "Sends a chat message.";
 				case ChooseNextStep:			return "Player chooses the next step to process from those steps that follow this step, and fullfill requirements.";
 				case ClonedQuestsComplete:		return "Tells RealmSpeak that the corresponding cloned quests have been completed.";
 				case ClonedQuestsFailed:		return "Tells RealmSpeak that the corresponding cloned quests have been failed.";
@@ -331,6 +333,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Attribute:
 				reward = new QuestRewardAttribute(go);
+				break;
+			case Chat:
+				reward = new QuestRewardChat(go);
 				break;
 			case ChooseNextStep:
 				reward = new QuestRewardChooseNextStep(go);

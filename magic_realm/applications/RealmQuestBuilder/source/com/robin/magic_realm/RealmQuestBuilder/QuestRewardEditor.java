@@ -11,7 +11,6 @@ import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.ColorMagic;
 import com.robin.magic_realm.components.attribute.RelationshipType;
 import com.robin.magic_realm.components.quest.*;
-import com.robin.magic_realm.components.quest.requirement.QuestRequirementStealing;
 import com.robin.magic_realm.components.quest.reward.*;
 import com.robin.magic_realm.components.utility.Constants;
 import com.robin.magic_realm.components.utility.RealmCalendar;
@@ -58,6 +57,10 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.ATTRIBUTE_TYPE, "Affected Attribute", FieldType.StringSelector, new Object[] { AttributeType.Fame, AttributeType.Notoriety, AttributeType.Gold }));
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.GAIN_TYPE, "Gain or lose", FieldType.StringSelector, GainType.values()));
 				list.add(new QuestPropertyBlock(QuestRewardAttribute.ATTRIBUTE_CHANGE, "Amount", FieldType.Number));
+				break;
+			case Chat:
+				list.add(new QuestPropertyBlock(QuestRewardChat.SENDER, "Sender", FieldType.TextLine));
+				list.add(new QuestPropertyBlock(QuestRewardChat.TEXT, "Text", FieldType.TextLine));
 				break;
 			case ChooseNextStep:
 				list.add(new QuestPropertyBlock(QuestRewardChooseNextStep.TEXT, "Text", FieldType.TextLine));

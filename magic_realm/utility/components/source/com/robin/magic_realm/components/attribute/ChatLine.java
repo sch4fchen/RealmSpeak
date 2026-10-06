@@ -52,12 +52,12 @@ public class ChatLine {
 		return BOLD_PREFIX+character.getChatStyle();
 	}
 	public String getText() {
-		if (headerMode==HeaderMode.SenderName) {
-			return "black";
-		}
 		return text;
 	}
 	public String getTextStyleName() {
+		if (headerMode==HeaderMode.SenderName) {
+			return "black";
+		}
 		return character.getChatStyle();
 	}
 	public boolean isValid() {

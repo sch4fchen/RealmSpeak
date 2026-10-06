@@ -1141,18 +1141,18 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				log.addMessage("Private Message", message);
 			}
 		}
-		else if (key.startsWith(Constants.BROADCAST_CHAT)) {
-			String id = key.substring(Constants.BROADCAST_CHAT.length());
-			GameObject go = client.getGameData().getGameObject(Long.valueOf(id));
-			ChatLine line = new ChatLine(new CharacterWrapper(go), message);
+		else if (key.startsWith(Constants.BROADCAST_CHAT_NAMED)) {
+			String sender = key.substring(Constants.BROADCAST_CHAT_NAMED.length());
+			ChatLine line = new ChatLine(sender, message);
 			if (line.isValid()) {
 				CharacterChatPanel.updateAllChatPanels(line);
 				inspector.addChatLine(line);
 			}
 		}
-		else if (key.startsWith(Constants.BROADCAST_CHAT_NAMED)) {
-			String sender = key.substring(Constants.BROADCAST_CHAT_NAMED.length());
-			ChatLine line = new ChatLine(sender, message);
+		else if (key.startsWith(Constants.BROADCAST_CHAT)) {
+			String id = key.substring(Constants.BROADCAST_CHAT.length());
+			GameObject go = client.getGameData().getGameObject(Long.valueOf(id));
+			ChatLine line = new ChatLine(new CharacterWrapper(go), message);
 			if (line.isValid()) {
 				CharacterChatPanel.updateAllChatPanels(line);
 				inspector.addChatLine(line);
@@ -1165,6 +1165,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 
 	public void broadcastChat(CharacterWrapper character, String text) {
 		broadcast(Constants.BROADCAST_CHAT + character.getGameObject().getStringId(), text);
+	}
+	
+	public void broadcastChatNamed(String senderName, String text) {
+		broadcast(Constants.BROADCAST_CHAT_NAMED + senderName, text);
 	}
 
 	public void broadcastAttention() {
@@ -1190,10 +1194,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		broadcast(Constants.BROADCAST_SPECIAL_ACTION, Constants.MESSAGE_REPLOT_MAP);
 	}
 
-	public void broadcastSummaryMessage(String message) { // Ultimately, this
-															// will be a
-															// SummaryMessage
-															// object
+	public void broadcastSummaryMessage(String message) { // Ultimately, this will be a SummaryMessage object
 		if (isHostPlayer()) {
 			handleSummaryMessage(message);
 		}
