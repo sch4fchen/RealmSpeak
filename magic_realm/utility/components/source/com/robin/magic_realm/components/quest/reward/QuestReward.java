@@ -34,6 +34,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 		ClonedQuestsCounter,
 		Companion,
 		Control,
+		ControlledDenizen,
 		Counter,
 		Curse,
 		CustomTreasure,
@@ -137,6 +138,7 @@ public abstract class QuestReward extends AbstractQuestObject {
 				case ClonedQuestsCounter:		return "Modify count value of a counters of cloned quests.";
 				case Companion:					return "Add or remove a monster ally.";
 				case Control:					return "Gives the character control over denizens.";
+				case ControlledDenizen:			return "Summons and controls a denizen as a companion with its own character window.";
 				case Counter:					return "Modify count value of a counter.";
 				case Curse:						return "Curses the character.";
 				case CustomTreasure:			return "Create a new treasure by taking an existing treasure, renaming it, and giving it new base attributes.";
@@ -354,6 +356,9 @@ public abstract class QuestReward extends AbstractQuestObject {
 				break;
 			case Control:
 				reward = new QuestRewardControl(go);
+				break;
+			case ControlledDenizen:
+				reward = new QuestRewardControlledDenizen(go);
 				break;
 			case Counter:
 				reward = new QuestRewardCounter(go);
