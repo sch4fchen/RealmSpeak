@@ -26,10 +26,10 @@ public class QuestRequirementTimePassed extends QuestRequirement {
 			logger.fine("Quest step has no start time?  This is a bug.");
 			return false;
 		}
-		DayKey now = new DayKey(reqParams.dayKey);
-		if (now.equals(new DayKey(0,0))) {
-			now = new DayKey(1,1);
+		if (start.equals(new DayKey(0,0))) {
+			start = new DayKey(1,1);
 		}
+		DayKey now = new DayKey(reqParams.dayKey);
 		int daysPassed = now.compareTo(start);
 		boolean ret = daysPassed>=daysNeeded;
 		if (!ret) {
