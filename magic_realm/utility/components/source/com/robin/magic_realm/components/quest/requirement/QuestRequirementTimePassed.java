@@ -27,8 +27,8 @@ public class QuestRequirementTimePassed extends QuestRequirement {
 			return false;
 		}
 		DayKey now = new DayKey(reqParams.dayKey);
-		if (start.equals(new DayKey(0,0))) {
-			start = new DayKey(1,1);
+		if (now.equals(new DayKey(0,0))) {
+			now = new DayKey(1,1);
 		}
 		int daysPassed = now.compareTo(start);
 		boolean ret = daysPassed>=daysNeeded;
