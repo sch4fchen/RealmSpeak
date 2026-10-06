@@ -874,10 +874,10 @@ public class RealmTurnPanel extends CharacterFramePanel {
 
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
-			getGameHandler().updateGlobalChat();
 			getGameHandler().getInspector().redrawMap();
 		}
 		
+		getGameHandler().updateGlobalChat();
 		getGameHandler().submitChanges(); // Will this work okay?
 		
 		actionTable.repaint();
@@ -1162,9 +1162,9 @@ public class RealmTurnPanel extends CharacterFramePanel {
 		params.timeOfCall = GamePhaseType.EndOfTurn;
 		if (getCharacter().testQuestRequirements(getMainFrame(),params)) {
 			getCharacterFrame().updateCharacter();
-			getGameHandler().updateGlobalChat();
 			getGameHandler().getInspector().redrawMap();
 		}
+		getGameHandler().updateGlobalChat();
 		
 		// Flip chits, and summon monsters/natives
 		if (getsTurn && current!=null && !getCharacter().isMinion() && !getCharacter().isSleep()) {
