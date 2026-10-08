@@ -986,6 +986,12 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				characterTradeFrame.setGold(info.getGold());
 			}
 		}
+		else if (RealmDirectInfoHolder.TRADE_FINISHED.equals(command)) {
+			if (characterTradeFrame != null) {
+				characterTradeFrame.testTradeQuests();
+			}
+			killCharacterTradeFrame();
+		}
 		else if (RealmDirectInfoHolder.TRADE_CANCEL.equals(command) || RealmDirectInfoHolder.TRADE_DONE.equals(command)) {
 			killCharacterTradeFrame();
 		}
