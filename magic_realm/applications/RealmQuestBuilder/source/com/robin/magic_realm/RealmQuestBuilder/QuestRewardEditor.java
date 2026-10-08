@@ -86,6 +86,8 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.COMPANION_RENAME, "Rename companion", FieldType.TextLine));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION_ONLY, "Appear in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardCompanion.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
+				list.add(new QuestPropertyBlock(QuestRewardCompanion.MARK, "Mark companion", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRewardCompanion.REQ_MARK, "Requires mark (when loosing)", FieldType.Boolean));
 				break;
 			case Control:
 				list.add(new QuestPropertyBlock(QuestRewardControl.DENIZEN_REGEX, "Denizen name filter (regex)", FieldType.Regex, null, new String[] { Constants.DENIZEN }));

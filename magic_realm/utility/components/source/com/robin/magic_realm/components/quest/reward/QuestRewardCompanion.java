@@ -15,6 +15,7 @@ import com.robin.magic_realm.components.PathDetail;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.TileLocation;
 import com.robin.magic_realm.components.quest.GainType;
+import com.robin.magic_realm.components.quest.Quest;
 import com.robin.magic_realm.components.quest.QuestConstants;
 import com.robin.magic_realm.components.quest.QuestLocation;
 import com.robin.magic_realm.components.quest.QuestStep;
@@ -32,6 +33,8 @@ public class QuestRewardCompanion extends QuestReward {
 	public static final String COMPANION_RENAME = "_cname";
 	public static final String LOCATION_ONLY = "_loc_only";
 	public static final String LOCATION = "_loc";
+	public static final String MARK = "_mark";
+	public static final String REQ_MARK = "_req_mark";
 	
 	public QuestRewardCompanion(GameObject go) {
 		super(go);
@@ -43,6 +46,9 @@ public class QuestRewardCompanion extends QuestReward {
 			GameObject companion = TemplateLibrary.getSingleton().createCompanionFromTemplate(getGameData(),template);
 			if (renameCompanionTo() != null && !renameCompanionTo().isEmpty()) {
 				companion.setName(renameCompanionTo());
+			}
+			if (mark()) {
+				Quest.GameObjectAddQuestMark(companion, getParentQuest().getGameObject().getStringId());
 			}
 			character.addHireling(companion,Constants.TEN_YEARS);
 			character.getGameObject().add(companion);
@@ -72,9 +78,11 @@ public class QuestRewardCompanion extends QuestReward {
 			ArrayList<GameObject> companionsExisting = new ArrayList<>();
 			companionsExisting.addAll(pool.find(getCompanionQuery()));
 			companionsExisting.addAll(pool.find("name="+getCompanionKeyName()));
+			String questId = getParentQuest().getGameObject().getStringId();
 			for (GameObject companion : companionsExisting ) {
 				RealmComponent companionRc = RealmComponent.getRealmComponent(companion);
 				if (companionRc != null && companionRc.getOwnerId() != null && companionRc.getOwnerId().matches(String.valueOf(character.getGameObject().getId()))) {
+					if (requiresMark() && !Quest.GameObjectHasQuestMark(companion, questId)) continue;
 					character.removeHireling(companion);
 					// Companions must be removed from the map as well, since they are not rehired!
 					if (!leaveCompanionInGameWhenLost()) {
@@ -82,6 +90,9 @@ public class QuestRewardCompanion extends QuestReward {
 					}
 					if (renameCompanionTo() != null && !renameCompanionTo().isEmpty()) {
 						companion.setName(renameCompanionTo());
+					}
+					if (mark()) {
+						Quest.GameObjectAddQuestMark(companion, getParentQuest().getGameObject().getStringId());
 					}
 					return;
 				}
@@ -144,6 +155,14 @@ public class QuestRewardCompanion extends QuestReward {
 	
 	private boolean locationOnly() {
 		return getBoolean(LOCATION_ONLY);
+	}
+	
+	private boolean mark() {
+		return getBoolean(MARK);
+	}
+	
+	private boolean requiresMark() {
+		return getBoolean(REQ_MARK);
 	}
 
 	public boolean usesLocationTag(String tag) {
