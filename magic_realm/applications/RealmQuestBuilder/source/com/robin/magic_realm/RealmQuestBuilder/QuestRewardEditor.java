@@ -96,6 +96,12 @@ public class QuestRewardEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRewardControl.LOCATION_ONLY, "Control targets in location", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRewardControl.LOCATION, "Location", FieldType.GameObjectWrapperSelector, quest.getLocations().toArray()));
 				break;
+			case ControlledDenizen:
+				list.add(new QuestPropertyBlock(QuestRewardControlledDenizen.DENIZEN_NAME, "Denizen", FieldType.CompanionSelector, getAllCompanionKeyValues()));
+				list.add(new QuestPropertyBlock(QuestRewardControlledDenizen.GAIN_TYPE, "Gain/Lose", FieldType.StringSelector, GainType.values()));
+				list.add(new QuestPropertyBlock(QuestRewardControlledDenizen.DENIZEN_RENAME, "Rename to", FieldType.TextLine));
+				list.add(new QuestPropertyBlock(QuestRewardControlledDenizen.RETAIN_ON_MAP, "Retain on map when control lost", FieldType.Boolean));
+				break;
 			case Counter:
 				list.add(new QuestPropertyBlock(QuestRewardCounter.COUNTER, "Quest Counter", FieldType.GameObjectWrapperSelector, quest.getCounters().toArray()));
 				list.add(new QuestPropertyBlock(QuestRewardCounter.SET_COUNT, "Set current count ("+QuestConstants.ALL_VALUE+"=no change)", FieldType.NumberAll));
