@@ -30,9 +30,9 @@ public class ChatLine {
 	public ChatLine(String senderName, String text) {
 		this.senderName = senderName;
 		this.text = text;
-		headerMode = HeaderMode.SenderName;
 	}
 	public String getHeader() {
+		if (senderName != null) return senderName;
 		switch(headerMode) {
 			case CharacterName:
 				return character.getName();
@@ -46,22 +46,18 @@ public class ChatLine {
 		return character.getName()+" ("+character.getPlayerName()+")";
 	}
 	public String getHeaderStyleName() {
-		if (headerMode==HeaderMode.SenderName) {
-				return BOLD_PREFIX+"black";
-		}
+		if (senderName != null) return BOLD_PREFIX+"black";
 		return BOLD_PREFIX+character.getChatStyle();
 	}
 	public String getText() {
 		return text;
 	}
 	public String getTextStyleName() {
-		if (headerMode==HeaderMode.SenderName) {
-			return "black";
-		}
+		if (senderName != null) return "black";
 		return character.getChatStyle();
 	}
 	public boolean isValid() {
-		return ((character!=null && headerMode!=HeaderMode.SenderName) || (senderName!=null && headerMode==HeaderMode.SenderName))
-				&& text.trim().length()>0;
+		if (senderName != null) return text.trim().length() > 0;
+		return character != null && text.trim().length() > 0;
 	}
 }
