@@ -14,7 +14,7 @@ import com.robin.general.sound.SoundCache;
 import com.robin.magic_realm.components.CharacterChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
-import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
+import com.robin.magic_realm.components.attribute.ChatLineCharacter.HeaderMode;
 import com.robin.magic_realm.components.utility.CustomUiUtility;
 
 public class RealmSpeakOptionPanel extends JDialog {

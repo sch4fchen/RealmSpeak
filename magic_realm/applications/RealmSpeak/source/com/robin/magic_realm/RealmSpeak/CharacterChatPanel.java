@@ -80,7 +80,7 @@ public class CharacterChatPanel extends CharacterFramePanel {
 		
 		Style s;
 		for (ChatStyle style:ChatStyle.styles) {
-			s = chatDoc.addStyle(ChatLine.BOLD_PREFIX+style.getStyleName(),regular);
+			s = chatDoc.addStyle(ChatStyle.BOLD_PREFIX+style.getStyleName(),regular);
 			StyleConstants.setForeground(s,style.getColor());
 			StyleConstants.setBold(s, true);
 			

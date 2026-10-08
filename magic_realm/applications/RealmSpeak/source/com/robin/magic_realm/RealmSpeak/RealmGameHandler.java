@@ -1145,7 +1145,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		}
 		else if (key.startsWith(Constants.BROADCAST_CHAT_NAMED)) {
 			String sender = key.substring(Constants.BROADCAST_CHAT_NAMED.length());
-			ChatLine line = new ChatLine(sender, message);
+			ChatLineGlobal line = new ChatLineGlobal(sender, message);
 			if (line.isValid()) {
 				CharacterChatPanel.updateAllChatPanels(line);
 				inspector.addChatLine(line);
@@ -1154,7 +1154,7 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 		else if (key.startsWith(Constants.BROADCAST_CHAT)) {
 			String id = key.substring(Constants.BROADCAST_CHAT.length());
 			GameObject go = client.getGameData().getGameObject(Long.valueOf(id));
-			ChatLine line = new ChatLine(new CharacterWrapper(go), message);
+			ChatLineCharacter line = new ChatLineCharacter(new CharacterWrapper(go), message);
 			if (line.isValid()) {
 				CharacterChatPanel.updateAllChatPanels(line);
 				inspector.addChatLine(line);

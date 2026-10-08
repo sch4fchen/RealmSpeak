@@ -12,8 +12,8 @@ import com.robin.magic_realm.components.ChitComponent;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.TileComponent;
 import com.robin.magic_realm.RealmBattle.CombatFrame;
-import com.robin.magic_realm.components.attribute.ChatLine;
-import com.robin.magic_realm.components.attribute.ChatLine.HeaderMode;
+import com.robin.magic_realm.components.attribute.ChatLineCharacter;
+import com.robin.magic_realm.components.attribute.ChatLineCharacter.HeaderMode;
 import com.robin.magic_realm.components.swing.CenteredMapView;
 import com.robin.magic_realm.components.utility.CustomUiUtility;
 import com.robin.magic_realm.components.utility.RealmUtility;
@@ -138,7 +138,7 @@ public class RealmSpeakOptions {
 		}
 		String headerMode = options.get(HEADER_CHAT_LINES);
 		if (headerMode!=null) {
-			ChatLine.setHeaderMode(HeaderMode.valueOf(headerMode));
+			ChatLineCharacter.setHeaderMode(HeaderMode.valueOf(headerMode));
 		}
 		CenteredMapView.setFollowEnabled(options.getBoolean(MAP_FOLLOW_CHARACTER));
 		CombatFrame.setAutoPositioningAttackers(options.getBoolean(AUTO_POSITIONING_ATTACKERS));

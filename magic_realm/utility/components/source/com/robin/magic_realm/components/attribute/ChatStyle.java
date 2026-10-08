@@ -6,6 +6,8 @@ import com.robin.magic_realm.components.MagicRealmColor;
 
 public class ChatStyle {
 	
+	public static String BOLD_PREFIX = "b_";
+	
 	public static ChatStyle[] styles = {
 		new ChatStyle("blue",Color.blue),
 		new ChatStyle("fgreen",MagicRealmColor.FORESTGREEN),
