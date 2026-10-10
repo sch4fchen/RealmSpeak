@@ -82,6 +82,15 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 			case CharacterClass:
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterClass.REGEX_FILTER, "Character(s)", FieldType.Regex, null, new String[] {"character"}));
 				break;
+			case CharacterTrade:
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.DIRECTION, "Direction (quest holder gives/receives)", FieldType.StringSelector, QuestRequirementCharacterTrade.TradeDirection.values()));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.ITEM_REGEX, "Item name (empty = any item)", FieldType.Regex, null, new String[] { "item","treasure" }));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.ITEM_COUNT, "Minimum matching items (0 = no item condition)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.MIN_GOLD, "Minimum gold (0 = no gold condition)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.PARTNER_REGEX, "Trade partner (empty = any character)", FieldType.Regex, null, new String[] { "character" }));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.PARTNER_REQ_MARK, "Partner requires mark?", FieldType.Boolean));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.PARTNER_ADD_MARK, "Add mark to partner?", FieldType.Boolean));
+				break;
 			case CharacterType:
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.REQUIRES_TRANSMORPHED, "Must be transmorphed", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterType.TYPE, "Type", FieldType.StringSelector, TransmorphType.values()));

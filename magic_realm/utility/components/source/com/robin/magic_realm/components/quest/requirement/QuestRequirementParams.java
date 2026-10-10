@@ -1,6 +1,7 @@
 package com.robin.magic_realm.components.quest.requirement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.robin.game.objects.GameData;
 import com.robin.game.objects.GameObject;
@@ -16,7 +17,13 @@ public class QuestRequirementParams {
 	public String dayKey;
 	public ArrayList<GameObject> objectList =  new ArrayList<>();
 	public ColorMagic burnedColor;
-	
+
+	// Character-to-character trade: objectList holds what was given
+	public ArrayList<GameObject> receivedList = new ArrayList<>();
+	public int goldGiven;
+	public int goldReceived;
+	private static final String CHARACTER_TRADE_MARKER = "CTRADE";
+
 	// Search stuff
 	public int dieResult;
 	public SearchResultType searchType = SearchResultType.Any;
@@ -35,6 +42,9 @@ public class QuestRequirementParams {
 		objectList.clear();
 		searchHadAnEffect = false;
 		targetOfSearch = null;
+		receivedList.clear();
+		goldGiven = 0;
+		goldReceived = 0;
 	}
 	public String asString() {
 		ArrayList<String> list = new ArrayList<>();
@@ -48,6 +58,14 @@ public class QuestRequirementParams {
 		list.add(targetOfSearch==null?"null":targetOfSearch.getStringId());
 		if (objectList!=null) {
 			for(GameObject res:objectList) {
+				if (res!=null) list.add(res.getStringId());
+			}
+		}
+		if (actionType==CharacterActionType.TradingWithCharacter) {
+			list.add(CHARACTER_TRADE_MARKER);
+			list.add(String.valueOf(goldGiven));
+			list.add(String.valueOf(goldReceived));
+			for(GameObject res:receivedList) {
 				if (res!=null) list.add(res.getStringId());
 			}
 		}
@@ -67,8 +85,18 @@ public class QuestRequirementParams {
 			qp.targetOfSearch = readGameObject(list.get(7),gameData);
 		}
 		if (list.size()>8) {
-			for(String val:list.subList(8,list.size())) {
+			List<String> rest = list.subList(8,list.size());
+			int marker = rest.indexOf(CHARACTER_TRADE_MARKER);
+			List<String> objects = marker>=0?rest.subList(0,marker):rest;
+			for(String val:objects) {
 				qp.objectList.add(readGameObject(val,gameData));
+			}
+			if (marker>=0 && rest.size()>=marker+3) {
+				qp.goldGiven = Integer.parseInt(rest.get(marker+1));
+				qp.goldReceived = Integer.parseInt(rest.get(marker+2));
+				for(String val:rest.subList(marker+3,rest.size())) {
+					qp.receivedList.add(readGameObject(val,gameData));
+				}
 			}
 		}
 		return qp;

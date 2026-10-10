@@ -986,6 +986,16 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 				characterTradeFrame.setGold(info.getGold());
 			}
 		}
+		else if (RealmDirectInfoHolder.TRADE_FINISHED.equals(command)) {
+			// Runs on the GameClient thread: quest checks submit changes and may show dialogs, so use the EDT
+			final CharacterTradeFrame finishedFrame = characterTradeFrame;
+			SwingUtilities.invokeLater(() -> {
+				if (finishedFrame != null && finishedFrame == characterTradeFrame) {
+					finishedFrame.testTradeQuests();
+					killCharacterTradeFrame();
+				}
+			});
+		}
 		else if (RealmDirectInfoHolder.TRADE_CANCEL.equals(command) || RealmDirectInfoHolder.TRADE_DONE.equals(command)) {
 			killCharacterTradeFrame();
 		}

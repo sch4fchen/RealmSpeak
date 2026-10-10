@@ -17,6 +17,8 @@ import com.robin.general.swing.ListChooser;
 import com.robin.magic_realm.components.MagicRealmColor;
 import com.robin.magic_realm.components.RealmComponent;
 import com.robin.magic_realm.components.attribute.Inventory;
+import com.robin.magic_realm.components.quest.CharacterActionType;
+import com.robin.magic_realm.components.quest.requirement.QuestRequirementParams;
 import com.robin.magic_realm.components.swing.RealmObjectPanel;
 import com.robin.magic_realm.components.swing.RealmTradeDialog;
 import com.robin.magic_realm.components.utility.Constants;
@@ -120,7 +122,8 @@ public class CharacterTradeFrame extends JFrame {
 				offerButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						completeTrade(false);
-						sendMessage(RealmDirectInfoHolder.TRADE_DONE);
+						testTradeQuests();
+						sendMessage(RealmDirectInfoHolder.TRADE_FINISHED);
 						cleanExit();
 					}
 				});
@@ -130,7 +133,8 @@ public class CharacterTradeFrame extends JFrame {
 			okayButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ev) {
 					completeTrade(true);
-					sendMessage(RealmDirectInfoHolder.TRADE_DONE);
+					testTradeQuests();
+					sendMessage(RealmDirectInfoHolder.TRADE_FINISHED);
 					cleanExit();
 				}
 			});
@@ -225,6 +229,30 @@ public class CharacterTradeFrame extends JFrame {
 		// Submit
 		gameHandler.submitChanges();
 		gameHandler.updateCharacterFrames();
+	}
+	// Each client tests only its own parties, so a self-trade is tested exactly once
+	public void testTradeQuests() {
+		String clientName = gameHandler.getClient().getClientName();
+		boolean changed = false;
+		changed |= testTradeQuests(clientName,activePanel,includePanel);
+		changed |= testTradeQuests(clientName,includePanel,activePanel);
+		if (changed) {
+			gameHandler.updateGlobalChat();
+		}
+		gameHandler.submitChanges();
+		gameHandler.updateCharacterFrames();
+	}
+	private boolean testTradeQuests(String clientName,TradePanel holder,TradePanel partner) {
+		CharacterWrapper character = holder.getCharacter();
+		if (!clientName.equals(character.getPlayerName())) return false;
+		QuestRequirementParams params = new QuestRequirementParams();
+		params.actionType = CharacterActionType.TradingWithCharacter;
+		params.targetOfSearch = partner.getCharacter().getGameObject();
+		params.objectList.addAll(holder.getOnTheTable());
+		params.goldGiven = holder.getGold();
+		params.receivedList.addAll(partner.getOnTheTable());
+		params.goldReceived = partner.getGold();
+		return character.testQuestRequirements(gameHandler.getMainFrame(),params);
 	}
 	public static void updateDiscoveries(CharacterWrapper character,ArrayList<String> newDiscoveries) {
 		for (String discovery : newDiscoveries) {

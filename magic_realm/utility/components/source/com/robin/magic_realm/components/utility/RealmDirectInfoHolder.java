@@ -21,6 +21,7 @@ public class RealmDirectInfoHolder {
 	public static final String TRADE_CANCEL = "trCanc";
 	public static final String TRADE_GOLD = "trGold";
 	public static final String TRADE_DONE = "trDone";
+	public static final String TRADE_FINISHED = "trFin"; // trade completed via Finish Trade or Offer
 	
 	// Direct Info Commands for showing popup messages
 	public static final String POPUP_MESSAGE = "puMessage";

@@ -22,6 +22,7 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 		CastSpell,
 		Character,
 		CharacterClass,
+		CharacterTrade,
 		CharacterType,
 		Chit,
 		Clearing,
@@ -90,6 +91,8 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 					return "Tests for characters in same clearing or tile.";
 				case CharacterClass:
 					return "Tests for the characters class.";
+				case CharacterTrade:
+					return "Tests for a finished trade with another character (items and/or gold changing hands).";
 				case CharacterType:
 					return "Tests for the characters name or transmorphed form.";
 				case Chit:
@@ -299,6 +302,9 @@ public abstract class QuestRequirement extends AbstractQuestObject {
 				break;
 			case CharacterClass:
 				requirement = new QuestRequirementCharacterClass(go);
+				break;
+			case CharacterTrade:
+				requirement = new QuestRequirementCharacterTrade(go);
 				break;
 			case CharacterType:
 				requirement = new QuestRequirementCharacterType(go);
