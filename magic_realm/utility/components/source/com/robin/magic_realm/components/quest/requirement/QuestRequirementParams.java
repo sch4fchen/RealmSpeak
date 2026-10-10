@@ -42,6 +42,7 @@ public class QuestRequirementParams {
 		objectList.clear();
 		searchHadAnEffect = false;
 		targetOfSearch = null;
+		burnedColor = null;
 		receivedList.clear();
 		goldGiven = 0;
 		goldReceived = 0;
@@ -56,6 +57,7 @@ public class QuestRequirementParams {
 		list.add(searchType == null ? SearchResultType.Any.toString() : searchType.toString());
 		list.add(searchHadAnEffect?"T":"F");
 		list.add(targetOfSearch==null?"null":targetOfSearch.getStringId());
+		list.add(burnedColor==null?"null":burnedColor.getColorName());
 		if (objectList!=null) {
 			for(GameObject res:objectList) {
 				if (res!=null) list.add(res.getStringId());
@@ -74,7 +76,7 @@ public class QuestRequirementParams {
 	public static QuestRequirementParams valueOf(String s,GameData gameData) {
 		ArrayList<String> list = StringUtilities.stringToCollection(s,"@",true);
 		QuestRequirementParams qp = new QuestRequirementParams();
-		if (list.size()>=8) {
+		if (list.size()>=9) {
 			qp.timeOfCall = GamePhaseType.valueOf(list.get(0));
 			qp.actionName = list.get(1)==null?null:list.get(1);
 			qp.dayKey = list.get(2)==null?null:list.get(2);
@@ -83,9 +85,10 @@ public class QuestRequirementParams {
 			qp.searchType = SearchResultType.valueOf(list.get(5));
 			qp.searchHadAnEffect = "T".equals(list.get(6));
 			qp.targetOfSearch = readGameObject(list.get(7),gameData);
+			qp.burnedColor = ColorMagic.makeColorMagic(list.get(8),false);
 		}
-		if (list.size()>8) {
-			List<String> rest = list.subList(8,list.size());
+		if (list.size()>9) {
+			List<String> rest = list.subList(9,list.size());
 			int marker = rest.indexOf(CHARACTER_TRADE_MARKER);
 			List<String> objects = marker>=0?rest.subList(0,marker):rest;
 			for(String val:objects) {
