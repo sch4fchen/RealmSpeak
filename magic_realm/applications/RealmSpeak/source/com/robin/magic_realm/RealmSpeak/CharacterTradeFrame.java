@@ -122,7 +122,8 @@ public class CharacterTradeFrame extends JFrame {
 				offerButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ev) {
 						completeTrade(false);
-						sendMessage(RealmDirectInfoHolder.TRADE_DONE);
+						testTradeQuests();
+						sendMessage(RealmDirectInfoHolder.TRADE_FINISHED);
 						cleanExit();
 					}
 				});
