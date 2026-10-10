@@ -86,6 +86,7 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.DIRECTION, "Direction (quest holder gives/receives)", FieldType.StringSelector, QuestRequirementCharacterTrade.TradeDirection.values()));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.ITEM_REGEX, "Item name (empty = any item)", FieldType.Regex, null, new String[] { "item","treasure" }));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.ITEM_COUNT, "Minimum matching items (0 = no item condition)", FieldType.NumberAll));
+				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.ITEM_REQ_MARK, "Item  requires mark?", FieldType.Boolean));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.MIN_GOLD, "Minimum gold (0 = no gold condition)", FieldType.NumberAll));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.PARTNER_REGEX, "Trade partner (empty = any character)", FieldType.Regex, null, new String[] { "character" }));
 				list.add(new QuestPropertyBlock(QuestRequirementCharacterTrade.PARTNER_REQ_MARK, "Partner requires mark?", FieldType.Boolean));

@@ -123,7 +123,7 @@ public class CharacterTradeFrame extends JFrame {
 					public void actionPerformed(ActionEvent ev) {
 						completeTrade(false);
 						testTradeQuests();
-						sendMessage(RealmDirectInfoHolder.TRADE_FINISHED);
+						sendMessage(RealmDirectInfoHolder.TRADE_DONE);
 						cleanExit();
 					}
 				});
@@ -134,7 +134,7 @@ public class CharacterTradeFrame extends JFrame {
 				public void actionPerformed(ActionEvent ev) {
 					completeTrade(true);
 					testTradeQuests();
-					sendMessage(RealmDirectInfoHolder.TRADE_FINISHED);
+					sendMessage(RealmDirectInfoHolder.TRADE_DONE);
 					cleanExit();
 				}
 			});

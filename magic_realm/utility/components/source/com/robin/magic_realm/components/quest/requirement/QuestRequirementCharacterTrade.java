@@ -26,6 +26,7 @@ public class QuestRequirementCharacterTrade extends QuestRequirement {
 	public static final String PARTNER_REGEX = "_ct_prx";
 	public static final String PARTNER_REQ_MARK = "_ct_preqm";
 	public static final String PARTNER_ADD_MARK = "_ct_paddm";
+	public static final String ITEM_REQ_MARK = "_ct_ireqm";
 
 	public QuestRequirementCharacterTrade(GameObject go) {
 		super(go);
@@ -73,7 +74,9 @@ public class QuestRequirementCharacterTrade extends QuestRequirement {
 		String itemRegex = getItemRegEx();
 		Pattern pattern = itemRegex.isEmpty()?null:Pattern.compile(itemRegex);
 		int matches = 0;
+		String questId = getParentQuest().getGameObject().getStringId();
 		for (GameObject go : items) {
+			if (itemRequiresMark() && !Quest.GameObjectHasQuestMark(go, questId)) continue;
 			if (go!=null && (pattern==null || pattern.matcher(go.getName()).find())) {
 				matches++;
 			}
@@ -140,5 +143,8 @@ public class QuestRequirementCharacterTrade extends QuestRequirement {
 	}
 	private boolean partnerAddMark() {
 		return getBoolean(PARTNER_ADD_MARK);
+	}
+	private boolean itemRequiresMark() {
+		return getBoolean(ITEM_REQ_MARK);
 	}
 }

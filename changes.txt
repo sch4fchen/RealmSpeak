@@ -17,6 +17,7 @@ NEW FEATURES:
 # Dread Roberts Runes House Rule
 QUEST UPDATE:
 # QuestRequirementCharacter
+# QuestRequirementCharacterTrade
 # QuestRewardDread
 # QuestRewardChat
 # ControlledDenizen
