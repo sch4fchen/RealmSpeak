@@ -34,7 +34,7 @@ public class RealmObjectMaster {
 		}
 	}
 	
-	public static void resetAll() {
+	public static synchronized void resetAll() {
 		if (map!=null) {
 			map.clear();
 			map = null;
@@ -60,21 +60,23 @@ public class RealmObjectMaster {
 	}
 	
 	/**
-	 * @return		A Collection of all characters (dead or alive), all Native Leaders (hired or not, dead or alive),
+	 * @return		A Collection of all characters (dead or alive), all Natives (hired or not, dead or alive),
 	 * 				and all the monsters (they may get controlled!)
 	 */
-	public ArrayList<GameObject> getPlayerCharacterObjects() {
+	// Shared across host/network threads: publish each lazy list only once fully built, never half-built.
+	public synchronized ArrayList<GameObject> getPlayerCharacterObjects() {
 		int dataSize = data.getGameObjects().size();
 		if (gameObjectCountForPlayers!=dataSize) {
 			gameObjectCountForPlayers = dataSize;
 			playerCharacterObjects = null;
 		}
 		if (playerCharacterObjects==null) {
-			playerCharacterObjects = new ArrayList<>();
-			playerCharacterObjects.addAll(findObjects("character"));
-			playerCharacterObjects.addAll(findObjects("native,rank")); // not just leaders anymore, due to Hypnotize spell!
-			playerCharacterObjects.addAll(findObjects("monster,!part"));
-//			playerCharacterObjects.addAll(getCachedObjects("familiar",false));
+			ArrayList<GameObject> list = new ArrayList<>();
+			list.addAll(findObjects("character"));
+			list.addAll(findObjects("native,rank")); // not just leaders anymore, due to Hypnotize spell!
+			list.addAll(findObjects("monster,!part"));
+//			list.addAll(getCachedObjects("familiar",false));
+			playerCharacterObjects = list;
 		}
 		return playerCharacterObjects;
 	}
@@ -82,41 +84,42 @@ public class RealmObjectMaster {
 	/**
 	 * @return		A Collection of all natives & monsters, dead or alive, controlled/hired or not.
 	 */
-	public ArrayList<GameObject> getDenizenObjects() {
+	public synchronized ArrayList<GameObject> getDenizenObjects() {
 		if (denizenObjects==null) {
-			denizenObjects = new ArrayList<>();
-			denizenObjects.addAll(findObjects("native,rank"));
-			denizenObjects.addAll(findObjects("monster,!part"));
+			ArrayList<GameObject> list = new ArrayList<>();
+			list.addAll(findObjects("native,rank"));
+			list.addAll(findObjects("monster,!part"));
+			denizenObjects = list;
 		}
 		return denizenObjects;
 	}
 	
-	public void resetDenizenObjects() {
+	public synchronized void resetDenizenObjects() {
 		denizenObjects=null;
 	}
 	
 	/**
 	 * @return		A Collection of all the tile objects
 	 */
-	public ArrayList<GameObject> getTileObjects() {
+	public synchronized ArrayList<GameObject> getTileObjects() {
 		if (tileObjects==null) {
-			tileObjects = new ArrayList<>();
-			tileObjects.addAll(findObjects("tile"));
+			tileObjects = new ArrayList<>(findObjects("tile"));
 		}
 		return tileObjects;
 	}
-	public void resetTileObjects() {
+	public synchronized void resetTileObjects() {
 		tileObjects = null;
 	}
 	
 	/**
 	 * @return		A Collection of all the dwelling objects
 	 */
-	public ArrayList<GameObject> getDwellingObjects() {
+	public synchronized ArrayList<GameObject> getDwellingObjects() {
 		if (dwellingObjects==null) {
-			dwellingObjects = new ArrayList<>();
-			dwellingObjects.addAll(findObjects("dwelling"));
-			dwellingObjects.addAll(findObjects("guild"));
+			ArrayList<GameObject> list = new ArrayList<>();
+			list.addAll(findObjects("dwelling"));
+			list.addAll(findObjects("guild"));
+			dwellingObjects = list;
 		}
 		return dwellingObjects;
 	}
@@ -124,7 +127,7 @@ public class RealmObjectMaster {
 	/**
 	 * @return		The relevant RealmObjectMaster associated with the provided GameData
 	 */
-	public static RealmObjectMaster getRealmObjectMaster(GameData data) {
+	public static synchronized RealmObjectMaster getRealmObjectMaster(GameData data) {
 		if (map==null) {
 			map = new HashMap<>();
 		}
