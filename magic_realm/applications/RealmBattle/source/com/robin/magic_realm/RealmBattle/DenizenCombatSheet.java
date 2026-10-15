@@ -527,15 +527,9 @@ public class DenizenCombatSheet extends CombatSheet {
 		ArrayList<RealmComponent> excludeList = new ArrayList<>();
 		excludeList.add(sheetOwner);
 		
-		if (isOwnedByActive || combatFrame.getActionState()>=Constants.COMBAT_RESOLVING || sheetOwner.getOwnerId()==null) {
-			// Always place, if owned by active, owned by none, or resolving attacks
-			placeParticipantDefender(sheetOwner);
-		}
-		else {
-			// If being attacked by a character, then positioning secrecy is required
-			boolean needsSecrecy = isAttackedByCharacter();
-			placeParticipantDefender(sheetOwner,needsSecrecy,false);
-		}
+		// A hireling owned by another player's character is that player's secret until Tactics
+		boolean needsSecrecy = combatFrame.getActionState()<Constants.COMBAT_TACTICS && !combatFrame.isLocalPlayersComponent(sheetOwner);
+		placeParticipantDefender(sheetOwner,needsSecrecy,false);
 		
 		// Sheet owner's target
 		RealmComponent defenderTarget = sheetOwner.getTarget();
