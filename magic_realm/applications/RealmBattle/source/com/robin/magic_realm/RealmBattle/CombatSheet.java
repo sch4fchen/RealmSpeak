@@ -589,8 +589,14 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 		return false;
 	}
+	/**
+	 * Placements are secret during Position and revealed to everyone at Tactics (some items let players act
+	 * in Tactics, knowing the choices made in Position).
+	 */
+	protected boolean isPlacementRevealed(RealmComponent rc) {
+		return combatFrame.getActionState()>=Constants.COMBAT_TACTICS;
+	}
 	protected void placeAllAttacks(int attackBox1,int weaponBox1,Collection<RealmComponent> excludeList) {
-		boolean reveal = combatFrame.getActionState()>=Constants.COMBAT_RESOLVING;
 		
 		ArrayList<RealmComponent> all = new ArrayList<>(model.getAllBattleParticipants(true));
 		
@@ -660,12 +666,11 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 						CharacterChitComponent characterChit = (CharacterChitComponent)rc;
 						if (spell==null || battleMage) {
-							// Only show attacks if attacking a non-owned target, OR the attacker is the activeParticipant
-							if (reveal 
+							// Only show attacks once revealed, or if the attacker belongs to the local player
+							boolean revealThisCharacter = isPlacementRevealed(rc);
+							if (revealThisCharacter
 									|| (target==null && target2==null)
-									|| (target!=null && target.getOwnerId()==null)
-									|| (target2!=null && target2.getOwnerId()==null)
-									|| ((target!=null || target2!=null) && rc.equals(combatFrame.getActiveParticipant()))) {
+									|| combatFrame.isLocalPlayersComponent(rc)) {
 								
 								MonsterChitComponent transmorph = characterChit.getTransmorphedComponent();
 								if (transmorph==null) {
@@ -738,17 +743,17 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								ArrayList<RealmComponent> targeted = sw.getTargetedRealmComponents(targetTest);
 								boolean showAttack = targeted.size()>0 || sw.noTargeting();
 								
-								// If the attacker is NOT the active participant and...
-								if (!rc.equals(combatFrame.getActiveParticipant())) {
-									// ... any of the targeted are owned by the activeParticipant, then don't show attack (maintains secrecy)
+								// If the attacker is NOT the local player's and...
+								if (!combatFrame.isLocalPlayersComponent(rc)) {
+									// ... any of the targeted are owned by the local player, then don't show attack (maintains secrecy)
 									for (RealmComponent test : targeted) {
-										if (test.getOwnerId()!=null && test.getOwner().equals(combatFrame.getActiveParticipant())) {
+										if (test.getOwnerId()!=null && combatFrame.isLocalPlayersComponent(test)) {
 											showAttack = false;
 											break;
 										}
 									}
 								}
-								if (reveal || showAttack) {
+								if (isPlacementRevealed(rc) || showAttack) {
 									GameObject incObj = sw.getIncantationObject();
 									CombatWrapper combat = new CombatWrapper(incObj);
 									int box = combat.getCombatBoxAttack();

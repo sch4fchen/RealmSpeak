@@ -508,11 +508,10 @@ public class CharacterCombatSheet extends CombatSheet {
 	 * This method will find all the relevant info from the participant, and layout chits accordingly
 	 */
 	protected void updateLayout() {
-		// First, determine if secrecy is needed (attacked by other character)
+		// First, determine if secrecy is needed (another player's character, before Tactics)
 		boolean needsSecrecy = alwaysSecret;
 		if (combatFrame.getActionState()<Constants.COMBAT_TACTICS
-				&& !combatFrame.getActiveParticipant().equals(sheetOwner)
-				&& isAttackedByCharacter()) {
+				&& !combatFrame.isLocalPlayersComponent(sheetOwner)) {
 			needsSecrecy = true;
 		}
 		
@@ -658,7 +657,7 @@ public class CharacterCombatSheet extends CombatSheet {
 							}
 							sheetOwnerShield = item;
 							if (needsSecrecy) {
-								box = 2; // default position for secrecy
+								box = 1; // the unplaced starting box, so a hidden placement looks like none
 							}
 							layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),item);
 						}

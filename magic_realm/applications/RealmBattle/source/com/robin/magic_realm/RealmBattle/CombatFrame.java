@@ -4638,6 +4638,21 @@ public class CombatFrame extends JFrame {
 		return activeParticipant;
 	}
 	/**
+	 * Secret placements are decided by who owns them, not by whose turn the frame happens to be showing
+	 * (activeParticipant is just the first character in the lowest combat state, which is not necessarily
+	 * a character belonging to this client).
+	 *
+	 * @return		true if the character (or the owner of the hireling/denizen) belongs to the player at this client,
+	 * 				or if the component has no owning character (nothing secret about it)
+	 */
+	public boolean isLocalPlayersComponent(RealmComponent rc) {
+		RealmComponent owner = rc.isCharacter()?rc:rc.getOwner();
+		if (owner==null || playerName==null) {
+			return true;
+		}
+		return playerName.equals(new CharacterWrapper(owner.getGameObject()).getPlayerName());
+	}
+	/**
 	 * @return Returns the hirelings for the active participant
 	 */
 	public ArrayList<RealmComponent> getHirelings() {
