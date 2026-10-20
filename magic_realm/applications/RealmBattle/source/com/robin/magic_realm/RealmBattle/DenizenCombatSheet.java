@@ -527,10 +527,10 @@ public class DenizenCombatSheet extends CombatSheet {
 		ArrayList<RealmComponent> excludeList = new ArrayList<>();
 		excludeList.add(sheetOwner);
 		
-		// The defender's position is secret from all but its placer (model rule 4): a hireling's is its owner's, an UncontrolledDenizen's is open
+		// The defender's position is secret from all but its placer (BSS model rule 4): a hireling's is its owner's, an UncontrolledDenizen's is open
 		placeParticipantDefender(sheetOwner,!combatFrame.isDenizenRevealed(sheetOwner,sheetOwner),false);
 		
-		// Sheet owner's target (always a denizen attacking it, positioned like any other denizen: model rule 4)
+		// Sheet owner's target (always a denizen attacking it, positioned like any other denizen: BSS model rule 4)
 		RealmComponent defenderTarget = sheetOwner.getTarget();
 		if (defenderTarget!=null) {
 			sheetParticipants.add(defenderTarget);

@@ -1,6 +1,27 @@
 ######################################################################################
 Pseudo-code used for secrecy/reveal aspects of multi-client Positioning Step in combat
 
+The "classes" below are abstractions to train the agent SOLELY for the topic of
+Secret vs Reveal in multi-player battles where each player has their own client
+and battle frames.  The information each player sees in their battle frame cannot
+give away any secret information re other player's decisions during the Position Step
+of a battle round.
+
+The primary concept below is encompassed in the interface Revealable.  everything
+that may or may not be hidden due to its secrecy is a Revealable.  The faux classes
+below (they are not true RS classes) define the relationships the agent needs to understand
+re battle sheet secrecy, and are followed by a set of secrecy rules that the agent needs
+to apply when implementing this idea in RS.
+
+After the agent is trained on these relationships and and the rules, its job is to map
+the faux classes below to actual entities in RS and figure out where RS may need changes
+in order for RS to follow the BSS rules as listed at the end of this file.
+
+The agent only proposes changes where the RS code does not already work correctly wrt
+secrecy.  And in future I recommend that this file be saved in the repo and amended as
+and re-applied in the same manner.  It is a complex thing to keep straight without the
+concept and rules being spelled out in one place (here).
+
 Rules follow after pseudo-code.
 ######################################################################################
 

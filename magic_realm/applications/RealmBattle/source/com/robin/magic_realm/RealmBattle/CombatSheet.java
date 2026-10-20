@@ -666,7 +666,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 						CharacterChitComponent characterChit = (CharacterChitComponent)rc;
 						if (spell==null || battleMage) {
-							// Attack chits (and the weapons placed with them, rule 5) are secret from the other players until revealed (model rule 2)
+							// Attack chits (and the weapons placed with them, BSS rule 5) are secret from the other players until revealed (BSS model rule 2)
 							if (combatFrame.isChitRevealed(rc)) {
 								
 								MonsterChitComponent transmorph = characterChit.getTransmorphedComponent();
@@ -740,7 +740,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								ArrayList<RealmComponent> targeted = sw.getTargetedRealmComponents(targetTest);
 								boolean showAttack = targeted.size()>0 || sw.noTargeting();
 								
-								// An AttackSpell is an AttackChit: secret from the other players (whoever its targets are) until revealed (model rule 2)
+								// An AttackSpell is an AttackChit: secret from the other players (whoever its targets are) until revealed (BSS model rule 2)
 								if (combatFrame.isChitRevealed(rc) && (reveal || showAttack)) {
 									GameObject incObj = sw.getIncantationObject();
 									CombatWrapper combat = new CombatWrapper(incObj);
