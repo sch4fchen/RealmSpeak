@@ -4638,6 +4638,53 @@ public class CombatFrame extends JFrame {
 		return activeParticipant;
 	}
 	/**
+	 * Secrecy of a character's Chits, Shields and attack Spells (battle_sheet_secrecy rules 1 and 2): they are revealed in the
+	 * CombatWindow of the Player who owns the character, and are secret in every other window until the Tactics step (rule 10).
+	 * (Chits in a CharacterCombatSheet's Used this Round and Charge boxes are always revealed - rule 3 - and never ask.  A weapon
+	 * follows the chit it is placed with - rule 5.)  A frame with no player name (e.g. the Battle Builder) has nobody to keep
+	 * secrets from.  A secret chit, shield or spell is shown in its default position (rule 7), which is no position at all.
+	 * 
+	 * @param character		the character which owns the chit, shield or spell
+	 */
+	public boolean isChitRevealed(RealmComponent character) {
+		if (actionState>=Constants.COMBAT_TACTICS || playerName==null) {
+			return true;
+		}
+		return playerName.equals(new CharacterWrapper(character.getGameObject()).getPlayerName());
+	}
+	/**
+	 * Secrecy of a Denizen shown on a CombatSheet (battle_sheet_secrecy rule 4): it is secret in every CombatWindow except its
+	 * placer's, until the Tactics step (rule 10).  A Denizen with no placer is always revealed.  A hireling's or monster's horse and
+	 * weapon follow it (rule 5).  A secret Denizen is shown in its default position (rule 7).
+	 * 
+	 * @param denizen		the denizen, hireling or controlled monster shown
+	 * @param sheetOwner	the defender whose CombatSheet it is shown on
+	 */
+	public boolean isDenizenRevealed(RealmComponent denizen, RealmComponent sheetOwner) {
+		if (actionState>=Constants.COMBAT_TACTICS || playerName==null) {
+			return true;
+		}
+		String placer = getPlacerOf(denizen,sheetOwner);
+		return placer==null || playerName.equals(placer);
+	}
+	/**
+	 * Same as CombatSheet.placer_of(Denizen) in the model: the player who positions the denizen on the sheet.
+	 * 
+	 * @return		the name of the player who owns the CombatSheet (the sheet's owner positions everything on it) or, if the sheet has
+	 * 				no owner (an UncontrolledDenizen's), the player who owns the denizen.  Null if nobody does.
+	 */
+	private String getPlacerOf(RealmComponent denizen,RealmComponent sheetOwner) {
+		String sheetPlayer = getPlayerNameOf(sheetOwner);
+		return sheetPlayer!=null?sheetPlayer:getPlayerNameOf(denizen);
+	}
+	/**
+	 * @return		the name of the player who owns the character, or who owns the character controlling the denizen; null if nobody does
+	 */
+	private String getPlayerNameOf(RealmComponent rc) {
+		RealmComponent owner = rc.isCharacter()?rc:rc.getOwner();
+		return owner==null?null:new CharacterWrapper(owner.getGameObject()).getPlayerName();
+	}
+	/**
 	 * @return Returns the hirelings for the active participant
 	 */
 	public ArrayList<RealmComponent> getHirelings() {

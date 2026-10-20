@@ -508,13 +508,8 @@ public class CharacterCombatSheet extends CombatSheet {
 	 * This method will find all the relevant info from the participant, and layout chits accordingly
 	 */
 	protected void updateLayout() {
-		// First, determine if secrecy is needed (attacked by other character)
-		boolean needsSecrecy = alwaysSecret;
-		if (combatFrame.getActionState()<Constants.COMBAT_TACTICS
-				&& !combatFrame.getActiveParticipant().equals(sheetOwner)
-				&& isAttackedByCharacter()) {
-			needsSecrecy = true;
-		}
+		// First, determine if secrecy is needed (model rule 2: the owner's maneuver chits and shield are secret from the other players)
+		boolean needsSecrecy = alwaysSecret || !combatFrame.isChitRevealed(sheetOwner);
 		
 		battleChitsWithRolls.clear();
 		layoutHash.clear();
@@ -539,9 +534,11 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (!addedToDead(rc)) {
 						updateBattleChitsWithRolls(rcCombat);
 						CombatWrapper combat = new CombatWrapper(rc.getGameObject());
+						// A denizen's position is secret from all but its placer (model rule 4); a secret one sits with the unpositioned (rule 7)
+						boolean secretIndex = !combatFrame.isDenizenRevealed(rc,sheetOwner);
 						int boxA = combat.getCombatBoxAttack();
 						int boxD = combat.getCombatBoxDefense();
-						layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),rc);
+						layoutHash.put(secretIndex?POS_TARGET:getBoxIndexFromCombatBoxes(boxA,boxD),rc);
 						sheetParticipants.add(rc);
 						if (rc.isMonster()) {
 							MonsterChitComponent monster = (MonsterChitComponent)rc;
@@ -553,7 +550,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								boxD = combat.getCombatBoxDefense();
 								if (boxA>0) {
 									// only add monster weapon to layout if in a combat box!
-									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
+									layoutHash.put(secretIndex?POS_TARGET:getBoxIndexFromCombatBoxes(boxA,boxD),weapon);
 								}
 							}
 							RealmComponent horse = (RealmComponent)rc.getHorse();
@@ -563,7 +560,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								boxD = combat.getCombatBoxDefense();
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+									layoutHash.put(secretIndex?POS_TARGET:getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 									sheetParticipants.add(horse);
 								}
 							}
@@ -576,7 +573,7 @@ public class CharacterCombatSheet extends CombatSheet {
 								boxD = combat.getCombatBoxDefense();
 								if (boxD>0) {
 									// only add horse to layout if in a combat box!
-									layoutHash.put(getBoxIndexFromCombatBoxes(boxA,boxD),horse);
+									layoutHash.put(secretIndex?POS_TARGET:getBoxIndexFromCombatBoxes(boxA,boxD),horse);
 									sheetParticipants.add(horse);
 								}
 							}
@@ -658,7 +655,7 @@ public class CharacterCombatSheet extends CombatSheet {
 							}
 							sheetOwnerShield = item;
 							if (needsSecrecy) {
-								box = 2; // default position for secrecy
+								box = 1; // the shield's default position (model rule 7), so a secret shield looks like an unplaced one
 							}
 							layoutHash.put(Integer.valueOf(POS_SHIELD1+box-1),item);
 						}

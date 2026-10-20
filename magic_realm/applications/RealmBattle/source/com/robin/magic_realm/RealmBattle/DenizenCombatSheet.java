@@ -527,23 +527,16 @@ public class DenizenCombatSheet extends CombatSheet {
 		ArrayList<RealmComponent> excludeList = new ArrayList<>();
 		excludeList.add(sheetOwner);
 		
-		if (isOwnedByActive || combatFrame.getActionState()>=Constants.COMBAT_RESOLVING || sheetOwner.getOwnerId()==null) {
-			// Always place, if owned by active, owned by none, or resolving attacks
-			placeParticipantDefender(sheetOwner);
-		}
-		else {
-			// If being attacked by a character, then positioning secrecy is required
-			boolean needsSecrecy = isAttackedByCharacter();
-			placeParticipantDefender(sheetOwner,needsSecrecy,false);
-		}
+		// The defender's position is secret from all but its placer (model rule 4): a hireling's is its owner's, an UncontrolledDenizen's is open
+		placeParticipantDefender(sheetOwner,!combatFrame.isDenizenRevealed(sheetOwner,sheetOwner),false);
 		
-		// Sheet owner's target
+		// Sheet owner's target (always a denizen attacking it, positioned like any other denizen: model rule 4)
 		RealmComponent defenderTarget = sheetOwner.getTarget();
 		if (defenderTarget!=null) {
 			sheetParticipants.add(defenderTarget);
 			excludeList.add(defenderTarget);
 			if (!addedToDead(defenderTarget)) {
-				placeParticipantDefenderTarget(defenderTarget);
+				placeParticipantDefenderTarget(defenderTarget,!combatFrame.isDenizenRevealed(defenderTarget,sheetOwner));
 			}
 		}
 		RealmComponent defenderTarget2 = sheetOwner.get2ndTarget();
@@ -551,7 +544,7 @@ public class DenizenCombatSheet extends CombatSheet {
 			sheetParticipants.add(defenderTarget2);
 			excludeList.add(defenderTarget2);
 			if (!addedToDead(defenderTarget2)) {
-				placeParticipantDefenderTarget(defenderTarget2);
+				placeParticipantDefenderTarget(defenderTarget2,!combatFrame.isDenizenRevealed(defenderTarget2,sheetOwner));
 			}
 		}
 		
