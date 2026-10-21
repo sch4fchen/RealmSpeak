@@ -392,9 +392,9 @@ public class DenizenCombatSheet extends CombatSheet {
 						hotspotHash.put(Integer.valueOf(POS_DEFENDER_BOX1),title);
 					}
 				}
-				// Hireling assign
+				// Hireling assign — check all attacker positions, not just BOX1 (in rounds 2+ attackers may be in BOX2/3 from the prior position step)
 				if (isOwnedByActive
-						&& layoutHash.get(Integer.valueOf(POS_ATTACKERS_BOX1))!=null
+						&& (layoutHash.get(Integer.valueOf(POS_ATTACKERS))!=null || !getAllBoxListFromLayout(POS_ATTACKERS_BOX1).isEmpty())
 						&& sheetOwner.getTarget()==null
 						&& sheetOwner.get2ndTarget()==null) {
 					hotspotHash.put(Integer.valueOf(POS_DEFENDER_TARGET_BOX3),sheetOwner.getGameObject().getName()+" Target");
