@@ -348,7 +348,18 @@ public class CharacterCombatSheet extends CombatSheet {
 					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(Integer.valueOf(POS_TARGET)))) {
 						hotspotHash.put(Integer.valueOf(POS_TARGET),combatFrame.getActiveParticipant().getGameObject().getName()+" Target");
 					}
-					
+					// Also check combat boxes — denizens positioned during Lure land in BOX1/2/3, not POS_TARGET
+					String assignLabel = combatFrame.getActiveParticipant().getGameObject().getName()+" Target";
+					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(Integer.valueOf(POS_TARGET_BOX1)))) {
+						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX1),assignLabel);
+					}
+					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(Integer.valueOf(POS_TARGET_BOX2)))) {
+						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX2),assignLabel);
+					}
+					if (containsEnemy(combatFrame.getActiveParticipant(),layoutHash.getList(Integer.valueOf(POS_TARGET_BOX3)))) {
+						hotspotHash.put(Integer.valueOf(POS_TARGET_BOX3),assignLabel);
+					}
+
 					// Allow character to be targeted by another character
 					if (combatFrame.getActiveCharacterIsHere()
 							&& !sheetOwner.equals(combatFrame.getActiveParticipant())
@@ -819,10 +830,15 @@ public class CharacterCombatSheet extends CombatSheet {
 			case POS_TARGET_BOX1:
 			case POS_TARGET_BOX2:
 			case POS_TARGET_BOX3:
-				// Position targets
-				ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(POS_TARGET));
-				int box = index-POS_TARGET_BOX1+1;
-				combatFrame.positionTarget(box,box,list,false,swingConstant==SwingConstants.LEFT);
+				if (combatFrame.getActionState()==Constants.COMBAT_ASSIGN) {
+					combatFrame.assignTarget();
+				}
+				else {
+					// Position targets
+					ArrayList<RealmComponent> list = layoutHash.getList(Integer.valueOf(POS_TARGET));
+					int box = index-POS_TARGET_BOX1+1;
+					combatFrame.positionTarget(box,box,list,false,swingConstant==SwingConstants.LEFT);
+				}
 				break;
 			case POS_TARGET_CHARGE_SMASH:
 			case POS_TARGET_CHARGE_SWING:
