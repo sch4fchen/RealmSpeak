@@ -26250,7 +26250,7 @@
         <attribute susceptibleto="generator_flamed" />
         <attribute icon_folder_alt="wesnoth/units" />
         <attribute icon_type_alt="creepers" />
-		<attribute revenge="" />
+        <attribute revenge="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="975" name="Tomb">
@@ -64380,6 +64380,7 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="druid" />
         <attribute rw_expansion_1="" />
+        <attribute strength="T" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2487" name="Thief Magic II3*">
