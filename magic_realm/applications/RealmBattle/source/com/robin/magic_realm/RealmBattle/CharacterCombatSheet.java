@@ -519,7 +519,7 @@ public class CharacterCombatSheet extends CombatSheet {
 	 * This method will find all the relevant info from the participant, and layout chits accordingly
 	 */
 	protected void updateLayout() {
-		// BSS stands for Battle Sheet Secrecy.  The BSS model rules are layed out in the battle_sheet_secrecy.txt file.
+		// BSS stands for Battle Sheet Secrecy.  The BSS model rules are layed out in the CombatSheet file.
 		// First, determine if secrecy is needed (BSS model rule 2: the owner's maneuver chits and shield are secret from the other players)
 		boolean needsSecrecy = alwaysSecret || !combatFrame.isChitRevealed(sheetOwner);
 		

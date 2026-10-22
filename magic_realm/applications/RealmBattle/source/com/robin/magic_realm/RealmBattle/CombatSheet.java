@@ -68,6 +68,24 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 	protected boolean interactiveFrame;
 	
 	public boolean alwaysSecret = false;
+	/*
+	Battle Sheet Secrecy: Rules for secrecy vs reveal, APPLIED IN STRICT ORDER:
+	 1. The state of secrecy of a Revealable object defaults to is_revealed() = True.
+	 2. Chits and Shields in a non-owner's CombatWindow return is_revealed() = False.
+	 3. Chits in a CharacterCombatSheet._used_this_round_box or ._charge_chits_box return is_revealed() = True.
+	 4. A Denizen shown on a CombatSheet returns is_revealed() = False in every CombatWindow whose owner is not
+	    CombatSheet.placer_of(Denizen), unless placer_of(Denizen) is None.
+	 5. A Revealable that defines is_revealed() in terms of another object (e.g., NativeHorse, MonsterWeapon, Weapon)
+	    follows the revealed state of said object.
+	 6. Revealable objects which have not been positioned yet by their owner are shown in their default positions.
+	 7. Revealable objects with is_revealed() = False are shown in their default positions.
+	 8. Revealable objects with is_revealed() = True are shown in their chosen positions.
+	 9. This must converge for a single Player BattleWindow to have is_revealed() = True for all Revealables.
+	10. From the Tactics step onward, every Revealable returns is_revealed() = True in every CombatWindow.
+	    This takes precedence over rules 1 - 5.
+	N.B., Character objects are not Revealable, but their counter is always shown in a CharacterCombatSheet they own.
+	      It is never shown on any other CombatSheet.
+	*/
 	
 	/**
 	 * Testing constructor ONLY!!!
