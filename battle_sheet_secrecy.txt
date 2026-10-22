@@ -1,0 +1,172 @@
+######################################################################################
+Pseudo-code used for secrecy/reveal aspects of multi-client Positioning Step in combat
+
+The "classes" below are abstractions to train the agent SOLELY for the topic of
+Secret vs Reveal in multi-player battles where each player has their own client
+and battle frames.  The information each player sees in their battle frame cannot
+give away any secret information re other player's decisions during the Position Step
+of a battle round.
+
+The primary concept below is encompassed in the interface Revealable.  everything
+that may or may not be hidden due to its secrecy is a Revealable.  The faux classes
+below (they are not true RS classes) define the relationships the agent needs to understand
+re battle sheet secrecy, and are followed by a set of secrecy rules that the agent needs
+to apply when implementing this idea in RS.
+
+After the agent is trained on these relationships and and the rules, its job is to map
+the faux classes below to actual entities in RS and figure out where RS may need changes
+in order for RS to follow the BSS rules as listed at the end of this file.
+
+The agent only proposes changes where the RS code does not already work correctly wrt
+secrecy.  And in future I recommend that this file be saved in the repo and amended as
+and re-applied in the same manner.  It is a complex thing to keep straight without the
+concept and rules being spelled out in one place (here).
+
+Rules follow after pseudo-code.
+######################################################################################
+
+interface Revealable:
+    abstract is_revealed()
+
+interface HorseRider implements Revealable:
+    abstract is_revealed()
+
+Character:
+    _owner - Player which owns the character
+    ...
+
+abstract Denizen implements Revealable:
+    _owner - a Player object.  May be None.
+    _character - a Character object.  May be None.
+    ...
+
+abstract ControlledDenizen extends Denizen:
+    _owner - Player which owns _character.
+    _character - Character which controls the ControlledDenizen.
+
+Hireling extends ControlledDenizen implements HorseRider:
+    _horse - NativeHorse if the Hireling has one.  May be None.
+    is_revealed() -> bool
+    ...
+
+ControlledMonster extends ControlledDenizen:
+    _weapon - MonsterWeapon if the ControlledMonster has one.  May be None.
+    is_revealed() -> bool
+    ...
+
+UncontrolledDenizen extends Denizen implements HorseRider:
+    _owner = None
+    _character = None
+    _horse - NativeHorse if the UncontrolledDenizen has one.  May be None.
+    _weapon - MonsterWeapon if the UncontrolledDenizen has one.  May be None.
+    is_revealed() -> bool
+    ...
+
+NativeHorse implements Revealable:
+    _owner - Player which owns _rider.  May be None.
+    _rider - HorseRider native (Hireling or UncontrolledDenizen) who is riding this NativeHorse
+    is_revealed() = _rider.is_revealed()
+    ...
+
+MonsterWeapon implements Revealable:
+    _owner - Player which owns _wielder.  May be None.
+    _wielder - the ControlledMonster or UncontrolledDenizen which wields this MonsterWeapon
+    is_revealed() = _wielder.is_revealed()
+    ...
+
+CombatSheet:
+    _owner - the Player which owns the _defender (if any).  This may be None.
+    _defender - Character or Denizen which is defending on the CombatSheet
+    placer_of(denizen) -> Player or None:
+        # the Player who positions this Denizen on this CombatSheet
+        if _owner != None:
+            return _owner               # the owner of the CombatSheet positions everything on it
+        return denizen._owner           # an unowned CombatSheet: the Denizen's own owner (None for an UncontrolledDenizen)
+    ...
+
+CharacterCombatSheet extends CombatSheet:
+    _maneuver_chit_boxes - the horizontal section of Maneuver chit boxes at the bottom of the CharacterCombatSheet
+    _shield_ovals - the ovals a shield can be placed in on the CharacterCombatSheet
+    _used_this_round_box - the Used this Round box on the CharacterCombatSheet
+    _charge_chits_box - the box on the CharacterCombatSheet showing the chits played to charge its _defender
+    _attacker_boxes - the pink diagonal section boxes (1, 2, and 3) at the top left of the CharacterCombatSheet
+    _attack_chit_boxes - the vertical section of Attack chit boxes at the top right of the CharacterCombatSheet
+    ...
+
+DenizenCombatSheet extends CombatSheet:
+    _target_boxes - the horizontal row of boxes at the bottom of the DenizenCombatSheet
+    _defender_boxes - the diagonal row of boxes in the upper left of the DenizenCombatSheet
+    _other_attackers_boxes - the vertical column of boxes in the upper right of the DenizenCombatSheet
+    ...
+
+Player:
+    _name - login name
+    ...
+
+CombatWindow:
+    _owner - Player which owns the CombatWindow
+    _battle_sheet_list - list of CombatSheet instances in the battle.  All CombatWindows contain the same set
+                         of CombatSheet instances.  But the content shown on a CombatSheet can be different in
+                         different CombatWindow instances.  Each players' CombatWindow will show the
+                         CombatSheets of all participants in the battle, no matter who the owner of the
+                         CombatSheet is (Character | Denizen).
+    _step - the current combat step (e.g. Position, Tactics, Results)
+    ...
+
+Chit implements Revealable:
+    # may be a Character chit or another entity behaving like a Character Chit.  e.g., glove/boots item
+    _owner - Player which owns _character
+    _character - Character which has the Chit
+    is_revealed() -> bool
+    ...
+
+Weapon implements Revealable:
+    _owner - Player which owns _character
+    _character - Character which has the Weapon
+    _placed_with - the Chit this Weapon is placed with: an AttackChit, or a ManeuverChit when used to parry.  May be None.
+    is_revealed() = (_placed_with != None) and _placed_with.is_revealed()
+    ...
+
+Shield implements Revealable:
+    _owner - Player which owns _character
+    _character - Character which has the Shield
+    is_revealed() -> bool
+    ...
+
+AttackChit extends Chit:
+    _weapon - the Weapon used with this AttackChit, if any.  may be None.
+    ...
+
+ManeuverChit extends Chit:
+    ...
+
+CharacterHorse extends ManeuverChit:
+    ...
+
+AttackSpell extends AttackChit:
+    ...
+
+#####################################################
+Rules for secrecy vs reveal, APPLIED IN STRICT ORDER:
+#####################################################
+
+ 1. The state of secrecy of a Revealable object defaults to is_revealed() = True.
+ 2. Chits and Shields in a non-owner's CombatWindow return is_revealed() = False.
+ 3. Chits in a CharacterCombatSheet._used_this_round_box or ._charge_chits_box return is_revealed() = True.
+ 4. A Denizen shown on a CombatSheet returns is_revealed() = False in every CombatWindow whose owner is not
+    CombatSheet.placer_of(Denizen), unless placer_of(Denizen) is None.
+
+ 5. A Revealable that defines is_revealed() in terms of another object (e.g., NativeHorse, MonsterWeapon, Weapon)
+    follows the revealed state of said object.
+
+ 6. Revealable objects which have not been positioned yet by their owner are shown in their default positions.
+ 7. Revealable objects with is_revealed() = False are shown in their default positions.
+ 8. Revealable objects with is_revealed() = True are shown in their chosen positions.
+
+ 9. This must converge for a single Player BattleWindow to have is_revealed() = True for all Revealables.
+
+10. From the Tactics step onward, every Revealable returns is_revealed() = True in every CombatWindow.
+    This takes precedence over rules 1 - 5.
+
+N.B., Character objects are not Revealable, but their counter is always shown in a CharacterCombatSheet they own.
+      It is never shown on any other CombatSheet.

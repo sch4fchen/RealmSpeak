@@ -472,10 +472,16 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 		}
 	}
 	protected void placeParticipantAttacker(RealmComponent participant) {
-		placeParticipant(participant,false,false,false,false,true);
+		placeParticipantAttacker(participant,false);
+	}
+	protected void placeParticipantAttacker(RealmComponent participant,boolean secrecy) {
+		placeParticipant(participant,secrecy,false,false,false,true);
 	}
 	protected void placeParticipantDefenderTarget(RealmComponent participant) {
-		placeParticipant(participant,false,false,false,true,false);
+		placeParticipantDefenderTarget(participant,false);
+	}
+	protected void placeParticipantDefenderTarget(RealmComponent participant,boolean secrecy) {
+		placeParticipant(participant,secrecy,false,false,true,false);
 	}
 	protected void placeParticipantDefender(RealmComponent participant) {
 		placeParticipantDefender(participant,false,false);
@@ -651,7 +657,7 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 				if (excludeList==null || !excludeList.contains(rc)) {
 					if (!rc.isCharacter() && (sheetParticipants.contains(target) || sheetParticipants.contains(target2))) {
 						if (!addedToDead(rc)) {
-							placeParticipantAttacker(rc);
+							placeParticipantAttacker(rc,!combatFrame.isDenizenRevealed(rc,sheetOwner));
 							sheetParticipants.add(rc);
 						}
 					}
@@ -660,12 +666,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 						CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 						CharacterChitComponent characterChit = (CharacterChitComponent)rc;
 						if (spell==null || battleMage) {
-							// Only show attacks if attacking a non-owned target, OR the attacker is the activeParticipant
-							if (reveal 
-									|| (target==null && target2==null)
-									|| (target!=null && target.getOwnerId()==null)
-									|| (target2!=null && target2.getOwnerId()==null)
-									|| ((target!=null || target2!=null) && rc.equals(combatFrame.getActiveParticipant()))) {
+							// Attack chits (and the weapons placed with them, BSS rule 5) are secret from the other players until revealed (BSS model rule 2)
+							if (combatFrame.isChitRevealed(rc)) {
 								
 								MonsterChitComponent transmorph = characterChit.getTransmorphedComponent();
 								if (transmorph==null) {
@@ -738,17 +740,8 @@ public abstract class CombatSheet extends JLabel implements Scrollable {
 								ArrayList<RealmComponent> targeted = sw.getTargetedRealmComponents(targetTest);
 								boolean showAttack = targeted.size()>0 || sw.noTargeting();
 								
-								// If the attacker is NOT the active participant and...
-								if (!rc.equals(combatFrame.getActiveParticipant())) {
-									// ... any of the targeted are owned by the activeParticipant, then don't show attack (maintains secrecy)
-									for (RealmComponent test : targeted) {
-										if (test.getOwnerId()!=null && test.getOwner().equals(combatFrame.getActiveParticipant())) {
-											showAttack = false;
-											break;
-										}
-									}
-								}
-								if (reveal || showAttack) {
+								// An AttackSpell is an AttackChit: secret from the other players (whoever its targets are) until revealed (BSS model rule 2)
+								if (combatFrame.isChitRevealed(rc) && (reveal || showAttack)) {
 									GameObject incObj = sw.getIncantationObject();
 									CombatWrapper combat = new CombatWrapper(incObj);
 									int box = combat.getCombatBoxAttack();
