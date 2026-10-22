@@ -1,3 +1,14 @@
+Optional rule for Thief T Stab chit:
+can only use Pointed Weapon, so Dagger, Sword, or Spear.
+not be playable when riding a horse.
+table, like the missile table:
+1 Maximum damage
+2 Tremendous damage (equivalent of the wish for Strength)
+3. weapon damage, plus 2 levels (example Short Sword + overswing = Tremendous damage + * )
+4. weapon damage, plus 1 level (previous example: Heavy damage + *)
+5. weapon damage
+6. weapon damage minus 1 level (previous example: Light damage + *)
+
 Flash/Mark chat if unread messages
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked, add/remove mark, must not have mark
