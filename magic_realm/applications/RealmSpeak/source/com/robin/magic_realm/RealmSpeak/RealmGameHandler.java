@@ -1007,6 +1007,10 @@ public class RealmGameHandler extends RealmSpeakInternalFrame {
 			// If a spell is being applied through direct info, then make sure
 			// the combat frame reflects the change!!
 			resetCombatFrame();
+			// Submit spell effect changes to the server so other clients receive them.
+			// Must use invokeLater: handleDirectInfo() runs on the GameClient thread,
+			// and submitChanges() would deadlock if called directly from that thread.
+			SwingUtilities.invokeLater(() -> submitChangesWithTimeout());
 		}
 		else if (RealmDirectInfoHolder.SPELL_AFFECT_TARGETS_EXPIRE_IMMEDIATE.equals(command)) {
 			// Run on the EDT so that any blocking dialog (e.g. TileLocationChooser for Teleport)
