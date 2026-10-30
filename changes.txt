@@ -1,6 +1,5 @@
-T2** chit: option: cannot be use to open a Vault or Crypt
 Optional rules for Thief T Stab chit:
--> M2 chit
+-> H2** chit
 can only use Pointed Weapon, so Dagger, Sword, or Spear.
 not be playable when riding a horse.
 table, like the missile table:
