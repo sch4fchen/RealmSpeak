@@ -8203,7 +8203,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		if (getCurrentGuild(validateJoinRequirement)==null) return null;
 		GameData data = getGameObject().getGameData();
 		GamePool pool = new GamePool(data.getGameObjects());
-		GameObject guild = pool.findFirst(Constants.GUILD+"="+getCurrentGuild());
+		GameObject guild = pool.findFirst(Constants.GUILD+"="+getCurrentGuild(validateJoinRequirement));
 		if (guild!=null) {
 			return Store.getGuildStore((GuildChitComponent)RealmComponent.getRealmComponent(guild),this);
 		}
