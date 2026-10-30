@@ -5262,6 +5262,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="8" />
@@ -5291,6 +5292,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -5318,6 +5320,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -5347,6 +5350,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="3" />
@@ -5456,6 +5460,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute crossbow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -5481,6 +5486,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5504,6 +5510,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5527,6 +5534,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -5552,6 +5560,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -5578,6 +5587,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute morning_star="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -5603,6 +5613,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -5629,6 +5640,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -5654,6 +5666,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -5679,6 +5692,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -5704,6 +5718,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5728,6 +5743,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5752,6 +5768,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -5777,6 +5794,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -5803,6 +5821,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -5828,6 +5847,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute mace="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -5851,6 +5871,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute mace="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -5876,6 +5897,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -5901,6 +5923,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -5926,6 +5949,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -5951,6 +5975,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -26772,6 +26797,7 @@
         <attribute rw_expansion_1="" />
         <attribute alt_name="Legend" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="2" />
@@ -26991,6 +27017,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute halberd="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -27013,6 +27040,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute halberd="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -27035,6 +27063,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute halberd="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -27057,6 +27086,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute halberd="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -28281,6 +28311,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28302,6 +28333,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28323,6 +28355,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28344,6 +28377,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28364,6 +28398,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28386,6 +28421,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -28434,6 +28470,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -28458,6 +28495,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -28482,6 +28520,7 @@
         <attribute icon_folder="weapons" />
         <attribute rw_expansion_1="" />
         <attribute item="" />
+        <attribute halberd="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -32993,6 +33032,7 @@
         <attribute name="Flame Sword" />
         <attribute strength="L" />
         <attribute sharpness="2" />
+        <attribute sword="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="1174" name="Lucky Blow">
@@ -54110,6 +54150,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="8" />
@@ -54137,6 +54178,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -54161,6 +54203,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -54188,6 +54231,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="3" />
@@ -54289,6 +54333,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute crossbow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -54312,6 +54357,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54333,6 +54379,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54354,6 +54401,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -54377,6 +54425,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -54401,6 +54450,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute morning_star="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -54424,6 +54474,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -54448,6 +54499,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -54471,6 +54523,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -54494,6 +54547,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -54517,6 +54571,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54539,6 +54594,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54561,6 +54617,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -54584,6 +54641,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -54608,6 +54666,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -54631,6 +54690,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute mace="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -54652,6 +54712,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute mace="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="M" />
@@ -54675,6 +54736,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -54698,6 +54760,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -54721,6 +54784,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -54744,6 +54808,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -55087,6 +55152,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute crossbow="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -55210,6 +55276,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -55233,6 +55300,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -55256,6 +55324,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -55279,6 +55348,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="4" />
@@ -55302,6 +55372,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute sword="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55325,6 +55396,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute morning_star="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -55348,6 +55420,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="H" />
@@ -55372,6 +55445,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -55396,6 +55470,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -55420,6 +55495,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute axe="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="5" />
@@ -55445,6 +55521,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute spear="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute attack_speed="6" />
@@ -55467,6 +55544,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55488,6 +55566,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55509,6 +55588,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55530,6 +55610,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55551,6 +55632,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -55572,6 +55654,7 @@
         <attribute icon_folder="weapons" />
         <attribute item="" />
         <attribute super_realm="" />
+        <attribute staff="" />
       </AttributeBlock>
       <AttributeBlock blockName="unalerted">
         <attribute strength="L" />
@@ -64050,6 +64133,7 @@
         <attribute weight="H" />
         <attribute kill_monsters_permanently="" />
         <attribute weapon="" />
+        <attribute sword="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2468" name="Demon Leash">
@@ -64070,6 +64154,7 @@
         <attribute demon_control="" />
         <attribute demon_control_speed="2" />
         <attribute weapon="" />
+        <attribute leash="" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2469" name="Extra Hitpoint">
