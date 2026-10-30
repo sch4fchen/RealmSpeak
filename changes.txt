@@ -1,18 +1,12 @@
-Optional rules for Thief T Stab chit:
--> H2** chit
-can only use Pointed Weapon, so Dagger, Sword, or Spear.
-not be playable when riding a horse.
-table, like the missile table:
+table=stabbing, like the missile table:
 1 Maximum damage
 2 Tremendous damage (equivalent of the wish for Strength)
 3. weapon damage, plus 2 levels (example Short Sword + overswing = Tremendous damage + * )
 4. weapon damage, plus 1 level (previous example: Heavy damage + *)
 5. weapon damage
 6. weapon damage minus 1 level (previous example: Light damage + *)
--> stab attribute, if optional rule -> roll on table
-weapon_use attribute, when placing chit, check optional rule if can be combined with weapon
-no_riding attribute, when placing chits, check for optional rule, if you are riding a horse
-add attributes to weapons (sword, axe, mace...)
+weapon_restrictions attribute, when placing chit, if can be combined with weapon
+no_riding attribute, when placing chits, if you are riding a horse
 Options for stabbing:
 	* A Stab attack can be played only if the thief/assassin were hidden at the start of the combat round it is to be used.
 	AND A Stab attack cannot be played against a character who has found hidden enemies that turn.
@@ -35,6 +29,7 @@ QuestRequirement: GateLocation: current tile, current clearing, regex, marked, a
 Version 1.2.6.6
 NEW FEATURES:
 # Dread Roberts Runes House Rule
+# Optional rules for Thief's Stab chit
 QUEST UPDATE:
 # QuestRequirementCharacter
 # QuestRequirementCharacterTrade
@@ -46,7 +41,10 @@ QUEST UPDATE:
 BUGS/ISSUES:
 # Fix Treachery: rebels cannot attack nor be attacked by monsters and unhired natives
 # Fix T fight chit of the Thief
-# Improfve scret placement of chits in combat
+# Improve scret placement of chits in combat
+# Fix spell effects not propagating to other clients after apply
+# Fix guild join requirement never completing for any guild
+# Don't offer hidden hirelings as random-assignment targets
 
 Version 1.2.6.5
 QUEST UPDATE:

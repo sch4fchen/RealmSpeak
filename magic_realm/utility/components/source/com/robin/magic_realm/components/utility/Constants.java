@@ -854,6 +854,7 @@ public class Constants {
 	public static final String OPT_CHAR_ABILITY_ELF = "OptCharElf";
 	public static final String OPT_CHAR_ABILITY_PALADIN = "OptCharPaladin";
 	public static final String OPT_CHAR_ABILITY_DWARF = "OptCharDwarf";
+	public static final String OPT_CHAR_ABILITY_THIEF_STAB_CHIT = "OptCharThiefStabChit";
 	public static final String OPT_PENETRATING_ARMOR = "OptPenArmor";
 	public static final String OPT_TWO_HANDED_WEAPONS = "OptTwoHandedWeapons";
 	public static final String OPT_DUAL_WIELDING = "OptDualWielding";

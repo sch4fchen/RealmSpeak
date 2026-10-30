@@ -64319,6 +64319,7 @@
       <contains id="2486" />
       <contains id="2487" />
       <contains id="2488" />
+      <contains id="2489" />
     </GameObject>
     <GameObject id="2477" name="Thief Move L3*">
       <AttributeBlock blockName="this">
@@ -64466,6 +64467,8 @@
         <attribute icon_type="druid" />
         <attribute rw_expansion_1="" />
         <attribute strength="T" />
+        <attribute stabbing="" />
+        <attribute optional="remove" />
       </AttributeBlock>
     </GameObject>
     <GameObject id="2487" name="Thief Magic II3*">
@@ -64496,6 +64499,30 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="druid" />
         <attribute rw_expansion_1="" />
+      </AttributeBlock>
+    </GameObject>
+    <GameObject id="2489" name="Thief Stab H2**">
+      <AttributeBlock blockName="this">
+        <attribute character_chit="" />
+        <attribute action="fight" />
+        <attribute speed="2" />
+        <attribute effort="2" />
+        <attribute character_level="4" />
+        <attribute stage="10" />
+        <attribute level="4" />
+        <attribute icon_folder="characters" />
+        <attribute icon_type="druid" />
+        <attribute rw_expansion_1="" />
+        <attribute strength="H" />
+        <attribute stabbing="" />
+        <attribute optional="add" />
+        <attribute table="stabbing" />
+        <attribute no_riding="" />
+        <attributeList keyName="weapon_restrictions">
+          <attributeVal N0="sword" />
+          <attributeVal N1="spear" />
+          <attributeVal N2="dagger" />
+        </attributeList>
       </AttributeBlock>
     </GameObject>
   </objects>

@@ -6688,7 +6688,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		for (GameObject go : getGameObject().getHold()) {
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
 			if (rc.isActionChit()) {
-				if (validChit(hostPrefs,go)) {
+				if (validChit(hostPrefs,go,getGameObject())) {
 					if ("berserk".equals(go.getThisAttribute("action"))) {
 						berserk = rc;
 					}
@@ -6704,11 +6704,14 @@ public class CharacterWrapper extends GameObjectWrapper {
 		}
 		return list;
 	}
-	private static boolean validChit(HostPrefWrapper hostPrefs,GameObject go) {
-		boolean optionalChits = hostPrefs!=null && hostPrefs.hasPref(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT);
-		String opt = go.getThisAttribute("optional");
+	private static boolean validChit(HostPrefWrapper hostPrefs,GameObject chit, GameObject character) {
+		String opt = chit.getThisAttribute("optional");
 		if (opt!=null) {
 			boolean add = "add".equals(opt);
+			boolean optionalChits = hostPrefs!=null &&
+					((hostPrefs.hasPref(Constants.OPT_CHAR_ABILITY_WIZARD_MAGIC_CHIT) && character.getName().toLowerCase().matches("wizard"))
+					|| (hostPrefs.hasPref(Constants.OPT_CHAR_ABILITY_THIEF_STAB_CHIT) && character.getName().toLowerCase().matches("thief")));
+			
 			if (add != optionalChits) {
 				// This chit cannot be used in this scenario, so skip it!
 				return false;
@@ -6726,7 +6729,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 		ArrayList<GameObject> hold = new ArrayList<>(getGameObject().getHold());
 		for (GameObject go : hold) {
 			if (includeUnearnedChits || go.hasThisAttribute(Constants.CHIT_EARNED)) {
-				if (validChit(hostPrefs,go)) {
+				if (validChit(hostPrefs,go,getGameObject())) {
 					RealmComponent rc = RealmComponent.getRealmComponent(go);
 					if (rc instanceof CharacterActionChitComponent) {
 						CharacterActionChitComponent chit = (CharacterActionChitComponent)rc;
