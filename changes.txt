@@ -1,4 +1,6 @@
+T2** chit: option: cannot be use to open a Vault or Crypt
 Optional rules for Thief T Stab chit:
+-> M2 chit
 can only use Pointed Weapon, so Dagger, Sword, or Spear.
 not be playable when riding a horse.
 table, like the missile table:
@@ -9,11 +11,13 @@ table, like the missile table:
 5. weapon damage
 6. weapon damage minus 1 level (previous example: Light damage + *)
 -> stab attribute, if optional rule -> roll on table
-no_alert -> chit cannot be alerted
-cannot be use to open a Vault or Crypt)
 weapon_use attribute, when placing chit, check optional rule if can be combined with weapon
 no_riding attribute, when placing chits, check for optional rule, if you are riding a horse
 add attributes to weapons (sword, axe, mace...)
+Options for stabbing:
+	* A Stab attack can be played only if the thief/assassin were hidden at the start of the combat round it is to be used.
+	AND A Stab attack cannot be played against a character who has found hidden enemies that turn.
+	* A STAB can only be played against an enemy that is not on Stabber's sheet. The Stabber may not be targeted by the enemy that is being STABbed
 
 Flash/Mark chat if unread messages
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
