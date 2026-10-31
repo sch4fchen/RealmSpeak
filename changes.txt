@@ -1,6 +1,4 @@
-Options for stabbing:
-	* A Stab attack can be played only if the thief/assassin were hidden at the start of the combat round it is to be used.
-	AND A Stab attack cannot be played against a character who has found hidden enemies that turn.
+Option for stabbing:
 	* A STAB can only be played against an enemy that is not on Stabber's sheet. The Stabber may not be targeted by the enemy that is being STABbed
 
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose

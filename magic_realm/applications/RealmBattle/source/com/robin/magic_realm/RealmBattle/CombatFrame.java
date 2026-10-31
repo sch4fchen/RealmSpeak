@@ -2337,7 +2337,9 @@ public class CombatFrame extends JFrame {
 			denizenPanel.repaint();
 			if (lurer.isHidden()) {
 				currentBattleModel.setGotUnhidden();
+				CombatWrapper combatLurer = new CombatWrapper(lurer.getGameObject());
 				lurer.setHidden(false);
+				combatLurer.setWasUnhiding(true);
 			}
 		}
 		else {
@@ -2393,20 +2395,22 @@ public class CombatFrame extends JFrame {
 				"You cannot charge, because you do not have a fast enough move to play.\n(Check your inventory!)",
 				false)) {
 			CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Charges the "+charged.getGameObject().getName());
+			CombatWrapper activeWrap = new CombatWrapper(activeCharacter.getGameObject());
+			CombatWrapper chargedWrap = new CombatWrapper(charged.getGameObject());
 			if (activeCharacter.isHidden()) {
 				currentBattleModel.setGotUnhidden();
+				activeWrap.setWasUnhiding(true);
 				activeCharacter.setHidden(false);
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
 			}
 			if (charged.isCharacter() && charged.isHidden()) {
 				currentBattleModel.setGotUnhidden();
+				chargedWrap.setWasUnhiding(true);
 				charged.setHidden(false);
 				CombatFrame.broadcastMessage(activeCharacter.getGameObject().getName(),"Is unhidden!");
 			}
 			RealmComponent rc = activator.getSelectedMoveChit();
-			CombatWrapper chargedWrap = new CombatWrapper(charged.getGameObject());
 			chargedWrap.addChargeChit(rc.getGameObject());
-			CombatWrapper activeWrap = new CombatWrapper(activeCharacter.getGameObject());
 			activeWrap.setHasCharged(true);
 			changes = true;
 		}
@@ -2754,9 +2758,9 @@ public class CombatFrame extends JFrame {
 			}
 			if (!hiddenStatus) {
 				broadcastMessage(theAttacker.getGameObject().getName(),"Becomes unhidden.");
-			}
-			if (theAttacker.isHidden() && !hiddenStatus) {
 				setGotUnhidden = true;
+				CombatWrapper combatAttacker = new CombatWrapper(theAttacker.getGameObject());
+				combatAttacker.setWasUnhiding(true);
 			}
 			theAttacker.setHidden(hiddenStatus);
 		}
@@ -2947,6 +2951,7 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
+				
 				Strength chitStrength = null;
 				if (chit instanceof CharacterActionChitComponent) {
 					chitStrength = ((CharacterActionChitComponent) chit).getStrength();
@@ -3196,6 +3201,11 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
+				if (hostPrefs.hasPref(Constants.OPT_STABBING_REQUIRES_HIDING) && !activeCharacter.isHidden() && !charCombat.getWasUnhiding()) continue;
+				if (hostPrefs.hasPref(Constants.OPT_STABBING_REQUIRES_HIDING) && sheetOwner.isCharacter() && !sheetOwner.getGameObject().equals(activeCharacter.getGameObject())) {
+					CharacterWrapper targetedCharacter = new CharacterWrapper(sheetOwner.getGameObject());
+					if (targetedCharacter.foundHiddenEnemies()) continue;
+				}
 				
 				Strength chitStrength = null;
 				if (chit instanceof CharacterActionChitComponent) {

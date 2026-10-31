@@ -876,11 +876,15 @@ public class DenizenCombatSheet extends CombatSheet {
 				// Sheet owner becomes unhidden when deployed
 				if (sheetOwner.isHidden()) {
 					sheetOwner.setHidden(false);
+					CombatWrapper sheetOwnerCombat = new CombatWrapper(sheetOwner.getGameObject());
+					sheetOwnerCombat.setWasUnhiding(true);
 				}
 				
 				// As does the deployTarget (if hidden)
 				if (deployTarget.isHidden()) {
 					deployTarget.setHidden(false);
+					CombatWrapper deployTargetCombat = new CombatWrapper(deployTarget.getGameObject());
+					deployTargetCombat.setWasUnhiding(true);
 				}
 				
 				if (extendedTreachery(deployTarget)) {
