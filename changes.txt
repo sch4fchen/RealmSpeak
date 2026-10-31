@@ -1,6 +1,3 @@
-Option for stabbing:
-	* A STAB can only be played against an enemy that is not on Stabber's sheet. The Stabber may not be targeted by the enemy that is being STABbed
-
 QuestReward: MarkTile: current tile, specific tile (regex or tile type), random/all/choose
 QuestRequirement: DwellingLocation: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, marked, add/remove mark, must not have mark
 QuestReward: MarkDwelling: current tile, current clearing, regex, only/not guilds, only/not general dwelling,!virtual_dwelling, random/all/choose

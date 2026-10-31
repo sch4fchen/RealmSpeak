@@ -3201,10 +3201,15 @@ public class CombatFrame extends JFrame {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
 				if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
-				if (hostPrefs.hasPref(Constants.OPT_STABBING_REQUIRES_HIDING) && !activeCharacter.isHidden() && !charCombat.getWasUnhiding()) continue;
-				if (hostPrefs.hasPref(Constants.OPT_STABBING_REQUIRES_HIDING) && sheetOwner.isCharacter() && !sheetOwner.getGameObject().equals(activeCharacter.getGameObject())) {
-					CharacterWrapper targetedCharacter = new CharacterWrapper(sheetOwner.getGameObject());
-					if (targetedCharacter.foundHiddenEnemies()) continue;
+				if (hostPrefs.hasPref(Constants.OPT_STABBING_REQUIRES_HIDING) && chit.getGameObject().hasThisAttribute(Constants.STABBING)) {
+					if(!activeCharacter.isHidden() && !charCombat.getWasUnhiding()) continue;
+					if (sheetOwner.isCharacter() && !sheetOwner.getGameObject().equals(activeCharacter.getGameObject())) {
+						CharacterWrapper targetedCharacter = new CharacterWrapper(sheetOwner.getGameObject());
+						if (targetedCharacter.foundHiddenEnemies()) continue;
+					}
+				}
+				if (hostPrefs.hasPref(Constants.OPT_STABBING_SPECIAL_TARGETING) && chit.getGameObject().hasThisAttribute(Constants.STABBING)) {
+					if (sheetOwner.getGameObject().equals(activeCharacter.getGameObject())) continue;
 				}
 				
 				Strength chitStrength = null;

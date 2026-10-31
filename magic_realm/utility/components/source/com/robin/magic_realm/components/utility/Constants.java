@@ -720,6 +720,7 @@ public class Constants {
 	public static final String TARGETS_SITES_FREED_SPELL = "targets_sites_freed_spell";
 	public static final String WEAPON_RESTRICTIONS = "weapon_restrictions";
 	public static final String NO_RIDING = "no_riding";
+	public static final String STABBING = "stabbing";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";
