@@ -5,7 +5,6 @@ table=stabbing, like the missile table:
 4. weapon damage, plus 1 level (previous example: Heavy damage + *)
 5. weapon damage
 6. weapon damage minus 1 level (previous example: Light damage + *)
-no_riding attribute, when placing chits, if you are riding a horse
 Options for stabbing:
 	* A Stab attack can be played only if the thief/assassin were hidden at the start of the combat round it is to be used.
 	AND A Stab attack cannot be played against a character who has found hidden enemies that turn.

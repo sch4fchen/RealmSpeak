@@ -2896,6 +2896,7 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
+		
 		if (!charCombat.getPlayedAttack() && !charCombat.getPlayedBonusParry() && !charCombat.getPlayedSpell() ) {
 			// First, clear out any chits already in play for attack
 			for (CharacterActionChitComponent chit : activeCharacter.getActiveFightChits()) {
@@ -2933,6 +2934,7 @@ public class CombatFrame extends JFrame {
 				return;
 			}
 		}
+		boolean hasActiveSteed = activeCharacter.getActiveSteed()!=null;
 		
 		Collection<RealmComponent> fightOptions = getAvailableFightOptions(box);
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
@@ -2944,6 +2946,7 @@ public class CombatFrame extends JFrame {
 				if (chit.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
+				if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
 				Strength chitStrength = null;
 				if (chit instanceof CharacterActionChitComponent) {
 					chitStrength = ((CharacterActionChitComponent) chit).getStrength();
@@ -3184,6 +3187,7 @@ public class CombatFrame extends JFrame {
 				weaponCard.getGameObject().removeAttributeBlock(CombatWrapper.COMBAT_BLOCK);
 			}
 		}
+		boolean hasActiveSteed = activeCharacter.getActiveSteed()!=null;
 		
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Attack:",true);
 		int keyN = 0;
@@ -3191,6 +3195,7 @@ public class CombatFrame extends JFrame {
 			for (RealmComponent chit : fightOptions) {
 				CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 				if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
+				if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
 				
 				Strength chitStrength = null;
 				if (chit instanceof CharacterActionChitComponent) {
@@ -3353,12 +3358,12 @@ public class CombatFrame extends JFrame {
 				}
 			}
 		}
+		boolean hasActiveSteed = activeCharacter.getActiveSteed()!=null;
 		
 		RealmComponent characterRc= RealmComponent.getRealmComponent(activeCharacter.getGameObject());
 		RealmComponentOptionChooser chooser = new RealmComponentOptionChooser(this,"Select Parry:",true);
 		int keyN = 0;
 		String key = "N"+(keyN);
-		
 		for (GameObject itemGo : activeCharacter.getActiveInventory()) {
 			if (itemGo.hasThisAttribute(Constants.NO_PARRY)) continue;
 			ArmorType armorType = TreasureUtility.getArmorType(itemGo);
@@ -3373,6 +3378,7 @@ public class CombatFrame extends JFrame {
 			if (chit.getGameObject().hasThisAttribute(Constants.NO_PARRY)) continue;
 			CombatWrapper combat = new CombatWrapper(chit.getGameObject());
 			if(combat.getPlacedAsFightOrParryOrParryShield()) continue;
+			if (hasActiveSteed && chit.getGameObject().hasThisAttribute(Constants.NO_RIDING)) continue;
 			
 			if (!charCombat.getPlayedBonusParry() && activeCharacter.affectedByKey(Constants.BLOCK_NO_WEAPON)) {
 				key = "C"+(keyN++);
