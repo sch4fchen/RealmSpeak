@@ -883,6 +883,8 @@ public class Constants {
 	public static final String OPT_NO_COLOR_CHIT_FOR_SLEEPING_CHARACTERS = "OptNoColorChitForSleepingCharacters";
 	public static final String OPT_COLOR_CHIT_TARGETING_NO_HIDDEN_TARGETS = "OptColorChitTargetingNoHiddenCharacters";
 	public static final String OPT_DISABLE_ACTIONS_WHEN_AWAITING_REACTIONS = "OptDisableActionsWhenAwaitingReactions";
+	public static final String OPT_STABBING_REQUIRES_HIDING = "OptStabbingRequiresHiding";
+	public static final String OPT_STABBING_SPECIAL_TARGETING = "OptStabbingRequiresSpecialTargeting";
 	
 	// Revised Rules
 	public static final String REV_MISSILE = "RevisedMissileTable";

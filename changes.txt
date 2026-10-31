@@ -1,10 +1,3 @@
-table=stabbing, like the missile table:
-1 Maximum damage
-2 Tremendous damage (equivalent of the wish for Strength)
-3. weapon damage, plus 2 levels (example Short Sword + overswing = Tremendous damage + * )
-4. weapon damage, plus 1 level (previous example: Heavy damage + *)
-5. weapon damage
-6. weapon damage minus 1 level (previous example: Light damage + *)
 Options for stabbing:
 	* A Stab attack can be played only if the thief/assassin were hidden at the start of the combat round it is to be used.
 	AND A Stab attack cannot be played against a character who has found hidden enemies that turn.

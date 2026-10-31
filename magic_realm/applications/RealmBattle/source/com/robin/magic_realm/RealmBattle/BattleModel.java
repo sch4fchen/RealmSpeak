@@ -2538,6 +2538,51 @@ public class BattleModel {
 				combat.addFumbleRollSubtitle(changeString);
 				logBattleInfo("Fumble result: "+changeString);
 			}
+			if (attacker.isCharacter()) {
+				RealmComponent chit = ((CharacterChitComponent)attacker).getAttackChit();
+				String table = null;
+				if (chit!=null) {
+					table = chit.getGameObject().getThisAttribute("table");
+				}
+				if (table!=null && table.matches("stabbing")) {
+					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
+					DieRoller roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createRoller("stabbing");
+					logBattleInfo("Stabbing roll: "+roller.getDescription());
+					
+					int result = roller.getHighDieResult();
+					int change = 0;
+					String changeString="";
+					if (result<2) {
+						totalHarm.setStrength("X");
+						changeString="Maximum damage";
+					}
+					else if (result==2) {
+						totalHarm.setStrength("T");
+						changeString="Tremendous damage";
+					}
+					else if (result==3) {
+						change = 2;
+						changeString="damage increased by 2 levels";
+					}
+					else if (result==4) {
+						change = 1;
+						changeString="damage increased by 1 level";
+					}
+					else if (result==5) {
+						change = 0;
+						changeString="damage not changed";
+					}
+					else if (result>5) {
+						change = -1;
+						changeString="damage decreased by 1 level";
+					}
+
+					if (change!=0) {
+						totalHarm.changeLevels(change);
+					}
+					logBattleInfo("Stabbing result: "+changeString);
+				}
+			}
 		}
 		return totalHarm;
 	}

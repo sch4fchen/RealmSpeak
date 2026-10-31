@@ -91,6 +91,9 @@ public class Harm {
 			dampenSharpness();
 		}
 	}
+	public void setStrength(String value) {
+		strength = new Strength(value);
+	}
 	/**
 	 * @return		The total strength, accounting for sharpness
 	 */
