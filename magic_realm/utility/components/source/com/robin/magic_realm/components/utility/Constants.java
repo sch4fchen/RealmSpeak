@@ -721,6 +721,8 @@ public class Constants {
 	public static final String WEAPON_RESTRICTIONS = "weapon_restrictions";
 	public static final String NO_RIDING = "no_riding";
 	public static final String STABBING = "stabbing";
+	public static final String NO_WEAPON_BOOSTING = "no_weapon_boosting";
+	public static final String NO_FUMBLE = "no_fumble";
 
 	// Curses
 	public static final String CURSES_NULLIFIED = "curses_nullified";

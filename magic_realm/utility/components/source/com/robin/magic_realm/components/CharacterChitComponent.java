@@ -548,7 +548,7 @@ public class CharacterChitComponent extends RoundChitComponent implements Battle
 				weaponStrength = baseHarm.getStrength();
 				sharpness = 0;
 			}
-			else if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon) {
+			else if (!missileWeapon && baseHarm.getStrength().strongerThan(weaponWeight) && !enchantedWeapon && !rc.getGameObject().hasThisAttribute(Constants.NO_WEAPON_BOOSTING)) {
 				weaponStrength.bumpUp();
 			}
 			if (combatChit.getGameObject().hasThisAttribute(Constants.FINAL_CHIT_HARM) && !enchantedWeapon) {

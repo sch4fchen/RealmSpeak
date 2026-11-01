@@ -2495,48 +2495,65 @@ public class BattleModel {
 					logBattleInfo("Missile table result: "+result+" = "+RealmUtility.getLevelChangeString(3-result));
 				}
 			}
-			else if (hostPrefs.hasPref(Constants.OPT_FUMBLE) && !magicAttack && !redAttack) {
+			else if (hostPrefs.hasPref(Constants.OPT_FUMBLE) && !magicAttack && !redAttack) {				
 				// Only roll on fumble table if option is enabled, the attack is NOT magic, and the harm is NOT red
 				// Roll on FUMBLE table here
-				DieRoller roller;
+				boolean skipFumble = false;
+				DieRoller roller=null;
 				RealmComponent rc = RealmComponent.getRealmComponent(attacker.getGameObject());
 				if (rc.isCharacter()) {
 					CharacterWrapper character = new CharacterWrapper(attacker.getGameObject());
-					roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createRoller("fumble");
+					if (!character.isTransmorphed()) {
+						RealmComponent chit = ((CharacterChitComponent)attacker).getAttackChit();
+						if (chit.getGameObject().hasThisAttribute(Constants.NO_FUMBLE)) {
+							skipFumble=true;
+						}
+					}
+					else if (character.getTransmorph().hasThisAttribute(Constants.NO_FUMBLE)) {
+						skipFumble=true;
+					}
+					if (!skipFumble) {
+						roller = DieRollBuilder.getDieRollBuilder(CombatFrame.getSingleton(),character).createRoller("fumble");
+					}
 				}
 				else {
-					// Monsters and Natives just get two dice
-					roller = createClearingRoller(2,"Fumble");
+					if (rc.getGameObject().hasThisAttribute(Constants.NO_FUMBLE)) {
+						skipFumble=true;
+					} else {
+						// Monsters and Natives just get two dice
+						roller = createClearingRoller(2,"Fumble");
+					}
 				}
-				roller.addModifier(fumbleModifier);
-				combat.addFumbleRoll(roller.getStringResult());
-				combat.addFumbleRollTargetId(targetId);
-				logBattleInfo("Fumble roll: "+roller.getDescription());
-				
-				int result = roller.getHighDieResult();
-				int change;
-				if (result<2) {
-					change = 2;
+				if (!skipFumble && roller!=null) {
+					roller.addModifier(fumbleModifier);
+					combat.addFumbleRoll(roller.getStringResult());
+					combat.addFumbleRollTargetId(targetId);
+					logBattleInfo("Fumble roll: "+roller.getDescription());
+					int result = roller.getHighDieResult();
+					int change;
+					if (result<2) {
+						change = 2;
+					}
+					else if (result<4) {
+						change = 1;
+					}
+					else if (result<7) {
+						change = 0;
+					}
+					else if (result<9) {
+						change = -1;
+					}
+					else if (result<10) {
+						change = -2;
+					}
+					else {
+						change = -10000; // NEG
+					}
+					String changeString = change==-10000?"Negligible Harm":RealmUtility.getLevelChangeString(change);
+					totalHarm.changeLevels(change);
+					combat.addFumbleRollSubtitle(changeString);
+					logBattleInfo("Fumble result: "+changeString);
 				}
-				else if (result<4) {
-					change = 1;
-				}
-				else if (result<7) {
-					change = 0;
-				}
-				else if (result<9) {
-					change = -1;
-				}
-				else if (result<10) {
-					change = -2;
-				}
-				else {
-					change = -10000; // NEG
-				}
-				String changeString = change==-10000?"Negligible Harm":RealmUtility.getLevelChangeString(change);
-				totalHarm.changeLevels(change);
-				combat.addFumbleRollSubtitle(changeString);
-				logBattleInfo("Fumble result: "+changeString);
 			}
 			if (attacker.isCharacter()) {
 				RealmComponent chit = ((CharacterChitComponent)attacker).getAttackChit();
