@@ -11,6 +11,10 @@ QuestReward: MarkGuild: current tile, current clearing, regex, random/all/choose
 QuestReward: MarkGate: current tile, current clearing, regex, random/all/choose
 QuestRequirement: GateLocation: current tile, current clearing, regex, marked, add/remove mark, must not have mark
 
+
+Version 1.2.6.7
+
+
 Version 1.2.6.6
 NEW FEATURES:
 # Dread Roberts Runes House Rule
