@@ -3210,6 +3210,7 @@ public class CombatFrame extends JFrame {
 				}
 				if (hostPrefs.hasPref(Constants.OPT_STABBING_SPECIAL_TARGETING) && chit.getGameObject().hasThisAttribute(Constants.STABBING)) {
 					if (sheetOwner.getGameObject().equals(activeCharacter.getGameObject())) continue;
+					if (sheetOwner.getTarget().getGameObject().equals(activeCharacter.getGameObject()) || sheetOwner.get2ndTarget().getGameObject().equals(activeCharacter.getGameObject())) continue;
 				}
 				
 				Strength chitStrength = null;
