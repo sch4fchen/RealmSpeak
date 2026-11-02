@@ -64501,7 +64501,7 @@
         <attribute rw_expansion_1="" />
       </AttributeBlock>
     </GameObject>
-    <GameObject id="2489" name="Thief Stab H2**">
+    <GameObject id="2489" name="Thief Stab M2**">
       <AttributeBlock blockName="this">
         <attribute character_chit="" />
         <attribute action="fight" />
@@ -64513,10 +64513,11 @@
         <attribute icon_folder="characters" />
         <attribute icon_type="druid" />
         <attribute rw_expansion_1="" />
-        <attribute strength="H" />
+        <attribute strength="M" />
         <attribute stabbing="" />
         <attribute optional="add" />
         <attribute table="stabbing" />
+		<attribute no_fumble="" />
         <attribute no_riding="" />
         <attributeList keyName="weapon_restrictions">
           <attributeVal N0="sword" />
