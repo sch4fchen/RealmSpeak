@@ -14,7 +14,8 @@ QuestRequirement: GateLocation: current tile, current clearing, regex, marked, a
 
 Version 1.2.6.7
 NEW FEATURES:
-# Update optional Stab chit for Thief 
+# Update optional Stab chit for Thief
+# Improve memory usage after shutting down a game 
 
 Version 1.2.6.6
 NEW FEATURES:

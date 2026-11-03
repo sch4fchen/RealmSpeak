@@ -2265,32 +2265,50 @@ public class RealmSpeakFrame extends JFrameWithStatus {
 			if (ret!=JOptionPane.YES_OPTION) {
 				return false;
 			}
+			
+			setTitle(Constants.APPLICATION_NAME);
+	        // 1. Stop networking
+	        host.stopListening();
+	        host = null;
 			connectedName = null;
 			connectedIp = null;
 			connectedPort = 0;
-			setTitle(Constants.APPLICATION_NAME);
+	        
+	        // 2. Clean up game handler and its internal frames/listeners
+	        if (gameHandler != null) {
+	            gameHandler.cleanup(); // This should trigger listener removals inside RealmGameHandler
+	        }
+	        gameHandler = null;
 
-			// Now to kill the game
-			RealmUtility.resetGame();
-			CombatFrame.resetSingleton();
-			if (gameHandler!=null) {
-				gameHandler.cleanup();
-			}
-			gameHandler = null;
-			FrameManager.getFrameManager().disposeFrame(RealmCalendarViewer.RC_VIEW);
-			FrameManager.getFrameManager().disposeFrame(TreasureSetupCardView.TS_VIEW);
-			desktop.removeAll();
-			gameControlFrames.clear();
-			characterFrames.clear();
-			realmHostFrame = null;
-			CenteredMapView.clearTileLayer();
-			host.stopListening();
-			host = null;
-			updateControls();
-			updateWindowMenu();
+	        // 3. Explicitly clear and dispose character/control frames 
+	        // to unregister any internal window listeners
+	        for (CharacterFrame frame : characterFrames) {
+	            frame.cleanup();
+	            frame.dispose();
+	        }
+	        characterFrames.clear();
+
+	        for (RealmSpeakInternalFrame frame : gameControlFrames) {
+	            frame.dispose();
+	        }
+	        gameControlFrames.clear();
+	        
+	        desktop.removeAll();
+	        
+	        // 4. Reset global utilities and map layers
+	        RealmUtility.resetGame();
+	        CombatFrame.resetSingleton();
+	        CenteredMapView.clearTileLayer();
+	        realmHostFrame = null;
+	        
+	        // 5. Update UI states and force garbage collection
+	        updateControls();
+	        updateMenuActions();
+	        updateWindowMenu();
+	        
 			networkingOption.doClick();
 			networkingOption.doClick();
-			//ImageCache.resetCache();
+			
 			System.gc(); // This TOTALLY shouldn't be necessary, but what can it hurt?
 			repaint();
 		}
