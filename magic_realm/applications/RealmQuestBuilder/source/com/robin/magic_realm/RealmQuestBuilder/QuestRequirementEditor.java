@@ -521,6 +521,13 @@ public class QuestRequirementEditor extends QuestBlockEditor {
 		Collections.sort(sublist);
 		list.addAll(sublist);
 		
+		sublist = new ArrayList<>();
+		for(GameObject go:pool.find(Constants.GUILD)) {
+			if(!sublist.contains(go.getName())) sublist.add(go.getName());
+		}
+		Collections.sort(sublist);
+		list.addAll(sublist);
+		
 		return list;
 	}
 	
