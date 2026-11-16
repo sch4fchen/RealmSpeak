@@ -157,6 +157,7 @@ public class RealmBattle {
 		HashLists<Integer,CharacterWrapper> lists = new HashLists<>();
 		for (RealmComponent rc : c) {
 			CharacterWrapper aChar = new CharacterWrapper(rc.getGameObject());
+			if (aChar.isDead() || aChar.isGone()) continue; // matches requiresCombatInteraction guard; dead chars remain in clearing but have no pending actions
 			int astate = aChar.getCombatStatus();
 			if (astate>0) {
 				lists.put(Integer.valueOf(astate),aChar);
