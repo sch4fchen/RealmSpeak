@@ -22,6 +22,7 @@ BUGS/ISSUES:
 # Familiar can not not be spied on or grant path discovery
 # Fix re-energizing self-targeted inert permanent spells blocked in combat
 # Fix combat hang when all combatants die simultaneously
+# Fix followers not moving through gates with guide
 
 Version 1.2.6.6
 NEW FEATURES:
