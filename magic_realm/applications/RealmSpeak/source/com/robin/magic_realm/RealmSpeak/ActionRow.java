@@ -1291,7 +1291,7 @@ public class ActionRow {
 					}
 					
 					for (CharacterWrapper follower :  actionFollowers) {
-						if ((!overridePath && !offroadTravel) || path!=null) {
+						if ((!overridePath && !offroadTravel) || path!=null || gates) {
 							if (follower.canFollow()) {
 								follower.moveToLocation(gameHandler.getMainFrame(),location);
 								// Followers ALWAYS learn secrets (unless walking woods...?)
@@ -1299,6 +1299,18 @@ public class ActionRow {
 									follower.updatePathKnowledge(path);
 									if (reverse!=null) {
 										follower.updatePathKnowledge(reverse);
+									}
+								}
+								if (gates) {
+									for (RealmComponent gateRc : current.clearing.getClearingComponents(false)) {
+										if (gateRc.isGate() && character.hasOtherChitDiscovery(gateRc.getGameObject().getName())) {
+											follower.addOtherChitDiscovery(gateRc.getGameObject().getName());
+										}
+									}
+									for (RealmComponent gateRc : location.clearing.getClearingComponents(false)) {
+										if (gateRc.isGate() && character.hasOtherChitDiscovery(gateRc.getGameObject().getName())) {
+											follower.addOtherChitDiscovery(gateRc.getGameObject().getName());
+										}
 									}
 								}
 								if (location.hasClearing() && location.clearing.isEdge()) {
