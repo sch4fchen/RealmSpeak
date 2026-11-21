@@ -1336,7 +1336,8 @@ public class ActionRow {
 					if (!overridePath && !offroadTravel && !current.isBetweenClearings() && (path.isNarrow() || (reverse!=null && reverse.isNarrow()))) {
 						// Other characters in the same clearing who have found hidden enemies
 						// for the day should gain a discovery when this move occurs (on either end of the path!)
-						if (current.hasClearing() && !hostPrefs.hasPref(Constants.SR_NO_SPYING)) {
+						// Exception: minions (Familiar, Phantasm) cannot be spied on per MR rules.
+						if (!character.isMinion() && current.hasClearing() && !hostPrefs.hasPref(Constants.SR_NO_SPYING)) {
 							for (RealmComponent rc:current.clearing.getClearingComponents()) {
 								if (rc.canSpy() && !rc.getGameObject().equals(character.getGameObject())) {
 									CharacterWrapper spy = new CharacterWrapper(rc.getGameObject());
@@ -1360,9 +1361,11 @@ public class ActionRow {
 								}
 							}
 						}
-						for (CharacterWrapper follower : character.getActionFollowers()) {
-							follower.updatePathKnowledge(path);
-							follower.updatePathKnowledge(reverse);
+						if (!character.isMinion()) {
+							for (CharacterWrapper follower : character.getActionFollowers()) {
+								follower.updatePathKnowledge(path);
+								follower.updatePathKnowledge(reverse);
+							}
 						}
 					}
 				}
