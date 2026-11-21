@@ -21,6 +21,7 @@ QUEST UPDATE:
 BUGS/ISSUES:
 # Familiar can not not be spied on or grant path discovery
 # Fix re-energizing self-targeted inert permanent spells blocked in combat
+# Fix combat hang when all combatants die simultaneously
 
 Version 1.2.6.6
 NEW FEATURES:
