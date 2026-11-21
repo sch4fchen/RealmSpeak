@@ -18,6 +18,9 @@ NEW FEATURES:
 # Improve memory usage after shutting down a game 
 QUEST UPDATE:
 # QuestRequirementDiscovery: add guilds to discovery list
+BUGS/ISSUES:
+# Familiar can not not be spied on or grant path discovery
+# Fix re-energizing self-targeted inert permanent spells blocked in combat
 
 Version 1.2.6.6
 NEW FEATURES:

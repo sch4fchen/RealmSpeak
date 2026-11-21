@@ -805,7 +805,6 @@ public class RealmUtility {
 						boolean canTarget = false;
 						if (spell.getTargets()!=null) {
 							for (RealmComponent target : spell.getTargets()) {
-								// Self-targeted spells (e.g. Melt Into Mist) are always re-energizable
 								if (target.getGameObject().equals(character.getGameObject())) {
 									canTarget = true;
 									break;
