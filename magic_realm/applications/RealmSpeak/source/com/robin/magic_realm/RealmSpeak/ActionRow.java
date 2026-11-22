@@ -1362,7 +1362,7 @@ public class ActionRow {
 						}
 						for (CharacterWrapper follower : character.getActionFollowers()) {
 							follower.updatePathKnowledge(path);
-							follower.updatePathKnowledge(reverse);
+							if (reverse != null) { follower.updatePathKnowledge(reverse); }
 						}
 					}
 				}
