@@ -17805,6 +17805,7 @@
         <attribute discard="shaman" />
         <attribute facing="face_dn" />
         <attribute repair_one="" />
+        <attribute oneshot="" />
         <attribute author="Expansion 1" />
         <attribute item="" />
       </AttributeBlock>
