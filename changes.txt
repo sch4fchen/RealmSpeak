@@ -23,6 +23,7 @@ BUGS/ISSUES:
 # Fix re-energizing self-targeted inert permanent spells blocked in combat
 # Fix combat hang when all combatants die simultaneously
 # Fix followers not moving through gates with guide
+# Fix crash, causing monster blocking to be skipped on narrow paths
 
 Version 1.2.6.6
 NEW FEATURES:
