@@ -553,17 +553,22 @@ public class SetupCardUtility {
 			HashLists<Integer,TileComponent> choices = new HashLists<>();
 			for (TileComponent adj:current.tile.getAllAdjacentTiles()) {
 				int distanceFromHome = ClearingUtility.getDistanceBetweenTiles(adj,home.tile);
+				int score;
 				if (revengeLocation!=null) {
 					int newDistanceFromTarget = ClearingUtility.getDistanceBetweenTiles(adj,revengeLocation.tile);
 					if (newDistanceFromTarget>distanceFromTarget) continue;
+					// Bias toward target: tiles closer to target score higher, same as farther-from-home normally does
+					score = distanceFromTarget - newDistanceFromTarget;
+				} else {
+					score = distanceFromHome;
 				}
-				
+
 				// if tile has characters in it, make it MORE interesting
 				int interest = calculateIncentive(adj.getAllClearingComponents(),-1,20);
-				distanceFromHome += interest*2; // this makes character tiles MUCH more interesting than leaving the generator
-				
-				furthest = Math.max(furthest,distanceFromHome);
-				choices.put(distanceFromHome,adj);
+				score += interest*2; // this makes character tiles MUCH more interesting than leaving the generator
+
+				furthest = Math.max(furthest,score);
+				choices.put(score,adj);
 			}
 			
 			if (choices.isEmpty()) {
@@ -594,22 +599,27 @@ public class SetupCardUtility {
 			for (PathDetail path:current.clearing.getConnectedPaths()) {
 				ClearingDetail other = path.findConnection(current.clearing);
 				int distanceFromHome = ClearingUtility.calculateClearingCount(home,other.getTileLocation()); // is this going to kill performance?
+				int score;
 				if (revengeLocation!=null) {
+					int newDistanceFromTarget;
 					if (revengeLocation.clearing==null) {
-						int newDistanceFromTarget = ClearingUtility.getDistanceBetweenTiles(other.getTileLocation().tile,revengeLocation.tile);
-						if (newDistanceFromTarget>distanceFromTarget) continue;
+						newDistanceFromTarget = ClearingUtility.getDistanceBetweenTiles(other.getTileLocation().tile,revengeLocation.tile);
 					} else {
-						int newDistanceFromTarget = ClearingUtility.calculateClearingCount(other.getTileLocation(),revengeLocation);
-						if (newDistanceFromTarget>distanceFromTarget) continue;
+						newDistanceFromTarget = ClearingUtility.calculateClearingCount(other.getTileLocation(),revengeLocation);
 					}
+					if (newDistanceFromTarget>distanceFromTarget) continue;
+					// Bias toward target: clearings closer to target score higher, same as farther-from-home normally does
+					score = distanceFromTarget - newDistanceFromTarget;
+				} else {
+					score = distanceFromHome;
 				}
 
 				// if clearing has characters in it, make it MORE interesting
 				int interest = calculateIncentive(other.getClearingComponents(),-1,20);
-				distanceFromHome += interest*2; // this makes character tiles more interesting than leaving the generator
-				
-				furthest = Math.max(furthest,distanceFromHome);
-				choices.put(distanceFromHome,other);
+				score += interest*2; // this makes character tiles more interesting than leaving the generator
+
+				furthest = Math.max(furthest,score);
+				choices.put(score,other);
 			}
 			
 			// Randomly choose from furthest locations
