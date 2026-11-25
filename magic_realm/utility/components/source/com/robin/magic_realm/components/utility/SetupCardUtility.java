@@ -2,6 +2,8 @@ package com.robin.magic_realm.components.utility;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 import com.robin.game.objects.*;
 import com.robin.game.server.GameClient;
 import com.robin.general.swing.DieRoller;
@@ -100,10 +102,18 @@ public class SetupCardUtility {
 		ArrayList<GameObject> warningChits = SetupCardUtility.getWarnings(tl.tile.getGameObject().getHold(),monsterDie,includeWarningSounds,hostPrefs); // this is done separately to capture treasures...
 		ArrayList<GameObject> soundChits = new ArrayList<>();
 		ArrayList<GameObject> prowlingMonsters = new ArrayList<>();
+		ArrayList<String> blockedByNoProwl = new ArrayList<>();
+		DebugUtility.diag("[IPD] summonMonsters tile-hold-scan tile=" + tl.tile.getGameObject().getName()
+			+ " clearing=" + clearingNum + " holdSize=" + tl.tile.getGameObject().getHold().size());
 		for (GameObject go : tl.tile.getGameObject().getHold()) {
 			if(!GameObjectMatchesBoardNumber(go,boardNumber)) continue;
-			
+
 			RealmComponent rc = RealmComponent.getRealmComponent(go);
+			if (rc.isMonster()) {
+				DebugUtility.diag("[IPD] summonMonsters tile-hold-monster " + go.getName()
+					+ " isPlayerControlled=" + rc.isPlayerControlledLeader()
+					+ " clearing=" + go.getThisInt("clearing"));
+			}
 			if (rc instanceof SoundChitComponent) {
 				SoundChitComponent sound = (SoundChitComponent)rc;
 				if (!sound.hasSummonedToday(monsterDie)) { // only summon once per day (rule 12.5/3)
@@ -117,10 +127,25 @@ public class SetupCardUtility {
 				int die4 = go.getThisInt("native_die2");
 				if (die==monsterDie || die2==monsterDie || die==99 || die3==nativeDie || die4==nativeDie) { // ghosts are ALWAYS prowling
 					MonsterChitComponent monster = (MonsterChitComponent)rc;
+					DebugUtility.diag("[IPD] summonMonsters prowl-check " + go.getName()
+						+ " clearing=" + go.getThisInt("clearing") + " targetClearing=" + clearingNum
+						+ " blocked=" + monster.isBlocked()
+						+ " maxWeight=" + monster.isMaximumWeight()
+						+ " maxWeightItem=" + monster.hasMaximumWeightItem()
+						+ " prowling=" + prowling);
 					if (!monster.isBlocked() && ((!monster.isMaximumWeight() && !monster.hasMaximumWeightItem()) || monster.isMistLike())) { // Exclude blocked and (except mist like) X monsters and monsters with item with weight X (e.g. Minotaur Shield with altered weight X)
 						// Finally, make sure there isn't a monster lure in the monster's clearing.
-						if (prowling && ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING)==null) {
+						GameObject noProwlItem = ClearingUtility.getItemInClearingWithKey(rc.getCurrentLocation(),Constants.NO_PROWLING);
+						DebugUtility.diag("[IPD] summonMonsters prowl-add-check " + go.getName()
+							+ " prowling=" + prowling + " noProwlItem=" + (noProwlItem==null?"null":noProwlItem.getName()));
+						if (prowling && noProwlItem==null) {
 							prowlingMonsters.add(go);
+						}
+						else if (prowling) {
+							String msg = go.getName() + " held in " + tl.tile.getGameObject().getName()
+								+ " " + go.getThisInt("clearing") + " by " + noProwlItem.getName() + " - cannot prowl.";
+							GameClient.broadcastClient("host", msg);
+							blockedByNoProwl.add(msg);
 						}
 					}
 				}
@@ -186,13 +211,17 @@ public class SetupCardUtility {
 		}
 		
 		// Before anything can be summoned, all prowling monsters on the tile need to be moved to the clearing,
+		DebugUtility.diag("[IPD] summonMonsters prowling-loop count=" + prowlingMonsters.size() + " targetClearing=" + clearingNum);
 		for (GameObject prowler : prowlingMonsters) {
 			// Verify that the clearing changes, if not, then NO BLOCKING OCCURS!!
 			int fromClearing = prowler.getThisInt("clearing");
 			if (fromClearing==clearingNum) continue;
-			
+
 			// We're good!  Move that bitch! (Sheesh, watch the language!)
 			prowler.setThisAttribute("clearing",String.valueOf(clearingNum));
+			DebugUtility.diag("[IPD] summonMonsters prowling-moved " + prowler.getName()
+				+ " from=" + fromClearing + " to=" + clearingNum
+				+ " verify-clearing=" + prowler.getThisInt("clearing"));
 			if (!prowler.hasThisAttribute("blocked")) {
 				GameClient.broadcastClient("host",prowler.getName()+" is prowling.");
 			}
@@ -201,7 +230,13 @@ public class SetupCardUtility {
 			MonsterChitComponent monster = (MonsterChitComponent)RealmComponent.getRealmComponent(prowler);
 			updateMonsterBlock(monster);
 		}
-		
+		if (!blockedByNoProwl.isEmpty()) {
+			JOptionPane.showMessageDialog(null,
+				String.join("\n", blockedByNoProwl),
+				"Prowling Prevented",
+				JOptionPane.INFORMATION_MESSAGE);
+		}
+
 		// Cycle through native dwellings and summon natives if needed
 		GameObject dwellingInClearing = ClearingUtility.findDwellingInClearing(tl.tile.getGameObject(),clearingNum);
 		if (dwellingInClearing!=null) {
@@ -948,6 +983,9 @@ public class SetupCardUtility {
 					&& (!rc.getGameObject().hasThisAttribute(Constants.BLINDING_LIGHT) || (magicImmunity!=null && (magicImmunity.matches("prism") || magicImmunity.matches("purple"))))) {
 					CharacterWrapper character = new CharacterWrapper(rc.getGameObject());
 					if (!character.isSleep()) {
+						DebugUtility.diag("[IPD] updateMonsterBlock " + monster.getGameObject().getName()
+							+ " blocked by " + rc.getGameObject().getName()
+							+ " hidden=" + rc.isHidden() + " mist=" + rc.isMistLike());
 						monster.setBlocked(true);
 						HostPrefWrapper hostPrefs = HostPrefWrapper.findHostPrefs(monster.getGameObject().getGameData());
 						if (!monster.isSmall() || !hostPrefs.hasPref(Constants.HOUSE3_SMALL_MONSTERS)) {

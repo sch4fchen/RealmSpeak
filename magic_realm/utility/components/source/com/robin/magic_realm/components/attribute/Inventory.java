@@ -31,6 +31,7 @@ public class Inventory {
 		return active
 				&& !go.hasThisAttribute("color_source")
 				&& !go.hasThisAttribute("potion")
+				&& !go.hasThisAttribute(Constants.NO_PROWLING) // Monster Lure type items auto-activate on discovery and can never be deactivated
 				&& !rc.isNativeHorse()
 				&& !rc.isGoldSpecial()
 				&& !rc.isMinorCharacter()

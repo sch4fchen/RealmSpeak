@@ -7854,7 +7854,7 @@ public class CharacterWrapper extends GameObjectWrapper {
 	 * @param listener			The ChangeListener (needed for proper updates to the server!)
 	 */
 	public void checkInventoryStatus(JFrame frame,GameObject newItem,ChangeListener listener) {
-		if (newItem!=null && newItem.hasThisAttribute("color_source")) {
+		if (newItem!=null && (newItem.hasThisAttribute("color_source") || newItem.hasThisAttribute(Constants.NO_PROWLING))) {
 			newItem.setThisAttribute(Constants.ACTIVATED);
 		}
 		if (isCharacter()) {
